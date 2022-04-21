@@ -99,8 +99,11 @@
                             </div>
                         </div>
                         <br>
+                        <p :class="total_panier_client_r != 0 ? 'tot-1':''" style="margin-left: .5rem;">
+                            Total : <span>{{ total_panier_client }} Fbu</span> 
+                        </p>
                         <p style="margin-left: .5rem;">
-                            Total : <span style="color: black;">{{ total_panier_client }} Fbu</span> 
+                            Total : <span style="color: black;">{{ total_panier_client_r }} Fbu</span> 
                         </p>
                         <div class="ending" style="text-align: left;">
                             <button class="confirmButton" @click="toSell">Confirmer</button>
@@ -256,8 +259,10 @@ const numero_facture: Ref<number> = ref(0)
 const last_umutiEntree: Ref<number> = ref(0)
 const last_umutiSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
+const total_r: Ref<number> = ref(2)
+const selectedProf: Ref<string> = ref('')
 const message = shallowRef<string>('hello')
-const selectedProf:String = ref('')
+
 
 const professions = [
     {
@@ -303,6 +308,11 @@ const { getAccessToken, getUsername, setUsername,
 
 const isSpecial = ()=>{
     rdBtnActive.value = !rdBtnActive.value
+    if(rdBtnActive){
+        total_r.value = 1
+    } else{
+        total_r.value = 2
+    }
 }
 
 const logout = ()=>{
@@ -589,8 +599,11 @@ const update_total_client = (reduction:number=0):string => {
     })
     if(reduction==0){
         somme_formatted = number_To_string(somme) //formatting by three digits
-    } else{
+    } else if(reduction==1){
         somme = somme * 0.9
+        somme_formatted = number_To_string(somme) //formatting by three digits
+    } else{
+        somme = 0
         somme_formatted = number_To_string(somme) //formatting by three digits
     }
     return somme_formatted
