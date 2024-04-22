@@ -2,3 +2,18 @@
 body{
     background-color: transparent;
 }
+
+ion-searchbar.ios.custom {
+    --cancel-button-color: black;
+  }
+  ion-searchbar.custom {
+    --background: #2c2a2852;
+    --color: #fff;
+    --placeholder-color: #fff;
+    --icon-color: white;
+    --clear-button-color: #fff;
+    --placeholder-font-weight: 400;
+    height: 5px !important;
+    width: auto;
+    /* padding: 0px 10px; */
+  }
