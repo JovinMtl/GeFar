@@ -3,22 +3,6 @@
         <!-- Here we will display icon -->
         <ion-icon :src="search" style="font-size: larger;"></ion-icon>
         <span style="margin-right: .4rem;">&nbsp;</span> 
-        <!-- <ion-searchbar show-cancel-button="focus" placeholder="Show on Focus"
-        mode="ios"></ion-searchbar> -->
-        <!-- <ion-searchbar 
-            class="custom"
-            animated="true"
-            :debounce="1000" 
-            placeholder="Rechercher le medicament"
-            showCancelButton="focus"
-            cancel-button-text="Rechercher"
-            @ionCancel="aboutUser($event)"
-            @keyup="checkEnter($event)"
-            enterkeyhint="search"
-            mode="ios"
-            v-model="dataInput"
-            >
-        </ion-searchbar> -->
 
         <div>
             <input type="text" class="SearchMed" placeholder="Rechercher le medicament"/>
