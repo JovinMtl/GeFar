@@ -4,7 +4,13 @@
             <div class="mainContainer">
                 <div class="sectA"></div>
                 <div class="sectB"></div>
-                <!-- <div class="signeRecherche"></div> -->
+                <div class="signeRecherche"></div>
+                <div class="searchBar">
+                    <sea-rch></sea-rch>
+                </div>
+                <div class="menuBar">
+                    <me-nu></me-nu>
+                </div>
                 <div class="menuLeft"></div>
                 <div class="menuHau"></div>
             </div>
@@ -14,10 +20,13 @@
 
 <script>
 // import base from './base.vue';
+import search from './auxiliare/search.vue';
+import menu from './auxiliare/menu.vue';
 import { IonContent, IonPage, } from '@ionic/vue';
 export default {
     components:{
-        // 'ba-se': base,
+        'sea-rch': search,
+        'me-nu': menu,
         IonContent, IonPage,
     },
     setup() {
@@ -63,5 +72,18 @@ export default {
         background-color: rgb(63, 60, 60);
         position: absolute;
         border-radius: 5px;
+    }
+
+    .searchBar{
+        position: absolute;
+        top: -5vh;
+        /* top: -8vh; */
+        left: 3vw;
+    }
+    .menuBar{
+        position: absolute;
+        top: -5.2vh;
+        /* top: -8vh; */
+        left: 33vw;
     }
 </style>
