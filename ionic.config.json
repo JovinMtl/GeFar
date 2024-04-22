@@ -1,0 +1,7 @@
+{
+  "name": "imiti",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
