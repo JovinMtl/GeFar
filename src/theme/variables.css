@@ -197,11 +197,11 @@ http://ionicframework.com/docs/theming/ */
      */
   
     .md body {
-      --ion-background-color: #121212;
-      --ion-background-color-rgb: 18,18,18;
+      /* --ion-background-color: #121212;
+      --ion-background-color-rgb: 18,18,18; */
 
-      --ion-background-color: linear-gradient(to right, rgb(11, 245, 11),rgba(11, 245, 11, 0.644), rgba(11, 245, 11, 0.486));
-      --ion-background-color-rgb: 255,255,255;
+      --ion-background-color: linear-gradient(to right, rgb(11, 245, 11),rgba(11, 245, 11, 0.644), rgba(11, 245, 11, 0.586));
+      --ion-background-color-rgb: rgba(11, 245, 11, 0.486);
   
       --ion-text-color: #ffffff;
       --ion-text-color-rgb: 255,255,255;
