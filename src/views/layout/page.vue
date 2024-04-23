@@ -2,7 +2,9 @@
     <ion-page>
         <ion-content>
             <div class="mainContainer">
-                <div class="sectA"></div>
+                <div class="sectA" style="text-align: center;">
+                    <list-imiti></list-imiti>
+                </div>
                 <div class="sectB"></div>
                 <div class="signeRecherche"></div>
                 <div class="searchBar">
@@ -20,13 +22,19 @@
 
 <script>
 // import base from './base.vue';
+import { 
+    defineAsyncComponent
+} from 'vue'
 import search from './auxiliare/search.vue';
 import menu from './auxiliare/menu.vue';
+
+const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
 import { IonContent, IonPage, } from '@ionic/vue';
 export default {
     components:{
         'sea-rch': search,
         'me-nu': menu,
+        'list-imiti': listImiti,
         IonContent, IonPage,
     },
     setup() {
@@ -34,56 +42,3 @@ export default {
     },
 }
 </script>
-
-<style>
-    ion-page{
-        background: linear-gradient(to right, rgb(11, 245, 11),rgba(11, 245, 11, 0.644), rgba(11, 245, 11, 0.486));
-        overflow: hidden;
-    }
-    .mainContainer{
-        display: inline-flex;
-        background-color: rgba(255, 255, 255, 0.589);
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.589),rgba(255, 255, 255, 0.381), rgba(255, 255, 255, 0.437));
-        width: 90vw;
-        height: 90vh;
-        position: relative;
-        left: 10vw;
-        left: 11.5vw;
-        top: 6vh;
-        border-top-left-radius: 35px;
-        border-bottom-left-radius: 35px;
-    }
-    .sectA{
-        width: 77%;
-        height: 100%;
-        /* background-color: rgba(153, 205, 50, 0.527); */
-    }
-    .sectB{
-        width: 23%;
-        height: 100%;
-        background-color: rgba(11, 245, 11, 0.384);
-        border-top: 8px dotted rgba(255, 255, 255, 0.589);
-        /* border-top-left-radius: 35px; */
-        /* border-style: dotted; */
-    }
-    .signeRecherche{
-        width: 10px;
-        height: 10px;
-        background-color: rgb(63, 60, 60);
-        position: absolute;
-        border-radius: 5px;
-    }
-
-    .searchBar{
-        position: absolute;
-        top: -5vh;
-        /* top: -8vh; */
-        left: 3vw;
-    }
-    .menuBar{
-        position: absolute;
-        top: -5.2vh;
-        /* top: -8vh; */
-        left: 33vw;
-    }
-</style>
