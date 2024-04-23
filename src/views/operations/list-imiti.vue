@@ -43,6 +43,31 @@ export default {
                 //NB: Uyo muti ntuja mugaseke hatabonetse LOT
                 'date_peremption':'',
             },
+            {
+                'code':'QUI23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'1000', //7: ayo Carton/plaquette yaranguwe
+                'price_out':'1300', //8: ayo plaquette tuyidandaza
+                'difference': '300', //9: benefice
+                'quantite_restant': '25' ,//10: plaquette zisigaye
+                'location': 'A#2#3#', //11: ni nka cote yaho wowusanga vyoroshe
+                //kuri buri date hari hakwiye kuboneka iyihari yayo na COTE
+                //haca hakora gestion par LOT ivanze na FIFO
+                //LOT yokwisunga DATE de Peremption, 
+                //hama Prix ikaba dernier entree
+
+                //uyi selectionye ice yerekana(muri partie gauche) 
+                //ama lot arimwo hamwe na contenu yayo
+                //Par selection haze a gauche: 2, 1, 4, 3, 10:6(nombres total),
+                // 8, LOT(date_peremption) A|B|C
+
+                //NB: Uyo muti ntuja mugaseke hatabonetse LOT
+                'date_peremption':'',
+            },
         ]
         return {}
     },
