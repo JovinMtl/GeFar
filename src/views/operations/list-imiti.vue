@@ -311,7 +311,7 @@ export default {
     /* background-color: gray; */
     border-radius: 15px;
     padding: 0px 5px;
-    margin: 10px 5px;
+    margin: 10px 5px; /* Space between imiti */
     box-shadow: 0 0 20px black;
     transition-delay: 0.1s;
     transition-property: all;

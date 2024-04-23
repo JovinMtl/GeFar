@@ -21,9 +21,9 @@ ion-page{
     width: 77%;
     height: 100%;
     /* background-color: rgba(153, 205, 50, 0.527); */
-    margin: 20px 20px;
-    display: inline-flex;
-    text-align: center;
+    margin: 10px 0px;
+    /* display: inline-flex; */
+    /* text-align: center; */
     /* align-items: center;
     align-content: center; */
 }
