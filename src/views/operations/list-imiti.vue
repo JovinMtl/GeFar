@@ -19,15 +19,28 @@ export default {
     setup() {
         const imiti = [
             {
-                'name':'',  //ingene witwa. hazoba affiche 15caracteres
-                'description':'', //ukwo ukoreshwa hamwe n'ico ukora
-                'type': 'Flacon, comprime, tube', //ubwoko bwawo
-                'type_in': 'carton', //kurangura
-                'type_out': 'plaquette', //kudetailla
-                'price_in':'', //ayo Carton/plaquette yaranguwe
-                'price_out':'', //ayo plaquette tuyidandaza
-                'difference': '', //benefice
-                'quantite_restant': '' ,//plaquette zisigaye
+                'code':'', //1: igizwe n'indome zitatu hamwe n'ibiharuro bibiri
+                'name':'',  //2: ingene witwa. hazoba affiche 15caracteres
+                'description':'',//3: ukwo ukoreshwa hamwe n'ico ukora
+                'type': 'Flacon, comprime, tube', //4: ubwoko bwawo
+                'type_in': 'carton', //5: kurangura
+                'type_out': 'plaquette', //6: kudetailla
+                'price_in':'', //7: ayo Carton/plaquette yaranguwe
+                'price_out':'', //8: ayo plaquette tuyidandaza
+                'difference': '', //9: benefice
+                'quantite_restant': '' ,//10: plaquette zisigaye
+                'location': '', //11: ni nka cote yaho wowusanga vyoroshe
+                //kuri buri date hari hakwiye kuboneka iyihari yayo na COTE
+                //haca hakora gestion par LOT ivanze na FIFO
+                //LOT yokwisunga DATE de Peremption, 
+                //hama Prix ikaba dernier entree
+
+                //uyi selectionye ice yerekana(muri partie gauche) 
+                //ama lot arimwo hamwe na contenu yayo
+                //Par selection haze a gauche: 2, 1, 4, 3, 10:6(nombres total),
+                // 8, LOT(date_peremption) A|B|C
+
+                //NB: Uyo muti ntuja mugaseke hatabonetse LOT
                 'date_peremption':'',
             },
         ]
