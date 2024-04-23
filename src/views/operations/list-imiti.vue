@@ -1,13 +1,13 @@
 <template>
-    <div>
+    <div v-for="umuti in imiti" v-show="umuti.name">
         <a href="http://" target="_blank" rel="noopener noreferrer"
         @click.prevent="" class="umutiContent" title="Click to see more">
             <div class="umuti">
                 <div class="umutiTitle">
-                    Here are our imiti from the store
+                    {{ umuti.name }}
                 </div>
                 
-                <div class="umutiPrice">deux milles</div>
+                <div class="umutiPrice">{{ umuti.price_out }}</div>
             </div>
         </a>
     </div>
@@ -50,26 +50,255 @@ export default {
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'1000', //7: ayo Carton/plaquette yaranguwe
-                'price_out':'1300', //8: ayo plaquette tuyidandaza
-                'difference': '300', //9: benefice
-                'quantite_restant': '25' ,//10: plaquette zisigaye
-                'location': 'A#2#3#', //11: ni nka cote yaho wowusanga vyoroshe
-                //kuri buri date hari hakwiye kuboneka iyihari yayo na COTE
-                //haca hakora gestion par LOT ivanze na FIFO
-                //LOT yokwisunga DATE de Peremption, 
-                //hama Prix ikaba dernier entree
-
-                //uyi selectionye ice yerekana(muri partie gauche) 
-                //ama lot arimwo hamwe na contenu yayo
-                //Par selection haze a gauche: 2, 1, 4, 3, 10:6(nombres total),
-                // 8, LOT(date_peremption) A|B|C
-
-                //NB: Uyo muti ntuja mugaseke hatabonetse LOT
-                'date_peremption':'',
+                'price_in':'1000', 
+                'price_out':'1300',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#3#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'QUI23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'1000', 
+                'price_out':'1300',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#3#',
+                'date_peremption':'Jan 2026',
+            },
+            {
+                'code':'AMO23',
+                'name':'Betadine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'7000', 
+                'price_out':'8100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
+            },
+            {
+                'code':'AMO23',
+                'name':'Quinine',
+                'description':'Pour Malaria, 1-1-1',
+                'type': 'comprime',
+                'type_in': 'carton',
+                'type_out': 'plaquette',
+                'price_in':'800', 
+                'price_out':'1100',
+                'difference': '300',
+                'quantite_restant': '25' ,
+                'location': 'A#2#9#',
+                'date_peremption':'Jan 2025',
             },
         ]
-        return {}
+        return {
+            imiti
+        }
     },
 }
 </script>
@@ -81,6 +310,7 @@ export default {
     /* background-color: gray; */
     border-radius: 15px;
     padding: 0px 5px;
+    margin: 0px 5px;
     box-shadow: 0 0 20px black;
     transition-delay: 0.1s;
     transition-property: all;
