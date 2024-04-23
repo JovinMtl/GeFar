@@ -22,6 +22,8 @@ ion-page{
     height: 100%;
     /* background-color: rgba(153, 205, 50, 0.527); */
     margin: 10px 10px;
+    overflow: scroll;
+
 }
 .sectB{
     width: 23%;
