@@ -1,7 +1,15 @@
 <template>
     <ion-page>
         <ion-content>
-            <div class="menuLeft"></div>
+            <!-- <div class="menuLeft">
+                <div class="infoUmuti umutiTitle"></div>
+                <div class="infoUmuti umutiCode"></div>
+                <div class="infoUmuti umutiType"></div>
+                <div class="infoUmuti umutiDescription"></div>
+                <div class="infoUmuti umutiQteRest"></div>
+                <div class="infoUmuti umutiPrice"></div>
+                <div class="infoUmuti umutiLot"></div>
+            </div> -->
             <div class="mainContainer">
                 <div class="sectA" style="text-align: center;">
                     <list-imiti></list-imiti>
@@ -46,10 +54,17 @@ export default {
 
 <style scoped>
 .menuLeft{
-    width: 11.5vw;
+    width: 11.3vw;
     height: 100%;
     background-color: red;
     position: absolute;
+    padding: 10px 10px;
+}
+.infoUmuti{
+    width: 100%;
+    height: 10%;
+    margin-bottom: 5px;
+    background-color: green;
 }
 </style>
 
