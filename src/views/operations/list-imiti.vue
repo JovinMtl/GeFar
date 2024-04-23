@@ -14,7 +14,27 @@
     
     
 </template>
-
+<script>
+export default {
+    setup() {
+        const imiti = [
+            {
+                'name':'',  //ingene witwa. hazoba affiche 15caracteres
+                'description':'', //ukwo ukoreshwa hamwe n'ico ukora
+                'type': 'Flacon, comprime, tube', //ubwoko bwawo
+                'type_in': 'carton', //kurangura
+                'type_out': 'plaquette', //kudetailla
+                'price_in':'', //ayo Carton/plaquette yaranguwe
+                'price_out':'', //ayo plaquette tuyidandaza
+                'difference': '', //benefice
+                'quantite_restant': '' ,//plaquette zisigaye
+                'date_peremption':'',
+            },
+        ]
+        return {}
+    },
+}
+</script>
 <style scoped>
 .umuti{
     width: 10vw;
