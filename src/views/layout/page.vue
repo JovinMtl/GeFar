@@ -1,7 +1,7 @@
 <template>
     <ion-page>
         <ion-content>
-            <!-- <div class="menuLeft">
+            <div class="menuLeft">
                 <div class="infoUmuti umutiTitle"></div>
                 <div class="infoUmuti umutiCode"></div>
                 <div class="infoUmuti umutiType"></div>
@@ -9,7 +9,7 @@
                 <div class="infoUmuti umutiQteRest"></div>
                 <div class="infoUmuti umutiPrice"></div>
                 <div class="infoUmuti umutiLot"></div>
-            </div> -->
+            </div>
             <div class="mainContainer">
                 <div class="sectA" style="text-align: center;">
                     <list-imiti></list-imiti>
