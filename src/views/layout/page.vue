@@ -1,6 +1,7 @@
 <template>
     <ion-page>
         <ion-content>
+            <div class="menuLeft"></div>
             <div class="mainContainer">
                 <div class="sectA" style="text-align: center;">
                     <list-imiti></list-imiti>
@@ -13,7 +14,7 @@
                 <div class="menuBar">
                     <me-nu></me-nu>
                 </div>
-                <div class="menuLeft"></div>
+                <!-- <div class="menuLeft"></div> -->
                 <div class="menuHau"></div>
             </div>
         </ion-content>
@@ -42,3 +43,13 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+.menuLeft{
+    width: 11.5vw;
+    height: 100%;
+    background-color: red;
+    position: absolute;
+}
+</style>
+
