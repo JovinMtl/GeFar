@@ -16,14 +16,14 @@ ion-page{
     top: 6vh;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
-    /* padding: 10px 0px; */
-    padding: 2px 0px;
+    padding-left: 1vw;
 }
 .sectA{
     width: 77%;
-    height: 100%;
-    padding: 15px 0px;
+    height: 98.4%;
     overflow: auto;
+    margin-top: 5px;
+    padding-top: 1vw;
 
 }
 ::-webkit-scrollbar-thumb {
