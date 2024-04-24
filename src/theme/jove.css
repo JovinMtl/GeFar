@@ -26,6 +26,21 @@ ion-page{
     overflow: auto;
 
 }
+::-webkit-scrollbar-thumb {
+    color: blue;
+    background-color: black; /* color of the scrolling handle */
+    border-radius: 15px;
+  }
+  ::-webkit-scrollbar {
+    width: 11px; /* width of the scrollbar */
+    height: 6px;
+    /* background-color: red; */
+    color: green;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
 .sectB{
     width: 23%;
     height: 100%;
