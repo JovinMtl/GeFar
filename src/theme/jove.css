@@ -16,13 +16,14 @@ ion-page{
     top: 6vh;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
+    /* padding: 10px 0px; */
+    padding: 2px 0px;
 }
 .sectA{
     width: 77%;
     height: 100%;
-    /* background-color: rgba(153, 205, 50, 0.527); */
-    margin: 10px 10px;
-    overflow: scroll;
+    padding: 15px 0px;
+    overflow: auto;
 
 }
 .sectB{
@@ -30,8 +31,6 @@ ion-page{
     height: 100%;
     background-color: rgba(11, 245, 11, 0.384);
     border-top: 8px dotted rgba(255, 255, 255, 0.589);
-    /* border-top-left-radius: 35px; */
-    /* border-style: dotted; */
 }
 .signeRecherche{
     width: 10px;
