@@ -56,7 +56,6 @@ export default {
 .menuContainer{
     height: 30px;
     width: 40vw;
-    /* background-color: yellow; */
     text-align: center;
 }
 .unclicked{
@@ -70,14 +69,11 @@ export default {
     align-content: center;
     align-items: center;
     text-align: center;
-    /* margin: auto; */
-    /* padding: 0px; */
 }
 .clicked{
     display: inline-block;
     width: 24%;
     height: 100%;
-    margin: 0px 4px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     align-content: center;
