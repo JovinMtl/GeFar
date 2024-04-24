@@ -1,16 +1,18 @@
 <template>
     <div class="menuContainer">
         <!-- //here is the menu -->
-        <a @click.prevent="" href="http://" target="_blank" rel="noopener noreferrer">
+        <a @click.prevent="" href="http://" target="_blank" 
+        rel="noopener noreferrer" title="Donner Médicament au Patient">
             <div :class="button1 ? 'clicked':'unclicked'" @click="turnA">
             Vendre  
         </div>
         </a>
         <a @click.prevent="" href="http://" target="_blank" rel="noopener noreferrer"
-        style="color: white;">
-            <div :class="button2 ? 'clicked':'unclicked'" @click="turnB">Approvisionner</div>
+        style="color: white;" title="Approvisionner, Entrée en Stock">
+            <div :class="button2 ? 'clicked':'unclicked'" @click="turnB">Approv</div>
         </a>
-        <a @click.prevent="" href="http://" target="_blank" rel="noopener noreferrer">
+        <a @click.prevent="" href="http://" target="_blank" 
+        rel="noopener noreferrer" title="Vérifier que tout est en bonne ordre">
            <div :class="button3 ? 'clicked':'unclicked'" @click="turnC">
                 Vérifier 
             </div> 
