@@ -22,13 +22,13 @@
 <script>
 export default {
     setup() {
+        let codes = new Array()
         const umutiOpen = (value)=>{
             console.log("And the ID is : ", (value.target.parentNode.parentNode).innerHTML)
             const current = (value.target.parentNode.parentNode)
             const code = current.getAttribute("title")
             console.log("ID : ", code)
         }
-        // let codes = new Set(String)
         
         const imiti = [
             {
@@ -591,7 +591,6 @@ export default {
         ]
         
         const constructUniqueCodes = ()=>{
-            let codes = new Array()
             imiti.forEach((obj)=>{
                 if(!codes.includes(obj.code)){
                     codes.push(obj.code)
@@ -600,7 +599,24 @@ export default {
             codes = codes.sort()
             console.log("The Sorted Codes is: ", codes)
         }
+
+      /**
+ * Constructs a dictionary from the provided code array.
+ * @param {Array} code - The input array from which the dictionary is constructed.
+ */
+        const makeDictionaryImiti = (code)=>{
+            let imitiDict = []
+            for(let i=0;i<code.length; i++){
+                imitiDict.code = code[i]
+                imitiDict.name = ''
+                imitiDict.lot = ''
+            }
+            console.log("Imiti Dict is : ", imitiDict)
+        }
         constructUniqueCodes()
+        makeDictionaryImiti(codes)
+
+        const compileImiti = ()=>{}
 
         return {
             imiti,
