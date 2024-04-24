@@ -49,7 +49,9 @@ ion-page{
 }
 .menuBar{
     position: absolute;
-    top: -5.2vh;
+    /* top: -5.2vh; */
+    top: -5.4vh;
+    top: -31px;
     /* top: -8vh; */
     left: 33vw;
 }
