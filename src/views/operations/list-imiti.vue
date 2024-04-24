@@ -28,6 +28,8 @@ export default {
             const code = current.getAttribute("title")
             console.log("ID : ", code)
         }
+        // let codes = new Set(String)
+        
         const imiti = [
             {
                 'code':'', //1: igizwe n'indome zitatu hamwe n'ibiharuro bibiri
@@ -587,6 +589,18 @@ export default {
                 'date_peremption':'Jan 2025',
             },
         ]
+        
+        const constructUniqueCodes = ()=>{
+            let codes = new Array()
+            imiti.forEach((obj)=>{
+                if(!codes.includes(obj.code)){
+                    codes.push(obj.code)
+                }
+            })
+            codes = codes.sort()
+            console.log("The Sorted Codes is: ", codes)
+        }
+        constructUniqueCodes()
 
         return {
             imiti,
