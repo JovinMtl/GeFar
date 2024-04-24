@@ -1,31 +1,33 @@
 <template>
-    <div v-for="(umuti, index) in imiti" v-show="umuti.name" 
-    style="display: inline-block ;" :key="index" @click.prevent="umutiOpen($event)" >
-        <a ref="umutID" :id="index" href="http://" target="_blank" rel="noopener noreferrer"
-        class="umutiContent" title="Click to see more">
-            <div class="umuti">
-                <div class="umutiTitle">
-                    {{ umuti.name }}
-                </div>
-                
-                <div class="umutiPrice">{{ umuti.price_out }}</div>
-            </div>
-        </a>
+    <div>
+        <div v-for="(umuti, index) in imiti" v-show="umuti.name" 
+            style="display: inline-block ;"  @click.prevent="umutiOpen($event)">
+                <a :title="umuti.code" :id="index"
+            href="http://" target="_blank" rel="noopener noreferrer"
+                class="umutiContent">
+                    <div class="umuti">
+                        <div class="umutiTitle">
+                            {{ umuti.name }}
+                        </div>
+                        
+                        <div class="umutiPrice">{{ umuti.price_out }}</div>
+                    </div>
+                </a>
+        </div>
     </div>
+    
     
     
 </template>
 <script>
-import { ref } from 'vue'
 export default {
     setup() {
-        const umutID = ref(null)
-        // const umutiOpen = (value)=>{
-        //     console.log("You selected umuti number: ",umutID.value )
-        //     console.log("And the ID is : ", (value.target.parentNode.parentNode.parentNode).innerHTML)
-        //     const current = value.target
-        //     console.log("ID : ", umutID.value)
-        // }
+        const umutiOpen = (value)=>{
+            console.log("And the ID is : ", (value.target.parentNode.parentNode).innerHTML)
+            const current = (value.target.parentNode.parentNode)
+            const code = current.getAttribute("title")
+            console.log("ID : ", code)
+        }
         const imiti = [
             {
                 'code':'', //1: igizwe n'indome zitatu hamwe n'ibiharuro bibiri
@@ -585,15 +587,9 @@ export default {
                 'date_peremption':'Jan 2025',
             },
         ]
-        
-        const imitiRefs = imiti.map(() => ref(null));
-        const umutiOpen = (index) => {
-            const selectedUmuti = imitiRefs[3].value; // Access the ref using the index
-            console.log("You selected umuti number: ", selectedUmuti);
-        }
 
         return {
-            imiti, umutID,
+            imiti,
             umutiOpen,
         }
     },
