@@ -27,14 +27,11 @@ ion-page{
 
 }
 ::-webkit-scrollbar-thumb {
-    color: blue;
-    background-color: black; /* color of the scrolling handle */
+    background-color: black;
     border-radius: 15px;
   }
   ::-webkit-scrollbar {
-    width: 11px; /* width of the scrollbar */
-    height: 6px;
-    /* background-color: red; */
+    width: 11px;
     color: green;
   }
   ::-webkit-scrollbar-track {
