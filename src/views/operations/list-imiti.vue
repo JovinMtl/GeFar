@@ -29,8 +29,13 @@ export default defineComponent ({
         const imitiset:UmutiSet[] = ref([])
         let codes = new Array()
         const showUmuti = (code:number) => {
-            let umuti: UmutiSet = imitiset.value[code]
-            emit('actualUmuti', umuti)
+            if(code){
+                let umuti: UmutiSet = imitiset.value[code]
+                emit('actualUmuti', umuti)
+            } else {
+                console.log("null is selected")
+            }
+            
             // console.log("attempting to emit 1")
             // console.log("You selected umuti: ", umuti)
         }
