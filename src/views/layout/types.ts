@@ -20,3 +20,9 @@ export interface UmutiSet {
     location : string;
     lot : object[];
 }
+
+export interface PanierElement {
+    code_umuti : string;
+    code_operation : string;
+    qte : number
+}
