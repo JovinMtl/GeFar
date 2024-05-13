@@ -23,13 +23,15 @@
 import { defineComponent, reactive, ref, onUpdated } from 'vue'
 import { UmutiSet } from '../layout/types'
 export default defineComponent ({
-    setup(_, {emit}) {
+    setup(props, {emit}) {
         const data = reactive({})
         const imitiset:UmutiSet[] = ref([])
         let codes = new Array()
         const showUmuti = (code:number) => {
             let umuti: UmutiSet = imitiset.value[code]
-            emit('actualUmuti', umuti)
+            // emit('actualUmuti', umuti)
+            console.log("attempting to emit 1")
+            emit('actualUmuti', 1)
             // console.log("You selected umuti: ", umuti)
         }
         const umutiOpen = (value)=>{
