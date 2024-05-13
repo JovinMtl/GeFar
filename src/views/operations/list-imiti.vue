@@ -1,16 +1,16 @@
 <template>
     <div>
-        <div v-for="(umuti, index) in imiti" v-show="umuti.name" 
+        <div v-for="(umuti, index) in imitiset" v-show="umuti.name_umuti" 
             style="display: inline-block ;"  @click.prevent="umutiOpen($event)">
                 <a :title="umuti.code" :id="index"
             href="http://" target="_blank" rel="noopener noreferrer"
                 class="umutiContent">
                     <div class="umuti">
                         <div class="umutiTitle">
-                            {{ umuti.name }}
+                            {{ umuti.name_umuti }}
                         </div>
                         
-                        <div class="umutiPrice">{{ umuti.price_out }}</div>
+                        <div class="umutiPrice">{{ umuti.price_in }}</div>
                     </div>
                 </a>
         </div>
@@ -20,17 +20,19 @@
     
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, ref, onUpdated } from 'vue'
 import { UmutiSet } from '../layout/types'
 export default defineComponent ({
     setup() {
-        const imitiset = reactive({})
+        const data = reactive({})
+        const imitiset:UmutiSet[] = ref([])
         let codes = new Array()
         const umutiOpen = (value)=>{
             console.log("And the ID is : ", (value.target.parentNode.parentNode).innerHTML)
             const current = (value.target.parentNode.parentNode)
             const code = current.getAttribute("title")
             console.log("ID : ", code)
+            updateImitiSet()
         }
         
         const imiti = [
@@ -601,20 +603,57 @@ export default defineComponent ({
                 const response = await fetch(`${base}/${prefix}`)
                 
                 if (response.ok){
-                    const data = await response.json()
-                    console.log("THings are well received", data)
+                    data.value = await response.json()
+                    console.log("THings are well received", data.value)
+                    updateImitiSet()
+                    // console.log("ImitiSet has lenght: ", data.value.length)
                 }
             } catch (value){
                 console.log("somehting may not be well because :", value)
             }
         }
-
         kuvomaImiti ()
+
+        const updateImitiSet = ()=>{
+            imitiset.value = []
+            // console.log("ImitiSet has lenght: ", data.value.length)
+            let  i = 1
+            data.value.forEach(element => {
+                let obj:UmutiSet = {
+                    'code_umuti' : element.code_umuti,
+                    'id' : i,
+                    'name_umuti' : element.name_umuti,
+                    'description_umuti' : element.description_umuti,
+                    'date_last_vente' : new Date(element.date_last_vente),
+                    'price_in' : element.price_in,
+                    'price_out' : element.price_out,
+                    'difference' : element.difference,
+                    'qte_entrant_big' : element.qte_entrant_big,
+                    'quantite_restant' : element.quantite_restant,
+                    'ratio_type' : element.ratio_type,
+                    'type_in' : element.type_in,
+                    'type_out' : element.type_out,
+                    'type_umuti' : element.type_umuti,
+                    'location' : element.location,
+                    'lot' : element.lot
+                }
+                imitiset.value.push(obj)
+                // console.log("voici: ", obj)
+            });
+            console.log("Compiled : ", imitiset.value)
+        }
+        // updateImitiSet()
+
+        // onUpdated(()=>{
+        //     updateImitiSet()
+        //     console.log("onUpdated is being called..")
+        // })
 
 
         return {
-            imiti,
+            imiti, imitiset,
             umutiOpen,
+            updateImitiSet,
         }
     },
 })
