@@ -53,6 +53,7 @@ export default {
     },
     setup() {
         const selectedUmuti = reactive({})
+        const panier = reactive({})
         const show = ref(false)
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
