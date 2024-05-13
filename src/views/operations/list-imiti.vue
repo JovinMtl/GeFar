@@ -2,7 +2,7 @@
     <div>
         <div v-for="(umuti, index) in imitiset" v-show="umuti.name_umuti" 
             style="display: inline-block ;"  @click.prevent="umutiOpen($event)">
-                <a :title="umuti.code" :id="index"
+                <a :title="umuti.description_umuti" :id="index"
             href="http://" target="_blank" rel="noopener noreferrer"
                 class="umutiContent">
                     <div class="umuti">
