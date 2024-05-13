@@ -20,9 +20,11 @@
     
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
-export default  defineComponent ({
+import { defineComponent, reactive } from 'vue'
+import { UmutiSet } from '../layout/types'
+export default defineComponent ({
     setup() {
+        const imitiset = reactive({})
         let codes = new Array()
         const umutiOpen = (value)=>{
             console.log("And the ID is : ", (value.target.parentNode.parentNode).innerHTML)
@@ -592,17 +594,18 @@ export default  defineComponent ({
         ]
 
         const kuvomaImiti = async () => {
-            const base = '//127.0.0.1:8000'
+            const base = '//127.0.0.1:8002'
             const prefix = 'api/out/dispo/'
 
             try {
                 const response = await fetch(`${base}/${prefix}`)
-                const data = await response.json()
-                if (data){
-                    console.log("THings are well received")
+                
+                if (response.ok){
+                    const data = await response.json()
+                    console.log("THings are well received", data)
                 }
             } catch (value){
-                console.log("somehting may not be well")
+                console.log("somehting may not be well because :", value)
             }
         }
 
