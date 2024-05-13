@@ -10,9 +10,9 @@
                 <div class="infoUmuti umutiPrice"></div>
                 <div class="infoUmuti umutiLot"></div>
             </div>
-            <div class="mainContainer" @actualUmuti="getUmuti">
+            <div class="mainContainer" >
                 <div class="sectA" style="text-align: center;">
-                    <list-imiti></list-imiti>
+                    <list-imiti @actualUmuti="getUmuti" ></list-imiti>
                 </div>
                 <div class="sectB"></div>
                 <div class="signeRecherche"></div>
@@ -49,6 +49,10 @@ export default {
     setup() {
         const getUmuti = (umuti) => {
             console.log("The umuti emitted is : ", umuti)
+        }
+
+        return {
+            getUmuti,
         }
     },
 }
