@@ -23,7 +23,7 @@
 import { defineComponent, reactive, ref, onUpdated } from 'vue'
 import { UmutiSet } from '../layout/types'
 export default defineComponent ({
-    setup(props, {emit}) {
+    setup(_, {emit}) {
         const data = reactive({})
         const imitiset:UmutiSet[] = ref([])
         let codes = new Array()
