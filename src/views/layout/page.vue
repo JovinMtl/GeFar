@@ -85,11 +85,11 @@ export default {
 }
 .sell{
     padding: 5px 15px; 
-    background-color: brown;
+    background-color: rgba(14, 14, 211, 0.384);
 }
 .sell:active{
     padding: 5px 15px; 
-    background-color: rgba(14, 14, 211, 0.384);
+    background-color: rgba(0, 0, 0, 0.568);
 }
 </style>
 
