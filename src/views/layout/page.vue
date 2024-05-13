@@ -70,6 +70,12 @@ export default {
                 'code_operation' : selectedUmuti.value.code_operation
                 'qte' : selectedUmuti.value.qte
             }
+
+            panier_client.value.push(obj_Client)
+            panier_api.value.push(obj_API)
+            if (panier_client.value && panier_api.value){
+                selectedUmuti.value = {}
+            }
         }
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
