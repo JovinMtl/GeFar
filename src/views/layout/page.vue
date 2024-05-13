@@ -47,8 +47,8 @@ export default {
         IonContent, IonPage,
     },
     setup() {
-        const getUmuti = () => {
-            //
+        const getUmuti = (umuti) => {
+            console.log("The umuti emitted is : ", umuti)
         }
     },
 }
