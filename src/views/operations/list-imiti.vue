@@ -2,10 +2,10 @@
     <div>
         <div v-for="(umuti, index) in imitiset" v-show="umuti.name_umuti" 
             style="display: inline-block ;"  @click.prevent="umutiOpen($event)">
-                <a :title="umuti.description_umuti" :id="index"
+                <a :title="umuti.description_umuti" 
             href="http://" target="_blank" rel="noopener noreferrer"
                 class="umutiContent">
-                    <div class="umuti">
+                    <div :id="index" class="umuti">
                         <div class="umutiTitle">
                             {{ umuti.name_umuti }}
                         </div>
@@ -23,15 +23,22 @@
 import { defineComponent, reactive, ref, onUpdated } from 'vue'
 import { UmutiSet } from '../layout/types'
 export default defineComponent ({
-    setup() {
+    setup(_, {emit}) {
         const data = reactive({})
         const imitiset:UmutiSet[] = ref([])
         let codes = new Array()
+        const showUmuti = (code:number) => {
+            let umuti: UmutiSet = imitiset.value[code]
+            // emit('actualUmuti', umuti)
+            console.log("You selected umuti: ", umuti)
+        }
         const umutiOpen = (value)=>{
+            // updateImitiSet()
             console.log("And the ID is : ", (value.target.parentNode.parentNode).innerHTML)
-            const current = (value.target.parentNode.parentNode)
-            const code = current.getAttribute("title")
+            const current = (value.target.parentNode)
+            const code = current.getAttribute("id")
             console.log("ID : ", code)
+            showUmuti(code)
             updateImitiSet()
         }
         
