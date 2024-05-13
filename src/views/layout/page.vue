@@ -10,7 +10,7 @@
                 <div class="infoUmuti umutiPrice"></div>
                 <div class="infoUmuti umutiLot"></div>
             </div>
-            <div class="mainContainer">
+            <div class="mainContainer" @actualUmuti="getUmuti">
                 <div class="sectA" style="text-align: center;">
                     <list-imiti></list-imiti>
                 </div>
@@ -47,7 +47,9 @@ export default {
         IonContent, IonPage,
     },
     setup() {
-
+        const getUmuti = () => {
+            //
+        }
     },
 }
 </script>
