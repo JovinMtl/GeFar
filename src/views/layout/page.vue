@@ -1,7 +1,7 @@
 <template>
     <ion-page>
         <ion-content>
-            <div :class="selectedUmuti.value ? 'menuLeft': ''">
+            <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
                 <div class="infoUmuti umutiTitle">{{ selectedUmuti.value.name_umuti }}</div>
                 <div class="infoUmuti umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
                 <div class="infoUmuti umutiType">{{ selectedUmuti.value.type_umuti }}</div>
