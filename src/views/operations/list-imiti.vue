@@ -590,34 +590,24 @@ export default  defineComponent ({
                 'date_peremption':'Jan 2025',
             },
         ]
-        
-        const constructUniqueCodes = ()=>{
-            imiti.forEach((obj)=>{
-                if(!codes.includes(obj.code)){
-                    codes.push(obj.code)
+
+        const kuvomaImiti = async () => {
+            const base = '//127.0.0.1:8000'
+            const prefix = 'api/out/dispo/'
+
+            try {
+                const response = await fetch(`${base}/${prefix}`)
+                const data = await response.json()
+                if (data){
+                    console.log("THings are well received")
                 }
-            })
-            codes = codes.sort()
-            console.log("The Sorted Codes is: ", codes)
-        }
-
-      /**
- * Constructs a dictionary from the provided code array.
- * @param {Array} code - The input array from which the dictionary is constructed.
- */
-        const makeDictionaryImiti = (code)=>{
-            let imitiDict = []
-            for(let i=0;i<code.length; i++){
-                imitiDict.code = code[i]
-                imitiDict.name = ''
-                imitiDict.lot = ''
+            } catch (value){
+                console.log("somehting may not be well")
             }
-            console.log("Imiti Dict is : ", imitiDict)
         }
-        constructUniqueCodes()
-        makeDictionaryImiti(codes)
 
-        const compileImiti = ()=>{}
+        kuvomaImiti ()
+
 
         return {
             imiti,
