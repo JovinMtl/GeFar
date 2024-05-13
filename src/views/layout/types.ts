@@ -21,8 +21,13 @@ export interface UmutiSet {
     lot : object[];
 }
 
-export interface PanierElement {
+export interface PanierElementAPI {
     code_umuti : string;
     code_operation : string;
     qte : number
+}
+export interface PanierClient {
+    name_umuti : string;
+    qte : number;
+    price_out : number;
 }
