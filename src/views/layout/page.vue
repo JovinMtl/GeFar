@@ -84,7 +84,7 @@ export default {
 
         return {
             selectedUmuti, show,
-            getUmuti,
+            getUmuti, moveToPanier,
         }
     },
 }
