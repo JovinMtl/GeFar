@@ -1,14 +1,14 @@
 <template>
     <ion-page>
         <ion-content>
-            <div class="menuLeft">
-                <div class="infoUmuti umutiTitle"></div>
-                <div class="infoUmuti umutiCode"></div>
-                <div class="infoUmuti umutiType"></div>
-                <div class="infoUmuti umutiDescription"></div>
-                <div class="infoUmuti umutiQteRest"></div>
-                <div class="infoUmuti umutiPrice"></div>
-                <div class="infoUmuti umutiLot"></div>
+            <div :class="selectedUmuti.value ? 'menuLeft': ''">
+                <div class="infoUmuti umutiTitle">{{ selectedUmuti.value.name_umuti }}</div>
+                <div class="infoUmuti umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
+                <div class="infoUmuti umutiType">{{ selectedUmuti.value.type_umuti }}</div>
+                <div class="infoUmuti umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
+                <div class="infoUmuti umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
+                <div class="infoUmuti umutiPrice">{{ selectedUmuti.value.price_out }}</div>
+                <div class="infoUmuti umutiLot">{{ selectedUmuti.value.lot }}</div>
             </div>
             <div class="mainContainer" >
                 <div class="sectA" style="text-align: center;">
@@ -32,7 +32,8 @@
 <script>
 // import base from './base.vue';
 import { 
-    defineAsyncComponent
+    defineAsyncComponent,
+    reactive, ref,
 } from 'vue'
 import search from './auxiliare/search.vue';
 import menu from './auxiliare/menu.vue';
@@ -47,11 +48,16 @@ export default {
         IonContent, IonPage,
     },
     setup() {
+        const selectedUmuti = reactive({})
+        const show = ref(false)
         const getUmuti = (umuti) => {
-            console.log("The umuti emitted is : ", umuti)
+            selectedUmuti.value = umuti
+            show.value = !show.value
+            console.log("The umuti emitted is : ", selectedUmuti.value.id)
         }
 
         return {
+            selectedUmuti, show,
             getUmuti,
         }
     },
