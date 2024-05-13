@@ -8,6 +8,8 @@
                     <div :id="index" class="umuti">
                         <div class="umutiTitle">
                             {{ (umuti.name_umuti).slice(0,8) }}
+                            <span v-show="(umuti.name_umuti).length > 8">...</span>
+                            
                         </div>
                         
                         <div class="umutiPrice">{{ umuti.price_in }}</div>
