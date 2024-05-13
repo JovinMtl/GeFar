@@ -11,7 +11,7 @@
                 <div class="infoUmuti umutiLot">{{ selectedUmuti.value.lot }}</div>
                 <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
                     style="text-align: right;">
-                    <button class="sell">Vendre</button>
+                    <button class="sell" @click="moveToPanier">Vendre</button>
                 </div>
             </div>
             <div class="mainContainer" >
