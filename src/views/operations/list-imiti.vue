@@ -19,8 +19,9 @@
     
     
 </template>
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default  defineComponent ({
     setup() {
         let codes = new Array()
         const umutiOpen = (value)=>{
@@ -623,7 +624,7 @@ export default {
             umutiOpen,
         }
     },
-}
+})
 </script>
 <style scoped>
 .umuti{
