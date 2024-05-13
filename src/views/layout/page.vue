@@ -54,10 +54,12 @@ export default {
     setup() {
         const selectedUmuti = reactive({})
         const panier = reactive({})
-        const show = ref(false)
+
+        const moveToPanier = () => {
+            // kumenya ivyo dukenera kurungika kuri sell(endpoint)
+        }
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
-            show.value = !show.value
             console.log("The umuti emitted is : ", selectedUmuti.value.id)
         }
 
