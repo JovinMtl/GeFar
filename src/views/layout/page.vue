@@ -44,6 +44,7 @@ import menu from './auxiliare/menu.vue';
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
 import { IonContent, IonPage, } from '@ionic/vue';
+import { PanierAPI, PanierClient} from '../layout/types'
 export default {
     components:{
         'sea-rch': search,
@@ -57,6 +58,17 @@ export default {
 
         const moveToPanier = () => {
             // kumenya ivyo dukenera kurungika kuri sell(endpoint)
+            // code_umuti, code_operation(lot), qte
+            let obj_Client:PanierClient = {
+                'name_umuti' : selectedUmuti.value.name_umuti
+                'qte' : selectedUmuti.value.qte
+                'price_out' : selectedUmuti.value.price_out
+            }
+            let obj_API:PanierAPI = {
+                'code_umuti' : selectedUmuti.value.code_umuti
+                'code_operation' : selectedUmuti.value.code_operation
+                'qte' : selectedUmuti.value.qte
+            }
         }
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
