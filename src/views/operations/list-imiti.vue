@@ -7,7 +7,7 @@
                 class="umutiContent">
                     <div :id="index" class="umuti">
                         <div class="umutiTitle">
-                            {{ (umuti.name_umuti).slice(0,4) }}
+                            {{ (umuti.name_umuti).slice(0,8) }}
                         </div>
                         
                         <div class="umutiPrice">{{ umuti.price_in }}</div>
