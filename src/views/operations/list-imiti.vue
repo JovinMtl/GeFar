@@ -7,8 +7,7 @@
                 class="umutiContent">
                     <div :id="index" class="umuti">
                         <div class="umutiTitle">
-                            {{ (umuti.name_umuti).slice(0,8) }}
-                            <span v-show="(umuti.name_umuti).length > 8">...</span>
+                            {{ (umuti.name_umuti).slice(0,7) }}<span v-show="(umuti.name_umuti).length > 8">...</span>
                             
                         </div>
                         
