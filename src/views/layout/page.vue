@@ -9,6 +9,10 @@
                 <div class="infoUmuti umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                 <div class="infoUmuti umutiPrice">{{ selectedUmuti.value.price_out }}</div>
                 <div class="infoUmuti umutiLot">{{ selectedUmuti.value.lot }}</div>
+                <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
+                    style="text-align: right;">
+                    <button class="sell">Vendre</button>
+                </div>
             </div>
             <div class="mainContainer" >
                 <div class="sectA" style="text-align: center;">
@@ -68,15 +72,24 @@ export default {
 .menuLeft{
     width: 11.3vw;
     height: 100%;
-    background-color: red;
+    /* background-color: red; */
     position: absolute;
     padding: 10px 10px;
+    color: rgb(63, 62, 62);
 }
 .infoUmuti{
     width: 100%;
     height: 10%;
     margin-bottom: 5px;
-    background-color: green;
+    /* background-color: green; */
+}
+.sell{
+    padding: 5px 15px; 
+    background-color: brown;
+}
+.sell:active{
+    padding: 5px 15px; 
+    background-color: rgba(14, 14, 211, 0.384);
 }
 </style>
 
