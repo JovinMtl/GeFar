@@ -2,12 +2,12 @@
     <div>
         <div v-for="(umuti, index) in imitiset" v-show="umuti.name_umuti" 
             style="display: inline-block ;"  @click.prevent="umutiOpen($event)">
-                <a :title="umuti.description_umuti" 
+                <a :title="umuti.name_umuti" 
             href="http://" target="_blank" rel="noopener noreferrer"
                 class="umutiContent">
                     <div :id="index" class="umuti">
                         <div class="umutiTitle">
-                            {{ umuti.name_umuti }}
+                            {{ (umuti.name_umuti).slice(0,4) }}
                         </div>
                         
                         <div class="umutiPrice">{{ umuti.price_in }}</div>
