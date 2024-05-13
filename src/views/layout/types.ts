@@ -26,9 +26,10 @@ export interface PanierClient {
     qte : number;
     price_out : number;
 }
+
 export interface PanierAPI {
     code_umuti : string;
-    code_operation : string;
-    qte : number
+    // code_operation : string;
+    qte : number;
 }
 
