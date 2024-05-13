@@ -54,7 +54,8 @@ export default {
     },
     setup() {
         const selectedUmuti = reactive({})
-        const panier = reactive({})
+        const panier_client: PanierClient[] = reactive({})
+        const panier_api:PanierAPI[] = reactive({})
 
         const moveToPanier = () => {
             // kumenya ivyo dukenera kurungika kuri sell(endpoint)
