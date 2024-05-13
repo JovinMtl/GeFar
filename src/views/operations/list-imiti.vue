@@ -29,8 +29,8 @@ export default defineComponent ({
         let codes = new Array()
         const showUmuti = (code:number) => {
             let umuti: UmutiSet = imitiset.value[code]
-            // emit('actualUmuti', umuti)
-            console.log("You selected umuti: ", umuti)
+            emit('actualUmuti', umuti)
+            // console.log("You selected umuti: ", umuti)
         }
         const umutiOpen = (value)=>{
             // updateImitiSet()
