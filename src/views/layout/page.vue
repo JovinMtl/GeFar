@@ -31,12 +31,15 @@
                            <div>{{ umuti.qte *  umuti.price_out }}</div>
                            
                         </div>
-                        <div class="cancelButto" @click="removeUmuti($event)">
-                            <button style="padding: 0px 7px; 
+                        <div @click="removeUmuti($event)" 
+                            class="cancelButto"  :id="index +'i'">
+                            <!-- <button 
+                            style="padding: 0px 7px; 
                            background-color: seagreen; border-radius: 20px;
                            align-items: center;">
-                                <ion-icon :src="close" style="top: 2px; position: relative;"></ion-icon>
-                            </button>
+                                <ion-icon
+                                 :src="close" style="top: 2px; position: relative;"></ion-icon>
+                            </button> -->
                         </div>
                            <!-- {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.qte }} x 
                            {{ umuti.price_out }} 
@@ -108,7 +111,7 @@ export default {
         const panier_api = ref([])
 
         const removeUmuti = (obj) => {
-            console.log("You are about to remove : ", obj.target.innerHTML)
+            console.log("You are about to remove : ", obj.target.getAttribute('id'))
         }
 
         const moveToPanier = () => {
@@ -181,6 +184,7 @@ export default {
     /* border : 2px solid rgba(5, 131, 5, 0.849); */
     /* border : 2px solid rgba(255, 255, 255, 0.568); */
     background-color: rgba(255, 255, 255, 0.568);
+    align-content: center;
 }
 .nomination{
     /* background-color: yellow;  */
@@ -188,15 +192,20 @@ export default {
     height: 100%; 
     display: inline-flex;
     position: absolute;
-    align-items: center;
+    /* align-items: center; */
 }
 .cancelButto{
-    /* background-color: blue;  */
-    width: 10%; 
-    height: 100%; 
+    background-color: rgb(236, 93, 93); 
+    /* width: 10%;  */
+    /* height: 100%;  */
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
     display: inline-flex;
     position: relative;
-    left: 80%;
+    left: 85%;
+    /* align-content: flex-end; */
+    top: 2px;
 }
 
 
