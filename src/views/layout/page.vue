@@ -59,7 +59,7 @@
                         </ion-item>
                     </ion-list> -->
                     <div class="ending" style="text-align: left;">
-                        <button class="confirmButton">Confirmer</button>
+                        <button class="confirmButton" @click="toSell">Confirmer</button>
                     </div>
                     
                 </div>
@@ -103,6 +103,12 @@ export default {
         const selectedUmuti = reactive({})
         const panier_client = ref([])
         const panier_api = ref([])
+
+        const toSell = () => {
+            // need fist to update panier_api according to panier_client
+            // send panier_api to sell endpoint
+            // panier_client.value.forEach()
+        }
 
         const removeUmuti = (obj) => {
             console.log("You are about to remove : ", obj.target.getAttribute('id'))
