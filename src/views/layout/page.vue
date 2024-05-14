@@ -20,12 +20,32 @@
                 </div>
                 <div class="sectB">
                     Panier here: <br>
-                    <ol>
-                        <li v-for="umuti in panier_client">
-                           {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.qte }} x 
-                           {{ umuti.price_out }} <br> {{ umuti.qte *  umuti.price_out }}
-                        </li>
-                    </ol>
+                    <div class="itemPanier" v-for="(umuti, index ) in panier_client">
+                        <div class="nomination">
+                        </div>
+                        <div class="cancelButto"></div>
+                           <!-- {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.qte }} x 
+                           {{ umuti.price_out }} 
+                           <button style="padding: 5px 5px; margin-left: 10px; 
+                           background-color: seagreen; border-radius: 20px;"><ion-icon :src="close"></ion-icon></button>
+                           
+                           <br> {{ umuti.qte *  umuti.price_out }} -->
+                    </div>
+                    <!-- <ion-list>
+                        <ion-item v-for="umuti in panier_client" mode="ios" :inset="true" style="--ion-item-background: green">
+                            <ion-label>
+                                {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.qte }} x 
+                           {{ umuti.price_out }} 
+                           <button style="padding: 5px 5px; margin-left: 10px; 
+                           background-color: seagreen; border-radius: 20px;"><ion-icon :src="close"></ion-icon></button>
+                           
+                           <br> {{ umuti.qte *  umuti.price_out }}
+                            </ion-label>
+                           
+                           
+                        </ion-item>
+                    </ion-list> -->
+                    <button class="confirmButton">Confirmer</button>
                 </div>
                 <div class="signeRecherche"></div>
                 <div class="searchBar">
@@ -51,14 +71,19 @@ import search from './auxiliare/search.vue';
 import menu from './auxiliare/menu.vue';
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
-import { IonContent, IonPage, } from '@ionic/vue';
+import { 
+    IonContent, IonPage, IonIcon, 
+    IonList, IonItem, IonLabel,
+} from '@ionic/vue';
+import { close } from 'ionicons/icons'
 // import { PanierAPI, PanierClient} from '../layout/types'
 export default {
     components:{
         'sea-rch': search,
         'me-nu': menu,
         'list-imiti': listImiti,
-        IonContent, IonPage,
+        IonContent, IonPage, 
+        IonIcon,IonList, IonItem, IonLabel,
     },
     setup() {
         const selectedUmuti = reactive({})
@@ -91,6 +116,7 @@ export default {
 
         return {
             selectedUmuti, panier_client,
+            close,
             getUmuti, moveToPanier,
         }
     },
@@ -116,9 +142,42 @@ export default {
     padding: 5px 15px; 
     background-color: rgba(14, 14, 211, 0.384);
 }
+.confirmButton{
+    padding: 5px 15px; 
+    border: 1px dashed seagreen;
+    background-color: rgba(255, 255, 255, 0.4); 
+    color: seagreen ;
+}
+.itemPanier{
+    height: 35px;
+    width: 100%;
+    background-color: #fff;
+    color: black;
+    font-size: 0.85rem;
+}
+.nomination{
+    background-color: yellow; 
+    width: 80%; 
+    height: 100%; 
+    display: inline-flex;
+}
+.cancelButto{
+    background-color: blue; 
+    width: 10%; 
+    height: 100%; 
+    display: inline-flex;
+}
+
+
 .sell:active{
     padding: 5px 15px; 
     background-color: rgba(0, 0, 0, 0.568);
+}
+.confirmButton:active{
+    padding: 5px 15px; 
+    border: 1px dashed seagreen;
+    background-color: rgba(0, 0, 0, 0.404); 
+    color: white ;
 }
 </style>
 
