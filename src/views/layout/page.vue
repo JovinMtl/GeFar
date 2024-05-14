@@ -34,7 +34,7 @@
                         <div 
                             class="cancelButto"  :id="'i'+index">
                                 <ion-icon :id="'j'+index" @click="removeUmuti($event)"
-                                 :src="close" style="top: -1px; position: relative;">
+                                 :src="close" style="top: 0px; position: relative;">
                                 </ion-icon>
                         </div>
                            <!-- {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.qte }} x 
@@ -193,9 +193,9 @@ export default {
     background-color: rgb(236, 93, 93); 
     /* width: 10%;  */
     /* height: 100%;  */
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 7px;
     display: inline-flex;
     position: relative;
     left: 85%;
