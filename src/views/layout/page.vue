@@ -78,7 +78,6 @@
 </template>
 
 <script>
-// import base from './base.vue';
 import { 
     defineAsyncComponent,
     reactive, ref,
@@ -89,7 +88,6 @@ import menu from './auxiliare/menu.vue';
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
 import { 
     IonContent, IonPage, IonIcon, 
-    IonList, IonItem, IonLabel,
 } from '@ionic/vue';
 import { close } from 'ionicons/icons'
 // import { PanierAPI, PanierClient} from '../layout/types'
@@ -99,7 +97,7 @@ export default {
         'me-nu': menu,
         'list-imiti': listImiti,
         IonContent, IonPage, 
-        IonIcon,IonList, IonItem, IonLabel,
+        IonIcon,
     },
     setup() {
         const selectedUmuti = reactive({})
