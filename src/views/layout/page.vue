@@ -31,7 +31,7 @@
                            <div>{{ umuti.qte *  umuti.price_out }}</div>
                            
                         </div>
-                        <div @click="removeUmuti($event)" 
+                        <div 
                             class="cancelButto"  :id="'i'+index">
                                 <ion-icon :id="'j'+index" @click="removeUmuti($event)"
                                  :src="close" style="top: -1px; position: relative;">
@@ -108,6 +108,9 @@ export default {
 
         const removeUmuti = (obj) => {
             console.log("You are about to remove : ", obj.target.getAttribute('id'))
+            const code_s = obj.target.getAttribute('id')
+            const code = Number(code_s.slice(1))
+            console.log("THe code sliced: ", code)
         }
 
         const moveToPanier = () => {
