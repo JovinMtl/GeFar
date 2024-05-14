@@ -111,6 +111,7 @@ export default {
             const code_s = obj.target.getAttribute('id')
             const code = Number(code_s.slice(1))
             console.log("THe code sliced: ", code)
+            panier_client.value.splice(code,1)
         }
 
         const moveToPanier = () => {
