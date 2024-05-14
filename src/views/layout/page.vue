@@ -31,7 +31,13 @@
                            <div>{{ umuti.qte *  umuti.price_out }}</div>
                            
                         </div>
-                        <div class="cancelButto"></div>
+                        <div class="cancelButto">
+                            <button style="padding: 0px 7px; 
+                           background-color: seagreen; border-radius: 20px;
+                           align-items: center;">
+                                <ion-icon :src="close" style="top: 2px; position: relative;"></ion-icon>
+                            </button>
+                        </div>
                            <!-- {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.qte }} x 
                            {{ umuti.price_out }} 
                            <button style="padding: 5px 5px; margin-left: 10px; 
@@ -53,7 +59,10 @@
                            
                         </ion-item>
                     </ion-list> -->
-                    <button class="confirmButton">Confirmer</button>
+                    <div class="ending" style="text-align: left;">
+                        <button class="confirmButton">Confirmer</button>
+                    </div>
+                    
                 </div>
                 <div class="signeRecherche"></div>
                 <div class="searchBar">
@@ -164,8 +173,10 @@ export default {
     font-size: 0.85rem;
     position: relative;
     margin-bottom: 5px;
-    border-radius: 5px;
-    border : 2px solid rgba(5, 131, 5, 0.849)
+    /* border-radius: 5px; */
+    /* border : 2px solid rgba(5, 131, 5, 0.849); */
+    /* border : 2px solid rgba(255, 255, 255, 0.568); */
+    background-color: rgba(255, 255, 255, 0.568);
 }
 .nomination{
     /* background-color: yellow;  */
@@ -176,12 +187,12 @@ export default {
     align-items: center;
 }
 .cancelButto{
-    background-color: blue; 
+    /* background-color: blue;  */
     width: 10%; 
     height: 100%; 
     display: inline-flex;
     position: relative;
-    left: 82%;
+    left: 80%;
 }
 
 
