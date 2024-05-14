@@ -22,6 +22,7 @@ export interface UmutiSet {
 }
 
 export interface PanierClient {
+    code_umuti : string;
     name_umuti : string;
     qte : number;
     price_out : number;
