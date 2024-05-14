@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router';
 
 import { IonicVue } from '@ionic/vue';
-import Vuetify from 'vuetify/lib';
+// import Vuetify from 'vuetify/lib';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -36,12 +36,12 @@ import '@ionic/vue/css/palettes/dark.system.css';
 import './theme/variables.css';
 import './theme/jove.css';
 
-const vuetify = new Vuetify();
+// const vuetify = new Vuetify();
 
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
-  .use(vuetify);
+  // .use(vuetify);
 
 router.isReady().then(() => {
   app.mount('#app');
