@@ -1,2 +1,6 @@
 node_modules
 tmp
+src/assets
+src/components
+src/plugins
+src/views/HomeView.vue
