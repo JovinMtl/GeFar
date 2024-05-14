@@ -22,6 +22,14 @@
                     Panier here: <br>
                     <div class="itemPanier" v-for="(umuti, index ) in panier_client">
                         <div class="nomination">
+                            {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.price_out }} x {{ umuti.qte }} 
+                            
+                           <!-- <br> -->
+                           <span style="margin-right: .3rem;">&nbsp;</span>
+                           <input style="background-color: white; width: 25px; height: 20px;"/>
+                           <span style="margin-right: .3rem;">&nbsp;</span>
+                           <div>{{ umuti.qte *  umuti.price_out }}</div>
+                           
                         </div>
                         <div class="cancelButto"></div>
                            <!-- {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.qte }} x 
@@ -149,23 +157,31 @@ export default {
     color: seagreen ;
 }
 .itemPanier{
-    height: 35px;
+    height: 25px;
     width: 100%;
-    background-color: #fff;
+    /* background-color: #fff; */
     color: black;
     font-size: 0.85rem;
+    position: relative;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border : 2px solid rgba(5, 131, 5, 0.849)
 }
 .nomination{
-    background-color: yellow; 
+    /* background-color: yellow;  */
     width: 80%; 
     height: 100%; 
     display: inline-flex;
+    position: absolute;
+    align-items: center;
 }
 .cancelButto{
     background-color: blue; 
     width: 10%; 
     height: 100%; 
     display: inline-flex;
+    position: relative;
+    left: 82%;
 }
 
 
