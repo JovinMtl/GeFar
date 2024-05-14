@@ -32,14 +32,10 @@
                            
                         </div>
                         <div @click="removeUmuti($event)" 
-                            class="cancelButto"  :id="index +'i'">
-                            <!-- <button 
-                            style="padding: 0px 7px; 
-                           background-color: seagreen; border-radius: 20px;
-                           align-items: center;">
-                                <ion-icon
-                                 :src="close" style="top: 2px; position: relative;"></ion-icon>
-                            </button> -->
+                            class="cancelButto"  :id="'i'+index">
+                                <ion-icon :id="'j'+index" @click="removeUmuti($event)"
+                                 :src="close" style="top: -1px; position: relative;">
+                                </ion-icon>
                         </div>
                            <!-- {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.qte }} x 
                            {{ umuti.price_out }} 
@@ -175,19 +171,14 @@ export default {
 .itemPanier{
     height: 25px;
     width: 100%;
-    /* background-color: #fff; */
     color: black;
     font-size: 0.85rem;
     position: relative;
     margin-bottom: 5px;
-    /* border-radius: 5px; */
-    /* border : 2px solid rgba(5, 131, 5, 0.849); */
-    /* border : 2px solid rgba(255, 255, 255, 0.568); */
     background-color: rgba(255, 255, 255, 0.568);
     align-content: center;
 }
 .nomination{
-    /* background-color: yellow;  */
     width: 80%; 
     height: 100%; 
     display: inline-flex;
