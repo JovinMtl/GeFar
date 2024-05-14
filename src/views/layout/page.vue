@@ -31,7 +31,7 @@
                            <div>{{ umuti.qte *  umuti.price_out }}</div>
                            
                         </div>
-                        <div class="cancelButto">
+                        <div class="cancelButto" @click="removeUmuti($event)">
                             <button style="padding: 0px 7px; 
                            background-color: seagreen; border-radius: 20px;
                            align-items: center;">
@@ -107,6 +107,10 @@ export default {
         const panier_client = ref([])
         const panier_api = ref([])
 
+        const removeUmuti = (obj) => {
+            console.log("You are about to remove : ", obj.target.innerHTML)
+        }
+
         const moveToPanier = () => {
             // kumenya ivyo dukenera kurungika kuri sell(endpoint)
             // code_umuti, code_operation(lot), qte
@@ -134,7 +138,7 @@ export default {
         return {
             selectedUmuti, panier_client,
             close,
-            getUmuti, moveToPanier,
+            getUmuti, moveToPanier, removeUmuti,
         }
     },
 }
