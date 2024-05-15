@@ -11,8 +11,13 @@
                 <div class="infoUmuti umutiLot">
                     <!-- {{ selectedUmuti.value.lot }} -->
                     <div v-for="lot in activeLot" class="lote" style="background-color: yellow; 
-                        height: 100%; width: 100%; margin-bottom: 3px;">
-                        <div class="head" style="width: 100%; height: 60%; background-color: blue;"></div>
+                        height: 100%; width: 100%; margin-bottom: 3px; text-align: center; font-size: .9rem;">
+                        <div class="head" style="width: 100%; height: 60%; background-color: blue;">
+                            
+                            <!-- <span style="margin-right: .3rem;">&nbsp;</span> -->
+                            {{ lot.qte }} <br>
+                            {{ (lot.date).slice(5,8) }}_{{ (lot.date).slice(0,4) }}
+                        </div>
                         <div class="sub" style="width: 100%; height: 40%;background-color: salmon;text-align: center;">
                             {{ selectedUmuti.value.quantite_restant }}
                             <span style="margin-right: .3rem;">&nbsp;</span>
