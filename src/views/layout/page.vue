@@ -9,7 +9,7 @@
                 <div class="infoUmuti umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                 <div class="infoUmuti umutiPrice">{{ selectedUmuti.value.price_out }}</div>
                 <!-- Need to display the number of lots -->
-                we have: {{ activeLot.length }}
+                <span v-if="activeLot.length">we have: {{ activeLot.length }}</span>
                 <div class="infoUmuti umutiLot" style="overflow: auto;">
                     <!-- {{ selectedUmuti.value.lot }} -->
                     <div v-for="lot in activeLot" class="lote" style="background-color: yellow;
@@ -21,8 +21,8 @@
                             {{ (lot.date).slice(5,8) }}_{{ (lot.date).slice(0,4) }}
                         </div>
                         <div class="sub" style="width: 100%; height: 40%;background-color: salmon;text-align: center;">
-                            {{ selectedUmuti.value.quantite_restant }}
-                            <span style="margin-right: .3rem;">&nbsp;</span>
+                            <!-- {{ selectedUmuti.value.quantite_restant }} -->
+                            <!-- <span style="margin-right: .3rem;">&nbsp;</span> -->
                            <input style="background-color: white; width: 25px; height: 20px;"/>
                            <span style="margin-right: .3rem;">&nbsp;</span>
                            1
@@ -157,6 +157,7 @@ export default {
             panier_api.value.push(obj_API)
             if (panier_client.value && panier_api.value){
                 selectedUmuti.value = {}
+                activeLot.value = []
             }
         }
         const getUmuti = (umuti) => {
