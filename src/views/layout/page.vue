@@ -8,6 +8,8 @@
                 <div class="infoUmuti umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
                 <div class="infoUmuti umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                 <div class="infoUmuti umutiPrice">{{ selectedUmuti.value.price_out }}</div>
+                <!-- Need to display the number of lots -->
+                we have: {{ activeLot.length }}
                 <div class="infoUmuti umutiLot" style="overflow: auto;">
                     <!-- {{ selectedUmuti.value.lot }} -->
                     <div v-for="lot in activeLot" class="lote" style="background-color: yellow;
@@ -159,15 +161,9 @@ export default {
         }
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
-            // console.log("The umuti emitted is : ", selectedUmuti.value.id)
             let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
             console.log("we are working on : ", lots_json)
             activeLot.value = JSON.parse(lots_json)
-            console.log("THe LOT is : ",activeLot.value, "of type:", typeof(activeLot.value))
-
-            // let new_lot:Lot = {
-            //     date : Date()
-            // }
         }
 
         return {
