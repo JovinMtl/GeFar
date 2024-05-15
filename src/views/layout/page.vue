@@ -10,8 +10,8 @@
                 <div class="infoUmuti umutiPrice">{{ selectedUmuti.value.price_out }}</div>
                 <div class="infoUmuti umutiLot">
                     <!-- {{ selectedUmuti.value.lot }} -->
-                    <div class="lote" style="background-color: yellow; 
-                        height: 100%; width: 100%">
+                    <div v-for="lot in activeLot" class="lote" style="background-color: yellow; 
+                        height: 100%; width: 100%; margin-bottom: 3px;">
                         <div class="head" style="width: 100%; height: 60%; background-color: blue;"></div>
                         <div class="sub" style="width: 100%; height: 40%;background-color: salmon;text-align: center;">
                             {{ selectedUmuti.value.quantite_restant }}
@@ -155,15 +155,18 @@ export default {
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
             // console.log("The umuti emitted is : ", selectedUmuti.value.id)
-            let array_lot = selectedUmuti.value.lot
-            console.log("THe LOT is : ", array_lot)
+            let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
+            console.log("we are working on : ", lots_json)
+            activeLot.value = JSON.parse(lots_json)
+            console.log("THe LOT is : ",activeLot.value, "of type:", typeof(activeLot.value))
+
             // let new_lot:Lot = {
             //     date : Date()
             // }
         }
 
         return {
-            selectedUmuti, panier_client,
+            selectedUmuti, panier_client, activeLot,
             close,
             getUmuti, moveToPanier, removeUmuti,
         }
