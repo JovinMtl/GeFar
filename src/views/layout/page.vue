@@ -196,7 +196,7 @@ export default {
             let qte = actualQte.value
             let obj_Client = {
                 'name_umuti' : selectedUmuti.value.name_umuti,
-                'qte' : somme_to_panier() | 1,
+                'qte' : somme_to_panier() || 1,
                 'price_out' : Number(selectedUmuti.value.price_out),
             }
             let obj_API = {
