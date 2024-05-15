@@ -12,7 +12,7 @@
                 <span v-if="activeLot.length" style="margin-left: 2.1rem;">{{ activeLot.length }}</span>
                 <div class="infoUmuti umutiLot" style="overflow: auto;">
                     <!-- {{ selectedUmuti.value.lot }} -->
-                    <div v-for="lot in activeLot" class="lote" style="background-color: rgba(128, 128, 128, 0.527); ;
+                    <div v-for="(lot, index) in activeLot" class="lote" style="background-color: rgba(128, 128, 128, 0.527); ;
                         height: 100%; width: 93%; margin-bottom: 15px; text-align: center; font-size: .9rem; border-radius: 15px;">
                         <div class="head" style="width: 100%; height: 60%; background-color: transparent;
                             color: white;">
@@ -23,12 +23,12 @@
                         </div>
                         <div class="sub" style="width: 100%; height: 40%;background-color: transparent;text-align: center;">
                             <!-- {{ selectedUmuti.value.quantite_restant }} -->
-                            <ion-icon :src="removeCircleOutline"></ion-icon>
+                            <ion-icon :src="removeCircleOutline" @click="decrementQte"></ion-icon>
                             <span style="margin-right: .1rem;">&nbsp;</span>
-                           <input @click="changeQte($event)" value="1"
+                           <input @click="changeQte($event)" value="1" :id="'q' + index"
                             style="background-color: white; width: 25px; height: 20px;"/>
                            <span style="margin-right: .1rem;">&nbsp;</span>
-                           <ion-icon :src="addCircleOutline"></ion-icon>
+                           <ion-icon :src="addCircleOutline" @click="incrementQte"></ion-icon>
                         </div>
                     </div>
                 </div>
@@ -130,6 +130,15 @@ export default {
 
         const changeQte = (value)=>{
             //
+            console.log("You want to change : ", value.target.getAttribute('id'))
+        }
+        const incrementQte = (value)=>{
+            //
+            console.log("You want to change : ", value.target.previousSibling.previousSibling.getAttribute('id'))
+        }
+        const decrementQte = (value)=>{
+            //
+            console.log("You want to change : ", value.target.nextSibling.nextSibling.getAttribute('id'))
         }
 
         const toSell = () => {
@@ -176,7 +185,8 @@ export default {
         return {
             selectedUmuti, panier_client, activeLot,
             close,  addCircleOutline, removeCircleOutline,
-            getUmuti, moveToPanier, removeUmuti,
+            getUmuti, moveToPanier, removeUmuti, changeQte,
+            incrementQte,decrementQte,
         }
     },
 }
