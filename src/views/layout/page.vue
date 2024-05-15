@@ -12,8 +12,8 @@
                 <span v-if="activeLot.length">we have: {{ activeLot.length }}</span>
                 <div class="infoUmuti umutiLot" style="overflow: auto;">
                     <!-- {{ selectedUmuti.value.lot }} -->
-                    <div v-for="lot in activeLot" class="lote" style="background-color: white;
-                        height: 100%; width: 93%; margin-bottom: 15px; text-align: center; font-size: .9rem;">
+                    <div v-for="lot in activeLot" class="lote" style="background-color: rgba(255, 255, 255, 0.4); ;
+                        height: 100%; width: 93%; margin-bottom: 15px; text-align: center; font-size: .9rem; border-radius: 15px;">
                         <div class="head" style="width: 100%; height: 60%; background-color: transparent;">
                             
                             <!-- <span style="margin-right: .3rem;">&nbsp;</span> -->
