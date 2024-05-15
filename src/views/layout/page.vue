@@ -128,7 +128,7 @@ export default {
         const panier_api = ref([])
         const activeLot = ref([])
 
-        var actualQte = 1
+        const actualQte = ref(1)
 
         const changeQte = (value)=>{
             //
@@ -140,17 +140,20 @@ export default {
 
             const code_s = value.target.previousSibling.previousSibling.getAttribute('id')
             const code = Number(code_s.slice(1))
-            if(actualQte <= activeLot.value[code].qte) {
-                actualQte += 1
+            if(actualQte.value <= activeLot.value[code].qte) {
+                actualQte.value += 1
+                console.log("Yes, incrementing")
+            } else {
+                console.log("No, incrementing")
             }
         }
         const decrementQte = (value)=>{
             //
-            console.log("You want to change : ", value.target.nextSibling.nextSibling.getAttribute('id'))
-            if(actualQte > 1) {
+            console.log("You want to change : ", value.target.nextSibling.nextSibling.getAttribute('id'), "has:", actualQte)
+            if(actualQte.value > 1) {
                 const code_s = value.target.nextSibling.nextSibling.getAttribute('id')
                 const code = Number(code_s.slice(1))
-                actualQte -= 1
+                actualQte.value -= 1
             }
             
         }
