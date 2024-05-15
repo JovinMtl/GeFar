@@ -8,7 +8,7 @@
                 <div class="infoUmuti umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
                 <div class="infoUmuti umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                 <div class="infoUmuti umutiPrice">{{ selectedUmuti.value.price_out }}</div>
-                <div class="infoUmuti umutiLot">
+                <div class="infoUmuti umutiLot" style="overflow: auto;">
                     <!-- {{ selectedUmuti.value.lot }} -->
                     <div v-for="lot in activeLot" class="lote" style="background-color: yellow; 
                         height: 100%; width: 100%; margin-bottom: 3px; text-align: center; font-size: .9rem;">
