@@ -9,12 +9,13 @@
                 <div class="infoUmuti umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                 <div class="infoUmuti umutiPrice">{{ selectedUmuti.value.price_out }}</div>
                 <!-- Need to display the number of lots -->
-                <span v-if="activeLot.length">we have: {{ activeLot.length }}</span>
+                <span v-if="activeLot.length" style="margin-left: 2.1rem;">{{ activeLot.length }}</span>
                 <div class="infoUmuti umutiLot" style="overflow: auto;">
                     <!-- {{ selectedUmuti.value.lot }} -->
-                    <div v-for="lot in activeLot" class="lote" style="background-color: rgba(255, 255, 255, 0.4); ;
+                    <div v-for="lot in activeLot" class="lote" style="background-color: rgba(128, 128, 128, 0.527); ;
                         height: 100%; width: 93%; margin-bottom: 15px; text-align: center; font-size: .9rem; border-radius: 15px;">
-                        <div class="head" style="width: 100%; height: 60%; background-color: transparent;">
+                        <div class="head" style="width: 100%; height: 60%; background-color: transparent;
+                            color: white;">
                             
                             <!-- <span style="margin-right: .3rem;">&nbsp;</span> -->
                             {{ lot.qte }} <br>
