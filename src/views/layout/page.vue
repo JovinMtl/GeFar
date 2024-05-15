@@ -11,7 +11,7 @@
                 <div class="infoUmuti umutiLot" style="overflow: auto;">
                     <!-- {{ selectedUmuti.value.lot }} -->
                     <div v-for="lot in activeLot" class="lote" style="background-color: yellow; 
-                        height: 100%; width: 100%; margin-bottom: 3px; text-align: center; font-size: .9rem;">
+                        height: 100%; width: 100%; margin-bottom: 15px; text-align: center; font-size: .9rem;">
                         <div class="head" style="width: 100%; height: 60%; background-color: blue;">
                             
                             <!-- <span style="margin-right: .3rem;">&nbsp;</span> -->
