@@ -25,7 +25,7 @@
                             <!-- {{ selectedUmuti.value.quantite_restant }} -->
                             <ion-icon :src="removeCircleOutline" @click="decrementQte"></ion-icon>
                             <span style="margin-right: .1rem;">&nbsp;</span>
-                           <input @click="changeQte($event)" :value="actualQte" :id="'q' + index"
+                           <input @click="changeQte($event)" :value="lot.to_panier" :id="'q' + index"
                             style="background-color: white; width: 25px; height: 20px;"/>
                            <span style="margin-right: .1rem;">&nbsp;</span>
                            <ion-icon :src="addCircleOutline" @click="incrementQte"></ion-icon>
@@ -175,14 +175,15 @@ export default {
         const moveToPanier = () => {
             // kumenya ivyo dukenera kurungika kuri sell(endpoint)
             // code_umuti, code_operation(lot), qte
+            let qte = actualQte.value
             let obj_Client = {
                 'name_umuti' : selectedUmuti.value.name_umuti,
-                'qte' : actualQte,
+                'qte' : qte,
                 'price_out' : Number(selectedUmuti.value.price_out),
             }
             let obj_API = {
                 'code_umuti' : selectedUmuti.value.code_umuti,
-                'qte' : actualQte,
+                'qte' : qte,
             }
 
             panier_client.value.push(obj_Client)
@@ -190,6 +191,7 @@ export default {
             if (panier_client.value && panier_api.value){
                 selectedUmuti.value = {}
                 activeLot.value = []
+                actualQte.value = 1
             }
         }
         const getUmuti = (umuti) => {
@@ -277,5 +279,17 @@ export default {
     background-color: rgba(0, 0, 0, 0.404); 
     color: white ;
 }
+
+::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 15px;
+  }
+  ::-webkit-scrollbar {
+    width: 3px;
+    color: green;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
 </style>
 
