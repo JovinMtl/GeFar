@@ -140,7 +140,7 @@ export default {
 
             const code_s = value.target.previousSibling.previousSibling.getAttribute('id')
             const code = Number(code_s.slice(1))
-            if(actualQte.value <= activeLot.value[code].qte) {
+            if(actualQte.value < activeLot.value[code].qte) {
                 actualQte.value += 1
                 console.log("Yes, incrementing")
             } else {
