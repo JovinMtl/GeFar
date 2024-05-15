@@ -12,20 +12,21 @@
                 <span v-if="activeLot.length">we have: {{ activeLot.length }}</span>
                 <div class="infoUmuti umutiLot" style="overflow: auto;">
                     <!-- {{ selectedUmuti.value.lot }} -->
-                    <div v-for="lot in activeLot" class="lote" style="background-color: yellow;
+                    <div v-for="lot in activeLot" class="lote" style="background-color: white;
                         height: 100%; width: 93%; margin-bottom: 15px; text-align: center; font-size: .9rem;">
-                        <div class="head" style="width: 100%; height: 60%; background-color: blue;">
+                        <div class="head" style="width: 100%; height: 60%; background-color: transparent;">
                             
                             <!-- <span style="margin-right: .3rem;">&nbsp;</span> -->
                             {{ lot.qte }} <br>
                             {{ (lot.date).slice(5,8) }}_{{ (lot.date).slice(0,4) }}
                         </div>
-                        <div class="sub" style="width: 100%; height: 40%;background-color: salmon;text-align: center;">
+                        <div class="sub" style="width: 100%; height: 40%;background-color: transparent;text-align: center;">
                             <!-- {{ selectedUmuti.value.quantite_restant }} -->
-                            <!-- <span style="margin-right: .3rem;">&nbsp;</span> -->
+                            <ion-icon :src="removeCircleOutline"></ion-icon>
+                            <span style="margin-right: .1rem;">&nbsp;</span>
                            <input style="background-color: white; width: 25px; height: 20px;"/>
-                           <span style="margin-right: .3rem;">&nbsp;</span>
-                           1
+                           <span style="margin-right: .1rem;">&nbsp;</span>
+                           <ion-icon :src="addCircleOutline"></ion-icon>
                         </div>
                     </div>
                 </div>
@@ -109,7 +110,7 @@ const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'
 import { 
     IonContent, IonPage, IonIcon, 
 } from '@ionic/vue';
-import { close } from 'ionicons/icons'
+import { close, addCircleOutline, removeCircleOutline } from 'ionicons/icons'
 // import { PanierAPI, PanierClient} from '../layout/types'
 export default {
     components:{
@@ -169,7 +170,7 @@ export default {
 
         return {
             selectedUmuti, panier_client, activeLot,
-            close,
+            close,  addCircleOutline, removeCircleOutline,
             getUmuti, moveToPanier, removeUmuti,
         }
     },
