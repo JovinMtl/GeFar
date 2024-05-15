@@ -25,7 +25,7 @@
                             <!-- {{ selectedUmuti.value.quantite_restant }} -->
                             <ion-icon :src="removeCircleOutline" @click="decrementQte"></ion-icon>
                             <span style="margin-right: .1rem;">&nbsp;</span>
-                           <input @click="changeQte($event)" value="1" :id="'q' + index"
+                           <input @click="changeQte($event)" :value="actualQte" :id="'q' + index"
                             style="background-color: white; width: 25px; height: 20px;"/>
                            <span style="margin-right: .1rem;">&nbsp;</span>
                            <ion-icon :src="addCircleOutline" @click="incrementQte"></ion-icon>
@@ -128,6 +128,8 @@ export default {
         const panier_api = ref([])
         const activeLot = ref([])
 
+        var actualQte = 1
+
         const changeQte = (value)=>{
             //
             console.log("You want to change : ", value.target.getAttribute('id'))
@@ -135,10 +137,22 @@ export default {
         const incrementQte = (value)=>{
             //
             console.log("You want to change : ", value.target.previousSibling.previousSibling.getAttribute('id'))
+
+            const code_s = value.target.previousSibling.previousSibling.getAttribute('id')
+            const code = Number(code_s.slice(1))
+            if(actualQte <= activeLot.value[code].qte) {
+                actualQte += 1
+            }
         }
         const decrementQte = (value)=>{
             //
             console.log("You want to change : ", value.target.nextSibling.nextSibling.getAttribute('id'))
+            if(actualQte > 1) {
+                const code_s = value.target.nextSibling.nextSibling.getAttribute('id')
+                const code = Number(code_s.slice(1))
+                actualQte -= 1
+            }
+            
         }
 
         const toSell = () => {
@@ -160,12 +174,12 @@ export default {
             // code_umuti, code_operation(lot), qte
             let obj_Client = {
                 'name_umuti' : selectedUmuti.value.name_umuti,
-                'qte' : 1,
+                'qte' : actualQte,
                 'price_out' : Number(selectedUmuti.value.price_out),
             }
             let obj_API = {
                 'code_umuti' : selectedUmuti.value.code_umuti,
-                'qte' : 1,
+                'qte' : actualQte,
             }
 
             panier_client.value.push(obj_Client)
@@ -184,6 +198,7 @@ export default {
 
         return {
             selectedUmuti, panier_client, activeLot,
+            actualQte,
             close,  addCircleOutline, removeCircleOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte,
