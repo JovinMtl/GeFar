@@ -34,3 +34,5 @@ export interface PanierAPI {
     qte : number;
 }
 
+ export type Lot = { date: Date, code_operation:String, qte:Number }
+

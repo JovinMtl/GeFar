@@ -8,7 +8,20 @@
                 <div class="infoUmuti umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
                 <div class="infoUmuti umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                 <div class="infoUmuti umutiPrice">{{ selectedUmuti.value.price_out }}</div>
-                <div class="infoUmuti umutiLot">{{ selectedUmuti.value.lot }}</div>
+                <div class="infoUmuti umutiLot">
+                    <!-- {{ selectedUmuti.value.lot }} -->
+                    <div class="lote" style="background-color: yellow; 
+                        height: 100%; width: 100%">
+                        <div class="head" style="width: 100%; height: 60%; background-color: blue;"></div>
+                        <div class="sub" style="width: 100%; height: 40%;background-color: salmon;text-align: center;">
+                            {{ selectedUmuti.value.quantite_restant }}
+                            <span style="margin-right: .3rem;">&nbsp;</span>
+                           <input style="background-color: white; width: 25px; height: 20px;"/>
+                           <span style="margin-right: .3rem;">&nbsp;</span>
+                           1
+                        </div>
+                    </div>
+                </div>
                 <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
                     style="text-align: right;">
                     <button class="sell" @click="moveToPanier">Vendre</button>
@@ -103,6 +116,8 @@ export default {
         const selectedUmuti = reactive({})
         const panier_client = ref([])
         const panier_api = ref([])
+        const activeLot = ref([])
+
 
         const toSell = () => {
             // need fist to update panier_api according to panier_client
@@ -139,7 +154,12 @@ export default {
         }
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
-            console.log("The umuti emitted is : ", selectedUmuti.value.id)
+            // console.log("The umuti emitted is : ", selectedUmuti.value.id)
+            let array_lot = selectedUmuti.value.lot
+            console.log("THe LOT is : ", array_lot)
+            // let new_lot:Lot = {
+            //     date : Date()
+            // }
         }
 
         return {
