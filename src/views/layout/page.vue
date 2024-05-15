@@ -25,7 +25,8 @@
                             <!-- {{ selectedUmuti.value.quantite_restant }} -->
                             <ion-icon :src="removeCircleOutline"></ion-icon>
                             <span style="margin-right: .1rem;">&nbsp;</span>
-                           <input style="background-color: white; width: 25px; height: 20px;"/>
+                           <input @click="changeQte($event)" value="1"
+                            style="background-color: white; width: 25px; height: 20px;"/>
                            <span style="margin-right: .1rem;">&nbsp;</span>
                            <ion-icon :src="addCircleOutline"></ion-icon>
                         </div>
@@ -127,6 +128,9 @@ export default {
         const panier_api = ref([])
         const activeLot = ref([])
 
+        const changeQte = (value)=>{
+            //
+        }
 
         const toSell = () => {
             // need fist to update panier_api according to panier_client
