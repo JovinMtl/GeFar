@@ -140,8 +140,9 @@ export default {
 
             const code_s = value.target.previousSibling.previousSibling.getAttribute('id')
             const code = Number(code_s.slice(1))
-            if(actualQte.value < activeLot.value[code].qte) {
-                actualQte.value += 1
+            let jov = (activeLot.value[code]).length
+            if( activeLot.value[code].qte > activeLot.value[code].to_panier) {
+                activeLot.value[code].to_panier += 1
                 console.log("Yes, incrementing")
             } else {
                 console.log("No, incrementing")
@@ -149,11 +150,14 @@ export default {
         }
         const decrementQte = (value)=>{
             //
-            console.log("You want to change : ", value.target.nextSibling.nextSibling.getAttribute('id'), "has:", actualQte)
-            if(actualQte.value > 1) {
-                const code_s = value.target.nextSibling.nextSibling.getAttribute('id')
-                const code = Number(code_s.slice(1))
+            // console.log("You want to change : ", value.target.nextSibling.nextSibling.getAttribute('id'), "has:", actualQte)
+
+            const code_s = value.target.nextSibling.nextSibling.getAttribute('id')
+            const code = Number(code_s.slice(1))
+            if(activeLot.value[code].to_panier > 1) {
                 actualQte.value -= 1
+            } else {
+                console.log("No, decrementing")
             }
             
         }
@@ -172,13 +176,27 @@ export default {
             panier_client.value.splice(code,1)
         }
 
+        const somme_to_panier = () => {
+            let somme = 0
+            activeLot.value.forEach((element)=>{
+                somme += element.to_panier
+            })
+            return somme
+        }
+        // const init_to_panier = ()=> {
+        //     activeLot.value.forEach((element)=>{
+        //         element.to_panier = 0
+        //     })
+        //     return 0
+        // }
+
         const moveToPanier = () => {
             // kumenya ivyo dukenera kurungika kuri sell(endpoint)
             // code_umuti, code_operation(lot), qte
             let qte = actualQte.value
             let obj_Client = {
                 'name_umuti' : selectedUmuti.value.name_umuti,
-                'qte' : qte,
+                'qte' : somme_to_panier() | 1,
                 'price_out' : Number(selectedUmuti.value.price_out),
             }
             let obj_API = {
