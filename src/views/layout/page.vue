@@ -228,12 +228,13 @@ export default {
         }
 
         const update_total_client = () => {
+            // This function updates the sum of the imiti in the panier
             let somme = 0
             panier_client.value.forEach((element)=>{
                 let p_T = element.price_out * element.qte
                 somme += p_T
             })
-            let somme_formatted = number_To_string(somme)
+            let somme_formatted = number_To_string(somme) //formatting by three digits
             return somme_formatted
         }
 
