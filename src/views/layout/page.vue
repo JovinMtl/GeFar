@@ -190,27 +190,48 @@ export default {
         //     return 0
         // }
 
+        
+        const check_panier = (umuti_name) => {
+            let panier_length = (panier_client.value).length
+            let i = 0
+            console.log("Panier had length of : ", panier_length)
+            for(i = 0; i < panier_length; i++){
+                console.log("T: ", panier_client.value[i],'>>',umuti_name, '<<', i )
+                if(panier_client.value[i].name_umuti == umuti_name){
+                    return 0
+                }
+            }
+            return 1
+        }
+
         const moveToPanier = () => {
             // kumenya ivyo dukenera kurungika kuri sell(endpoint)
             // code_umuti, code_operation(lot), qte
-            let qte = actualQte.value
-            let obj_Client = {
-                'name_umuti' : selectedUmuti.value.name_umuti,
-                'qte' : somme_to_panier() || 1,
-                'price_out' : Number(selectedUmuti.value.price_out),
-            }
-            let obj_API = {
-                'code_umuti' : selectedUmuti.value.code_umuti,
-                'qte' : qte,
-            }
+            let jove = check_panier(selectedUmuti.value.name_umuti)
+            if(jove){
+                console.log("The umuti is new in the Panier : ", jove)
+                let qte = actualQte.value
+                let obj_Client = {
+                    'name_umuti' : selectedUmuti.value.name_umuti,
+                    'qte' : somme_to_panier() || 1,
+                    'price_out' : Number(selectedUmuti.value.price_out),
+                }
+                let obj_API = {
+                    'code_umuti' : selectedUmuti.value.code_umuti,
+                    'qte' : qte,
+                }
 
-            panier_client.value.push(obj_Client)
-            panier_api.value.push(obj_API)
-            if (panier_client.value && panier_api.value){
-                selectedUmuti.value = {}
-                activeLot.value = []
-                actualQte.value = 1
+                panier_client.value.push(obj_Client)
+                panier_api.value.push(obj_API)
+                if (panier_client.value && panier_api.value){
+                    selectedUmuti.value = {}
+                    activeLot.value = []
+                    actualQte.value = 1
+                }
+            } else {
+                console.log("No, the umuti already exist in Panier ", jove)
             }
+            
         }
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
