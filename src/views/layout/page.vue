@@ -179,7 +179,7 @@ export default {
             let i = 0
             let converted = ''
             let reversed = ''
-            reversed = to_convert.split('').reverse().toString().replace(',','')
+            reversed = to_convert.split('').reverse().toString().replaceAll(',','')
             for(i=0; i < reversed.length; i++){
                 if(!i && !(i%3)){
                     converted.concat(`.${reversed[i]}`)
@@ -197,6 +197,7 @@ export default {
             console.log("THe code sliced: ", code)
             panier_client.value.splice(code,1)
             panier_api.value.splice(code,1)
+            console.log("the reversed of thierry: ", number_To_string())
         }
 
         const somme_to_panier = () => {
