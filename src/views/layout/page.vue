@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="signeRecherche"></div>
+                <!-- <div class="signeRecherche"></div> -->
                 <div class="searchBar">
                     <sea-rch></sea-rch>
                 </div>
