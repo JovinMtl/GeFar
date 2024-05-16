@@ -112,7 +112,6 @@ export default {
             // makes it the actual value to be first considered when put to the panier
             if (Number(event.target.value)){
                 actualValue.value = event.target.value
-                console.log("You typed : ", event.target.value)
             } else {
                 console.log("You should type a Number: ", typeof(event.target.value))
             }
@@ -126,8 +125,7 @@ export default {
 
         }
         const incrementQte = (value)=>{
-            //
-            console.log("You want to change : ", value.target.previousSibling.previousSibling.getAttribute('id'))
+            // THis function is called when pressing the '+' button on lot
 
             const code_s = value.target.previousSibling.previousSibling.getAttribute('id')
             const code = Number(code_s.slice(1))
