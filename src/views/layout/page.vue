@@ -13,12 +13,10 @@
                 <div class="infoUmuti umutiLot">
                     <div v-for="(lot, index) in activeLot" class="lote">
                         <div class="head">
-                            
-                            <!-- <span style="margin-right: .3rem;">&nbsp;</span> -->
                             {{ lot.qte }} <br>
                             {{ (lot.date).slice(5,8) }}_{{ (lot.date).slice(0,4) }}
                         </div>
-                        <div class="sub" style="width: 100%; height: 40%;background-color: transparent;text-align: center;">
+                        <div class="sub">
                             <!-- {{ selectedUmuti.value.quantite_restant }} -->
                             <ion-icon :src="removeCircleOutline" @click="decrementQte"></ion-icon>
                             <span style="margin-right: .1rem;">&nbsp;</span>
@@ -372,6 +370,12 @@ export default {
     height: 60%; 
     background-color: transparent;
     color: white;
+}
+.sub{
+    width: 100%; 
+    height: 40%;
+    background-color: transparent;
+    text-align: center;
 }
 .sell{
     padding: 5px 15px; 
