@@ -104,6 +104,7 @@
 import { 
     defineAsyncComponent,
     reactive, ref,
+    watch,
 } from 'vue'
 import search from './auxiliare/search.vue';
 import menu from './auxiliare/menu.vue';
@@ -305,6 +306,11 @@ export default {
             let sorted = sort_array(array_obj)
             console.log("THe SORT REPORT: ", sorted)
         }
+
+        watch(panier_client.value, (value)=>{
+            console.log("The Panier_client has new change")
+            // update_total_client()
+        })
 
         return {
             selectedUmuti, panier_client, activeLot,
