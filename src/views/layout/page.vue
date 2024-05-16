@@ -12,8 +12,7 @@
                 <span v-if="activeLot.length" style="margin-left: 2.1rem;">{{ activeLot.length }}</span>
                 <div class="infoUmuti umutiLot">
                     <div v-for="(lot, index) in activeLot" class="lote">
-                        <div class="head" style="width: 100%; height: 60%; background-color: transparent;
-                            color: white;">
+                        <div class="head">
                             
                             <!-- <span style="margin-right: .3rem;">&nbsp;</span> -->
                             {{ lot.qte }} <br>
@@ -367,6 +366,12 @@ export default {
     text-align: center; 
     font-size: .9rem; 
     border-radius: 15px;
+}
+.head{
+    width: 100%; 
+    height: 60%; 
+    background-color: transparent;
+    color: white;
 }
 .sell{
     padding: 5px 15px; 
