@@ -272,6 +272,7 @@ export default {
                     selectedUmuti.value = {}
                     activeLot.value = []
                     actualQte.value = 1
+                    actualValue.value = 0
                     console.log("for Client: ", panier_client.value)
                     console.log("for API: ", panier_api.value)
                     // panier_client.forEach
