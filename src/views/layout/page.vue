@@ -11,9 +11,7 @@
                 <!-- Need to display the number of lots -->
                 <span v-if="activeLot.length" style="margin-left: 2.1rem;">{{ activeLot.length }}</span>
                 <div class="infoUmuti umutiLot">
-                    <!-- {{ selectedUmuti.value.lot }} -->
-                    <div v-for="(lot, index) in activeLot" class="lote" style="background-color: rgba(128, 128, 128, 0.527); ;
-                        height: 100%; width: 93%; margin-bottom: 15px; text-align: center; font-size: .9rem; border-radius: 15px;">
+                    <div v-for="(lot, index) in activeLot" class="lote">
                         <div class="head" style="width: 100%; height: 60%; background-color: transparent;
                             color: white;">
                             
@@ -360,6 +358,15 @@ export default {
 }
 .umutiLot{
     overflow: auto;
+}
+.lote{
+    background-color: rgba(128, 128, 128, 0.527);
+    height: 100%; 
+    width: 93%; 
+    margin-bottom: 15px; 
+    text-align: center; 
+    font-size: .9rem; 
+    border-radius: 15px;
 }
 .sell{
     padding: 5px 15px; 
