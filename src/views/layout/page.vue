@@ -256,11 +256,36 @@ export default {
             }
             
         }
+        const sort_array = (given_array) => {
+            [{"date": "2025-04", "qte": 4, "code_operation": "12dxx9", "to_panier": 0}, {"date": "2024-08", "qte": -3, "code_operation": "23dd", "to_panier": 0}]
+
+            let sorted_array = []
+            sorted_array = given_array.sort((elementA, elementB)=> Date(elementA.date) - Date(elementB))
+            // current_obj = {
+            //     'index'
+            // }
+            // let i = 0
+            // let low_date = 0
+            // sorted_array = []
+            // given_array.forEach((obj)=>{
+            //     for(i=0; i < sorted_array.length; i++){
+
+            //     }
+            // })
+            if (sorted_array){
+                return sort_array
+            } else {
+                return 0
+            }
+        }
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
             let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
             console.log("we are working on : ", lots_json)
             activeLot.value = JSON.parse(lots_json)
+            let array_obj = JSON.parse(lots_json)
+            let sorted = sort_array(JSON.parse(array_obj))
+            console.log("THe SORT REPORT: ", sorted)
         }
 
         return {
