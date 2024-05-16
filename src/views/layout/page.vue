@@ -175,7 +175,7 @@ export default {
         }
 
         const number_To_string = () => {
-            let to_convert = "thierry"
+            let to_convert = "100000"
             let data_length = to_convert.length
             let i = 0
             let converted = ''
@@ -183,12 +183,14 @@ export default {
             reversed = to_convert.split('').reverse().toString().replaceAll(',','')
             for(i=0; i < data_length; i++){
                 console.log("attempting to loop the number_To_string")
-                if(!i && !(i%3)){
-                    converted.concat(`.${reversed[i]}`)
+                if(i%3==0){
+                    converted =  converted.concat(`.${reversed[i]}`)
+                    console.log("Found case: ", converted)
                 } else {
-                    converted.concat(`${reversed[i]}`)
+                    converted = converted.concat(`${reversed[i]}`)
                 }
             }
+            converted = converted.replace('.', '').split('').reverse().toString().replaceAll(',','')
             return converted
         }
 
