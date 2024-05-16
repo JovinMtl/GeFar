@@ -138,8 +138,6 @@ export default {
             }
         }
         const decrementQte = (value)=>{
-            //
-            // console.log("You want to change : ", value.target.nextSibling.nextSibling.getAttribute('id'), "has:", actualQte)
 
             const code_s = value.target.nextSibling.nextSibling.getAttribute('id')
             const code = Number(code_s.slice(1))
