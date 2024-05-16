@@ -124,7 +124,7 @@ export default {
         const total_panier_client = ref(0)
 
         const showChange = (event)=>{
-            console.log("You typed : ", value.target.value)
+            console.log("You typed : ", event.target.value)
         }
 
         const changeQte = (value)=>{
