@@ -271,33 +271,7 @@ export default {
             }
             
         }
-        const sort_array = (given_array) => {
-            // [{"date": "2025-04", "qte": 4, "code_operation": "12dxx9", "to_panier": 0}, {"date": "2024-08", "qte": -3, "code_operation": "23dd", "to_panier": 0}]
-
-            let sorted_array = []
-            sorted_array = given_array.sort((elementA, elementB)=> {
-                let dateA = new Date(elementA.date)
-                let dateB = new Date(elementB.date)
-                
-                return dateA - dateB
-            })
-            // current_obj = {
-            //     'index'
-            // }
-            // let i = 0
-            // let low_date = 0
-            // sorted_array = []
-            // given_array.forEach((obj)=>{
-            //     for(i=0; i < sorted_array.length; i++){
-
-            //     }
-            // })
-            if (sorted_array){
-                return sort_array
-            } else {
-                return 0
-            }
-        }
+        
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
             let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
