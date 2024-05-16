@@ -183,6 +183,17 @@ export default {
             })
             return somme
         }
+        const lot_array = ()=> {
+            let lote = []
+            activeLot.value.forEach((element)=>{
+                let obj = {
+                    'code_operation' : element.code_operation,
+                    'qte' : element.to_panier,
+                }
+                lote.push(obj)
+            })
+            return lote
+        }
         // const init_to_panier = ()=> {
         //     activeLot.value.forEach((element)=>{
         //         element.to_panier = 0
@@ -218,7 +229,11 @@ export default {
                 }
                 let obj_API = {
                     'code_umuti' : selectedUmuti.value.code_umuti,
-                    'qte' : qte,
+                    'qte' : somme_to_panier() || 1,
+                    'lot' : [
+                        {
+                            'code_operation' : selectedUmuti
+                        }]
                 }
 
                 panier_client.value.push(obj_Client)
@@ -227,6 +242,8 @@ export default {
                     selectedUmuti.value = {}
                     activeLot.value = []
                     actualQte.value = 1
+                    console.log("for Client: ", panier_client.value)
+                    console.log("for API: ", panier_api.value)
                 }
             } else {
                 console.log("No, the umuti already exist in Panier ", jove)
