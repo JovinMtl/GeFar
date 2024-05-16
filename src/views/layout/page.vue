@@ -103,18 +103,24 @@ export default {
         const panier_client = ref([])
         const panier_api = ref([])
         const activeLot = ref([])
-
         const actualQte = ref(1)
         const actualValue = ref(0)
         const total_panier_client = ref(0)
 
         const showChange = (event)=>{
-            actualValue.value = event.target.value
-            console.log("You typed : ", event.target.value)
+            // This function takes the number which is in input and
+            // makes it the actual value to be first considered when put to the panier
+            if (Number(event.target.value)){
+                actualValue.value = event.target.value
+                console.log("You typed : ", event.target.value)
+            } else {
+                console.log("You should type a Number: ", typeof(event.target.value))
+            }
+            
         }
 
         const changeQte = (value)=>{
-            //
+            // this function is to ignore
             // console.log("You want to change : ", value.target.getAttribute('id'))
             console.log("You changed : ", value.target.value)
 
