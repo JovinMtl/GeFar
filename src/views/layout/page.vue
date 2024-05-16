@@ -184,6 +184,7 @@ export default {
         }
 
         const somme_to_panier = () => {
+            // This functions evaluates the sum of quantity chosen in different lots on a same umuti
             let somme = 0
             activeLot.value.forEach((element)=>{
                 somme += element.to_panier
