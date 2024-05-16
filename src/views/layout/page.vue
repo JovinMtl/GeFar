@@ -42,7 +42,7 @@
                             {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.price_out }} x {{ umuti.qte }} 
                             
                            <span style="margin-right: .3rem;">&nbsp;</span>
-                           <input style="background-color: white; width: 25px; height: 20px;"/>
+                           <!-- <input style="background-color: white; width: 25px; height: 20px;"/> -->
                            <span style="margin-right: .3rem;">&nbsp;</span>
                            <div>{{ umuti.qte *  umuti.price_out }}</div>
                         </div>
@@ -280,7 +280,7 @@ export default {
         }
 
         watch(panier_client.value, (value)=>{
-            // Update the Total on panier whenever we add or remove any umuti on Panier
+            // Update the Total on panier whenever we add or remove any umuti on Panier.
             total_panier_client.value = update_total_client()
         })
 
