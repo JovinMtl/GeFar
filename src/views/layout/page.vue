@@ -82,7 +82,9 @@
                         </ion-item>
                     </ion-list> -->
                     <br>
-                    <p>Total : {{ total_panier_client }}</p>
+                    <p style="margin-left: .5rem;">
+                        Total : {{ total_panier_client }}
+                    </p>
                     <div class="ending" style="text-align: left;">
                         <button class="confirmButton" @click="toSell">Confirmer</button>
                     </div>
