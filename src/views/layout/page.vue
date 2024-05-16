@@ -204,7 +204,7 @@ export default {
                 value += element.to_panier
                 lote.push(obj)
             })
-            
+
             if(value){
                 return lote
             } else {
@@ -213,14 +213,7 @@ export default {
             }
             
         }
-        // const init_to_panier = ()=> {
-        //     activeLot.value.forEach((element)=>{
-        //         element.to_panier = 0
-        //     })
-        //     return 0
-        // }
 
-        
         const check_panier = (umuti_name) => {
             let panier_length = (panier_client.value).length
             let i = 0
