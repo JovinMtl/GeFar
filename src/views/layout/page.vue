@@ -176,13 +176,11 @@ export default {
         }
 
         const removeUmuti = (obj) => {
-            console.log("You are about to remove : ", obj.target.getAttribute('id'))
+            // This function handles the removal of umuti in panier
             const code_s = obj.target.getAttribute('id')
             const code = Number(code_s.slice(1))
-            console.log("THe code sliced: ", code)
             panier_client.value.splice(code,1)
             panier_api.value.splice(code,1)
-            console.log("the reversed of thierry: ", number_To_string())
         }
 
         const somme_to_panier = () => {
