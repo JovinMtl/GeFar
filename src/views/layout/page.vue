@@ -204,8 +204,7 @@ export default {
                 value += element.to_panier
                 lote.push(obj)
             })
-
-            console.log("qte_ value is :", value)
+            
             if(value){
                 return lote
             } else {
