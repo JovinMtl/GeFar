@@ -191,7 +191,9 @@ export default {
             })
             return somme
         }
+
         const lot_array = ()=> {
+            // This functions builds and array which differentiates the lots have been selected on a same umuti
             let lote = []
             let value = 0
             activeLot.value.forEach((element)=>{
