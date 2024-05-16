@@ -308,8 +308,8 @@ export default {
         }
 
         watch(panier_client.value, (value)=>{
-            console.log("The Panier_client has new change")
-            // update_total_client()
+            total_panier_client.value = update_total_client()
+            console.log("The Panier_client has new change: ", total_panier_client.value)
         })
 
         return {
