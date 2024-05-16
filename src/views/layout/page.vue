@@ -174,8 +174,8 @@ export default {
             // panier_client.value.forEach()
         }
 
-        const number_To_string = () => {
-            let to_convert = "100000"
+        const number_To_string = (value=10000) => {
+            let to_convert = value.toString()
             let data_length = to_convert.length
             let i = 0
             let converted = ''
