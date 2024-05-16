@@ -17,7 +17,6 @@
                             {{ (lot.date).slice(5,8) }}_{{ (lot.date).slice(0,4) }}
                         </div>
                         <div class="sub">
-                            <!-- {{ selectedUmuti.value.quantite_restant }} -->
                             <ion-icon :src="removeCircleOutline" @click="decrementQte"></ion-icon>
                             <span style="margin-right: .1rem;">&nbsp;</span>
                            <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier" :id="'q' + index"
@@ -42,12 +41,10 @@
                         <div class="nomination">
                             {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.price_out }} x {{ umuti.qte }} 
                             
-                           <!-- <br> -->
                            <span style="margin-right: .3rem;">&nbsp;</span>
                            <input style="background-color: white; width: 25px; height: 20px;"/>
                            <span style="margin-right: .3rem;">&nbsp;</span>
                            <div>{{ umuti.qte *  umuti.price_out }}</div>
-                           
                         </div>
                         <div 
                             class="cancelButto"  :id="'i'+index">
@@ -55,22 +52,16 @@
                                  :src="close" style="top: 0px; position: relative;">
                                 </ion-icon>
                         </div>
-                           <!-- {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.qte }} x 
-                           {{ umuti.price_out }} 
-                           <button style="padding: 5px 5px; margin-left: 10px; 
-                           background-color: seagreen; border-radius: 20px;"><ion-icon :src="close"></ion-icon></button>
-                           
-                           <br> {{ umuti.qte *  umuti.price_out }} -->
                     </div>
-                                        <br>
+                    <br>
                     <p style="margin-left: .5rem;">
                         Total : <span style="color: black;">{{ total_panier_client }} Fbu</span> 
                     </p>
                     <div class="ending" style="text-align: left;">
                         <button class="confirmButton" @click="toSell">Confirmer</button>
                     </div>
-                    
                 </div>
+
                 <div class="signeRecherche"></div>
                 <div class="searchBar">
                     <sea-rch></sea-rch>
@@ -78,7 +69,6 @@
                 <div class="menuBar">
                     <me-nu></me-nu>
                 </div>
-                <!-- <div class="menuLeft"></div> -->
                 <div class="menuHau"></div>
             </div>
         </ion-content>
