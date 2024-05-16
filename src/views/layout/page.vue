@@ -186,14 +186,22 @@ export default {
         }
         const lot_array = ()=> {
             let lote = []
+            let value = 0
             activeLot.value.forEach((element)=>{
                 let obj = {
                     'code_operation' : element.code_operation,
                     'qte' : element.to_panier,
                 }
+                value += element.to_panier
                 lote.push(obj)
             })
-            return lote
+
+            if(value){
+                return lote
+            } else {
+                return undefined
+            }
+            
         }
         // const init_to_panier = ()=> {
         //     activeLot.value.forEach((element)=>{
