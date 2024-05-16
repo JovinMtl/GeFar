@@ -129,6 +129,7 @@ export default {
         const activeLot = ref([])
 
         const actualQte = ref(1)
+        const total_panier_client = ref(0)
 
         const changeQte = (value)=>{
             //
@@ -226,6 +227,15 @@ export default {
             return 1
         }
 
+        const update_total_client = () => {
+            let somme = 0
+            panier_client.value.forEach((element)=>{
+                let p_T = element.price_out * element.qte
+                somme += p_T
+            })
+            return somme
+        }
+
         const moveToPanier = () => {
             // kumenya ivyo dukenera kurungika kuri sell(endpoint)
             // code_umuti, code_operation(lot), qte
@@ -252,6 +262,7 @@ export default {
                     actualQte.value = 1
                     console.log("for Client: ", panier_client.value)
                     console.log("for API: ", panier_api.value)
+                    // panier_client.forEach
                 }
             } else {
                 console.log("No, the umuti already exist in Panier ", jove)
