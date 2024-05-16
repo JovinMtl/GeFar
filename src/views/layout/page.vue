@@ -9,7 +9,7 @@
                 <div class="infoUmuti umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                 <div class="infoUmuti umutiPrice">{{ selectedUmuti.value.price_out }}</div>
                 <!-- Need to display the number of lots -->
-                <span v-if="activeLot.length" style="margin-left: 2.1rem;">{{ activeLot.length }}</span>
+                <div v-if="activeLot.length" style="text-align: right;">{{ activeLot.length }}</div>
                 <div class="infoUmuti umutiLot">
                     <div v-for="(lot, index) in activeLot" class="lote">
                         <div class="head">
