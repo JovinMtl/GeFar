@@ -259,7 +259,8 @@ export default {
                 let p_T = element.price_out * element.qte
                 somme += p_T
             })
-            return somme
+            let somme_formatted = number_To_string(somme)
+            return somme_formatted
         }
 
         const moveToPanier = () => {
