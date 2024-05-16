@@ -275,7 +275,7 @@ export default {
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
             let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
-            activeLot.value = JSON.parse(lots_json)
+            activeLot.value = JSON.parse(lots_json) //setting the activeLot
         }
 
         watch(panier_client.value, (value)=>{
