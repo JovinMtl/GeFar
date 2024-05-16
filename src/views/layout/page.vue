@@ -67,21 +67,7 @@
                            
                            <br> {{ umuti.qte *  umuti.price_out }} -->
                     </div>
-                    <!-- <ion-list>
-                        <ion-item v-for="umuti in panier_client" mode="ios" :inset="true" style="--ion-item-background: green">
-                            <ion-label>
-                                {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.qte }} x 
-                           {{ umuti.price_out }} 
-                           <button style="padding: 5px 5px; margin-left: 10px; 
-                           background-color: seagreen; border-radius: 20px;"><ion-icon :src="close"></ion-icon></button>
-                           
-                           <br> {{ umuti.qte *  umuti.price_out }}
-                            </ion-label>
-                           
-                           
-                        </ion-item>
-                    </ion-list> -->
-                    <br>
+                                        <br>
                     <p style="margin-left: .5rem;">
                         Total : <span style="color: black;">{{ total_panier_client }} Fbu</span> 
                     </p>
