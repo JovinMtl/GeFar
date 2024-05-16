@@ -230,10 +230,7 @@ export default {
                 let obj_API = {
                     'code_umuti' : selectedUmuti.value.code_umuti,
                     'qte' : somme_to_panier() || 1,
-                    'lot' : [
-                        {
-                            'code_operation' : selectedUmuti
-                        }]
+                    'lot' : lot_array()
                 }
 
                 panier_client.value.push(obj_Client)
