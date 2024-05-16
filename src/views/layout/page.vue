@@ -176,18 +176,20 @@ export default {
 
         const number_To_string = () => {
             let to_convert = "thierry"
+            let data_length = to_convert.length
             let i = 0
             let converted = ''
             let reversed = ''
             reversed = to_convert.split('').reverse().toString().replaceAll(',','')
-            for(i=0; i < reversed.length; i++){
+            for(i=0; i < data_length; i++){
+                console.log("attempting to loop the number_To_string")
                 if(!i && !(i%3)){
                     converted.concat(`.${reversed[i]}`)
                 } else {
                     converted.concat(`${reversed[i]}`)
                 }
             }
-            return reversed
+            return converted
         }
 
         const removeUmuti = (obj) => {
