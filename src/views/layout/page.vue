@@ -174,6 +174,7 @@ export default {
             const code = Number(code_s.slice(1))
             console.log("THe code sliced: ", code)
             panier_client.value.splice(code,1)
+            panier_api.value.splice(code,1)
         }
 
         const somme_to_panier = () => {
