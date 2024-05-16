@@ -182,10 +182,8 @@ export default {
             let reversed = ''
             reversed = to_convert.split('').reverse().toString().replaceAll(',','')
             for(i=0; i < data_length; i++){
-                console.log("attempting to loop the number_To_string")
                 if(i%3==0){
                     converted =  converted.concat(`.${reversed[i]}`)
-                    console.log("Found case: ", converted)
                 } else {
                     converted = converted.concat(`${reversed[i]}`)
                 }
