@@ -175,6 +175,8 @@ export default {
         }
 
         const number_To_string = (value=10000) => {
+            // This function is designed to format a number as a string
+            // in a format of separation by 3digits
             let to_convert = value.toString()
             let data_length = to_convert.length
             let i = 0
