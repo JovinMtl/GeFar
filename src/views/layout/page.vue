@@ -196,10 +196,12 @@ export default {
                 lote.push(obj)
             })
 
+            console.log("qte_ value is :", value)
             if(value){
                 return lote
             } else {
-                return undefined
+                lote[0].qte = 1
+                return lote
             }
             
         }
@@ -257,10 +259,15 @@ export default {
             
         }
         const sort_array = (given_array) => {
-            [{"date": "2025-04", "qte": 4, "code_operation": "12dxx9", "to_panier": 0}, {"date": "2024-08", "qte": -3, "code_operation": "23dd", "to_panier": 0}]
+            // [{"date": "2025-04", "qte": 4, "code_operation": "12dxx9", "to_panier": 0}, {"date": "2024-08", "qte": -3, "code_operation": "23dd", "to_panier": 0}]
 
             let sorted_array = []
-            sorted_array = given_array.sort((elementA, elementB)=> Date(elementA.date) - Date(elementB))
+            sorted_array = given_array.sort((elementA, elementB)=> {
+                let dateA = new Date(elementA.date)
+                let dateB = new Date(elementB.date)
+                
+                return dateA - dateB
+            })
             // current_obj = {
             //     'index'
             // }
@@ -284,7 +291,7 @@ export default {
             console.log("we are working on : ", lots_json)
             activeLot.value = JSON.parse(lots_json)
             let array_obj = JSON.parse(lots_json)
-            let sorted = sort_array(JSON.parse(array_obj))
+            let sorted = sort_array(array_obj)
             console.log("THe SORT REPORT: ", sorted)
         }
 
