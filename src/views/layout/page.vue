@@ -239,8 +239,7 @@ export default {
         }
 
         const moveToPanier = () => {
-            // kumenya ivyo dukenera kurungika kuri sell(endpoint)
-            // code_umuti, code_operation(lot), qte
+            // this function manages to move umuti from selected into panier
             let jove = check_panier(selectedUmuti.value.name_umuti)
             if(jove){
                 console.log("The umuti is new in the Panier : ", jove)
@@ -258,14 +257,14 @@ export default {
 
                 panier_client.value.push(obj_Client)
                 panier_api.value.push(obj_API)
+                // REinitializing
                 if (panier_client.value && panier_api.value){
                     selectedUmuti.value = {}
                     activeLot.value = []
                     actualQte.value = 1
                     actualValue.value = 0
-                    console.log("for Client: ", panier_client.value)
-                    console.log("for API: ", panier_api.value)
-                    // panier_client.forEach
+                    // console.log("for Client: ", panier_client.value)
+                    // console.log("for API: ", panier_api.value)
                 }
             } else {
                 console.log("No, the umuti already exist in Panier ", jove)
