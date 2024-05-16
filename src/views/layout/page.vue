@@ -174,6 +174,22 @@ export default {
             // panier_client.value.forEach()
         }
 
+        const number_To_string = () => {
+            let to_convert = "thierry"
+            let i = 0
+            let converted = ''
+            let reversed = ''
+            reversed = to_convert.split('').reverse().toString().replace(',','')
+            for(i=0; i < reversed.length; i++){
+                if(!i && !(i%3)){
+                    converted.concat(`.${reversed[i]}`)
+                } else {
+                    converted.concat(`${reversed[i]}`)
+                }
+            }
+            return reversed
+        }
+
         const removeUmuti = (obj) => {
             console.log("You are about to remove : ", obj.target.getAttribute('id'))
             const code_s = obj.target.getAttribute('id')
