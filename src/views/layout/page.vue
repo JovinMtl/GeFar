@@ -138,7 +138,6 @@ export default {
             }
         }
         const decrementQte = (value)=>{
-
             const code_s = value.target.nextSibling.nextSibling.getAttribute('id')
             const code = Number(code_s.slice(1))
             if(activeLot.value[code].to_panier > 1) {
@@ -176,7 +175,7 @@ export default {
         }
 
         const removeUmuti = (obj) => {
-            // This function handles the removal of umuti in panier
+            // This function handles the removal of umuti in panier.
             const code_s = obj.target.getAttribute('id')
             const code = Number(code_s.slice(1))
             panier_client.value.splice(code,1)
@@ -184,7 +183,7 @@ export default {
         }
 
         const somme_to_panier = () => {
-            // This functions evaluates the sum of quantity chosen in different lots on a same umuti
+            // This functions evaluates the sum of quantity chosen in different lots on a same umuti.
             let somme = 0
             activeLot.value.forEach((element)=>{
                 somme += element.to_panier
@@ -193,7 +192,7 @@ export default {
         }
 
         const lot_array = ()=> {
-            // This functions builds and array which differentiates the lots have been selected on a same umuti
+            // This functions builds and array which differentiates the lots have been selected on a same umuti.
             let lote = []
             let value = 0
             activeLot.value.forEach((element)=>{
@@ -215,6 +214,7 @@ export default {
         }
 
         const check_panier = (umuti_name) => {
+            // This function checks the existence of umuti on panier in order not to duplicate it.
             let panier_length = (panier_client.value).length
             let i = 0
             console.log("Panier had length of : ", panier_length)
