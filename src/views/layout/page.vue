@@ -25,7 +25,7 @@
                             <!-- {{ selectedUmuti.value.quantite_restant }} -->
                             <ion-icon :src="removeCircleOutline" @click="decrementQte"></ion-icon>
                             <span style="margin-right: .1rem;">&nbsp;</span>
-                           <input @click="changeQte($event)" :value="lot.to_panier" :id="'q' + index"
+                           <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier" :id="'q' + index"
                             style="background-color: white; width: 25px; height: 20px;"/>
                            <span style="margin-right: .1rem;">&nbsp;</span>
                            <ion-icon :src="addCircleOutline" @click="incrementQte"></ion-icon>
@@ -120,11 +120,18 @@ export default {
         const activeLot = ref([])
 
         const actualQte = ref(1)
+        const actualValue = ref(0)
         const total_panier_client = ref(0)
+
+        const showChange = (event)=>{
+            console.log("You typed : ", value.target.value)
+        }
 
         const changeQte = (value)=>{
             //
-            console.log("You want to change : ", value.target.getAttribute('id'))
+            // console.log("You want to change : ", value.target.getAttribute('id'))
+            console.log("You changed : ", value.target.value)
+
         }
         const incrementQte = (value)=>{
             //
@@ -325,7 +332,7 @@ export default {
         })
 
         return {
-            selectedUmuti, panier_client, activeLot,
+            selectedUmuti, panier_client, activeLot, actualValue,
             actualQte, total_panier_client,
             close,  addCircleOutline, removeCircleOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
