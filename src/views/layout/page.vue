@@ -275,11 +275,7 @@ export default {
         const getUmuti = (umuti) => {
             selectedUmuti.value = umuti
             let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
-            console.log("we are working on : ", lots_json)
             activeLot.value = JSON.parse(lots_json)
-            let array_obj = JSON.parse(lots_json)
-            let sorted = sort_array(array_obj)
-            console.log("THe SORT REPORT: ", sorted)
         }
 
         watch(panier_client.value, (value)=>{
