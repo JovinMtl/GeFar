@@ -329,7 +329,7 @@ export default {
             actualQte, total_panier_client,
             close,  addCircleOutline, removeCircleOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
-            incrementQte,decrementQte, update_total_client,
+            incrementQte,decrementQte,
         }
     },
 }
