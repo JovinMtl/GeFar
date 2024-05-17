@@ -7,7 +7,34 @@
         <br> <br>
         <input class="inp" type="text" placeholder="Nom du medicament">
         <br><br>
-        <input class="inp" type="text" placeholder="Nom du medicament">
+        <input class="inp" type="text" placeholder="Cp, Gel, Ovule, Sirop, Inj ?">
+        <ion-select placeholder="Type de medicament" mode="ios">
+                        <ion-select-option>
+                            Cp
+                        </ion-select-option>
+                        <ion-select-option>
+                            Gel
+                        </ion-select-option>
+                        <ion-select-option>
+                            Ovule
+                        </ion-select-option>
+                        <ion-select-option>
+                            Sirop
+                        </ion-select-option>
+                        <ion-select-option>
+                            Inj
+                        </ion-select-option>
+                    </ion-select>
+        <br> <br>
+        <label>Type de medicament</label>
+        <select name="jojdkfjk">
+            <option>Cp</option>
+            <option>Gel</option>
+            <option>Ovuledfdfdfdf</option>
+            <option>Sirop</option>
+            <option>Inj</option>
+            <!-- <option>Inj</option> -->
+        </select>
         <br> <br>
         <input class="inp" type="text" placeholder="Nom du medicament">
         <br><br>
@@ -25,11 +52,11 @@
     </div>
 </template>
 <script>
-import { IonIcon } from '@ionic/vue'
+import { IonIcon, IonSelect, IonSelectOption,} from '@ionic/vue'
 import { close } from 'ionicons/icons'
 export default {
     components: {
-        IonIcon,
+        IonIcon, IonSelectOption, IonSelect, 
     },
     setup() {
         return {
