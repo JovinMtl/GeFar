@@ -492,5 +492,21 @@ export default {
   ::-webkit-scrollbar-track {
     background-color: #f1f1f1;
   }
+
+
+
+  .approClass::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 15px;
+  }
+  .approClass::-webkit-scrollbar {
+    width: 3px;
+    color: green;
+  }
+  .approClass::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    margin-top: 35px;
+  }
+
 </style>
 
