@@ -6,7 +6,8 @@
         
         <br> <br>
         <label>Type de medicament</label>
-        <select placeholder="Type" value="Ovule">
+        <span style="margin-right: .1rem;">&nbsp;</span>
+        <select style="background-color: white" placeholder="Type" value="Ovule">
             <option>Cp</option>
             <option>Gel</option>
             <option>Ovule</option>
