@@ -309,6 +309,8 @@ export default {
     position: absolute;
     padding: 10px 10px;
     color: rgb(63, 62, 62);
+    z-index: 1;
+    /* color: green */
 }
 .menuLeft{
     width: 11.3vw;
