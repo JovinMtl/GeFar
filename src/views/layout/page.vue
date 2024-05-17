@@ -1,7 +1,7 @@
 <template>
     <ion-page>
         <ion-content>
-            <div class="menuLeft">
+            <div class="approClass">
                 <app-rov></app-rov>
             </div>
             <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
