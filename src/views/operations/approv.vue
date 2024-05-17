@@ -31,8 +31,8 @@
         <br> <br>
         <input type="text" placeholder="Quantite Initial">
         <br> <br>
-        <input type="text" placeholder="Localisation">
-        <br> <br>
+        <input type="text" style="margin-bottom: 5px;" placeholder="Localisation">
+        <br>
         <label>Date d'exp. </label> 
         <!-- <br> -->
         <input type="date" placeholder="Nom du medicament">
