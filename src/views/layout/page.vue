@@ -1,12 +1,12 @@
 <template>
     <ion-page>
         <ion-content>
-            <div class="mainApprob">
+            <div class="mainApprob" v-if="approvStatus">
                 <div class="approClass">
                     <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
                         
-                    <span style="position: absolute; left: 88%; top: 10px; font-size: 2rem;">
-                        <ion-icon :src="close"></ion-icon>
+                    <span class="closeBtn" style="">
+                        <ion-icon :src="close" @click="setApprov"></ion-icon>
                     </span>
                        <h3>Entrée en Stock</h3>
                     </div>
@@ -127,6 +127,12 @@ export default {
         const actualQte = ref(1)
         const actualValue = ref(0)
         const total_panier_client = ref(0)
+
+        const approvStatus = ref(false)
+
+        const setApprov = ()=>{
+
+        }
 
         const showChange = (event)=>{
             // This function takes the number which is in input and
@@ -308,6 +314,7 @@ export default {
         return {
             selectedUmuti, panier_client, activeLot, actualValue,
             actualQte, total_panier_client,
+            approvStatus,
             close,  addCircleOutline, removeCircleOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
@@ -317,6 +324,19 @@ export default {
 </script>
 
 <style scoped>
+.closeBtn{
+    position: absolute; 
+    left: 88%; 
+    top: 10px; 
+    font-size: 2rem;
+}
+.closeBtn:active{
+    position: absolute; 
+    left: 88%; 
+    top: 10px; 
+    font-size: 2rem;
+    color: red;
+}
 .btnSave{
     padding: 5px 15px; 
     font-size: large; 
