@@ -52,7 +52,7 @@
             </div>
             <div class="mainContainer" >
                 <div class="sectA" style="text-align: center;">
-                    <list-imiti @actualUmuti="getUmuti" ></list-imiti>
+                    <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"></list-imiti>
                 </div>
                 <div class="sectB">
                     Panier here: <br>
@@ -127,8 +127,11 @@ export default {
         const actualQte = ref(1)
         const actualValue = ref(0)
         const total_panier_client = ref(0)
-
         const approvStatus = ref(false)
+
+        const getAllImiti = ()=>{
+            // Has to get all imiti gathered by list-imiti
+        }
 
         const closeApprov = ()=>{
             approvStatus.value = false
