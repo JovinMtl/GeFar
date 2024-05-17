@@ -6,10 +6,10 @@
         
         <br> <br>
         <label>Type de medicament</label>
-        <select placeholder="jojdkfjk" value="Ovuledfdfdfdf">
+        <select placeholder="Type" value="Ovule">
             <option>Cp</option>
             <option>Gel</option>
-            <option>Ovuledfdfdfdf</option>
+            <option>Ovule</option>
             <option>Sirop</option>
             <option>Inj</option>
             <!-- <option>Inj</option> -->
