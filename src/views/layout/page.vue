@@ -13,7 +13,10 @@
                     <div class="bodyApprov">
                         <app-rov></app-rov>
                     </div>
-                    <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">Footer</div>
+                    <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">
+                        
+                        <button class="btnSave">Enregister</button>
+                    </div>
                 </div>
             </div>
             
@@ -314,6 +317,23 @@ export default {
 </script>
 
 <style scoped>
+.btnSave{
+    padding: 5px 15px; 
+    font-size: large; 
+    background-color: transparent; 
+    color: black; 
+    /* border: 1px solid black; */
+    box-shadow: 0 0 25px rgb(112, 110, 110);
+}
+.btnSave:active{
+    padding: 5px 15px; 
+    font-size: large; 
+    background-color: transparent; 
+    background-color: rgba(25, 255, 25, 0.521);
+    color: black; 
+    /* border: 1px solid black; */
+    /* box-shadow: 0 0 20px black; */
+}
 .mainApprob{
     position:absolute;
     width: 100%;
