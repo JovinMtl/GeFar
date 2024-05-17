@@ -1,5 +1,8 @@
 <template>
     <div>
+        <span style="position: absolute; left: 92%;">
+            <ion-icon :src="close"></ion-icon>
+        </span>
         Ici on gere des approvisionnement
         <br> <br>
         <input class="inp" type="text" placeholder="Nom du medicament">
