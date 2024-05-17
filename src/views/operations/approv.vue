@@ -1,6 +1,7 @@
 <template>
     <div>
-        Ici on gere des approvisionnement
+        <h6>Ici on gere des approvisionnement</h6>
+        
         <br> <br>
         <input type="text" placeholder="Nom du medicament">
         
@@ -16,7 +17,7 @@
             <!-- <option>Inj</option> -->
         </select>
         <br> <br>
-        <textarea style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="30" rows="10"></textarea>
+        <textarea style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
         <input type="text" placeholder="ratio: 1 : 1">
         <br><br>
         <input type="text" placeholder="Type in: Carton">
@@ -31,8 +32,9 @@
         <input type="text" placeholder="Quantite Initial">
         <br> <br>
         <input type="text" placeholder="Localisation">
-        <br>
-        <label>Date d'exp. </label>
+        <br> <br>
+        <label>Date d'exp. </label> 
+        <!-- <br> -->
         <input type="date" placeholder="Nom du medicament">
         <br>
     </div>
@@ -51,8 +53,11 @@ export default {
 input, textarea{
     background-color: rgba(25, 255, 25, 0.521);
     color: black;
-}
-input{
     padding: 5px 5px;
+    border-color: transparent;
+}
+input::cue
+{
+    border-color: red;
 }
 </style>
