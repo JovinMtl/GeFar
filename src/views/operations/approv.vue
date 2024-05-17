@@ -27,7 +27,7 @@
                     </ion-select>
         <br> <br>
         <label>Type de medicament</label>
-        <select name="jojdkfjk">
+        <select placeholder="jojdkfjk" value="Ovuledfdfdfdf">
             <option>Cp</option>
             <option>Gel</option>
             <option>Ovuledfdfdfdf</option>
@@ -36,17 +36,29 @@
             <!-- <option>Inj</option> -->
         </select>
         <br> <br>
-        <input class="inp" type="text" placeholder="Nom du medicament">
+        <input class="inp" type="color" placeholder="Nom du medicament">
         <br><br>
         <input class="inp" type="text" placeholder="Nom du medicament">
         <br> <br>
-        <input class="inp" type="text" placeholder="Nom du medicament">
+        <textarea name="description" placeholder="Description du medicament" id="" cols="30" rows="10"></textarea>
+        <input class="inp" type="text" placeholder="ratio: 1 : 1">
         <br><br>
         <input class="inp" type="text" placeholder="Nom du medicament">
         <br> <br>
-        <input class="inp" type="text" placeholder="Nom du medicament">
+        <input class="inp" type="text" placeholder="Type in">
+        <br> <br>
+        <input class="inp" type="text" placeholder="Type out">
         <br><br>
-        <label>Date fin</label>
+        <br> <br>
+        <input class="inp" type="text" placeholder="Price in">
+        <br> <br>
+        <input class="inp" type="text" placeholder="Price out">
+        <br> <br>
+        <input class="inp" type="text" placeholder="Quantite Initial">
+        <br> <br>
+        <input class="inp" type="text" placeholder="Localisation">
+        <br>
+        <label>Date d'exp. </label>
         <input class="inp" type="date" placeholder="Nom du medicament">
         <br>
     </div>
