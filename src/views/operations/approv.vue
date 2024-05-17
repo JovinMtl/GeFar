@@ -51,8 +51,10 @@ export default {
 
 <style scoped>
 input, textarea{
-    background-color: rgba(25, 255, 25, 0.6);
     background-color: rgba(25, 255, 25, 0.521);
     color: black;
+}
+input{
+    padding: 5px 5px;
 }
 </style>
