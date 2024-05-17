@@ -8,7 +8,7 @@
                     <span style="position: absolute; left: 92%;">
                         <ion-icon :src="close"></ion-icon>
                     </span>
-                        Header
+                       <h3>Entrée en Stock</h3>
                     </div>
                     <div class="bodyApprov">
                         <app-rov></app-rov>
