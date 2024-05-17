@@ -19,16 +19,14 @@
         <textarea style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="30" rows="10"></textarea>
         <input type="text" placeholder="ratio: 1 : 1">
         <br><br>
-        <input type="text" placeholder="Nom du medicament">
+        <input type="text" placeholder="Type in: Carton">
         <br> <br>
-        <input type="text" placeholder="Type in">
-        <br> <br>
-        <input type="text" placeholder="Type out">
+        <input type="text" placeholder="Type out : Plaquette">
         <br><br>
         <br> <br>
-        <input type="text" placeholder="Price in">
+        <input type="text" placeholder="Price in: (Type_in)">
         <br> <br>
-        <input type="text" placeholder="Price out">
+        <input type="text" placeholder="Price out : (Type_in)">
         <br> <br>
         <input type="text" placeholder="Quantite Initial">
         <br> <br>
