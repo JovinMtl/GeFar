@@ -1,7 +1,7 @@
 <template>
     <ion-page>
         <ion-content>
-            <div class="mainApprob">
+            <div class="mainApprob" style="width: 100%;height: 100%;background-color: rgba(255, 255,255, 0.7); z-index: 1; text-align: center">
                 <div class="approClass">
                     <app-rov></app-rov>
                 </div>
