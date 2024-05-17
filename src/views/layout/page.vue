@@ -326,8 +326,9 @@ export default {
     z-index: 1;
     top: 5px;
     text-align: center;
-    /* transform: translate(125%); */
-    /* border-radius: 10px; */
+    transform: translate(134%);
+    border-radius: 10px;
+    overflow: auto;
     /* color: green */
 }
 .menuLeft{
