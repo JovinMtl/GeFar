@@ -24,7 +24,7 @@
 <script>
 import { ref } from 'vue'
 export default {
-    setup() {
+    setup(_, {emit}) {
         const button1 = ref(true)
         const button2 = ref(false)
         const button3 = ref(false)
@@ -38,6 +38,7 @@ export default {
             button2.value = true
             button1.value = false
             button3.value = false
+            emit('actualMenu', 2)
         }
         const turnC = ()=>{
             button3.value = true
