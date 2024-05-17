@@ -318,7 +318,6 @@ export default {
     position:absolute;
     width: 100%;
     height: 100%;
-    background-color: transparent;
     background-color: rgba(255, 255,255, 0.5); 
     text-align: center;
     /* z-index: -10009; */
@@ -332,13 +331,15 @@ export default {
     /* position: absolute; */
     position: relative;
     padding: 0px 10px;
-    color: rgb(63, 62, 62);
+    /* color: rgb(63, 62, 62); */
+    /* color: rgba(255, 255, 255, 0.3); */
     z-index: 1;
     top: 5px;
     text-align: center;
     transform: translate(134%);
     border-radius: 10px;
     overflow: auto;
+    color: black;
     /* color: green */
 }
 .menuLeft{
