@@ -8,6 +8,20 @@
         <br>
     </div>
 </template>
+<script>
+import { IonIcon } from '@ionic/vue'
+import { close } from 'ionicons/icons'
+export default {
+    components: {
+        IonIcon,
+    },
+    setup() {
+        return {
+            close,
+        }
+    },
+}
+</script>
 
 <style scoped>
 .inp{
