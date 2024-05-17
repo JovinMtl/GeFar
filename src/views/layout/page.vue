@@ -312,6 +312,7 @@ export default {
     color: rgb(63, 62, 62);
     z-index: 1;
     top: 5px;
+    text-align: center;
     /* color: green */
 }
 .menuLeft{
