@@ -8,6 +8,19 @@
         <input class="inp" type="text" placeholder="Nom du medicament">
         <br><br>
         <input class="inp" @click="console.log('You clicked an input')" type="text" placeholder="Nom du medicament">
+        <br> <br>
+        <input class="inp" type="text" placeholder="Nom du medicament">
+        <br><br>
+        <input class="inp" @click="console.log('You clicked an input')" type="text" placeholder="Nom du medicament">
+        <br> <br>
+        <input class="inp" type="text" placeholder="Nom du medicament">
+        <br><br>
+        <input class="inp" @click="console.log('You clicked an input')" type="text" placeholder="Nom du medicament">
+        <br> <br>
+        <input class="inp" type="text" placeholder="Nom du medicament">
+        <br><br>
+        <label>Date fin</label>
+        <input class="inp" @click="console.log('You clicked an input')" type="date" placeholder="Nom du medicament">
         <br>
     </div>
 </template>
