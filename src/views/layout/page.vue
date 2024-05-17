@@ -1,7 +1,9 @@
 <template>
     <ion-page>
         <ion-content>
-            <div class="menuLeft"></div>
+            <div class="menuLeft">
+                <app-rov></app-rov>
+            </div>
             <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
                 <div class="infoUmuti umutiTitle">{{ selectedUmuti.value.name_umuti }}</div>
                 <div class="infoUmuti umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
@@ -84,6 +86,7 @@ import {
 } from 'vue'
 import search from './auxiliare/search.vue';
 import menu from './auxiliare/menu.vue';
+import approv from '../operations/approv.vue';
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
 import { 
@@ -96,6 +99,7 @@ export default {
         'sea-rch': search,
         'me-nu': menu,
         'list-imiti': listImiti,
+        'app-rov': approv,
         IonContent, IonPage, 
         IonIcon,
     },
