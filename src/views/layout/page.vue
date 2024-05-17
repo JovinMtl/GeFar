@@ -3,7 +3,17 @@
         <ion-content>
             <div class="mainApprob">
                 <div class="approClass">
-                    <app-rov></app-rov>
+                    <div style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
+                        
+                    <span style="position: absolute; left: 92%;">
+                        <ion-icon :src="close"></ion-icon>
+                    </span>
+                        Header
+                    </div>
+                    <div class="bodyApprov">
+                        <app-rov></app-rov>
+                    </div>
+                    <div>Footer</div>
                 </div>
             </div>
             
@@ -321,7 +331,7 @@ export default {
     background-color: rgb(255, 255, 255);
     /* position: absolute; */
     position: relative;
-    padding: 10px 10px;
+    padding: 0px 10px;
     color: rgb(63, 62, 62);
     z-index: 1;
     top: 5px;

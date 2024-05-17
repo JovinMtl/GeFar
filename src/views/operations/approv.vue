@@ -1,8 +1,5 @@
 <template>
     <div>
-        <span style="position: absolute; left: 92%;">
-            <ion-icon :src="close"></ion-icon>
-        </span>
         Ici on gere des approvisionnement
         <br> <br>
         <input class="inp" type="text" placeholder="Nom du medicament">
@@ -64,7 +61,7 @@
     </div>
 </template>
 <script>
-import { IonIcon, IonSelect, IonSelectOption,} from '@ionic/vue'
+import { IonSelect, IonSelectOption,} from '@ionic/vue'
 import { close } from 'ionicons/icons'
 export default {
     components: {
