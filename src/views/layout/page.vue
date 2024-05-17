@@ -5,7 +5,7 @@
                 <div class="approClass">
                     <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
                         
-                    <span style="position: absolute; left: 92%;">
+                    <span style="position: absolute; left: 88%; top: 10px; font-size: 2rem;">
                         <ion-icon :src="close"></ion-icon>
                     </span>
                        <h3>Entrée en Stock</h3>
