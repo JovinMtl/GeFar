@@ -3,7 +3,7 @@
         <ion-content>
             <div class="mainApprob">
                 <div class="approClass">
-                    <div style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
+                    <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
                         
                     <span style="position: absolute; left: 92%;">
                         <ion-icon :src="close"></ion-icon>
@@ -13,7 +13,7 @@
                     <div class="bodyApprov">
                         <app-rov></app-rov>
                     </div>
-                    <div style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">Footer</div>
+                    <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">Footer</div>
                 </div>
             </div>
             
