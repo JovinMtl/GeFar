@@ -303,13 +303,15 @@ export default {
 <style scoped>
 .approClass{
     width: 27.3vw;
-    height: 96%;
+    height: 95%;
+    /* height: 100%; */
     background-color: #ff000079;
     background-color: rgb(255, 255, 255);
     position: absolute;
     padding: 10px 10px;
     color: rgb(63, 62, 62);
     z-index: 1;
+    top: 5px;
     /* color: green */
 }
 .menuLeft{
