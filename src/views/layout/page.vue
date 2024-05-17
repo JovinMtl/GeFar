@@ -1,7 +1,7 @@
 <template>
     <ion-page>
         <ion-content>
-            <div class="mainApprob" style="width: 100%;height: 100%;background-color: rgba(255, 255,255, 0.7); z-index: 1; text-align: center">
+            <div class="mainApprob">
                 <div class="approClass">
                     <app-rov></app-rov>
                 </div>
@@ -304,11 +304,20 @@ export default {
 </script>
 
 <style scoped>
+.mainApprob{
+    position: absolute;;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-color: rgba(255, 255,255, 0.8); 
+    text-align: center;
+    /* z-index: -10009; */
+}
 .approClass{
     width: 27.3vw;
     height: 95%;
     /* height: 100%; */
-    background-color: #ff000079;
+    /* background-color: #ff000079; */
     background-color: rgb(255, 255, 255);
     position: absolute;
     padding: 10px 10px;
@@ -316,6 +325,8 @@ export default {
     z-index: 1;
     top: 5px;
     text-align: center;
+    transform: translate(125%);
+    border-radius: 10px;
     /* color: green */
 }
 .menuLeft{
