@@ -301,6 +301,14 @@ export default {
 </script>
 
 <style scoped>
+.approClass{
+    width: 11.3vw;
+    height: 100%;
+    /* background-color: red; */
+    position: absolute;
+    padding: 10px 10px;
+    color: rgb(63, 62, 62);
+}
 .menuLeft{
     width: 11.3vw;
     height: 100%;
