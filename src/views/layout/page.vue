@@ -336,6 +336,7 @@ export default {
 }
 .sell{
     padding: 5px 15px; 
+    margin-right: 12px;
     background-color: rgba(14, 14, 211, 0.384);
 }
 .confirmButton{
