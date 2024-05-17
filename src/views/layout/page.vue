@@ -305,11 +305,11 @@ export default {
 
 <style scoped>
 .mainApprob{
-    position: absolute;;
+    position:absolute;
     width: 100%;
     height: 100%;
     background-color: transparent;
-    background-color: rgba(255, 255,255, 0.8); 
+    background-color: rgba(255, 255,255, 0.5); 
     text-align: center;
     /* z-index: -10009; */
 }
@@ -319,14 +319,15 @@ export default {
     /* height: 100%; */
     /* background-color: #ff000079; */
     background-color: rgb(255, 255, 255);
-    position: absolute;
+    /* position: absolute; */
+    position: relative;
     padding: 10px 10px;
     color: rgb(63, 62, 62);
     z-index: 1;
     top: 5px;
     text-align: center;
-    transform: translate(125%);
-    border-radius: 10px;
+    /* transform: translate(125%); */
+    /* border-radius: 10px; */
     /* color: green */
 }
 .menuLeft{
