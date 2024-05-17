@@ -302,10 +302,10 @@ export default {
 
 <style scoped>
 .approClass{
-    width: 25.3vw;
-    height: 100%;
-    background-color: rgba(255, 0, 0, 0.473);
-    background-color: white;
+    width: 27.3vw;
+    height: 96%;
+    background-color: #ff000079;
+    background-color: rgb(255, 255, 255);
     position: absolute;
     padding: 10px 10px;
     color: rgb(63, 62, 62);
