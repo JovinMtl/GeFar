@@ -6,7 +6,7 @@
                     <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
                         
                     <span class="closeBtn" style="">
-                        <ion-icon :src="close" @click="setApprov"></ion-icon>
+                        <ion-icon :src="close" @click="closeApprov"></ion-icon>
                     </span>
                        <h3>Entrée en Stock</h3>
                     </div>
@@ -86,7 +86,7 @@
                     <sea-rch></sea-rch>
                 </div>
                 <div class="menuBar">
-                    <me-nu></me-nu>
+                    <me-nu @actualMenu="actualOption"></me-nu>
                 </div>
                 <div class="menuHau"></div>
             </div>
@@ -130,8 +130,14 @@ export default {
 
         const approvStatus = ref(false)
 
-        const setApprov = ()=>{
-
+        const closeApprov = ()=>{
+            approvStatus.value = false
+        }
+        const actualOption = (value)=>{
+            console.log("THe actual menu is : ", value)
+            if(value == 2){
+                approvStatus.value = true
+            }
         }
 
         const showChange = (event)=>{
@@ -318,6 +324,7 @@ export default {
             close,  addCircleOutline, removeCircleOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
+            actualOption, closeApprov,
         }
     },
 }
