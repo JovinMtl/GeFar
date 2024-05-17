@@ -13,7 +13,7 @@
                     <div class="bodyApprov">
                         <app-rov></app-rov>
                     </div>
-                    <div>Footer</div>
+                    <div style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">Footer</div>
                 </div>
             </div>
             
