@@ -132,7 +132,7 @@ export default {
         const all_imiti = ref([])
 
         
-        const searchManager = (value){
+        const searchManager = (value)=>{
             console.log("You typed: ", value)
         }
         const search_umuti = (value)=>{
