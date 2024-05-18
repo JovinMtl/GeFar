@@ -130,10 +130,12 @@ export default {
         const approvStatus = ref(false)
         const need_to_updade = ref(false)
         const all_imiti = ref([])
+        const query_search = reactive({})
 
         
         const searchManager = (value)=>{
             console.log("You typed: ", value)
+            query_search.value = value
         }
         const search_umuti = (value)=>{
             need_to_updade.value = false
@@ -351,6 +353,7 @@ export default {
             total_panier_client.value = update_total_client()
         })
         provide('needUpdate_list', need_to_updade)
+        provide('needSearch', query_search)
 
         return {
             selectedUmuti, panier_client, activeLot, actualValue,
