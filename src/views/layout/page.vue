@@ -189,6 +189,7 @@ export default {
             // need fist to update panier_api according to panier_client
             // send panier_api to sell endpoint
             // panier_client.value.forEach()
+            need_to_updade.value = true
         }
 
         const number_To_string = (value=10000) => {
@@ -314,6 +315,7 @@ export default {
             selectedUmuti.value = umuti
             let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
             activeLot.value = JSON.parse(lots_json) //setting the activeLot
+            need_to_updade.value = false  // to command not to provide an update from list-imiti
         }
 
 
