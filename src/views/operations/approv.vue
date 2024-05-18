@@ -40,9 +40,14 @@
     </div>
 </template>
 <script>
+import { watch, ref } from 'vue'
 export default {
     setup(_, {emit}) {
-        var umutiName = '' 
+        var umutiName = ref('')
+        
+        watch(umutiName, (value)=>{
+            emit('inputApprov', value)
+        })
         return {
             umutiName,
         }
