@@ -23,7 +23,7 @@
 <script lang="ts">
 import { 
     defineComponent, reactive, ref, onUpdated,
-    inject, 
+    inject, watch,
 } from 'vue'
 import { UmutiSet } from '../layout/types'
 export default defineComponent ({
@@ -33,6 +33,7 @@ export default defineComponent ({
         let codes = new Array()
 
         const needUpdate = inject('needUpdate_list')
+        var shouldUpdate = needUpdate
         const showUmuti = (code:number) => {
             if(code){
                 let umuti: UmutiSet = imitiset.value[code]
@@ -663,9 +664,11 @@ export default defineComponent ({
         }
         // updateImitiSet()
 
-        onUpdated(()=>{
-            // updateImitiSet()
-            console.log("onUpdated, needToUpdate:..", needUpdate)
+        // onUpdated(()=>{
+        //     // updateImitiSet()
+        // })
+        watch(shouldUpdate, (value)=>{
+            console.log("onUpdated, needToUpdate:..", value)
         })
 
 

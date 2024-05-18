@@ -332,7 +332,7 @@ export default {
             close,  addCircleOutline, removeCircleOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
-            actualOption, closeApprov, getAllImiti,
+            actualOption, closeApprov, getAllImiti, toSell,
         }
     },
 }
