@@ -130,8 +130,9 @@ export default {
         const approvStatus = ref(false)
         const need_to_updade = ref(false)
 
-        const getAllImiti = ()=>{
+        const getAllImiti = (imiti)=>{
             // Has to get all imiti gathered by list-imiti
+            console.log("All imiti are emitted : ", imiti.value)
         }
 
         const closeApprov = ()=>{
