@@ -669,6 +669,9 @@ export default defineComponent ({
         // })
         watch(shouldUpdate, (value)=>{
             console.log("onUpdated, needToUpdate:..", value)
+            if(value){
+                emit('allImiti', imitiset)
+            }
         })
 
 
