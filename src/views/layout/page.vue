@@ -129,9 +129,11 @@ export default {
         const total_panier_client = ref(0)
         const approvStatus = ref(false)
         const need_to_updade = ref(false)
+        const all_imiti = ref([])
 
         const getAllImiti = (imiti)=>{
             // Has to get all imiti gathered by list-imiti
+            all_imiti.value = imiti.value
             console.log("All imiti are emitted : ", imiti.value)
         }
 
