@@ -22,7 +22,7 @@
 </template>
 <script lang="ts">
 import { 
-    defineComponent, reactive, ref, 
+    defineComponent, reactive, ref, onUpdated,
     inject, 
 } from 'vue'
 import { UmutiSet } from '../layout/types'
@@ -663,10 +663,10 @@ export default defineComponent ({
         }
         // updateImitiSet()
 
-        // onUpdated(()=>{
-        //     updateImitiSet()
-        //     console.log("onUpdated is being called..")
-        // })
+        onUpdated(()=>{
+            // updateImitiSet()
+            console.log("onUpdated, needToUpdate:..", needUpdate)
+        })
 
 
         return {
