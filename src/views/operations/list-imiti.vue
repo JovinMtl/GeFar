@@ -33,6 +33,7 @@ export default defineComponent ({
         let codes = new Array()
 
         const needUpdate = inject('needUpdate_list')
+        const need_search = inject('needSearch')
         var shouldUpdate = needUpdate
         const showUmuti = (code:number) => {
             if(code){
@@ -672,6 +673,9 @@ export default defineComponent ({
             if(value){
                 emit('allImiti', imitiset)
             }
+        })
+        watch(need_search, (value)=>{
+            console.log("You want to search in list-imiti: ", value)
         })
 
 
