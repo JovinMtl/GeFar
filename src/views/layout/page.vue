@@ -321,7 +321,7 @@ export default {
             // Update the Total on panier whenever we add or remove any umuti on Panier.
             total_panier_client.value = update_total_client()
         })
-        provide('needUpdate_list', false)
+        provide('needUpdate_list', need_to_updade)
 
         return {
             selectedUmuti, panier_client, activeLot, actualValue,
