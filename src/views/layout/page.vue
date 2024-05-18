@@ -142,17 +142,17 @@ export default {
             all_imiti.value = imiti.value
             console.log("All imiti are emitted : ", imiti.value)
             //attempting umuti with name_umuti: 'amoxi'
-            function kov (){
-                let jove = [
-                    {'name':'nsanzumukiza'},
-                    {'name':'nkurunziza'}
-                ]
-                return (jove).filter((element)=>{
-                    return element.name.match('uk')
-                })
-            }
-            let srch = kov()
-            console.log("The search found: ", srch)
+            // function kov (){
+            //     let jove = [
+            //         {'name':'nsanzumukiza'},
+            //         {'name':'nkurunziza'}
+            //     ]
+            //     return (jove).filter((element)=>{
+            //         return element.name.match('uk')
+            //     })
+            // }
+            // let srch = kov()
+            // console.log("The search found: ", srch)
             
         }
 
