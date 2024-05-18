@@ -46,7 +46,11 @@ export default {
         var umutiName = ref('')
         
         watch(umutiName, (value)=>{
-            emit('inputApprov', value)
+            let obj = {
+                'query': value,
+                'response': 1 // 1 mentionning that the response should come here
+            }
+            emit('inputApprov', obj)
         })
         return {
             umutiName,
