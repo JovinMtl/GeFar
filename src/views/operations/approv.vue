@@ -3,7 +3,7 @@
         <h6>Ici on gere des approvisionnement</h6>
         
         <br> <br>
-        <input type="text" placeholder="Nom du medicament">
+        <input v-model="umutiName" type="text" placeholder="Nom du medicament">
         
         <br> <br>
         <label>Type de medicament</label>
@@ -41,9 +41,10 @@
 </template>
 <script>
 export default {
-    setup() {
+    setup(_, {emit}) {
+        var umutiName = '' 
         return {
-
+            umutiName,
         }
     },
 }
