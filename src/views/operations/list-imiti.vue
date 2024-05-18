@@ -21,13 +21,18 @@
     
 </template>
 <script lang="ts">
-import { defineComponent, reactive, ref, onUpdated } from 'vue'
+import { 
+    defineComponent, reactive, ref, 
+    inject, 
+} from 'vue'
 import { UmutiSet } from '../layout/types'
 export default defineComponent ({
     setup(_, {emit}) {
         const data = reactive({})
         const imitiset:UmutiSet[] = ref([])
         let codes = new Array()
+
+        const needUpdate = inject('needUpdate_list')
         const showUmuti = (code:number) => {
             if(code){
                 let umuti: UmutiSet = imitiset.value[code]
