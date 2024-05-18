@@ -128,6 +128,7 @@ export default {
         const actualValue = ref(0)
         const total_panier_client = ref(0)
         const approvStatus = ref(false)
+        const need_to_updade = ref(false)
 
         const getAllImiti = ()=>{
             // Has to get all imiti gathered by list-imiti
@@ -315,6 +316,7 @@ export default {
             activeLot.value = JSON.parse(lots_json) //setting the activeLot
         }
 
+
         watch(panier_client.value, (value)=>{
             // Update the Total on panier whenever we add or remove any umuti on Panier.
             total_panier_client.value = update_total_client()
@@ -328,7 +330,7 @@ export default {
             close,  addCircleOutline, removeCircleOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
-            actualOption, closeApprov,
+            actualOption, closeApprov, getAllImiti,
         }
     },
 }
