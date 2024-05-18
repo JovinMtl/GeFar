@@ -98,7 +98,7 @@
 import { 
     defineAsyncComponent,
     reactive, ref,
-    watch,
+    watch, provide,
 } from 'vue'
 import search from './auxiliare/search.vue';
 import menu from './auxiliare/menu.vue';
@@ -319,6 +319,7 @@ export default {
             // Update the Total on panier whenever we add or remove any umuti on Panier.
             total_panier_client.value = update_total_client()
         })
+        provide('needUpdate', false)
 
         return {
             selectedUmuti, panier_client, activeLot, actualValue,
