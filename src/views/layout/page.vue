@@ -11,7 +11,7 @@
                        <h3>Entrée en Stock</h3>
                     </div>
                     <div class="bodyApprov">
-                        <app-rov></app-rov>
+                        <app-rov @inputApprov="searchManager"></app-rov>
                     </div>
                     <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">
                         
@@ -132,7 +132,12 @@ export default {
         const all_imiti = ref([])
 
         
+        const searchManager = (value){
+            console.log("You typed: ", value)
+        }
         const search_umuti = (value)=>{
+            need_to_updade.value = false
+            need_to_updade.value = true
             return all_imiti.value.filter((element)=>{
                 return element.umuti_name.match(value)
             })
@@ -355,6 +360,7 @@ export default {
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
             actualOption, closeApprov, getAllImiti, toSell,
+            searchManager,
         }
     },
 }
