@@ -130,12 +130,15 @@ export default {
         const approvStatus = ref(false)
         const need_to_updade = ref(false)
         const all_imiti = ref([])
-        const query_search = reactive({})
+
+        let query_search = (obj)=>{
+            return obj
+        }
 
         
         const searchManager = (value)=>{
             console.log("You typed: ", value)
-            query_search.value = value
+            query_search(value)
         }
         const search_umuti = (value)=>{
             need_to_updade.value = false
