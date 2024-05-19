@@ -135,7 +135,7 @@ export default {
 
         
         const searchManager = (value)=>{
-            console.log("You typed: ", value)
+            // console.log("You typed: ", value)
             query_search.value = value
             
         }
