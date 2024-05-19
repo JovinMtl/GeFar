@@ -31,6 +31,7 @@ export default defineComponent ({
         const data = reactive({})
         const imitiset:UmutiSet[] = ref([])
         let codes = new Array()
+        let jove = new Array()
 
         const needUpdate = inject('needUpdate_list')
         const need_search = inject('needSearch')
@@ -40,10 +41,24 @@ export default defineComponent ({
             // need_to_updade.value = false
             // need_to_updade.value = true
             console.log("we work on: ", value.query)
-            let jove = []
             imitiset.value.forEach(element => {
-                let obj = {element}
-                console.log(obj)
+                let obj = {
+                    'code_umuti' : element.code_umuti,
+                    'date_last_vente' : element.date_last_vente,
+                    'description_umuti' : element.description_umuti,
+                    'location': element.location,
+                    'lot': element.lot,
+                    'name_umuti': element.name_umuti,
+                    'price_in' : element.price_in,
+                    'price_out' : element.price_out,
+                    'qte_entrant_big' : element.qte_entrant_big,
+                    'quantite_restant': element.quantite_restant,
+                    'type_in': element.type_in,
+                    'type_out' : element.type_out
+                }
+                
+                jove.push(obj)
+                // console.log(obj)
             });
             console.log("data: ", jove)
             // return jove.filter((element)=>{
