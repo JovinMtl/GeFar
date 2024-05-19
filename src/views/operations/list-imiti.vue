@@ -38,21 +38,6 @@ export default defineComponent ({
         var shouldUpdate = needUpdate
 
         const search_umuti = (value)=>{
-            // need_to_updade.value = false
-            // need_to_updade.value = true
-            console.log("we work on: ", value.query)
-            
-            // return imiti_for_search.filter((element)=>{
-            //     return element.name_umuti.match(value.query)
-            // })
-            let jo = [
-                {'name':'nsanzumukiza'},
-                {'name':'nkurunzinza'}
-            ]
-            console.log("data: ", imiti_for_search, 'Jo:', jo)
-            // return jo.filter((element)=>{
-            //     return element.name.match('in')
-            // })
             return imiti_for_search.filter((element)=>{
                 return element.name_umuti.match((value.query).toLowerCase())
             })
