@@ -4,6 +4,10 @@
         
         <br> <br>
         <input v-model="umutiName" type="text" placeholder="Nom du medicament">
+        <hr>
+        <ul>
+            <li v-for="umuti in imiti_result">{{ umuti.name_umuti }} {{ umuti.code_umuti }} {{ umuti.description_umuti }}</li>
+        </ul>
         
         <br> <br>
         <label>Type de medicament</label>
