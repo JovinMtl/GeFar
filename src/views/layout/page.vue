@@ -148,8 +148,8 @@ export default {
         }
         const getAllImiti = (imiti)=>{
             // Has to gets all imiti gathered by list-imiti
-            all_imiti.value = imiti.value
-            console.log("All imiti are emitted : ", imiti.value)
+            all_imiti.value = imiti
+            console.log("All imiti are emitted : ", imiti)
             //attempting umuti with name_umuti: 'amoxi'
             // function kov (){
             //     let jove = [
