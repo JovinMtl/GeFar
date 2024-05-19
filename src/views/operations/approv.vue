@@ -58,7 +58,7 @@ export default {
                 'query': value,
                 'response': 1 // 1 mentionning that the response should come here
             }
-            // emit('inputApprov', obj)
+            emit('inputApprov', obj)
         })
         watch(result, (value)=>{
             // console.log("Now displaying the found:", value)
