@@ -61,7 +61,6 @@ export default {
             emit('inputApprov', obj)
         })
         watch(result, (value)=>{
-            // console.log("Now displaying the found:", value)
             imiti_result.value = value
         })
         return {

@@ -148,20 +148,9 @@ export default {
         }
         const getAllImiti = (imiti)=>{
             // Has to gets all imiti gathered by list-imiti
+            // once they are assigned then they are ready to be injected into approv componenet.
             all_imiti.value = imiti
             console.log("All imiti are emitted : ", imiti)
-            //attempting umuti with name_umuti: 'amoxi'
-            // function kov (){
-            //     let jove = [
-            //         {'name':'nsanzumukiza'},
-            //         {'name':'nkurunziza'}
-            //     ]
-            //     return (jove).filter((element)=>{
-            //         return element.name.match('uk')
-            //     })
-            // }
-            // let srch = kov()
-            // console.log("The search found: ", srch)
             
         }
 
