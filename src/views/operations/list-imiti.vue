@@ -31,7 +31,7 @@ export default defineComponent ({
         const data = reactive({})
         const imitiset:UmutiSet[] = ref([])
         let codes = new Array()
-        let imiti_for_search = new Array()
+        let imiti_for_search = []
 
         const needUpdate = inject('needUpdate_list')
         const need_search = inject('needSearch')
@@ -42,9 +42,19 @@ export default defineComponent ({
             // need_to_updade.value = true
             console.log("we work on: ", value.query)
             
-            console.log("data: ", imiti_for_search)
+            // return imiti_for_search.filter((element)=>{
+            //     return element.name_umuti.match(value.query)
+            // })
+            let jo = [
+                {'name':'nsanzumukiza'},
+                {'name':'nkurunzinza'}
+            ]
+            console.log("data: ", imiti_for_search, 'Jo:', jo)
+            // return jo.filter((element)=>{
+            //     return element.name.match('in')
+            // })
             return imiti_for_search.filter((element)=>{
-                return element.umuti_name.match(value.query)
+                return element.name_umuti.match(value.query)
             })
         }
 
