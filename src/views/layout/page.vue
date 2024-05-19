@@ -395,7 +395,7 @@ export default {
 }
 .approClass{
     width: 27.3vw;
-    height: 95%;
+    height: 97%;
     /* height: 100%; */
     /* background-color: #ff000079; */
     background-color: rgb(255, 255, 255);
@@ -529,7 +529,7 @@ export default {
   }
   .approClass::-webkit-scrollbar-track {
     background-color: #f1f1f1;
-    margin-top: 35px;
+    margin: 35px 0px;
   }
 
 </style>
