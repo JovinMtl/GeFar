@@ -75,6 +75,7 @@ input, textarea{
     background-color: rgba(25, 255, 25, 0.521);
     color: black;
     padding: 5px 5px;
+    /* margin: 0px 15px; */
     border-color: transparent;
 }
 .btnResearch{
