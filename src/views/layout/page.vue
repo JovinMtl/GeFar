@@ -356,8 +356,8 @@ export default {
 
 <style scoped>
 .bodyApprov{
-    border-top: 1px solid black;
-    border-bottom: 2px dashed black;
+    border-top: 2px double black;
+    border-bottom: 2px solid black;
 }
 .closeBtn{
     position: absolute; 
