@@ -356,6 +356,7 @@ export default {
         })
         provide('needUpdate_list', need_to_updade)
         provide('needSearch', query_search)
+        provide('imiti_search', all_imiti)
 
         return {
             selectedUmuti, panier_client, activeLot, actualValue,
