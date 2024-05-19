@@ -709,7 +709,7 @@ export default defineComponent ({
             let queryset = search_umuti(value.value)
             if(queryset && value.value.response==1){
                 emit('allImiti', queryset)
-                console.log("emitted on need_search")
+                // console.log("emitted on need_search")
             }
             console.log("Resp: ", queryset)
         })
