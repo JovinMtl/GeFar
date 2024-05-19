@@ -412,7 +412,7 @@ export default {
     top: 5px;
     text-align: center;
     transform: translate(134%);
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: auto;
     color: black;
     /* color: green */
