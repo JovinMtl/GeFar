@@ -355,6 +355,10 @@ export default {
 </script>
 
 <style scoped>
+.bodyApprov{
+    border-top: 1px solid black;
+    border-bottom: 2px dashed black;
+}
 .closeBtn{
     position: absolute; 
     left: 88%; 
@@ -401,7 +405,7 @@ export default {
     background-color: rgb(255, 255, 255);
     /* position: absolute; */
     position: relative;
-    padding: 0px 10px;
+    /* padding: 0px 0px; */
     /* color: rgb(63, 62, 62); */
     /* color: rgba(255, 255, 255, 0.3); */
     z-index: 1;
