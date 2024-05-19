@@ -139,13 +139,6 @@ export default {
             query_search.value = value
             
         }
-        const search_umuti = (value)=>{
-            need_to_updade.value = false
-            need_to_updade.value = true
-            return all_imiti.value.filter((element)=>{
-                return element.umuti_name.match(value)
-            })
-        }
         const getAllImiti = (imiti)=>{
             // Has to gets all imiti gathered by list-imiti
             // once they are assigned then they are ready to be injected into approv componenet.
