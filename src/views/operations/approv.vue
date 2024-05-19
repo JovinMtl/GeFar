@@ -5,8 +5,8 @@
         <br> <br>
         <input v-model="umutiName" type="text" placeholder="Nom du medicament">
         <hr>
-        <ul>
-            <li v-for="umuti in imiti_result">{{ umuti.name_umuti }} {{ umuti.code_umuti }} {{ umuti.description_umuti }}</li>
+        <ul style="text-align: right;">
+            <button class="btnResearch" v-for="umuti in imiti_result">{{ umuti.name_umuti }} {{ umuti.code_umuti }} {{ umuti.description_umuti }}</button>
         </ul>
         
         <br> <br>
@@ -48,12 +48,9 @@ import { watch, ref, inject, onUpdated, } from 'vue'
 export default {
     setup(_, {emit}) {
         var umutiName = ref('')
-
-
-        const imiti_result = inject('imiti_search')
-        onUpdated(()=>{
-            console.log("Approv is being updated:", imiti_result.value)
-        })
+        const imiti_result = ref([]) 
+        var result = inject('imiti_search')
+        
         watch(umutiName, (value)=>{
             let obj = {
                 'query': value,
@@ -61,8 +58,9 @@ export default {
             }
             emit('inputApprov', obj)
         })
-        watch(imiti_result, (value)=>{
+        watch(result, (value)=>{
             console.log("Now displaying the found:", value)
+            imiti_result.value = value
         })
         return {
             umutiName, imiti_result
@@ -78,8 +76,18 @@ input, textarea{
     padding: 5px 5px;
     border-color: transparent;
 }
-input::cue
-{
-    border-color: red;
+.btnResearch{
+    background-color: transparent;
+    border: 2px dashed black;
+    color: black;
+    margin-bottom: 5px;
+    padding: 5px 5px;
+}
+.btnResearch:active{
+    background-color: greenyellow;
+    border: 2px dashed black;
+    color: black;
+    margin-bottom: 5px;
+    padding: 5px 5px;
 }
 </style>

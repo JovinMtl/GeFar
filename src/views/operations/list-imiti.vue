@@ -707,7 +707,7 @@ export default defineComponent ({
         watch(need_search, (value)=>{
             // console.log("You want to search in list-imiti: ", value)
             let queryset = search_umuti(value.value)
-            if(queryset && value.value.response==1){
+            if(queryset && value.value.query.length > 0 && value.value.response==1){
                 emit('allImiti', queryset)
                 // console.log("emitted on need_search")
             }
