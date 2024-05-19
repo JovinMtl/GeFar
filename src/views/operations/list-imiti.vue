@@ -633,7 +633,6 @@ export default defineComponent ({
                 
                 if (response.ok){
                     data.value = await response.json()
-                    // imiti_for_search = await response.json()
                     console.log("THings are well received", data.value)
                     updateImitiSet()
                     update_imiti_for_search()
@@ -708,7 +707,10 @@ export default defineComponent ({
         watch(need_search, (value)=>{
             // console.log("You want to search in list-imiti: ", value)
             let queryset = search_umuti(value.value)
-            console.log("Resp: ", queryset)
+            if(queryset && value.value.response==1){
+                emit('allImiti', queryset)
+            }
+            // console.log("Resp: ", value.value.response)
         })
 
 
