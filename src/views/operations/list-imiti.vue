@@ -54,7 +54,7 @@ export default defineComponent ({
             //     return element.name.match('in')
             // })
             return imiti_for_search.filter((element)=>{
-                return element.name_umuti.match(value.query)
+                return element.name_umuti.match((value.query).toLowerCase())
             })
         }
 
@@ -697,7 +697,7 @@ export default defineComponent ({
                     'description_umuti' : element.description_umuti,
                     'location': element.location,
                     'lot': element.lot,
-                    'name_umuti': element.name_umuti,
+                    'name_umuti': (element.name_umuti).toLowerCase(),
                     'price_in' : element.price_in,
                     'price_out' : element.price_out,
                     'qte_entrant_big' : element.qte_entrant_big,
