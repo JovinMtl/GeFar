@@ -31,7 +31,7 @@ export default defineComponent ({
         const data = reactive({})
         const imitiset:UmutiSet[] = ref([])
         let codes = new Array()
-        let jove = new Array()
+        let imiti_for_search = new Array()
 
         const needUpdate = inject('needUpdate_list')
         const need_search = inject('needSearch')
@@ -57,11 +57,11 @@ export default defineComponent ({
                     'type_out' : element.type_out
                 }
                 
-                jove.push(obj)
+                imiti_for_search.push(obj)
                 // console.log(obj)
             });
-            console.log("data: ", jove)
-            // return jove.filter((element)=>{
+            console.log("data: ", imiti_for_search)
+            // return imiti_for_search.filter((element)=>{
             //     return element.umuti_name.match(value.query)
             // })
         }
@@ -656,6 +656,7 @@ export default defineComponent ({
                 
                 if (response.ok){
                     data.value = await response.json()
+                    imiti_for_search = await response.json()
                     console.log("THings are well received", data.value)
                     updateImitiSet()
                     // console.log("ImitiSet has lenght: ", data.value.length)
