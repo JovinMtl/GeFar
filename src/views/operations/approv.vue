@@ -42,7 +42,7 @@
         <label>Date d'exp. </label> 
         <!-- <br> -->
         <input type="date" placeholder="Nom du medicament">
-        <br>
+        <br><hr>
     </div>
 </template>
 <script>
