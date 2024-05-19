@@ -35,6 +35,22 @@ export default defineComponent ({
         const needUpdate = inject('needUpdate_list')
         const need_search = inject('needSearch')
         var shouldUpdate = needUpdate
+
+        const search_umuti = (value)=>{
+            // need_to_updade.value = false
+            // need_to_updade.value = true
+            console.log("we work on: ", value.query)
+            let jove = []
+            imitiset.value.forEach(element => {
+                let obj = {element}
+                console.log(obj)
+            });
+            console.log("data: ", jove)
+            // return jove.filter((element)=>{
+            //     return element.umuti_name.match(value.query)
+            // })
+        }
+
         const showUmuti = (code:number) => {
             if(code){
                 let umuti: UmutiSet = imitiset.value[code]
@@ -675,7 +691,9 @@ export default defineComponent ({
             }
         })
         watch(need_search, (value)=>{
-            console.log("You want to search in list-imiti: ", value)
+            // console.log("You want to search in list-imiti: ", value)
+            let queryset = search_umuti(value.value)
+            console.log("Resp: ", queryset)
         })
 
 
