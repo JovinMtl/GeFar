@@ -40,11 +40,16 @@
     </div>
 </template>
 <script>
-import { watch, ref } from 'vue'
+import { watch, ref, inject, onUpdated, } from 'vue'
 export default {
     setup(_, {emit}) {
         var umutiName = ref('')
-        
+
+
+        const imiti_result = inject('imiti_search')
+        onUpdated(()=>{
+            console.log("Approv is being updated:", imiti_result.value)
+        })
         watch(umutiName, (value)=>{
             let obj = {
                 'query': value,
@@ -52,8 +57,11 @@ export default {
             }
             emit('inputApprov', obj)
         })
+        watch(imiti_result, (value)=>{
+            console.log("Now displaying the found:", value)
+        })
         return {
-            umutiName,
+            umutiName, imiti_result
         }
     },
 }
