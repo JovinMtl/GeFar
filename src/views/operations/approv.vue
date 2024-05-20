@@ -46,6 +46,8 @@
             <br><hr>
         </section>
         <section v-if="selected_search">
+            <br> <br>
+            <input :value="selected_search.name_umuti" type="text" disabled="true" placeholder="Nom du medicament">
         </section>
     </div>
 </template>
