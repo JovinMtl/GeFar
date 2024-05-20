@@ -73,7 +73,7 @@ export default {
             imiti_result.value = value
         })
         return {
-            umutiName, imiti_result,
+            umutiName, imiti_result, selected_search,
             selectSearch,
         }
     },
