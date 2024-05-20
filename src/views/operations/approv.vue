@@ -7,7 +7,7 @@
         <hr>
         <ul style="text-align: right;">
             <button class="btnResearch" v-for="(umuti, index) in imiti_result" 
-                :id="'a' + index" @click="selectSearch(event)">
+                :id="'a' + index" @click="selectSearch">
                 {{ umuti.name_umuti }} {{ umuti.code_umuti }} {{ umuti.description_umuti }}
             </button>
         </ul>
@@ -47,7 +47,7 @@
     </div>
 </template>
 <script>
-import { watch, ref, inject, onUpdated, } from 'vue'
+import { watch, ref, inject } from 'vue'
 export default {
     setup(_, {emit}) {
         var umutiName = ref('')
@@ -55,7 +55,10 @@ export default {
         var result = inject('imiti_search')
 
         const selectSearch = (event)=>{
-            console.log("You selected ID: ". event.target.getAttribute('id'))
+            console.log("You selected ID: ", event.target.getAttribute('id'))
+            let code_s = Number((event.target.getAttribute('id')).slice(1))
+            let selected_search = imiti_result.value[code_s]
+            console.log("You selected umuti : ", selected_search)
         }
         
         watch(umutiName, (value)=>{
