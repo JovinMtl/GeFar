@@ -47,14 +47,33 @@
     </div>
 </template>
 <script>
-import { watch, ref, inject } from 'vue'
+import { watch, ref, inject, reactive } from 'vue'
 export default {
     setup(_, {emit}) {
         var umutiName = ref('')
         const imiti_result = ref([]) 
         const selected_search = ref(null)
+        const search_approve = reactive({})
         var result = inject('imiti_search')
 
+        const approve_handler = ()=>{
+            let obj = {
+                'code_umuti': selected_search.value.code_umuti,
+                'date_winjiriyeko': new Date(),
+                'date_uzohererako': undefined,
+                'name_umuti': selected_search.value.name_umuti,
+                'description_umuti': selected_search.value.description_umuti,
+                'type_umuti': selected_search.value.type_umuti,
+                'type_in': selected_search.value.type_in,
+                'ratio_type': selected_search.value.ratio_type,
+                'type_out': selected_search.value.type_out,
+                'price_in': undefined,
+                'price_out': undefined,
+                'quantite_initial': undefined,
+                'location': undefined,
+            }
+            search_approve.value = obj
+        }
         const selectSearch = (event)=>{
             console.log("You selected ID: ", event.target.getAttribute('id'))
             let code_s = Number((event.target.getAttribute('id')).slice(1))
