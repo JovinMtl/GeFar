@@ -358,6 +358,8 @@ export default {
 .bodyApprov{
     border-top: 2px double black;
     border-bottom: 2px solid black;
+    height: 80%;
+    width: 100%;
 }
 .closeBtn{
     position: absolute; 
