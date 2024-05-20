@@ -53,12 +53,18 @@
             <input v-model="selected_search.quantite_initial" type="number" 
                 placeholder="Quantite Initial">
                 <br> <br>
+                <label>Prix d'Achat </label>  
             <input v-model="selected_search.price_in" type="number" 
                 placeholder="Price in: (Type_in)">
             <br> <br>
+            <label>Prix de Vente </label> 
             <input v-model="selected_search.price_out" type="number" 
                 placeholder="Price out : (Type_in)">
             <br> <br>
+            <br>
+            <label>Date d'exp. </label> 
+            <!-- <br> -->
+            <input type="date" placeholder="Nom du medicament">
         </section>
     </div>
 </template>
@@ -83,7 +89,7 @@ export default {
                 'type_in': selected_search.value.type_in,
                 'ratio_type': selected_search.value.ratio_type,
                 'type_out': selected_search.value.type_out,
-                'price_in': undefined,
+                'price_in': null,
                 'price_out': undefined,
                 'quantite_initial': undefined,
                 'location': undefined,
