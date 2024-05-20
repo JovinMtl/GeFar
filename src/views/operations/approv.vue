@@ -79,6 +79,7 @@ export default {
             let code_s = Number((event.target.getAttribute('id')).slice(1))
             selected_search.value = imiti_result.value[code_s]
             console.log("You selected umuti : ", selected_search.value)
+            approve_handler()
         }
         
         watch(umutiName, (value)=>{
