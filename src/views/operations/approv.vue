@@ -1,10 +1,9 @@
 <template>
     <div>
         <h6>Ici on gère des approvisionnements</h6>
-        <section v-if="!selected_search">
             <br> <br>
             <input v-model="umutiName" type="text" placeholder="Nom du medicament">
-            <hr>
+            <br>
             <ul style="text-align: right;" v-if="!selected_search">
                 <button class="btnResearch" v-for="(umuti, index) in imiti_result" 
                     :id="'a' + index" @click="selectSearch">
@@ -31,7 +30,6 @@
             <br> <br>
             <input type="text" placeholder="Type out : Plaquette">
             <br><br>
-            <br> <br>
             <input type="text" placeholder="Price in: (Type_in)">
             <br> <br>
             <input type="text" placeholder="Price out : (Type_in)">
@@ -43,9 +41,8 @@
             <label>Date d'exp. </label> 
             <!-- <br> -->
             <input type="date" placeholder="Nom du medicament">
-            <br><hr>
-        </section>
-        <section v-if="selected_search">
+            <br>
+        <!-- <div v-if="selected_search">
             <br> <br>
             <label>Nom </label>
             <input :value="selected_search.name_umuti" type="text" 
@@ -65,9 +62,8 @@
             <br> <br>
             <br>
             <label>Date d'exp. </label> 
-            <!-- <br> -->
             <input v-model="selectSearch.date_uzohererako" type="date" placeholder="Nom du medicament">
-        </section>
+        </div> -->
     </div>
 </template>
 <script>
