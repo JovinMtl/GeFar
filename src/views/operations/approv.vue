@@ -52,13 +52,14 @@ export default {
     setup(_, {emit}) {
         var umutiName = ref('')
         const imiti_result = ref([]) 
+        const selected_search = ref(null)
         var result = inject('imiti_search')
 
         const selectSearch = (event)=>{
             console.log("You selected ID: ", event.target.getAttribute('id'))
             let code_s = Number((event.target.getAttribute('id')).slice(1))
-            let selected_search = imiti_result.value[code_s]
-            console.log("You selected umuti : ", selected_search)
+            selected_search.value = imiti_result.value[code_s]
+            console.log("You selected umuti : ", selected_search.value)
         }
         
         watch(umutiName, (value)=>{
