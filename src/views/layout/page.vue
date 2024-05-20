@@ -11,7 +11,9 @@
                        <h3>Entrée en Stock</h3>
                     </div>
                     <div class="bodyApprov">
-                        <app-rov @inputApprov="searchManager"></app-rov>
+                        <div class="bodyApprov2">
+                            <app-rov @inputApprov="searchManager"></app-rov>
+                        </div>
                     </div>
                     <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">
                         
@@ -355,13 +357,14 @@ export default {
 </script>
 
 <style scoped>
-.bodyApprov{
+.bodyApprov2{
+    overflow: auto;
     border-top: 2px double black;
-    border-bottom: 2px solid black;
-    /* display: block;
+}
+.bodyApprov{
     height: 80%;
     width: 100%;
-    overflow: auto; */
+    overflow: auto;
 }
 .closeBtn{
     position: absolute; 
