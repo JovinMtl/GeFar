@@ -5,7 +5,7 @@
         <br> <br>
         <input v-model="umutiName" type="text" placeholder="Nom du medicament">
         <hr>
-        <ul style="text-align: right;">
+        <ul style="text-align: right;" v-if="!selected_search">
             <button class="btnResearch" v-for="(umuti, index) in imiti_result" 
                 :id="'a' + index" @click="selectSearch">
                 {{ umuti.name_umuti }} {{ umuti.code_umuti }} {{ umuti.description_umuti }}
