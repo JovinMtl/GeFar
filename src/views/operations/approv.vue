@@ -47,7 +47,18 @@
         </section>
         <section v-if="selected_search">
             <br> <br>
-            <input :value="selected_search.name_umuti" type="text" disabled="true" placeholder="Nom du medicament">
+            <input :value="selected_search.name_umuti" type="text" 
+                disabled="true" placeholder="Nom du medicament">
+                <br> <br>
+            <input v-model="selected_search.quantite_initial" type="number" 
+                placeholder="Quantite Initial">
+                <br> <br>
+            <input v-model="selected_search.price_in" type="number" 
+                placeholder="Price in: (Type_in)">
+            <br> <br>
+            <input v-model="selected_search.price_out" type="number" 
+                placeholder="Price out : (Type_in)">
+            <br> <br>
         </section>
     </div>
 </template>
