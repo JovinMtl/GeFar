@@ -1,6 +1,7 @@
 <template>
     <div>
         <h6>Ici on gère des approvisionnements</h6>
+        <div v-if="!selected_search">
             <br> <br>
             <input v-model="umutiName" type="text" placeholder="Nom du medicament">
             <br>
@@ -41,8 +42,9 @@
             <label>Date d'exp. </label> 
             <!-- <br> -->
             <input type="date" placeholder="Nom du medicament">
-            <br>
-        <!-- <div v-if="selected_search">
+            <br><hr>
+        </div>
+        <div v-if="selected_search">
             <br> <br>
             <label>Nom </label>
             <input :value="selected_search.name_umuti" type="text" 
@@ -62,8 +64,9 @@
             <br> <br>
             <br>
             <label>Date d'exp. </label> 
+            <!-- <br> -->
             <input v-model="selectSearch.date_uzohererako" type="date" placeholder="Nom du medicament">
-        </div> -->
+        </div>
     </div>
 </template>
 <script>
