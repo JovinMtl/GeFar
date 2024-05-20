@@ -64,7 +64,7 @@
             <br>
             <label>Date d'exp. </label> 
             <!-- <br> -->
-            <input type="date" placeholder="Nom du medicament">
+            <input v-model="selectSearch.date_uzohererako" type="date" placeholder="Nom du medicament">
         </section>
     </div>
 </template>
