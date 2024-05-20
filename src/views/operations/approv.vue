@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h6>Ici on gere des approvisionnement</h6>
+        <h6>Ici on gère des approvisionnements</h6>
         <section v-if="!selected_search">
             <br> <br>
             <input v-model="umutiName" type="text" placeholder="Nom du medicament">
