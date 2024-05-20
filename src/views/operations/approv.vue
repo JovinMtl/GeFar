@@ -53,6 +53,10 @@ export default {
         var umutiName = ref('')
         const imiti_result = ref([]) 
         var result = inject('imiti_search')
+
+        const selectSearch = (event)=>{
+            console.log("You selected ID: ". event.target.getAttribute('id'))
+        }
         
         watch(umutiName, (value)=>{
             let obj = {
@@ -65,7 +69,8 @@ export default {
             imiti_result.value = value
         })
         return {
-            umutiName, imiti_result
+            umutiName, imiti_result,
+            selectSearch,
         }
     },
 }
