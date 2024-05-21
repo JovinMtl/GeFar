@@ -1,15 +1,11 @@
 
 import { ref } from 'vue'
-export default {
-    setup(){
-        const approvStatus = ref(false)
+export default function useCloseApprov(){
+    const approvStatus = ref(false)
 
-        const closeApprov = ()=>{
-            approvStatus.value = false
-        }
-
-        return {
-            closeApprov
-        }
+    const closeApprov = ()=>{
+        approvStatus.value = false
     }
+
+    return closeApprov
 }
