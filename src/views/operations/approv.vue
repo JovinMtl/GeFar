@@ -2,7 +2,7 @@
     <div>
         <h6>Ici on gère des approvisionnements</h6>
         <div v-if="!selected_search">
-            <a href="http://" title="Importer les medicaments dans un fichier " 
+            <a title="Importer les medicaments dans un fichier " 
                 target="_blank" rel="noopener noreferrer"
                 style="color: black;">
                 <ion-icon :src="fileTray" @click="openApproFile"></ion-icon>
