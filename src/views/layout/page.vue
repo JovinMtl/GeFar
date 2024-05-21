@@ -106,6 +106,7 @@ import {
 import search from './auxiliare/search.vue';
 import menu from './auxiliare/menu.vue';
 import approv from '../operations/approv.vue';
+import approvFile from '../operations/approv-file.vue';
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
 import { 
@@ -119,6 +120,7 @@ export default {
         'me-nu': menu,
         'list-imiti': listImiti,
         'app-rov': approv,
+        'appro-file': approFile,
         IonContent, IonPage, 
         IonIcon,
     },
