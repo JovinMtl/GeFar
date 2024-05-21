@@ -22,7 +22,7 @@ export default {
 
         const closeApprov = ()=>{
             ui_isActive.value = false
-            emit('approFile', 0)
+            emit('approFileClose', 0)
         }
         return {
             close,
