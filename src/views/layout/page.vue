@@ -109,6 +109,7 @@ import search from './auxiliare/search.vue';
 import menu from './auxiliare/menu.vue';
 import approv from '../operations/approv.vue';
 import approvFile from '../operations/approv-file.vue';
+// import useCloseApprov from '../hooks/jove'
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
 import { 
@@ -127,6 +128,8 @@ export default {
         IonIcon,
     },
     setup() {
+        // const [approvStatus] = useCloseApprov()
+
         const selectedUmuti = reactive({})
         const panier_client = ref([])
         const panier_api = ref([])
@@ -134,7 +137,7 @@ export default {
         const actualQte = ref(1)
         const actualValue = ref(0)
         const total_panier_client = ref(0)
-        // const approvStatus = ref(false)
+        const approvStatus = ref(false)
         const need_to_updade = ref(false)
         const all_imiti = ref([])
 
@@ -154,9 +157,9 @@ export default {
             
         }
 
-        // const closeApprov = ()=>{
-        //     approvStatus.value = false
-        // }
+        const closeApprov = ()=>{
+            approvStatus.value = false
+        }
         const actualOption = (value)=>{
             console.log("THe actual menu is : ", value)
             if(value == 2){
