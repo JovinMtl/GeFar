@@ -31,7 +31,7 @@ export default {
         return {
             close,
             ui_isActive,
-            closeApprov,
+            closeApprov,onlyFile,
         }
     },
 }
