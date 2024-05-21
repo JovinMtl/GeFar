@@ -72,7 +72,11 @@
 <script>
 import { watch, ref, inject, reactive } from 'vue'
 import { fileTrayOutline } from 'ionicons/icons'
+import { IonIcon } from '@ionic/vue'
 export default {
+    components:{
+        IonIcon,
+    },
     setup(_, {emit}) {
         var umutiName = ref('')
         const imiti_result = ref([]) 
