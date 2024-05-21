@@ -72,7 +72,7 @@
 </template>
 <script>
 import { watch, ref, inject, reactive } from 'vue'
-import { fileTrayOutline, fileTray, fileTrayFullOutline, } from 'ionicons/icons'
+import { fileTray } from 'ionicons/icons'
 import { IonIcon } from '@ionic/vue'
 export default {
     components:{
@@ -123,7 +123,7 @@ export default {
         })
         return {
             umutiName, imiti_result, selected_search,
-            fileTrayOutline, fileTray, fileTrayFullOutline,
+            fileTray,
             selectSearch,
         }
     },
