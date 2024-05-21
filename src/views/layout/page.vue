@@ -376,6 +376,7 @@ export default {
     background-color: rgba(79, 92, 75, 0.9);
     width: 60vw; 
     height: 90vh; 
+    padding-top: 20%;
     z-index: 2; 
     left: 15vw;
 }
