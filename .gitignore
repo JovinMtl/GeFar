@@ -4,3 +4,4 @@ src/assets
 src/components
 src/plugins
 src/views/HomeView.vue
+src/theme/pattern.css
