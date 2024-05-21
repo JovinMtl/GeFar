@@ -2,6 +2,7 @@
     <div>
         <h6>Ici on gère des approvisionnements</h6>
         <div v-if="!selected_search">
+            <ion-icon :src="fileTrayOutline"></ion-icon>
             <br> <br>
             <input v-model="umutiName" type="text" placeholder="Nom du medicament">
             <br>
