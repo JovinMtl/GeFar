@@ -2,8 +2,8 @@
     <ion-page>
         <ion-content>
             <div class="mainApprob" v-if="approvStatus">
-                <div class="approFile" style=""></div>
-                <div class="approClass">
+                <!-- <div class="approFile" style=""></div> -->
+                <!-- <div class="approClass">
                     <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
                         
                     <span class="closeBtn" style="">
@@ -20,7 +20,7 @@
                         
                         <button class="btnSave">Enregister</button>
                     </div>
-                </div>
+                </div> -->
             </div>
             
             <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
@@ -366,6 +366,14 @@ export default {
     z-index: 2; 
     left: 15vw;
 }
+.mainApprob{
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255,255, 0.5); 
+    text-align: center;
+    z-index: 2;
+}
 .bodyApprov2{
     overflow: auto;
     border-top: 2px double black;
@@ -405,14 +413,7 @@ export default {
     /* border: 1px solid black; */
     /* box-shadow: 0 0 20px black; */
 }
-.mainApprob{
-    position:absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(255, 255,255, 0.5); 
-    text-align: center;
-    /* z-index: -10009; */
-}
+
 .approClass{
     width: 27.3vw;
     height: 97%;
