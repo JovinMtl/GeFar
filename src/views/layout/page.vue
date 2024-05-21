@@ -122,7 +122,7 @@ export default {
         'me-nu': menu,
         'list-imiti': listImiti,
         'app-rov': approv,
-        'appro-file': approFile,
+        'appro-file': approvFile,
         IonContent, IonPage, 
         IonIcon,
     },
