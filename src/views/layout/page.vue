@@ -138,12 +138,15 @@ export default {
         const actualValue = ref(0)
         const total_panier_client = ref(0)
         const approvStatus = ref(false)
+        const approFileStatus = ref(false)
         const need_to_updade = ref(false)
         const all_imiti = ref([])
 
         const query_search = reactive({})
 
-        
+        // const closeApproFile = (){
+        //     //
+        // }
         const searchManager = (value)=>{
             // console.log("You typed: ", value)
             query_search.value = value
