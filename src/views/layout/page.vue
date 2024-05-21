@@ -2,7 +2,7 @@
     <ion-page>
         <ion-content>
             <div class="mainApprob" v-if="approvStatus">
-                <div class="approFile" style="">
+                <div class="approFile" v-if="approFileStatus">
                     <appro-file @approFileClose="closeApproFile"></appro-file>
                 </div>
                 <div class="approClass">
@@ -359,7 +359,7 @@ export default {
         return {
             selectedUmuti, panier_client, activeLot, actualValue,
             actualQte, total_panier_client,
-            approvStatus,
+            approvStatus, approFileStatus,
             close,  addCircleOutline, removeCircleOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
