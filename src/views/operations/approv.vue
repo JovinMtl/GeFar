@@ -86,7 +86,7 @@ export default {
         var result = inject('imiti_search')
 
         const openApproFile = ()=>{
-            emit('openApproFile', 1)
+            emit('approFileOpen', 1)
         }
         const approve_handler = ()=>{
             let obj = {
