@@ -5,7 +5,7 @@
             <ion-icon :src="close" @click="closeApprov"></ion-icon>
         </span>
         Here we input the file
-        <input type="file" placeholder="choose file" />
+        <input id="onlyFile" type="file" @change="fileHandler" placeholder="choose file" />
     </div>
 </template>
 
@@ -20,6 +20,10 @@ export default {
     setup(_, {emit}) {
         const ui_isActive = ref(true)
 
+        const fileHandler = ()=>{
+            const selectedFile = document.getElementById('onlyFile').files[0]
+            console.log("The filename is :", selectedFile.name)
+        }
         const closeApprov = ()=>{
             ui_isActive.value = false
             emit('approFileClose', 0)
