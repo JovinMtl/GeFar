@@ -15,7 +15,7 @@
                     </div>
                     <div class="bodyApprov">
                         <div class="bodyApprov2">
-                            <app-rov @inputApprov="searchManager"></app-rov>
+                            <app-rov @inputApprov="searchManager" @approFileOpen="openApproFile"></app-rov>
                         </div>
                     </div>
                     <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">
