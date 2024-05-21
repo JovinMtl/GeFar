@@ -364,7 +364,7 @@ export default {
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
             actualOption, closeApprov, getAllImiti, toSell,
-            searchManager,
+            searchManager, openApproFile, closeApproFile,
         }
     },
 }
