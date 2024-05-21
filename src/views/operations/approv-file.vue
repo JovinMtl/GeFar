@@ -22,7 +22,8 @@ export default {
 
         const fileHandler = ()=>{
             const selectedFile = document.getElementById('file1').files[0]
-            console.log("The filename is :", selectedFile.name)
+            console.log("The filename is :", selectedFile.type)
+            const file_blob = URL.createObjectURL(selectedFile)
         }
         const closeApprov = ()=>{
             ui_isActive.value = false
