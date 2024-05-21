@@ -2,9 +2,9 @@
     <ion-page>
         <ion-content>
             <div class="mainApprob" v-if="approvStatus">
-                <!-- <div class="approFile" style="">
+                <div class="approFile" style="">
                     <appro-file></appro-file>
-                </div> -->
+                </div>
                 <div class="approClass">
                     <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
                         
