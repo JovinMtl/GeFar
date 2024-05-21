@@ -2,7 +2,7 @@
     <div>
         <h6>Ici on gère des approvisionnements</h6>
         <div v-if="!selected_search">
-            <ion-icon :src="fileTray"></ion-icon>
+            <ion-icon :src="fileTray" @click="openApproFile"></ion-icon>
             <br> <br>
             <input v-model="umutiName" type="text" placeholder="Nom du medicament">
             <br>
@@ -85,6 +85,9 @@ export default {
         const search_approve = reactive({})
         var result = inject('imiti_search')
 
+        const openApproFile = ()=>{
+            emit('openApproFile', 1)
+        }
         const approve_handler = ()=>{
             let obj = {
                 'code_umuti': selected_search.value.code_umuti,
