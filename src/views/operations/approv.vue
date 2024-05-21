@@ -2,7 +2,10 @@
     <div>
         <h6>Ici on gère des approvisionnements</h6>
         <div v-if="!selected_search">
-            <ion-icon :src="fileTray" @click="openApproFile"></ion-icon>
+            <a href="http://" title="Importer les medicaments dans un fichier " 
+                target="_blank" rel="noopener noreferrer">
+                <ion-icon :src="fileTray" @click="openApproFile"></ion-icon>
+            </a>
             <br> <br>
             <input v-model="umutiName" type="text" placeholder="Nom du medicament">
             <br>
