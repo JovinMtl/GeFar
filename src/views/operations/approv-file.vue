@@ -5,7 +5,7 @@
             <ion-icon :src="close" @click="closeApprov"></ion-icon>
         </span>
         Here we input the file
-        <input id="onlyFile" type="file" @change="fileHandler" placeholder="choose file" />
+        <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
     </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
         const ui_isActive = ref(true)
 
         const fileHandler = ()=>{
-            const selectedFile = document.getElementById('onlyFile').files[0]
+            const selectedFile = document.getElementById('file1').files[0]
             console.log("The filename is :", selectedFile.name)
         }
         const closeApprov = ()=>{
@@ -31,7 +31,7 @@ export default {
         return {
             close,
             ui_isActive,
-            closeApprov,onlyFile,
+            closeApprov, fileHandler,
         }
     },
 }
