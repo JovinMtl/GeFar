@@ -3,7 +3,7 @@
         <ion-content>
             <div class="mainApprob" v-if="approvStatus">
                 <!-- <div class="approFile" style=""></div> -->
-                <!-- <div class="approClass">
+                <div class="approClass">
                     <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
                         
                     <span class="closeBtn" style="">
@@ -20,7 +20,7 @@
                         
                         <button class="btnSave">Enregister</button>
                     </div>
-                </div> -->
+                </div>
             </div>
             
             <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
