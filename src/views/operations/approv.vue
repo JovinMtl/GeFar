@@ -2,7 +2,7 @@
     <div>
         <h6>Ici on gère des approvisionnements</h6>
         <div v-if="!selected_search">
-            <ion-icon :src="fileTrayOutline"></ion-icon>
+            <ion-icon :src="fileTray"></ion-icon>
             <br> <br>
             <input v-model="umutiName" type="text" placeholder="Nom du medicament">
             <br>
@@ -72,7 +72,7 @@
 </template>
 <script>
 import { watch, ref, inject, reactive } from 'vue'
-import { fileTrayOutline } from 'ionicons/icons'
+import { fileTrayOutline, fileTray, fileTrayFullOutline, } from 'ionicons/icons'
 import { IonIcon } from '@ionic/vue'
 export default {
     components:{
@@ -123,7 +123,7 @@ export default {
         })
         return {
             umutiName, imiti_result, selected_search,
-            fileTrayOutline,
+            fileTrayOutline, fileTray, fileTrayFullOutline,
             selectSearch,
         }
     },
