@@ -2,7 +2,7 @@
     <ion-page>
         <ion-content>
             <div class="mainApprob" v-if="approvStatus">
-                <div class="approFile"></div>
+                <div class="approFile" style=""></div>
                 <div class="approClass">
                     <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
                         
@@ -358,6 +358,14 @@ export default {
 </script>
 
 <style scoped>
+.approFile{
+    position: absolute;
+    background-color: rgba(103, 139, 92, 0.7);
+    width: 60vw; 
+    height: 90vh; 
+    z-index: 2; 
+    left: 15vw;
+}
 .bodyApprov2{
     overflow: auto;
     border-top: 2px double black;
@@ -399,8 +407,8 @@ export default {
 }
 .mainApprob{
     position:absolute;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(255, 255,255, 0.5); 
     text-align: center;
     /* z-index: -10009; */
