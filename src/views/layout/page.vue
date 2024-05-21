@@ -364,7 +364,7 @@ export default {
 <style scoped>
 .approFile{
     position: absolute;
-    background-color: rgba(103, 139, 92, 0.7);
+    background-color: rgba(79, 92, 75, 0.9);
     width: 60vw; 
     height: 90vh; 
     z-index: 2; 
