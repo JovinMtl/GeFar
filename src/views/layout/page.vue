@@ -144,9 +144,9 @@ export default {
 
         const query_search = reactive({})
 
-        // const closeApproFile = (){
-        //     //
-        // }
+        const closeApproFile = ()=>{
+            closeApproFile.value = false
+        }
         const searchManager = (value)=>{
             // console.log("You typed: ", value)
             query_search.value = value
