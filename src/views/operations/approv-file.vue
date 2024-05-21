@@ -12,13 +12,22 @@
 <script>
 import { IonIcon } from '@ionic/vue'
 import { close } from 'ionicons/icons'
+import { ref } from 'vue'
 export default {
     components: {
         IonIcon,
     },
-    setup() {
+    setup(_, {emit}) {
+        const ui_isActive = ref(true)
+
+        const closeApprov = ()=>{
+            ui_isActive.value = false
+            emit('approFile', 0)
+        }
         return {
             close,
+            ui_isActive,
+            closeApprov,
         }
     },
 }
