@@ -127,7 +127,7 @@ export default {
         return {
             umutiName, imiti_result, selected_search,
             fileTray,
-            selectSearch,
+            selectSearch, openApproFile,
         }
     },
 }
