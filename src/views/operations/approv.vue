@@ -71,6 +71,7 @@
 </template>
 <script>
 import { watch, ref, inject, reactive } from 'vue'
+import { fileTrayOutline } from 'ionicons/icons'
 export default {
     setup(_, {emit}) {
         var umutiName = ref('')
@@ -117,6 +118,7 @@ export default {
         })
         return {
             umutiName, imiti_result, selected_search,
+            fileTrayOutline,
             selectSearch,
         }
     },
