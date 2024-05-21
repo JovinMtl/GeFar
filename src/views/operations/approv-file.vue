@@ -2,9 +2,10 @@
 <template>
     <div>
         <span class="closeBtn" style="">
-                        <ion-icon :src="close" @click="closeApprov"></ion-icon>
-                    </span>
+            <ion-icon :src="close" @click="closeApprov"></ion-icon>
+        </span>
         Here we input the file
+        <input type="file" placeholder="choose file" />
     </div>
 </template>
 
