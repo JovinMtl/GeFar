@@ -67,3 +67,10 @@ ion-page{
     /* top: -8vh; */
     left: 33vw;
 }
+
+.closeBtn{
+    position: absolute; 
+    left: 88%; 
+    top: 10px; 
+    font-size: 2rem;
+}

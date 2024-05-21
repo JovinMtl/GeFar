@@ -387,12 +387,7 @@ export default {
     width: 100%;
     overflow: auto;
 }
-.closeBtn{
-    position: absolute; 
-    left: 88%; 
-    top: 10px; 
-    font-size: 2rem;
-}
+
 .closeBtn:active{
     position: absolute; 
     left: 88%; 
