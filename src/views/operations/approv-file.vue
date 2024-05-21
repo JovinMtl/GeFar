@@ -24,6 +24,10 @@ export default {
             const selectedFile = document.getElementById('file1').files[0]
             console.log("The filename is :", selectedFile.type)
             const file_blob = URL.createObjectURL(selectedFile)
+            let fileRead = new FileReader(file_blob)
+            let content = fileRead.readAsText(file_blob)
+            console.log("The content: ", content.result)
+            
         }
         const closeApprov = ()=>{
             ui_isActive.value = false
