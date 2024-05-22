@@ -93,7 +93,7 @@ export default {
         const imiti_loaded = ref([])
 
         const ListenNewChange = (event)=>{
-            console.log("You onBlured on ID: ", event.target.getAttribute('id'))
+            console.log("You onBlured  on ID: ", event.target.getAttribute('id'))
             let [ i, j ] = (event.target.getAttribute('id')).split(';')
             console.log("The left value : ", event.target.value)
             console.log("the second line : ", imiti_loaded.value[1][j])
