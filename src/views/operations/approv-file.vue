@@ -24,9 +24,17 @@ export default {
             const selectedFile = document.getElementById('file1').files[0]
             console.log("The filename is :", selectedFile.type)
             const file_blob = URL.createObjectURL(selectedFile)
-            let fileRead = new FileReader(file_blob)
-            let content = await fileRead.readAsText(file_blob)
-            console.log("The content: ", content.result)
+            // Create a new FileReader object for reading the selected file
+            let fileReader = new FileReader();
+
+            // Define a function to be executed when the file is read
+            fileReader.onload = () => {
+                console.log("The content:", fileReader.result);
+            };
+
+            // Read the content of the selected file
+            fileReader.readAsText(selectedFile, 'utf-8');
+            
             
         }
         const closeApprov = ()=>{
