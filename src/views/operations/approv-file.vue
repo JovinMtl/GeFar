@@ -48,7 +48,7 @@
             <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
             <!-- <input value="jo"/> -->
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
-                    <input :id="index +';0'" style="width: 100%; height: 100%;" value="jo" @click="ListenNewChange"/> 
+                    <input :id="index +';0'" style="width: 100%; height: 100%;" :value="umuti.Nom" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
                     <input :id="index +';1'" style="width: 100%; height: 100%;" value="ve" @click="ListenNewChange"/> 
