@@ -4,8 +4,10 @@
         <span class="closeBtn" style="">
             <ion-icon :src="close" @click="closeApprov"></ion-icon>
         </span>
-        Here we input the file
+        <!-- <div style="position: sticky; top: -110%;">
+            Here we input the file
         <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
+        </div> -->
         <br><br>
         <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: -10px 10px; font-size: .8rem;position: sticky; top: -99%;">
         
