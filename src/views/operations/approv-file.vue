@@ -29,7 +29,13 @@ export default {
 
             // Define a function to be executed when the file is read
             fileReader.onload = () => {
-                console.log("The content:", fileReader.result);
+                // console.log("The content:", fileReader.result);
+                let content = fileReader.result
+                let lines = content.split('\n')
+                let first_line = lines[1]
+                let second_line = lines[2]
+                console.log("first line:", first_line)
+                console.log("Second line: ", second_line)
             };
 
             // Read the content of the selected file
