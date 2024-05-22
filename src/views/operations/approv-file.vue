@@ -69,10 +69,10 @@
                     <input :id="index +';6'" style="width: 100%; height: 100%;" :value="umuti.Price_in" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input :id="index +';7'" style="width: 100%; height: 100%;" value="pe" @click="ListenNewChange"/> 
+                    <input :id="index +';7'" style="width: 100%; height: 100%;" :value="umuti.Price_out" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input :id="index +';8'" style="width: 100%; height: 100%;" value="5" @click="ListenNewChange"/> 
+                    <input :id="index +';8'" style="width: 100%; height: 100%;" :value="umuti.Qte_initial" @click="ListenNewChange"/> 
                 </div>
             </div>
         </div>
