@@ -54,10 +54,10 @@
                     <input :id="index +';1'" style="width: 100%; height: 100%;" :value="umuti.Type_medicament" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input :id="index +';2'" style="width: 100%; height: 100%;" value="in" @click="ListenNewChange"/> 
+                    <input :id="index +';2'" style="width: 100%; height: 100%;" :value="umuti.Description" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input :id="index +';3'" style="width: 100%; height: 100%;" value="lo" @click="ListenNewChange"/> 
+                    <input :id="index +';3'" style="width: 100%; height: 100%;" :value="umuti.Ratio" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
                     <input :id="index +';4'" style="width: 100%; height: 100%;" value="te" @click="ListenNewChange"/> 
