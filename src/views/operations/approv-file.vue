@@ -37,17 +37,31 @@ export default {
                 let lines = content.split('\n')
                 let first_line = lines[1]
                 let second_line = lines[2]
+                let obj_array = []
                 let line_length = second_line.split(',').length
                 let jove = 'Nom'
-                let obj = {
-                    [jove ? 'Nomme':'Nome']: 'Nsanzumukiza'
-                }
-                console.log("The obj is :", obj)
+                // let obj = {
+                //     [jove ? 'Nomme':'Nome']: 'Nsanzumukiza'
+                // }
+                // console.log("The obj is :", obj)
                 console.log("the first column is :", second_line.split(',')[1])
                 console.log("The length of the line is : ", line_length)
-                // for(let i = 1; i < lines.length; i++){
+                
+                lines.forEach(element => {
+                    let columns = element.split(',')
+                    let obj = {}
+                    for(let i=1; i < line_length; i++){
+                        if(columns[i]){
+                            obj[first_line.split(',')[i]] = columns[i]
+                        }
+                    }
 
-                // }
+                    if(obj){
+                        obj_array.push(obj)
+                    }
+                    
+                });
+                console.log("The obj array is : ", obj_array)
             };
             
             
