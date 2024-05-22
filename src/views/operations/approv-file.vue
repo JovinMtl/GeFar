@@ -55,8 +55,8 @@ export default {
                             obj[first_line.split(',')[i]] = columns[i]
                         }
                     }
-
-                    if(obj){
+                    
+                    if(obj[first_line.split(',')[1]]){
                         obj_array.push(obj)
                     }
                     
