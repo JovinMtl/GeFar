@@ -19,6 +19,7 @@ export default {
     },
     setup(_, {emit}) {
         const ui_isActive = ref(true)
+        const imiti_loaded = ref([])
 
         const fileHandler = async ()=>{
             const selectedFile = document.getElementById('file1').files[0]
