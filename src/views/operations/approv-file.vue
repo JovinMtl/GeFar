@@ -48,31 +48,31 @@
             <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
             <!-- <input value="jo"/> -->
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
-                    <input :id="index +';0'" style="width: 100%; height: 100%;" :value="umuti.Nom" @click="ListenNewChange"/> 
+                    <input :id="index +';0'" style="width: 100%; height: 100%;" :value="umuti.Nom" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';1'" style="width: 100%; height: 100%;" :value="umuti.Type_medicament" @click="ListenNewChange"/> 
+                    <input :id="index +';1'" style="width: 100%; height: 100%;" :value="umuti.Type_medicament" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input :id="index +';2'" style="width: 100%; height: 100%;" :value="umuti.Description" @click="ListenNewChange"/> 
+                    <input :id="index +';2'" style="width: 100%; height: 100%;" :value="umuti.Description" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input :id="index +';3'" style="width: 100%; height: 100%;" :value="umuti.Ratio" @click="ListenNewChange"/> 
+                    <input :id="index +';3'" style="width: 100%; height: 100%;" :value="umuti.Ratio" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input :id="index +';4'" style="width: 100%; height: 100%;" :value="umuti.Type_in" @click="ListenNewChange"/> 
+                    <input :id="index +';4'" style="width: 100%; height: 100%;" :value="umuti.Type_in" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';5'" style="width: 100%; height: 100%;" :value="umuti.Type_out" @click="ListenNewChange"/> 
+                    <input :id="index +';5'" style="width: 100%; height: 100%;" :value="umuti.Type_out" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input :id="index +';6'" style="width: 100%; height: 100%;" :value="umuti.Price_in" @click="ListenNewChange"/> 
+                    <input :id="index +';6'" style="width: 100%; height: 100%;" :value="umuti.Price_in" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input :id="index +';7'" style="width: 100%; height: 100%;" :value="umuti.Price_out" @click="ListenNewChange"/> 
+                    <input :id="index +';7'" style="width: 100%; height: 100%;" :value="umuti.Price_out" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input :id="index +';8'" style="width: 100%; height: 100%;" :value="umuti.Qte_initial" @click="ListenNewChange"/> 
+                    <input :id="index +';8'" style="width: 100%; height: 100%;" :value="umuti.Qte_initial" @blur="ListenNewChange"/> 
                 </div>
             </div>
         </div>
@@ -93,7 +93,10 @@ export default {
         const imiti_loaded = ref([])
 
         const ListenNewChange = (event)=>{
-            console.log("You clicked on ID: ", event.target.getAttribute('id'))
+            console.log("You onBlured on ID: ", event.target.getAttribute('id'))
+            let [ i, j ] = (event.target.getAttribute('id')).split(';')
+            console.log("The left value : ", event.target.value)
+            console.log("the second line : ", imiti_loaded.value[1])
         }
         const fileHandler = async ()=>{
             const selectedFile = document.getElementById('file1').files[0]
