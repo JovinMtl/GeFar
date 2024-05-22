@@ -350,6 +350,7 @@ export default {
         
         const getUmuti = (umuti) => {
             // THis one handles the umuti when it was emitted from list-imiti component.
+            console.log("Gotten:", umuti, 'and:', selectedUmuti.value)
             if(!selectedUmuti.value){
                 console.log("It is not the same: ", selectedUmuti.value, 'and', umuti.code_umuti)
                 selectedUmuti.value = umuti
