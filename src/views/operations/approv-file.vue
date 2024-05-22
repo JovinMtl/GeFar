@@ -146,7 +146,7 @@ export default {
         return {
             close,
             ui_isActive, imiti_loaded, 
-            closeApprov, fileHandler,
+            closeApprov, fileHandler, ListenNewChange,
         }
     },
 }
