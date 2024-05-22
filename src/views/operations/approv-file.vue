@@ -60,7 +60,7 @@
                     <input :id="index +';3'" style="width: 100%; height: 100%;" :value="umuti.Ratio" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input :id="index +';4'" style="width: 100%; height: 100%;" value="te" @click="ListenNewChange"/> 
+                    <input :id="index +';4'" style="width: 100%; height: 100%;" :value="umuti.Type_in" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
                     <input :id="index +';5'" style="width: 100%; height: 100%;" value="10" @click="ListenNewChange"/> 
