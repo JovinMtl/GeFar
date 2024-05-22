@@ -37,7 +37,7 @@ export default {
                 let lines = content.split('\n')
                 let first_line = lines[1]
                 let second_line = lines[2]
-                let line_length = second_line.length
+                let line_length = second_line.split(',').length
                 let jove = 'Nom'
                 let obj = {
                     [jove ? 'Nomme':'Nome']: 'Nsanzumukiza'
