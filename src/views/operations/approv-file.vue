@@ -74,7 +74,7 @@ export default {
         }
         return {
             close,
-            ui_isActive,
+            ui_isActive, imiti_loaded, 
             closeApprov, fileHandler,
         }
     },
