@@ -359,6 +359,7 @@ export default {
             } else if(selectedUmuti.value.code_umuti === umuti.code_umuti){
                 console.log("It is the same: ", selectedUmuti.value, 'and', umuti)
                 selectedUmuti.value = {}
+                activeLot.value = []
             }
             
         }
