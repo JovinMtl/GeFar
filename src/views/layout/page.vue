@@ -379,6 +379,7 @@ export default {
     padding-top: 20%;
     z-index: 2; 
     left: 15vw;
+    overflow: auto;
 }
 .mainApprob{
     position:absolute;
