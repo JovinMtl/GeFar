@@ -3,7 +3,16 @@
         <ion-content>
             <div class="mainApprob" v-if="approvStatus">
                 <div class="approFile" v-if="approFileStatus">
-                    <appro-file @approFileClose="closeApproFile"></appro-file>
+                    <div class="approFileHeader" style="width: 100%;height: 8%;background-color: gray;display: block; align-content: center">
+                        <div style="display: inline;position: sticky; top: -110%; z-index: -0">
+                            Here we input the file
+                            <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
+                        </div>
+                    </div>
+                    <div class="approfileBody">
+                        <appro-file @approFileClose="closeApproFile"></appro-file>
+                    </div>
+                    
                 </div>
                 <div class="approClass">
                     <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
@@ -371,15 +380,27 @@ export default {
 </script>
 
 <style scoped>
+.approfileBody{
+    display: block;
+    position: absolute;
+    background-color: rgba(79, 92, 75, 0.9);
+    width: 100%; 
+    height: 90%; 
+    /* padding-top: 20%; */
+    z-index: 2; 
+    /* left: 15vw; */
+    overflow: auto;
+}
 .approFile{
+    display: block;
     position: absolute;
     background-color: rgba(79, 92, 75, 0.9);
     width: 60vw; 
     height: 90vh; 
-    padding-top: 20%;
+    /* padding-top: 20%; */
     z-index: 2; 
     left: 15vw;
-    overflow: auto;
+    /* overflow: auto; */
 }
 .mainApprob{
     position:absolute;
