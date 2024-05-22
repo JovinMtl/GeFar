@@ -6,6 +6,13 @@
         </span>
         Here we input the file
         <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
+        <br><br>
+        <div class="imitiDisplay" v-if="imiti_loaded">
+            <p>Imiti is well loaded</p>
+            <ol>
+                <li v-for="umuti in imiti_loaded">{{ umuti.Nom }}</li>
+            </ol>
+        </div>
     </div>
 </template>
 
