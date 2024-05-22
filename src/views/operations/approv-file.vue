@@ -27,6 +27,9 @@ export default {
             // Create a new FileReader object for reading the selected file
             let fileReader = new FileReader();
 
+            // Read the content of the selected file
+            fileReader.readAsText(selectedFile);
+
             // Define a function to be executed when the file is read
             fileReader.onload = () => {
                 // console.log("The content:", fileReader.result);
@@ -37,9 +40,6 @@ export default {
                 console.log("first line:", first_line)
                 console.log("Second line: ", second_line)
             };
-
-            // Read the content of the selected file
-            fileReader.readAsText(selectedFile, 'utf-8');
             
             
         }
