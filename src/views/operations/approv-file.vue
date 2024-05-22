@@ -7,12 +7,27 @@
         Here we input the file
         <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
         <br><br>
-        <div class="imitiDisplay" v-if="imiti_loaded">
-            <p>Imiti is well loaded</p>
-            <ol>
-                <li v-for="umuti in imiti_loaded">{{ umuti.Nom }}</li>
-            </ol>
+        <div class="imitiDisplay" v-for="umuti in imiti_loaded" v-if="imiti_loaded">
+            <!-- <p>Imiti is well loaded</p> -->
+            <!-- <ol>
+                <li>{{ umuti.Nom }}</li>
+            </ol> -->
+            <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
+            <!-- <input value="jo"/> -->
+                <div class="fname" style="background-color: red; width: 30%;height: 100%;">
+                    <input style="width: 100%; height: 100%;" value="jo"/> 
+                </div>
+                <div class="fname" style="background-color: blue; width: 10%;height: 100%;"></div>
+                <div class="fname" style="background-color: orange; width: 10%;height: 100%;"></div>
+                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;"></div>
+                <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;"></div>
+                <div class="fname" style="background-color: blue; width: 10%;height: 100%;"></div>
+                <div class="fname" style="background-color: orange; width: 10%;height: 100%;"></div>
+                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;"></div>
+                <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;"></div>
+            </div>
         </div>
+        
     </div>
 </template>
 
