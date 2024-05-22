@@ -37,13 +37,17 @@ export default {
                 let lines = content.split('\n')
                 let first_line = lines[1]
                 let second_line = lines[2]
-
+                let line_length = second_line.length
                 let jove = 'Nom'
                 let obj = {
                     [jove ? 'Nomme':'Nome']: 'Nsanzumukiza'
                 }
                 console.log("The obj is :", obj)
                 console.log("the first column is :", second_line.split(',')[1])
+                console.log("The length of the line is : ", line_length)
+                // for(let i = 1; i < lines.length; i++){
+
+                // }
             };
             
             
