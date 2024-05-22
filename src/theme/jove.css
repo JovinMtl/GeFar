@@ -94,3 +94,12 @@ body {
     position: fixed; 
     top: 0px;
 }
+.closeBtne{
+  position: absolute; 
+  left: 88%; 
+  /* left: 71%;  */
+  top: 10px; 
+  font-size: 2rem;
+  position: fixed; 
+  /* top: 0px; */
+}
