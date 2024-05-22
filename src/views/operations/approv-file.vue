@@ -7,8 +7,8 @@
         Here we input the file
         <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
         <br><br>
-        <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px; font-size: .8rem;">
-            <!-- <input value="jo"/> -->
+        <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: -10px 10px; font-size: .8rem;position: sticky; top: -99%;">
+        
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
                     Name
                 </div>
@@ -37,7 +37,7 @@
                     Qte_initial
                 </div>
             </div>
-            <br>
+            <!-- <br> -->
         <div class="imitiDisplay" v-for="umuti in imiti_loaded" v-if="imiti_loaded">
             <!-- <p>Imiti is well loaded</p> -->
             <!-- <ol>
