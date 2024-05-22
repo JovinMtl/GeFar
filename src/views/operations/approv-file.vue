@@ -7,32 +7,35 @@
         Here we input the file
         <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
         <br><br>
-        <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
+        <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px; font-size: .8rem;">
             <!-- <input value="jo"/> -->
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="jo"/> 
+                    Name
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="ve"/> </div>
+                    Type_med
+                </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="in"/> 
+                    Description
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="lo"/> 
+                    Ratio
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="te"/> 
+                    Type_in
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="10"/> 
+                    Type_out 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="in"/> 
+                    Price_in 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="pe"/> </div>
+                    Price_out
+                </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="5"/> </div>
+                    Qte_initial
+                </div>
             </div>
             <br>
         <div class="imitiDisplay" v-for="umuti in imiti_loaded" v-if="imiti_loaded">
