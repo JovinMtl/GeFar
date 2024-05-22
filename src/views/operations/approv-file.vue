@@ -37,8 +37,12 @@ export default {
                 let lines = content.split('\n')
                 let first_line = lines[1]
                 let second_line = lines[2]
-                console.log("first line:", first_line)
-                console.log("Second line: ", second_line)
+
+                let jove = 'Nom'
+                let obj = {
+                    [jove ? 'Nomme':'Nome']: 'Nsanzumukiza'
+                }
+                console.log("The obj is :", obj)
             };
             
             
