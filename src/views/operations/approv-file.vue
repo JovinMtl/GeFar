@@ -48,29 +48,29 @@
             <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
             <!-- <input value="jo"/> -->
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
-                    <input :id="jo3" style="width: 100%; height: 100%;" value="jo" @click="ListenNewChange"/> 
+                    <input :id="index +';0'" style="width: 100%; height: 100%;" value="jo" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="ve"/> </div>
+                    <input :id="index +';1'" style="width: 100%; height: 100%;" value="ve"/> </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="in"/> 
+                    <input :id="index +';2'" style="width: 100%; height: 100%;" value="in"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="lo"/> 
+                    <input :id="index +';3'" style="width: 100%; height: 100%;" value="lo"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="te"/> 
+                    <input :id="index +';4'" style="width: 100%; height: 100%;" value="te"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="10"/> 
+                    <input :id="index +';5'" style="width: 100%; height: 100%;" value="10"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="in"/> 
+                    <input :id="index +';6'" style="width: 100%; height: 100%;" value="in"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="pe"/> </div>
+                    <input :id="index +';7'" style="width: 100%; height: 100%;" value="pe"/> </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="5"/> </div>
+                    <input :id="index +';8'" style="width: 100%; height: 100%;" value="5"/> </div>
             </div>
         </div>
         
