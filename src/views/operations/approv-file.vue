@@ -40,7 +40,7 @@
                 </div>
             </div>
             <!-- <br> -->
-        <div class="imitiDisplay" v-for="umuti in imiti_loaded" v-if="imiti_loaded">
+        <div class="imitiDisplay" v-for="(umuti, index) in imiti_loaded" v-if="imiti_loaded">
             <!-- <p>Imiti is well loaded</p> -->
             <!-- <ol>
                 <li>{{ umuti.Nom }}</li>
@@ -48,7 +48,7 @@
             <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
             <!-- <input value="jo"/> -->
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
-                    <input style="width: 100%; height: 100%;" value="jo"/> 
+                    <input :id="jo3" style="width: 100%; height: 100%;" value="jo" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
                     <input style="width: 100%; height: 100%;" value="ve"/> </div>
