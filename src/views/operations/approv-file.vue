@@ -89,6 +89,9 @@ export default {
         const ui_isActive = ref(true)
         const imiti_loaded = ref([])
 
+        const ListenNewChange = (event)=>{
+            console.log("You clicked on ID: ", event.target.getAttribute('id'))
+        }
         const fileHandler = async ()=>{
             const selectedFile = document.getElementById('file1').files[0]
             console.log("The filename is :", selectedFile.type)
