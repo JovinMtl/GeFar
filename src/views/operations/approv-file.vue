@@ -17,14 +17,27 @@
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
                     <input style="width: 100%; height: 100%;" value="jo"/> 
                 </div>
-                <div class="fname" style="background-color: blue; width: 10%;height: 100%;"></div>
-                <div class="fname" style="background-color: orange; width: 10%;height: 100%;"></div>
-                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;"></div>
-                <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;"></div>
-                <div class="fname" style="background-color: blue; width: 10%;height: 100%;"></div>
-                <div class="fname" style="background-color: orange; width: 10%;height: 100%;"></div>
-                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;"></div>
-                <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;"></div>
+                <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
+                    <input style="width: 100%; height: 100%;" value="ve"/> </div>
+                <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
+                    <input style="width: 100%; height: 100%;" value="in"/> 
+                </div>
+                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
+                    <input style="width: 100%; height: 100%;" value="lo"/> 
+                </div>
+                <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
+                    <input style="width: 100%; height: 100%;" value="te"/> 
+                </div>
+                <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
+                    <input style="width: 100%; height: 100%;" value="10"/> 
+                </div>
+                <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
+                    <input style="width: 100%; height: 100%;" value="in"/> 
+                </div>
+                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
+                    <input style="width: 100%; height: 100%;" value="pe"/> </div>
+                <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
+                    <input style="width: 100%; height: 100%;" value="5"/> </div>
             </div>
         </div>
         
