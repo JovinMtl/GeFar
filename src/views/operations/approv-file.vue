@@ -4,7 +4,7 @@
         <span class="closeBtn" style="">
             <ion-icon :src="close" @click="closeApprov"></ion-icon>
         </span>
-        <div style="position: fixed; top: 1%; left: 22vw; z-index: 9">
+        <div style="position: fixed; top: 1%; left: 26vw; z-index: 9">
             Here we input the file
         <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
         </div>
