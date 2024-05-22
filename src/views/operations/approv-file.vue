@@ -48,25 +48,25 @@
             <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
             <!-- <input value="jo"/> -->
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
-                    <input :id="index +';0'" style="width: 100%; height: 100%;" :value="umuti.Nom" @blur="ListenNewChange"/> 
+                    <input :id="index +';Nom'" style="width: 100%; height: 100%;" :value="umuti.Nom" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';1'" style="width: 100%; height: 100%;" :value="umuti.Type_medicament" @blur="ListenNewChange"/> 
+                    <input :id="index +';Type_medicament'" style="width: 100%; height: 100%;" :value="umuti.Type_medicament" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input :id="index +';2'" style="width: 100%; height: 100%;" :value="umuti.Description" @blur="ListenNewChange"/> 
+                    <input :id="index +';Description'" style="width: 100%; height: 100%;" :value="umuti.Description" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input :id="index +';3'" style="width: 100%; height: 100%;" :value="umuti.Ratio" @blur="ListenNewChange"/> 
+                    <input :id="index +';Ratio'" style="width: 100%; height: 100%;" :value="umuti.Ratio" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input :id="index +';4'" style="width: 100%; height: 100%;" :value="umuti.Type_in" @blur="ListenNewChange"/> 
+                    <input :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="umuti.Type_in" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';5'" style="width: 100%; height: 100%;" :value="umuti.Type_out" @blur="ListenNewChange"/> 
+                    <input :id="index +';Type_out'" style="width: 100%; height: 100%;" :value="umuti.Type_out" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input :id="index +';6'" style="width: 100%; height: 100%;" :value="umuti.Price_in" @blur="ListenNewChange"/> 
+                    <input :id="index +';Price_in'" style="width: 100%; height: 100%;" :value="umuti.Price_in" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
                     <input :id="index +';Price_out'" style="width: 100%; height: 100%;" :value="umuti.Price_out" @blur="ListenNewChange"/> 
