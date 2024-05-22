@@ -62,6 +62,7 @@ export default {
                     }
                     
                 });
+                imiti_loaded.value = obj_array
                 console.log("The obj array is : ", obj_array)
             };
             
