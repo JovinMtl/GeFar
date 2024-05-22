@@ -51,7 +51,7 @@
                     <input :id="index +';0'" style="width: 100%; height: 100%;" :value="umuti.Nom" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';1'" style="width: 100%; height: 100%;" value="ve" @click="ListenNewChange"/> 
+                    <input :id="index +';1'" style="width: 100%; height: 100%;" :value="umuti.Type_medicament" @click="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
                     <input :id="index +';2'" style="width: 100%; height: 100%;" value="in" @click="ListenNewChange"/> 
