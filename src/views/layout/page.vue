@@ -4,10 +4,10 @@
             <div class="mainApprob" v-if="approvStatus">
                 <div class="approFile" v-if="approFileStatus">
                     <div class="approFileHeader" style="width: 100%;height: 8%;background-color: gray;display: block; align-content: center">
-                        <div style="display: inline;position: sticky; top: -110%; z-index: -0">
+                        <!-- <div style="display: inline;position: sticky; top: -110%; z-index: -0">
                             Here we input the file
                             <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
-                        </div>
+                        </div> -->
                     </div>
                     <div class="approfileBody">
                         <appro-file @approFileClose="closeApproFile"></appro-file>
@@ -17,7 +17,7 @@
                 <div class="approClass">
                     <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
                         
-                    <span class="closeBtn" style="">
+                    <span class="closeBtne" style="">
                         <ion-icon :src="close" @click="closeApprov"></ion-icon>
                     </span>
                        <h3>Entrée en Stock</h3>
