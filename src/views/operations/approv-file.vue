@@ -4,12 +4,12 @@
         <span class="closeBtn" style="">
             <ion-icon :src="close" @click="closeApprov"></ion-icon>
         </span>
-        <!-- <div style="position: sticky; top: -110%;">
+        <div style="position: fixed; top: 1%; left: 22vw; z-index: 9">
             Here we input the file
         <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
-        </div> -->
+        </div>
         <br><br>
-        <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: -10px 10px; font-size: .8rem;position: sticky; top: -99%;">
+        <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: -10px 10px; font-size: .8rem;position: sticky; top: 1%;">
         
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
                     Name
