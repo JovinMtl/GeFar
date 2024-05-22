@@ -43,6 +43,7 @@ export default {
                     [jove ? 'Nomme':'Nome']: 'Nsanzumukiza'
                 }
                 console.log("The obj is :", obj)
+                console.log("the first column is :", second_line.split(',')[1])
             };
             
             
