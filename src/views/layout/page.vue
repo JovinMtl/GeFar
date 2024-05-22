@@ -350,12 +350,14 @@ export default {
         
         const getUmuti = (umuti) => {
             // THis one handles the umuti when it was emitted from list-imiti component.
-            if(selectedUmuti.value != umuti){
+            if(selectedUmuti.value !== umuti){
+                console.log("It is not the same: ", selectedUmuti.value, 'and', umuti)
                 selectedUmuti.value = umuti
                 let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
                 activeLot.value = JSON.parse(lots_json) //setting the activeLot
                 need_to_updade.value = false  // to command not to provide an update from list-imiti
             } else {
+                console.log("It is the same: ", selectedUmuti.value, 'and', umuti)
                 selectedUmuti.value = {}
             }
             
