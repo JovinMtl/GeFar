@@ -78,7 +78,7 @@
         </div>
         
         <div class="notif" style="">
-            <p></p>
+            <p>Le fichier que vous avez selectioné  n'est pas compatible.</p>
         </div>
         
     </div>
