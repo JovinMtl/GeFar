@@ -413,7 +413,8 @@ export default {
     height: 90vh; 
     /* padding-top: 20%; */
     z-index: 2; 
-    left: 15vw;
+    /* left: 15vw; */
+    left: 20vw;
     /* overflow: auto; */
 }
 .mainApprob{
