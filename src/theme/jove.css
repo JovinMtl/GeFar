@@ -104,5 +104,9 @@ body {
   /* top: 0px; */
 }
 .notif{
-  position: absolute; width: 500px;height: 10rem; background-color: red;left:8rem;
+  position: absolute; 
+  width: 500px;
+  height: 10rem; 
+  background-color: rgba(245, 92, 4, 0.568);
+  left:8rem;
 }
