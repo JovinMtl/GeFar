@@ -77,6 +77,8 @@
             </div>
         </div>
         
+        <div class="notif" style="position: absolute; width: 500px;height: 10rem; background-color: white;left:8rem"></div>
+        
     </div>
 </template>
 
