@@ -1,7 +1,7 @@
 
 <template>
     <div>
-        <span class="closeBtn" style="">
+        <span class="closeBtn" style="z-index: 10;">
             <ion-icon :src="close" @click="closeApprov"></ion-icon>
         </span>
         <div style="position: fixed; top: 1%; left: 26vw; z-index: 9">
