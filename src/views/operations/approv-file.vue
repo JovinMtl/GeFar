@@ -153,7 +153,7 @@ export default {
                 console.log("You should CHOOSE a text/csv file")
                 setTimeout(()=>{
                     notifStatus.value = false
-                }, 2000)
+                }, 3200)
             }
             
             
