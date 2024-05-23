@@ -110,7 +110,8 @@ body {
   /* background-color: #85f786; */
   /* background-color: #bef9bf; */
   background-color: white;
-  left:8rem;
+  left:30vw;
+  top: 30vh;
   align-content: center;
   font-size: 1.6rem;
   color: red;
