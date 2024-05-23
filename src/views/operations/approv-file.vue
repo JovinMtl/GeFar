@@ -149,7 +149,11 @@ export default {
                     console.log("The obj array is : ", obj_array)
                 };
             } else {
+                notifStatus.value = true
                 console.log("You should CHOOSE a text/csv file")
+                setTimeout(()=>{
+                    notifStatus.value = false
+                }, 2000)
             }
             
             
