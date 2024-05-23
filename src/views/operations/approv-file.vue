@@ -77,7 +77,7 @@
             </div>
         </div>
         
-        <div class="notif" style="">
+        <div class="notif" >
             <p>Le fichier que vous avez selectioné  n'est pas compatible.</p>
         </div>
         
@@ -95,6 +95,7 @@ export default {
     setup(_, {emit}) {
         const ui_isActive = ref(true)
         const imiti_loaded = ref([])
+        const notifStatus = ref(false)
 
         const ListenNewChange = (event)=>{
             console.log("You onBlured  on ID: ", event.target.getAttribute('id'))
