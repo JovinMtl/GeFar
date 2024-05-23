@@ -76,10 +76,12 @@
                 </div>
             </div>
         </div>
+        <teleport to="body">
+            <div class="notif" v-if="notifStatus">
+                <p>Le fichier que vous avez selectioné  n'est pas compatible.</p>
+            </div>
+        </teleport>
         
-        <div class="notif" v-if="notifStatus">
-            <p>Le fichier que vous avez selectioné  n'est pas compatible.</p>
-        </div>
         
     </div>
 </template>
