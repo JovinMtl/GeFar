@@ -361,6 +361,11 @@ export default {
                 console.log("It is the same: ", selectedUmuti.value, 'and', umuti)
                 selectedUmuti.value = undefined
                 activeLot.value = []
+            } else {
+                selectedUmuti.value = umuti
+                let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
+                activeLot.value = JSON.parse(lots_json) //setting the activeLot
+                need_to_updade.value = false 
             }
             
         }
