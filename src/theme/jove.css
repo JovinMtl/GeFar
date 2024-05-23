@@ -103,3 +103,6 @@ body {
   position: fixed; 
   /* top: 0px; */
 }
+.notif{
+  position: absolute; width: 500px;height: 10rem; background-color: red;left:8rem;
+}
