@@ -107,7 +107,7 @@ body {
   position: absolute; 
   width: 500px;
   height: 10rem; 
-  background-color: #85f786;
+  /* background-color: #85f786; */
   /* background-color: #bef9bf; */
   background-color: white;
   left:8rem;
@@ -116,5 +116,4 @@ body {
   color: red;
   font-weight: 500;
   box-shadow: 0 0 35px white;
-  border-radius: 2rem;
 }
