@@ -147,6 +147,12 @@ export default {
                         }
                         
                     });
+                    //should check if there is no doublon:
+                    //  emitting the obj_array for check or use Vuex
+
+                    //no need to check, if it is new then those keys sent
+                    // are the only 5 mandatory.
+                    // should be managed on the Backend
                     imiti_loaded.value = obj_array
                     console.log("The obj array is : ", obj_array)
                 };
