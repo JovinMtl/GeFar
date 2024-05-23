@@ -77,7 +77,7 @@
             </div>
         </div>
         
-        <div class="notif" >
+        <div class="notif" v-if="notifStatus.value">
             <p>Le fichier que vous avez selectioné  n'est pas compatible.</p>
         </div>
         
