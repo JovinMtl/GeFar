@@ -195,7 +195,7 @@ export default {
         return {
             close,checkmarkDoneOutline,
             ui_isActive, imiti_loaded, notifStatus,
-            closeApprov, fileHandler, ListenNewChange,
+            closeApprov, fileHandler, ListenNewChange,approveHandler,
         }
     },
 }
