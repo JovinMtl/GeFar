@@ -80,7 +80,7 @@
         </div>
         <teleport to="body">
             <div class="notif" v-if="notifStatus">
-                <p>Le fichier que vous avez selectioné  n'est pas compatible.</p>
+                <p>{{ message }}Le fichier que vous avez selectioné  n'est pas compatible.</p>
             </div>
         </teleport>
         
@@ -100,6 +100,7 @@ export default {
         const ui_isActive = ref(true)
         const imiti_loaded = ref([])
         const notifStatus = ref(false)
+        const message = ref('')
 
         const approveHandler = ()=>{
             if(imiti_loaded.value){
