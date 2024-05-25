@@ -102,7 +102,11 @@ export default {
         const notifStatus = ref(false)
 
         const approveHandler = ()=>{
-            
+            if(imiti_loaded.value){
+                // can process
+            } else{
+                // cannot process
+            }
         }
 
         const ListenNewChange = (event)=>{
