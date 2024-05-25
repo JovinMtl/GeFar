@@ -103,10 +103,10 @@ export default {
         const message = ref('')
 
         const approveHandler = ()=>{
-            console.log("approveHandler is being called with: ", imiti_loaded.value[0])
             if(imiti_loaded.value[0]){
                 // can process
                 // check the fields (Nom, Qnte, Px.A, Px.V, Date_exp)
+                console.log("THe loaded is :", imiti_loaded.value)
             } else{
                 // cannot process
                 let info = "Vous n'avez pas ajouté des données !"
