@@ -108,6 +108,7 @@ export default {
                 // check the fields (Nom, Qnte, Px.A, Px.V, Date_exp)
                 console.log("THe loaded is :", imiti_loaded.value)
                 let counter = 0
+                let imiti_length = (imiti_loaded.value).length
                 imiti_loaded.value.forEach((element)=>{
                     if(String(element.Nom) && Number(element.Qte_initial) && 
                         Number(element.Price_in) && Number(element.Price_out) &&
@@ -121,7 +122,13 @@ export default {
                         console.log("Your data is Wrong formatted")
                     }
                 })
-                console.log("The number of success is : ", counter)
+                if (counter == imiti_length -1){
+                    console.log("Things are Okay")
+                } else {
+                    let info = "There is one or more fields non well formatted"
+                    notifSwitch(info)
+                    // console.log("Things are not OKay")
+                }
             } else{
                 // cannot process
                 let info = "Vous n'avez pas ajouté des données !"
