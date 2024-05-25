@@ -125,7 +125,7 @@ export default {
                 if (counter == imiti_length -1){
                     console.log("Things are Okay")
                 } else {
-                    let info = "There is one or more fields non well formatted"
+                    let info = "There is one or more fields non well formatted!"
                     notifSwitch(info)
                     // console.log("Things are not OKay")
                 }
