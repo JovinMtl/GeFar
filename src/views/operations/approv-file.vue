@@ -103,6 +103,7 @@ export default {
         const message = ref('')
 
         const approveHandler = ()=>{
+            console.log("approveHandler is being called with: ", imiti_loaded.value)
             if(imiti_loaded.value){
                 // can process
             } else{
@@ -117,6 +118,7 @@ export default {
             setTimeout(()=>{
                     notifStatus.value = false
                 }, 3200)
+            console.log("notifSwitch has be called")
 
         }
         const ListenNewChange = (event)=>{
