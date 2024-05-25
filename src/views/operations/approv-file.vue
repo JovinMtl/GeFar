@@ -108,9 +108,9 @@ export default {
                 // check the fields (Nom, Qnte, Px.A, Px.V, Date_exp)
                 console.log("THe loaded is :", imiti_loaded.value)
                 imiti_loaded.value.forEach((element)=>{
-                    if(element.Nom && element.Qte_initial && 
-                        element.Price_in && element.Price_out &&
-                        element.Date_exp
+                    if(String(element.Nom) && Number(element.Qte_initial) && 
+                        Number(element.Price_in) && Number(element.Price_out) &&
+                        Date(element.Date_exp)
                     ){
                         // You can emit the imiti_loaded.value
                     }
