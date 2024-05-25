@@ -2,6 +2,7 @@
 <template>
     <div>
         <span class="closeBtn" style="z-index: 10;">
+            <ion-icon :src="checkmarkDoneOutline"></ion-icon>
             <ion-icon :src="close" @click="closeApprov"></ion-icon>
         </span>
         <div style="position: fixed; top: 1%; left: 26vw; z-index: 9">
@@ -88,7 +89,7 @@
 
 <script>
 import { IonIcon } from '@ionic/vue'
-import { close } from 'ionicons/icons'
+import { close, checkmarkDoneOutline } from 'ionicons/icons'
 import { ref } from 'vue'
 export default {
     components: {
@@ -172,7 +173,7 @@ export default {
             emit('approFileClose', 0)
         }
         return {
-            close,
+            close,checkmarkDoneOutline,
             ui_isActive, imiti_loaded, notifStatus,
             closeApprov, fileHandler, ListenNewChange,
         }
