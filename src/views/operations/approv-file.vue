@@ -110,7 +110,14 @@ export default {
                 message.value = "Vous n'avez pas ajouté des données !"
             }
         }
+        const notifSwith = (info)=>{
+            message.value = String(info)
+            notifStatus.value = true
+            setTimeout(()=>{
+                    notifStatus.value = false
+                }, 3200)
 
+        }
         const ListenNewChange = (event)=>{
             console.log("You onBlured  on ID: ", event.target.getAttribute('id'))
             let [ i, j ] = (event.target.getAttribute('id')).split(';')
