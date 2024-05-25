@@ -2,7 +2,8 @@
 <template>
     <div>
         <span class="closeBtn" style="z-index: 10;">
-            <ion-icon :src="checkmarkDoneOutline" style="margin-right: 2.2vw;"></ion-icon>
+            <ion-icon :src="checkmarkDoneOutline" @click="approveHandler"
+                style="margin-right: 2.2vw;"></ion-icon>
             <ion-icon :src="close" @click="closeApprov"></ion-icon>
         </span>
         <div style="position: fixed; top: 1%; left: 26vw; z-index: 9">
@@ -99,6 +100,10 @@ export default {
         const ui_isActive = ref(true)
         const imiti_loaded = ref([])
         const notifStatus = ref(false)
+
+        const approveHandler = ()=>{
+            
+        }
 
         const ListenNewChange = (event)=>{
             console.log("You onBlured  on ID: ", event.target.getAttribute('id'))
