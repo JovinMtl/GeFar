@@ -80,7 +80,7 @@
         </div>
         <teleport to="body">
             <div class="notif" v-if="notifStatus">
-                <p>{{ message }}Le fichier que vous avez selectioné  n'est pas compatible.</p>
+                <p>{{ message }}</p>
             </div>
         </teleport>
         
@@ -168,6 +168,7 @@ export default {
                     console.log("The obj array is : ", obj_array)
                 };
             } else {
+                message.value = "Le fichier que vous avez selectioné  n'est pas compatible."
                 notifStatus.value = true
                 console.log("You should CHOOSE a text/csv file")
                 setTimeout(()=>{
