@@ -111,7 +111,7 @@ export default {
                 notifSwith(info)
             }
         }
-        const notifSwith = (info:String)=>{
+        const notifSwith = (info)=>{
             message.value = String(info)
             notifStatus.value = true
             setTimeout(()=>{
