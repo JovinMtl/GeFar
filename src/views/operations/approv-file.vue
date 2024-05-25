@@ -109,10 +109,10 @@ export default {
             } else{
                 // cannot process
                 let info = "Vous n'avez pas ajouté des données !"
-                notifSwith(info)
+                notifSwitch(info)
             }
         }
-        const notifSwith = (info)=>{
+        const notifSwitch = (info)=>{
             message.value = String(info)
             notifStatus.value = true
             setTimeout(()=>{
@@ -179,12 +179,8 @@ export default {
                     console.log("The obj array is : ", obj_array)
                 };
             } else {
-                message.value = "Le fichier que vous avez selectioné  n'est pas compatible."
-                notifStatus.value = true
-                console.log("You should CHOOSE a text/csv file")
-                setTimeout(()=>{
-                    notifStatus.value = false
-                }, 3200)
+                let info = "Le fichier que vous avez selectioné  n'est pas compatible."
+                notifSwitch(info)
             }
             
             
