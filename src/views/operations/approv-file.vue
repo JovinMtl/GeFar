@@ -103,8 +103,8 @@ export default {
         const message = ref('')
 
         const approveHandler = ()=>{
-            console.log("approveHandler is being called with: ", imiti_loaded.value)
-            if(imiti_loaded.value){
+            console.log("approveHandler is being called with: ", imiti_loaded.value[0])
+            if(imiti_loaded.value[0]){
                 // can process
             } else{
                 // cannot process
@@ -196,6 +196,7 @@ export default {
         }
         return {
             close,checkmarkDoneOutline,
+            message,
             ui_isActive, imiti_loaded, notifStatus,
             closeApprov, fileHandler, ListenNewChange,approveHandler,
         }
