@@ -113,6 +113,10 @@ export default {
                         Date(element.Date_exp)
                     ){
                         // You can emit the imiti_loaded.value
+                        console.log("Your data is well formatted")
+                    }
+                    else {
+                        console.log("Your data is Wrong formatted")
                     }
                 })
             } else{
