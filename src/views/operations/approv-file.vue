@@ -107,10 +107,11 @@ export default {
                 // can process
             } else{
                 // cannot process
-                message.value = "Vous n'avez pas ajouté des données !"
+                let info = "Vous n'avez pas ajouté des données !"
+                notifSwith(info)
             }
         }
-        const notifSwith = (info)=>{
+        const notifSwith = (info:String)=>{
             message.value = String(info)
             notifStatus.value = true
             setTimeout(()=>{
