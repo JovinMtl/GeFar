@@ -107,6 +107,7 @@ export default {
                 // can process
             } else{
                 // cannot process
+                message.value = "Vous n'avez pas ajouté des données !"
             }
         }
 
