@@ -185,7 +185,7 @@ export default {
                     console.log("The response is okay:", server_process.value)
                     setTimeout(()=>{
                     server_process.value = false
-                    }, 9000)
+                    }, 1500)
                 } else {
                     console.log("The response hasn't reached here yet")
                 }
