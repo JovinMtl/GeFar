@@ -153,11 +153,20 @@ export default {
 
         const query_search = reactive({})
 
-        const getFileDataLoaded = () => {
+        const getFileDataLoaded = async () => {
             // submitting the data to the server
             // provide send-status and inject it in approv-file
             const server = '//128.0.0.1:8002'
             const endpoint = '/api/in/kurangura/'
+
+            try {
+                const response = await fetch(`${server}${endpoint}`,{
+                    method: GET,
+                })
+                if(response.ok){
+                    console.log("The response is okay")
+                }
+            } catch (value){}
         }
         const openApproFile = ()=>{
             approFileStatus.value = true
