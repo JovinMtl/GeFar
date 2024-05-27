@@ -451,7 +451,7 @@ export default {
             incrementQte,decrementQte, showChange,
             actualOption, closeApprov, getAllImiti, toSell,
             searchManager, openApproFile, closeApproFile,
-            getFileDataLoaded,
+            getFileDataLoaded, compileImitiSet,
         }
     },
 }
