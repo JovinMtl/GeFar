@@ -165,6 +165,23 @@ export default {
 
         const query_search = reactive({})
 
+        const compileImitiSet = async ()=>{
+            const server = '//127.0.0.1:8002'
+            const endpoint = '/api/in/kurangura/'
+
+            try {
+                const response = await fetch(`${server}${endpoint}`)
+                // const server_data = await response.json()
+                if(response.ok){
+                    console.log("The response is okay:", server_process.value)
+                } else {
+                    console.log("The response hasn't reached here yet")
+                }
+            } catch (value){
+                console.log("The error has occured:", value)
+            }
+
+        }
         const getFileDataLoaded = async () => {
             // submitting the data to the server
             // provide send-status and inject it in approv-file
