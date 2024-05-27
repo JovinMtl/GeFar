@@ -42,11 +42,11 @@
             <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
                 <div class="infoUmuti">{{ selectedUmuti.value.name_umuti }}</div>
                 <div class="infoUmuti umutiTitle">{{ selectedUmuti.value.name_umuti }}</div>
-                <div class="infoUmuti umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
-                <div class="infoUmuti umutiType">{{ selectedUmuti.value.type_umuti }}</div>
-                <div class="infoUmuti umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
-                <div class="infoUmuti umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
-                <div class="infoUmuti umutiPrice">{{ selectedUmuti.value.price_out }}</div>
+                <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
+                <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_umuti }}</div>
+                <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
+                <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
+                <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.price_out }}</div>
                 <!-- Need to display the number of lots -->
                 <div v-if="activeLot.length" style="text-align: right;">{{ activeLot.length }}</div>
                 <div class="infoUmuti umutiLot">
