@@ -759,9 +759,14 @@ export default defineComponent ({
     text-decoration: none; 
     color: white;
 }
-.umutiContent:active .umuti
+/* .umutiContent:active .umuti
 {
     background-color: rgb(11, 245, 11);
     box-shadow: 0 0 25px white;
+} */
+.umutiContent:focus{
+    background-color: black;
+    border-radius: 25px;
+    box-shadow: 0 0 25px black;
 }
 </style>
