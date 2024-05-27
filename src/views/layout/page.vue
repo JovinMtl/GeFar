@@ -155,6 +155,9 @@ export default {
 
         const getFileDataLoaded = () => {
             // submitting the data to the server
+            // provide send-status and inject it in approv-file
+            const server = '//128.0.0.1:8002'
+            const endpoint = '/'
         }
         const openApproFile = ()=>{
             approFileStatus.value = true
