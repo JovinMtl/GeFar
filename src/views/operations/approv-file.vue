@@ -101,6 +101,7 @@ export default {
         const imiti_loaded = ref([])
         const notifStatus = ref(false)
         const message = ref('')
+        const imiti_file_present = ref(false)
 
         const approveHandler = ()=>{
             if(imiti_loaded.value[0]){
@@ -109,19 +110,20 @@ export default {
                 console.log("THe loaded is :", imiti_loaded.value)
                 let counter = 0
                 let imiti_length = (imiti_loaded.value).length
-                imiti_loaded.value.forEach((element)=>{
-                    if(String(element.Nom) && Number(element.Qte_initial) && 
-                        Number(element.Price_in) && Number(element.Price_out) &&
-                        Date(element.Date_exp)
-                    ){
-                        // You can emit the imiti_loaded.value
-                        console.log("Your data is well formatted")
-                        counter += 1
-                    }
-                    else {
-                        console.log("Your data is Wrong formatted")
-                    }
-                })
+                // let wrong = []
+                let wrong = imiti_loaded.value.forEach((element)=> (element.Nom))
+                    // if(String(element.Nom) && Number(element.Qte_initial) && 
+                    //     Number(element.Price_in) && Number(element.Price_out) &&
+                    //     Date(element.Date_exp)
+                    // ){
+                    //     // You can emit the imiti_loaded.value
+                    //     console.log("Your data is well formatted")
+                    //     counter += 1
+                    // }
+                    // else {
+                    //     console.log("Your data is Wrong formatted")
+                    // }
+                // })
                 if (counter == imiti_length -1){
                     console.log("Things are Okay")
                 } else {
@@ -129,6 +131,8 @@ export default {
                     notifSwitch(info)
                     // console.log("Things are not OKay")
                 }
+                // let jo = wrong()
+                console.log("The wrong part is :", wrong)
             } else{
                 // cannot process
                 let info = "Vous n'avez pas ajouté des données !"
@@ -154,6 +158,7 @@ export default {
             const selectedFile = document.getElementById('file1').files[0]
             console.log("The filename is :", selectedFile.type)
             if(selectedFile.type === 'text/csv'){
+                imiti_file_present.value = true
                 const file_blob = URL.createObjectURL(selectedFile)
                 // Create a new FileReader object for reading the selected file
                 let fileReader = new FileReader();
