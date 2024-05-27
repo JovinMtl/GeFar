@@ -108,7 +108,9 @@
                 <div class="menuBar">
                     <me-nu @actualMenu="actualOption"></me-nu>
                 </div>
-                <div class="menuHau"></div>
+                <div class="menuHau magnetic"  style="">
+                    <ion-icon :src="magnetOutline"></ion-icon>
+                    </div>
             </div>
         </ion-content>
     </ion-page>
@@ -439,6 +441,17 @@ export default {
 </script>
 
 <style scoped>
+.magnetic{
+    background-color: transparent; 
+    height: 20px; 
+    width: 20px; 
+    display: flex; 
+    position: absolute;
+    left: 66vw; 
+    top: 89vh; 
+    font-size: xx-large; 
+    color: black;
+}
 .infoUmuti{
     width: 100%;
     height: 10%;
