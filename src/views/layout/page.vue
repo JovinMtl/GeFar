@@ -533,9 +533,9 @@ export default {
     /* color: green */
 }
 .menuLeft{
-    width: 11.3vw;
+    width: 11.6vw;
     height: 100%;
-    background-color: red;
+    /* background-color: red; */
     position: absolute;
     /* padding: 10px 10px; */
     color: rgb(63, 62, 62);
