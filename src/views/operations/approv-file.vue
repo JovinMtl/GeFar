@@ -221,7 +221,7 @@ export default {
         return {
             close,checkmarkDoneOutline,
             message,
-            ui_isActive, imiti_loaded, notifStatus,
+            ui_isActive, imiti_loaded, notifStatus,imiti_file_present,
             closeApprov, fileHandler, ListenNewChange,approveHandler,
         }
     },
