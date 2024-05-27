@@ -1,7 +1,7 @@
 <template>
     <ion-page>
         <ion-content>
-            <div v-if="server_process.value" class="loader" style="z-index: 15;">
+            <div v-if="server_process" class="loader" style="z-index: 15;">
                 <jove-loader></jove-loader>
                     
             </div>
@@ -166,6 +166,7 @@ export default {
             // submitting the data to the server
             // provide send-status and inject it in approv-file
             console.log("Taking Releve on sending DATA to API")
+            server_process.value = true
             const server = '//127.0.0.1:8002'
             const endpoint = '/api/in/kurangura/'
 
@@ -181,7 +182,10 @@ export default {
                 })
                 const server_data = await response.json()
                 if(response.ok){
-                    console.log("The response is okay")
+                    console.log("The response is okay:", server_process.value)
+                    setTimeout(()=>{
+                    server_process.value = false
+                    }, 9000)
                 } else {
                     console.log("The response hasn't reached here yet")
                 }
