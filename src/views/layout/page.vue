@@ -1,7 +1,7 @@
 <template>
     <ion-page>
         <ion-content>
-            <div class="loader" style="z-index: 15;">
+            <div v-if="server_process.value" class="loader" style="z-index: 15;">
                 <jove-loader></jove-loader>
                     
             </div>
