@@ -157,7 +157,7 @@ export default {
             // submitting the data to the server
             // provide send-status and inject it in approv-file
             console.log("Taking Releve on sending DATA to API")
-            const server = '//128.0.0.1:8002'
+            const server = '//127.0.0.1:8002'
             const endpoint = '/api/in/kurangura/'
 
             try {
