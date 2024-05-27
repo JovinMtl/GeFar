@@ -161,7 +161,12 @@ export default {
             const endpoint = '/api/in/kurangura/'
 
             try {
-                const response = await fetch(`${server}${endpoint}`)
+                const response = await fetch(`${server}${endpoint}`,{
+                    method: 'POST',
+                    body: JSON.stringify({
+                        'jov': 'je'
+                    })
+                })
                 const server_data = await response.json()
                 if(response.ok){
                     console.log("The response is okay")
