@@ -158,6 +158,8 @@ export default {
         const need_to_updade = ref(false)
         const all_imiti = ref([])
 
+        const server_process = ref(false)
+
         const query_search = reactive({})
 
         const getFileDataLoaded = async () => {
