@@ -163,6 +163,9 @@ export default {
             try {
                 const response = await fetch(`${server}${endpoint}`,{
                     method: 'POST',
+                    headers: {
+                        'Content-type' : 'application/json'
+                    },
                     body: JSON.stringify({
                         'jov': 'je'
                     })
