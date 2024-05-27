@@ -448,6 +448,7 @@ export default {
 }
 .umutiTitle{
     background-color: rgba(128, 128, 128, 0.378); 
+    background-color: rgba(255, 255, 255, 0.596);
     height: 5%; 
     font-weight: 700;
     padding: 0px 5px;
