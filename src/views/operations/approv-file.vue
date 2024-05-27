@@ -74,7 +74,7 @@
                     <input :id="index +';Price_out'" style="width: 100%; height: 100%;" :value="umuti.Price_out" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="umuti.Qte_initial" @blur="ListenNewChange"/> 
+                    <input type="number" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="umuti.Qte_initial" @blur="ListenNewChange"/> 
                 </div>
             </div>
         </div>
@@ -110,19 +110,20 @@ export default {
                 let counter = 0
                 let imiti_length = (imiti_loaded.value).length
                 // let wrong = []
-                let wrong = imiti_loaded.value.forEach((element)=> (element.Nom))
-                    // if(String(element.Nom) && Number(element.Qte_initial) && 
-                    //     Number(element.Price_in) && Number(element.Price_out) &&
-                    //     Date(element.Date_exp)
-                    // ){
-                    //     // You can emit the imiti_loaded.value
-                    //     console.log("Your data is well formatted")
-                    //     counter += 1
-                    // }
-                    // else {
-                    //     console.log("Your data is Wrong formatted")
-                    // }
-                // })
+                imiti_loaded.value.forEach((element)=>{
+                    if(String(element.Nom) && Number(element.Qte_initial) && 
+                        Number(element.Price_in) && Number(element.Price_out) &&
+                        Date(element.Date_exp)
+                    ){
+                        // You can emit the imiti_loaded.value
+                        console.log("Your data is well formatted")
+                        counter += 1
+                    }
+                    else {
+                        console.log("Your data is Wrong formatted")
+                    }
+                })
+                    
                 if (counter == imiti_length -1){
                     console.log("Things are Okay")
                 } else {
