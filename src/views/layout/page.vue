@@ -130,7 +130,7 @@ const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'
 import { 
     IonContent, IonPage, IonIcon, 
 } from '@ionic/vue';
-import { close, addCircleOutline, removeCircleOutline } from 'ionicons/icons'
+import { close, addCircleOutline, removeCircleOutline, magnetOutline, } from 'ionicons/icons'
 // import { PanierAPI, PanierClient} from '../layout/types'
 export default {
     components:{
@@ -426,6 +426,7 @@ export default {
             actualQte, total_panier_client,
             approvStatus, approFileStatus, server_process,
             close,  addCircleOutline, removeCircleOutline,
+            magnetOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
             actualOption, closeApprov, getAllImiti, toSell,
