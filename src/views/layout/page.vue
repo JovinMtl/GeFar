@@ -10,7 +10,7 @@
                         </div> -->
                     </div>
                     <div class="approfileBody">
-                        <appro-file @approFileClose="closeApproFile"></appro-file>
+                        <appro-file @approFileClose="closeApproFile" @fileDataLoaded="getFileDataLoaded"></appro-file>
                     </div>
                     
                 </div>
