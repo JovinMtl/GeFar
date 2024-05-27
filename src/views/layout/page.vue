@@ -119,6 +119,7 @@ import search from './auxiliare/search.vue';
 import menu from './auxiliare/menu.vue';
 import approv from '../operations/approv.vue';
 import approvFile from '../operations/approv-file.vue';
+import joveLoader from './auxiliare/jove-loader.vue';
 // import useCloseApprov from '../hooks/jove'
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
@@ -134,6 +135,7 @@ export default {
         'list-imiti': listImiti,
         'app-rov': approv,
         'appro-file': approvFile,
+        'jove-loader': joveLoader,
         IonContent, IonPage, 
         IonIcon,
     },
