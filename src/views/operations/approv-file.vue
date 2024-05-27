@@ -101,7 +101,6 @@ export default {
         const imiti_loaded = ref([])
         const notifStatus = ref(false)
         const message = ref('')
-        const imiti_file_present = ref(false)
 
         const approveHandler = ()=>{
             if(imiti_loaded.value[0]){
@@ -158,7 +157,6 @@ export default {
             const selectedFile = document.getElementById('file1').files[0]
             console.log("The filename is :", selectedFile.type)
             if(selectedFile.type === 'text/csv'){
-                imiti_file_present.value = true
                 const file_blob = URL.createObjectURL(selectedFile)
                 // Create a new FileReader object for reading the selected file
                 let fileReader = new FileReader();
@@ -221,7 +219,7 @@ export default {
         return {
             close,checkmarkDoneOutline,
             message,
-            ui_isActive, imiti_loaded, notifStatus,imiti_file_present,
+            ui_isActive, imiti_loaded, notifStatus,
             closeApprov, fileHandler, ListenNewChange,approveHandler,
         }
     },
