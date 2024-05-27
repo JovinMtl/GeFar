@@ -2,6 +2,7 @@
     <ion-page>
         <ion-content>
             <div class="mainApprob" v-if="approvStatus">
+                <div class="loader"></div>
                 <div class="approFile" v-if="approFileStatus">
                     <div class="approFileHeader">
                         <!-- <div style="display: inline;position: sticky; top: -110%; z-index: -0">
