@@ -186,6 +186,8 @@ export default {
                     setTimeout(()=>{
                     server_process.value = false
                     }, 1500)
+                    approvStatus.value = false
+                    approFileStatus.value = false
                 } else {
                     console.log("The response hasn't reached here yet")
                 }
