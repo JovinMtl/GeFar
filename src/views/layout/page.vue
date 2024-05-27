@@ -40,8 +40,8 @@
             </div>
             
             <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
+                <div class="infoUmuti">{{ selectedUmuti.value.name_umuti }}</div>
                 <div class="infoUmuti umutiTitle">{{ selectedUmuti.value.name_umuti }}</div>
-                <div class="infoUmuti umutiTitle" style="background-color: gray; height: 5%;">{{ selectedUmuti.value.name_umuti }}</div>
                 <div class="infoUmuti umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
                 <div class="infoUmuti umutiType">{{ selectedUmuti.value.type_umuti }}</div>
                 <div class="infoUmuti umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
@@ -439,6 +439,20 @@ export default {
 </script>
 
 <style scoped>
+.infoUmuti{
+    width: 100%;
+    height: 10%;
+    margin-bottom: 5px;
+    align-content: center;
+    /* background-color: green; */
+}
+.umutiTitle{
+    background-color: rgba(128, 128, 128, 0.378); 
+    height: 5%; 
+    font-weight: 700;
+    padding: 0px 5px;
+    
+}
 .approFileHeader{
     width: 100%;
     height: 8%;
@@ -540,12 +554,7 @@ export default {
     /* padding: 10px 10px; */
     color: rgb(63, 62, 62);
 }
-.infoUmuti{
-    width: 100%;
-    height: 10%;
-    margin-bottom: 5px;
-    /* background-color: green; */
-}
+
 .umutiLot{
     overflow: auto;
 }
