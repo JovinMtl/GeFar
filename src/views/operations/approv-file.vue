@@ -153,6 +153,7 @@ export default {
             let [ i, j ] = (event.target.getAttribute('id')).split(';')
             console.log("The left value : ", event.target.value)
             console.log("the second line : ", imiti_loaded.value[1][j])
+            imiti_loaded.value[i][j] = event.target.value
         }
         const fileHandler = async ()=>{
             const selectedFile = document.getElementById('file1').files[0]
