@@ -41,7 +41,7 @@
             
             <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
                 <div class="infoUmuti umutiTitle">{{ selectedUmuti.value.name_umuti }}</div>
-                <div class="infoUmuti umutiTitle" style="background-color: gray;">{{ selectedUmuti.value.name_umuti }}</div>
+                <div class="infoUmuti umutiTitle" style="background-color: gray; height: 5%;">{{ selectedUmuti.value.name_umuti }}</div>
                 <div class="infoUmuti umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
                 <div class="infoUmuti umutiType">{{ selectedUmuti.value.type_umuti }}</div>
                 <div class="infoUmuti umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
