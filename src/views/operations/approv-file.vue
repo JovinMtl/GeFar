@@ -129,10 +129,7 @@ export default {
                 } else {
                     let info = "There is one or more fields non well formatted!"
                     notifSwitch(info)
-                    // console.log("Things are not OKay")
                 }
-                // let jo = wrong()
-                console.log("The wrong part is :", wrong)
             } else{
                 // cannot process
                 let info = "Vous n'avez pas ajouté des données !"
