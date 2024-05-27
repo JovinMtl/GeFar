@@ -167,7 +167,7 @@ export default {
 
         const compileImitiSet = async ()=>{
             const server = '//127.0.0.1:8002'
-            const endpoint = '/api/in/kurangura/'
+            const endpoint = '/api/in/compileImitiSet/'
 
             try {
                 const response = await fetch(`${server}${endpoint}`)
