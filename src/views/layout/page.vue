@@ -109,7 +109,7 @@
                     <me-nu @actualMenu="actualOption"></me-nu>
                 </div>
                 <div class="menuHau magnetic"  style="">
-                    <ion-icon :src="magnetOutline"></ion-icon>
+                    <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
                     </div>
             </div>
         </ion-content>
