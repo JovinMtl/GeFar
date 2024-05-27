@@ -418,7 +418,7 @@ export default {
         return {
             selectedUmuti, panier_client, activeLot, actualValue,
             actualQte, total_panier_client,
-            approvStatus, approFileStatus,
+            approvStatus, approFileStatus, server_process,
             close,  addCircleOutline, removeCircleOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
