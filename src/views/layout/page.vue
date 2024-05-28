@@ -5,13 +5,22 @@
                 <jove-loader></jove-loader>
                     
             </div>
-            <div class="Controle" style="background-color: white; 
-                position: absolute; height: 95%; width: 90vw; z-index: 17;
-                left: 5vw; top: 2vh;">
-                <div class="controTitle" style="background-color: gray;
-                    height: 8%; width: 100%;">
+            <div class="controleWrapper" style="position: absolute;height: 100%; width: 100%; z-index: 17;">
+                <div class="Controle" style="background-color: white; 
+                    position: relative; height: 95%; width: 90vw;
+                    left: 5vw; top: 2vh;">
+                    <div class="controTitle" style="background-color: white;
+                        height: 8%; width: 100%; text-align: center; align-content: center; color: black">
+                        <ion-icon :src="close" style="position: absolute; left: 95%; top: 3px;
+                            font-size: 30pt"></ion-icon>
+                        <h3>Vérification & Contrôle</h3>
+                    </div>
+                    <div class="controBody" style="background-color: yellowgreen; height: 92%; width: 100%;">
+
+                    </div>
                 </div>
             </div>
+            
             <div class="mainApprob" v-if="approvStatus">
                 
                 <div class="approFile" v-if="approFileStatus">
