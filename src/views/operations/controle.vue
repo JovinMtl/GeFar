@@ -35,5 +35,5 @@
 
 <script setup>
 import { IonIcon } from '@ionic/vue'
-import { close, statsChartOutline, snowOutline, thermometer,} from 'ionicons/icons'
+import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} from 'ionicons/icons'
 </script>
