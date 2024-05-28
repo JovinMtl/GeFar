@@ -14,3 +14,8 @@
         </div>
     </div>
 </template>
+
+<script setup>
+import { IonIcon } from '@ionic/vue'
+import { close } from 'ionicons/icons'
+</script>
