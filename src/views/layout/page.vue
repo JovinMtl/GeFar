@@ -462,7 +462,7 @@ export default {
     overflow: auto;
     /* background-color: yellow; */
     height: 80px;
-    width: 80%;
+    width: 60%;
     width: 10vw;
     /* padding: 5px 5px; */
     margin-left: 5px;
@@ -603,12 +603,14 @@ export default {
 
 .lote{
     background-color: rgba(128, 128, 128, 0.527);
-    height: 100%; 
-    width: 93%; 
+    height: 80%; 
+    width: 83%; 
     margin-bottom: 15px; 
     text-align: center; 
     font-size: .9rem; 
     border-radius: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 .head{
     width: 100%; 
