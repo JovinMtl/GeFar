@@ -5,7 +5,10 @@
                 <jove-loader></jove-loader>
                     
             </div>
-            <div class="Controle"></div>
+            <div class="Controle" style="background-color: white; 
+                position: absolute; height: 95%; width: 90vw; z-index: 17;
+                left: 5vw; top: 2vh;">
+            </div>
             <div class="mainApprob" v-if="approvStatus">
                 
                 <div class="approFile" v-if="approFileStatus">
