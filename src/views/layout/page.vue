@@ -8,6 +8,9 @@
             <div class="Controle" style="background-color: white; 
                 position: absolute; height: 95%; width: 90vw; z-index: 17;
                 left: 5vw; top: 2vh;">
+                <div class="controTitle" style="background-color: gray;
+                    height: 8%; width: 100%;">
+                </div>
             </div>
             <div class="mainApprob" v-if="approvStatus">
                 
