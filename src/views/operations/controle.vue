@@ -9,7 +9,9 @@
             <h3>Vérification & Contrôle</h3>
         </div>
         <div class="controBody" style="background-color: yellowgreen; height: 92%; width: 100%;">
-            <div class="controlIcons" style="display: inline-flex; width: 20%; height: 100%; border:2px solid white "></div>
+            <div class="controlIcons" style="display: inline-block; width: 20%; height: 100%; border:2px solid white ">
+                <div class="logOne" style="display: block;background-color: aqua; width: 100%;height: 20%;"></div>
+            </div>
             <div class="controlIcons" style="display: inline-flex; width: 80%; height: 100%; border:2px solid white "></div>
         </div>
     </div>
@@ -17,5 +19,5 @@
 
 <script setup>
 import { IonIcon } from '@ionic/vue'
-import { close } from 'ionicons/icons'
+import { close, statsChartOutline } from 'ionicons/icons'
 </script>
