@@ -6,7 +6,7 @@
                     
             </div>
             <div class="controleWrapper" style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
-                
+                <cont-role></cont-role>
             </div>
             
             <div class="mainApprob" v-if="approvStatus">
@@ -131,6 +131,7 @@ import menu from './auxiliare/menu.vue';
 import approv from '../operations/approv.vue';
 import approvFile from '../operations/approv-file.vue';
 import joveLoader from './auxiliare/jove-loader.vue';
+import controle from '../operations/controle.vue'
 // import useCloseApprov from '../hooks/jove'
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
@@ -147,6 +148,7 @@ export default {
         'app-rov': approv,
         'appro-file': approvFile,
         'jove-loader': joveLoader,
+        'cont-role': controle,
         IonContent, IonPage, 
         IonIcon,
     },
