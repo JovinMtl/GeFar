@@ -56,12 +56,12 @@
                             {{ (lot.date).slice(5,8) }}_{{ (lot.date).slice(0,4) }}
                         </div>
                         <div class="sub">
-                            <ion-icon :src="removeCircleOutline" @click="decrementQte" style="font-size: x-large;"></ion-icon>
+                            <ion-icon :src="removeCircleOutline" @click="decrementQte" style="font-size: large;"></ion-icon>
                             <span style="margin-right: .1rem;">&nbsp;</span>
                            <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier" :id="'q' + index"
-                            style="background-color: white; width: 25px; height: 20px; position: relative; top: -6px;"/>
+                            style="background-color: white; width: 25px; height: 20px; position: relative; top: -4px; left: 1px"/>
                            <span style="margin-right: .1rem;">&nbsp;</span>
-                           <ion-icon :src="addCircleOutline" @click="incrementQte" style="font-size: x-large;"></ion-icon>
+                           <ion-icon :src="addCircleOutline" @click="incrementQte" style="font-size: large;"></ion-icon>
                         </div>
                     </div>
                 </div>
@@ -463,7 +463,8 @@ export default {
     /* background-color: yellow; */
     height: 80px;
     width: 80%;
-    padding: 5px 5px;
+    width: 10vw;
+    /* padding: 5px 5px; */
     margin-left: 5px;
 }
 .magnetic{
