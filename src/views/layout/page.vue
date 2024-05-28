@@ -5,6 +5,7 @@
                 <jove-loader></jove-loader>
                     
             </div>
+            <div class="Controle"></div>
             <div class="mainApprob" v-if="approvStatus">
                 
                 <div class="approFile" v-if="approFileStatus">
