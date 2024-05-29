@@ -1,6 +1,9 @@
 
 import { UmutiSet } from '../layout/types.ts'
 
+export default function useKuvoma(simple=true){
+    kuvomaImiti ()
+}
 const updateImitiSet = ()=>{
     imitiset.value = []
     // console.log("ImitiSet has lenght: ", data.value.length)
