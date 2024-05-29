@@ -1,6 +1,7 @@
 
 
 export default function useKuvoma(){
+    console.log("You called useKuvoma")
     return kuvomaImiti
 }
 
