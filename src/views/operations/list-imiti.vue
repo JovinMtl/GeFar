@@ -31,7 +31,7 @@ export default defineComponent ({
         const data = reactive({})
         const imitiset:UmutiSet[] = ref([])
         let codes = new Array()
-        let imiti_for_search = []
+        // let imiti_for_search = []
 
         const needUpdate = inject('needUpdate_list')
         const need_search = inject('needSearch')
