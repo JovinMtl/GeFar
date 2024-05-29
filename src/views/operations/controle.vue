@@ -36,7 +36,10 @@
                 </div>
             </div>
             <div class="controlIcons" style="display: inline-flex; width: 80%; height: 100%; border:2px solid white ">
-                {{ actual_imiti }}
+               <div class="controlContent" style="position: absolute;">
+                THese <br>
+                {{ umuti }}
+                </div>
             </div>
         </div>
     </div>
