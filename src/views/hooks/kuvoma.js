@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue'
 
 
-export default async function useKuvoma(){
+export function useKuvoma(){
     const data = ref(null)
 
     const kuvomaImiti = async () => {
