@@ -35,16 +35,21 @@
                     <span style="position: absolute;font-size: 15pt ;left: 9vw; margin-top: 5vh;">Les ventes</span>
                 </div>
             </div>
-            <div class="controlIcons" style="display: inline-flex; width: 80%; height: 100%; border:2px solid white "></div>
+            <div class="controlIcons" style="display: inline-flex; width: 80%; height: 100%; border:2px solid white ">
+                {{ actual_imiti }}
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} from 'ionicons/icons'
 import useKuvoma from '../hooks/kuvoma'
 
+const actual_imiti = ref([])
+actual_imiti.value = useKuvoma()
 
 
 </script>

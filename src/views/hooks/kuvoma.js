@@ -5,7 +5,7 @@ const data = ref(null)
 export default function useKuvoma(){
     kuvomaImiti()
     console.log("useKuvoma got: ", data.value)
-    return data
+    return data.value
 }
 
 const kuvomaImiti = async () => {
