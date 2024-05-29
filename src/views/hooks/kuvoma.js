@@ -1,8 +1,9 @@
 
 
 export default function useKuvoma(){
-    console.log("You called useKuvoma")
+    // console.log("You called useKuvoma")
     let response = kuvomaImiti()
+    console.log("useKuvoma got: ", response)
     return response
 }
 
