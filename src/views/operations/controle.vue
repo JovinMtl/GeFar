@@ -38,7 +38,7 @@
             <div class="controlIcons" style="display: inline-flex; width: 80%; height: 100%; border:2px solid white ">
                <div class="controlContent" style="position: absolute;">
                 THese <br>
-                {{ umuti }}
+                {{ actual_imiti }}
                 </div>
             </div>
         </div>
@@ -53,6 +53,7 @@ import useKuvoma from '../hooks/kuvoma'
 
 const actual_imiti = ref([])
 actual_imiti.value = useKuvoma()
+
 
 
 </script>
