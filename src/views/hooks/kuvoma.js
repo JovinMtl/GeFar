@@ -3,6 +3,12 @@ import { UmutiSet } from '../layout/types.ts'
 
 export default function useKuvoma(simple=true){
     kuvomaImiti ()
+
+    if (simple){
+        return [
+            imiti_for_search,
+        ]
+    }
 }
 const updateImitiSet = ()=>{
     imitiset.value = []
