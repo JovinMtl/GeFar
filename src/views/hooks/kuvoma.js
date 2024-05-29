@@ -1,4 +1,6 @@
 
+import { UmutiSet } from '../layout/types.ts'
+
 const updateImitiSet = ()=>{
     imitiset.value = []
     // console.log("ImitiSet has lenght: ", data.value.length)
