@@ -7,7 +7,7 @@ export default function useKuvoma(simple=true){
 
     if (simple){
         return [
-            imiti_for_search,
+            imiti_for_search, imitiset,
         ]
     }
 }
