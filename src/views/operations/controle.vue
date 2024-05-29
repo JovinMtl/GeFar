@@ -10,7 +10,7 @@
         </div>
         <div class="controBody" style="background-color: yellowgreen; height: 92%; width: 100%;">
             <div class="controlIcons" style="display: inline-block; width: 20%; height: 100%; border:2px solid white ">
-                <div class="logoOne" @click="useKuvoma"
+                <div class="logoOne" @click="ukuvoma"
                     style="display: block;background-color: transparent; 
                     width: 100%;height: 20%; padding: 5px 5px; border-bottom: 2px solid white">
                     <ion-icon :src="statsChartOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
@@ -39,6 +39,7 @@
                <div class="controlContent" style="position: absolute;">
                 THese <br>
                 {{ actual_imiti }}
+                <!-- {{ getImiti }} -->
                 </div>
             </div>
         </div>
@@ -46,14 +47,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} from 'ionicons/icons'
-import useKuvoma from '../hooks/kuvoma'
+import { useKuvoma } from '../hooks/kuvoma'
 
-const actual_imiti = ref([])
-actual_imiti.value = useKuvoma()
-
-
+const [actual_imiti, ukuvoma] = useKuvoma()
+// const getImiti = ()=> useKuvoma
+console.log("THe actual imiti is : ", actual_imiti.value)
 
 </script>
