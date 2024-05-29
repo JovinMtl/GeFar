@@ -2,6 +2,7 @@
 import { UmutiSet } from '../layout/types.ts'
 
 export default function useKuvoma(simple=true){
+    let imiti_for_search = []
     kuvomaImiti ()
 
     if (simple){
