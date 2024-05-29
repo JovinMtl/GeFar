@@ -1,10 +1,11 @@
 
+import { ref } from 'vue'
+const data = ref(null)
 
 export default function useKuvoma(){
-    // console.log("You called useKuvoma")
-    let response = kuvomaImiti()
-    console.log("useKuvoma got: ", response)
-    return response
+    kuvomaImiti()
+    console.log("useKuvoma got: ", data.value)
+    return data
 }
 
 const kuvomaImiti = async () => {
@@ -15,9 +16,8 @@ const kuvomaImiti = async () => {
         const response = await fetch(`${base}/${prefix}`)
         
         if (response.ok){
-            let data = await response.json()
-            return data
-            // console.log("ImitiSet has lenght: ", data.value.length)
+            data.value = await response.json()
+            // console.log("ImitiSet has lenght: ", data.value)
         }
     } catch (value){
         console.log("somehting may not be well because :", value)
