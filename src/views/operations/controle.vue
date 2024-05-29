@@ -43,5 +43,5 @@
 <script setup>
 import { IonIcon } from '@ionic/vue'
 import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} from 'ionicons/icons'
-import { useKuvoma} from '../hooks/kuvoma'
+import useKuvoma from '../hooks/kuvoma'
 </script>
