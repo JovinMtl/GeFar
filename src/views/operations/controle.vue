@@ -37,7 +37,15 @@
             </div>
             <div class="controlIcons" style="display: inline-flex; width: 80%; height: 100%; border:2px solid white ">
                <div class="controlContent" style="position: absolute;width: 100%; height: 20px;">
-                    <div class="contentElement" style="display: inline-flex;background-color: #333; width: 25%;height: 100%;">THese</div>
+                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 20%;height: 100%;">
+                        THese
+                    </div>
+                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
+                        That
+                    </div>
+                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
+                        for
+                    </div>
                  
                 <!-- {{ actual_imiti }} -->
                 <!-- {{ getImiti }} -->
