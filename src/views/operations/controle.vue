@@ -46,6 +46,12 @@
                     <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
                         for
                     </div>
+                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
+                        then
+                    </div>
+                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 14%;height: 100%;">
+                        if
+                    </div>
                  
                 <!-- {{ actual_imiti }} -->
                 <!-- {{ getImiti }} -->
