@@ -5,7 +5,7 @@
         <div class="controTitle" style="background-color: white;
             height: 8%; width: 100%; text-align: left; align-content: center; color: black">
 
-            <ion-icon :src="close" style="position: absolute; left: 95%; top: 3px;
+            <ion-icon :src="close" style="position: absolute; left: 95%; top: 1px;
                 font-size: 30pt"></ion-icon>
             <div class="Title" style="display: inline-flex; margin: 0px 10px;">
                 <h3>Vérification & Contrôle</h3>
@@ -57,90 +57,91 @@
                     <span style="position: absolute;font-size: 15pt ;left: 9vw; margin-top: 5vh;">Les ventes</span>
                 </div>
             </div>
-            <div class="controlIcons" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: yellow; float: right;">
+            <div class="controlIcons" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: transparent; 
+                float: right; color: black;">
                 <!-- <div style="width: 100%; height: 20px; background-color: gray;"></div>
                 <div style="width: 100%; height: 20px; background-color: gray;"></div> -->
-                <!-- <div class="controlContent" style="display: block;width: 100%; height: 20px; background-color: grey;margin-bottom: 5px;
-                    border: 3px solid blue;">
+                <!-- <div class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
+                    border: 1px solid blue;">
                     something1
                 </div> -->
 
-                <div  class="controlContent" style="display: block;width: 100%; height: 20px; background-color: grey;margin-bottom: 5px;
-                    border: 3px solid blue;">
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 4%;height: 100%;">
+                <div  class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
+                    border: 1px solid white;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
                          #
                     </div> 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 20%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
                          Nom du Med.
                     </div> 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
                         Quantite
                     </div>
 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
                         Prix de V.
                     </div>
 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                         Date vendu
                     </div>
 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                        Localisation
                     </div>
 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                         Type du Med.
                     </div>
                 </div>
 
-                <div v-for="(umuti, index) in actual_imiti" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: grey;margin-bottom: 5px;
-                    border: 3px solid blue;">
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 4%;height: 100%;">
+                <div v-for="(umuti, index) in actual_imiti" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
+                    border: 1px solid white;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%;color: white;margin-left: 5px;">
                          {{ index + 1 }}
                     </div> 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 20%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
                          {{ umuti.name_umuti }}
-                    </div> <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
+                    </div> <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
                         {{ umuti.quantite_restant }}
                     </div>
 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
                         {{ umuti.price_out }}
                     </div>
 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                         {{ (umuti.date_last_vente).slice(6,10) }}
                     </div>
 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                        {{ umuti.location }}
                     </div>
 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                         {{ umuti.type_umuti }}
                     </div>
                 </div>
 
 
                <!-- <div class="controlContent" style="width: 100%; height: 20px;">
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 20%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
                          umuti.name_umuti
                     </div>
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
                         umuti.quantite_restant
                     </div>
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
                         umuti.price_out
                     </div>
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                         umuti.date_last_vente
                     </div>
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                         umuti.location 
                     </div>
 
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                         umuti.type_umuti
                     </div>
                 </div> -->
