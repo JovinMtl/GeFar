@@ -38,33 +38,33 @@
             <div class="controlIcons" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: yellow; float: right;">
                 <!-- <div style="width: 100%; height: 20px; background-color: gray;"></div>
                 <div style="width: 100%; height: 20px; background-color: gray;"></div> -->
-                <div class="controlContent" style="display: block;width: 100%; height: 20px; background-color: grey;margin-bottom: 5px;
+                <!-- <div class="controlContent" style="display: block;width: 100%; height: 20px; background-color: grey;margin-bottom: 5px;
                     border: 3px solid blue;">
                     something1
-                </div>
+                </div> -->
 
-                <div class="controlContent" style="display: block;width: 100%; height: 20px; background-color: grey;margin-bottom: 5px;
+                <div v-for="umuti in actual_imiti" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: grey;margin-bottom: 5px;
                     border: 3px solid blue;">
                     <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 20%;height: 100%;">
-                         umuti.name_umuti
+                         {{ umuti.name_umuti }}
                     </div> <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
-                        umuti.quantite_restant
+                        {{ umuti.quantite_restant }}
                     </div>
 
                     <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
-                        umuti.price_out
+                        {{ umuti.price_out }}
                     </div>
 
                     <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
-                        umuti.date_last_vente
+                        {{ (umuti.date_last_vente).slice(6,10) }}
                     </div>
 
                     <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
-                        umuti.location 
+                       {{ umuti.location }}
                     </div>
 
                     <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
-                        umuti.type_umuti
+                        {{ umuti.type_umuti }}
                     </div>
                 </div>
 
