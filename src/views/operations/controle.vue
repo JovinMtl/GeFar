@@ -36,9 +36,10 @@
                 </div>
             </div>
             <div class="controlIcons" style="display: inline-flex; width: 80%; height: 100%; border:2px solid white ">
-               <div class="controlContent" style="position: absolute;">
-                THese <br>
-                {{ actual_imiti }}
+               <div class="controlContent" style="position: absolute;width: 100%; height: 20px;">
+                    <div class="contentElement" style="display: inline-flex;background-color: #333; width: 25%;height: 100%;">THese</div>
+                 
+                <!-- {{ actual_imiti }} -->
                 <!-- {{ getImiti }} -->
                 </div>
             </div>
@@ -53,7 +54,6 @@ import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} fr
 import { useKuvoma } from '../hooks/kuvoma'
 
 const [actual_imiti, ukuvoma] = useKuvoma()
-// const getImiti = ()=> useKuvoma
 console.log("THe actual imiti is : ", actual_imiti.value)
 
 </script>
