@@ -3,10 +3,32 @@
         position: relative; height: 95%; width: 90vw;
         left: 5vw; top: 2vh;">
         <div class="controTitle" style="background-color: white;
-            height: 8%; width: 100%; text-align: center; align-content: center; color: black">
+            height: 8%; width: 100%; text-align: left; align-content: center; color: black">
+
             <ion-icon :src="close" style="position: absolute; left: 95%; top: 3px;
                 font-size: 30pt"></ion-icon>
-            <h3>Vérification & Contrôle</h3>
+            <div class="Title" style="display: inline-flex; margin: 0px 10px;">
+                <h3>Vérification & Contrôle</h3>
+            </div>
+            <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
+                <input type="text" placeholder="Rechercher">
+            </div>
+            <div class="actualField" style="display: inline-flex; margin: 0px 10px;">
+                nom
+            </div>
+            <div class="recherche" style="display: inline-flex; margin: 0px 20px;">
+                debut
+                <input type="date"  style="margin-top: -2px;">
+            </div>
+            <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
+                fin
+                <input type="date" style="margin-top: -2px;">
+            </div>
+            <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
+                
+                <input type="button" style="background-color: green;" value="Rechercher"/>
+            </div>
+            
         </div>
         <div class="controBody" style="background-color: yellowgreen; height: 92%; width: 100%;">
             <div class="controlIcons" style="display: inline-block; width: 20%; height: 100%; border:2px solid white ">
