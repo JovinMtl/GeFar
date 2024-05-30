@@ -94,8 +94,11 @@
                     </div>
                 </div>
 
-                <div v-for="umuti in actual_imiti" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: grey;margin-bottom: 5px;
+                <div v-for="(umuti, index) in actual_imiti" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: grey;margin-bottom: 5px;
                     border: 3px solid blue;">
+                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 4%;height: 100%;">
+                         {{ index + 1 }}
+                    </div> 
                     <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 20%;height: 100%;">
                          {{ umuti.name_umuti }}
                     </div> <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
