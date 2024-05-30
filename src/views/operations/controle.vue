@@ -36,25 +36,26 @@
                 </div>
             </div>
             <div class="controlIcons" style="display: inline-flex; width: 80%; height: 100%; border:2px solid white ">
-               <div class="controlContent" style="position: absolute;width: 100%; height: 20px;">
+               <div class="controlContent" style="display: block;position: absolute;width: 100%; height: 20px;">
                     <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 20%;height: 100%;">
-                        THese
+                         umuti.name_umuti
                     </div>
                     <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
-                        That
+                        umuti.quantite_restant
                     </div>
                     <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
-                        for
+                        umuti.price_out
                     </div>
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 15%;height: 100%;">
-                        then
+                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                        umuti.date_last_vente
                     </div>
-                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 14%;height: 100%;">
-                        if
+                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                        umuti.location 
                     </div>
-                 
-                <!-- {{ actual_imiti }} -->
-                <!-- {{ getImiti }} -->
+
+                    <div class="contentElement1" style="display: inline-flex;background-color: #333; width: 10%;height: 100%;">
+                        umuti.type_umuti
+                    </div>
                 </div>
             </div>
         </div>
