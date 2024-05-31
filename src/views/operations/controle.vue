@@ -16,12 +16,7 @@
             </div>
                 <div class="actualField" style="display: inline-flex; margin: 0px 10px;">
                     <select v-model="selected_field" style="background-color: white" placeholder="Type" value="Ovule">
-                    <option v-for="opt in actual_opt">{{ opt }}</option>
-                    <!-- <option>Gel</option>
-                    <option>Ovule</option>
-                    <option>Sirop</option>
-                    <option>Inj</option> -->
-                    <!-- <option>Inj</option> -->
+                        <option v-for="opt in actual_opt">{{ opt }}</option>
                     </select>
                 </div>
             <div v-if="selected_type != 'date'" class="recherche" style="display: inline-flex; margin: 0px 20px;">
