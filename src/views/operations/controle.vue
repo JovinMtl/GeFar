@@ -167,11 +167,14 @@ const [actual_imiti, ukuvoma] = useKuvoma()
 console.log("THe actual imiti is : ", actual_imiti.value)
 
 const actual_obj = ref(null)
+const actual_opt = ref([])
 
 watch(actual_imiti, (value)=>{
     console.log("We got really new imiti")
     if (value){
         actual_obj.value = value
+        actual_opt.value = Object.keys(value[0])
+        console.log("The actual keys are: ", actual_opt.value)
     }
 })
 
