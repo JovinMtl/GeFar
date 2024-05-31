@@ -190,4 +190,7 @@ watch(selected_opt, (value)=>{
     console.log("Tshe actual keys are: ", actual_opt.value)
     console.log("The selected TYPE is :", selected_type.value)
 })
+watch(need_search, (value)=>{
+    console.log("We want to search with this keyword: ", value)
+})
 </script>
