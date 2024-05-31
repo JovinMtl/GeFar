@@ -132,27 +132,7 @@
                 </div>
 
 
-               <!-- <div class="controlContent" style="width: 100%; height: 20px;">
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
-                         umuti.name_umuti
-                    </div>
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
-                        umuti.quantite_restant
-                    </div>
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
-                        umuti.price_out
-                    </div>
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                        umuti.date_last_vente
-                    </div>
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                        umuti.location 
-                    </div>
-
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                        umuti.type_umuti
-                    </div>
-                </div> -->
+               
             </div>
         </div>
     </div>
