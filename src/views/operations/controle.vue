@@ -161,7 +161,7 @@
 import { ref, computed, watch } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} from 'ionicons/icons'
-import { useKuvoma } from '../hooks/kuvoma'
+import { useKuvoma, useSearchUmuti } from '../hooks/kuvoma'
 
 const [actual_imiti, ukuvoma] = useKuvoma()
 console.log("THe actual imiti is : ", actual_imiti.value)
@@ -192,5 +192,7 @@ watch(selected_opt, (value)=>{
 })
 watch(need_search, (value)=>{
     console.log("We want to search with this keyword: ", value)
+    let searchResult = useSearchUmuti(actual_obj, value, selected_type.value )
+    console.log("The result is : ", searchResult)
 })
 </script>
