@@ -29,7 +29,8 @@
             </div>
             <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
                 
-                <input type="button" style="background-color: green;" value="Rechercher"/>
+                <input type="button" style="background-color: green;" 
+                    value="Rechercher" @click="applyFilter"/>
             </div>
             
         </div>
@@ -222,4 +223,8 @@ watch(need_search, (value)=>{
     actual_imitiS.value = useSearchUmuti(actual_obj.value, value, selected_field.value )
     console.log("The result is : ", actual_imitiS.value)
 })
+
+const applyFilter = ()=>{
+    // calling a composable and pass date_debut & date_fin as parameter
+}
 </script>
