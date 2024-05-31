@@ -174,9 +174,13 @@ watch(actual_imiti, (value)=>{
     console.log("We got really new imiti")
     if (value){
         actual_obj.value = value
-        actual_opt.value = Object.keys(value[0])
+        actual_opt.value = Object.keys(value[0]) 
+        actual_opt.value = ['name_umuti','description_umuti', 
+        'quantite_restant','price_out', 'date_last_vente',]
         console.log("The actual keys are: ", actual_opt.value)
     }
 })
-
+watch(selected_opt, (value)=>{
+    console.log("You selected: ", selected_opt.value)
+})
 </script>
