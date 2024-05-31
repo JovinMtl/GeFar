@@ -15,7 +15,7 @@
                     v-model="need_search">
             </div>
                 <div class="actualField" style="display: inline-flex; margin: 0px 10px;">
-                    <select v-model="selected_opt" style="background-color: white" placeholder="Type" value="Ovule">
+                    <select v-model="selected_field" style="background-color: white" placeholder="Type" value="Ovule">
                     <option v-for="opt in actual_opt">{{ opt }}</option>
                     <!-- <option>Gel</option>
                     <option>Ovule</option>
@@ -170,7 +170,7 @@ console.log("THe actual imiti is : ", actual_imiti.value)
 const actual_obj = ref(null)
 const actual_opt = ref([])
 const actual_type = ref([])
-const selected_opt = ref('name_umuti')
+const selected_field = ref('name_umuti')
 const selected_type = ref('text')
 const need_search = ref(null)
 
@@ -184,8 +184,8 @@ watch(actual_imiti, (value)=>{
         actual_type.value = ['text','text','text','text','date']
     }
 })
-watch(selected_opt, (value)=>{
-    console.log("You selected: ", selected_opt.value)
+watch(selected_field, (value)=>{
+    console.log("You selected: ", selected_field.value)
     let index_type =  (actual_opt.value).indexOf(value)
     selected_type.value = actual_type.value[index_type]
     console.log("Tshe actual keys are: ", actual_opt.value)
@@ -193,7 +193,7 @@ watch(selected_opt, (value)=>{
 })
 watch(need_search, (value)=>{
     console.log("We want to search with this keyword: ", value)
-    let searchResult = useSearchUmuti(actual_obj.value, value, selected_opt.value )
+    let searchResult = useSearchUmuti(actual_obj.value, value, selected_field.value )
     console.log("The result is : ", searchResult)
 })
 </script>
