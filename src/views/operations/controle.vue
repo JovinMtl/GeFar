@@ -13,8 +13,15 @@
             <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
                 <input type="text" placeholder="Rechercher">
             </div>
-            <div class="actualField" style="display: inline-flex; margin: 0px 10px;">
-                nom
+                <div class="actualField" style="display: inline-flex; margin: 0px 10px;">
+                    <select style="background-color: white" placeholder="Type" value="Ovule">
+                    <option>Cp</option>
+                    <option>Gel</option>
+                    <option>Ovule</option>
+                    <option>Sirop</option>
+                    <option>Inj</option>
+                    <!-- <option>Inj</option> -->
+                </select>
             </div>
             <div class="recherche" style="display: inline-flex; margin: 0px 20px;">
                 debut
@@ -95,7 +102,7 @@
                     </div>
                 </div>
 
-                <div v-for="(umuti, index) in actual_imiti" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
+                <div v-for="(umuti, index) in actual_obj" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
                     border: 1px solid white;">
                     <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%;color: white;margin-left: 5px;">
                          {{ index + 1 }}
