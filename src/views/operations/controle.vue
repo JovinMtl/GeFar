@@ -196,6 +196,8 @@ const selected_type = ref('text')
 const need_search = ref(null)
 const actual_imitiS = ref([])
 
+let [date_debut, date_fin] = [null, null]
+
 watch(actual_imiti, (value)=>{
     console.log("We got really new imiti")
     if (value){
