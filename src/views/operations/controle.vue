@@ -181,6 +181,7 @@ watch(actual_imiti, (value)=>{
         let actual_type = ['text','text','text','text','date']
         selected_type.value = actual_opt.value.indexOf(actual_obj.value)
         console.log("The actual keys are: ", actual_opt.value)
+        console.log("The selected TYPE is :", selected_type.value)
     }
 })
 watch(selected_opt, (value)=>{
