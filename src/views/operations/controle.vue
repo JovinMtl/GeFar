@@ -168,6 +168,7 @@ console.log("THe actual imiti is : ", actual_imiti.value)
 
 const actual_obj = ref(null)
 const actual_opt = ref([])
+const actual_type = ref([])
 const selected_opt = ref('name_umuti')
 const selected_type = ref('text')
 
@@ -178,13 +179,14 @@ watch(actual_imiti, (value)=>{
         // actual_opt.value = Object.keys(value[0]) 
         actual_opt.value = ['name_umuti','description_umuti', 
         'quantite_restant','price_out', 'date_last_vente',]
-        let actual_type = ['text','text','text','text','date']
-        selected_type.value = actual_opt.value.indexOf(actual_obj.value)
-        console.log("The actual keys are: ", actual_opt.value)
-        console.log("The selected TYPE is :", selected_type.value)
+        actual_type.value = ['text','text','text','text','date']
     }
 })
 watch(selected_opt, (value)=>{
     console.log("You selected: ", selected_opt.value)
+    let index_type =  (actual_opt.value).indexOf(value)
+    selected_type.value = actual_type.value[index_type]
+    console.log("Tshe actual keys are: ", actual_opt.value)
+    console.log("The selected TYPE is :", selected_type.value)
 })
 </script>
