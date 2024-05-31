@@ -14,15 +14,15 @@
                 <input type="text" placeholder="Rechercher">
             </div>
                 <div class="actualField" style="display: inline-flex; margin: 0px 10px;">
-                    <select style="background-color: white" placeholder="Type" value="Ovule">
-                    <option>Cp</option>
-                    <option>Gel</option>
+                    <select v-model="selected_opt" style="background-color: white" placeholder="Type" value="Ovule">
+                    <option v-for="opt in actual_opt">{{ opt }}</option>
+                    <!-- <option>Gel</option>
                     <option>Ovule</option>
                     <option>Sirop</option>
-                    <option>Inj</option>
+                    <option>Inj</option> -->
                     <!-- <option>Inj</option> -->
-                </select>
-            </div>
+                    </select>
+                </div>
             <div class="recherche" style="display: inline-flex; margin: 0px 20px;">
                 debut
                 <input type="date"  style="margin-top: -2px;">
@@ -168,6 +168,7 @@ console.log("THe actual imiti is : ", actual_imiti.value)
 
 const actual_obj = ref(null)
 const actual_opt = ref([])
+const selected_opt = ref('name_umuti')
 
 watch(actual_imiti, (value)=>{
     console.log("We got really new imiti")
