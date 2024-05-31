@@ -191,7 +191,7 @@ import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} fr
 import { useKuvoma, useSearchUmuti } from '../hooks/kuvoma'
 
 const [actual_imiti, ukuvoma] = useKuvoma()
-console.log("THe actual imiti is : ", actual_imiti.value)
+// console.log("THe actual imiti is : ", actual_imiti.value)
 
 const actual_obj = ref(null)
 const actual_opt = ref([])
@@ -199,12 +199,13 @@ const actual_type = ref([])
 const selected_field = ref('name_umuti')
 const selected_type = ref('text')
 const need_search = ref(null)
-const actual_imitiS = ref(actual_imiti)
+const actual_imitiS = ref([])
 
 watch(actual_imiti, (value)=>{
     console.log("We got really new imiti")
     if (value){
         actual_obj.value = value
+        actual_imitiS.value = value
         // actual_opt.value = Object.keys(value[0]) 
         actual_opt.value = ['name_umuti','description_umuti', 
         'quantite_restant','price_out', 'date_last_vente',]
