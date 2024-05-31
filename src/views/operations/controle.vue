@@ -23,11 +23,11 @@
                     <!-- <option>Inj</option> -->
                     </select>
                 </div>
-            <div class="recherche" style="display: inline-flex; margin: 0px 20px;">
+            <div v-if="selected_type != 'date'" class="recherche" style="display: inline-flex; margin: 0px 20px;">
                 debut
                 <input type="date"  style="margin-top: -2px; width: 80px;">
             </div>
-            <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
+            <div  class="recherche" style="display: inline-flex; margin: 0px 10px;">
                 fin
                 <input type="date" style="margin-top: -2px; width: 80px;">
             </div>
