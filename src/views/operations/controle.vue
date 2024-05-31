@@ -65,7 +65,7 @@
                     <span style="position: absolute;font-size: 15pt ;left: 9vw; margin-top: 5vh;">Les ventes</span>
                 </div>
             </div>
-            <div class="controlIcons" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: transparent; 
+            <div class="controlContent" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: transparent; 
                 float: right; color: black;">
                 <!-- <div style="width: 100%; height: 20px; background-color: gray;"></div>
                 <div style="width: 100%; height: 20px; background-color: gray;"></div> -->
@@ -73,63 +73,74 @@
                     border: 1px solid blue;">
                     something1
                 </div> -->
-
-                <div  class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
-                    border: 1px solid white;">
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
-                         #
-                    </div> 
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
-                         Nom du Med.
-                    </div> 
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
-                        Quantite
-                    </div>
-
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
-                        Prix de V.
-                    </div>
-
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                        Date vendu
-                    </div>
-
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                       Localisation
-                    </div>
-
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                        Type du Med.
-                    </div>
+                
+                <div class="controlHeader" style="background-color: white;
+                    height: 5%; width: 100%;">
                 </div>
 
-                <div v-for="(umuti, index) in actual_imitiS" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
-                    border: 1px solid white;">
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%;color: white;margin-left: 5px;">
-                         {{ index + 1 }}
-                    </div> 
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
-                         {{ umuti.name_umuti }}
-                    </div> <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
-                        {{ umuti.quantite_restant }}
-                    </div>
-
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
-                        {{ umuti.price_out }}
-                    </div>
-
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                        {{ (umuti.date_last_vente).slice(6,10) }}
-                    </div>
-
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                       {{ umuti.location }}
-                    </div>
-
-                    <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                        {{ umuti.type_umuti }}
-                    </div>
+                <div class="controlBody" style="background-color: yellow;
+                    height: 90%; width: 100%;">
                 </div>
+
+                <div class="controlFooter" style="background-color: white;
+                    height: 5%; width: 100%;">
+                </div>
+                    <!-- <div  class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
+                        border: 1px solid white;">
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
+                            #
+                        </div> 
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
+                            Nom du Med.
+                        </div> 
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                            Quantite
+                        </div>
+
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                            Prix de V.
+                        </div>
+
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                            Date vendu
+                        </div>
+
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        Localisation
+                        </div>
+
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                            Type du Med.
+                        </div>
+                    </div>
+
+                    <div v-for="(umuti, index) in actual_imitiS" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
+                        border: 1px solid white;">
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%;color: white;margin-left: 5px;">
+                            {{ index + 1 }}
+                        </div> 
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
+                            {{ umuti.name_umuti }}
+                        </div> <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                            {{ umuti.quantite_restant }}
+                        </div>
+
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                            {{ umuti.price_out }}
+                        </div>
+
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                            {{ (umuti.date_last_vente).slice(6,10) }}
+                        </div>
+
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        {{ umuti.location }}
+                        </div>
+
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                            {{ umuti.type_umuti }}
+                        </div>
+                    </div> -->
 
 
                
