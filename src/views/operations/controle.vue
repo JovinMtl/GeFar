@@ -226,5 +226,8 @@ watch(need_search, (value)=>{
 
 const applyFilter = ()=>{
     // calling a composable and pass date_debut & date_fin as parameter
+    
+    let filteredResult = useFilterRange(actual_imitiS.value, date_debut, date_fin)
+    console.log("THe filtered result is : ", filteredResult)
 }
 </script>
