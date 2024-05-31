@@ -194,7 +194,7 @@ watch(selected_field, (value)=>{
 })
 watch(need_search, (value)=>{
     console.log("We want to search with this keyword: ", value)
-    actual_imiti = useSearchUmuti(actual_obj.value, value, selected_field.value )
-    console.log("The result is : ", searchResult)
+    actual_imitiS.value = useSearchUmuti(actual_obj.value, value, selected_field.value )
+    console.log("The result is : ", actual_imitiS.value)
 })
 </script>
