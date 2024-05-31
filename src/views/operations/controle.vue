@@ -173,6 +173,7 @@ const actual_type = ref([])
 const selected_field = ref('name_umuti')
 const selected_type = ref('text')
 const need_search = ref(null)
+const actual_imitiS = ref(actual_imiti)
 
 watch(actual_imiti, (value)=>{
     console.log("We got really new imiti")
@@ -193,7 +194,7 @@ watch(selected_field, (value)=>{
 })
 watch(need_search, (value)=>{
     console.log("We want to search with this keyword: ", value)
-    let searchResult = useSearchUmuti(actual_obj.value, value, selected_field.value )
+    actual_imiti = useSearchUmuti(actual_obj.value, value, selected_field.value )
     console.log("The result is : ", searchResult)
 })
 </script>
