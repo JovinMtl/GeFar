@@ -26,3 +26,8 @@ export function useKuvoma(){
     
 }
 
+export function useSearchUmuti(imiti_for_search=null, value=null, field=null){
+        return imiti_for_search.filter((element)=>{
+            return element[field].toLowerCase().match((value).toLowerCase())
+        })
+}
