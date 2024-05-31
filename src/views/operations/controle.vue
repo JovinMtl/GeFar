@@ -103,7 +103,7 @@
                     </div>
                 </div>
 
-                <div v-for="(umuti, index) in actual_obj" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
+                <div v-for="(umuti, index) in actual_imitiS" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
                     border: 1px solid white;">
                     <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%;color: white;margin-left: 5px;">
                          {{ index + 1 }}
@@ -193,6 +193,7 @@ watch(selected_field, (value)=>{
     console.log("The selected TYPE is :", selected_type.value)
 })
 watch(need_search, (value)=>{
+    
     console.log("We want to search with this keyword: ", value)
     actual_imitiS.value = useSearchUmuti(actual_obj.value, value, selected_field.value )
     console.log("The result is : ", actual_imitiS.value)
