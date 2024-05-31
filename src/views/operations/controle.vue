@@ -11,7 +11,8 @@
                 <h3>Vérification & Contrôle</h3>
             </div>
             <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
-                <input :type="selected_type" placeholder="Rechercher">
+                <input :type="selected_type" placeholder="Rechercher" 
+                    :value="need_search">
             </div>
                 <div class="actualField" style="display: inline-flex; margin: 0px 10px;">
                     <select v-model="selected_opt" style="background-color: white" placeholder="Type" value="Ovule">
