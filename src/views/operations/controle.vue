@@ -193,7 +193,7 @@ watch(selected_opt, (value)=>{
 })
 watch(need_search, (value)=>{
     console.log("We want to search with this keyword: ", value)
-    let searchResult = useSearchUmuti(actual_obj.value, value, selected_type.value )
+    let searchResult = useSearchUmuti(actual_obj.value, value, selected_opt.value )
     console.log("The result is : ", searchResult)
 })
 </script>
