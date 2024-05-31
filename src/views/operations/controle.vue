@@ -178,6 +178,8 @@ watch(actual_imiti, (value)=>{
         // actual_opt.value = Object.keys(value[0]) 
         actual_opt.value = ['name_umuti','description_umuti', 
         'quantite_restant','price_out', 'date_last_vente',]
+        let actual_type = ['text','text','text','text','date']
+        selected_type.value = actual_opt.value.indexOf(actual_obj.value)
         console.log("The actual keys are: ", actual_opt.value)
     }
 })
