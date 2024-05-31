@@ -74,8 +74,7 @@
                     something1
                 </div> -->
                 
-                <div class="controlHeader" style="background-color: white;
-                    height: 5%; width: 100%;">
+                <div class="controlHeader" style="height: 5%; width: 100%;">
                     <div  class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
                         border: 1px solid white;">
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
@@ -92,6 +91,10 @@
                             Prix de V.
                         </div>
 
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                            Total
+                        </div>
+
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                             Date vendu
                         </div>
@@ -106,8 +109,7 @@
                     </div>
                 </div>
 
-                <div class="controlBody" style="background-color: yellow;
-                    height: 90%; width: 100%; overflow: auto">
+                <div class="controlBody" style="height: 90%; width: 100%; overflow: auto">
                     <div v-for="(umuti, index) in actual_imitiS" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
                         border: 1px solid white;">
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%;color: white;margin-left: 5px;">
@@ -121,6 +123,10 @@
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
                             {{ umuti.price_out }}
+                        </div>
+
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                            {{ umuti.price_out * umuti.quantite_restant }}
                         </div>
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
