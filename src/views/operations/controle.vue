@@ -184,7 +184,7 @@
 import { ref, computed, watch } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} from 'ionicons/icons'
-import { useKuvoma, useSearchUmuti } from '../hooks/kuvoma'
+import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
 
 const [actual_imiti, ukuvoma] = useKuvoma()
 // console.log("THe actual imiti is : ", actual_imiti.value)
