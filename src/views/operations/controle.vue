@@ -158,19 +158,23 @@
                         </div>
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
-                            Prix de V.
+                            ----
+                        </div>
+
+                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                            34000
                         </div>
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                            Date vendu
+                            ----
                         </div>
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                        Localisation
+                            ----
                         </div>
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
-                            Type du Med.
+                            -----
                         </div>
                     </div>
                 </div>
