@@ -223,11 +223,7 @@ watch(actual_imitiS, (value)=>{
         total += element.price_out
         number += 1
     });
-    // actual_imitiS.forEach((element)=>{
-    //     total += element.price_out
-    //     number += 1
-    // })
-    // Array.forEach()
+    
     totaux.value = [number, total]
 })
 
