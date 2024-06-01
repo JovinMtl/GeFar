@@ -261,12 +261,5 @@ const applyFilter = ()=>{
     padding: 5px 5px; 
     border-bottom: 2px solid white;
 }
-.logoTwo{
-    display: block;
-    background-color: transparent; 
-    width: 100%;height: 20%; 
-    padding: 5px 5px; 
-    border-bottom: 2px solid white;
-}
 </style>
 
