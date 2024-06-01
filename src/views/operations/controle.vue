@@ -65,30 +65,30 @@
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
                             #
                         </div> 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
+                        <div class="contentElement2">
                             Nom du Med.
                         </div> 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
                             Quantite
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
                             Prix de V.
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
                             Total
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement4" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                             Date vendu
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement4" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                         Localisation
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement4" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
                             Type du Med.
                         </div>
                     </div>
@@ -278,6 +278,11 @@ const applyFilter = ()=>{
     background-color: transparent; 
     width: 4%;height: 100%; 
     color: green;
+}
+.contentElement2{
+    display: inline-flex;
+    background-color: transparent; 
+    width: 20%;height: 100%;
 }
 </style>
 
