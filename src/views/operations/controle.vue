@@ -168,7 +168,7 @@ import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} fr
 import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
 
 let ukuvoma_url = 'api/out/dispo/'
-const [actual_imiti, ukuvoma] = useKuvoma()
+const [actual_imiti, ukuvoma] = useKuvoma(ukuvoma_url)
 
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
 const actual_opt = ref([]) // Tells the base fields we have for research
