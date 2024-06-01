@@ -3,34 +3,34 @@
         <div class="controTitle">
             <ion-icon :src="close" style="position: absolute; left: 95%; top: 1px;
                 font-size: 30pt"></ion-icon>
-            <div class="title">
+            <div class="inTitle">
                 <h3>Vérification & Contrôle</h3>
             </div>
-            <div class="recherche">
+            <div class="inTitle">
                 <input :type="selected_type" placeholder="Rechercher" 
                     v-model="need_search">
             </div>
-                <div class="actualField">
-                    <select v-model="selected_field" style="background-color: white" placeholder="Type" value="Ovule">
-                        <option v-for="opt in actual_opt">{{ opt }}</option>
-                    </select>
-                </div>
-            <div v-if="selected_type != 'date'" class="recherche">
+            <div class="inTitle">
+                <select v-model="selected_field" style="background-color: white" placeholder="Type" value="Ovule">
+                    <option v-for="opt in actual_opt">{{ opt }}</option>
+                </select>
+            </div>
+            <div v-if="selected_type != 'date'" class="inTitle">
                 debut
                 <input type="date" v-model="date_debut" class="dateInput" >
             </div>
-            <div v-if="selected_type != 'date'" class="recherche">
+            <div v-if="selected_type != 'date'" class="inTitle">
                 fin
                 <input type="date" v-model="date_fin"  class="dateInput">
             </div>
-            <div class="recherche">
+            <div class="inTitle">
                 
                 <input type="button" value="Filter" @click="applyFilter"/>
             </div>
             
         </div>
         <div class="controBody" style="background-color: yellowgreen; height: 92%; width: 100%;">
-            <div class="controlIcons" style="display: inline-block; width: 20%; height: 100%; border:2px solid white ">
+            <div class="controlIcons" style="display: inline-block; width: 20%; height: 100%; border:2px solid white; ">
                 <div class="logoOne" @click="ukuvoma"
                     style="display: block;background-color: transparent; 
                     width: 100%;height: 20%; padding: 5px 5px; border-bottom: 2px solid white">
@@ -244,15 +244,7 @@ const applyFilter = ()=>{
     align-content: center; 
     color: black;
 }
-.title{
-    display: inline-flex; 
-    margin: 0px 10px;
-}
-.recherche{
-    display: inline-flex; 
-    margin: 0px 10px;
-}
-.actualField{
+.inTitle{
     display: inline-flex; 
     margin: 0px 10px;
 }
