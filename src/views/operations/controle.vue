@@ -128,8 +128,7 @@
                     </div>
                 </div>
 
-                <div class="controlFooter" style="background-color: white;
-                    height: 5%; width: 100%;">
+                <div class="controlFooter">
                     <div  class="controlContent">
                         <div class="contentElement1">
                             #
@@ -297,6 +296,10 @@ const applyFilter = ()=>{
 .controlBody{
     height: 90%; width: 100%; 
     overflow: auto;
+}
+.controlFooter{
+    background-color: white;
+     height: 5%; width: 100%;
 }
 </style>
 
