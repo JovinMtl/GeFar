@@ -132,7 +132,7 @@
                 <div class="controlFooter" style="background-color: white;
                     height: 5%; width: 100%;">
                     <div  class="controlContent">
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
+                        <div class="contentElement1">
                             #
                         </div> 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
@@ -273,6 +273,12 @@ const applyFilter = ()=>{
     background-color: transparent;
     margin-bottom: 5px;
     border: 1px solid white;
+}
+.contentElement1{
+    display: inline-flex;
+    background-color: transparent; 
+    width: 4%;height: 100%; 
+    color: green;
 }
 </style>
 
