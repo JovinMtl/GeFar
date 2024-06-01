@@ -33,8 +33,14 @@ export function useSearchUmuti(imiti_for_search, value, field){
 }
 
 export function useFilterRange(imiti_for_search, dateDebut, dateFin){
-
-    return imiti_for_search.filter((element)=>{
-        return ((element.date_last_vente > dateDebut) && (element.date_last_vente < dateFin))
-    })
+    if(!dateFin){ // handling the case dateFin was not given
+        return imiti_for_search.filter((element)=>{
+            return (element.date_last_vente > dateDebut)
+        })
+    } else {
+        return imiti_for_search.filter((element)=>{
+            return ((element.date_last_vente > dateDebut) && (element.date_last_vente < dateFin))
+        })
+    }
+    
 }
