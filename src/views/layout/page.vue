@@ -6,7 +6,7 @@
                     
             </div>
             <div v-if="controleStatus" class="controleWrapper" style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
-                <cont-role></cont-role>
+                <cont-role @turn-control="closeControle"></cont-role>
             </div>
             
             <div class="mainApprob" v-if="approvStatus">
@@ -171,6 +171,11 @@ export default {
         const server_process = ref(false)
 
         const query_search = reactive({})
+
+        
+        const closeControle = ()=>{
+            controleStatus.value = false
+        }
 
         const compileImitiSet = async ()=>{
             const server = '//127.0.0.1:8002'
@@ -461,7 +466,7 @@ export default {
             incrementQte,decrementQte, showChange,
             actualOption, closeApprov, getAllImiti, toSell,
             searchManager, openApproFile, closeApproFile,
-            getFileDataLoaded, compileImitiSet,
+            getFileDataLoaded, compileImitiSet, closeControle,
         }
     },
 }
