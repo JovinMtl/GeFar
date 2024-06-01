@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="controlBody" style="height: 90%; width: 100%; overflow: auto">
+                <div class="controlBody">
                     <div v-for="(umuti, index) in actual_imitiS" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
                         border: 1px solid white;">
                         <div class="contentElement1">
@@ -293,6 +293,10 @@ const applyFilter = ()=>{
     display: inline-flex;
     background-color: transparent; 
     width: 10%;height: 100%;
+}
+.controlBody{
+    height: 90%; width: 100%; 
+    overflow: auto;
 }
 </style>
 
