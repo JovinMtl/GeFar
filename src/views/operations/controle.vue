@@ -10,23 +10,22 @@
                 <input :type="selected_type" placeholder="Rechercher" 
                     v-model="need_search">
             </div>
-                <div class="actualField" style="display: inline-flex; margin: 0px 10px;">
+                <div class="actualField">
                     <select v-model="selected_field" style="background-color: white" placeholder="Type" value="Ovule">
                         <option v-for="opt in actual_opt">{{ opt }}</option>
                     </select>
                 </div>
-            <div v-if="selected_type != 'date'" class="recherche" style="display: inline-flex; margin: 0px 20px;">
+            <div v-if="selected_type != 'date'" class="recherche">
                 debut
-                <input type="date" v-model="date_debut"  style="margin-top: -2px; width: 120px;">
+                <input type="date" v-model="date_debut" class="dateInput" >
             </div>
-            <div v-if="selected_type != 'date'" class="recherche" style="display: inline-flex; margin: 0px 10px;">
+            <div v-if="selected_type != 'date'" class="recherche">
                 fin
-                <input type="date" v-model="date_fin" style="margin-top: -2px; width: 120px;">
+                <input type="date" v-model="date_fin"  class="dateInput">
             </div>
-            <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
+            <div class="recherche">
                 
-                <input type="button" style="background-color: green;" 
-                    value="Filter" @click="applyFilter"/>
+                <input type="button" value="Filter" @click="applyFilter"/>
             </div>
             
         </div>
@@ -252,6 +251,14 @@ const applyFilter = ()=>{
 .recherche{
     display: inline-flex; 
     margin: 0px 10px;
+}
+.actualField{
+    display: inline-flex; 
+    margin: 0px 10px;
+}
+.dateInput{
+    margin-top: -2px; 
+    width: 120px;
 }
 </style>
 
