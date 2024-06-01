@@ -223,15 +223,13 @@ watch(actual_imitiS, (value)=>{
         total += element.price_out
         number += 1
     });
-    
+
     totaux.value = [number, total]
 })
 
 const applyFilter = ()=>{
     // calling a composable and pass date_debut & date_fin as parameter
-    
     let filteredResult = useFilterRange(actual_obj.value, date_debut, date_fin)
-    console.log("THe filtered result is : ", filteredResult)
     actual_imitiS.value = filteredResult
 }
 </script>
