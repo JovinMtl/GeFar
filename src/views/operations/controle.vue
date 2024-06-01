@@ -53,12 +53,6 @@
             </div>
             <div class="controlContent" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: transparent; 
                 float: right; color: black;">
-                <!-- <div style="width: 100%; height: 20px; background-color: gray;"></div>
-                <div style="width: 100%; height: 20px; background-color: gray;"></div> -->
-                <!-- <div class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
-                    border: 1px solid blue;">
-                    something1
-                </div> -->
                 
                 <div class="controlHeader" style="height: 5%; width: 100%;">
                     <div  class="controlContent">
