@@ -91,7 +91,7 @@
                 <div class="controlBody">
                     <div v-for="(umuti, index) in actual_imitiS" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
                         border: 1px solid white;">
-                        <div class="contentElement1">
+                        <div class="contentElement11">
                             {{ index + 1 }}
                         </div> 
                         <div class="contentElement2">
@@ -271,6 +271,12 @@ const applyFilter = ()=>{
     background-color: transparent; 
     width: 4%;height: 100%; 
     color: green;
+}
+.contentElement11{
+    display: inline-flex;
+    background-color: transparent; 
+    width: 4%;height: 100%; 
+    color: white;
 }
 .contentElement2{
     display: inline-flex;
