@@ -2,7 +2,7 @@
     <div class="controle">
         <div class="controTitle">
             <ion-icon :src="close" style="position: absolute; left: 95%; top: 1px;
-                font-size: 30pt"></ion-icon>
+                font-size: 30pt" @click="closeControle"></ion-icon>
             <div class="inTitle">
                 <h3>Vérification & Contrôle</h3>
             </div>
@@ -215,6 +215,9 @@ const applyFilter = ()=>{
     // calling a composable and pass date_debut & date_fin as parameter
     let filteredResult = useFilterRange(actual_obj.value, date_debut, date_fin)
     actual_imitiS.value = filteredResult
+}
+const closeControle = ()=>{
+    //emitting 0, to close the component
 }
 </script>
 
