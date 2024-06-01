@@ -1,117 +1,120 @@
 <template>
     <ion-page>
         <ion-content>
-            <div v-if="server_process" class="loader" style="z-index: 15;">
-                <jove-loader></jove-loader>
-                    
-            </div>
-            <div v-if="controleStatus" class="controleWrapper" style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
-                <cont-role @turn-control="closeControle"></cont-role>
-            </div>
-            
-            <div class="mainApprob" v-if="approvStatus">
+            <div style="position: relative;overflow: hidden; width: 100%; height: 100%;">
+                <div v-if="server_process" class="loader" style="z-index: 15;">
+                    <jove-loader></jove-loader>
+                        
+                </div>
+                <div v-if="controleStatus" class="controleWrapper" style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
+                    <cont-role @turn-control="closeControle"></cont-role>
+                </div>
                 
-                <div class="approFile" v-if="approFileStatus">
-                    <div class="approFileHeader">
-                    </div>
-                    <div class="approfileBody">
-                        <appro-file @approFileClose="closeApproFile" @fileDataLoaded="getFileDataLoaded"></appro-file>
-                    </div>
+                <div class="mainApprob" v-if="approvStatus">
                     
-                </div>
-                <div class="approClass">
-                    <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
+                    <div class="approFile" v-if="approFileStatus">
+                        <div class="approFileHeader">
+                        </div>
+                        <div class="approfileBody">
+                            <appro-file @approFileClose="closeApproFile" @fileDataLoaded="getFileDataLoaded"></appro-file>
+                        </div>
                         
-                    <span class="closeBtne" style="">
-                        <ion-icon :src="close" @click="closeApprov"></ion-icon>
-                    </span>
-                       <h3>Entrée en Stock</h3>
                     </div>
-                    <div class="bodyApprov">
-                        <div class="bodyApprov2">
-                            <app-rov @inputApprov="searchManager" @approFileOpen="openApproFile"></app-rov>
-                        </div>
-                    </div>
-                    <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">
-                        
-                        <button class="btnSave">Enregister</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
-                <div class="infoUmuti"></div>
-                <div class="infoUmuti umutiTitle">{{ selectedUmuti.value.name_umuti }}</div>
-                <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
-                <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_umuti }}</div>
-                <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
-                <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
-                <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.price_out }}</div>
-                <!-- Need to display the number of lots -->
-                <div v-if="activeLot.length" style="text-align: right;">{{ activeLot.length }}</div>
-                <div class="umutiLot">
-                    <div v-for="(lot, index) in activeLot" class="lote">
-                        <div class="head" style="padding-top: 3px; font-size: .88rem">
-                            {{ lot.qte }} <br>
-                            {{ (lot.date).slice(5,8) }}_{{ (lot.date).slice(0,4) }}
-                        </div>
-                        <div class="sub">
-                            <ion-icon :src="removeCircleOutline" @click="decrementQte" style="font-size: large;"></ion-icon>
-                            <span style="margin-right: .1rem;">&nbsp;</span>
-                           <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier" :id="'q' + index"
-                            style="background-color: white; width: 25px; height: 20px; position: relative; top: -4px; left: 1px"/>
-                           <span style="margin-right: .1rem;">&nbsp;</span>
-                           <ion-icon :src="addCircleOutline" @click="incrementQte" style="font-size: large;"></ion-icon>
-                        </div>
-                    </div>
-                </div>
-                <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
-                    style="text-align: right;">
-                    <button class="sell" @click="moveToPanier">Vendre</button>
-                </div>
-            </div>
-            <div class="mainContainer" >
-                <div class="sectA" style="text-align: center;">
-                    <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"></list-imiti>
-                </div>
-                <div class="sectB">
-                    Panier here: <br>
-                    <div class="itemPanier" v-for="(umuti, index ) in panier_client">
-                        <div class="nomination">
-                            {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.price_out }} x {{ umuti.qte }} 
+                    <div class="approClass">
+                        <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
                             
-                           <span style="margin-right: .3rem;">&nbsp;</span>
-                           <!-- <input style="background-color: white; width: 25px; height: 20px;"/> -->
-                           <span style="margin-right: .3rem;">&nbsp;</span>
-                           <div>{{ umuti.qte *  umuti.price_out }}</div>
+                        <span class="closeBtne" style="">
+                            <ion-icon :src="close" @click="closeApprov"></ion-icon>
+                        </span>
+                        <h3>Entrée en Stock</h3>
                         </div>
-                        <div 
-                            class="cancelButto"  :id="'i'+index">
-                                <ion-icon :id="'j'+index" @click="removeUmuti($event)"
-                                 :src="close" style="top: 0px; position: relative;">
-                                </ion-icon>
+                        <div class="bodyApprov">
+                            <div class="bodyApprov2">
+                                <app-rov @inputApprov="searchManager" @approFileOpen="openApproFile"></app-rov>
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <p style="margin-left: .5rem;">
-                        Total : <span style="color: black;">{{ total_panier_client }} Fbu</span> 
-                    </p>
-                    <div class="ending" style="text-align: left;">
-                        <button class="confirmButton" @click="toSell">Confirmer</button>
+                        <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">
+                            
+                            <button class="btnSave">Enregister</button>
+                        </div>
                     </div>
                 </div>
+                
+                <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
+                    <div class="infoUmuti"></div>
+                    <div class="infoUmuti umutiTitle">{{ selectedUmuti.value.name_umuti }}</div>
+                    <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
+                    <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_umuti }}</div>
+                    <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
+                    <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
+                    <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.price_out }}</div>
+                    <!-- Need to display the number of lots -->
+                    <div v-if="activeLot.length" style="text-align: right;">{{ activeLot.length }}</div>
+                    <div class="umutiLot">
+                        <div v-for="(lot, index) in activeLot" class="lote">
+                            <div class="head" style="padding-top: 3px; font-size: .88rem">
+                                {{ lot.qte }} <br>
+                                {{ (lot.date).slice(5,8) }}_{{ (lot.date).slice(0,4) }}
+                            </div>
+                            <div class="sub">
+                                <ion-icon :src="removeCircleOutline" @click="decrementQte" style="font-size: large;"></ion-icon>
+                                <span style="margin-right: .1rem;">&nbsp;</span>
+                            <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier" :id="'q' + index"
+                                style="background-color: white; width: 25px; height: 20px; position: relative; top: -4px; left: 1px"/>
+                            <span style="margin-right: .1rem;">&nbsp;</span>
+                            <ion-icon :src="addCircleOutline" @click="incrementQte" style="font-size: large;"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
+                        style="text-align: right;">
+                        <button class="sell" @click="moveToPanier">Vendre</button>
+                    </div>
+                </div>
+                <div class="mainContainer" >
+                    <div class="sectA" style="text-align: center;">
+                        <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"></list-imiti>
+                    </div>
+                    <div class="sectB">
+                        Panier here: <br>
+                        <div class="itemPanier" v-for="(umuti, index ) in panier_client">
+                            <div class="nomination">
+                                {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.price_out }} x {{ umuti.qte }} 
+                                
+                            <span style="margin-right: .3rem;">&nbsp;</span>
+                            <!-- <input style="background-color: white; width: 25px; height: 20px;"/> -->
+                            <span style="margin-right: .3rem;">&nbsp;</span>
+                            <div>{{ umuti.qte *  umuti.price_out }}</div>
+                            </div>
+                            <div 
+                                class="cancelButto"  :id="'i'+index">
+                                    <ion-icon :id="'j'+index" @click="removeUmuti($event)"
+                                    :src="close" style="top: 0px; position: relative;">
+                                    </ion-icon>
+                            </div>
+                        </div>
+                        <br>
+                        <p style="margin-left: .5rem;">
+                            Total : <span style="color: black;">{{ total_panier_client }} Fbu</span> 
+                        </p>
+                        <div class="ending" style="text-align: left;">
+                            <button class="confirmButton" @click="toSell">Confirmer</button>
+                        </div>
+                    </div>
 
-                <div class="signeRecherche"></div>
-                <div class="searchBar">
-                    <sea-rch></sea-rch>
-                </div>
-                <div class="menuBar">
-                    <me-nu @actualMenu="actualOption"></me-nu>
-                </div>
-                <div class="menuHau magnetic"  style="">
-                    <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
+                    <div class="signeRecherche"></div>
+                    <div class="searchBar">
+                        <sea-rch></sea-rch>
                     </div>
+                    <div class="menuBar">
+                        <me-nu @actualMenu="actualOption"></me-nu>
+                    </div>
+                    <div class="menuHau magnetic"  style="">
+                        <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
+                        </div>
+                </div>
             </div>
+                
         </ion-content>
     </ion-page>
 </template>
