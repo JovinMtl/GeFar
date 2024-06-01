@@ -154,7 +154,7 @@
                         </div>
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
-                            {{ 0 || (totaux[1] / totaux[0]).toFixed(1) }}
+                            {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }}
                         </div>
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
