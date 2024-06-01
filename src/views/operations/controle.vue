@@ -114,15 +114,15 @@
                             {{ umuti.price_out * umuti.quantite_restant }}
                         </div>
 
-                        <div class="contentElement1" style="">
+                        <div class="contentElement4" style="">
                             {{ (umuti.date_last_vente).slice(6,10) }}
                         </div>
 
-                        <div class="contentElement1" style="">
+                        <div class="contentElement4" style="">
                         {{ umuti.location }}
                         </div>
 
-                        <div class="contentElement1" style="">
+                        <div class="contentElement4" style="">
                             {{ umuti.type_umuti }}
                         </div>
                     </div>
@@ -149,15 +149,15 @@
                             {{ totaux[1] }}
                         </div>
 
-                        <div class="contentElement1" style="">
+                        <div class="contentElement4" style="">
                             ----
                         </div>
 
-                        <div class="contentElement1" style="">
+                        <div class="contentElement4" style="">
                             ----
                         </div>
 
-                        <div class="contentElement1" style="">
+                        <div class="contentElement4" style="">
                             -----
                         </div>
                     </div>
