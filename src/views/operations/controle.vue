@@ -25,7 +25,7 @@
             </div>
             <div v-if="selected_type != 'date'" class="recherche" style="display: inline-flex; margin: 0px 10px;">
                 fin
-                <input type="date" v-model="date_debut" style="margin-top: -2px; width: 80px;">
+                <input type="date" v-model="date_fin" style="margin-top: -2px; width: 80px;">
             </div>
             <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
                 
