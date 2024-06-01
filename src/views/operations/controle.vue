@@ -167,6 +167,8 @@ import { IonIcon } from '@ionic/vue'
 import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
 
+const emit = defineEmits(['turnControl',])
+
 let dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
 
@@ -218,6 +220,7 @@ const applyFilter = ()=>{
 }
 const closeControle = ()=>{
     //emitting 0, to close the component
+    emit("turnControl", false)
 }
 </script>
 
