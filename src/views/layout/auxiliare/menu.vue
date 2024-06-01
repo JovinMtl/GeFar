@@ -44,6 +44,7 @@ export default {
             button3.value = true
             button2.value = false
             button1.value = false
+            emit('actualMenu', 3)
         }
 
         return {
