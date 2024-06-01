@@ -1,7 +1,6 @@
 <template>
     <div class="controle">
-        <div class="controTitle" style="background-color: white;
-            height: 8%; width: 100%; text-align: left; align-content: center; color: black">
+        <div class="controTitle">
 
             <ion-icon :src="close" style="position: absolute; left: 95%; top: 1px;
                 font-size: 30pt"></ion-icon>
@@ -238,6 +237,14 @@ const applyFilter = ()=>{
     height: 95%; 
     width: 90vw;
     left: 5vw; top: 2vh;
+}
+.controTitle{
+    background-color: white;
+    height: 8%; 
+    width: 100%; 
+    text-align: left; 
+    align-content: center; 
+    color: black;
 }
 </style>
 
