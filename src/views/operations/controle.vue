@@ -212,11 +212,8 @@ watch(actual_imiti, (value)=>{
     }
 })
 watch(selected_field, (value)=>{
-    console.log("You selected: ", selected_field.value)
     let index_type =  (actual_opt.value).indexOf(value)
     selected_type.value = actual_type.value[index_type]
-    console.log("Tshe actual keys are: ", actual_opt.value)
-    console.log("The selected TYPE is :", selected_type.value)
 })
 watch(need_search, (value)=>{
     
