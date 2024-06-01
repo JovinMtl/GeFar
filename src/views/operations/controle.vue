@@ -220,7 +220,7 @@ const applyFilter = ()=>{
 }
 const closeControle = ()=>{
     //emitting 0, to close the component
-    emit("turnControl", false)
+    emit("turnControl")
 }
 </script>
 
