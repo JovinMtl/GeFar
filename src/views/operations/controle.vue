@@ -100,7 +100,7 @@
                         <div class="contentElement1">
                             {{ index + 1 }}
                         </div> 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
+                        <div class="contentElement2">
                             {{ umuti.name_umuti }}
                         </div> <div class="contentElement3">
                             {{ umuti.quantite_restant }}
