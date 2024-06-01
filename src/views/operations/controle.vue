@@ -1,7 +1,5 @@
 <template>
-    <div class="Controle" style="background-color: white; 
-        position: relative; height: 95%; width: 90vw;
-        left: 5vw; top: 2vh;">
+    <div class="controle">
         <div class="controTitle" style="background-color: white;
             height: 8%; width: 100%; text-align: left; align-content: center; color: black">
 
@@ -232,3 +230,14 @@ const applyFilter = ()=>{
     actual_imitiS.value = filteredResult
 }
 </script>
+
+<style scoped>
+.controle{
+    background-color: white; 
+    position: relative; 
+    height: 95%; 
+    width: 90vw;
+    left: 5vw; top: 2vh;
+}
+</style>
+
