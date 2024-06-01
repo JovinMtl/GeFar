@@ -68,27 +68,27 @@
                         <div class="contentElement2">
                             Nom du Med.
                         </div> 
-                        <div class="contentElement3" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3">
                             Quantite
                         </div>
 
-                        <div class="contentElement3" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3">
                             Prix de V.
                         </div>
 
-                        <div class="contentElement3" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3">
                             Total
                         </div>
 
-                        <div class="contentElement4" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement4" style="">
                             Date vendu
                         </div>
 
-                        <div class="contentElement4" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement4" style="">
                         Localisation
                         </div>
 
-                        <div class="contentElement4" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement4" style="">
                             Type du Med.
                         </div>
                     </div>
@@ -102,27 +102,27 @@
                         </div> 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
                             {{ umuti.name_umuti }}
-                        </div> <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        </div> <div class="contentElement3">
                             {{ umuti.quantite_restant }}
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3">
                             {{ umuti.price_out }}
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3">
                             {{ umuti.price_out * umuti.quantite_restant }}
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement1" style="">
                             {{ (umuti.date_last_vente).slice(6,10) }}
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement1" style="">
                         {{ umuti.location }}
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement1" style="">
                             {{ umuti.type_umuti }}
                         </div>
                     </div>
@@ -137,27 +137,27 @@
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
                             TOTAL
                         </div> 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3">
                             {{ totaux[0] }}
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3">
                             {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }}
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
+                        <div class="contentElement3">
                             {{ totaux[1] }}
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement1" style="">
                             ----
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement1" style="">
                             ----
                         </div>
 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
+                        <div class="contentElement1" style="">
                             -----
                         </div>
                     </div>
@@ -283,6 +283,16 @@ const applyFilter = ()=>{
     display: inline-flex;
     background-color: transparent; 
     width: 20%;height: 100%;
+}
+.contentElement3{
+    display: inline-flex;
+    background-color: transparent; 
+    width: 15%;height: 100%;
+}
+.contentElement4{
+    display: inline-flex;
+    background-color: transparent; 
+    width: 10%;height: 100%;
 }
 </style>
 
