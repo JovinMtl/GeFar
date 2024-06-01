@@ -30,7 +30,7 @@
             
         </div>
         <div class="controBody" style="background-color: yellowgreen; height: 92%; width: 100%;">
-            <div class="controlIcons" style="display: inline-block; width: 20%; height: 100%; border:2px solid white; ">
+            <div class="controlIcons">
                 <div class="logoOne" @click="ukuvoma"
                     style="display: block;background-color: transparent; 
                     width: 100%;height: 20%; padding: 5px 5px; border-bottom: 2px solid white">
@@ -251,6 +251,13 @@ const applyFilter = ()=>{
 .dateInput{
     margin-top: -2px; 
     width: 120px;
+}
+
+.controlIcons{
+    display: inline-block; 
+    width: 20%; 
+    height: 100%; 
+    border:2px solid white; 
 }
 </style>
 
