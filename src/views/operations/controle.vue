@@ -1,10 +1,9 @@
 <template>
     <div class="controle">
         <div class="controTitle">
-
             <ion-icon :src="close" style="position: absolute; left: 95%; top: 1px;
                 font-size: 30pt"></ion-icon>
-            <div class="Title" style="display: inline-flex; margin: 0px 10px;">
+            <div class="title">
                 <h3>Vérification & Contrôle</h3>
             </div>
             <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
@@ -245,6 +244,10 @@ const applyFilter = ()=>{
     text-align: left; 
     align-content: center; 
     color: black;
+}
+.title{
+    display: inline-flex; 
+    margin: 0px 10px;
 }
 </style>
 
