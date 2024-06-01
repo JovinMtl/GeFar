@@ -131,8 +131,7 @@
 
                 <div class="controlFooter" style="background-color: white;
                     height: 5%; width: 100%;">
-                    <div  class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
-                        border: 1px solid white;">
+                    <div  class="controlContent">
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
                             #
                         </div> 
@@ -266,6 +265,14 @@ const applyFilter = ()=>{
     font-size: 15pt ;
     left: 9vw; 
     margin-top: 5vh;
+}
+
+.controlContent{
+    display: block;
+    width: 100%; height: 20px; 
+    background-color: transparent;
+    margin-bottom: 5px;
+    border: 1px solid white;
 }
 </style>
 
