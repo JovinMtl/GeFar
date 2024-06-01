@@ -248,6 +248,8 @@ export default {
             console.log("THe actual menu is : ", value)
             if(value == 2){
                 approvStatus.value = true
+            } else if(value == 3){
+                controleStatus.value = true
             }
         }
 
