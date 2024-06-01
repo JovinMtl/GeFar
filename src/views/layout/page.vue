@@ -13,10 +13,6 @@
                 
                 <div class="approFile" v-if="approFileStatus">
                     <div class="approFileHeader">
-                        <!-- <div style="display: inline;position: sticky; top: -110%; z-index: -0">
-                            Here we input the file
-                            <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
-                        </div> -->
                     </div>
                     <div class="approfileBody">
                         <appro-file @approFileClose="closeApproFile" @fileDataLoaded="getFileDataLoaded"></appro-file>
@@ -411,7 +407,8 @@ export default {
                 panier_api.value.push(obj_API)
                 // REinitializing
                 if (panier_client.value && panier_api.value){
-                    selectedUmuti.value = {}
+                    // selectedUmuti.value = {}
+                    selectedUmuti.value = undefined
                     activeLot.value = []
                     actualQte.value = 1
                     actualValue.value = 0
@@ -488,8 +485,10 @@ export default {
     width: 20px; 
     display: flex; 
     position: absolute;
+    /* position: relative; */
     left: 66vw; 
     top: 89vh; 
+    /* top: 87vh; */
     font-size: xx-large; 
     color: black;
 }
@@ -613,6 +612,9 @@ export default {
     position: absolute;
     /* padding: 10px 10px; */
     color: rgb(63, 62, 62);
+}
+.hMenuLeft{
+    display: none;
 }
 
 
