@@ -214,10 +214,7 @@ watch(selected_field, (value)=>{
     selected_type.value = actual_type.value[index_type]
 })
 watch(need_search, (value)=>{
-    
-    console.log("We want to search with this keyword: ", value)
     actual_imitiS.value = useSearchUmuti(actual_obj.value, value, selected_field.value )
-    console.log("The result is : ", actual_imitiS.value)
 })
 watch(actual_imitiS, (value)=>{
     let [ number, total ] = [0, 0]
