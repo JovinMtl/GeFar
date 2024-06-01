@@ -196,6 +196,7 @@ const selected_field = ref('name_umuti')
 const selected_type = ref('text')
 const need_search = ref(null)
 const actual_imitiS = ref([])
+const totaux = ref([0,0])
 
 let [date_debut, date_fin] = [null, null]
 
@@ -222,6 +223,15 @@ watch(need_search, (value)=>{
     console.log("We want to search with this keyword: ", value)
     actual_imitiS.value = useSearchUmuti(actual_obj.value, value, selected_field.value )
     console.log("The result is : ", actual_imitiS.value)
+})
+watch(actual_imitiS, (value)=>{
+    let [ number, total ] = [0, 0]
+    value.forEach((element)=>{
+        total += element.price_out
+        number += 1
+    })
+    Array.forEach()
+    totaux.value = [number, total]
 })
 
 const applyFilter = ()=>{
