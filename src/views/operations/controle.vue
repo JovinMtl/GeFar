@@ -170,7 +170,7 @@ import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
 let dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
 
-let vente_url = ''
+let vente_url = 'api/rep/reportSell/'
 const [actual_vente, ukuvoma_vente] = useKuvoma(vente_url)
 
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
