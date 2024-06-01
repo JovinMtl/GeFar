@@ -167,6 +167,7 @@ import { IonIcon } from '@ionic/vue'
 import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
 
+let ukuvoma_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma] = useKuvoma()
 
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
