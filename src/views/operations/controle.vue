@@ -47,8 +47,7 @@
                     <span style="position: absolute;font-size: 15pt ;left: 9vw; margin-top: 5vh;">Les ventes</span>
                 </div>
 
-                <div class="logoMenu" style="display: block;background-color: transparent; 
-                    width: 100%;height: 20%; padding: 5px 5px; border-bottom: 2px solid white">
+                <div class="logoMenu">
                     <ion-icon :src="pricetagOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
                     <span style="position: absolute;font-size: 15pt ;left: 9vw; margin-top: 5vh;">Les ventes</span>
                 </div>
