@@ -30,20 +30,11 @@ export function useSearchUmuti(imiti_for_search, value, field){
         return imiti_for_search.filter((element)=>{
             return (String(element[field])).toLowerCase().match((value).toLowerCase())
         })
-        // return value
 }
 
 export function useFilterRange(imiti_for_search, dateDebut, dateFin){
 
-    console.log("input type: ", typeof(imiti_for_search), ":", imiti_for_search)
-    let array_obj = []
-    const debut = ()=>{
-        return imiti_for_search.filter((element)=>{
-            return ((element.date_last_vente > dateDebut) && (element.date_last_vente < dateFin))
-        })
-    }    
-    let debutResult = debut()
-
-
-    return debutResult
+    return imiti_for_search.filter((element)=>{
+        return ((element.date_last_vente > dateDebut) && (element.date_last_vente < dateFin))
+    })
 }
