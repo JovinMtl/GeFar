@@ -169,14 +169,14 @@ import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
 
 const [actual_imiti, ukuvoma] = useKuvoma()
 
-const actual_obj = ref(null)
-const actual_opt = ref([])
-const actual_type = ref([])
-const selected_field = ref('name_umuti')
-const selected_type = ref('text')
-const need_search = ref(null)
-const actual_imitiS = ref([])
-const totaux = ref([0,0])
+const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
+const actual_opt = ref([]) // Tells the base fields we have for research
+const actual_type = ref([]) // Tells the input types we support for search
+const selected_field = ref('name_umuti') // The state that tells the base field for search.
+const selected_type = ref('text') // the state that tells the input type of RECHERCHE.
+const need_search = ref(null) // the state that mentions the need to perfom the search.
+const actual_imitiS = ref([]) // Contains the content to be displayed.
+const totaux = ref([0,0]) // To display totals on the footer.
 
 let [date_debut, date_fin] = [null, null]
 
