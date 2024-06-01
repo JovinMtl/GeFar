@@ -80,15 +80,15 @@
                             Total
                         </div>
 
-                        <div class="contentElement4" style="">
+                        <div class="contentElement4">
                             Date vendu
                         </div>
 
-                        <div class="contentElement4" style="">
+                        <div class="contentElement4">
                         Localisation
                         </div>
 
-                        <div class="contentElement4" style="">
+                        <div class="contentElement4">
                             Type du Med.
                         </div>
                     </div>
@@ -114,15 +114,15 @@
                             {{ umuti.price_out * umuti.quantite_restant }}
                         </div>
 
-                        <div class="contentElement4" style="">
+                        <div class="contentElement4">
                             {{ (umuti.date_last_vente).slice(6,10) }}
                         </div>
 
-                        <div class="contentElement4" style="">
+                        <div class="contentElement4">
                         {{ umuti.location }}
                         </div>
 
-                        <div class="contentElement4" style="">
+                        <div class="contentElement4">
                             {{ umuti.type_umuti }}
                         </div>
                     </div>
@@ -149,15 +149,15 @@
                             {{ totaux[1] }}
                         </div>
 
-                        <div class="contentElement4" style="">
+                        <div class="contentElement4">
                             ----
                         </div>
 
-                        <div class="contentElement4" style="">
+                        <div class="contentElement4">
                             ----
                         </div>
 
-                        <div class="contentElement4" style="">
+                        <div class="contentElement4">
                             -----
                         </div>
                     </div>
