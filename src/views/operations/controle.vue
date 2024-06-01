@@ -33,7 +33,7 @@
             <div class="controlIcons">
                 <div class="logoMenu" @click="ukuvoma">
                     <ion-icon :src="statsChartOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
-                    <span style="position: absolute;font-size: 15pt ;left: 9vw; margin-top: 5vh;">Les ventes</span>
+                    <span class="textMenu">Les ventes</span>
                 </div>
                 
                 <div class="logoMenu">
@@ -260,6 +260,12 @@ const applyFilter = ()=>{
     width: 100%;height: 20%; 
     padding: 5px 5px; 
     border-bottom: 2px solid white;
+}
+.textMenu{
+    position: absolute;
+    font-size: 15pt ;
+    left: 9vw; 
+    margin-top: 5vh;
 }
 </style>
 
