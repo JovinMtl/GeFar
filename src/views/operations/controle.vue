@@ -201,11 +201,9 @@ const totaux = ref([0,0])
 let [date_debut, date_fin] = [null, null]
 
 watch(actual_imiti, (value)=>{
-    console.log("We got really new imiti")
     if (value){
         actual_obj.value = value
         actual_imitiS.value = value
-        // actual_opt.value = Object.keys(value[0]) 
         actual_opt.value = ['name_umuti','description_umuti', 
         'quantite_restant','price_out', 'date_last_vente',]
         actual_type.value = ['text','text','text','text','date']
