@@ -36,15 +36,21 @@ export function useSearchUmuti(imiti_for_search, value, field){
 export function useFilterRange(imiti_for_search, dateDebut, dateFin){
 
     console.log("input type: ", typeof(imiti_for_search), ":", imiti_for_search)
-    const debut = ()=>{
-        return imiti_for_search.filter((element)=>{
-            return (element.date_last_vente > dateDebut) 
-        })
-    }    
-    let debutResult = debut()
+    let array_obj = []
+    // const debut = ()=>{
+    //     return imiti_for_search.filter((element)=>{
+    //         return (element.date_last_vente > dateDebut) 
+    //     })
+    // }    
+    imiti_for_search.forEach(element => {
+        if (element.date_last_vente > dateDebut){
+            array_obj.push(element)
+        }
+    });
+    // let debutResult = debut()
 
-    console.log("Output type : ", typeof(debutResult))
+    console.log("Output type : ", typeof(array_obj))
 
 
-    return debutResult
+    return array_obj
 }
