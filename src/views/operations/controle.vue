@@ -30,7 +30,7 @@
             <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
                 
                 <input type="button" style="background-color: green;" 
-                    value="Rechercher" @click="applyFilter"/>
+                    value="Filter" @click="applyFilter"/>
             </div>
             
         </div>
