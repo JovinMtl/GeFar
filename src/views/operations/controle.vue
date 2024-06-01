@@ -6,7 +6,7 @@
             <div class="title">
                 <h3>Vérification & Contrôle</h3>
             </div>
-            <div class="recherche" style="display: inline-flex; margin: 0px 10px;">
+            <div class="recherche">
                 <input :type="selected_type" placeholder="Rechercher" 
                     v-model="need_search">
             </div>
@@ -246,6 +246,10 @@ const applyFilter = ()=>{
     color: black;
 }
 .title{
+    display: inline-flex; 
+    margin: 0px 10px;
+}
+.recherche{
     display: inline-flex; 
     margin: 0px 10px;
 }
