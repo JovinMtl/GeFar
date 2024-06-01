@@ -162,7 +162,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
