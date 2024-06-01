@@ -31,12 +31,12 @@
         </div>
         <div class="controBody" style="background-color: yellowgreen; height: 92%; width: 100%;">
             <div class="controlIcons">
-                <div class="logoMenu" @click="ukuvoma">
+                <div class="logoMenu" @click="ukuvoma_dispo">
                     <ion-icon :src="statsChartOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
                     <span class="textMenu">Les ventes</span>
                 </div>
                 
-                <div class="logoMenu">
+                <div class="logoMenu" @click="ukuvoma_vente">
                     <ion-icon :src="snowOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
                     <span class="textMenu">Les ventes</span>
                 </div>
@@ -168,7 +168,10 @@ import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} fr
 import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
 
 let dispo_url = 'api/out/dispo/'
-const [actual_imiti, ukuvoma] = useKuvoma(dispo_url)
+const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
+
+let vente_url = ''
+const [actual_vente, ukuvoma_vente] = useKuvoma(vente_url)
 
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
 const actual_opt = ref([]) // Tells the base fields we have for research
