@@ -5,7 +5,7 @@
                 <jove-loader></jove-loader>
                     
             </div>
-            <div class="controleWrapper" style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
+            <div v-if="controleStatus" class="controleWrapper" style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
                 <cont-role></cont-role>
             </div>
             
@@ -165,6 +165,7 @@ export default {
         const approvStatus = ref(false)
         const approFileStatus = ref(false)
         const need_to_updade = ref(false)
+        const controleStatus = ref(false)
         const all_imiti = ref([])
 
         const server_process = ref(false)
@@ -451,6 +452,7 @@ export default {
             selectedUmuti, panier_client, activeLot, actualValue,
             actualQte, total_panier_client,
             approvStatus, approFileStatus, server_process,
+            controleStatus,
             close,  addCircleOutline, removeCircleOutline,
             magnetOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
