@@ -28,14 +28,16 @@ body {
     width: 89vw;
     height: 90vh;
     position: relative;
+    /* position: absolute; */
     left: 10vw;
     left: 11.5vw;
     top: 6vh;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
     padding-left: 1vw;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
+
 .sectA{
     width: 77%;
     height: 98.4%;
@@ -44,18 +46,6 @@ body {
     padding-top: 1vw;
 
 }
-::-webkit-scrollbar-thumb {
-    background-color: black;
-    border-radius: 15px;
-  }
-  ::-webkit-scrollbar {
-    width: 11px;
-    color: green;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-  }
-  
 .sectB{
     width: 23%;
     height: 100%;
@@ -79,10 +69,7 @@ body {
 }
 .menuBar{
     position: absolute;
-    /* top: -5.2vh; */
-    /* top: -5.4vh; */
     top: -30px;
-    /* top: -8vh; */
     left: 33vw;
 }
 
