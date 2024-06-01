@@ -187,7 +187,6 @@ import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} fr
 import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
 
 const [actual_imiti, ukuvoma] = useKuvoma()
-// console.log("THe actual imiti is : ", actual_imiti.value)
 
 const actual_obj = ref(null)
 const actual_opt = ref([])
