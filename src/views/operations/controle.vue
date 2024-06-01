@@ -150,7 +150,7 @@
                             TOTAL
                         </div> 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
-                            8
+                            {{ totaux[0] }}
                         </div>
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
@@ -158,7 +158,7 @@
                         </div>
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 15%;height: 100%;">
-                            34000
+                            {{ totaux[1] }}
                         </div>
 
                         <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 10%;height: 100%;">
@@ -226,11 +226,16 @@ watch(need_search, (value)=>{
 })
 watch(actual_imitiS, (value)=>{
     let [ number, total ] = [0, 0]
-    value.forEach((element)=>{
+
+    actual_imitiS.value.forEach(element => {
         total += element.price_out
         number += 1
-    })
-    Array.forEach()
+    });
+    // actual_imitiS.forEach((element)=>{
+    //     total += element.price_out
+    //     number += 1
+    // })
+    // Array.forEach()
     totaux.value = [number, total]
 })
 
