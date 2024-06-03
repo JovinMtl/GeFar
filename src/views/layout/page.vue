@@ -168,6 +168,7 @@ export default {
         const all_imiti = ref([])
 
         const server_process = ref(false)
+        const umuti_single = ref(false)
 
         const query_search = reactive({})
 
