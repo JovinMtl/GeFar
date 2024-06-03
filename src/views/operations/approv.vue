@@ -120,6 +120,7 @@ export default {
         }
         
         watch(need_to_upload, (value)=>{
+                console.log("Want to emit from APPROV")
             if(value){
                 emit('fileDataLoaded', ['jove'])
             }
