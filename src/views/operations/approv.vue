@@ -125,7 +125,14 @@ export default {
             search_approve.value = obj
         }
 
-        
+        const checkBeforeUpload = ()=>{
+            // This function will be executed when received order to upload
+            if(selected_search.value){
+                // Update umuti_obj according to selected_search
+            } else{
+                // Fill Umuti_obj from the vmodels set in template
+            }
+        }
         const selectSearch = (event)=>{
             console.log("You selected ID: ", event.target.getAttribute('id'))
             let code_s = Number((event.target.getAttribute('id')).slice(1))
