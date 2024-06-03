@@ -472,6 +472,7 @@ export default {
             actualOption, closeApprov, getAllImiti, toSell,
             searchManager, openApproFile, closeApproFile,
             getFileDataLoaded, compileImitiSet, closeControle,
+            requestUpload,
         }
     },
 }
