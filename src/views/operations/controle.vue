@@ -274,6 +274,13 @@ const closeControle = ()=>{
     padding: 5px 5px; 
     border-bottom: 2px solid white;
 }
+.logoMenu:active{
+    display: block;
+    background-color: greenyellow; 
+    width: 100%;height: 20%; 
+    padding: 5px 5px; 
+    border-bottom: 2px solid white;
+}
 .textMenu{
     position: absolute;
     font-size: 15pt ;
