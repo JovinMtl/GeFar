@@ -97,7 +97,7 @@
                         <div class="contentElement2">
                             {{ umuti.name_umuti }}
                         </div> <div class="contentElement3">
-                            {{ umuti.quantite_restant || umuti.quantity }}
+                            {{ (umuti.quantite_restant || umuti.quantity ) }}
                         </div>
 
                         <div class="contentElement3">
@@ -106,7 +106,7 @@
 
                         <div class="contentElement3">
                             {{ umuti.price_out * (umuti.quantite_restant || umuti.quantity) }}
-                        </div>
+                        </div> 
 
                         <div class="contentElement4">
                             {{ (umuti.date_last_vente 

@@ -208,7 +208,7 @@ export default {
                         'Content-type' : 'application/json'
                     },
                     body: JSON.stringify({
-                        'jov': 'je'
+                        'jov': dataArray
                     })
                 })
                 const server_data = await response.json()
