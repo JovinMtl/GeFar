@@ -87,6 +87,7 @@ export default {
         const imiti_result = ref([]) 
         const selected_search = ref(null)
         const search_approve = reactive({})
+        let date_exp = new Date()
         let umuti_obj = {
                 'code_umuti': '',
                 'date_winjiriyeko': new Date(),
@@ -134,7 +135,7 @@ export default {
                 // Update umuti_obj according to selected_search
                 umuti_obj.code_umuti = selected_search.value.code_umuti
                 umuti_obj.date_uzohererako = selected_search.value.date_uzohererako
-                umuti_obj.date_uzohererako = new Date()
+                // umuti_obj.date_winjiriyeko = new Date()
                 umuti_obj.price_in = selected_search.value.price_in
                 umuti_obj.price_out = selected_search.value.price_out
                 umuti_obj.quantite_initial = selected_search.value.quantite_initial
