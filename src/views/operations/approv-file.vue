@@ -137,6 +137,28 @@ export default {
                 notifSwitch(info)
             }
         }
+        const convertToStandard = (obj_array)=>{
+            let new_obj_array = []
+            obj_array.forEach(element=>{
+                let obj = {
+                'code_umuti': '',
+                'date_winjiriyeko': new Date(),
+                'date_uzohererako': element.Date_exp,
+                'name_umuti': element.Nom,
+                'description_umuti': element.Description,
+                'type_umuti': element.Type_medicament,
+                'type_in': element.Type_in,
+                'ratio_type': element.Ratio,
+                'type_out': element.Type_out,
+                'price_in': element.Price_in,
+                'price_out': element.Price_out,
+                'quantite_initial': element.Qte_initial,
+                'location': '',
+                }
+                new_obj_array.push(obj)
+            })
+            return new_obj_array
+        }
         const notifSwitch = (info)=>{
             message.value = String(info)
             notifStatus.value = true
