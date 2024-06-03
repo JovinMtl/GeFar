@@ -16,7 +16,15 @@
                     {{ umuti.name_umuti }} {{ umuti.code_umuti }} {{ umuti.description_umuti }}
                 </button>
             </ul>
-        
+            <input type="text" placeholder="Price in: (Type_in)">
+            <br> <br>
+            <input type="text" placeholder="Price out : (Type_in)">
+            <br> <br>
+            <input type="text" placeholder="Quantite Initial">
+            <br> <br>
+            <label>Date d'exp. </label> 
+            <!-- <br> -->
+            <input v-model="date_exp" type="date" placeholder="Nom du medicament">
             <br> <br>
             <label>Type de medicament</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
@@ -36,18 +44,8 @@
             <br> <br>
             <input type="text" placeholder="Type out : Plaquette">
             <br><br>
-            <input type="text" placeholder="Price in: (Type_in)">
-            <br> <br>
-            <input type="text" placeholder="Price out : (Type_in)">
-            <br> <br>
-            <input type="text" placeholder="Quantite Initial">
-            <br> <br>
             <input type="text" style="margin-bottom: 5px;" placeholder="Localisation">
-            <br>
-            <label>Date d'exp. </label> 
-            <!-- <br> -->
-            <input type="date" placeholder="Nom du medicament">
-            <br><hr>
+            <br><br>
         </div>
         <div v-if="selected_search">
             <br> <br>
@@ -67,10 +65,6 @@
             <input v-model="selected_search.price_out" type="number" 
                 placeholder="Price out : (Type_in)">
             <br> <br>
-            <br>
-            <label>Date d'exp. </label> 
-            <!-- <br> -->
-            <input v-model="date_exp" type="date" placeholder="Nom du medicament">
         </div>
     </div>
 </template>
