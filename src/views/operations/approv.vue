@@ -65,8 +65,8 @@
             <input v-model="selected_search.price_out" type="number" 
                 placeholder="Price out : (Type_in)">
             <br> <br>
-            <label>Date d'exp. </label> 
-            <br>
+            <label>Date d'éxpiration </label> 
+            <!-- <span style="margin-right: .1rem;">&nbsp;</span> -->
             <input v-model="date_exp" type="date" placeholder="Nom du medicament">
             <br> <br>
         </div>
