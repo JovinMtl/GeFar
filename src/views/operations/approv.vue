@@ -87,7 +87,7 @@ export default {
         const imiti_result = ref([]) 
         const selected_search = ref(null)
         const search_approve = reactive({})
-        const need_to_upload = inject('need_upload')
+        let need_to_upload = inject('need_upload')
         var result = inject('imiti_search')
 
         const openApproFile = ()=>{
