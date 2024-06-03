@@ -178,6 +178,9 @@ const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
 let vente_url = 'api/rep/reportSold/'
 const [actual_vente, ukuvoma_vente] = useKuvoma(vente_url)
 
+let entree_url = 'api/rep/reportEntree/'
+const [actual_entree, ukuvoma_entree] = useKuvoma(vente_url)
+
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
 const actual_opt = ref([]) // Tells the base fields we have for research
 const actual_type = ref([]) // Tells the input types we support for search
