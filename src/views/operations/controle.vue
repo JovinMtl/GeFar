@@ -33,22 +33,22 @@
             <div class="controlIcons">
                 <div class="logoMenu" @click="ukuvoma_dispo">
                     <ion-icon :src="statsChartOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
-                    <span class="textMenu">Les ventes</span>
+                    <span class="textMenu">Disponible</span>
                 </div>
                 
                 <div class="logoMenu" @click="ukuvoma_vente">
                     <ion-icon :src="snowOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
-                    <span class="textMenu">Les ventes</span>
-                </div>
-
-                <div class="logoMenu" >
-                    <ion-icon :src="thermometer" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
-                    <span class="textMenu">Les ventes</span>
+                    <span class="textMenu">Ventes</span>
                 </div>
 
                 <div class="logoMenu">
                     <ion-icon :src="pricetagOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
-                    <span class="textMenu">Les ventes</span>
+                    <span class="textMenu">Achats</span>
+                </div>
+
+                <div class="logoMenu" >
+                    <ion-icon :src="thermometer" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
+                    <span class="textMenu">Mesurer</span>
                 </div>
             </div>
             <div class="controlContent" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: transparent; 
