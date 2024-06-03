@@ -454,6 +454,7 @@ export default {
         provide('needUpdate_list', need_to_updade) // in list-imiti component
         provide('needSearch', query_search) // in list-imiti component
         provide('imiti_search', all_imiti) // in approv component
+        provide('need_upload', umuti_single) // in approv component
 
         return {
             selectedUmuti, panier_client, activeLot, actualValue,
