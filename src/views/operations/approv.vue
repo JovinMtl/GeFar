@@ -26,9 +26,9 @@
             <!-- <br> -->
             <input v-model="date_exp" type="date" placeholder="Nom du medicament">
             <br> <br>
-            <label>Type de medicament</label>
+            <label v-if="date_exp">Type de medicament</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
-            <select v-show="date_exp" style="background-color: white" placeholder="Type" value="Ovule">
+            <select v-if="date_exp" style="background-color: white" placeholder="Type" value="Ovule">
                 <option>Cp</option>
                 <option>Gel</option>
                 <option>Ovule</option>
@@ -37,14 +37,14 @@
                 <!-- <option>Inj</option> -->
             </select>
             <br> <br>
-            <textarea style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
-            <input type="text" placeholder="ratio: 1 : 1">
+            <textarea v-if="date_exp" style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
+            <input v-if="date_exp" type="text" placeholder="ratio: 1 : 1">
             <br><br>
-            <input type="text" placeholder="Type in: Carton">
+            <input v-if="date_exp" type="text" placeholder="Type in: Carton">
             <br> <br>
-            <input type="text" placeholder="Type out : Plaquette">
+            <input v-if="date_exp" type="text" placeholder="Type out : Plaquette">
             <br><br>
-            <input type="text" style="margin-bottom: 5px;" placeholder="Localisation">
+            <input v-if="date_exp" type="text" style="margin-bottom: 5px;" placeholder="Localisation">
             <br><br>
         </div>
         <div v-if="selected_search">
@@ -64,6 +64,10 @@
             <label>Px. V </label> 
             <input v-model="selected_search.price_out" type="number" 
                 placeholder="Price out : (Type_in)">
+            <br> <br>
+            <label>Date d'exp. </label> 
+            <br>
+            <input v-model="date_exp" type="date" placeholder="Nom du medicament">
             <br> <br>
         </div>
     </div>
