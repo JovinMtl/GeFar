@@ -109,7 +109,9 @@
                         </div>
 
                         <div class="contentElement4">
-                            {{ (umuti.date_last_vente || umuti.date_operation).slice(6,10) }}
+                            {{ (umuti.date_last_vente 
+                            || umuti.date_operation || 
+                            umuti.date_winjiriyeko).slice(6,10) }}
                         </div>
 
                         <div class="contentElement4">
@@ -179,7 +181,7 @@ const vente_url = 'api/rep/reportSold/'
 const [actual_vente, ukuvoma_vente] = useKuvoma(vente_url)
 
 const entree_url = 'api/rep/reportEntree/'
-const [actual_entree, ukuvoma_entree] = useKuvoma(vente_url)
+const [actual_entree, ukuvoma_entree] = useKuvoma(entree_url)
 
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
 const actual_opt = ref([]) // Tells the base fields we have for research
