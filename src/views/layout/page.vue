@@ -35,7 +35,7 @@
                         </div>
                         <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">
                             
-                            <button class="btnSave" @click="umuti_single.value = true">Enregister</button>
+                            <button class="btnSave" @click="umuti_single = true">Enregister</button>
                         </div>
                     </div>
                 </div>
@@ -168,9 +168,9 @@ export default {
         const all_imiti = ref([])
 
         const server_process = ref(false)
-        const umuti_single = ref(false)
 
         const query_search = reactive({})
+        let umuti_single = false
 
         
         const closeControle = ()=>{
