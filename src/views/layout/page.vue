@@ -173,6 +173,9 @@ export default {
         const umuti_single = ref(false)
 
         
+        const requestUpload = ()=>{
+            umuti_single.value = true
+        }
         const closeControle = ()=>{
             controleStatus.value = false
         }
