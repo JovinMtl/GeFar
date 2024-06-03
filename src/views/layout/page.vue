@@ -515,6 +515,9 @@ export default {
     color: black;
     
 }
+.umutiDescription{
+    height: 10%;
+}
 .approFileHeader{
     width: 100%;
     height: 8%;
