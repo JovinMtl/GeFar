@@ -87,6 +87,19 @@ export default {
         const imiti_result = ref([]) 
         const selected_search = ref(null)
         const search_approve = reactive({})
+        
+        let umuti_obj = {
+            'Nom':'',
+            'Qte_initial':'',
+            'Price_in':'',
+            'Price_out':'',
+            'Date_exp':'',
+            'Type_medicament':'',
+            'Description': '',
+            'Ratio':'',
+            'Type_in':'',
+            'Type_out':'',
+        }
         let need_to_upload = inject('need_upload')
         var result = inject('imiti_search')
 
