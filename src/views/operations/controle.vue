@@ -218,7 +218,7 @@ watch(actual_imitiS, (value)=>{
     let [ number, total ] = [0, 0]
 
     actual_imitiS.value.forEach(element => {
-        total += (element.price_out * element.quantite_restant)
+        total += (element.price_out * (element.quantite_restant || element.quantity))
         number += 1
     });
 
