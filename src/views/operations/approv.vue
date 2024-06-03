@@ -28,7 +28,7 @@
             <br> <br>
             <label>Type de medicament</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
-            <select style="background-color: white" placeholder="Type" value="Ovule">
+            <select v-show="date_exp" style="background-color: white" placeholder="Type" value="Ovule">
                 <option>Cp</option>
                 <option>Gel</option>
                 <option>Ovule</option>
@@ -81,7 +81,7 @@ export default {
         const imiti_result = ref([]) 
         const selected_search = ref(null)
         const search_approve = reactive({})
-        const date_exp = ref()
+        const date_exp = ref(null)
         let umuti_obj = {
                 'code_umuti': '',
                 'date_winjiriyeko': new Date(),
