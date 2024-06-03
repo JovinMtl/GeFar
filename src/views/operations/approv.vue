@@ -87,7 +87,7 @@ export default {
         const imiti_result = ref([]) 
         const selected_search = ref(null)
         const search_approve = reactive({})
-        
+
         let umuti_obj = {
             'Nom':'',
             'Qte_initial':'',
@@ -124,6 +124,8 @@ export default {
             }
             search_approve.value = obj
         }
+
+        
         const selectSearch = (event)=>{
             console.log("You selected ID: ", event.target.getAttribute('id'))
             let code_s = Number((event.target.getAttribute('id')).slice(1))
@@ -135,7 +137,7 @@ export default {
         watch(need_to_upload, (value)=>{
                 console.log("Want to emit from APPROV")
             if(value){
-                emit('fileDataLoaded', ['jove'])
+                emit('fileDataLoaded', umuti_obj)
             }
         })
         watch(umutiName, (value)=>{
