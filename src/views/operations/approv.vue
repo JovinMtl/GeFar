@@ -70,7 +70,7 @@
             <br>
             <label>Date d'exp. </label> 
             <!-- <br> -->
-            <input v-model="selectSearch.date_uzohererako" type="date" placeholder="Nom du medicament">
+            <input v-model="date_exp" type="date" placeholder="Nom du medicament">
         </div>
     </div>
 </template>
@@ -134,7 +134,7 @@ export default {
             if(selected_search.value){
                 // Update umuti_obj according to selected_search
                 umuti_obj.code_umuti = selected_search.value.code_umuti
-                umuti_obj.date_uzohererako = selected_search.value.date_uzohererako
+                umuti_obj.date_uzohererako = date_exp
                 // umuti_obj.date_winjiriyeko = new Date()
                 umuti_obj.price_in = selected_search.value.price_in
                 umuti_obj.price_out = selected_search.value.price_out
