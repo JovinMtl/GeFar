@@ -97,7 +97,7 @@
                         <div class="contentElement2">
                             {{ umuti.name_umuti }}
                         </div> <div class="contentElement3">
-                            {{ umuti.quantite_restant }}
+                            {{ umuti.quantite_restant || umuti.quantity }}
                         </div>
 
                         <div class="contentElement3">
@@ -105,11 +105,11 @@
                         </div>
 
                         <div class="contentElement3">
-                            {{ umuti.price_out * umuti.quantite_restant }}
+                            {{ umuti.price_out * (umuti.quantite_restant || umuti.quantity) }}
                         </div>
 
                         <div class="contentElement4">
-                            {{ (umuti.date_last_vente).slice(6,10) }}
+                            {{ (umuti.date_last_vente || umuti.date_operation).slice(6,10) }}
                         </div>
 
                         <div class="contentElement4">
@@ -189,6 +189,15 @@ const totaux = ref([0,0]) // To display totals on the footer.
 
 let [date_debut, date_fin] = [null, null]
 
+watch(actual_vente, (value)=>{
+    if (value){
+        actual_obj.value = value
+        actual_imitiS.value = value
+        actual_opt.value = ['name_umuti', 
+        'quantity','price_out', 'date_operation',]
+        actual_type.value = ['text','text','text','text','date']
+    }
+})
 watch(actual_imiti, (value)=>{
     if (value){
         actual_obj.value = value
