@@ -172,13 +172,13 @@ import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
 
 const emit = defineEmits(['turnControl',])
 
-let dispo_url = 'api/out/dispo/'
+const dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
 
-let vente_url = 'api/rep/reportSold/'
+const vente_url = 'api/rep/reportSold/'
 const [actual_vente, ukuvoma_vente] = useKuvoma(vente_url)
 
-let entree_url = 'api/rep/reportEntree/'
+const entree_url = 'api/rep/reportEntree/'
 const [actual_entree, ukuvoma_entree] = useKuvoma(vente_url)
 
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
@@ -192,6 +192,15 @@ const totaux = ref([0,0]) // To display totals on the footer.
 
 let [date_debut, date_fin] = [null, null]
 
+watch(actual_entree, (value)=>{
+    if (value){
+        actual_obj.value = value
+        actual_imitiS.value = value
+        actual_opt.value = ['name_umuti', 
+        'quantite_restant','price_out', 'date_winjiriyeko',]
+        actual_type.value = ['text','text','text','date']
+    }
+})
 watch(actual_vente, (value)=>{
     if (value){
         actual_obj.value = value
