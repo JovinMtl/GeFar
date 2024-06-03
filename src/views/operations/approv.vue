@@ -87,19 +87,22 @@ export default {
         const imiti_result = ref([]) 
         const selected_search = ref(null)
         const search_approve = reactive({})
-
         let umuti_obj = {
-            'Nom':'',
-            'Qte_initial':'',
-            'Price_in':'',
-            'Price_out':'',
-            'Date_exp':'',
-            'Type_medicament':'',
-            'Description': '',
-            'Ratio':'',
-            'Type_in':'',
-            'Type_out':'',
-        }
+                'code_umuti': selected_search.value.code_umuti,
+                'date_winjiriyeko': new Date(),
+                'date_uzohererako': undefined,
+                'name_umuti': selected_search.value.name_umuti,
+                'description_umuti': selected_search.value.description_umuti,
+                'type_umuti': selected_search.value.type_umuti,
+                'type_in': selected_search.value.type_in,
+                'ratio_type': selected_search.value.ratio_type,
+                'type_out': selected_search.value.type_out,
+                'price_in': null,
+                'price_out': undefined,
+                'quantite_initial': undefined,
+                'location': undefined,
+            }
+
         let need_to_upload = inject('need_upload')
         var result = inject('imiti_search')
 
