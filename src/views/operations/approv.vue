@@ -119,6 +119,11 @@ export default {
             approve_handler()
         }
         
+        watch(need_to_upload, (value)=>{
+            if(value){
+                emit('fileDataLoaded', ['jove'])
+            }
+        })
         watch(umutiName, (value)=>{
             let obj = {
                 'query': value,
