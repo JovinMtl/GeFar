@@ -155,12 +155,10 @@ export default {
         }
         
         watch(need_to_upload, (value)=>{
-                console.log("Want to emit from APPROV")
-            if(value){
-                checkBeforeUpload()
-                emit('fileDataLoaded', [umuti_obj,])
-            }
-        })
+            // console.log("Want to emit from APPROV")
+            checkBeforeUpload()
+            emit('fileDataLoaded', [umuti_obj,])
+    })
         watch(umutiName, (value)=>{
             let obj = {
                 'query': value,
