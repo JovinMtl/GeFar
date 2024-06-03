@@ -88,15 +88,15 @@ export default {
         const selected_search = ref(null)
         const search_approve = reactive({})
         let umuti_obj = {
-                'code_umuti': selected_search.value.code_umuti,
+                'code_umuti': '',
                 'date_winjiriyeko': new Date(),
                 'date_uzohererako': undefined,
-                'name_umuti': selected_search.value.name_umuti,
-                'description_umuti': selected_search.value.description_umuti,
-                'type_umuti': selected_search.value.type_umuti,
-                'type_in': selected_search.value.type_in,
-                'ratio_type': selected_search.value.ratio_type,
-                'type_out': selected_search.value.type_out,
+                'name_umuti': '',
+                'description_umuti': '',
+                'type_umuti': '',
+                'type_in': '',
+                'ratio_type': '',
+                'type_out': '',
                 'price_in': null,
                 'price_out': undefined,
                 'quantite_initial': undefined,
@@ -132,6 +132,17 @@ export default {
             // This function will be executed when received order to upload
             if(selected_search.value){
                 // Update umuti_obj according to selected_search
+                umuti_obj.code_umuti = selected_search.value.code_umuti
+                umuti_obj.date_uzohererako = selected_search.value.date_uzohererako
+                umuti_obj.date_uzohererako = new Date()
+                umuti_obj.price_in = selected_search.value.price_in
+                umuti_obj.price_out = selected_search.value.price_out
+                umuti_obj.quantite_initial = selected_search.value.quantite_initial
+                umuti_obj.ratio_type = selected_search.value.ratio_type
+                umuti_obj.location = selected_search.value.location
+                umuti_obj.type_in = selected_search.value.type_in
+                umuti_obj.type_out = selected_search.value.type_out
+                umuti_obj.description_umuti = selected_search.value.description_umuti
             } else{
                 // Fill Umuti_obj from the vmodels set in template
             }
