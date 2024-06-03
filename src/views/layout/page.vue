@@ -35,7 +35,7 @@
                         </div>
                         <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">
                             
-                            <button class="btnSave" @click="umuti_single.value = true">Enregister</button>
+                            <button class="btnSave" @click="requestUpload">Enregister</button>
                         </div>
                     </div>
                 </div>
