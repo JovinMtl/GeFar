@@ -198,7 +198,7 @@ watch(actual_vente, (value)=>{
         actual_imitiS.value = value
         actual_opt.value = ['name_umuti', 
         'quantity','price_out', 'date_operation',]
-        actual_type.value = ['text','text','text','text','date']
+        actual_type.value = ['text','text','text','date']
     }
 })
 watch(actual_imiti, (value)=>{
