@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="controlBody">
-                    <div v-for="(umuti, index) in actual_imitiS" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: transparent;margin-bottom: 5px;
+                    <div v-for="(umuti, index) in actual_imitiS" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: rgba(255, 255, 255, 0.5);margin-bottom: 5px;
                         border: 1px solid white;">
                         <div class="contentElement11">
                             {{ index + 1 }}
@@ -161,10 +161,13 @@
     </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, watch } from 'vue'
 import { IonIcon } from '@ionic/vue'
-import { close, statsChartOutline, snowOutline, thermometer, pricetagOutline} from 'ionicons/icons'
+import { 
+    close, statsChartOutline, snowOutline, thermometer, pricetagOutline,
+    calendarClearOutline,
+    } from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
 
 const emit = defineEmits(['turnControl',])
@@ -278,13 +281,13 @@ const closeControle = ()=>{
 }
 .contentElement1{
     display: inline-flex;
-    background-color: transparent; 
+    background-color: white; 
     width: 4%;height: 100%; 
     color: green;
 }
 .contentElement11{
     display: inline-flex;
-    background-color: transparent; 
+    background-color: black; 
     width: 4%;height: 100%; 
     color: white;
 }
