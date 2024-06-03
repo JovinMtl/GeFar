@@ -193,7 +193,7 @@ export default {
             }
 
         }
-        const getFileDataLoaded = async () => {
+        const getFileDataLoaded = async (dataArray) => {
             // submitting the data to the server
             // provide send-status and inject it in approv-file
             console.log("Taking Releve on sending DATA to API")
