@@ -62,7 +62,7 @@ export default defineComponent ({
             const code = current.getAttribute("id")
             console.log("ID : ", code)
             showUmuti(code)
-            updateImitiSet()
+            // updateImitiSet() // disabling constant update on each selecting umuti
         }
         
         const imiti = [
@@ -669,6 +669,7 @@ export default defineComponent ({
                     'lot' : element.lot
                 }
                 imitiset.value.push(obj)
+                // imitiset_copy.value.push(obj)
                 // console.log("voici: ", obj)
             });
             console.log("Compiled : ", imitiset.value)
