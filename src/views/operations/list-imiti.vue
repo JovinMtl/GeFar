@@ -30,6 +30,7 @@ export default defineComponent ({
     setup(_, {emit}) {
         const data = reactive({})
         const imitiset:UmutiSet[] = ref([])
+        const imitiset_copy:UmutiSet[] = ref([])
         let codes = new Array()
         let imiti_for_search = []
 
