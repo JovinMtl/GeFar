@@ -690,7 +690,8 @@ export default defineComponent ({
                     'qte_entrant_big' : element.qte_entrant_big,
                     'quantite_restant': element.quantite_restant,
                     'type_in': element.type_in,
-                    'type_out' : element.type_out
+                    'type_out' : element.type_out,
+                    'type_umuti' : element.type_umuti,
                 }
                 
                 imiti_for_search.push(obj)
