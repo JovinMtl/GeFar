@@ -12,9 +12,13 @@
 <script setup>
 import { ref, watch} from 'vue'
 const search_value = ref(null)
+const search_result = ref([])
 
 watch(search_value, (value)=>{
     console.log("THe search value should be : ", value)
+})
+watch(search_result, (value)=>{
+    // have to emit the result
 })
 </script>
 
