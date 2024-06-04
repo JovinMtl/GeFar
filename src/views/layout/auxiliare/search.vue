@@ -5,7 +5,7 @@
         <span style="margin-right: .4rem;">&nbsp;</span> 
 
         <div>
-            <input type="text" class="SearchMed" placeholder="Rechercher le medicament"/>
+            <input v-model="search_value" type="text" class="SearchMed" placeholder="Rechercher le medicament"/>
         </div>
     </div>
 </template>
