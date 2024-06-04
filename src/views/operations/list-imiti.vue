@@ -710,6 +710,8 @@ export default defineComponent ({
             if(queryset && value.value.query.length > 0 && value.value.response==1){
                 emit('allImiti', queryset)
                 // console.log("emitted on need_search")
+            } else if(queryset && value.value.query.length > 0 && value.value.response==0){
+                console.log("THe resuluts are to be shown in IMITI-LIST")
             }
             console.log("Resp: ", queryset)
         })

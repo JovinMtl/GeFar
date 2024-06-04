@@ -120,9 +120,7 @@
 </template>
 <script setup>
 
-const SearchBarManager = (value)=>{
-    provide('needSearch', value)
-}
+
 </script>
 <script>
 import { 
@@ -177,7 +175,9 @@ export default {
         const query_search = reactive({})
         const umuti_single = ref(false)
 
-        
+        const SearchBarManager = (value)=>{
+            query_search.value = value
+        }
         const requestUpload = ()=>{
             umuti_single.value = !umuti_single.value 
         }
@@ -478,7 +478,7 @@ export default {
             actualOption, closeApprov, getAllImiti, toSell,
             searchManager, openApproFile, closeApproFile,
             getFileDataLoaded, compileImitiSet, closeControle,
-            requestUpload,
+            requestUpload, SearchBarManager,
         }
     },
 }
