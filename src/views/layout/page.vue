@@ -175,6 +175,9 @@ export default {
 
         const query_search = reactive({})
         const umuti_single = ref(false)
+        
+        let url_sell = "/api/out/sell/"
+        const [sell_report, toSell ] = useKurungika(panier_client, url_sell)
 
         const SearchBarManager = (value)=>{
             query_search.value = value
@@ -308,12 +311,20 @@ export default {
             
         }
 
-        const toSell = () => {
-            // need fist to update panier_api according to panier_client
-            // send panier_api to sell endpoint
-            // panier_client.value.forEach()
-            need_to_updade.value = true
-        }
+        // const toSell = () => {
+        //     // need fist to update panier_api according to panier_client
+        //     // send panier_api to sell endpoint
+        //     // panier_client.value.forEach()
+        //     need_to_updade.value = true
+        //     server_process.value = true
+        //     let url_sell ="/api/out/sell/"
+            
+        //     console.log("The result of toSell is: ", rungika.value)
+        //     setTimeout(() => {
+        //         server_process.value = false
+        //     }, 3000);
+
+        // }
 
         const number_To_string = (value=10000) => {
             // This function is designed to format a number as a string

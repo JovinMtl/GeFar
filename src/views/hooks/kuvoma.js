@@ -46,9 +46,11 @@ export function useFilterRange(imiti_for_search, dateDebut, dateFin){
 export function useKurungika(imitiArray, prefix,
      otherData1=null, otherData2=null){
     const data = ref(null)
+    // return prefix
     if(!(otherData1 && otherData2)){
         const kurungikaImiti = async () => {
             const base = '//127.0.0.1:8002'
+            console.log("prefix dukorerako: ", prefix)
     
             try {
                 const response = await fetch(`${base}/${prefix}`,{
@@ -57,7 +59,7 @@ export function useKurungika(imitiArray, prefix,
                         'Content-type': 'application/json'
                     },
                     body: JSON.stringify({
-                        'imiti': imitiArray
+                        'imiti': imitiArray.value
                     })
                     
                 })
@@ -69,6 +71,8 @@ export function useKurungika(imitiArray, prefix,
                 console.log("somehting may not be well because :", value)
             }
         }
-        return [data, kuvomaImiti]
+        return [data, kurungikaImiti]
+    } else{
+        return "not really"
     }
 }
