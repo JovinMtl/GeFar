@@ -42,3 +42,33 @@ export function useFilterRange(imiti_for_search, dateDebut, dateFin){
     }
     
 }
+
+export function useKurungika(imitiArray, prefix,
+     otherData1=null, otherData2=null){
+    const data = ref(null)
+    if(!(otherData1 && otherData2)){
+        const kurungikaImiti = async () => {
+            const base = '//127.0.0.1:8002'
+    
+            try {
+                const response = await fetch(`${base}/${prefix}`,{
+                    method: 'POST',
+                    headers:{
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        'imiti': imitiArray
+                    })
+                    
+                })
+                
+                if (response.ok){
+                    data.value = await response.json()
+                }
+            } catch (value){
+                console.log("somehting may not be well because :", value)
+            }
+        }
+        return [data, kuvomaImiti]
+    }
+}
