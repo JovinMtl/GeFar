@@ -10,9 +10,11 @@
     </div>
 </template>
 <script setup>
-import { ref, watch} from 'vue'
+import { inject, ref, watch} from 'vue'
 const search_value = ref(null)
 const search_result = ref([])
+
+let imiti_injected = inject('imiti')
 
 watch(search_value, (value)=>{
     console.log("THe search value should be : ", value)
