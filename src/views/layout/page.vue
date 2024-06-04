@@ -120,6 +120,9 @@
 </template>
 <script setup>
 
+const SearchBarManager = (value)=>{
+    provide('needSearch', value)
+}
 </script>
 <script>
 import { 
