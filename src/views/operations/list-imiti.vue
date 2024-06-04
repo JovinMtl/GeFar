@@ -672,6 +672,7 @@ export default defineComponent ({
                 // console.log("voici: ", obj)
             });
             console.log("Compiled : ", imitiset.value)
+            imitiset_copy.value = imitiset.value
         }
 
         const update_imiti_for_search = ()=>{
