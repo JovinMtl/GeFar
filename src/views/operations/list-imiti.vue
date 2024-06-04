@@ -714,6 +714,7 @@ export default defineComponent ({
                 // console.log("emitted on need_search")
             } else if(queryset && value.value.query.length > 0 && value.value.response==0){
                 console.log("THe resuluts are to be shown in IMITI-LIST")
+                imitiset.value = queryset
             } else if(value.value.query.length = 0){
                 imitiset.value = imitiset_copy.value
             }
