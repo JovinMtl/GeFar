@@ -9,6 +9,15 @@
         </div>
     </div>
 </template>
+<script setup>
+import { ref, watch} from 'vue'
+const search_value = ref(null)
+
+watch(search_value, (value)=>{
+    console.log("THe search value should be : ", value)
+})
+</script>
+
 
 <script>
 import { 
