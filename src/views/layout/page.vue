@@ -104,7 +104,7 @@
 
                     <div class="signeRecherche"></div>
                     <div class="searchBar">
-                        <sea-rch></sea-rch>
+                        <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
                     <div class="menuBar">
                         <me-nu @actualMenu="actualOption"></me-nu>
