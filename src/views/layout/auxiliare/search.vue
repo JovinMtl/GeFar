@@ -11,6 +11,8 @@
 </template>
 <script setup>
 import { inject, ref, watch} from 'vue'
+import { useSearchUmuti } from '../../hooks/kuvoma.js'
+
 const search_value = ref(null)
 const search_result = ref([])
 
