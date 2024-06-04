@@ -134,6 +134,7 @@ import approv from '../operations/approv.vue';
 import approvFile from '../operations/approv-file.vue';
 import joveLoader from './auxiliare/jove-loader.vue';
 import controle from '../operations/controle.vue'
+import { useKurungika } from '../hooks/kuvoma.js'
 // import useCloseApprov from '../hooks/jove'
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
