@@ -177,7 +177,7 @@ export default {
         const umuti_single = ref(false)
         
         let url_sell = "/api/out/sell/"
-        const [sell_report, toSell ] = useKurungika(panier_client, url_sell)
+        const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 
         const SearchBarManager = (value)=>{
             query_search.value = value
