@@ -472,6 +472,9 @@ export default {
             // Update the Total on panier whenever we add or remove any umuti on Panier.
             total_panier_client.value = update_total_client()
         })
+        watch(sell_report, value=>{
+            // Do something when the status response is OK
+        })
         provide('needUpdate_list', need_to_updade) // in list-imiti component
         provide('needSearch', query_search) // in list-imiti component
         provide('imiti_search', all_imiti) // in approv component
