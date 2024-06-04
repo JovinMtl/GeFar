@@ -25,7 +25,11 @@ watch(search_value, (value)=>{
     console.log("The imiti injected are: ", imiti_injected.value)
     // let result = useSearchUmuti(imiti_injected, value, 'name_umuti')
     // console.log("the result is : ", result)
-    emit('valueSearch', value)
+    let obj = {
+                'query': value,
+                'response': 0 // 0 mentionning that the response should stay in imiti-list
+            }
+    emit('valueSearch', obj)
 })
 watch(search_result, (value)=>{
     // have to emit the result
