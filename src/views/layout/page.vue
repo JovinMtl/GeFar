@@ -118,7 +118,9 @@
         </ion-content>
     </ion-page>
 </template>
+<script setup>
 
+</script>
 <script>
 import { 
     defineAsyncComponent,
