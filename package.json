@@ -20,6 +20,7 @@
     "@ionic/vue": "^8.0.0",
     "@ionic/vue-router": "^8.0.0",
     "ionicons": "^7.0.0",
+    "pagedjs": "^0.4.3",
     "vue": "^3.3.0",
     "vue-router": "^4.2.0",
     "vuetify": "^3.6.0-beta.0.0"
