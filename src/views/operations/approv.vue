@@ -85,7 +85,11 @@ export default {
         const imiti_result = ref([]) 
         const selected_search = ref(null)
         const search_approve = reactive({})
+        const umuti_price_in = ref(0)
+        const umuti_price_out = ref(0)
+        const umuti_quantite_initial = ref(0)
         const date_exp = ref(null)
+        
         let umuti_obj = {
                 'code_umuti': '',
                 'date_winjiriyeko': new Date(),
