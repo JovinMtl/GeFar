@@ -70,6 +70,11 @@
             <input v-model="date_exp" type="date" placeholder="Nom du medicament">
             <br> <br>
         </div>
+        <teleport to="body">
+            <div class="notif" v-if="notifStatus">
+                <p>{{ message }}</p>
+            </div>
+        </teleport>
     </div>
 </template>
 <script>
