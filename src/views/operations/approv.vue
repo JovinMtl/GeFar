@@ -195,7 +195,7 @@ export default {
                     notifStatus.value = true
                     setTimeout(()=>{
                         notifStatus.value = false
-                    }, 5000)
+                    }, 3000)
                     return undefined
                 }
             }
