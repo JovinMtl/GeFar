@@ -16,11 +16,11 @@
                     {{ umuti.name_umuti }} {{ umuti.code_umuti }} {{ umuti.description_umuti }}
                 </button>
             </ul>
-            <input type="text" placeholder="Price in: (Type_in)">
+            <input v-model="umuti_price_in" type="text" placeholder="Price in: (Type_in)">
             <br> <br>
-            <input type="text" placeholder="Price out : (Type_in)">
+            <input v-model="umuti_price_out" type="text" placeholder="Price out : (Type_in)">
             <br> <br>
-            <input type="text" placeholder="Quantite Initial">
+            <input v-model="umuti_quantite_initial" type="text" placeholder="Quantite Initial">
             <br> <br>
             <label>Date d'exp. </label> 
             <!-- <br> -->
@@ -187,7 +187,7 @@ export default {
         })
         return {
             umutiName, imiti_result, selected_search,
-            date_exp,
+            date_exp, umuti_price_in, umuti_price_out, quantite_initial,
             fileTray, 
             selectSearch, openApproFile,
         }
