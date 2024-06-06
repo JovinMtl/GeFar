@@ -39,6 +39,13 @@ export default defineComponent ({
         var shouldUpdate = needUpdate
 
         const search_umuti = (value)=>{
+            // value.field
+            let fieldname = ''
+            if (value.field){
+                fieldname = value.field
+            } else {
+                fieldname = 'name_umuti'
+            }
             return imiti_for_search.filter((element)=>{
                 return element.name_umuti.toLowerCase().match((value.query).toLowerCase())
             })
