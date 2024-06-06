@@ -434,12 +434,14 @@ export default {
                 let qte = actualQte.value
                 let obj_Client = {
                     'name_umuti' : selectedUmuti.value.name_umuti,
-                    'qte' : actualValue.value || somme_to_panier() || 1,
+                    // 'qte' : actualValue.value || somme_to_panier() || 1,
+                    'qte' : somme_lote(),
                     'price_out' : Number(selectedUmuti.value.price_out),
                 }
                 let obj_API = {
                     'code_umuti' : selectedUmuti.value.code_umuti,
-                    'qte' : actualValue.value || somme_to_panier() || 1,
+                    // 'qte' : actualValue.value || somme_to_panier() || 1,
+                    'qte' : somme_lote(),
                     'lot' : lot_array()
                 }
 
