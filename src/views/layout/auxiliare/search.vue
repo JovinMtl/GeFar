@@ -37,7 +37,6 @@ console.log("The imiti first injected are: ", imiti_injected)
 
 
 const turnSelect = async()=>{
-    // allowSelect.value = true
     clickSelect.value.firstChild.click()
     actualField.value = await (clickSelect.value.firstChild.value)
     
@@ -47,10 +46,6 @@ watch(actualField, value=>{
     console.log("The new value is : ", value)
 })
 watch(search_value, (value)=>{
-    console.log("THe search value should be : ", value)
-    console.log("The imiti injected are: ", imiti_injected.value)
-    // let result = useSearchUmuti(imiti_injected, value, 'name_umuti')
-    // console.log("the result is : ", result)
     let obj = {
                 'query': value,
                 'response': 0, // 0 mentionning that the response should stay in imiti-list
