@@ -307,7 +307,7 @@ export default {
         const decrementQte = (value)=>{
             const code_s = value.target.nextSibling.nextSibling.getAttribute('id')
             const code = Number(code_s.slice(1))
-            if(activeLot.value[code].to_panier > 1) {
+            if(activeLot.value[code].to_panier > 0) {
                 actualQte.value -= 1
                 activeLot.value[code].to_panier -= 1
                 console.log("ok, decrementing")
