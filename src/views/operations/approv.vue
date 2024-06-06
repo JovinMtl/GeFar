@@ -89,7 +89,7 @@ export default {
         const umuti_price_out = ref(null)
         const umuti_quantite_initial = ref(null)
         const date_exp = ref(null)
-        const type_umuti = ref(null)
+        const type_umuti = ref('Cp')
         const ratio_type = ref(null)
         const type_in = ref(null)
         const type_out = ref(null)
