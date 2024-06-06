@@ -726,7 +726,6 @@ export default defineComponent ({
             } else if(value.value.query.length == 0){
                 imitiset.value = imitiset_copy.value
             }
-            console.log("Resp: ", queryset)
         })
 
 
