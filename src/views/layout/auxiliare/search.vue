@@ -2,11 +2,12 @@
     <div @click="turnSelect" style="display: inline-flex;">
         <!-- Here we will display icon -->
         <ion-icon :src="search" style="font-size: larger;"></ion-icon>
-        <span  ref="clickSelect" style="position: absolute;left: -21vw; font-size: .9rem;">
+
+        <span  ref="clickSelect" style="position: absolute;left: -31vw; font-size: .9rem;">
             <ion-select aria-label="Fruit" interface="popover"
             placeholder="choisir"  @click="console.log('You clicked SELECT')" cancel-text="Annuler" >
-                <ion-select-option v-model="somme"
-                    v-for="(jove, index) in ['one', 'two', 'three']" :value="index" > 
+                <ion-select-option v-model="actualField"
+                    v-for="(jove, index) in searchableFields" :value="index" > 
                     {{ jove }}
                 </ion-select-option>
             </ion-select>
