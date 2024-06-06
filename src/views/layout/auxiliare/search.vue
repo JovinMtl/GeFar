@@ -27,9 +27,6 @@ import { useSearchUmuti } from '../../hooks/kuvoma.js'
 const search_value = ref(null)
 const search_result = ref([])
 const actualField = ref('name_umuti')
-const searchableFields = ['name_umuti', 'price_out', 'type_out', 
-            'type_umuti', 'description_umuti']
-const allowSelect = ref(false)
 const clickSelect = ref(null)
 const emit = defineEmits(['valueSearch'])
 
