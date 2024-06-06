@@ -275,6 +275,10 @@ export default {
             // makes it the actual value to be first considered when put to the panier
             if (Number(event.target.value)){
                 actualValue.value = event.target.value
+                const code_s = event.target.getAttribute('id')
+                const code = Number(code_s.slice(1))
+                // console.log("THe code is: ", code, 'has: ', event.target.value)
+                activeLot.value[code].to_panier = Number(event.target.value)
             } else {
                 console.log("You should type a Number: ", typeof(event.target.value))
             }
@@ -408,6 +412,18 @@ export default {
             })
             let somme_formatted = number_To_string(somme) //formatting by three digits
             return somme_formatted
+        }
+
+        const somme_lote = ()=>{
+            let somme_qte = 0
+            activeLot.value.forEach((element)=>{
+                somme_qte += Number(element.to_panier)
+            })
+            if(somme_qte == 0){
+                return 1
+            } else {
+                return somme_qte
+            }
         }
 
         const moveToPanier = () => {
