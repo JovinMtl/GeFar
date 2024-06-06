@@ -47,7 +47,7 @@ export default defineComponent ({
                 fieldname = 'name_umuti'
             }
             return imiti_for_search.filter((element)=>{
-                return element.name_umuti.toLowerCase().match((value.query).toLowerCase())
+                return element[fieldname].toLowerCase().match((value.query).toLowerCase())
             })
         }
 
