@@ -100,6 +100,8 @@ export default {
         const type_out = ref(null)
         const location = ref(null)
         const description_umuti = ref(null)
+
+        const notifStatus = ref(false)
         
         let umuti_obj = {
                 'code_umuti': '',
