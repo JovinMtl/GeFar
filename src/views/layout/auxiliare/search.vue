@@ -15,7 +15,7 @@
         <span style="margin-right: .4rem;">&nbsp;</span> 
 
         <div>
-            <input v-model="search_value" type="text" class="SearchMed" :placeholder="'Rechercher le medicament' + actualField"/>
+            <input v-model="search_value" type="text" class="SearchMed" :placeholder="'Rechercher par ' + actualField"/>
         </div>
     </div>
 </template>
@@ -26,7 +26,7 @@ import { useSearchUmuti } from '../../hooks/kuvoma.js'
 
 const search_value = ref(null)
 const search_result = ref([])
-const actualField = ref('')
+const actualField = ref('name_umuti')
 const searchableFields = ['name_umuti', 'price_out', 'type_out', 
             'type_umuti', 'description_umuti']
 const allowSelect = ref(false)
@@ -89,10 +89,39 @@ export default {
 
 <style scoped>
 .SearchMed{
+    /* width: 800px; */
+    /* height: 20px; */
     border-radius: 15px; 
     background-color: transparent;
     border-color: greenyellow; 
     padding: 0px 8px;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+.SearchMed::placeholder{
+    /* font-size: small; */
+    animation-name: jove;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    /* transform: translate3d(-90%,0,0); */
+    /* padding-left: 50%; */
+    overflow: auto;
+
+}
+.SearchMed:hover::placeholder{
+    color: brown;
+    background-color: blueviolet;
+    transform: translate3d(-90%,0,0);
+}
+@keyframes jove {
+    0%{
+        transform: translate3d(0,0,0)
+    }
+    100%{
+        transform: translate3d(-100%, 0, 0);
+    }
 }
 </style>
 
