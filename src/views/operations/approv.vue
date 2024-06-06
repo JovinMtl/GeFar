@@ -199,7 +199,7 @@ export default {
         }
 
         const showMessage = (info)=>{
-            message.value = 
+            message.value = info
             notifStatus.value = true
             setTimeout(()=>{
                 notifStatus.value = false
