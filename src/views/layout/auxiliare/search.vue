@@ -9,7 +9,7 @@
         </div>
         <span>
             <ion-select aria-label="Fruit" interface="popover" 
-            placeholder="choisir" cancel-text="Annuler" v-model="somme">
+            placeholder="choisir" ref="clickSelect" cancel-text="Annuler" v-model="somme">
                 <ion-select-option
                     v-for="(jove, index) in ['one', 'two', 'three']" :value="index" > 
                     {{ jove }}
@@ -34,7 +34,7 @@ console.log("The imiti first injected are: ", imiti_injected)
 
 
 const turnSelect = ()=>{
-
+    allowSelect.value = true
 }
 
 watch(search_value, (value)=>{
