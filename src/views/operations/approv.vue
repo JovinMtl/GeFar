@@ -190,6 +190,10 @@ export default {
                     date_exp.value
                     )
                     let message = "Il y'a une erreur dans les données saisies."
+                    notifStatus.value = true
+                    setTimeout(()=>{
+                        notifStatus.value = false
+                    }, 3000)
                 }
             }
         }
@@ -221,7 +225,7 @@ export default {
             date_exp, umuti_price_in, umuti_price_out, 
             umuti_quantite_initial, description_umuti,
             type_umuti, ratio_type, type_in, type_out, location,
-            fileTray, 
+            fileTray, notifStatus,
             selectSearch, openApproFile,
         }
     },
