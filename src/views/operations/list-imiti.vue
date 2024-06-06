@@ -40,7 +40,7 @@ export default defineComponent ({
 
         const search_umuti = (value)=>{
             // value.field
-            let fieldname = ''
+            let fieldname = 'name_umuti'
             if (value.field){
                 fieldname = value.field
             } else {
