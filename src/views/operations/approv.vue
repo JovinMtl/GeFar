@@ -38,7 +38,7 @@
             </select>
             <br> <br>
             <textarea v-if="date_exp" style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
-            <input v-if="date_exp" type="text" placeholder="ratio: 1 : 1">
+            <input v-model="ratio_type" v-if="date_exp" type="text" placeholder="ratio: 1 : 1">
             <br><br>
             <input v-if="date_exp" type="text" placeholder="Type in: Carton">
             <br> <br>
@@ -89,6 +89,7 @@ export default {
         const umuti_price_out = ref(null)
         const umuti_quantite_initial = ref(null)
         const date_exp = ref(null)
+        const ratio_type = ref(null)
         
         let umuti_obj = {
                 'code_umuti': '',
@@ -154,6 +155,18 @@ export default {
                     && (Date(date_exp.value))
                 ){
                     console.log("PASSABLE")
+                    umuti_obj.name_umuti = String(umutiName.value)
+                    umuti_obj.code_umuti = ''
+                    umuti_obj.date_uzohererako = Date(date_exp.value)
+                    umuti_obj.date_winjiriyeko = new Date()
+                    umuti_obj.price_in = Number(umuti_price_in.value)
+                    umuti_obj.price_out = Number(umuti_price_out.value)
+                    umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
+                    umuti_obj.ratio_type = ''
+                    umuti_obj.location = ''
+                    umuti_obj.type_in = ''
+                    umuti_obj.type_out = ''
+                    umuti_obj.description_umuti = ''
                 } else{
                     console.log("NON PASSABLE")
                     console.log(umutiName.value, umuti_price_in.value,
