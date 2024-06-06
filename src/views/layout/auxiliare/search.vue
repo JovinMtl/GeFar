@@ -2,20 +2,20 @@
     <div @click="turnSelect" style="display: inline-flex;">
         <!-- Here we will display icon -->
         <ion-icon :src="search" style="font-size: larger;"></ion-icon>
-        <span style="margin-right: .4rem;">&nbsp;</span> 
-
-        <div>
-            <input v-model="search_value" type="text" class="SearchMed" placeholder="Rechercher le medicament"/>
-        </div>
-        <span>
-            <ion-select aria-label="Fruit" interface="popover" 
-            placeholder="choisir" ref="clickSelect" cancel-text="Annuler" v-model="somme">
-                <ion-select-option
+        <span  ref="clickSelect" style="position: absolute;left: -21vw; font-size: .9rem;">
+            <ion-select aria-label="Fruit" interface="popover"
+            placeholder="choisir"  @click="console.log('You clicked SELECT')" cancel-text="Annuler" >
+                <ion-select-option v-model="somme"
                     v-for="(jove, index) in ['one', 'two', 'three']" :value="index" > 
                     {{ jove }}
                 </ion-select-option>
             </ion-select>
         </span>
+        <span style="margin-right: .4rem;">&nbsp;</span> 
+
+        <div>
+            <input v-model="search_value" type="text" class="SearchMed" placeholder="Rechercher le medicament"/>
+        </div>
     </div>
 </template>
 <script setup>
@@ -27,6 +27,7 @@ const search_value = ref(null)
 const search_result = ref([])
 const somme = ref(null)
 const allowSelect = ref(false)
+const clickSelect = ref(null)
 const emit = defineEmits(['valueSearch'])
 
 let imiti_injected = inject('imiti_downloaded')
@@ -35,6 +36,9 @@ console.log("The imiti first injected are: ", imiti_injected)
 
 const turnSelect = ()=>{
     allowSelect.value = true
+    clickSelect.value.firstChild.click()
+    console.log("Your selected : ", clickSelect.value.firstChild, 'or: ', somme.value, 'OU: ', clickSelect.value.firstChild.value)
+    somme.value = Number(clickSelect.value.firstChild.value)
 }
 
 watch(search_value, (value)=>{
