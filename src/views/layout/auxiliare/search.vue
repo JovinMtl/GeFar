@@ -89,8 +89,6 @@ export default {
 
 <style scoped>
 .SearchMed{
-    /* width: 800px; */
-    /* height: 20px; */
     border-radius: 15px; 
     background-color: transparent;
     border-color: greenyellow; 
@@ -98,30 +96,6 @@ export default {
     white-space: nowrap;
     overflow: hidden; 
     text-overflow: ellipsis;
-}
-.SearchMed::placeholder{
-    /* font-size: small; */
-    animation-name: jove;
-    animation-duration: 15s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    /* transform: translate3d(-90%,0,0); */
-    /* padding-left: 50%; */
-    overflow: auto;
-
-}
-.SearchMed:hover::placeholder{
-    color: brown;
-    background-color: blueviolet;
-    transform: translate3d(-90%,0,0);
-}
-@keyframes jove {
-    0%{
-        transform: translate3d(0,0,0)
-    }
-    100%{
-        transform: translate3d(-100%, 0, 0);
-    }
 }
 </style>
 
