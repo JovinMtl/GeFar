@@ -103,6 +103,7 @@ export default {
 
         const notifStatus = ref(false)
         
+        let message = ''
         let umuti_obj = {
                 'code_umuti': '',
                 'date_winjiriyeko': new Date(),
@@ -189,7 +190,7 @@ export default {
                     umuti_price_out.value, umuti_quantite_initial.value,
                     date_exp.value
                     )
-                    let message = "Il y'a une erreur dans les données saisies."
+                    message = "Il y'a une erreur dans les données saisies."
                     notifStatus.value = true
                     setTimeout(()=>{
                         notifStatus.value = false
