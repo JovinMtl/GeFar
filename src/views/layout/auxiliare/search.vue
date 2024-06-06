@@ -52,7 +52,8 @@ watch(search_value, (value)=>{
     // console.log("the result is : ", result)
     let obj = {
                 'query': value,
-                'response': 0 // 0 mentionning that the response should stay in imiti-list
+                'response': 0, // 0 mentionning that the response should stay in imiti-list
+                'field': actualField.value
             }
     emit('valueSearch', obj)
 })
