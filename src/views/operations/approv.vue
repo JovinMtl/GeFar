@@ -225,7 +225,7 @@ export default {
             date_exp, umuti_price_in, umuti_price_out, 
             umuti_quantite_initial, description_umuti,
             type_umuti, ratio_type, type_in, type_out, location,
-            fileTray, notifStatus,
+            fileTray, notifStatus, message,
             selectSearch, openApproFile,
         }
     },
