@@ -25,7 +25,9 @@ import { useSearchUmuti } from '../../hooks/kuvoma.js'
 
 const search_value = ref(null)
 const search_result = ref([])
-const somme = ref(null)
+const actualField = ref(null)
+const searchableFields = ['name_umuti', 'price_out', 'type_out', 
+            'type_umuti', 'description_umuti']
 const allowSelect = ref(false)
 const clickSelect = ref(null)
 const emit = defineEmits(['valueSearch'])
@@ -37,8 +39,8 @@ console.log("The imiti first injected are: ", imiti_injected)
 const turnSelect = ()=>{
     allowSelect.value = true
     clickSelect.value.firstChild.click()
-    console.log("Your selected : ", clickSelect.value.firstChild, 'or: ', somme.value, 'OU: ', clickSelect.value.firstChild.value)
-    somme.value = Number(clickSelect.value.firstChild.value)
+    console.log("Your selected : ", clickSelect.value.firstChild, 'or: ', actualField.value, 'OU: ', clickSelect.value.firstChild.value)
+    actualField.value = Number(clickSelect.value.firstChild.value)
 }
 
 watch(search_value, (value)=>{
