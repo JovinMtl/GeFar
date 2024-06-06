@@ -148,6 +148,18 @@ export default {
                 umuti_obj.description_umuti = selected_search.value.description_umuti
             } else{
                 // Fill Umuti_obj from the vmodels set in template
+                if(umutiName.value && umuti_price_in.value
+                    && umuti_price_out.value && umuti_quantite_initial.value
+                    && date_exp.value
+                ){
+                    console.log("PASSABLE")
+                } else{
+                    console.log("NON PASSABLE")
+                    console.log(umutiName.value, umuti_price_in.value,
+                    umuti_price_out.value, umuti_quantite_initial.value,
+                    date_exp.value
+                    )
+                }
             }
         }
         const selectSearch = (event)=>{
