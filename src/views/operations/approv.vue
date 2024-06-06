@@ -152,6 +152,8 @@ export default {
                 umuti_obj.type_in = selected_search.value.type_in
                 umuti_obj.type_out = selected_search.value.type_out
                 umuti_obj.description_umuti = selected_search.value.description_umuti
+
+                return umuti_obj
             } else{
                 // Fill Umuti_obj from the vmodels set in template
                 if((String(umutiName.value)) && (Number(umuti_price_in.value))
@@ -172,6 +174,8 @@ export default {
                     umuti_obj.type_in = '' || type_in
                     umuti_obj.type_out = '' || type_out
                     umuti_obj.description_umuti = '' || description_umuti
+
+                    return umuti_obj
                 } else{
                     console.log("NON PASSABLE")
                     console.log(umutiName.value, umuti_price_in.value,
