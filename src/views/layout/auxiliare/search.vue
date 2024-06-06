@@ -40,7 +40,6 @@ const turnSelect = async()=>{
     // allowSelect.value = true
     clickSelect.value.firstChild.click()
     actualField.value = await (clickSelect.value.firstChild.value)
-    console.log("Your selected : ", clickSelect.value.firstChild, 'or: ', actualField.value, 'OU: ', clickSelect.value.firstChild.value)
     
 }
 watch(actualField, value=>{
