@@ -191,7 +191,7 @@ export default {
                     umuti_price_out.value, umuti_quantite_initial.value,
                     date_exp.value
                     )
-                    message.value = "Il y'a une erreur dans les données saisies."
+                    message.value = "Veuillez saisir les données correctes."
                     notifStatus.value = true
                     setTimeout(()=>{
                         notifStatus.value = false
