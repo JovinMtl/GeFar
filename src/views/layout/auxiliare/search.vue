@@ -1,13 +1,13 @@
 <template>
-    <div @click="turnSelect" style="display: inline-flex;">
-        <!-- Here we will display icon -->
-        <ion-icon :src="search" style="font-size: larger;"></ion-icon>
+    <div style="display: inline-flex;">
 
-        <span  ref="clickSelect" style="position: absolute;left: -31vw; font-size: .9rem;">
+        <ion-icon @click="turnSelect" :src="search" style="font-size: larger;"></ion-icon>
+
+        <span  ref="clickSelect" style="position: absolute;left: -31vw; font-size: .9rem; z-index: -9;">
             <ion-select aria-label="Fruit" interface="popover"
-            placeholder="choisir"  @click="console.log('You clicked SELECT')" cancel-text="Annuler" >
-                <ion-select-option v-model="actualField"
-                    v-for="(jove, index) in searchableFields" :value="index" > 
+            placeholder="choisir" cancel-text="Annuler" v-model="actualField" >
+                <ion-select-option
+                    v-for="(jove, index) in searchableFields"> 
                     {{ jove }}
                 </ion-select-option>
             </ion-select>
@@ -15,7 +15,7 @@
         <span style="margin-right: .4rem;">&nbsp;</span> 
 
         <div>
-            <input v-model="search_value" type="text" class="SearchMed" placeholder="Rechercher le medicament"/>
+            <input v-model="search_value" type="text" class="SearchMed" :placeholder="'Rechercher le medicament' + actualField"/>
         </div>
     </div>
 </template>
@@ -26,7 +26,7 @@ import { useSearchUmuti } from '../../hooks/kuvoma.js'
 
 const search_value = ref(null)
 const search_result = ref([])
-const actualField = ref(null)
+const actualField = ref('')
 const searchableFields = ['name_umuti', 'price_out', 'type_out', 
             'type_umuti', 'description_umuti']
 const allowSelect = ref(false)
@@ -37,13 +37,17 @@ let imiti_injected = inject('imiti_downloaded')
 console.log("The imiti first injected are: ", imiti_injected)
 
 
-const turnSelect = ()=>{
-    allowSelect.value = true
+const turnSelect = async()=>{
+    // allowSelect.value = true
     clickSelect.value.firstChild.click()
+    actualField.value = await (clickSelect.value.firstChild.value)
     console.log("Your selected : ", clickSelect.value.firstChild, 'or: ', actualField.value, 'OU: ', clickSelect.value.firstChild.value)
-    actualField.value = Number(clickSelect.value.firstChild.value)
+    
 }
-
+watch(actualField, value=>{
+    actualField.value = value
+    console.log("The new value is : ", value)
+})
 watch(search_value, (value)=>{
     console.log("THe search value should be : ", value)
     console.log("The imiti injected are: ", imiti_injected.value)
