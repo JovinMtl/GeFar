@@ -191,14 +191,19 @@ export default {
                     umuti_price_out.value, umuti_quantite_initial.value,
                     date_exp.value
                     )
-                    message.value = "Veuillez saisir les données correctes."
-                    notifStatus.value = true
-                    setTimeout(()=>{
-                        notifStatus.value = false
-                    }, 3000)
+                    let info = "Veuillez saisir les données correctes."
+                    
                     return undefined
                 }
             }
+        }
+
+        const showMessage = (info)=>{
+            message.value = 
+            notifStatus.value = true
+            setTimeout(()=>{
+                notifStatus.value = false
+            }, 1800)
         }
         const selectSearch = (event)=>{
             console.log("You selected ID: ", event.target.getAttribute('id'))
