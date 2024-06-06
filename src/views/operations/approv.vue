@@ -192,7 +192,7 @@ export default {
                     date_exp.value
                     )
                     let info = "Veuillez saisir les données correctes."
-                    
+                    showMessage(info)
                     return undefined
                 }
             }
