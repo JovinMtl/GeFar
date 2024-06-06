@@ -37,14 +37,14 @@
                 <!-- <option>Inj</option> -->
             </select>
             <br> <br>
-            <textarea v-if="date_exp" style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
+            <textarea v-model="description_umuti" v-if="date_exp" style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
             <input v-model="ratio_type" v-if="date_exp" type="text" placeholder="ratio: 1 : 1">
             <br><br>
-            <input v-if="date_exp" type="text" placeholder="Type in: Carton">
+            <input v-model="type_in" v-if="date_exp" type="text" placeholder="Type in: Carton">
             <br> <br>
-            <input v-if="date_exp" type="text" placeholder="Type out : Plaquette">
+            <input v-model="type_out" v-if="date_exp" type="text" placeholder="Type out : Plaquette">
             <br><br>
-            <input v-if="date_exp" type="text" style="margin-bottom: 5px;" placeholder="Localisation">
+            <input v-model="location" v-if="date_exp" type="text" style="margin-bottom: 5px;" placeholder="Localisation">
             <br><br>
         </div>
         <div v-if="selected_search">
@@ -90,6 +90,10 @@ export default {
         const umuti_quantite_initial = ref(null)
         const date_exp = ref(null)
         const ratio_type = ref(null)
+        const type_in = ref(null)
+        const type_out = ref(null)
+        const location = ref(null)
+        const description_umuti = ref(null)
         
         let umuti_obj = {
                 'code_umuti': '',
