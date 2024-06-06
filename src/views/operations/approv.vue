@@ -182,6 +182,7 @@ export default {
                     umuti_price_out.value, umuti_quantite_initial.value,
                     date_exp.value
                     )
+                    let message = "Il y'a une erreur dans les données saisies."
                 }
             }
         }
