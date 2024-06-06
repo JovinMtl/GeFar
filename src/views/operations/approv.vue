@@ -28,7 +28,7 @@
             <br> <br>
             <label v-if="date_exp">Type de medicament</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
-            <select v-if="date_exp" style="background-color: white" placeholder="Type" value="Ovule">
+            <select v-model="type_umuti" v-if="date_exp" style="background-color: white" placeholder="Type" value="Ovule">
                 <option>Cp</option>
                 <option>Gel</option>
                 <option>Ovule</option>
@@ -89,6 +89,7 @@ export default {
         const umuti_price_out = ref(null)
         const umuti_quantite_initial = ref(null)
         const date_exp = ref(null)
+        const type_umuti = ref(null)
         const ratio_type = ref(null)
         const type_in = ref(null)
         const type_out = ref(null)
