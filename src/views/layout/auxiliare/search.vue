@@ -28,6 +28,8 @@ const search_value = ref(null)
 const search_result = ref([])
 const actualField = ref('name_umuti')
 const clickSelect = ref(null)
+const searchableFields = ['name_umuti', 'price_out', 'quantite_restant',
+         'type_out', 'type_umuti']
 const emit = defineEmits(['valueSearch'])
 
 let imiti_injected = inject('imiti_downloaded')
