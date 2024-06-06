@@ -194,7 +194,8 @@ export default {
                     notifStatus.value = true
                     setTimeout(()=>{
                         notifStatus.value = false
-                    }, 3000)
+                    }, 5000)
+                    return undefined
                 }
             }
         }
@@ -208,8 +209,11 @@ export default {
         
         watch(need_to_upload, (value)=>{
             // console.log("Want to emit from APPROV")
-            checkBeforeUpload()
-            emit('fileDataLoaded', [umuti_obj,])
+            let reponse = checkBeforeUpload()
+            if(reponse){
+                emit('fileDataLoaded', [umuti_obj,])
+            }
+            
     })
         watch(umutiName, (value)=>{
             let obj = {
