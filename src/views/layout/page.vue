@@ -309,6 +309,7 @@ export default {
             const code = Number(code_s.slice(1))
             if(activeLot.value[code].to_panier > 1) {
                 actualQte.value -= 1
+                console.log("ok, decrementing")
             } else {
                 console.log("No, decrementing")
             }
