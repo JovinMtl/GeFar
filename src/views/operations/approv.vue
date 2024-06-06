@@ -167,11 +167,11 @@ export default {
                     umuti_obj.price_in = Number(umuti_price_in.value)
                     umuti_obj.price_out = Number(umuti_price_out.value)
                     umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
-                    umuti_obj.ratio_type = ''
-                    umuti_obj.location = ''
-                    umuti_obj.type_in = ''
-                    umuti_obj.type_out = ''
-                    umuti_obj.description_umuti = ''
+                    umuti_obj.ratio_type = '' || ratio_type
+                    umuti_obj.location = '' || location
+                    umuti_obj.type_in = '' || type_in
+                    umuti_obj.type_out = '' || type_out
+                    umuti_obj.description_umuti = '' || description_umuti
                 } else{
                     console.log("NON PASSABLE")
                     console.log(umutiName.value, umuti_price_in.value,
