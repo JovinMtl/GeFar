@@ -206,7 +206,9 @@ export default {
         })
         return {
             umutiName, imiti_result, selected_search,
-            date_exp, umuti_price_in, umuti_price_out, umuti_quantite_initial,
+            date_exp, umuti_price_in, umuti_price_out, 
+            umuti_quantite_initial, description_umuti,
+            type_umuti, ratio_type, type_in, type_out, location,
             fileTray, 
             selectSearch, openApproFile,
         }
