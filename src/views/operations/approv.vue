@@ -67,7 +67,7 @@
             <br> <br>
             <label>Date d'éxpiration </label> 
             <!-- <span style="margin-right: .1rem;">&nbsp;</span> -->
-            <input v-model="date_exp" type="date" placeholder="Nom du medicament">
+            <input @blur="saveDate" v-model="date_exp" type="date" placeholder="Nom du medicament">
             <br> <br>
         </div>
         <teleport to="body">
@@ -123,7 +123,10 @@ export default {
 
         let need_to_upload = inject('need_upload')
         var result = inject('imiti_search')
-
+        
+        const saveDate = ()=>{
+            console.log("You're trying to Update de DATE")
+        }
         const openApproFile = ()=>{
             emit('approFileOpen', 1)
         }
