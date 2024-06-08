@@ -243,7 +243,7 @@ export default {
             umuti_quantite_initial, description_umuti,
             type_umuti, ratio_type, type_in, type_out, location,
             fileTray, notifStatus, message,
-            selectSearch, openApproFile,
+            selectSearch, openApproFile, saveDate,
         }
     },
 }
