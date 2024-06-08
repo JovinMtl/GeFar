@@ -107,7 +107,7 @@ export default {
         
         let umuti_obj = {
                 'code_umuti': '',
-                'date_winjiriyeko': new Date(),
+                'date_winjiriyeko': new Date().toISOString(),
                 'date_uzohererako': undefined,
                 'name_umuti': '',
                 'description_umuti': '',
@@ -130,7 +130,7 @@ export default {
         const approve_handler = ()=>{
             let obj = {
                 'code_umuti': selected_search.value.code_umuti,
-                'date_winjiriyeko': new Date(),
+                'date_winjiriyeko': new Date().toISOString(),
                 'date_uzohererako': undefined,
                 'name_umuti': selected_search.value.name_umuti,
                 'description_umuti': selected_search.value.description_umuti,
@@ -174,7 +174,7 @@ export default {
                     umuti_obj.name_umuti = String(umutiName.value)
                     umuti_obj.code_umuti = ''
                     umuti_obj.date_uzohererako = Date(date_exp.value)
-                    umuti_obj.date_winjiriyeko = new Date()
+                    umuti_obj.date_winjiriyeko = new Date().toISOString()
                     umuti_obj.price_in = Number(umuti_price_in.value)
                     umuti_obj.price_out = Number(umuti_price_out.value)
                     umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
