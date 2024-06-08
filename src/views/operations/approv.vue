@@ -184,10 +184,10 @@ export default {
                     umuti_obj.price_in = Number(umuti_price_in.value)
                     umuti_obj.price_out = Number(umuti_price_out.value)
                     umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
-                    umuti_obj.ratio_type = '' || ratio_type.value || 'vide'
-                    umuti_obj.location = '' || location.value || 'vide'
+                    umuti_obj.ratio_type = ratio_type.value || 1
+                    umuti_obj.location = location.value || 'vide'
                     umuti_obj.type_in = type_in.value || 'vide'
-                    umuti_obj.type_out = '' || type_out.value || 'vide'
+                    umuti_obj.type_out =  type_out.value || 'vide'
                     umuti_obj.description_umuti = description_umuti.value || "vide"
 
                     return umuti_obj
