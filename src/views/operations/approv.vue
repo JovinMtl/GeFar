@@ -174,16 +174,18 @@ export default {
                     umuti_obj.name_umuti = String(umutiName.value)
                     umuti_obj.code_umuti = ''
                     umuti_obj.date_uzohererako = Date(date_exp.value)
-                    umuti_obj.date_winjiriyeko = new Date().toISOString()
+                    umuti_obj.date_winjiriyeko = Date(new Date())
                     umuti_obj.price_in = Number(umuti_price_in.value)
                     umuti_obj.price_out = Number(umuti_price_out.value)
                     umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
-                    umuti_obj.ratio_type = '' || ratio_type
-                    umuti_obj.location = '' || location
-                    umuti_obj.type_in = '' || type_in
-                    umuti_obj.type_out = '' || type_out
-                    umuti_obj.description_umuti = '' || description_umuti
+                    umuti_obj.ratio_type = '' || ratio_type.value
+                    umuti_obj.location = '' || location.value
+                    umuti_obj.type_in = '' || type_in.value
+                    umuti_obj.type_out = '' || type_out.value
+                    umuti_obj.description_umuti = '' || description_umuti.value
 
+                    console.log("Sending date_winjiriyeko as: ",
+                     umuti_obj.date_winjiriyeko, "and: ", date_exp.value)
                     return umuti_obj
                 } else{
                     console.log("NON PASSABLE")
@@ -216,6 +218,7 @@ export default {
         watch(need_to_upload, (value)=>{
             // console.log("Want to emit from APPROV")
             let reponse = checkBeforeUpload()
+            console.log("Attempting to send: ", reponse)
             if(reponse){
                 emit('fileDataLoaded', [umuti_obj,])
             }
