@@ -209,7 +209,7 @@ export default {
         const getFileDataLoaded = async (dataArray) => {
             // submitting the data to the server
             // provide send-status and inject it in approv-file
-            console.log("Taking Releve on sending DATA to API")
+            console.log("Taking Releve on sending DATA to API: ", dataArray)
             server_process.value = true
             const server = '//127.0.0.1:8002'
             const endpoint = '/api/in/kurangura/'

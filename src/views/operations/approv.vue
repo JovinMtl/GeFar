@@ -24,7 +24,7 @@
             <br> <br>
             <label>Date d'exp. </label> 
             <!-- <br> -->
-            <input v-model="date_exp" type="date" placeholder="Nom du medicament">
+            <input v-model="umuti_date_exp" type="date" placeholder="Nom du medicament">
             <br> <br>
             <label v-if="date_exp">Type de medicament</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
@@ -93,7 +93,9 @@ export default {
         const umuti_price_in = ref(null)
         const umuti_price_out = ref(null)
         const umuti_quantite_initial = ref(null)
+        const umuti_date_exp = ref(null)
         const date_exp = ref(null)
+        const date_init = ref(new Date)
         const type_umuti = ref('Cp')
         const ratio_type = ref(null)
         const type_in = ref(null)
@@ -105,10 +107,11 @@ export default {
         const message = ref('message initial')
         
         
-        let umuti_obj = {
+        console.log("La date de debut: ", date_init.value)
+        const  umuti_obj = reactive ({
                 'code_umuti': '',
                 'date_winjiriyeko': new Date().toISOString(),
-                'date_uzohererako': undefined,
+                'date_uzohererako': umuti_date_exp.value,
                 'name_umuti': '',
                 'description_umuti': '',
                 'type_umuti': '',
@@ -119,7 +122,7 @@ export default {
                 'price_out': undefined,
                 'quantite_initial': undefined,
                 'location': undefined,
-            }
+            })
 
         let need_to_upload = inject('need_upload')
         var result = inject('imiti_search')
@@ -134,7 +137,7 @@ export default {
             let obj = {
                 'code_umuti': selected_search.value.code_umuti,
                 'date_winjiriyeko': new Date().toISOString(),
-                'date_uzohererako': undefined,
+                'date_uzohererako': '',
                 'name_umuti': selected_search.value.name_umuti,
                 'description_umuti': selected_search.value.description_umuti,
                 'type_umuti': selected_search.value.type_umuti,
@@ -176,7 +179,9 @@ export default {
                     console.log("PASSABLE")
                     umuti_obj.name_umuti = String(umutiName.value)
                     umuti_obj.code_umuti = ''
-                    umuti_obj.date_uzohererako = Date(date_exp.value)
+                    umuti_obj.date_uzohererako = umuti_date_exp.value
+                    console.log("assigning Date end: ", umuti_obj.date_uzohererako,
+                     "fraom: ", umuti_date_exp.value)
                     umuti_obj.date_winjiriyeko = Date(new Date())
                     umuti_obj.price_in = Number(umuti_price_in.value)
                     umuti_obj.price_out = Number(umuti_price_out.value)
@@ -188,7 +193,8 @@ export default {
                     umuti_obj.description_umuti = '' || description_umuti.value
 
                     console.log("Sending date_winjiriyeko as: ",
-                     umuti_obj.date_winjiriyeko, "and: ", date_exp.value)
+                     umuti_obj.date_winjiriyeko, "and: ", date_exp.value, 
+                    "last of type:", typeof(date_exp.value))
                     return umuti_obj
                 } else{
                     console.log("NON PASSABLE")
@@ -218,6 +224,11 @@ export default {
             approve_handler()
         }
         
+        
+        watch(date_exp, (value)=>{
+            umuti_obj.date_uzohererako = value
+            console.log("Date_exp: ", value)
+        })
         watch(need_to_upload, (value)=>{
             // console.log("Want to emit from APPROV")
             let reponse = checkBeforeUpload()
@@ -239,7 +250,7 @@ export default {
         })
         return {
             umutiName, imiti_result, selected_search,
-            date_exp, umuti_price_in, umuti_price_out, 
+            date_exp, umuti_price_in, umuti_price_out, umuti_date_exp,
             umuti_quantite_initial, description_umuti,
             type_umuti, ratio_type, type_in, type_out, location,
             fileTray, notifStatus, message,
