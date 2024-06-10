@@ -42,7 +42,7 @@
                 
                 <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
                     <div class="infoUmuti"></div>
-                    <div class="infoUmuti umutiTitle">{{ selectedUmuti.value.name_umuti }}</div>
+                    <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.name_umuti).slice(0,14) }}</div>
                     <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
                     <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_umuti }}</div>
                     <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
