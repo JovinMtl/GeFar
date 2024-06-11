@@ -48,7 +48,7 @@
 
                 <div class="logoMenu" @click="ukuvoma_suggest">
                     <ion-icon :src="thermometer" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
-                    <span class="textMenu">Mesurer</span>
+                    <span class="textMenu">Suggérer</span>
                 </div>
             </div>
             <div class="controlContent" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: transparent; 
