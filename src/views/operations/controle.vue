@@ -111,7 +111,8 @@
                         <div class="contentElement4">
                             {{ (umuti.date_last_vente 
                             || umuti.date_operation || 
-                            umuti.date_winjiriyeko).slice(6,10) }}
+                            umuti.date_winjiriyeko ||
+                            '_____________').slice(6,10) }}
                         </div>
 
                         <div class="contentElement4">
@@ -197,6 +198,15 @@ const totaux = ref([0,0]) // To display totals on the footer.
 
 let [date_debut, date_fin] = [null, null]
 
+watch(actual_suggest, (value)=>{
+    if (value){
+        actual_obj.value = value
+        actual_imitiS.value = value
+        actual_opt.value = ['name_umuti', 
+        'quantite_restant','price_out', 'date_winjiriyeko',]
+        actual_type.value = ['text','text','text','date']
+    }
+})
 watch(actual_entree, (value)=>{
     if (value){
         actual_obj.value = value
