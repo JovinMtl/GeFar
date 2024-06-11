@@ -522,6 +522,7 @@ export default {
             magnetOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
+            show_facture,
             actualOption, closeApprov, getAllImiti, toSell,
             searchManager, openApproFile, closeApproFile,
             getFileDataLoaded, compileImitiSet, closeControle,
