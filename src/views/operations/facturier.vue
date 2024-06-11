@@ -4,7 +4,8 @@
             <h3>DAWA - PHARMA: FACTURE</h3>
         </div>
         <div class="factuContent">
-            Voici: {{ message }}
+            Voici: {{ message }}. <br>
+            Defini: {{ commandePatient }}
         </div>
     </div>
 </template>
