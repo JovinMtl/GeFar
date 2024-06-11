@@ -11,4 +11,5 @@
 
 <script setup>
 const message = "facture"
+const props = defineProps(['commandePatient'])
 </script>
