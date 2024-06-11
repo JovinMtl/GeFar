@@ -13,4 +13,6 @@
 <script setup>
 const message = "facture"
 const props = defineProps(['commandePatient'])
+
+// Has to launch print functionality at the mount cycle
 </script>
