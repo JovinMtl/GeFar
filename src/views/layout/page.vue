@@ -184,6 +184,7 @@ export default {
 
         const query_search = reactive({})
         const umuti_single = ref(false)
+        const show_facture = ref(false)
         
         let url_sell = "/api/out/sell/"
         const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
@@ -503,6 +504,7 @@ export default {
         })
         watch(sell_report, value=>{
             // Do something when the status response is OK
+            show_facture.value = true
         })
         provide('needUpdate_list', need_to_updade) // in list-imiti component
         provide('needSearch', query_search) // in list-imiti component
