@@ -136,6 +136,7 @@ import approv from '../operations/approv.vue';
 import approvFile from '../operations/approv-file.vue';
 import joveLoader from './auxiliare/jove-loader.vue';
 import controle from '../operations/controle.vue'
+import facturier from '../operations/facturier.vue';
 import { useKurungika } from '../hooks/kuvoma.js'
 // import useCloseApprov from '../hooks/jove'
 
@@ -154,6 +155,7 @@ export default {
         'appro-file': approvFile,
         'jove-loader': joveLoader,
         'cont-role': controle,
+        'factu-rier': facturier,
         IonContent, IonPage, 
         IonIcon,
     },
