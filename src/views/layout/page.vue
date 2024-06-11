@@ -76,7 +76,9 @@
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"></list-imiti>
                     </div>
                     <div class="sectB">
-                        Panier here: <br>
+                        <div style="text-align: center; margin: 10px 0px; font-weight: 900; font-size: 1.1rem;">
+                            <u>COMMANDE DU PATIENT:</u>
+                        </div>
                         <div class="itemPanier" v-for="(umuti, index ) in panier_client">
                             <div class="nomination">
                                 {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.price_out }} x {{ umuti.qte }} 
