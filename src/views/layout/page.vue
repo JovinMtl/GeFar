@@ -113,7 +113,12 @@
                     </div>
                     <div class="menuHau magnetic"  style="">
                         <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
+                    </div>
+                    <teleport>
+                        <div class="facturierContainer">
+                            <factu-rier></factu-rier>
                         </div>
+                    </teleport>
                 </div>
             </div>
                 
