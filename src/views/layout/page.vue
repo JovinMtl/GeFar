@@ -115,7 +115,7 @@
                         <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
                     </div>
                     <teleport to="body">
-                        <div class="facturierContainer">
+                        <div v-if="show_facture.value" class="facturierContainer">
                             <factu-rier></factu-rier>
                         </div>
                     </teleport>
