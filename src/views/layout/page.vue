@@ -116,7 +116,7 @@
                     </div>
                     <teleport to="body">
                         <div v-if="show_facture.value" class="facturierContainer">
-                            <factu-rier></factu-rier>
+                            <factu-rier :commande-patient="panier_client.value"></factu-rier>
                         </div>
                     </teleport>
                 </div>
@@ -511,6 +511,7 @@ export default {
         provide('imiti_search', all_imiti) // in approv component
         provide('need_upload', umuti_single) // in approv component
         provide('imiti_downloaded', all_imiti.value) // in search component
+        // provide('commandePatient', panier_client.value) // in facturier component
 
         return {
             selectedUmuti, panier_client, activeLot, actualValue,
