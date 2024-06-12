@@ -154,6 +154,9 @@ const printerF = async () => {
     @page{
         size: 8cm 10cm
     }
+    .modal{
+        display: none;
+    }
     .factureContainer{
         width: 100%;
         height: 100%;
