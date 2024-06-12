@@ -23,6 +23,14 @@
                     <div class="Pu">P.U</div>
                     <div class="ptotal">P.Total</div>
                 </div>
+
+                <div class="toTal">
+                    <div class="number"></div>
+                    <div class="name_umuti">TOTAL</div>
+                    <div class="qte">Qte</div>
+                    <div class="Pu">P.U</div>
+                    <div class="ptotal">P.Total</div>
+                </div>
             </div>
         </div>
     </div>
