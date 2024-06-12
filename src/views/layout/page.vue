@@ -537,12 +537,15 @@ export default {
 
 <style scoped>
 .facturierContainer{
-    /* display: flex; */
+    display: flex;
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background: white;
+    background: transparent;
     color: black;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
 
 }
 .umutiLot{
