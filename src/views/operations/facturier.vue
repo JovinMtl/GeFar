@@ -93,7 +93,8 @@ const printerF = async () => {
             // display: flex;
             width: 100%;
             height: 30%;
-            background-color: red;
+            // background-color: red;
+            background-color: #0bf532;
             // justify-items: center;
             // align-items: center;
             justify-content: center;
