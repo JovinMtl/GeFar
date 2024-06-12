@@ -11,9 +11,17 @@
                 <div class="content">
                     <div class="number"></div>
                     <div class="name_umuti"></div>
-                    <div class="qte"></div>
-                    <div class="Pu"></div>
-                    <div class="ptotal"></div>
+                    <div class="qte">Qte</div>
+                    <div class="Pu">P.U</div>
+                    <div class="ptotal">P.Total</div>
+                </div>
+
+                <div class="content2">
+                    <div class="number"></div>
+                    <div class="name_umuti"></div>
+                    <div class="qte">Qte</div>
+                    <div class="Pu">P.U</div>
+                    <div class="ptotal">P.Total</div>
                 </div>
             </div>
         </div>
@@ -30,27 +38,8 @@ console.log("Facturier INITIALIZED: ", props.value)
 </script>
 <style lang="scss" scoped>
 
-@media only print {
-    @page{
-        size: 8cm 10cm
-    }
-    .factureContainer{
-        width: 100%;
-        height: 100%;
-        background-color: gray;
-        font-size: .4rem;
-
-        .factuHead{
-            text-align: center;
-            margin: 25px 0px;
-            font-size: 1.1rem;
-            background-color: red;
-        }
-        .factuBody{
-            padding: 15px;
-
-            .content{
-                display: flex;
+@mixin content {
+    display: flex;
                 background: white;
                 width: 100%;
                 height: 20px;
@@ -80,6 +69,33 @@ console.log("Facturier INITIALIZED: ", props.value)
                     height: 100%;
                     background: rgb(0, 60, 255);
                 }
+}
+
+@media only print {
+    @page{
+        size: 8cm 10cm
+    }
+    .factureContainer{
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+        font-size: .4rem;
+
+        .factuHead{
+            text-align: center;
+            margin: 25px 0px;
+            font-size: 1.1rem;
+            background-color: red;
+        }
+        .factuBody{
+            padding: 15px;
+
+            .content{
+                @include content();
+            }
+            .content2 {
+                margin-top: 5px;
+                @include content;
             }
         }
     }
