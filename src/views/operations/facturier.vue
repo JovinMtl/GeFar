@@ -44,8 +44,8 @@
             Voulez-vous Imprimer/Sauvegarder la facture ?
         </div>
         <div class="modalFooter">
-            <button style="padding: 5px; margin: 5px;">Non</button>
-            <button style="padding: 5px; margin: 5px;">Oui</button>
+            <button style="padding: 5px 15px; margin: 5px 15px; font-size: 1.2rem;">Non</button>
+            <button style="padding: 5px 15px; margin: 5px 15px; font-size: 1.2rem;">Oui</button>
         </div>
     </div>
 </template>
@@ -87,9 +87,13 @@ const printerF = async () => {
             background: white;
         }
         .modalFooter{
+            display: flex;
             width: 100%;
             height: 20%;
             background-color: red;
+            // justify-items: center;
+            // align-items: center;
+            justify-content: center;
         }
     }
 }
