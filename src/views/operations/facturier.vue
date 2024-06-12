@@ -3,7 +3,7 @@
         <!-- <div class="factuTitle">
             <h3>DAWA - PHARMA: FACTURE</h3>
         </div> -->
-        <div class="factuContent">
+        <!-- <div class="factuContent"> -->
             <div class="factuHead">DAWA - PHARMA: FACTURE</div>
             <div class="factuBody">
                 <div class="content">
@@ -30,7 +30,8 @@
                     <div class="ptotal">P.Total</div>
                 </div>
             </div>
-        </div>
+            <div class="factuFooter">Footer</div>
+        <!-- </div> -->
     </div>
 </template>
 
@@ -41,6 +42,10 @@ const props = defineProps(['commandePatient'])
 console.log("Facturier INITIALIZED: ", props.value)
 
 // Has to launch print functionality at the mount cycle
+// window.print()
+const printerF = async () => {
+    window.print()
+}
 </script>
 <style lang="scss" scoped>
 
@@ -94,15 +99,21 @@ console.log("Facturier INITIALIZED: ", props.value)
         font-size: .4rem;
 
         .factuHead{
+            display: block;
             width: 100%;
             height: 10%;
             text-align: center;
-            margin: 25px 0px;
+            align-content: center;
+            // margin: 25px 0px;
             font-size: 1.1rem;
             background-color: red;
         }
         .factuBody{
+            display: block;
+            width: 100%;
+            height: 80%;
             padding: 15px;
+            background: blue;
 
             .content{
                 @include content();
@@ -117,6 +128,12 @@ console.log("Facturier INITIALIZED: ", props.value)
                 @include content;
                 height: 15px;
             }
+        }
+        .factuFooter{
+            width: 100%;
+            height: 10%;
+            background: yellowgreen;
+            padding: 0px 10px;
         }
     }
     
