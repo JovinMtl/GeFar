@@ -94,6 +94,8 @@ console.log("Facturier INITIALIZED: ", props.value)
         font-size: .4rem;
 
         .factuHead{
+            width: 100%;
+            height: 10%;
             text-align: center;
             margin: 25px 0px;
             font-size: 1.1rem;
