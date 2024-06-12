@@ -71,16 +71,19 @@ const printerF = async () => {
         // display: flex;
         width: 30%;
         height: 35%;
-        background: black;
+        background: white;
 
         .modalHeader{
             // display: block;
             width: 100%;
             height: 35%;
             // border: 2px solid green;
-            background: white;
+            // background: white;
             text-align: center;
             align-content: center;
+            background: linear-gradient(to right, #0bf532, red);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .modalBody{
             // display: block;
