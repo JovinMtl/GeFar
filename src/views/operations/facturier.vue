@@ -37,8 +37,16 @@
         <!-- </div> -->
     </div>
     <div class="modal">
-        <div class="modalHeader"></div>
-        <div class="modalBody"></div>
+        <div class="modalHeader">
+            Operation reussie.
+        </div>
+        <div class="modalBody">
+            Voulez-vous Imprimer/Sauvegarder la facture ?
+        </div>
+        <div class="modalFooter">
+            <button style="padding: 5px; margin: 5px;">Non</button>
+            <button style="padding: 5px; margin: 5px;">Oui</button>
+        </div>
     </div>
 </template>
 
@@ -77,6 +85,11 @@ const printerF = async () => {
             width: 100%;
             height: 40%;
             background: white;
+        }
+        .modalFooter{
+            width: 100%;
+            height: 20%;
+            background-color: red;
         }
     }
 }
