@@ -38,7 +38,7 @@
     </div>
     <div class="modal">
         <div class="modalHeader">
-           <h1>Operation reussie.</h1> 
+           <h1>Operation réussie.</h1> 
         </div>
         <div class="modalBody">
             <h3>Voulez-vous Imprimer/Sauvegarder la facture ?</h3> 
@@ -70,7 +70,7 @@ const printerF = async () => {
     .modal{
         // display: flex;
         width: 30%;
-        height: 40%;
+        height: 35%;
         background: black;
 
         .modalHeader{
