@@ -9,8 +9,8 @@
                 <!-- Voici: {{ message }}. <br>
                 Defini: {{ commandePatient }} -->
                 <div class="content">
-                    <div class="number"></div>
-                    <div class="name_umuti"></div>
+                    <div class="number">#</div>
+                    <div class="name_umuti">Designation</div>
                     <div class="qte">Qte</div>
                     <div class="Pu">P.U</div>
                     <div class="ptotal">P.Total</div>
@@ -40,35 +40,41 @@ console.log("Facturier INITIALIZED: ", props.value)
 
 @mixin content {
     display: flex;
-                background: white;
-                width: 100%;
-                height: 20px;
+    background: white;
+    width: 100%;
+    height: 20px;
 
-                .number{
-                    width: 5%;
-                    height: 100%;
-                    background: yellow;
-                }
-                .name_umuti{
-                    width: 50%;
-                    height: 100%;
-                    background: rgb(81, 255, 0);
-                }
-                .qte{
-                    width: 8%;
-                    height: 100%;
-                    background: rgb(0, 255, 200);
-                }
-                .Pu{
-                    width: 15%;
-                    height: 100%;
-                    background: rgb(0, 162, 255);
-                }
-                .ptotal{
-                    width: 22%;
-                    height: 100%;
-                    background: rgb(0, 60, 255);
-                }
+    .number{
+        // display: flex;
+        width: 5%;
+        height: 100%;
+        background: rgb(255, 0, 212);
+        align-content: center;
+    }
+    .name_umuti{
+        width: 50%;
+        height: 100%;
+        background: rgb(81, 255, 0);
+        align-content: center;
+    }
+    .qte{
+        width: 8%;
+        height: 100%;
+        background: rgb(0, 255, 200);
+        align-content: center;
+    }
+    .Pu{
+        width: 15%;
+        height: 100%;
+        background: rgb(0, 162, 255);
+        align-content: center;
+    }
+    .ptotal{
+        width: 22%;
+        height: 100%;
+        background: rgb(0, 60, 255);
+        align-content: center;
+    }
 }
 
 @media only print {
@@ -96,6 +102,7 @@ console.log("Facturier INITIALIZED: ", props.value)
             .content2 {
                 margin-top: 5px;
                 @include content;
+                height: 15px;
             }
         }
     }
