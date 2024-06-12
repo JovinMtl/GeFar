@@ -6,8 +6,11 @@
         <div class="factuContent">
             <div class="factuHead">DAWA - PHARMA: FACTURE</div>
             <div class="factuBody">
-                Voici: {{ message }}. <br>
-                Defini: {{ commandePatient }}
+                <!-- Voici: {{ message }}. <br>
+                Defini: {{ commandePatient }} -->
+                <div class="content">
+
+                </div>
             </div>
         </div>
     </div>
@@ -59,6 +62,11 @@ console.log("Facturier INITIALIZED: ", props.value)
     }
     .factuBody{
         padding: 15px
+    }
+    .content{
+        background: white;
+        width: 100%;
+        height: 20px
     }
 }
 
