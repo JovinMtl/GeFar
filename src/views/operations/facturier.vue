@@ -38,7 +38,7 @@
     </div>
     <div class="modal">
         <div class="modalHeader">
-           <h1> <u>Operation réussie.</u> </h1> 
+           <h1>Operation réussie. </h1> 
         </div>
         <div class="modalBody">
             <span style="font-size: 1.375rem; font-weight: 600">Voulez-vous Imprimer/Sauvegarder la facture ?</span> 
