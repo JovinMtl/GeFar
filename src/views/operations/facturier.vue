@@ -90,13 +90,15 @@ const printerF = async () => {
             text-align: center;
         }
         .modalFooter{
-            display: flex;
+            // display: flex;
             width: 100%;
             height: 30%;
             background-color: red;
             // justify-items: center;
             // align-items: center;
             justify-content: center;
+            align-content: center;
+            text-align: center;
         }
     }
 }
