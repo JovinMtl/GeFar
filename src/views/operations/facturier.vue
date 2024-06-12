@@ -38,10 +38,10 @@
     </div>
     <div class="modal">
         <div class="modalHeader">
-            Operation reussie.
+           <h1>Operation reussie.</h1> 
         </div>
         <div class="modalBody">
-            Voulez-vous Imprimer/Sauvegarder la facture ?
+            <h3>Voulez-vous Imprimer/Sauvegarder la facture ?</h3> 
         </div>
         <div class="modalFooter">
             <button style="padding: 5px 15px; margin: 5px 15px; font-size: 1.2rem;">Non</button>
@@ -85,6 +85,7 @@ const printerF = async () => {
             width: 100%;
             height: 40%;
             background: white;
+            text-align: center;
         }
         .modalFooter{
             display: flex;
