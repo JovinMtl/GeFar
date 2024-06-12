@@ -125,13 +125,7 @@
         </ion-content>
     </ion-page>
 </template>
-<script setup>
 
-const closeFacture = ()=>{
-    show_facture.value = false
-}
-
-</script>
 <script>
 import { 
     defineAsyncComponent,
@@ -193,6 +187,9 @@ export default {
         const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 
         console.log("Le facturier: ", show_facture.value)
+        const closeFacture = ()=>{
+            show_facture.value = false
+        }
         const SearchBarManager = (value)=>{
             query_search.value = value
         }
@@ -532,7 +529,7 @@ export default {
             actualOption, closeApprov, getAllImiti, toSell,
             searchManager, openApproFile, closeApproFile,
             getFileDataLoaded, compileImitiSet, closeControle,
-            requestUpload, SearchBarManager,
+            requestUpload, SearchBarManager, closeFacture,
         }
     },
 }
