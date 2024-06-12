@@ -36,7 +36,10 @@
             </div>
         <!-- </div> -->
     </div>
-    <div class="modal"></div>
+    <div class="modal">
+        <div class="modalHeader"></div>
+        <div class="modalBody"></div>
+    </div>
 </template>
 
 <script setup>
@@ -57,10 +60,24 @@ const printerF = async () => {
         display: none;
     }
     .modal{
-        display: flex;
+        // display: flex;
         width: 30%;
-        height: 90%;
-        background: yellow;
+        height: 40%;
+        background: black;
+
+        .modalHeader{
+            // display: block;
+            width: 100%;
+            height: 40%;
+            border: 2px solid green;
+            background: white;
+        }
+        .modalBody{
+            // display: block;
+            width: 100%;
+            height: 40%;
+            background: white;
+        }
     }
 }
 
