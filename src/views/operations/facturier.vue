@@ -6,8 +6,6 @@
         <div class="factuContent">
             <div class="factuHead">DAWA - PHARMA: FACTURE</div>
             <div class="factuBody">
-                <!-- Voici: {{ message }}. <br>
-                Defini: {{ commandePatient }} -->
                 <div class="content">
                     <div class="number">#</div>
                     <div class="name_umuti">Designation</div>
@@ -27,8 +25,8 @@
                 <div class="toTal">
                     <div class="number"></div>
                     <div class="name_umuti">TOTAL</div>
-                    <div class="qte">Qte</div>
-                    <div class="Pu">P.U</div>
+                    <div class="qte">--</div>
+                    <div class="Pu">--</div>
                     <div class="ptotal">P.Total</div>
                 </div>
             </div>
@@ -109,6 +107,11 @@ console.log("Facturier INITIALIZED: ", props.value)
             }
             .content2 {
                 margin-top: 5px;
+                @include content;
+                height: 15px;
+            }
+            .toTal {
+                margin-top: 25px;
                 @include content;
                 height: 15px;
             }
