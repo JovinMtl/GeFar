@@ -32,20 +32,20 @@
             </div>
             <div class="factuFooter">
                 Footer <hr>
-                <button @click="printerF">print</button>
+                <button >print</button>
             </div>
         <!-- </div> -->
     </div>
     <div class="modal">
         <div class="modalHeader">
-           <h1>Operation réussie. </h1> 
+           <h1>Opération réussie. </h1> 
         </div>
         <div class="modalBody">
             <span style="font-size: 1.375rem; font-weight: 600">Voulez-vous Imprimer/Sauvegarder la facture ?</span> 
         </div>
         <div class="modalFooter">
             <button style="padding: 5px 15px; margin: 5px 15px; font-size: 1.2rem;">Non</button>
-            <button style="padding: 5px 15px; margin: 5px 15px; font-size: 1.2rem;">Oui</button>
+            <button style="padding: 5px 15px; margin: 5px 15px; font-size: 1.2rem;" @click="printerF">Oui</button>
         </div>
     </div>
 </template>
@@ -72,6 +72,7 @@ const printerF = async () => {
         width: 30%;
         height: 35%;
         background: white;
+        border-radius: 25px;
 
         .modalHeader{
             // display: block;
@@ -103,6 +104,8 @@ const printerF = async () => {
             justify-content: center;
             align-content: center;
             text-align: center;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
         }
     }
 }
