@@ -10,6 +10,7 @@
                 Defini: {{ commandePatient }} -->
                 <div class="content">
                     <div class="number"></div>
+                    <div class="name_umuti"></div>
                 </div>
             </div>
         </div>
@@ -46,11 +47,20 @@ console.log("Facturier INITIALIZED: ", props.value)
             padding: 15px;
 
             .content{
+                display: flex;
                 background: white;
                 width: 100%;
                 height: 20px;
 
                 .number{
+                    width: 10%;
+                    height: 100%;
+                    background: yellow;
+                }
+                .name_umuti{
+                    width: 50%;
+                    height: 100%;
+                    background: rgb(81, 255, 0);
                 }
             }
         }
