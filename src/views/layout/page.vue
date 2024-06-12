@@ -541,7 +541,7 @@ export default {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background: gray;
+    background: white;
     color: black;
 
 }

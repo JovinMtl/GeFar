@@ -36,6 +36,7 @@
             </div>
         <!-- </div> -->
     </div>
+    <div class="modal"></div>
 </template>
 
 <script setup>
@@ -51,6 +52,18 @@ const printerF = async () => {
 }
 </script>
 <style lang="scss" scoped>
+@media not print {
+    .factureContainer{
+        display: none;
+    }
+    .modal{
+        display: flex;
+        width: 30%;
+        height: 90%;
+        background: yellow;
+    }
+}
+
 
 @mixin content {
     display: flex;
