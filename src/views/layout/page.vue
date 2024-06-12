@@ -537,10 +537,13 @@ export default {
 
 <style scoped>
 .facturierContainer{
+    /* display: flex; */
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background: white;
+    background: gray;
+    color: black;
+
 }
 .umutiLot{
     overflow: auto;
