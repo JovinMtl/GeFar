@@ -48,7 +48,7 @@ console.log("Facturier INITIALIZED: ", props.value)
             .content{
                 background: white;
                 width: 100%;
-                height: 20px
+                height: 20px;
 
                 .number{
                 }
