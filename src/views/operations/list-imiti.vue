@@ -740,9 +740,8 @@ export default defineComponent ({
 <style scoped>
 .umuti{
     width: 10vw;
-    height: 12vh;
+    height: 14vh;
     background-color: black;
-    /* background-color: gray; */
     border-radius: 15px;
     padding: 0px 5px;
     margin: 10px 5px; /* Space between imiti */
