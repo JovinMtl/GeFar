@@ -53,6 +53,7 @@
 <script setup>
 const message = "facture"
 const props = defineProps(['commandePatient'])
+const emit = defineEmits(['factureActive'])
 
 console.log("Facturier INITIALIZED: ", props.value)
 
@@ -63,6 +64,7 @@ const printerF = async () => {
 }
 const closeFacturier = ()=>{
     // emitting a signal for closing / unmounting
+    emit("factureActive")
 }
 </script>
 <style lang="scss" scoped>
