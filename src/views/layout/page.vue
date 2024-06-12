@@ -115,8 +115,8 @@
                         <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
                     </div>
                     <teleport to="body">
-                        <div v-if="show_facture.value" class="facturierContainer">
-                            <factu-rier :commande-patient="panier_client.value"></factu-rier>
+                        <div v-if="show_facture" class="facturierContainer">
+                            <factu-rier :commande-patient="panier_client"></factu-rier>
                         </div>
                     </teleport>
                 </div>
@@ -189,6 +189,7 @@ export default {
         let url_sell = "/api/out/sell/"
         const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 
+        console.log("Le facturier: ", show_facture.value)
         const SearchBarManager = (value)=>{
             query_search.value = value
         }
@@ -504,7 +505,9 @@ export default {
         })
         watch(sell_report, value=>{
             // Do something when the status response is OK
+            console.log("Maintenant nous pouvons VOIR: facturier")
             show_facture.value = true
+            console.log("Le facturier: ", show_facture.value)
         })
         provide('needUpdate_list', need_to_updade) // in list-imiti component
         provide('needSearch', query_search) // in list-imiti component
@@ -533,6 +536,12 @@ export default {
 </script>
 
 <style scoped>
+.facturierContainer{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+}
 .umutiLot{
     overflow: auto;
     /* background-color: yellow; */
