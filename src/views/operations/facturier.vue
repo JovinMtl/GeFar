@@ -61,6 +61,9 @@ console.log("Facturier INITIALIZED: ", props.value)
 const printerF = async () => {
     window.print()
 }
+const closeFacturier = ()=>{
+    // emitting a signal for closing / unmounting
+}
 </script>
 <style lang="scss" scoped>
 @media not print {
