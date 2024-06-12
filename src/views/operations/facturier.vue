@@ -12,6 +12,8 @@
                     <div class="number"></div>
                     <div class="name_umuti"></div>
                     <div class="qte"></div>
+                    <div class="Pu"></div>
+                    <div class="ptotal"></div>
                 </div>
             </div>
         </div>
@@ -67,6 +69,16 @@ console.log("Facturier INITIALIZED: ", props.value)
                     width: 8%;
                     height: 100%;
                     background: rgb(0, 255, 200);
+                }
+                .Pu{
+                    width: 15%;
+                    height: 100%;
+                    background: rgb(0, 162, 255);
+                }
+                .ptotal{
+                    width: 22%;
+                    height: 100%;
+                    background: rgb(0, 60, 255);
                 }
             }
         }
