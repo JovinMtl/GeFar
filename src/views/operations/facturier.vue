@@ -30,7 +30,10 @@
                     <div class="ptotal">P.Total</div>
                 </div>
             </div>
-            <div class="factuFooter">Footer</div>
+            <div class="factuFooter">
+                Footer <hr>
+                <button @click="printerF">print</button>
+            </div>
         <!-- </div> -->
     </div>
 </template>
