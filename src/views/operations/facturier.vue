@@ -11,6 +11,7 @@
                 <div class="content">
                     <div class="number"></div>
                     <div class="name_umuti"></div>
+                    <div class="qte"></div>
                 </div>
             </div>
         </div>
@@ -53,7 +54,7 @@ console.log("Facturier INITIALIZED: ", props.value)
                 height: 20px;
 
                 .number{
-                    width: 10%;
+                    width: 5%;
                     height: 100%;
                     background: yellow;
                 }
@@ -61,6 +62,11 @@ console.log("Facturier INITIALIZED: ", props.value)
                     width: 50%;
                     height: 100%;
                     background: rgb(81, 255, 0);
+                }
+                .qte{
+                    width: 8%;
+                    height: 100%;
+                    background: rgb(0, 255, 200);
                 }
             }
         }
