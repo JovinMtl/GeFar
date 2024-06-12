@@ -79,6 +79,7 @@ const printerF = async () => {
             height: 40%;
             border: 2px solid green;
             background: white;
+            text-align: center;
         }
         .modalBody{
             // display: block;
