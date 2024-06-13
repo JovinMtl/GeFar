@@ -116,7 +116,7 @@
                     </div>
                     <teleport to="body">
                         <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
-                            <factu-rier @facture-active="closeFacture" :commande-patient="panier_client"></factu-rier>
+                            <factu-rier @facture-active="closeFacture" :commande-patient="[panier_client, total_panier_client]"></factu-rier>
                         </div>
                     </teleport>
                 </div>
