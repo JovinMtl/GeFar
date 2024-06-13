@@ -36,7 +36,7 @@
             </div>
         <!-- </div> -->
     </div>
-    <div class="modal">
+    <div class="modal" @click.stop="console.log('You want the modal')">
         <div class="modalHeader">
            <h1>Opération réussie. </h1> 
         </div>
