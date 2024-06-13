@@ -168,7 +168,7 @@ const closeFacturier = ()=>{
     .factureContainer{
         width: 100%;
         height: 100%;
-        background-color: gray;
+        // background-color: gray;
         font-size: .4rem;
         font-family: monospace;
 
@@ -180,14 +180,14 @@ const closeFacturier = ()=>{
             align-content: center;
             // margin: 25px 0px;
             font-size: 1.1rem;
-            background-color: red;
+            // background-color: red;
         }
         .factuBody{
             display: block;
             width: 100%;
             height: 80%;
             padding: 15px;
-            background: blue;
+            // background: blue;
 
             .content{
                 @include content();
@@ -206,7 +206,7 @@ const closeFacturier = ()=>{
         .factuFooter{
             width: 100%;
             height: 10%;
-            background: yellowgreen;
+            // background: yellowgreen;
             padding: 0px 10px;
         }
     }
