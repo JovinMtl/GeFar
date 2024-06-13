@@ -10,4 +10,11 @@
 </script>
 <style scoped lang="scss">
 
+@media only print {
+    .dispoContainer{
+        background: gray;
+        width: 100%;
+        height: 100%;
+    }
+}
 </style>
