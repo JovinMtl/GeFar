@@ -9,7 +9,7 @@
                 Facture n. 5/2024</div>
             <div class="factuBody">
                 <div class="content">
-                    <div class="number">#</div>
+                    <div class="number"></div>
                     <div class="name_umuti">Médicament</div>
                     <div class="qte">Qte</div>
                     <div class="Pu">P.U</div>
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="content2" v-for="(umuti, index) in props.commandePatient[0]">
-                    <div class="number">{{ index + 1 }}</div>
+                    <div class="number">{{ index + 1 }}.</div>
                     <div class="name_umuti">{{ umuti.name_umuti }}</div>
                     <div class="qte">{{ umuti.qte }}</div>
                     <div class="Pu">{{ umuti.price_out }}</div>
