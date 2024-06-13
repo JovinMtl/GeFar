@@ -158,6 +158,7 @@ const closeFacturier = ()=>{
 }
 
 @media only print {
+    
     @page{
         size: 8cm 10cm
     }
@@ -169,6 +170,7 @@ const closeFacturier = ()=>{
         height: 100%;
         background-color: gray;
         font-size: .4rem;
+        font-family: monospace;
 
         .factuHead{
             display: block;
