@@ -19,7 +19,7 @@
                     <div class="name_umuti">{{ umuti.name_umuti }}</div>
                     <div class="qte">{{ umuti.qte }}</div>
                     <div class="Pu">{{ umuti.price_out }}</div>
-                    <div class="ptotal">{{ umuti.qte * umuti.price_out }}</div>
+                    <div class="ptotal">{{ umuti.qte * umuti.price_out }} Fbu</div>
                 </div>
 
                 <div class="toTal">
@@ -27,7 +27,7 @@
                     <div class="name_umuti">TOTAL</div>
                     <div class="qte">--</div>
                     <div class="Pu">--</div>
-                    <div class="ptotal">{{ props.commandePatient[1] }}</div>
+                    <div class="ptotal">{{ props.commandePatient[1] }} Fbu</div>
                 </div>
             </div>
             <div class="factuFooter">
@@ -128,32 +128,33 @@ const closeFacturier = ()=>{
         // display: flex;
         width: 5%;
         height: 100%;
-        background: rgb(255, 0, 212);
+        // background: rgb(255, 0, 212);
         align-content: center;
     }
     .name_umuti{
         width: 50%;
         height: 100%;
-        background: rgb(81, 255, 0);
+        // background: rgb(81, 255, 0);
         align-content: center;
     }
     .qte{
         width: 8%;
         height: 100%;
-        background: rgb(0, 255, 200);
+        // background: rgb(0, 255, 200);
         align-content: center;
     }
     .Pu{
         width: 15%;
         height: 100%;
-        background: rgb(0, 162, 255);
+        // background: rgb(0, 162, 255);
         align-content: center;
     }
     .ptotal{
         width: 22%;
         height: 100%;
-        background: rgb(0, 60, 255);
+        // background: rgb(0, 60, 255);
         align-content: center;
+        font-weight: 600;
     }
 }
 
@@ -168,7 +169,7 @@ const closeFacturier = ()=>{
     .factureContainer{
         width: 100%;
         height: 100%;
-        // background-color: gray;
+        background-color: white;
         font-size: .4rem;
         font-family: monospace;
 
