@@ -58,9 +58,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
 @media only print {
-    @page{
-        size: A4;
-    }
+    // @page{
+    //     size: A4;
+    // }
     .dispoContainer{
         background: gray;
         width: 100%;
