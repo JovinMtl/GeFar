@@ -1,6 +1,6 @@
 <template>
     <div class="dispoContainer">
-        Here we print disponible data
+        <!-- Here we print disponible data -->
         <div class="dispoHeader"></div>
         <div class="dispoBody"></div>
         <div class="dispoFooter"></div>
@@ -11,6 +11,9 @@
 <style scoped lang="scss">
 
 @media only print {
+    @page{
+        size: A4;
+    }
     .dispoContainer{
         background: gray;
         width: 100%;
