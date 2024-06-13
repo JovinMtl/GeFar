@@ -32,6 +32,9 @@
                     <div class="ptotal">{{ props.commandePatient[1] }} Fbu</div>
                 </div>
             </div>
+            <div class="authorizer">
+                Servi par: Muteule
+            </div>
             <div class="factuFooter">
                 <!-- Footer <hr> addres -->
                 <!-- <button >print</button> -->
@@ -47,7 +50,6 @@
         <div class="modalBody">
             <span style="font-size: 1.375rem; font-weight: 600">Voulez-vous Imprimer/Sauvegarder la facture ?</span> 
         </div>
-        <div class="authorizer"></div>
         <div class="modalFooter">
             <button style="padding: 5px 15px; margin: 5px 15px; font-size: 1.2rem;" @click="closeFacturier">Non</button>
             <button style="padding: 5px 15px; margin: 5px 15px; font-size: 1.2rem;" @click="printerF">Oui</button>
@@ -216,6 +218,7 @@ const closeFacturier = ()=>{
             display: block;
             width: 100%;
             height: 10%;
+            background-color: #0bf532;
         }
         .factuFooter{
             width: 100%;
