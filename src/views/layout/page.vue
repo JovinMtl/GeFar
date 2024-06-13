@@ -192,7 +192,7 @@ export default {
             // Reinitializing panier_client and panier_api to start a new commande.
             panier_client.value = []
             panier_api.value = []
-            total_panier_client.value = 0
+            total_panier_client.value = update_total_client()
         }
         const SearchBarManager = (value)=>{
             query_search.value = value
