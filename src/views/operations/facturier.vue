@@ -14,9 +14,9 @@
                     <div class="ptotal">P.Total</div>
                 </div>
 
-                <div class="content2">
-                    <div class="number"></div>
-                    <div class="name_umuti"></div>
+                <div class="content2" v-for="(umuti, index) in props.commandePatient[0]">
+                    <div class="number">{{ index + 1 }}</div>
+                    <div class="name_umuti">{{ umuti.name_umuti }}</div>
                     <div class="qte">Qte</div>
                     <div class="Pu">P.U</div>
                     <div class="ptotal">P.Total</div>
@@ -27,7 +27,7 @@
                     <div class="name_umuti">TOTAL</div>
                     <div class="qte">--</div>
                     <div class="Pu">--</div>
-                    <div class="ptotal">P.Total</div>
+                    <div class="ptotal">{{ props.commandePatient[1] }}</div>
                 </div>
             </div>
             <div class="factuFooter">
@@ -55,7 +55,8 @@ const message = "facture"
 const props = defineProps(['commandePatient'])
 const emit = defineEmits(['factureActive'])
 
-console.log("Facturier INITIALIZED: ", props.value)
+console.log("Facturier INITIALIZED: ", props)
+console.log("THe first thing: ", props[0], "second: ", props.commandePatient[1])
 
 // Has to launch print functionality at the mount cycle
 // window.print()
