@@ -47,6 +47,7 @@
         <div class="modalBody">
             <span style="font-size: 1.375rem; font-weight: 600">Voulez-vous Imprimer/Sauvegarder la facture ?</span> 
         </div>
+        <div class="authorizer"></div>
         <div class="modalFooter">
             <button style="padding: 5px 15px; margin: 5px 15px; font-size: 1.2rem;" @click="closeFacturier">Non</button>
             <button style="padding: 5px 15px; margin: 5px 15px; font-size: 1.2rem;" @click="printerF">Oui</button>
@@ -192,7 +193,7 @@ const closeFacturier = ()=>{
         .factuBody{
             display: block;
             width: 100%;
-            height: 80%;
+            height: 70%;
             padding: 15px;
             // background: blue;
 
@@ -210,6 +211,11 @@ const closeFacturier = ()=>{
                 @include content;
                 height: 15px;
             }
+        }
+        .authorizer{
+            display: block;
+            width: 100%;
+            height: 10%;
         }
         .factuFooter{
             width: 100%;
