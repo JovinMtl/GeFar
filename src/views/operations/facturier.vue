@@ -8,7 +8,7 @@
             <div class="factuBody">
                 <div class="content">
                     <div class="number">#</div>
-                    <div class="name_umuti">Designation</div>
+                    <div class="name_umuti">Médicament</div>
                     <div class="qte">Qte</div>
                     <div class="Pu">P.U</div>
                     <div class="ptotal">P.Total</div>
@@ -31,8 +31,10 @@
                 </div>
             </div>
             <div class="factuFooter">
-                Footer <hr>
-                <button >print</button>
+                <!-- Footer <hr> addres -->
+                <!-- <button >print</button> -->
+                 <div class="conf">Dawa-Pharma.  NIF: 40000230011</div>
+                 <div class="address">Kamenge, 14è Av. Bujumbura - Burundi</div>
             </div>
         <!-- </div> -->
     </div>
