@@ -216,15 +216,14 @@ const closeFacturier = ()=>{
             }
         }
         .authorizer{
-            display: block;
             width: 100%;
             height: 10%;
-            padding-left: 15px;
+            padding: 0px 10px;
+            text-align: right;
         }
         .factuFooter{
             width: 100%;
             height: 10%;
-            // background: yellowgreen;
             padding: 0px 10px;
             text-align: right;
         }
