@@ -170,8 +170,10 @@ const closeFacturier = ()=>{
         width: 100%;
         height: 100%;
         background-color: white;
-        font-size: .4rem;
+        font-size: .6rem;
         font-family: monospace;
+        padding-top: 15px;
+
 
         .factuHead{
             display: block;
@@ -181,7 +183,7 @@ const closeFacturier = ()=>{
             align-content: center;
             // margin: 25px 0px;
             font-size: 1.1rem;
-            // background-color: red;
+            border: 2px solid gray;
         }
         .factuBody{
             display: block;
