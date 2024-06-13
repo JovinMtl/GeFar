@@ -165,6 +165,12 @@ const closeFacturier = ()=>{
         font-weight: 600;
     }
 }
+@mixin footer {
+    width: 100%;
+    height: 10%;
+    padding: 0px 15px;
+    text-align: right;
+}
 
 @media only print {
     
@@ -216,16 +222,10 @@ const closeFacturier = ()=>{
             }
         }
         .authorizer{
-            width: 100%;
-            height: 10%;
-            padding: 0px 15px;
-            text-align: right;
+            @include footer;
         }
         .factuFooter{
-            width: 100%;
-            height: 10%;
-            padding: 0px 15px;
-            text-align: right;
+            @include footer;
         }
     }
     
