@@ -183,7 +183,7 @@ const closeFacturier = ()=>{
             align-content: center;
             // margin: 25px 0px;
             font-size: 1.1rem;
-            border: 2px solid gray;
+            border-bottom: 2px solid gray;
         }
         .factuBody{
             display: block;
