@@ -189,6 +189,9 @@ export default {
         console.log("Le facturier: ", show_facture.value)
         const closeFacture = ()=>{
             show_facture.value = false
+            // Reinitializing panier_client and panier_api to start a new commande.
+            panier_client.value = []
+            panier_api.value = []
         }
         const SearchBarManager = (value)=>{
             query_search.value = value
