@@ -17,9 +17,9 @@
                 <div class="content2" v-for="(umuti, index) in props.commandePatient[0]">
                     <div class="number">{{ index + 1 }}</div>
                     <div class="name_umuti">{{ umuti.name_umuti }}</div>
-                    <div class="qte">Qte</div>
-                    <div class="Pu">P.U</div>
-                    <div class="ptotal">P.Total</div>
+                    <div class="qte">{{ umuti.qte }}</div>
+                    <div class="Pu">{{ umuti.price_out }}</div>
+                    <div class="ptotal">{{ umuti.qte * umuti.price_out }}</div>
                 </div>
 
                 <div class="toTal">
@@ -56,7 +56,7 @@ const props = defineProps(['commandePatient'])
 const emit = defineEmits(['factureActive'])
 
 console.log("Facturier INITIALIZED: ", props)
-console.log("THe first thing: ", props[0], "second: ", props.commandePatient[1])
+console.log("THe first thing: ", props.commandePatient[0], "second: ", props.commandePatient[1])
 
 // Has to launch print functionality at the mount cycle
 // window.print()
