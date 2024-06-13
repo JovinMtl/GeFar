@@ -506,12 +506,6 @@ export default {
         }
 
 
-        watch(panier_client.value, (value)=>{
-            // Update the Total on panier whenever we add or remove any umuti on Panier.
-            total_panier_client.value = update_total_client()
-            console.log("Panier_client has new change: ", total_panier_client.value, "from: ", update_total_client())
-
-        })
         watch(sell_report, value=>{
             // Do something when the status response is OK
             console.log("Maintenant nous pouvons VOIR: facturier")
