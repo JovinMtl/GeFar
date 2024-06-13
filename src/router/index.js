@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import page from '../views/layout/page.vue'
-import print from '../views/layout/auxiliare/printer.vue'
+// import print from '../views/layout/auxiliare/printer.vue'
+import disponible from '../views/operations/output/disponible.vue'
 
 const routes = [
   {
@@ -13,7 +14,7 @@ const routes = [
   },
   {
     path : '/print',
-    component: print
+    component: disponible
   }
 ]
 
