@@ -190,6 +190,7 @@ export default {
         const closeFacture = ()=>{
             show_facture.value = false
             // Reinitializing panier_client and panier_api to start a new commande.
+            console.log("Calling closeFacture.")
             panier_client.value = []
             panier_api.value = []
             total_panier_client.value = update_total_client()
@@ -373,6 +374,7 @@ export default {
             const code = Number(code_s.slice(1))
             panier_client.value.splice(code,1)
             panier_api.value.splice(code,1)
+            total_panier_client.value = update_total_client()
         }
 
         const somme_to_panier = () => {
@@ -464,6 +466,7 @@ export default {
 
                 panier_client.value.push(obj_Client)
                 panier_api.value.push(obj_API)
+                total_panier_client.value = update_total_client()
                 // REinitializing
                 if (panier_client.value && panier_api.value){
                     // selectedUmuti.value = {}
@@ -506,6 +509,8 @@ export default {
         watch(panier_client.value, (value)=>{
             // Update the Total on panier whenever we add or remove any umuti on Panier.
             total_panier_client.value = update_total_client()
+            console.log("Panier_client has new change: ", total_panier_client.value, "from: ", update_total_client())
+
         })
         watch(sell_report, value=>{
             // Do something when the status response is OK
