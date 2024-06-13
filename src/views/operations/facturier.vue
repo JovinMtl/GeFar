@@ -4,7 +4,9 @@
             <h3>DAWA - PHARMA: FACTURE</h3>
         </div> -->
         <!-- <div class="factuContent"> -->
-            <div class="factuHead">DAWA - PHARMA: FACTURE</div>
+            <div class="factuHead">
+                <span style="font-weight: 600;">DAWA - PHARMA </span><br>
+                Facture n. 5/2024</div>
             <div class="factuBody">
                 <div class="content">
                     <div class="number">#</div>
@@ -184,7 +186,7 @@ const closeFacturier = ()=>{
             text-align: center;
             align-content: center;
             // margin: 25px 0px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             border-bottom: 2px solid gray;
         }
         .factuBody{
@@ -195,6 +197,7 @@ const closeFacturier = ()=>{
             // background: blue;
 
             .content{
+                border: 1px dashed black;
                 @include content();
             }
             .content2 {
@@ -213,6 +216,7 @@ const closeFacturier = ()=>{
             height: 10%;
             // background: yellowgreen;
             padding: 0px 10px;
+            text-align: right;
         }
     }
     
