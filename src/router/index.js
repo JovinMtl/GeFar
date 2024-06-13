@@ -6,7 +6,7 @@ import disponible from '../views/operations/output/disponible.vue'
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/print'
   },
   {
     path : '/home',
