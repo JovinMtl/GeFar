@@ -33,7 +33,8 @@
                 </div>
             </div>
             <div class="authorizer">
-                Servi par: Muteule
+                Servi par: Muteule <hr>
+                Date     : {{ new Date().toISOString().substring(0,10) }}
             </div>
             <div class="factuFooter">
                 <!-- Footer <hr> addres -->
