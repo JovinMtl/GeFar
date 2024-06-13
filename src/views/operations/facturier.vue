@@ -218,13 +218,13 @@ const closeFacturier = ()=>{
         .authorizer{
             width: 100%;
             height: 10%;
-            padding: 0px 10px;
+            padding: 0px 15px;
             text-align: right;
         }
         .factuFooter{
             width: 100%;
             height: 10%;
-            padding: 0px 10px;
+            padding: 0px 15px;
             text-align: right;
         }
     }
