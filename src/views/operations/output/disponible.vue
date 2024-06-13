@@ -19,6 +19,13 @@
         width: 100%;
         height: 100%;
         padding: 10px;
+        color: black;
+
+        .dispoHeader{
+            width: 100%;
+            height: 5%;
+            background-color: white;
+        }
     }
 }
 </style>
