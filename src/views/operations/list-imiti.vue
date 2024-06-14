@@ -727,8 +727,10 @@ export default defineComponent ({
             } else if(value.value.query.length == 0){
                 imitiset.value = imitiset_copy.value
             }
-            if(queryset.length == 0){
-                emit('emptyResult')
+            if(queryset.length == 0 && value.value.query.length > 4){
+                emit('emptyResult', 1)
+            } else if(queryset.length == 0 && value.value.query.length < 4){
+                emit('emptyResult', 0)
             }
         })
 
