@@ -109,7 +109,7 @@
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
                     <div class="addElement">
-
+                        <ion-icon :src="add"></ion-icon>
                     </div>
                     <div class="menuBar">
                         <me-nu @actualMenu="actualOption"></me-nu>
@@ -149,7 +149,7 @@ const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'
 import { 
     IonContent, IonPage, IonIcon, 
 } from '@ionic/vue';
-import { close, addCircleOutline, removeCircleOutline, magnetOutline, } from 'ionicons/icons'
+import { close, addCircleOutline, removeCircleOutline, magnetOutline, add } from 'ionicons/icons'
 // import { PanierAPI, PanierClient} from '../layout/types'
 export default {
     components:{
@@ -527,8 +527,8 @@ export default {
             actualQte, total_panier_client,
             approvStatus, approFileStatus, server_process,
             controleStatus,
-            close,  addCircleOutline, removeCircleOutline,
-            magnetOutline,
+            close, addCircleOutline, removeCircleOutline,
+            magnetOutline, add,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
             show_facture,
@@ -550,6 +550,7 @@ export default {
     border-radius: 20px;
     left: 24vw;
     top: -4.5vh;
+    color: black;
 }
 .facturierContainer{
     display: flex;
