@@ -76,3 +76,34 @@ export function useKurungika(imitiArray, prefix,
         return "not really"
     }
 }
+
+export async function useNoteUmuti(value){
+    // send that value to the url endpoint, it is the latter to decide
+    // wether to keep it or not.
+    // This will serve in noting a new umuti that needs to be purchased.
+
+    const data = ref(null)
+    const base = '//127.0.0.1:8002'
+    const prefix = 'api/in/requested/'
+
+    try {
+        const response = await fetch(`${base}/${prefix}`,{
+            method: 'POST',
+            headers:{
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                'umuti': value
+            })
+            
+        })
+        
+        if (response.ok){
+            data.value = await response.json()
+        }
+    } catch (error){
+        console.log("somehting may not be well because :", error)
+    }
+
+    return data
+}
