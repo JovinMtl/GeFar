@@ -73,7 +73,7 @@
                 </div>
                 <div class="mainContainer" >
                     <div class="sectA" style="text-align: center;">
-                        <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"></list-imiti>
+                        <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti" @emptyResult="noteUmuti"></list-imiti>
                     </div>
                     <div class="sectB">
                         <div style="text-align: center; margin: 10px 0px; font-weight: 900; font-size: 1.1rem;">
