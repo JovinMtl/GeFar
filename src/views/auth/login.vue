@@ -12,7 +12,10 @@
 }
 @media screen and (min-width: 800px) {
     .LogContainer{
+        width: 100%;
+        height: 100%;
         background-color: black;
+        position: relative;
     }
 }
 </style>
