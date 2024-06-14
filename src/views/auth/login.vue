@@ -12,6 +12,10 @@
                     border-radius: 15px; border-spacing: 5px; 
                     border-style: hidden; background-color: rgb(28, 35, 49);">
             </div>
+            <div class="confirmationContainer">
+                <div class="one" style="border-right: 1px solid black;">s'inscrire</div>
+                <div class="one">se connecter</div>
+            </div>
         </div>
     </div>
 </template>
@@ -44,6 +48,19 @@
 
             .username{
                 margin: 10px 50px;
+            }
+            .confirmationContainer{
+                display: flex;
+                width: 100%;
+                height: 40px;
+                background: white;
+                color: black;
+
+                .one{
+                    width: 50%;
+                    height: 100%;
+                    align-content: center;
+                }
             }
         }
     }
