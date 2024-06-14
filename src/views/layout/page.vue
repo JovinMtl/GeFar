@@ -193,7 +193,14 @@ export default {
         const noteUmuti = async (value)=>{
             // send that value to the url endpoint, it is the latter to decide
             // wether to keep it or not
-            let response = await useNoteUmuti(value)
+            if(value == 1){
+                console.log("Noticing that we have umuti_New")
+                umuti_new.value = true
+            } else {
+                console.log("Umuti name should probably be more than 4 caracters.")
+                umuti_new.value = false
+            }
+            // let response = await useNoteUmuti(value)s
 
         }
 
@@ -533,7 +540,7 @@ export default {
             selectedUmuti, panier_client, activeLot, actualValue,
             actualQte, total_panier_client,
             approvStatus, approFileStatus, server_process,
-            controleStatus, noteUmuti,
+            controleStatus, noteUmuti, umuti_new,
             close, addCircleOutline, removeCircleOutline,
             magnetOutline, add,
             getUmuti, moveToPanier, removeUmuti, changeQte,
