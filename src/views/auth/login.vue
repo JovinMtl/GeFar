@@ -1,7 +1,18 @@
 <template>
     <div class="LogContainer">
         ICi authentification
-        <div class="authentif"></div>
+        <div class="authentif">
+            <div class="username">
+                <label for="input">Username</label> <br>
+                <input type="text" style="padding: 15px 30px; border-radius: 15px;border-style: hidden;">
+            </div>
+            <div class="username">
+                <label for="input">Password</label> <br>
+                <input type="password" style="padding: 15px 30px; 
+                    border-radius: 15px; border-spacing: 5px; 
+                    border-style: hidden; background-color: rgb(28, 35, 49);">
+            </div>
+        </div>
     </div>
 </template>
 <script setup lang="ts"></script>
@@ -16,7 +27,6 @@
         display: flex;
         width: 100%;
         height: 100%;
-        background-color: black;
         background-color: rgba(0, 255, 0, 0.692);
         position: relative;
         justify-content: center;
@@ -25,10 +35,16 @@
         .authentif{
             width: 30%;
             height: 90%;
-            background-color: white;
+            background-color: black;
             position: absolute;
             border-radius: 15px;
             box-shadow: 0 0 45px black;
+            text-align: center;
+            align-content: center;
+
+            .username{
+                margin: 10px 50px;
+            }
         }
     }
 }
