@@ -142,7 +142,7 @@ import approvFile from '../operations/approv-file.vue';
 import joveLoader from './auxiliare/jove-loader.vue';
 import controle from '../operations/controle.vue'
 import facturier from '../operations/facturier.vue';
-import { useKurungika } from '../hooks/kuvoma.js'
+import { useKurungika, useNoteUmuti } from '../hooks/kuvoma.js'
 // import useCloseApprov from '../hooks/jove'
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
@@ -189,7 +189,13 @@ export default {
         let url_sell = "/api/out/sell/"
         const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 
-        console.log("Le facturier: ", show_facture.value)
+        const noteUmuti = async (value)=>{
+            // send that value to the url endpoint, it is the latter to decide
+            // wether to keep it or not
+            let response = await useNoteUmuti(value)
+
+        }
+
         const closeFacture = ()=>{
             show_facture.value = false
             // Reinitializing panier_client and panier_api to start a new commande.
@@ -536,6 +542,7 @@ export default {
             searchManager, openApproFile, closeApproFile,
             getFileDataLoaded, compileImitiSet, closeControle,
             requestUpload, SearchBarManager, closeFacture,
+            noteUmuti,
         }
     },
 }
