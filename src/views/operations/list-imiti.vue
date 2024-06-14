@@ -725,6 +725,7 @@ export default defineComponent ({
                 imitiset.value = queryset
             } else if(value.value.query.length == 0){
                 imitiset.value = imitiset_copy.value
+                emit('emptyResult')
             }
         })
 
