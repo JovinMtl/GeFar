@@ -729,7 +729,7 @@ export default defineComponent ({
             }
             if(queryset.length == 0 && value.value.query.length > 4){
                 emit('emptyResult', 1)
-            } else if(queryset.length == 0 && value.value.query.length < 4){
+            } else if(queryset.length == 0 && value.value.query.length < 5){
                 emit('emptyResult', 0)
             }
         })
