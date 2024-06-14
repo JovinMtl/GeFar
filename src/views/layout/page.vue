@@ -108,6 +108,9 @@
                     <div class="searchBar">
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
+                    <div class="addElement">
+
+                    </div>
                     <div class="menuBar">
                         <me-nu @actualMenu="actualOption"></me-nu>
                     </div>
@@ -539,6 +542,15 @@ export default {
 </script>
 
 <style scoped>
+.addElement {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 20px;
+    left: 24vw;
+    top: -4.5vh;
+}
 .facturierContainer{
     display: flex;
     position: absolute;
