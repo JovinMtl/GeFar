@@ -550,7 +550,12 @@ export default {
     border-radius: 20px;
     left: 24vw;
     top: -4.5vh;
+    /* color: #0bf532; */
     color: black;
+    text-align: center;
+    align-content: center;
+    padding-top: 3px;
+    margin: 0;
 }
 .facturierContainer{
     display: flex;
