@@ -718,6 +718,7 @@ export default defineComponent ({
         watch(need_search, (value)=>{
             // console.log("You want to search in list-imiti: ", value)
             let queryset = search_umuti(value.value)
+            
             if(queryset && value.value.query.length > 0 && value.value.response==1){
                 emit('allImiti', queryset)
                 // console.log("emitted on need_search")
@@ -725,6 +726,8 @@ export default defineComponent ({
                 imitiset.value = queryset
             } else if(value.value.query.length == 0){
                 imitiset.value = imitiset_copy.value
+            }
+            if(queryset.length == 0){
                 emit('emptyResult')
             }
         })
