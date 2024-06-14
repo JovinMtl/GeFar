@@ -108,7 +108,7 @@
                     <div class="searchBar">
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
-                    <div class="addElement">
+                    <div class="addElement" v-if="umuti_new">
                         <ion-icon :src="add"></ion-icon>
                     </div>
                     <div class="menuBar">
@@ -179,6 +179,7 @@ export default {
         const need_to_updade = ref(false)
         const controleStatus = ref(false)
         const all_imiti = ref([])
+        const umuti_new = ref(false)
 
         const server_process = ref(false)
 
@@ -532,7 +533,7 @@ export default {
             selectedUmuti, panier_client, activeLot, actualValue,
             actualQte, total_panier_client,
             approvStatus, approFileStatus, server_process,
-            controleStatus,
+            controleStatus, noteUmuti,
             close, addCircleOutline, removeCircleOutline,
             magnetOutline, add,
             getUmuti, moveToPanier, removeUmuti, changeQte,
