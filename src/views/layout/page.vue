@@ -192,6 +192,12 @@ export default {
 
         const noteUmuti = async ()=>{
             let response = await useNoteUmuti(query_search.value.query)
+            if(response.ok){
+                console.log("Reussi")
+                umuti_new.value = false
+            } else{
+                console.log("Echoue")
+            }
         }
         const alertUmutiNew = async (value)=>{
             // send that value to the url endpoint, it is the latter to decide
