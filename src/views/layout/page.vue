@@ -73,7 +73,7 @@
                 </div>
                 <div class="mainContainer" >
                     <div class="sectA" style="text-align: center;">
-                        <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti" @emptyResult="noteUmuti"></list-imiti>
+                        <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti" @emptyResult="alertUmutiNew"></list-imiti>
                     </div>
                     <div class="sectB">
                         <div style="text-align: center; margin: 10px 0px; font-weight: 900; font-size: 1.1rem;">
@@ -108,7 +108,7 @@
                     <div class="searchBar">
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
-                    <div class="addElement" v-if="umuti_new">
+                    <div class="addElement" v-if="umuti_new" @click="noteUmuti">
                         <ion-icon :src="add"></ion-icon>
                     </div>
                     <div class="menuBar">
@@ -190,7 +190,8 @@ export default {
         let url_sell = "/api/out/sell/"
         const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 
-        const noteUmuti = async (value)=>{
+        const noteUmuti = ()=>{}
+        const alertUmutiNew = async (value)=>{
             // send that value to the url endpoint, it is the latter to decide
             // wether to keep it or not
             if(value == 1){
@@ -550,7 +551,7 @@ export default {
             searchManager, openApproFile, closeApproFile,
             getFileDataLoaded, compileImitiSet, closeControle,
             requestUpload, SearchBarManager, closeFacture,
-            noteUmuti,
+            noteUmuti, alertUmutiNew,
         }
     },
 }
