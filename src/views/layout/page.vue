@@ -191,13 +191,17 @@ export default {
         const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 
         const noteUmuti = async ()=>{
+            server_process.value = true
             let response = await useNoteUmuti(query_search.value.query)
             if(response.ok){
                 console.log("Reussi")
                 umuti_new.value = false
+                server_process.value = false
             } else{
                 console.log("Echoue")
+                server_process.value = false
             }
+
         }
         const alertUmutiNew = async (value)=>{
             // send that value to the url endpoint, it is the latter to decide
