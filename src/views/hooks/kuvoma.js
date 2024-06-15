@@ -85,6 +85,7 @@ export async function useNoteUmuti(value){
     const data = ref(null)
     const base = '//127.0.0.1:8002'
     const prefix = 'api/in/requested/'
+    console.log("Using umuti_new as: ", value)
 
     try {
         const response = await fetch(`${base}/${prefix}`,{
