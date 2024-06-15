@@ -201,6 +201,7 @@ export default {
                 console.log("Echoue")
                 server_process.value = false
             }
+            clear_search.value = 2 // to indicate clear
 
         }
         const alertUmutiNew = async (value)=>{
