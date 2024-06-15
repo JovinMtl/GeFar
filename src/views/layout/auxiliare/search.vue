@@ -33,6 +33,7 @@ const searchableFields = ['name_umuti', 'price_out', 'quantite_restant',
 const emit = defineEmits(['valueSearch'])
 
 let imiti_injected = inject('imiti_downloaded')
+let order_search = inject('need_clear')
 console.log("The imiti first injected are: ", imiti_injected)
 
 
