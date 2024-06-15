@@ -186,6 +186,7 @@ export default {
         const query_search = reactive({})
         const umuti_single = ref(false)
         const show_facture = ref(false)
+        const clear_search = ref(0)
         
         let url_sell = "/api/out/sell/"
         const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
