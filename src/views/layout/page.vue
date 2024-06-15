@@ -549,6 +549,7 @@ export default {
         provide('need_upload', umuti_single) // in approv component
         provide('imiti_downloaded', all_imiti.value) // in search component
         // provide('commandePatient', panier_client.value) // in facturier component
+        provide('need_clear', clear_search) // in search component
 
         return {
             selectedUmuti, panier_client, activeLot, actualValue,
