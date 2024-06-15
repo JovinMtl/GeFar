@@ -42,6 +42,12 @@ const turnSelect = async()=>{
     actualField.value = await (clickSelect.value.firstChild.value)
     
 }
+watch(order_search, value=>{
+    if(value == 2){
+        console.log("Now we need to clear the input search.")
+        search_value.value = ''
+    }
+})
 watch(actualField, value=>{
     actualField.value = value
     console.log("The new value is : ", value)
