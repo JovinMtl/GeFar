@@ -3,6 +3,7 @@ import page from '../views/layout/page.vue'
 // import print from '../views/layout/auxiliare/printer.vue'
 import disponible from '../views/operations/output/disponible.vue'
 import Logi from '../views/auth/login.vue'
+import Invita from '../views/layout/auxiliare/invita.vue'
 import { components } from 'vuetify/dist/vuetify-labs.js';
 
 const routes = [
@@ -21,6 +22,10 @@ const routes = [
   {
     path : '/logi',
     component: Logi,
+  },
+  {
+    path : '/invite',
+    component: Invita
   }
 ]
 
