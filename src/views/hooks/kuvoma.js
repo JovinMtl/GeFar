@@ -6,7 +6,7 @@ export function useKuvoma(prefix){
     const data = ref(null)
 
     const kuvomaImiti = async () => {
-        const base = '//127.0.0.1:8002'
+        const base = '//muteule.pythonanywhere.com'
 
         try {
             const response = await fetch(`${base}/${prefix}`)
@@ -49,7 +49,7 @@ export function useKurungika(imitiArray, prefix,
     // return prefix
     if(!(otherData1 && otherData2)){
         const kurungikaImiti = async () => {
-            const base = '//127.0.0.1:8002'
+            const base = '//muteule.pythonanywhere.com'
             console.log("prefix dukorerako: ", prefix)
     
             try {
@@ -83,7 +83,7 @@ export async function useNoteUmuti(value){
     // This will serve in noting a new umuti that needs to be purchased.
 
     const data = ref(null)
-    const base = '//127.0.0.1:8002'
+    const base = '//muteule.pythonanywhere.com'
     const prefix = 'api/in/requested/'
     console.log("Using umuti_new as: ", value)
 

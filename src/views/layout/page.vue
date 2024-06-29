@@ -240,7 +240,8 @@ export default {
         }
 
         const compileImitiSet = async ()=>{
-            const server = '//127.0.0.1:8002'
+            // const server = '//127.0.0.1:8002'
+            const base = '//muteule.pythonanywhere.com'
             const endpoint = '/api/in/compileImitiSet/'
 
             try {
@@ -261,7 +262,7 @@ export default {
             // provide send-status and inject it in approv-file
             console.log("Taking Releve on sending DATA to API: ", dataArray)
             server_process.value = true
-            const server = '//127.0.0.1:8002'
+            const base = '//muteule.pythonanywhere.com'
             const endpoint = '/api/in/kurangura/'
 
             try {

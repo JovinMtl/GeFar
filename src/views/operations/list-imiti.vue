@@ -633,7 +633,7 @@ export default defineComponent ({
         ]
 
         const kuvomaImiti = async () => {
-            const base = '//127.0.0.1:8002'
+            const base = '//muteule.pythonanywhere.com'
             const prefix = 'api/out/dispo/'
 
             try {
