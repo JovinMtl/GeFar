@@ -1,5 +1,5 @@
 <template>
-    <div class="LogContainer">
+    <div class="LogContainer" id="authe">
         ICi authentification
         <div class="authentif">
             <div class="username">
@@ -27,12 +27,34 @@
 </template>
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useLogin } from '../hooks/kuvoma.js'
+import { useRouter } from 'vue-router'
+// import {createRouter} from '@ionic/vue-router'
+import axios from 'axios'
 
+const router = useRouter()
 const username = ref(null)
 const password = ref(null)
 
-const login_hook = useLogin(username.value, password.value)
+const login_hook = ()=>{
+    hide_authe()
+    router.push('/home')
+    // return 0
+    const base = '//127.0.0.1:8002'
+    const prefix = "api/login/"
+
+    axios.post(`${base}/${prefix}`,{"username": username,
+        "password":password}
+       ).then((response) => {
+        //  store.state.user = response.data
+         console.log("the data: ", response.data)
+       }).catch((error) => {
+         let logs = error.response.data
+       })
+}
+const hide_authe = ()=>{
+    const container = document.getElementById('authe')
+    container.style.display = 'none'
+}
 
 // watch(data, (value)=>{
 //     console.log("The LOGIN component got: ", value)
@@ -64,6 +86,7 @@ const login_hook = useLogin(username.value, password.value)
             box-shadow: 0 0 45px black;
             text-align: center;
             align-content: center;
+            // z-index: -5;
 
             .username{
                 margin: 10px 50px;
