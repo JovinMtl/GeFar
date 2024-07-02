@@ -112,6 +112,7 @@ export async function useNoteUmuti(value){
 
 
 export async function useLogin(username, password){
+    const data = ref(null)
     const prefix = "api/login/"
 
     try{
@@ -125,7 +126,7 @@ export async function useLogin(username, password){
                 'password': password
             })
         })
-        const data = await response.json()
+        data.value = await response.json()
         if(data.ok){
             console.log("The things are okay Connected")
         } else{
@@ -134,4 +135,5 @@ export async function useLogin(username, password){
     }catch(error){
         console.log("The error we see is: ", error)
     }
+    return data
 }
