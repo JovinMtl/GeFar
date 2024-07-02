@@ -4,13 +4,13 @@
         <div class="authentif">
             <div class="username">
                 <label for="input">Username</label> <br>
-                <input type="text" style="padding: 15px 30px; 
+                <input v-model="username" type="text" style="padding: 15px 30px; 
                     border-radius: 15px;border-style: hidden;
                     background-color: rgb(28, 35, 49);">
             </div>
             <div class="username">
                 <label for="input">Password</label> <br>
-                <input type="password" style="padding: 15px 30px; 
+                <input v-model="password" type="password" style="padding: 15px 30px; 
                     border-radius: 15px; border-spacing: 5px; 
                     border-style: hidden; background-color: rgb(28, 35, 49);">
             </div>
@@ -25,7 +25,12 @@
         </div>
     </div>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const username = ref(null)
+const password = ref(null)
+</script>
 <style scoped lang="scss">
 @media screen and (max-width: 400px) {
     .LogContainer{
