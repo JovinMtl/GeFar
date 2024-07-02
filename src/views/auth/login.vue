@@ -19,17 +19,24 @@
                 <div class="one">se connecter</div> -->
                 <!-- se connecter -->
             </div>
-            <div class="enter">
+            <div @click="login_hook" class="enter">
                 <div class="btn">se connecter</div>
             </div>
         </div>
     </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useLogin } from '../hooks/kuvoma.js'
 
 const username = ref(null)
 const password = ref(null)
+
+const login_hook = useLogin(username.value, password.value)
+
+// watch(data, (value)=>{
+//     console.log("The LOGIN component got: ", value)
+// })
 </script>
 <style scoped lang="scss">
 @media screen and (max-width: 400px) {
