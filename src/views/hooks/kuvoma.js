@@ -1,14 +1,14 @@
 
 import { ref, watch } from 'vue'
 
+const base = '//muteule.pythonanywhere.com'
+
 
 export function useKuvoma(prefix){
     const data = ref(null)
 
     const kuvomaImiti = async () => {
         // const base = '//127.0.0.1:8002'
-        const base = '//muteule.pythonanywhere.com'
-
         try {
             const response = await fetch(`${base}/${prefix}`)
             
@@ -50,7 +50,7 @@ export function useKurungika(imitiArray, prefix,
     // return prefix
     if(!(otherData1 && otherData2)){
         const kurungikaImiti = async () => {
-            const base = '//muteule.pythonanywhere.com'
+            // const base = '//muteule.pythonanywhere.com'
             console.log("prefix dukorerako: ", prefix)
     
             try {
@@ -84,7 +84,7 @@ export async function useNoteUmuti(value){
     // This will serve in noting a new umuti that needs to be purchased.
 
     const data = ref(null)
-    const base = '//muteule.pythonanywhere.com'
+    // const base = '//muteule.pythonanywhere.com'
     const prefix = 'api/in/requested/'
     console.log("Using umuti_new as: ", value)
 
@@ -108,4 +108,30 @@ export async function useNoteUmuti(value){
     }
 
     return data
+}
+
+
+export async function useLogin(username, password){
+    const prefix = "api/login/"
+
+    try{
+        const response = await fetch(`${base}/${prefix}`,{
+            method: POST,
+            headers: {
+                'Content-type':'application/json',
+            },
+            body: JSON.stringify({
+                'username': username,
+                'password': password
+            })
+        })
+        const data = await response.json()
+        if(data.ok){
+            console.log("The things are okay Connected")
+        } else{
+            console.log("Did not connect.")
+        }
+    }catch(error){
+        console.log("The error we see is: ", error)
+    }
 }
