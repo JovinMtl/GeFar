@@ -6,6 +6,7 @@ export function useKuvoma(prefix){
     const data = ref(null)
 
     const kuvomaImiti = async () => {
+        // const base = '//127.0.0.1:8002'
         const base = '//muteule.pythonanywhere.com'
 
         try {
