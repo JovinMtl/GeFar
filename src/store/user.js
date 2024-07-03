@@ -8,6 +8,16 @@ export const useUserStore = defineStore('user', ()=>{
     const accessToken = ref('')
     const refreshToken = ref('')
 
+
+    const getUsername = ()=>{
+        return username.value
+    }
+    const getAccessToken = ()=>{
+        return accessToken.value
+    }
+    const getRefreshToken = ()=>{
+        return refreshToken.value
+    }
     const setUsername = (value)=>{
         username.value = value
     }
@@ -19,7 +29,7 @@ export const useUserStore = defineStore('user', ()=>{
     }
 
     return {
-        username, accessToken, refreshToken,
+        getUsername, getAccessToken, getRefreshToken,
         setUsername, setAccessToken, setRefreshToken
     }
 })
