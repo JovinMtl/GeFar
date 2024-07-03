@@ -143,6 +143,8 @@ import joveLoader from './auxiliare/jove-loader.vue';
 import controle from '../operations/controle.vue'
 import facturier from '../operations/facturier.vue';
 import { useKurungika, useNoteUmuti } from '../hooks/kuvoma.js'
+import { baseURL } from '../../store/host'
+import { useUserStore } from '../../store/user'
 // import useCloseApprov from '../hooks/jove'
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
@@ -190,6 +192,7 @@ export default {
         
         let url_sell = "/api/out/sell/"
         const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
+        const { getAccessToken } = useUserStore()
 
         const noteUmuti = async ()=>{
             server_process.value = true
@@ -245,7 +248,11 @@ export default {
             const endpoint = '/api/in/compileImitiSet/'
 
             try {
-                const response = await fetch(`${baseURL}${endpoint}`)
+                const response = await fetch(`${baseURL}${endpoint}`,{
+                    headers: {
+                        Authorization: 'Bearer ' + getAccessToken()
+                    }
+                })
                 // const server_data = await response.json()
                 if(response.ok){
                     console.log("The response is okay:", server_process.value)
@@ -269,7 +276,8 @@ export default {
                 const response = await fetch(`${baseURL}${endpoint}`,{
                     method: 'POST',
                     headers: {
-                        'Content-type' : 'application/json'
+                        'Content-type' : 'application/json',
+                        Authorization : 'Bearer ' + getAccessToken()
                     },
                     body: JSON.stringify({
                         'jov': dataArray
