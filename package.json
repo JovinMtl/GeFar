@@ -24,7 +24,7 @@
     "pagedjs": "^0.4.3",
     "pinia": "^2.1.7",
     "vue": "^3.3.0",
-    "vue-router": "^4.2.0",
+    "vue-router": "^4.4.0",
     "vuetify": "^3.6.0-beta.0.0",
     "vuex": "^4.1.0"
   },
