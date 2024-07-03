@@ -1,7 +1,9 @@
 
 import { ref, watch } from 'vue'
+// import axios from 'axios'
 
-const base = '//muteule.pythonanywhere.com'
+// const base = '//muteule.pythonanywhere.com'
+const base = '//127.0.0.1:8002'
 
 
 export function useKuvoma(prefix){
@@ -115,25 +117,14 @@ export async function useLogin(username, password){
     const data = ref(null)
     const prefix = "api/login/"
 
-    try{
-        const response = await fetch(`${base}/${prefix}`,{
-            method: POST,
-            headers: {
-                'Content-type':'application/json',
-            },
-            body: JSON.stringify({
-                'username': username,
-                'password': password
-            })
-        })
-        data.value = await response.json()
-        if(data.ok){
-            console.log("The things are okay Connected")
-        } else{
-            console.log("Did not connect.")
-        }
-    }catch(error){
-        console.log("The error we see is: ", error)
-    }
-    return data
+    axios.post(`${base}/${prefix}`,{"username": username,
+        "password":password}
+       ).then((response) => {
+        //  store.state.user = response.data
+         console.log("the data: ", response.data)
+       }).catch((error) => {
+         let logs = error.response.data
+       })
+    
+    // return 'ok's
 }
