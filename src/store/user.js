@@ -8,18 +8,18 @@ export const useUserStore = defineStore('user', ()=>{
     const accessToken = ref('')
     const refreshToken = ref('')
 
-    const saveUsername = (value)=>{
+    const setUsername = (value)=>{
         username.value = value
     }
-    const saveAccessToken = (value)=>{
+    const setAccessToken = (value)=>{
         accessToken.value = value
     }
-    const saveRefreshToken = (value)=>{
+    const setRefreshToken = (value)=>{
         refreshToken.value = value
     }
-    
+
     return {
         username, accessToken, refreshToken,
-        saveUsername, saveAccessToken, saveRefreshToken
+        setUsername, setAccessToken, setRefreshToken
     }
 })
