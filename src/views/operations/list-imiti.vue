@@ -27,7 +27,7 @@ import {
 } from 'vue'
 import { UmutiSet } from '../layout/types'
 import { useUserStore } from '../../store/user.js'
-import { baseURL } '../../store/host'
+import { baseURL } from  '../../store/host'
 export default defineComponent ({
     setup(_, {emit}) {
         const data = reactive({})
@@ -39,7 +39,7 @@ export default defineComponent ({
         const needUpdate = inject('needUpdate_list')
         const need_search = inject('needSearch')
         var shouldUpdate = needUpdate
-        const {__,getAccessToken,getRefreshToken} = useUserStore()
+        const { getAccessToken,getRefreshToken } = useUserStore()
 
         const search_umuti = (value)=>{
             // value.field
