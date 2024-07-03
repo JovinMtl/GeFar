@@ -30,7 +30,7 @@ import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 // import { useStore } from 'vuex'
 import { useUserStore } from '../../store/user.js'
-import { localURL } from '../../store/host'
+import { baseURL } from '../../store/host'
 import axios from 'axios'
 
 const store = useUserStore()
@@ -54,7 +54,7 @@ const login_hook = ()=>{
     const base = '//127.0.0.1:8002'
     const prefix = "api/login/"
 
-    axios.post(`${localURL}/${prefix}`,{"username": username.value,
+    axios.post(`${baseURL}/${prefix}`,{"username": username.value,
         "password":password.value}
        ).then((response) => {
         setUsername(username.value)

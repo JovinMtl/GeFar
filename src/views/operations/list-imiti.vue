@@ -27,6 +27,7 @@ import {
 } from 'vue'
 import { UmutiSet } from '../layout/types'
 import { useUserStore } from '../../store/user.js'
+import { baseURL } '../../store/host'
 export default defineComponent ({
     setup(_, {emit}) {
         const data = reactive({})
@@ -640,7 +641,7 @@ export default defineComponent ({
             const prefix = 'api/out/dispo/'
 
             try {
-                const response = await fetch(`${base}/${prefix}`,{
+                const response = await fetch(`${baseURL}/${prefix}`,{
                     headers:{
                         Authorization: 'Bearer '  + getAccessToken()
                     }
