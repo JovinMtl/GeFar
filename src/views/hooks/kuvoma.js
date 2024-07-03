@@ -1,5 +1,6 @@
 
 import { ref, watch } from 'vue'
+import { baseURL } from '../../store/host'
 // import axios from 'axios'
 
 // const base = '//muteule.pythonanywhere.com'
@@ -12,7 +13,7 @@ export function useKuvoma(prefix){
     const kuvomaImiti = async () => {
         // const base = '//127.0.0.1:8002'
         try {
-            const response = await fetch(`${base}/${prefix}`)
+            const response = await fetch(`${baseURL}/${prefix}`)
             
             if (response.ok){
                 data.value = await response.json()
@@ -56,7 +57,7 @@ export function useKurungika(imitiArray, prefix,
             console.log("prefix dukorerako: ", prefix)
     
             try {
-                const response = await fetch(`${base}/${prefix}`,{
+                const response = await fetch(`${baseURL}/${prefix}`,{
                     method: 'POST',
                     headers:{
                         'Content-type': 'application/json'
@@ -91,7 +92,7 @@ export async function useNoteUmuti(value){
     console.log("Using umuti_new as: ", value)
 
     try {
-        const response = await fetch(`${base}/${prefix}`,{
+        const response = await fetch(`${baseURL}/${prefix}`,{
             method: 'POST',
             headers:{
                 'Content-type': 'application/json'
@@ -117,7 +118,7 @@ export async function useLogin(username, password){
     const data = ref(null)
     const prefix = "api/login/"
 
-    axios.post(`${base}/${prefix}`,{"username": username,
+    axios.post(`${baseURL}/${prefix}`,{"username": username,
         "password":password}
        ).then((response) => {
         //  store.state.user = response.data
