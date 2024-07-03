@@ -60,6 +60,9 @@ const login_hook = ()=>{
         setUsername(username.value)
         setAccessToken(response.data.access)
         setRefreshToken(response.data.refresh)
+        localStorage.setItem('username', username.value)
+        localStorage.setItem('access', response.data.access)
+        localStorage.setItem('refresh', response.data.refresh)
         hide_authe()
         router.push('/home')
        }).catch((error) => {
