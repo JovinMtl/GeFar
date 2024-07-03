@@ -1,10 +1,9 @@
 
 import { ref, watch } from 'vue'
 import { baseURL } from '../../store/host'
-// import axios from 'axios'
+import { useUserStore} from '../../store/user'
 
-// const base = '//muteule.pythonanywhere.com'
-const base = '//127.0.0.1:8002'
+const { getAccessToken } = useUserStore()
 
 
 export function useKuvoma(prefix){
@@ -13,7 +12,11 @@ export function useKuvoma(prefix){
     const kuvomaImiti = async () => {
         // const base = '//127.0.0.1:8002'
         try {
-            const response = await fetch(`${baseURL}/${prefix}`)
+            const response = await fetch(`${baseURL}/${prefix}`,{
+                headers: {
+                    Authorization: 'Bearer ' + getAccessToken()
+                }
+            })
             
             if (response.ok){
                 data.value = await response.json()
