@@ -28,14 +28,19 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
-// import {createRouter} from '@ionic/vue-router'
+// import { useStore } from 'vuex'
+import { useUserStore } from '../../store/user.js'
+import { localURL } from '../../store/host'
 import axios from 'axios'
 
-const store = useStore()
+const store = useUserStore()
+const {getUsername,getAccessToken,getRefreshToken,
+    setUsername,setAccessToken, setRefreshToken} = store
 const router = useRouter()
 const username = ref(null)
 const password = ref(null)
+
+let logs = ''
 
 
 const axiosInstance = axios.create({
@@ -49,15 +54,16 @@ const login_hook = ()=>{
     const base = '//127.0.0.1:8002'
     const prefix = "api/login/"
 
-    axios.post(`${base}/${prefix}`,{"username": username.value,
+    axios.post(`${localURL}/${prefix}`,{"username": username.value,
         "password":password.value}
        ).then((response) => {
-         store.state.user = response.data
-        console.log("the data: ", response.data)
+        setUsername(username.value)
+        setAccessToken(response.data.access)
+        setRefreshToken(response.data.refresh)
         hide_authe()
         router.push('/home')
        }).catch((error) => {
-         let logs = error.response.data
+         logs = error.response.data
        })
 }
 const hide_authe = ()=>{

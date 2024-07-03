@@ -26,6 +26,7 @@ import {
     inject, watch,
 } from 'vue'
 import { UmutiSet } from '../layout/types'
+import { useUserStore } from '../../store/user.js'
 export default defineComponent ({
     setup(_, {emit}) {
         const data = reactive({})
@@ -37,6 +38,7 @@ export default defineComponent ({
         const needUpdate = inject('needUpdate_list')
         const need_search = inject('needSearch')
         var shouldUpdate = needUpdate
+        const {__,getAccessToken,getRefreshToken} = useUserStore()
 
         const search_umuti = (value)=>{
             // value.field
@@ -633,11 +635,16 @@ export default defineComponent ({
         ]
 
         const kuvomaImiti = async () => {
-            const base = '//muteule.pythonanywhere.com'
+            // const base = '//muteule.pythonanywhere.com'
+            const base = '//127.0.0.1:8002'
             const prefix = 'api/out/dispo/'
 
             try {
-                const response = await fetch(`${base}/${prefix}`)
+                const response = await fetch(`${base}/${prefix}`,{
+                    headers:{
+                        Authorization: 'Bearer '  + getAccessToken()
+                    }
+                })
                 
                 if (response.ok){
                     data.value = await response.json()
