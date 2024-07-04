@@ -171,9 +171,16 @@ import {
     close, statsChartOutline, snowOutline, thermometer, pricetagOutline,
     calendarClearOutline,
     } from 'ionicons/icons'
-import { useKuvoma, useSearchUmuti, useFilterRange } from '../hooks/kuvoma'
+import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
 
 const emit = defineEmits(['turnControl',])
+
+const [ isAdmin, askPriviledge] = useAskPriviledge()
+askPriviledge()
+console.log("THe User is admin ? ", isAdmin.value)
+watch(isAdmin, (value)=>{
+    console.log("THe user finally got: ", value)
+})
 
 const dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
