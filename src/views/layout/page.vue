@@ -255,6 +255,7 @@ export default {
                 // const server_data = await response.json()
                 if(response.ok){
                     console.log("The response is okay:", server_process.value)
+                    listImiti_update.value += 1
                 } else {
                     console.log("The response hasn't reached here yet")
                 }
