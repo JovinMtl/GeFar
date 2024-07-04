@@ -157,7 +157,7 @@ export default {
             if(selected_search.value){
                 // Update umuti_obj according to selected_search
                 umuti_obj.code_umuti = selected_search.value.code_umuti
-                umuti_obj.name_umuti = selectSearch.value.name_umuti
+                umuti_obj.name_umuti = selected_search.value.name_umuti
                 umuti_obj.date_uzohererako = date_exp.value
                 // umuti_obj.date_winjiriyeko = new Date()
                 umuti_obj.price_in = selected_search.value.price_in
