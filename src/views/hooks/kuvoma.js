@@ -4,6 +4,7 @@ import { baseURL } from '../../store/host'
 import { useUserStore} from '../../store/user'
 
 // const { getAccessToken } = useUserStore()
+const isAdmin = ref(false)
 
 
 export function useKuvoma(prefix){
@@ -134,8 +135,8 @@ export async function useLogin(username, password){
     // return 'ok's
 }
 
-export async function useAskPriviledge(){
-    let isAdmin = false
+export function useAskPriviledge(){
+    // const isAdmin = ref(false)
     const { getAccessToken } = useUserStore()
 
     const askPriviledge = async () => {
@@ -150,16 +151,14 @@ export async function useAskPriviledge(){
             if (response.ok){
                 let data = await response.json()
                 if(data.isAdmin){
-                    isAdmin = true
+                    isAdmin.value = true
                 } else{
-                    isAdmin = false
+                    isAdmin.value = false
                 }
             }
         } catch (value){
             console.log("somehting may not be well because :", value)
         }
     }
-    askPriviledge()
-    
-    return isAdmin
+    return [ isAdmin, askPriviledge ]
 }
