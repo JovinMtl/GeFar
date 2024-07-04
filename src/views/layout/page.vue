@@ -211,6 +211,7 @@ export default {
             localStorage.setItem('username', username.value)
             localStorage.setItem('accessToken', response.data.access)
             localStorage.setItem('refreshToken', response.data.refresh)
+            router.push('/login')
         }
         const noteUmuti = async ()=>{
             server_process.value = true
