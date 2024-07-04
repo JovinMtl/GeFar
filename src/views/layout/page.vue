@@ -138,6 +138,7 @@ import {
     reactive, ref,
     watch, provide,
 } from 'vue'
+import { useRouter } from 'vue-router'
 import search from './auxiliare/search.vue';
 import menu from './auxiliare/menu.vue';
 import approv from '../operations/approv.vue';
@@ -173,6 +174,7 @@ export default {
     },
     setup() {
         // const [approvStatus] = useCloseApprov()
+        const router = useRouter()
 
         const selectedUmuti = reactive({})
         const panier_client = ref([])
