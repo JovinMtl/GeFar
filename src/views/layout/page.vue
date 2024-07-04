@@ -618,11 +618,13 @@ export default {
     display: flex; 
     position: absolute;
     /* position: relative; */
-    left: 66vw; 
+    left: 86vw; 
     top: 89vh; 
+    top: -4.9vh;
     /* top: 87vh; */
     font-size: xx-large; 
     color: black;
+    font-size: 2rem;
 }
 .magnetic{
     background-color: transparent; 
@@ -631,7 +633,7 @@ export default {
     display: flex; 
     position: absolute;
     /* position: relative; */
-    left: 6vw; 
+    left: 66vw; 
     top: 89vh; 
     /* top: 87vh; */
     font-size: xx-large; 
