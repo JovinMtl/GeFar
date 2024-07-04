@@ -115,7 +115,7 @@
                         <me-nu @actualMenu="actualOption"></me-nu>
                     </div>
                     <div class="menuHau exit"  style="">
-                        <ion-icon :src="exitOutline" @click="compileImitiSet" size="larger"></ion-icon>
+                        <ion-icon :src="exitOutline" @click="logout" size="larger"></ion-icon>
                     </div>
                     <div class="menuHau magnetic"  style="">
                         <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
@@ -198,8 +198,18 @@ export default {
         
         let url_sell = "/api/out/sell/"
         const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
-        const { getAccessToken } = useUserStore()
+        const { getAccessToken,setUsername,
+             setAccessToken, setRefreshToken } = useUserStore()
 
+        const logout = ()=>{
+            // proceed to logout
+            setUsername('')
+            setAccessToken('')
+            setRefreshToken('')
+            localStorage.setItem('username', username.value)
+            localStorage.setItem('accessToken', response.data.access)
+            localStorage.setItem('refreshToken', response.data.refresh)
+        }
         const noteUmuti = async ()=>{
             server_process.value = true
             let response = await useNoteUmuti(query_search.value.query)
