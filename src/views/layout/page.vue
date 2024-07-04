@@ -208,10 +208,11 @@ export default {
             setUsername('')
             setAccessToken('')
             setRefreshToken('')
-            localStorage.setItem('username', username.value)
-            localStorage.setItem('accessToken', response.data.access)
-            localStorage.setItem('refreshToken', response.data.refresh)
-            router.push('/login')
+            localStorage.setItem('username', '')
+            localStorage.setItem('accessToken', '')
+            localStorage.setItem('refreshToken', '')
+            console.log("Logging out...")
+            router.push('/')
         }
         const noteUmuti = async ()=>{
             server_process.value = true
@@ -581,7 +582,7 @@ export default {
             searchManager, openApproFile, closeApproFile,
             getFileDataLoaded, compileImitiSet, closeControle,
             requestUpload, SearchBarManager, closeFacture,
-            noteUmuti, alertUmutiNew,
+            noteUmuti, alertUmutiNew, logout,
         }
     },
 }
