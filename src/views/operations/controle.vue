@@ -79,7 +79,8 @@
                         </div>
 
                         <div class="contentElement4">
-                        Localisation
+                        <span v-if="isAdmin">Bénéfice</span>
+                        <span v-else>Localisation</span>  
                         </div>
 
                         <div class="contentElement4">
@@ -115,8 +116,9 @@
                             '_____________').slice(6,10) }}
                         </div>
 
-                        <div class="contentElement4">
-                        {{ umuti.location }}
+                        <div class="contentElement4"> 
+                        <span v-if="isAdmin">{{ umuti.benefice }}</span> 
+                        <span v-else>{{ umuti.location }}</span>
                         </div>
 
                         <div class="contentElement4">
