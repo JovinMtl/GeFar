@@ -269,7 +269,6 @@ export default {
             // provide send-status and inject it in approv-file
             console.log("Taking Releve on sending DATA to API: ", dataArray)
             server_process.value = true
-            const base = '//muteule.pythonanywhere.com'
             const endpoint = '/api/in/kurangura/'
 
             try {
@@ -287,7 +286,8 @@ export default {
                 if(response.ok){
                     console.log("The response is okay:", server_process.value)
                     setTimeout(()=>{
-                    server_process.value = false
+                        compileImitiSet()
+                        server_process.value = false
                     }, 1500)
                     approvStatus.value = false
                     approFileStatus.value = false
