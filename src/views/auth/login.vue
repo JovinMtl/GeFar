@@ -1,33 +1,40 @@
 <template>
-    <div class="LogContainer" id="authe">
-        ICi authentification
-        <div class="authentif">
-            <div class="username">
-                <label for="input">Username</label> <br>
-                <input v-model="username" type="text" style="padding: 15px 30px; 
-                    border-radius: 15px;border-style: hidden;
-                    background-color: rgb(28, 35, 49);">
+    <ion-page>
+        <ion-content>
+            <div class="LogContainer" id="authe">
+                ICi authentification
+                <div class="authentif">
+                    <div class="username">
+                        <label for="input">Username</label> <br>
+                        <input v-model="username" type="text" style="padding: 15px 30px; 
+                            border-radius: 15px;border-style: hidden;
+                            background-color: rgb(28, 35, 49);">
+                    </div>
+                    <div class="username">
+                        <label for="input">Password</label> <br>
+                        <input v-model="password" type="password" style="padding: 15px 30px; 
+                            border-radius: 15px; border-spacing: 5px; 
+                            border-style: hidden; background-color: rgb(28, 35, 49);">
+                    </div>
+                    <div class="confirmationContainer">
+                        <!-- <div class="one" style="border-right: 1px solid black;">s'inscrire</div>
+                        <div class="one">se connecter</div> -->
+                        <!-- se connecter -->
+                    </div>
+                    <div @click="login_hook" class="enter">
+                        <div class="btn">se connecter</div>
+                    </div>
+                </div>
             </div>
-            <div class="username">
-                <label for="input">Password</label> <br>
-                <input v-model="password" type="password" style="padding: 15px 30px; 
-                    border-radius: 15px; border-spacing: 5px; 
-                    border-style: hidden; background-color: rgb(28, 35, 49);">
-            </div>
-            <div class="confirmationContainer">
-                <!-- <div class="one" style="border-right: 1px solid black;">s'inscrire</div>
-                <div class="one">se connecter</div> -->
-                <!-- se connecter -->
-            </div>
-            <div @click="login_hook" class="enter">
-                <div class="btn">se connecter</div>
-            </div>
-        </div>
-    </div>
+        </ion-content>
+    </ion-page>
 </template>
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { 
+    IonContent, IonPage
+} from '@ionic/vue';
 // import { useStore } from 'vuex'
 import { useUserStore } from '../../store/user.js'
 import { baseURL } from '../../store/host'
@@ -63,16 +70,16 @@ const login_hook = ()=>{
         localStorage.setItem('username', username.value)
         localStorage.setItem('accessToken', response.data.access)
         localStorage.setItem('refreshToken', response.data.refresh)
-        hide_authe()
+        // hide_authe()
         router.push('/home')
        }).catch((error) => {
          logs = error.response.data
        })
 }
-const hide_authe = ()=>{
-    const container = document.getElementById('authe')
-    container.style.display = 'none'
-}
+// const hide_authe = ()=>{
+//     const container = document.getElementById('authe')
+//     container.style.display = 'none'
+// }
 
 // watch(data, (value)=>{
 //     console.log("The LOGIN component got: ", value)
