@@ -189,6 +189,7 @@ export default {
         const umuti_single = ref(false)
         const show_facture = ref(false)
         const clear_search = ref(0)
+        const listImiti_update = ref(0)
         
         let url_sell = "/api/out/sell/"
         const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
@@ -243,8 +244,6 @@ export default {
         }
 
         const compileImitiSet = async ()=>{
-            // const server = '//127.0.0.1:8002'
-            const base = '//muteule.pythonanywhere.com'
             const endpoint = '/api/in/compileImitiSet/'
 
             try {
@@ -375,21 +374,6 @@ export default {
             }
             
         }
-
-        // const toSell = () => {
-        //     // need fist to update panier_api according to panier_client
-        //     // send panier_api to sell endpoint
-        //     // panier_client.value.forEach()
-        //     need_to_updade.value = true
-        //     server_process.value = true
-        //     let url_sell ="/api/out/sell/"
-            
-        //     console.log("The result of toSell is: ", rungika.value)
-        //     setTimeout(() => {
-        //         server_process.value = false
-        //     }, 3000);
-
-        // }
 
         const number_To_string = (value=10000) => {
             // This function is designed to format a number as a string
@@ -557,6 +541,7 @@ export default {
         })
         provide('needUpdate_list', need_to_updade) // in list-imiti component
         provide('needSearch', query_search) // in list-imiti component
+        provide('needUpdate_server', listImiti_update) // in list-imiti component
         provide('imiti_search', all_imiti) // in approv component
         provide('need_upload', umuti_single) // in approv component
         provide('imiti_downloaded', all_imiti.value) // in search component
