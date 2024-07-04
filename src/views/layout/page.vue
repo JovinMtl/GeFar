@@ -115,7 +115,7 @@
                         <me-nu @actualMenu="actualOption"></me-nu>
                     </div>
                     <div class="menuHau exit"  style="">
-                        <ion-icon :src="exitOutline" @click="compileImitiSet"></ion-icon>
+                        <ion-icon :src="exitOutline" @click="compileImitiSet" size="larger"></ion-icon>
                     </div>
                     <div class="menuHau magnetic"  style="">
                         <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
@@ -613,18 +613,15 @@ export default {
 }
 .exit{
     background-color: transparent; 
-    height: 20px; 
-    width: 20px; 
+    height: 50px; 
+    width: 50px; 
     display: flex; 
     position: absolute;
-    /* position: relative; */
-    left: 86vw; 
+    /* left: 86vw;  */
     top: 89vh; 
     top: -4.9vh;
-    /* top: 87vh; */
     font-size: xx-large; 
     color: black;
-    font-size: 2rem;
 }
 .magnetic{
     background-color: transparent; 
