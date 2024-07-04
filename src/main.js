@@ -37,7 +37,7 @@ import '@ionic/vue/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 import './theme/jove.css';
-import { pin } from 'ionicons/icons';
+// import { pin } from 'ionicons/icons';
 
 // const vuetify = new Vuetify();
 const pinia = createPinia()

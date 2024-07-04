@@ -3,11 +3,12 @@ import { ref, watch } from 'vue'
 import { baseURL } from '../../store/host'
 import { useUserStore} from '../../store/user'
 
-const { getAccessToken } = useUserStore()
+// const { getAccessToken } = useUserStore()
 
 
 export function useKuvoma(prefix){
     const data = ref(null)
+    const { getAccessToken } = useUserStore()
 
     const kuvomaImiti = async () => {
         // const base = '//127.0.0.1:8002'
