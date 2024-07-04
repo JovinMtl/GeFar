@@ -36,8 +36,9 @@ export default defineComponent ({
         let codes = new Array()
         let imiti_for_search = []
 
-        const needUpdate = inject('needUpdate_list')
+        const needUpdate = inject('needUpdate_list') // on search command
         const need_search = inject('needSearch')
+        const needUpdate_server = inject('needUpdate_server')
         var shouldUpdate = needUpdate
         const { getAccessToken,getRefreshToken } = useUserStore()
 
