@@ -114,6 +114,9 @@
                     <div class="menuBar">
                         <me-nu @actualMenu="actualOption"></me-nu>
                     </div>
+                    <div class="menuHau exit"  style="">
+                        <ion-icon :src="exitOutline" @click="compileImitiSet"></ion-icon>
+                    </div>
                     <div class="menuHau magnetic"  style="">
                         <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
                     </div>
@@ -151,7 +154,9 @@ const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'
 import { 
     IonContent, IonPage, IonIcon, 
 } from '@ionic/vue';
-import { close, addCircleOutline, removeCircleOutline, magnetOutline, add } from 'ionicons/icons'
+import { 
+    close, addCircleOutline, removeCircleOutline, magnetOutline, add, exitOutline
+} from 'ionicons/icons'
 // import { PanierAPI, PanierClient} from '../layout/types'
 export default {
     components:{
@@ -555,7 +560,7 @@ export default {
             approvStatus, approFileStatus, server_process,
             controleStatus, noteUmuti, umuti_new,
             close, addCircleOutline, removeCircleOutline,
-            magnetOutline, add,
+            magnetOutline, add, exitOutline,
             getUmuti, moveToPanier, removeUmuti, changeQte,
             incrementQte,decrementQte, showChange,
             show_facture,
@@ -606,7 +611,7 @@ export default {
     /* padding: 5px 5px; */
     margin-left: 5px;
 }
-.magnetic{
+.exit{
     background-color: transparent; 
     height: 20px; 
     width: 20px; 
@@ -614,6 +619,19 @@ export default {
     position: absolute;
     /* position: relative; */
     left: 66vw; 
+    top: 89vh; 
+    /* top: 87vh; */
+    font-size: xx-large; 
+    color: black;
+}
+.magnetic{
+    background-color: transparent; 
+    height: 20px; 
+    width: 20px; 
+    display: flex; 
+    position: absolute;
+    /* position: relative; */
+    left: 6vw; 
     top: 89vh; 
     /* top: 87vh; */
     font-size: xx-large; 
