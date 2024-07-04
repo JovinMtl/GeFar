@@ -212,8 +212,13 @@ export default {
             localStorage.setItem('accessToken', '')
             localStorage.setItem('refreshToken', '')
             console.log("Logging out...")
+            // show_authe()
             router.push('/')
         }
+        // const show_authe = ()=>{
+        //     const container = document.getElementById('authe')
+        //     container.style.display = 'flex'
+        // }
         const noteUmuti = async ()=>{
             server_process.value = true
             let response = await useNoteUmuti(query_search.value.query)
