@@ -152,7 +152,8 @@
                         </div>
 
                         <div class="contentElement4">
-                            ----
+                            <span v-if="isAdmin">bénéfice</span> 
+                            <span v-elses>----</span> 
                         </div>
 
                         <div class="contentElement4">
