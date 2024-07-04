@@ -617,7 +617,7 @@ export default {
     width: 50px; 
     display: flex; 
     position: absolute;
-    /* left: 86vw;  */
+    left: 86vw; 
     top: 89vh; 
     top: -4.9vh;
     font-size: xx-large; 
