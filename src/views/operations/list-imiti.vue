@@ -742,6 +742,10 @@ export default defineComponent ({
                 emit('emptyResult', 0)
             }
         })
+        watch(needUpdate_server, (value)=>{
+            // request to api to give dispo
+            kuvomaImiti ()
+        })
 
 
         return {
