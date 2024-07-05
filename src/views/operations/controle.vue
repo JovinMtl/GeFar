@@ -259,12 +259,22 @@ watch(need_search, (value)=>{
     actual_imitiS.value = useSearchUmuti(actual_obj.value, value, selected_field.value )
 })
 watch(actual_imitiS, (value)=>{
+    console.log("We got this: ", value)
     let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
 
     actual_imitiS.value.forEach(element => {
-        total += (element.price_out * (element.quantite_restant || element.quantity))
-        pt_a += element.price_in * (element.quantite_restant || element.quantity)
-        benefice += (element.price_out - element.price_in) * (element.quantite_restant || element.quantity)
+        if(element.quantite_restant){
+            console.log("Quantite restant  pa:",  element.price_out)
+            total += (element.price_out * (element.quantite_restant))
+            pt_a += element.price_in * (element.quantite_restant)
+            benefice += (element.price_out - element.price_in) * (element.quantite_restant) 
+        } else {
+            console.log("Quantity pa :", element.price_out )
+            total += (element.price_out * (element.quantity))
+            pt_a += element.price_in * (element.quantity)
+            benefice += (element.price_out - element.price_in) * (element.quantity) 
+        }
+        
         number += 1
     });
 
