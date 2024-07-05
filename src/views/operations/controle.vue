@@ -75,7 +75,9 @@
                         </div>
 
                         <div class="contentElement4">
-                            Type du Med.
+                            <span v-if="isAdmin">Px.Achat</span>
+                            <span v-else>Type du Med.</span>
+                            
                         </div>
 
                         <div class="contentElement4">
@@ -105,12 +107,14 @@
                             {{ umuti.price_out }}
                         </div>
 
-                        <div class="contentElement3">
+                        <div class="contentElement3 total">
                             {{ umuti.price_out * (umuti.quantite_restant || umuti.quantity) }}
                         </div> 
 
-                        <div class="contentElement4">
-                            {{ umuti.type_umuti }}
+                        <div class="contentElement4 type_med">
+                            <span v-if="isAdmin">ben</span>
+                            <span v-else>{{ umuti.type_umuti }}</span>
+                            
                         </div>
 
                         <div class="contentElement4"> 
