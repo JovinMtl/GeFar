@@ -55,6 +55,7 @@ export function useFilterRange(imiti_for_search, dateDebut, dateFin){
 export function useKurungika(imitiArray, prefix,
      otherData1=null, otherData2=null){
     const data = ref(null)
+    const { getAccessToken } = useUserStore()
     // return prefix
     if(!(otherData1 && otherData2)){
         const kurungikaImiti = async () => {
@@ -65,7 +66,8 @@ export function useKurungika(imitiArray, prefix,
                 const response = await fetch(`${baseURL}/${prefix}`,{
                     method: 'POST',
                     headers:{
-                        'Content-type': 'application/json'
+                        'Content-type': 'application/json',
+                        Authorization: 'Bearer ' + getAccessToken()
                     },
                     body: JSON.stringify({
                         'imiti': imitiArray.value
