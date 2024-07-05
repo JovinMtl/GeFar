@@ -153,7 +153,7 @@ const login_hook = ()=>{
                     border-radius: 15px;
                     justify-content: center;
                     align-items: center;
-                    // border: 1px solid white;
+                    cursor: pointer;
                     box-shadow: 0 0 5px white;
                     align-content: center;
                     background: linear-gradient(to right,black,rgb(99, 97, 97), white, gray);
