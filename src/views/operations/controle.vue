@@ -131,6 +131,9 @@
                             umuti.date_winjiriyeko ||
                             '_____________').slice(6,10) }}
                         </div>
+                        <div class="contentElement4">
+                            {{ umuti.operator }}
+                        </div>
                     </div>
                 </div>
 
