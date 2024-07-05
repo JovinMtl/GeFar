@@ -142,7 +142,7 @@
                         <div class="contentElement1">
                             #
                         </div> 
-                        <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 20%;height: 100%;">
+                        <div class="contentElement2">
                             TOTAL
                         </div> 
                         <div class="contentElement3">
