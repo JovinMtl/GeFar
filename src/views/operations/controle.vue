@@ -257,11 +257,12 @@ watch(need_search, (value)=>{
     actual_imitiS.value = useSearchUmuti(actual_obj.value, value, selected_field.value )
 })
 watch(actual_imitiS, (value)=>{
-    let [ number, total, benefice ] = [0, 0, 0]
+    let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
 
     actual_imitiS.value.forEach(element => {
         total += (element.price_out * (element.quantite_restant || element.quantity))
-        benefice += (element.price_out - element.price_in) * element.quantite_restant
+        pt_a += element.price_in * (element.quantite_restant || element.quantity)
+        benefice += (element.price_out - element.price_in) * (element.quantite_restant || element.quantity)
         number += 1
     });
 
