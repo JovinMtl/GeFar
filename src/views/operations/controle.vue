@@ -299,6 +299,17 @@ const closeControle = ()=>{
 </script>
 
 <style scoped>
+::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 15px;
+  }
+  ::-webkit-scrollbar {
+    width: 3px;
+    color: green;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
 .controle{
     background-color: white; 
     position: relative; 
