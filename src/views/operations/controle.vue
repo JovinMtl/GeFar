@@ -86,7 +86,7 @@
                         </div>
 
                         <div class="contentElement4">
-                            Date vendu
+                            Date
                         </div>
                     </div>
                 </div>
