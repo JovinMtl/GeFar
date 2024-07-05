@@ -260,7 +260,7 @@ watch(actual_imitiS, (value)=>{
 
     actual_imitiS.value.forEach(element => {
         total += (element.price_out * (element.quantite_restant || element.quantity))
-        benefice += (element.price_out - element.price_in)
+        benefice += (element.price_out - element.price_in) * element.quantite_restant
         number += 1
     });
 
