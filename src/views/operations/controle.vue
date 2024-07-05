@@ -112,13 +112,13 @@
                         </div> 
 
                         <div class="contentElement4 type_med">
-                            <span v-if="isAdmin">ben</span>
+                            <span v-if="isAdmin">{{ umuti.price_in }}</span>
                             <span v-else>{{ umuti.type_umuti }}</span>
                             
                         </div>
 
                         <div class="contentElement4"> 
-                        <span v-if="isAdmin">{{ umuti.benefice }}</span> 
+                        <span v-if="isAdmin">{{ (umuti.price_out - umuti.price_in) * umuti.quantite_restant }}</span> 
                         <span v-else>{{ umuti.location }}</span>
                         </div>
 
