@@ -132,7 +132,7 @@
                 </div>
 
                 <div class="controlFooter">
-                    <div  class="controlContent">
+                    <div  class="controlContent" style="font-weight: 700;">
                         <div class="contentElement1">
                             #
                         </div> 
@@ -156,8 +156,8 @@
                         </div>
 
                         <div class="contentElement4">
-                            <span v-if="isAdmin">b{{ totaux[2] }}</span> 
-                            <span v-elses>----</span> 
+                            <span v-if="isAdmin">{{ totaux[2] }}</span> 
+                            <span v-else>----</span> 
                         </div>
 
                         <div class="contentElement4">
