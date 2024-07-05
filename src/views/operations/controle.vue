@@ -88,6 +88,9 @@
                         <div class="contentElement4">
                             Date
                         </div>
+                        <div class="contentElement4">
+                            Author
+                        </div>
                     </div>
                 </div>
 
@@ -366,17 +369,17 @@ const closeControle = ()=>{
 .contentElement2{
     display: inline-flex;
     background-color: transparent; 
-    width: 20%;height: 100%;
+    width: 18%;height: 100%;
 }
 .contentElement3{
     display: inline-flex;
     background-color: transparent; 
-    width: 15%;height: 100%;
+    width: 14%;height: 100%;
 }
 .contentElement4{
     display: inline-flex;
     background-color: transparent; 
-    width: 10%;height: 100%;
+    width: 8%;height: 100%;
 }
 .controlBody{
     height: 90%; width: 100%; 
