@@ -153,7 +153,9 @@
                         </div>
 
                         <div class="contentElement4">
-                            {{ totaux[2] }}
+                            <span v-if="isAdmin">{{ totaux[2] }}</span>
+                            <span v-else>----</span>
+                            
                         </div>
 
                         <div class="contentElement4">
