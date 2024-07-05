@@ -118,7 +118,7 @@
                         </div>
 
                         <div class="contentElement4"> 
-                        <span v-if="isAdmin">{{ (umuti.price_out - umuti.price_in) * umuti.quantite_restant }}</span> 
+                        <span v-if="isAdmin">{{ (umuti.price_out - umuti.price_in) * (umuti.quantite_restant || umuti.quantity) }}</span> 
                         <span v-else>{{ umuti.location }}</span>
                         </div>
 
