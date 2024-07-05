@@ -75,16 +75,16 @@
                         </div>
 
                         <div class="contentElement4">
+                            Type du Med.
+                        </div>
+
+                        <div class="contentElement4">
                         <span v-if="isAdmin">Bénéfice</span>
                         <span v-else>Localisation</span>  
                         </div>
 
                         <div class="contentElement4">
                             Date vendu
-                        </div>
-
-                        <div class="contentElement4">
-                            Type du Med.
                         </div>
                     </div>
                 </div>
@@ -109,6 +109,10 @@
                             {{ umuti.price_out * (umuti.quantite_restant || umuti.quantity) }}
                         </div> 
 
+                        <div class="contentElement4">
+                            {{ umuti.type_umuti }}
+                        </div>
+
                         <div class="contentElement4"> 
                         <span v-if="isAdmin">{{ umuti.benefice }}</span> 
                         <span v-else>{{ umuti.location }}</span>
@@ -119,10 +123,6 @@
                             || umuti.date_operation || 
                             umuti.date_winjiriyeko ||
                             '_____________').slice(6,10) }}
-                        </div>
-
-                        <div class="contentElement4">
-                            {{ umuti.type_umuti }}
                         </div>
                     </div>
                 </div>
@@ -148,16 +148,16 @@
                         </div>
 
                         <div class="contentElement4">
+                            -----
+                        </div>
+
+                        <div class="contentElement4">
                             <span v-if="isAdmin">b{{ totaux[2] }}</span> 
                             <span v-elses>----</span> 
                         </div>
 
                         <div class="contentElement4">
                             ----
-                        </div>
-
-                        <div class="contentElement4">
-                            -----
                         </div>
                     </div>
                 </div>
