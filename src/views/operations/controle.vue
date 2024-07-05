@@ -153,11 +153,11 @@
                         </div>
 
                         <div class="contentElement4">
-                            -----
+                            {{ totaux[2] }}
                         </div>
 
                         <div class="contentElement4">
-                            <span v-if="isAdmin">{{ totaux[2] }}</span> 
+                            <span v-if="isAdmin">{{ totaux[3] }}</span> 
                             <span v-else>----</span> 
                         </div>
 
@@ -266,7 +266,7 @@ watch(actual_imitiS, (value)=>{
         number += 1
     });
 
-    totaux.value = [number, total, benefice]
+    totaux.value = [number, total, pt_a, benefice]
 })
 
 const applyFilter = ()=>{
