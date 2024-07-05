@@ -144,7 +144,8 @@
                         </div>
 
                         <div class="contentElement3">
-                            {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }}
+                            <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
+                              ----
                         </div>
 
                         <div class="contentElement3">
