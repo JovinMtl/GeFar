@@ -118,7 +118,7 @@
                         <ion-icon :src="exitOutline" @click="logout" size="larger"></ion-icon>
                     </div>
                     <div class="menuHau sync"  style="">
-                        <ion-icon :src="syncOutline" @click="compileImitiSet"></ion-icon>
+                        <ion-icon :src="syncOutline" @click="askIndex"></ion-icon>
                     </div>
                     <div class="menuHau magnetic"  style="">
                         <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
@@ -149,7 +149,7 @@ import approvFile from '../operations/approv-file.vue';
 import joveLoader from './auxiliare/jove-loader.vue';
 import contRole from '../operations/controle.vue'
 import factuRier from '../operations/facturier.vue';
-import { useKurungika, useNoteUmuti } from '../hooks/kuvoma.js'
+import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
 // import useCloseApprov from '../hooks/jove'
@@ -187,7 +187,10 @@ const show_facture = ref(false)
 const clear_search = ref(0)
 const listImiti_update = ref(0)
 
-let url_sell = "/api/out/sell/"
+const url_reportIndex = "api/rep/giveLastIndex/"
+const [last_indexes, askIndex] = useKuvoma(url_reportIndex)
+
+const url_sell = "/api/out/sell/"
 const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 const { getAccessToken,setUsername,
         setAccessToken, setRefreshToken } = useUserStore()
