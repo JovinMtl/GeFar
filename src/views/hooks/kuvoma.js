@@ -14,7 +14,7 @@ export function useKuvoma(prefix, remote=''){
     const kuvomaImiti = async () => {
         // const base = '//127.0.0.1:8002'
         try {
-            if(remote){
+            if(!remote){
                 const response = await fetch(`${baseURL}/${prefix}`,{
                     headers: {
                         Authorization: 'Bearer ' + getAccessToken()

@@ -188,7 +188,8 @@ const clear_search = ref(0)
 const listImiti_update = ref(0)
 
 const url_reportIndex = "api/rep/giveLastIndex/"
-const [last_indexes, askIndex] = useKuvoma(url_reportIndex)
+const url_remote = "//muteule.pythonanywhere.com"
+const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_remote)
 
 const url_sell = "/api/out/sell/"
 const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
