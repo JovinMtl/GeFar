@@ -145,7 +145,7 @@ import { useRouter } from 'vue-router'
 import search from './auxiliare/search.vue';
 import meNu from './auxiliare/menu.vue';
 import appRov from '../operations/approv.vue';
-import approvFile from '../operations/approv-file.vue';
+import approFile from '../operations/approv-file.vue';
 import joveLoader from './auxiliare/jove-loader.vue';
 import contRole from '../operations/controle.vue'
 import factuRier from '../operations/facturier.vue';
