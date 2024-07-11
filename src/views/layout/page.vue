@@ -117,6 +117,9 @@
                     <div class="menuHau exit"  style="">
                         <ion-icon :src="exitOutline" @click="logout" size="larger"></ion-icon>
                     </div>
+                    <div class="menuHau sync"  style="">
+                        <ion-icon :src="syncOutline" @click="compileImitiSet"></ion-icon>
+                    </div>
                     <div class="menuHau magnetic"  style="">
                         <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
                     </div>
@@ -156,7 +159,8 @@ import {
     IonContent, IonPage, IonIcon, 
 } from '@ionic/vue';
 import { 
-    close, addCircleOutline, removeCircleOutline, magnetOutline, add, exitOutline
+    close, addCircleOutline, removeCircleOutline, magnetOutline, 
+    add, exitOutline, syncOutline
 } from 'ionicons/icons'
 
 const router = useRouter()
@@ -606,6 +610,19 @@ provide('need_clear', clear_search) // in search component
     left: 86vw; 
     top: 89vh; 
     top: -4.9vh;
+    font-size: xx-large; 
+    color: black;
+}
+.sync{
+    background-color: transparent; 
+    height: 30px; 
+    width: 30px; 
+    display: flex; 
+    position: absolute;
+    /* position: relative; */
+    left: 62vw; 
+    top: 89vh; 
+    /* top: 87vh; */
     font-size: xx-large; 
     color: black;
 }
