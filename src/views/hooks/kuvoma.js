@@ -7,18 +7,27 @@ import { useUserStore} from '../../store/user'
 const isAdmin = ref(false)
 
 
-export function useKuvoma(prefix){
+export function useKuvoma(prefix, remote=''){
     const data = ref(null)
     const { getAccessToken } = useUserStore()
 
     const kuvomaImiti = async () => {
         // const base = '//127.0.0.1:8002'
         try {
-            const response = await fetch(`${baseURL}/${prefix}`,{
-                headers: {
-                    Authorization: 'Bearer ' + getAccessToken()
-                }
-            })
+            if(remote){
+                const response = await fetch(`${baseURL}/${prefix}`,{
+                    headers: {
+                        Authorization: 'Bearer ' + getAccessToken()
+                    }
+                })
+            } else{
+                const response = await fetch(`${remote}/${prefix}`,{
+                    headers: {
+                        Authorization: 'Bearer ' + getAccessToken()
+                    }
+                })
+            }
+            
             
             if (response.ok){
                 data.value = await response.json()
