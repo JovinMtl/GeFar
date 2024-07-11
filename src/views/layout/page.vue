@@ -628,8 +628,8 @@ provide('need_clear', clear_search) // in search component
 }
 .magnetic{
     background-color: transparent; 
-    height: 20px; 
-    width: 20px; 
+    height: 25px; 
+    width: 25px; 
     display: flex; 
     position: absolute;
     /* position: relative; */
