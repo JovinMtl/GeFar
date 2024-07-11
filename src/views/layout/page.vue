@@ -618,8 +618,8 @@ provide('need_clear', clear_search) // in search component
 }
 .sync{
     background-color: transparent; 
-    height: 30px; 
-    width: 30px; 
+    height: 25px; 
+    width: 25px; 
     display: flex; 
     position: absolute;
     /* position: relative; */
