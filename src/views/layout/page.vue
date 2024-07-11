@@ -142,7 +142,7 @@ import {
     watch, provide,
 } from 'vue'
 import { useRouter } from 'vue-router'
-import search from './auxiliare/search.vue';
+import seaRch from './auxiliare/search.vue';
 import meNu from './auxiliare/menu.vue';
 import appRov from '../operations/approv.vue';
 import approFile from '../operations/approv-file.vue';
