@@ -549,7 +549,9 @@ const getUmuti = (umuti) => {
     
 }
 
-
+watch(last_indexes, (value)=>{
+    console.log("Last index gets : ", value)
+})
 watch(sell_report, value=>{
     // Do something when the status response is OK
     console.log("Maintenant nous pouvons VOIR: facturier")
