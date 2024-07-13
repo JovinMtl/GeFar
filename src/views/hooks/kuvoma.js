@@ -14,14 +14,15 @@ export function useKuvoma(prefix, remote=''){
     const kuvomaImiti = async () => {
         // const base = '//127.0.0.1:8002'
         try {
+            let response = ''
             if(!remote){
-                const response = await fetch(`${baseURL}/${prefix}`,{
+                response = await fetch(`${baseURL}/${prefix}`,{
                     headers: {
                         Authorization: 'Bearer ' + getAccessToken()
                     }
                 })
             } else{
-                const response = await fetch(`${remote}/${prefix}`,{
+                response = await fetch(`${remote}/${prefix}`,{
                     headers: {
                         Authorization: 'Bearer ' + getAccessToken()
                     }
