@@ -117,7 +117,7 @@
                     <div class="menuHau exit"  style="">
                         <ion-icon :src="exitOutline" @click="logout" size="larger"></ion-icon>
                     </div>
-                    <div class="menuHau sync"  style="">
+                    <div class="menuHau user"  style="">
                         mon nom
                     </div>
                     <div class="menuHau sync"  style="">
@@ -631,15 +631,15 @@ provide('need_clear', clear_search) // in search component
 }
 .user{
     background-color: transparent; 
-    height: 25px; 
-    width: 25px; 
+    height: 20px; 
+    width: 150px; 
     display: flex; 
     position: absolute;
     /* position: relative; */
-    left: 58vw; 
-    top: 89vh; 
+    left: 55vw; 
+    top: 90.5vh; 
     /* top: 87vh; */
-    font-size: xx-large; 
+    font-size: normal; 
     color: black;
 }
 .sync{
