@@ -6,7 +6,7 @@
         <!-- <div class="factuContent"> -->
             <div class="factuHead">
                 <span style="font-weight: 600;">DAWA - PHARMA </span><br>
-                Facture n. 5/2024</div>
+                Facture n. {{ num_facture }}/2024</div>
             <div class="factuBody">
                 <div class="content">
                     <div class="number"></div>
@@ -58,9 +58,9 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const message = "facture"
-const props = defineProps(['commandePatient'])
+const props = defineProps(['commandePatient', 'num_facture'])
 const emit = defineEmits(['factureActive'])
 
 console.log("Facturier INITIALIZED: ", props)
