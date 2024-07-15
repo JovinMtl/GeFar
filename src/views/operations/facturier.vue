@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="authorizer">
-                Servi par: Muteule <hr>
+                Servi par: {{ username }} <hr>
                 Date     : {{ new Date().toISOString().substring(0,10) }}
             </div>
             <div class="factuFooter">
@@ -60,7 +60,7 @@
 
 <script setup lang="ts">
 const message = "facture"
-const props = defineProps(['commandePatient', 'num_facture'])
+const props = defineProps(['commandePatient', 'num_facture', 'username'])
 const emit = defineEmits(['factureActive'])
 
 console.log("Facturier INITIALIZED: ", props)
