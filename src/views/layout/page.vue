@@ -127,7 +127,7 @@
                         <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
                             <factu-rier @facture-active="closeFacture" 
                             :commande-patient="[panier_client, total_panier_client]"
-                            num_facture="3"></factu-rier>
+                            :num_facture="numero_facture"></factu-rier>
                         </div>
                     </teleport>
                 </div>
