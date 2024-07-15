@@ -118,6 +118,9 @@
                         <ion-icon :src="exitOutline" @click="logout" size="larger"></ion-icon>
                     </div>
                     <div class="menuHau sync"  style="">
+                        mon nom
+                    </div>
+                    <div class="menuHau sync"  style="">
                         <ion-icon :src="syncOutline" @click="askIndex"></ion-icon>
                     </div>
                     <div class="menuHau magnetic"  style="">
@@ -128,7 +131,7 @@
                             <factu-rier @facture-active="closeFacture" 
                             :commande-patient="[panier_client, total_panier_client]"
                             :num_facture="numero_facture"
-                            :username="getUsername"></factu-rier>
+                            :username="getUsername()"></factu-rier>
                         </div>
                     </teleport>
                 </div>
@@ -623,6 +626,30 @@ provide('need_clear', clear_search) // in search component
     left: 86vw; 
     top: 89vh; 
     top: -4.9vh;
+    font-size: xx-large; 
+    color: black;
+}
+.user{
+    background-color: transparent; 
+    height: 25px; 
+    width: 25px; 
+    display: flex; 
+    position: absolute;
+    /* position: relative; */
+    left: 58vw; 
+    top: 89vh; 
+    /* top: 87vh; */
+    font-size: xx-large; 
+    color: black;
+}
+.sync{
+    background-color: transparent; 
+    height: 25px; 
+    width: 25px; 
+    display: flex; 
+    position: absolute;
+    left: 62vw; 
+    top: 89vh; 
     font-size: xx-large; 
     color: black;
 }
