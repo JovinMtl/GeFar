@@ -186,10 +186,13 @@ const umuti_single = ref(false)
 const show_facture = ref(false)
 const clear_search = ref(0)
 const listImiti_update = ref(0)
+const numero_facture = ref(0)
 
-const url_reportIndex = "api/rep/giveLastIndex/"
-const url_remote = "//muteule.pythonanywhere.com"
-const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_remote)
+// const url_reportIndex = "api/rep/giveLastIndex/"
+// const url_remote = "//muteule.pythonanywhere.com"
+// const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_remote)
+const url_syncFromLocal = "api/rep/syncFromLocal/"
+const [last_indexes, askIndex] = useKuvoma(url_syncFromLocal)
 
 const url_sell = "/api/out/sell/"
 const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
@@ -557,6 +560,7 @@ watch(sell_report, value=>{
     // Do something when the status response is OK
     console.log("Maintenant nous pouvons VOIR: facturier")
     show_facture.value = true
+    numero_facture.value = value
     console.log("Le facturier: ", show_facture.value)
 })
 provide('needUpdate_list', need_to_updade) // in list-imiti component
