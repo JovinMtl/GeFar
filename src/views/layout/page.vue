@@ -118,7 +118,7 @@
                         <ion-icon :src="exitOutline" @click="logout" size="larger"></ion-icon>
                     </div>
                     <div class="menuHau user"  style="">
-                        mon nom
+                        {{ getUsername() }}
                     </div>
                     <div class="menuHau sync"  style="">
                         <ion-icon :src="syncOutline" @click="askIndex"></ion-icon>
