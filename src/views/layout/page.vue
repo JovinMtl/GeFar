@@ -196,7 +196,7 @@ const numero_facture = ref(0)
 const url_syncFromLocal = "api/rep/syncFromLocal/"
 const [last_indexes, askIndex] = useKuvoma(url_syncFromLocal)
 
-const url_sell = "/api/out/sell/"
+const url_sell = "api/out/sell/"
 const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 const { getAccessToken,setUsername,
         setAccessToken, setRefreshToken } = useUserStore()
@@ -562,7 +562,7 @@ watch(sell_report, value=>{
     // Do something when the status response is OK
     console.log("Maintenant nous pouvons VOIR: facturier")
     show_facture.value = true
-    numero_facture.value = value
+    numero_facture.value = value.sold
     console.log("Le facturier: ", show_facture.value)
 })
 provide('needUpdate_list', need_to_updade) // in list-imiti component
