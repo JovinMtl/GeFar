@@ -32,6 +32,7 @@ export function useKuvoma(prefix, remote=''){
             
             if (response.ok){
                 data.value = await response.json()
+                data.value = data.value.data
             }
         } catch (value){
             console.log("somehting may not be well because :", value)
