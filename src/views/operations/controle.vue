@@ -250,8 +250,8 @@ watch(actual_vente, (value)=>{
 })
 watch(actual_imiti, (value)=>{
     if (value){
-        actual_obj.value = value
-        actual_imitiS.value = value
+        actual_obj.value = value.data
+        actual_imitiS.value = value.data
         actual_opt.value = ['name_umuti','description_umuti', 
         'quantite_restant','price_out', 'date_last_vente',]
         actual_type.value = ['text','text','text','text','date']
