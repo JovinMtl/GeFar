@@ -1,7 +1,10 @@
 node_modules
 tmp
+dist
 src/assets
 src/components
 src/plugins
 src/views/HomeView.vue
 src/theme/pattern.css
+src/store/sync.js
+vue.config.js
