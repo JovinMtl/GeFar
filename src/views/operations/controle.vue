@@ -27,6 +27,9 @@
                 
                 <input type="button" value="Filter" @click="applyFilter"/>
             </div>
+            <div class="inTitle" style="font-weight: 600;">
+                {{ title_operation }}
+            </div>
             
         </div>
         <div class="controBody" style="background-color: yellowgreen; height: 92%; width: 100%;">
@@ -190,6 +193,7 @@ import {
 import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
 
 const emit = defineEmits(['turnControl',])
+const title_operation = ref('Opérations')
 
 const [ isAdmin, askPriviledge] = useAskPriviledge()
 askPriviledge()
