@@ -232,6 +232,7 @@ watch(actual_suggest, (value)=>{
         actual_opt.value = ['name_umuti', 
         'quantite_restant','price_out', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
+        title_operation.value = "Suggestion"
     }
 })
 watch(actual_entree, (value)=>{
@@ -241,6 +242,7 @@ watch(actual_entree, (value)=>{
         actual_opt.value = ['name_umuti', 
         'quantite_restant','price_out', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
+        title_operation.value = "Achats"
     }
 })
 watch(actual_vente, (value)=>{
@@ -250,6 +252,7 @@ watch(actual_vente, (value)=>{
         actual_opt.value = ['name_umuti', 
         'quantity','price_out', 'date_operation',]
         actual_type.value = ['text','text','text','date']
+        title_operation.value = "Ventes"
     }
 })
 watch(actual_imiti, (value)=>{
@@ -259,6 +262,7 @@ watch(actual_imiti, (value)=>{
         actual_opt.value = ['name_umuti','description_umuti', 
         'quantite_restant','price_out', 'date_last_vente',]
         actual_type.value = ['text','text','text','text','date']
+        title_operation.value = "Disponibles"
     }
 })
 watch(selected_field, (value)=>{
