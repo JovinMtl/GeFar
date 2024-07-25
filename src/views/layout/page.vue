@@ -198,12 +198,13 @@ const last_umutiEntree = ref(0)
 const last_umutiSold = ref(0)
 
 const url_reportIndex = "api/rep/giveLastIndex/"
-const getForSync_ulr = "api/rep/getForSync/" 
 // const url_remote = "//muteule.pythonanywhere.com"
 const url_remote = "//127.0.0.1:8002"
 const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_remote)
 const url_syncFromLocal = "api/rep/syncFromLocal/"
 //const [last_indexes, askIndex] = useKuvoma(url_syncFromLocal)
+const getForSync_url = "api/rep/getForSync/" 
+const [bothData, askInstances] = useKuvoma(getForSync_url) // on local server.
 //
 const url_sell = "api/out/sell/"
 const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
@@ -552,8 +553,6 @@ const getUmuti = (umuti) => {
 
 watch(last_umutiSold, (value)=>{
     console.log("Last index gets : ", value)
-
-    const [last_indexes, askIndex] = useKuvoma(url_syncFromLocal) // on local
 })
 watch(last_indexes, (value)=>{
     console.log("Last index gets : ", value)
