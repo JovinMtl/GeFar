@@ -200,12 +200,12 @@ const last_umutiSold = ref(0)
 const url_reportIndex = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
 const url_local = "//127.0.0.1:8002"
+const url_askInstances = "api/rep/getForSync/"
 const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_local)
+const [bothData, askInstances] = useKurungika(last_indexes ,url_askInstances) // on local server.
+
 const url_syncFromLocal = "api/rep/syncFromLocal/"
-//const [last_indexes, askIndex] = useKuvoma(url_syncFromLocal)
-const getForSync_url = "api/rep/getForSync/"
-const [bothData, askInstances] = useKuvoma(getForSync_url, url_local) // on local server.
-//
+const [rep_update, kurungika] = useKurungika(bothData, url_syncFromLocal)
 
 
 
@@ -556,6 +556,8 @@ const getUmuti = (umuti) => {
 
 watch(bothData, (value)=>{
     // should now send them to the remote server.
+    kurungika()
+
 })
 watch(last_umutiSold, (value)=>{
     console.log("Last index gets : ", value)
