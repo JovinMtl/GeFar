@@ -194,12 +194,16 @@ const clear_search = ref(0)
 const listImiti_update = ref(0)
 const numero_facture = ref(0)
 
-// const url_reportIndex = "api/rep/giveLastIndex/"
-// const url_remote = "//muteule.pythonanywhere.com"
-// const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_remote)
-const url_syncFromLocal = "api/rep/syncFromLocal/"
-const [last_indexes, askIndex] = useKuvoma(url_syncFromLocal)
+const last_umutiEntree = ref(0)
+const last_umutiSold = ref(0)
 
+const url_reportIndex = "api/rep/giveLastIndex/"
+// const url_remote = "//muteule.pythonanywhere.com"
+const url_remote = "//127.0.0.1:8002"
+const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_remote)
+const url_syncFromLocal = "api/rep/syncFromLocal/"
+//const [last_indexes, askIndex] = useKuvoma(url_syncFromLocal)
+//
 const url_sell = "api/out/sell/"
 const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 const { getAccessToken, getUsername, setUsername,
@@ -250,7 +254,6 @@ const alertUmutiNew = async (value)=>{
     // let response = await useNoteUmuti(value)s
 
 }
-
 const closeFacture = ()=>{
     show_facture.value = false
     // Reinitializing panier_client and panier_api to start a new commande.
@@ -268,7 +271,6 @@ const requestUpload = ()=>{
 const closeControle = ()=>{
     controleStatus.value = false
 }
-
 const compileImitiSet = async ()=>{
     const endpoint = '/api/in/compileImitiSet/'
 
@@ -342,7 +344,6 @@ const getAllImiti = (imiti)=>{
     console.log("All imiti are emitted : ", imiti)
     
 }
-
 const closeApprov = ()=>{
     approvStatus.value = false
 }
@@ -354,7 +355,6 @@ const actualOption = (value)=>{
         controleStatus.value = true
     }
 }
-
 const showChange = (event)=>{
     // This function takes the number which is in input and
     // makes it the actual value to be first considered when put to the panier
@@ -369,7 +369,6 @@ const showChange = (event)=>{
     }
     
 }
-
 const changeQte = (value)=>{
     // this function is to ignore
     // console.log("You want to change : ", value.target.getAttribute('id'))
@@ -401,7 +400,6 @@ const decrementQte = (value)=>{
     }
     
 }
-
 const number_To_string = (value=10000) => {
     // This function is designed to format a number as a string
     // in a format of separation by 3digits
@@ -421,7 +419,6 @@ const number_To_string = (value=10000) => {
     converted = converted.replace('.', '').split('').reverse().toString().replaceAll(',','')
     return converted
 }
-
 const removeUmuti = (obj) => {
     // This function handles the removal of umuti in panier.
     const code_s = obj.target.getAttribute('id')
@@ -430,7 +427,6 @@ const removeUmuti = (obj) => {
     panier_api.value.splice(code,1)
     total_panier_client.value = update_total_client()
 }
-
 const somme_to_panier = () => {
     // This functions evaluates the sum of quantity chosen in different lots on a same umuti.
     let somme = 0
@@ -439,7 +435,6 @@ const somme_to_panier = () => {
     })
     return somme
 }
-
 const lot_array = ()=> {
     // This functions builds and array which differentiates the lots have been selected on a same umuti.
     let lote = []
@@ -461,7 +456,6 @@ const lot_array = ()=> {
     }
     
 }
-
 const check_panier = (umuti_name) => {
     // This function checks the existence of umuti on panier in order not to duplicate it.
     let panier_length = (panier_client.value).length
@@ -475,7 +469,6 @@ const check_panier = (umuti_name) => {
     }
     return 1
 }
-
 const update_total_client = () => {
     // This function updates the sum of the imiti in the panier
     let somme = 0
@@ -486,7 +479,6 @@ const update_total_client = () => {
     let somme_formatted = number_To_string(somme) //formatting by three digits
     return somme_formatted
 }
-
 const somme_lote = ()=>{
     let somme_qte = 0
     activeLot.value.forEach((element)=>{
@@ -498,7 +490,6 @@ const somme_lote = ()=>{
         return somme_qte
     }
 }
-
 const moveToPanier = () => {
     // this function manages to move umuti from selected into panier
     let jove = check_panier(selectedUmuti.value.name_umuti)
@@ -536,7 +527,6 @@ const moveToPanier = () => {
     }
     
 }
-
 const getUmuti = (umuti) => {
     // THis one handles the umuti when it was emitted from list-imiti component.
     console.log("Gotten:", umuti, 'and:', selectedUmuti.value)
@@ -559,8 +549,13 @@ const getUmuti = (umuti) => {
     
 }
 
+watch(last_umutiEntree, (value)=>{
+    console.log("Last index gets : ", value)
+})
 watch(last_indexes, (value)=>{
     console.log("Last index gets : ", value)
+    last_umutiEntree.value = value.last_umutiEntree
+    last_umutiSold.value = value.last_umutiSold
 })
 watch(sell_report, value=>{
     // Do something when the status response is OK
