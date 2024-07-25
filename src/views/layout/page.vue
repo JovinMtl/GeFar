@@ -557,7 +557,8 @@ const getUmuti = (umuti) => {
 watch(bothData, (value)=>{
     // should now send them to the remote server.
     kurungika()
-
+    last_umutiEntree.value = 0
+    last_umutiSold.value = 0
 })
 watch(last_umutiSold, (value)=>{
     console.log("Last index gets : ", value)
