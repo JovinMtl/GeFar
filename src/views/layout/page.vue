@@ -549,8 +549,9 @@ const getUmuti = (umuti) => {
     
 }
 
-watch(last_umutiEntree, (value)=>{
+watch(last_umutiSold, (value)=>{
     console.log("Last index gets : ", value)
+    const [last_indexes, askIndex] = useKuvoma(url_syncFromLocal)
 })
 watch(last_indexes, (value)=>{
     console.log("Last index gets : ", value)
