@@ -558,11 +558,13 @@ const getUmuti = (umuti) => {
 watch(bothData, (value)=>{
     // should now send them to the remote server.
     kurungika()
+    server_process.value = false
 })
 watch(should_sync, (value)=>{
     askInstances()
 })
 watch(last_indexes, (value)=>{
+    server_process.value = true
     last_umutiEntree.value = value.last_umutiEntree
     last_umutiSold.value = value.last_umutiSold
     should_sync.value += 1
