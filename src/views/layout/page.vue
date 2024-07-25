@@ -196,6 +196,7 @@ const numero_facture = ref(0)
 
 const last_umutiEntree = ref(0)
 const last_umutiSold = ref(0)
+const should_sync = ref(0)
 
 const url_reportIndex = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
@@ -557,17 +558,14 @@ const getUmuti = (umuti) => {
 watch(bothData, (value)=>{
     // should now send them to the remote server.
     kurungika()
-    last_umutiEntree.value = 0
-    last_umutiSold.value = 0
 })
-watch(last_umutiSold, (value)=>{
-    console.log("Last index gets : ", value)
+watch(should_sync, (value)=>{
     askInstances()
 })
 watch(last_indexes, (value)=>{
-    console.log("Last index gets : ", value)
     last_umutiEntree.value = value.last_umutiEntree
     last_umutiSold.value = value.last_umutiSold
+    should_sync.value += 1
 })
 watch(sell_report, value=>{
     // Do something when the status response is OK
