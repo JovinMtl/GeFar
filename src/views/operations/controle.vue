@@ -61,7 +61,7 @@
                         <div class="item violet" @click="getLowStock"></div>
                         <div class="item yellow" @click="getEndStock"></div>
                         <div class="item red" @click="getOutDate"></div>
-                        <div class="item black"></div>
+                        <div class="item black" @click="getAllFine"></div>
                     </div>
                 </div>
             </div>
@@ -214,6 +214,9 @@ watch(isAdmin, (value)=>{
     console.log("THe user finally got: ", value)
 })
 
+const allFine_url = 'api/rep/getAllFine/'
+const [allFine, getAllFine] = useKuvoma(allFine_url)
+
 const outDate_url = 'api/rep/getOutDate/'
 const [outDate, getOutDate] = useKuvoma(outDate_url)
 
@@ -245,7 +248,15 @@ const actual_imitiS = ref([]) // Contains the content to be displayed.
 const totaux = ref([0,0]) // To display totals on the footer.
 
 let [date_debut, date_fin] = [null, null]
-
+watch(allFine, (value)=>{
+    if (value){
+        actual_obj.value = value
+        actual_imitiS.value = value
+        actual_opt.value = ['name_umuti', 
+        'quantite_restant','price_out', 'date_winjiriyeko',]
+        actual_type.value = ['text','text','text','date']
+        title_operation.value = "Expiré"
+    }})
 watch(outDate, (value)=>{
     if (value){
         actual_obj.value = value
