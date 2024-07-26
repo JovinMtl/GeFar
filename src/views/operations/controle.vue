@@ -240,6 +240,17 @@ const totaux = ref([0,0]) // To display totals on the footer.
 
 let [date_debut, date_fin] = [null, null]
 
+watch(lowStock, (value)=>{
+    if (value){
+        actual_obj.value = value
+        actual_imitiS.value = value
+        actual_opt.value = ['name_umuti','description_umuti', 
+        'quantite_restant','price_out', 'date_last_vente',]
+        actual_type.value = ['text','text','text','date']
+        title_operation.value = "Low Stock"
+    }
+
+})
 watch(actual_suggest, (value)=>{
     if (value){
         actual_obj.value = value
