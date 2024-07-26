@@ -56,7 +56,13 @@
 
                 <div class="circlesMenu" style="text-align: center; 
                 justify-content: center; align-items: center; padding-top: 15%">
-                    <cir-cle></cir-cle>
+                    <div class="mainContainerCircle">
+                        <!-- Here are the circles -->
+                        <div class="item black"></div>
+                        <div class="item violet"></div>
+                        <div class="item yellow"></div>
+                        <div class="item red"></div>
+                    </div>
                 </div>
             </div>
             <div class="controlContent" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: transparent; 
@@ -313,6 +319,42 @@ const closeControle = ()=>{
 </script>
 
 <style scoped>
+.mainContainerCircle{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* background: #333; */
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-auto-rows: 20px;
+    justify-items: center;
+}
+.item{
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+.item:active{
+    background-color: transparent;
+    scale: 1.4;
+}
+.black{
+    background-color: black;
+    border: 2px solid black;
+}
+.yellow{
+    background-color: rgb(117, 9, 206);
+    box-shadow: 0 0 10px greenyellow;
+    border: 2px solid rgb(117, 9, 206);
+}
+.violet{
+    background-color: rgb(12, 124, 216);
+    border: 2px solid rgb(12, 124, 216);
+}
+.red{
+    background-color: rgb(206, 9, 35);
+    border: 2px solid rgb(206, 9, 35);
+}
 ::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: 15px;
