@@ -53,6 +53,10 @@
                     <ion-icon :src="thermometer" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
                     <span class="textMenu">Suggérer</span>
                 </div>
+
+                <div class="logoMenu">
+                    circle
+                </div>
             </div>
             <div class="controlContent" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: transparent; 
                 float: right; color: black;">
@@ -191,6 +195,7 @@ import {
     calendarClearOutline,
     } from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
+import cirCle from './circle.vue'
 
 const emit = defineEmits(['turnControl',])
 const title_operation = ref('Opérations')
