@@ -58,10 +58,10 @@
                 justify-content: center; align-items: center; padding-top: 15%">
                     <div class="mainContainerCircle">
                         <!-- Here are the circles -->
-                        <div class="item black"></div>
-                        <div class="item violet"></div>
+                        <div class="item violet" @click="getLowStock"></div>
                         <div class="item yellow"></div>
                         <div class="item red"></div>
+                        <div class="item black"></div>
                     </div>
                 </div>
             </div>
@@ -213,6 +213,9 @@ console.log("THe User is admin ? ", isAdmin.value)
 watch(isAdmin, (value)=>{
     console.log("THe user finally got: ", value)
 })
+
+const lowStock_url = 'api/rep/getLowStock/'
+const [lowStock, getLowStock] = useKuvoma(lowStock_url)
 
 const dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
