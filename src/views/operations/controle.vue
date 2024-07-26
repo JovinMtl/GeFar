@@ -54,7 +54,8 @@
                     <span class="textMenu">Suggérer</span>
                 </div>
 
-                <div class="logoMenu">
+                <div class="circlesMenu" style="text-align: center; 
+                justify-content: center; align-items: center; padding-top: 15%">
                     <cir-cle></cir-cle>
                 </div>
             </div>
@@ -352,6 +353,13 @@ const closeControle = ()=>{
     width: 20%; 
     height: 100%; 
     border:2px solid white; 
+}
+.circlesMenu{
+    display: block;
+    background-color: transparent; 
+    width: 100%;height: 20%; 
+    padding: 5px 5px; 
+    border-bottom: 2px solid white;
 }
 .logoMenu{
     display: block;
