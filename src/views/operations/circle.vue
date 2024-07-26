@@ -33,4 +33,7 @@
 .black{
     background-color: black;
 }
+.yellow{
+    background-color: yellow;
+}
 </style>
