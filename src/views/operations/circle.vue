@@ -2,8 +2,8 @@
     <div class="mainContainerCircle">
         <!-- Here are circle -->
          <div class="item black"></div>
-         <div class="item yellow"></div>
          <div class="item violet"></div>
+         <div class="item yellow"></div>
          <div class="item red"></div>
     </div>
 </template>
@@ -28,18 +28,19 @@
     border-radius: 15px;
 }
 .item:active{
-    scale: 1.3;
+    scale: 1.4;
 }
 .black{
     background-color: black;
 }
 .yellow{
-    background-color: yellow;
+    background-color: rgb(117, 9, 206);
+    box-shadow: 0 0 10px greenyellow;
 }
 .violet{
-    background-color: blueviolet;
+    background-color: rgb(12, 124, 216);
 }
 .red{
-    background-color: red;
+    background-color: rgb(206, 9, 35);
 }
 </style>
