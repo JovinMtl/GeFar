@@ -60,7 +60,7 @@
                         <!-- Here are the circles -->
                         <div class="item violet" @click="getLowStock"></div>
                         <div class="item yellow" @click="getEndStock"></div>
-                        <div class="item red"></div>
+                        <div class="item red" @click="getOutDate"></div>
                         <div class="item black"></div>
                     </div>
                 </div>
@@ -214,6 +214,9 @@ watch(isAdmin, (value)=>{
     console.log("THe user finally got: ", value)
 })
 
+const outDate_url = 'api/rep/getOutDate/'
+const [outDate, getOutDate] = useKuvoma(outDate_url)
+
 const endStock_url = 'api/rep/getEndStock/'
 const [endStock, getEndStock] = useKuvoma(endStock_url)
 
@@ -243,6 +246,15 @@ const totaux = ref([0,0]) // To display totals on the footer.
 
 let [date_debut, date_fin] = [null, null]
 
+watch(outDate, (value)=>{
+    if (value){
+        actual_obj.value = value
+        actual_imitiS.value = value
+        actual_opt.value = ['name_umuti', 
+        'quantite_restant','price_out', 'date_winjiriyeko',]
+        actual_type.value = ['text','text','text','date']
+        title_operation.value = "Expiré"
+    }})
 watch(endStock, (value)=>{
     if (value){
         actual_obj.value = value
@@ -250,7 +262,7 @@ watch(endStock, (value)=>{
         actual_opt.value = ['name_umuti','description_umuti', 
         'quantite_restant','price_out', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
-        title_operation.value = "Low Stock"
+        title_operation.value = "Zero Stock"
     }})
 watch(lowStock, (value)=>{
     if (value){
