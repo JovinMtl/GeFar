@@ -28,19 +28,24 @@
     border-radius: 15px;
 }
 .item:active{
+    background-color: transparent;
     scale: 1.4;
 }
 .black{
     background-color: black;
+    border: 2px solid black;
 }
 .yellow{
     background-color: rgb(117, 9, 206);
     box-shadow: 0 0 10px greenyellow;
+    border: 2px solid rgb(117, 9, 206);
 }
 .violet{
     background-color: rgb(12, 124, 216);
+    border: 2px solid rgb(12, 124, 216);
 }
 .red{
     background-color: rgb(206, 9, 35);
+    border: 2px solid rgb(206, 9, 35);
 }
 </style>
