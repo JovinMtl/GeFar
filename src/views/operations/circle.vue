@@ -39,4 +39,7 @@
 .violet{
     background-color: blueviolet;
 }
+.red{
+    background-color: red;
+}
 </style>
