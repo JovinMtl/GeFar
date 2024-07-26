@@ -249,7 +249,10 @@ const totaux = ref([0,0]) // To display totals on the footer.
 
 let [date_debut, date_fin] = [null, null]
 watch(allFine, (value)=>{
-    if (value){
+    if(value.data == 'empty'){
+        console.log("It is empty")
+    }
+    else{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['name_umuti', 
@@ -258,7 +261,10 @@ watch(allFine, (value)=>{
         title_operation.value = "Expiré"
     }})
 watch(outDate, (value)=>{
-    if (value){
+    if(value.data == 'empty'){
+        console.log("It is empty")
+    }
+    else{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['name_umuti', 
@@ -267,7 +273,10 @@ watch(outDate, (value)=>{
         title_operation.value = "Expiré"
     }})
 watch(endStock, (value)=>{
-    if (value){
+    if(value.data == 'empty'){
+        console.log("It is empty")
+    }
+    else{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['name_umuti','description_umuti', 
@@ -276,7 +285,10 @@ watch(endStock, (value)=>{
         title_operation.value = "Zero Stock"
     }})
 watch(lowStock, (value)=>{
-    if (value){
+    if(value.data == 'empty'){
+        console.log("It is empty")
+    }
+    else{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['name_umuti','description_umuti', 
