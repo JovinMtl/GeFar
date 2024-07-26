@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="logoMenu">
-                    circle
+                    <cir-cle></cir-cle>
                 </div>
             </div>
             <div class="controlContent" style="display:block ; width: 80%; height: 100%; border:2px solid white; background-color: transparent; 
