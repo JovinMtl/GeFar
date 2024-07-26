@@ -27,7 +27,7 @@
                 
                 <input type="button" value="Filter" @click="applyFilter"/>
             </div>
-            <div class="inTitle" style="font-weight: 600;">
+            <div class="inTitle" style="font-weight: 600; color: green">
                 {{ title_operation }}
             </div>
             
@@ -251,6 +251,7 @@ let [date_debut, date_fin] = [null, null]
 watch(allFine, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
+        title_operation.value = "Pas Bon"
     }
     else{
         actual_obj.value = value
@@ -258,11 +259,12 @@ watch(allFine, (value)=>{
         actual_opt.value = ['name_umuti', 
         'quantite_restant','price_out', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
-        title_operation.value = "Expiré"
+        title_operation.value = "Bon"
     }})
 watch(outDate, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
+        title_operation.value = "Zéro Expiré"
     }
     else{
         actual_obj.value = value
@@ -275,6 +277,7 @@ watch(outDate, (value)=>{
 watch(endStock, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
+        title_operation.value = "Pas zéro Stock"
     }
     else{
         actual_obj.value = value
@@ -282,11 +285,12 @@ watch(endStock, (value)=>{
         actual_opt.value = ['name_umuti','description_umuti', 
         'quantite_restant','price_out', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
-        title_operation.value = "Zero Stock"
+        title_operation.value = "Zéro Stock"
     }})
 watch(lowStock, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
+        title_operation.value = "Pas low Stock"
     }
     else{
         actual_obj.value = value
