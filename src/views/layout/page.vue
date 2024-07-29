@@ -51,7 +51,7 @@
                     <!-- Need to display the number of lots -->
                     <div v-if="activeLot.length" style="text-align: right;">{{ activeLot.length }}</div>
                     <div class="umutiLot">
-                        <div v-for="(lot, index) in activeLot" class="lote">
+                        <div v-for="(lot, index) in activeLot" class="lote" :key="index">
                             <div class="head" style="padding-top: 3px; font-size: .88rem">
                                 {{ lot.qte }} <br>
                                 {{ (String(lot.date)).slice(4,8) }} {{ (String(lot.date)).slice(11,16) }}
@@ -576,24 +576,21 @@ const strDate = (lot:Lot[]):Lot[]=>{
 }
 const getUmuti = (umuti) => {
     // THis one handles the umuti when it was emitted from list-imiti component.
+    let temp_lot:Lot[] = []
     if(selectedUmuti.value == undefined){
-        console.log("It is not the same: ", selectedUmuti.value, 'and', umuti.code_umuti)
         selectedUmuti.value = umuti
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
-        activeLot.value = JSON.parse(lots_json) //setting the activeLot
-        strDate(activeLot.value)
+        temp_lot = JSON.parse(lots_json) //setting the activeLot
+        activeLot.value = strDate(temp_lot)
         need_to_updade.value = false  // to command not to provide an update from list-imiti
     } else if(selectedUmuti.value.code_umuti === umuti.code_umuti){
-        console.log("It is the same: ", selectedUmuti.value, 'and', umuti)
         selectedUmuti.value = undefined
         activeLot.value = []
     } else {
         selectedUmuti.value = umuti
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
-        activeLot.value = JSON.parse(lots_json) //setting the activeLot
-        console.log("ActiveLog : ", activeLot.value)
-        strDate(activeLot.value)
-        console.log("ActiveLot after : ", activeLot.value)
+        temp_lot = JSON.parse(lots_json) //setting the activeLot
+        activeLot.value = strDate(temp_lot)
         need_to_updade.value = false 
     }
     
