@@ -130,7 +130,7 @@
                         <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
                     </div>
                     <teleport to="body">
-                        <div v-if="show_popup" class="facturierContainer" @click="closeFacture">
+                        <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
                             <factu-rier @facture-active="closeFacture" 
                             :commande-patient="[panier_client, total_panier_client]"
                             :num_facture="numero_facture"
@@ -138,7 +138,7 @@
                         </div>
                     </teleport>
                     <teleport to="body">
-                        <div class="notif" v-if="show_popup">
+                        <div class="notif" v-if="notifStatus">
                             <p>{{ message }}</p>
                         </div>
                     </teleport>
@@ -202,10 +202,11 @@ const all_imiti:Ref<Umuti[]> = ref([])
 const umuti_new: Ref<boolean> = ref(false)
 
 const server_process: Ref<boolean> = ref(false)
+const notifStatus: Ref<boolean> = ref(false)
 
 const query_search = reactive({})
 const umuti_single: Ref<boolean> = ref(false)
-const show_popup: Ref<boolean> = ref(false)
+const show_facture: Ref<boolean> = ref(false)
 const clear_search: Ref<number> = ref(0)
 const listImiti_update: Ref<number> = ref(0)
 const numero_facture: Ref<number> = ref(0)
@@ -278,7 +279,7 @@ const alertUmutiNew = async (value)=>{
 
 }
 const closeFacture = ()=>{
-    show_popup.value = false
+    show_facture.value = false
     // Reinitializing panier_client and panier_api to start a new commande.
     console.log("Calling closeFacture.")
     panier_client.value = []
@@ -544,10 +545,10 @@ const moveToPanier = ():number => {
         }
 
         if(!obj_Client.qte){
-            show_popup.value = true
+            notifStatus.value = true
             message.value = "Ce medicament est perimé. Veuillez le mettre a coté."
             setTimeout(()=>{
-                show_popup.value = false
+                notifStatus.value = false
             }, 1500)
             return 0
         }
@@ -613,9 +614,9 @@ watch(last_indexes, (value)=>{
 watch(sell_report, value=>{
     // Do something when the status response is OK
     console.log("Maintenant nous pouvons VOIR: facturier")
-    show_popup.value = true
+    show_facture.value = true
     numero_facture.value = value.sold
-    console.log("Le facturier: ", show_popup.value)
+    console.log("Le facturier: ", show_facture.value)
 })
 provide('needUpdate_list', need_to_updade) // in list-imiti component
 provide('needSearch', query_search) // in list-imiti component
