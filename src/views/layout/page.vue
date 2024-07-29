@@ -530,7 +530,7 @@ const somme_lote = ():number=>{
 }
 const moveToPanier = ():number => {
     // this function manages to move umuti from selected into panier
-    let jove = check_panier(selectedUmuti.value.name_umuti)
+    let jove:string = check_panier(selectedUmuti.value.name_umuti)
     if(jove){
         let obj_Client = {
             'name_umuti' : selectedUmuti.value.name_umuti,
@@ -548,7 +548,7 @@ const moveToPanier = ():number => {
             message.value = "Ce medicament est perimé. Veuillez le mettre a coté."
             setTimeout(()=>{
                 show_popup.value = false
-            }, 1000)
+            }, 1500)
             return 0
         }
         panier_client.value.push(obj_Client)
@@ -566,24 +566,22 @@ const moveToPanier = ():number => {
     }
     return 1  
 }
-const strDate = (lot:Lot[]):any=>{
+const strDate = (lot:Lot[]):Lot[]=>{
     let lot_length:number = lot.length
     for (let i=0; i<lot_length; i++){
         let converted_date = new Date(lot[i].date)
         lot[i].date = converted_date
     }
+    return lot
 }
 const getUmuti = (umuti) => {
     // THis one handles the umuti when it was emitted from list-imiti component.
-    console.log("Gotten:", umuti, 'and:', selectedUmuti.value)
     if(selectedUmuti.value == undefined){
         console.log("It is not the same: ", selectedUmuti.value, 'and', umuti.code_umuti)
         selectedUmuti.value = umuti
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         activeLot.value = JSON.parse(lots_json) //setting the activeLot
-        console.log("ActiveLot : ", activeLot.value)
         strDate(activeLot.value)
-        console.log("ActiveLot after : ", activeLot.value)
         need_to_updade.value = false  // to command not to provide an update from list-imiti
     } else if(selectedUmuti.value.code_umuti === umuti.code_umuti){
         console.log("It is the same: ", selectedUmuti.value, 'and', umuti)
