@@ -496,9 +496,13 @@ const update_total_client = () => {
     return somme_formatted
 }
 const somme_lote = ()=>{
-    let somme_qte = 0
+    let somme_qte:number = 0
+    let date_exp:number = 0
     activeLot.value.forEach((element)=>{
         somme_qte += Number(element.to_panier)
+        if(element.date <= today){
+            date_exp += 1
+        }
     })
     if(somme_qte == 0){
         return 1
