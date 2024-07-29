@@ -199,19 +199,19 @@ const last_umutiEntree: Ref<number> = ref(0)
 const last_umutiSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
 
-const url_reportIndex = "api/rep/giveLastIndex/"
+const url_reportIndex:string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
-const url_local = "//127.0.0.1:8002"
-const url_askInstances = "api/rep/getForSync/"
+const url_local:string = "//127.0.0.1:8002"
+const url_askInstances:string = "api/rep/getForSync/"
 const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_local)
 const [bothData, askInstances] = useKurungika(last_indexes ,url_askInstances) // on local server.
 
-const url_syncFromLocal = "api/rep/syncFromLocal/"
+const url_syncFromLocal:string = "api/rep/syncFromLocal/"
 const [rep_update, kurungika] = useKurungika(bothData, url_syncFromLocal)
 
 
 
-const url_sell = "api/out/sell/"
+const url_sell:string = "api/out/sell/"
 const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 const { getAccessToken, getUsername, setUsername,
         setAccessToken, setRefreshToken } = useUserStore()
@@ -542,6 +542,7 @@ const getUmuti = (umuti) => {
         selectedUmuti.value = umuti
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         activeLot.value = JSON.parse(lots_json) //setting the activeLot
+        console.log("ActiveLot contain: ", activeLot.value)
         need_to_updade.value = false  // to command not to provide an update from list-imiti
     } else if(selectedUmuti.value.code_umuti === umuti.code_umuti){
         console.log("It is the same: ", selectedUmuti.value, 'and', umuti)
@@ -551,6 +552,7 @@ const getUmuti = (umuti) => {
         selectedUmuti.value = umuti
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         activeLot.value = JSON.parse(lots_json) //setting the activeLot
+        console.log("ActiveLot contain: ", activeLot.value)
         need_to_updade.value = false 
     }
     
