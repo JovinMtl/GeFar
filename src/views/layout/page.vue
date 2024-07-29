@@ -179,7 +179,7 @@ import { Lot } from './types';
 
 const router = useRouter()
 
-const today = new Date
+const today:Date = new Date
 
 const selectedUmuti:Umuti = reactive({})
 const panier_client:Ref<PanierClient[]> = ref([])
@@ -451,24 +451,31 @@ const somme_to_panier = () => {
     })
     return somme
 }
-const lot_array = ()=> {
+const lot_array = ():PanierAPI[]=> {
     // This functions builds and array which differentiates the lots have been selected on a same umuti.
-    let lote = []
-    let value = 0
+    let lote:PanierAPI[] = []
+    let value:number = 0
+    let right_date:number = 0
     activeLot.value.forEach((element)=>{
-        let obj = {
+        if(element.date > today){
+            let obj = {
             'code_operation' : element.code_operation,
             'qte' : element.to_panier,
+            }
+            value += element.to_panier
+            lote.push(obj)
+            right_date += 1
         }
-        value += element.to_panier
-        lote.push(obj)
+        
     })
 
     if(value){
         return lote
-    } else {
+    } else if(right_date) {
         lote[0].qte = 1
         return lote
+    } else{
+        lote
     }
     
 }
