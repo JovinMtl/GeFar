@@ -54,7 +54,7 @@
                         <div v-for="(lot, index) in activeLot" class="lote">
                             <div class="head" style="padding-top: 3px; font-size: .88rem">
                                 {{ lot.qte }} <br>
-                                {{ (String(lot.date)).slice(5,8) }}_{{ (String(lot.date)).slice(0,4) }}
+                                {{ (String(lot.date)).slice(4,8) }} {{ (String(lot.date)).slice(11,16) }}
                             </div>
                             <div class="sub" v-if="today < lot.date">
                                 <ion-icon :src="removeCircleOutline" @click="decrementQte" style="font-size: large;"></ion-icon>
