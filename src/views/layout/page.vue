@@ -40,23 +40,23 @@
                     </div>
                 </div>
                 
-                <div v-if="selectedUmuti" :class="selectedUmuti ? 'menuLeft': ''">
+                <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
                     <div class="infoUmuti"></div>
-                    <div class="infoUmuti umutiTitle">{{ (selectedUmuti.name_umuti).slice(0,14) }}</div>
-                    <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.code_umuti }}</div>
-                    <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.type_umuti }}</div>
-                    <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.description_umuti }}</div>
-                    <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.quantite_restant }}</div>
-                    <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.price_out }}</div>
+                    <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.name_umuti).slice(0,14) }}</div>
+                    <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
+                    <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_umuti }}</div>
+                    <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
+                    <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
+                    <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.price_out }}</div>
                     <!-- Need to display the number of lots -->
                     <div v-if="activeLot.length" style="text-align: right;">{{ activeLot.length }}</div>
                     <div class="umutiLot">
-                        <div v-for="(lot, index) in activeLot" class="lote" :key="index">
+                        <div v-for="(lot, index) in activeLot" class="lote">
                             <div class="head" style="padding-top: 3px; font-size: .88rem">
                                 {{ lot.qte }} <br>
                                 {{ (lot.date).slice(5,8) }}_{{ (lot.date).slice(0,4) }}
                             </div>
-                            <div class="sub">
+                            <div class="sub" v-if="today < lot.date">
                                 <ion-icon :src="removeCircleOutline" @click="decrementQte" style="font-size: large;"></ion-icon>
                                 <span style="margin-right: .1rem;">&nbsp;</span>
                             <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier" :id="'q' + index"
@@ -64,9 +64,12 @@
                             <span style="margin-right: .1rem;">&nbsp;</span>
                             <ion-icon :src="addCircleOutline" @click="incrementQte" style="font-size: large;"></ion-icon>
                             </div>
+                            <div class="sub" v-else>
+                                déjà perimé
+                            </div>
                         </div>
                     </div>
-                    <div class="infoUmuti vendre" v-show="selectedUmuti.quantite_restant > 0"
+                    <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
                         style="text-align: right;">
                         <button class="sell" @click="moveToPanier">Vendre</button>
                     </div>
@@ -79,7 +82,7 @@
                         <div style="text-align: center; margin: 10px 0px; font-weight: 900; font-size: 1.1rem;">
                             <u>COMMANDE DU PATIENT:</u>
                         </div>
-                        <div class="itemPanier" v-for="(umuti, index ) in panier_client" :key="index">
+                        <div class="itemPanier" v-for="(umuti, index ) in panier_client">
                             <div class="nomination">
                                 {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.price_out }} x {{ umuti.qte }} 
                                 
@@ -174,6 +177,8 @@ import {
 } from 'ionicons/icons'
 
 const router = useRouter()
+
+const today = new Date
 
 const selectedUmuti:Umuti = reactive({})
 const panier_client:Ref<PanierClient[]> = ref([])
@@ -537,6 +542,13 @@ const moveToPanier = () => {
     }
     
 }
+const strDate = (lot)=>{
+    let lot_length = lot.length
+    for (let i=0; i<lot_length; i++){
+        let converted_date = new Date(lot[i].date)
+        console.log("The new date: ", converted_date)
+    }
+}
 const getUmuti = (umuti) => {
     // THis one handles the umuti when it was emitted from list-imiti component.
     console.log("Gotten:", umuti, 'and:', selectedUmuti.value)
@@ -545,6 +557,7 @@ const getUmuti = (umuti) => {
         selectedUmuti.value = umuti
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         activeLot.value = JSON.parse(lots_json) //setting the activeLot
+        console.log("ActiveLog : ", activeLot.value)
         need_to_updade.value = false  // to command not to provide an update from list-imiti
     } else if(selectedUmuti.value.code_umuti === umuti.code_umuti){
         console.log("It is the same: ", selectedUmuti.value, 'and', umuti)
@@ -554,6 +567,7 @@ const getUmuti = (umuti) => {
         selectedUmuti.value = umuti
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         activeLot.value = JSON.parse(lots_json) //setting the activeLot
+        console.log("ActiveLog : ", activeLot.value)
         need_to_updade.value = false 
     }
     
