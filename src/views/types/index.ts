@@ -1,6 +1,6 @@
 
 
-interface PanierClient {
+export interface PanierClient {
     'name_umuti': string;
     'qte': number;
     'price_out': number
@@ -11,7 +11,7 @@ interface Lot {
     'qte': number;
 }
 
-interface PanierAPI {
+export interface PanierAPI {
     'name_umuti': string;
     'qte': number;
     'lot': Lot [];
