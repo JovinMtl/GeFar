@@ -489,12 +489,17 @@ const lot_array = ():PanierAPI[]=> {
 }
 const check_panier = (umuti_name) => {
     // This function checks the existence of umuti on panier in order not to duplicate it.
-    let panier_length = (panier_client.value).length
-    let i = 0
+    let panier_length:number = (panier_client.value).length
+    let i:number = 0
     console.log("Panier had length of : ", panier_length)
     for(i = 0; i < panier_length; i++){
         console.log("T: ", panier_client.value[i],'>>',umuti_name, '<<', i )
         if(panier_client.value[i].name_umuti == umuti_name){
+            notifStatus.value = true
+            message.value = "Ce medicament existe deja sur le panier."
+            setTimeout(()=>{
+                notifStatus.value = false
+            }, 1500)
             return 0
         }
     }
