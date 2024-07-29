@@ -130,13 +130,19 @@
                         <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
                     </div>
                     <teleport to="body">
-                        <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
+                        <div v-if="show_popup" class="facturierContainer" @click="closeFacture">
                             <factu-rier @facture-active="closeFacture" 
                             :commande-patient="[panier_client, total_panier_client]"
                             :num_facture="numero_facture"
                             :username="getUsername()"></factu-rier>
                         </div>
                     </teleport>
+                    <teleport to="body">
+                        <div class="notif" v-if="show_popup">
+                            <p>{{ message }}</p>
+                        </div>
+                    </teleport>
+        
                 </div>
             </div>
                 
@@ -147,7 +153,7 @@
 <script setup lang="ts">
 import { 
     defineAsyncComponent,
-    reactive, ref,
+    reactive, ref, shallowRef,
     watch, provide,
 } from 'vue'
 import type { Ref } from 'vue'
@@ -199,7 +205,7 @@ const server_process: Ref<boolean> = ref(false)
 
 const query_search = reactive({})
 const umuti_single: Ref<boolean> = ref(false)
-const show_facture: Ref<boolean> = ref(false)
+const show_popup: Ref<boolean> = ref(false)
 const clear_search: Ref<number> = ref(0)
 const listImiti_update: Ref<number> = ref(0)
 const numero_facture: Ref<number> = ref(0)
@@ -207,6 +213,7 @@ const numero_facture: Ref<number> = ref(0)
 const last_umutiEntree: Ref<number> = ref(0)
 const last_umutiSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
+const message = shallowRef<string>('hello')
 
 const url_reportIndex:string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
@@ -271,7 +278,7 @@ const alertUmutiNew = async (value)=>{
 
 }
 const closeFacture = ()=>{
-    show_facture.value = false
+    show_popup.value = false
     // Reinitializing panier_client and panier_api to start a new commande.
     console.log("Calling closeFacture.")
     panier_client.value = []
@@ -537,6 +544,11 @@ const moveToPanier = ():number => {
         }
 
         if(!obj_Client.qte){
+            show_popup.value = true
+            message.value = "Ce medicament est perimé. Veuillez le mettre a coté."
+            setTimeout(()=>{
+                show_popup.value = false
+            }, 1000)
             return 0
         }
         panier_client.value.push(obj_Client)
@@ -606,9 +618,9 @@ watch(last_indexes, (value)=>{
 watch(sell_report, value=>{
     // Do something when the status response is OK
     console.log("Maintenant nous pouvons VOIR: facturier")
-    show_facture.value = true
+    show_popup.value = true
     numero_facture.value = value.sold
-    console.log("Le facturier: ", show_facture.value)
+    console.log("Le facturier: ", show_popup.value)
 })
 provide('needUpdate_list', need_to_updade) // in list-imiti component
 provide('needSearch', query_search) // in list-imiti component
