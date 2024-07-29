@@ -54,7 +54,7 @@
                         <div v-for="(lot, index) in activeLot" class="lote">
                             <div class="head" style="padding-top: 3px; font-size: .88rem">
                                 {{ lot.qte }} <br>
-                                {{ (lot.date).slice(5,8) }}_{{ (lot.date).slice(0,4) }}
+                                {{ (String(lot.date)).slice(5,8) }}_{{ (String(lot.date)).slice(0,4) }}
                             </div>
                             <div class="sub" v-if="today < lot.date">
                                 <ion-icon :src="removeCircleOutline" @click="decrementQte" style="font-size: large;"></ion-icon>
@@ -558,8 +558,9 @@ const getUmuti = (umuti) => {
         selectedUmuti.value = umuti
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         activeLot.value = JSON.parse(lots_json) //setting the activeLot
-        console.log("ActiveLog : ", activeLot.value)
+        console.log("ActiveLot : ", activeLot.value)
         strDate(activeLot.value)
+        console.log("ActiveLot after : ", activeLot.value)
         need_to_updade.value = false  // to command not to provide an update from list-imiti
     } else if(selectedUmuti.value.code_umuti === umuti.code_umuti){
         console.log("It is the same: ", selectedUmuti.value, 'and', umuti)
@@ -571,6 +572,7 @@ const getUmuti = (umuti) => {
         activeLot.value = JSON.parse(lots_json) //setting the activeLot
         console.log("ActiveLog : ", activeLot.value)
         strDate(activeLot.value)
+        console.log("ActiveLot after : ", activeLot.value)
         need_to_updade.value = false 
     }
     
