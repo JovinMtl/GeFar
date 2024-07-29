@@ -173,8 +173,8 @@ import {
 const router = useRouter()
 
 const selectedUmuti = reactive({})
-const panier_client = ref([])
-const panier_api = ref([])
+const panier_client:PanierClient[] = ref([])
+const panier_api:PanierAPI[] = ref([])
 const activeLot = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
