@@ -525,17 +525,13 @@ const moveToPanier = ():number => {
     // this function manages to move umuti from selected into panier
     let jove = check_panier(selectedUmuti.value.name_umuti)
     if(jove){
-        console.log("The umuti is new in the Panier : ", jove)
-        let qte = actualQte.value
         let obj_Client = {
             'name_umuti' : selectedUmuti.value.name_umuti,
-            // 'qte' : actualValue.value || somme_to_panier() || 1,
             'qte' : somme_lote(),
             'price_out' : Number(selectedUmuti.value.price_out),
         }
         let obj_API = {
             'code_umuti' : selectedUmuti.value.code_umuti,
-            // 'qte' : actualValue.value || somme_to_panier() || 1,
             'qte' : somme_lote(),
             'lot' : lot_array()
         }
@@ -548,18 +544,15 @@ const moveToPanier = ():number => {
         total_panier_client.value = update_total_client()
         // REinitializing
         if (panier_client.value && panier_api.value){
-            // selectedUmuti.value = {}
             selectedUmuti.value = undefined
             activeLot.value = []
             actualQte.value = 1
             actualValue.value = 0
-            // console.log("for Client: ", panier_client.value)
-            // console.log("for API: ", panier_api.value)
         }
     } else {
         console.log("No, the umuti already exist in Panier ", jove)
     }
-    
+    return 1  
 }
 const strDate = (lot:Lot[]):any=>{
     let lot_length:number = lot.length
