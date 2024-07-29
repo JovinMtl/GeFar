@@ -147,6 +147,7 @@ import {
     reactive, ref,
     watch, provide,
 } from 'vue'
+import type { Ref } from 'vue'
 import { useRouter } from 'vue-router'
 import seaRch from './auxiliare/search.vue';
 import meNu from './auxiliare/menu.vue';
@@ -173,9 +174,9 @@ import {
 const router = useRouter()
 
 const selectedUmuti = reactive({})
-const panier_client:PanierClient[] = ref([])
-const panier_api:PanierAPI[] = ref([])
-const activeLot:ActiveLot = ref([])
+const panier_client:Ref<PanierClient[]> = ref([])
+const panier_api:Ref<PanierAPI[]> = ref([])
+const activeLot:Ref<ActiveLot[]> = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
 const total_panier_client: Ref<number> = ref(0)
