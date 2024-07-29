@@ -159,7 +159,9 @@ import factuRier from '../operations/facturier.vue';
 import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
-import { PanierAPI, PanierClient, ActiveLot} from '../types/index.ts'
+import { 
+    PanierAPI, PanierClient, ActiveLot, Imiti
+} from '../types/index.ts'
 // import useCloseApprov from '../hooks/jove'
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
@@ -184,7 +186,7 @@ const approvStatus: Ref<boolean> = ref(false)
 const approFileStatus: Ref<boolean> = ref(false)
 const need_to_updade: Ref<boolean> = ref(false)
 const controleStatus: Ref<boolean> = ref(false)
-const all_imiti = ref([])
+const all_imiti:Ref<Imiti> = ref([])
 const umuti_new: Ref<boolean> = ref(false)
 
 const server_process: Ref<boolean> = ref(false)
