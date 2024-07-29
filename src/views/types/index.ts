@@ -16,3 +16,11 @@ export interface PanierAPI {
     'qte': number;
     'lot': Lot [];
 }
+
+export interface ActiveLot {
+    'date': string;
+    'qte': number;
+    'to_panier': number;
+    'code_operation': any [];
+}
+
