@@ -544,10 +544,10 @@ const moveToPanier = () => {
     
 }
 const strDate = (lot:Lot[]):any=>{
-    let lot_length = lot.length
+    let lot_length:number = lot.length
     for (let i=0; i<lot_length; i++){
         let converted_date = new Date(lot[i].date)
-        console.log("The new date: ", converted_date)
+        lot[i].date = converted_date
     }
 }
 const getUmuti = (umuti) => {
@@ -559,7 +559,7 @@ const getUmuti = (umuti) => {
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         activeLot.value = JSON.parse(lots_json) //setting the activeLot
         console.log("ActiveLog : ", activeLot.value)
-        strDate(activeLot)
+        strDate(activeLot.value)
         need_to_updade.value = false  // to command not to provide an update from list-imiti
     } else if(selectedUmuti.value.code_umuti === umuti.code_umuti){
         console.log("It is the same: ", selectedUmuti.value, 'and', umuti)
@@ -570,6 +570,7 @@ const getUmuti = (umuti) => {
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         activeLot.value = JSON.parse(lots_json) //setting the activeLot
         console.log("ActiveLog : ", activeLot.value)
+        strDate(activeLot.value)
         need_to_updade.value = false 
     }
     
