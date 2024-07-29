@@ -64,7 +64,7 @@
                             <span style="margin-right: .1rem;">&nbsp;</span>
                             <ion-icon :src="addCircleOutline" @click="incrementQte" style="font-size: large;"></ion-icon>
                             </div>
-                            <div class="sub" v-else>
+                            <div v-else class="sub red">
                                 déjà perimé
                             </div>
                         </div>
@@ -913,6 +913,10 @@ provide('need_clear', clear_search) // in search component
     border: 1px dashed seagreen;
     background-color: rgba(0, 0, 0, 0.404); 
     color: white ;
+}
+.red{
+    color: red;
+    font-size: .8rem;
 }
 
 ::-webkit-scrollbar-thumb {
