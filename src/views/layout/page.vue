@@ -500,7 +500,7 @@ const somme_lote = ()=>{
     let date_exp:number = 0
     activeLot.value.forEach((element)=>{
         somme_qte += Number(element.to_panier)
-        if(element.date <= today){
+        if((element.date >= today)&&(element.qte > 0)){
             date_exp += 1
         }
     })
