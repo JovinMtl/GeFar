@@ -495,17 +495,21 @@ const update_total_client = () => {
     let somme_formatted = number_To_string(somme) //formatting by three digits
     return somme_formatted
 }
-const somme_lote = ()=>{
+const somme_lote = ():number=>{
     let somme_qte:number = 0
     let date_exp:number = 0
     activeLot.value.forEach((element)=>{
         somme_qte += Number(element.to_panier)
-        if((element.date >= today)&&(element.qte > 0)){
+        if((element.date >= today) && (element.qte > 0)){
             date_exp += 1
         }
     })
     if(somme_qte == 0){
-        return 1
+        if(date_exp){
+            return 1
+        } else{
+            return 0
+        } 
     } else {
         return somme_qte
     }
