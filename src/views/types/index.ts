@@ -24,7 +24,7 @@ export interface ActiveLot {
     'code_operation': any [];
 }
 
-export interface Imiti {
+export interface Umiti {
     'code_umuti': string;
     'date_last_vente': Date;
     'description_umuti': string;
