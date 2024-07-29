@@ -521,7 +521,7 @@ const somme_lote = ():number=>{
         return somme_qte
     }
 }
-const moveToPanier = () => {
+const moveToPanier = ():number => {
     // this function manages to move umuti from selected into panier
     let jove = check_panier(selectedUmuti.value.name_umuti)
     if(jove){
@@ -540,6 +540,9 @@ const moveToPanier = () => {
             'lot' : lot_array()
         }
 
+        if(!obj_Client.qte){
+            return 0
+        }
         panier_client.value.push(obj_Client)
         panier_api.value.push(obj_API)
         total_panier_client.value = update_total_client()
