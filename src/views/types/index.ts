@@ -24,3 +24,21 @@ export interface ActiveLot {
     'code_operation': any [];
 }
 
+export interface Imiti {
+    'code_umuti': string;
+    'date_last_vente': Date;
+    'description_umuti': string;
+    'difference': number;
+    'id': number;
+    'location': string;
+    'lot': Lot[];
+    'name_umuti': string;
+    'price_in': number;
+    'price_out': number;
+    'qte_entrant_big': number;
+    'quantite_restant': number;
+    'ratio_type': number;
+    'type_in': string;
+    'type_out': string;
+    'type_umuti': string;
+}
