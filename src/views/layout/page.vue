@@ -158,6 +158,7 @@ import factuRier from '../operations/facturier.vue';
 import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
+import { PanierAPI, PanierClient} from '../types/index.ts'
 // import useCloseApprov from '../hooks/jove'
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
