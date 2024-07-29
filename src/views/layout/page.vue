@@ -158,7 +158,7 @@ import factuRier from '../operations/facturier.vue';
 import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
-import { PanierAPI, PanierClient} from '../types/index.ts'
+import { PanierAPI, PanierClient, ActiveLot} from '../types/index.ts'
 // import useCloseApprov from '../hooks/jove'
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
@@ -175,7 +175,7 @@ const router = useRouter()
 const selectedUmuti = reactive({})
 const panier_client:PanierClient[] = ref([])
 const panier_api:PanierAPI[] = ref([])
-const activeLot = ref([])
+const activeLot:ActiveLot = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
 const total_panier_client: Ref<number> = ref(0)
