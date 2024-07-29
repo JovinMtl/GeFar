@@ -175,6 +175,7 @@ import {
     close, addCircleOutline, removeCircleOutline, magnetOutline, 
     add, exitOutline, syncOutline
 } from 'ionicons/icons'
+import { Lot } from './types';
 
 const router = useRouter()
 
@@ -542,7 +543,7 @@ const moveToPanier = () => {
     }
     
 }
-const strDate = (lot)=>{
+const strDate = (lot:Lot[]):any=>{
     let lot_length = lot.length
     for (let i=0; i<lot_length; i++){
         let converted_date = new Date(lot[i].date)
@@ -558,6 +559,7 @@ const getUmuti = (umuti) => {
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         activeLot.value = JSON.parse(lots_json) //setting the activeLot
         console.log("ActiveLog : ", activeLot.value)
+        strDate(activeLot)
         need_to_updade.value = false  // to command not to provide an update from list-imiti
     } else if(selectedUmuti.value.code_umuti === umuti.code_umuti){
         console.log("It is the same: ", selectedUmuti.value, 'and', umuti)
