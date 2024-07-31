@@ -505,9 +505,9 @@ const check_panier = (umuti_name) => {
     }
     return 1
 }
-const update_total_client = () => {
+const update_total_client = ():string => {
     // This function updates the sum of the imiti in the panier
-    let somme = 0
+    let somme:number = 0
     panier_client.value.forEach((element)=>{
         let p_T = element.price_out * element.qte
         somme += p_T
