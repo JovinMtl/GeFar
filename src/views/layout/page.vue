@@ -118,16 +118,23 @@
                         <me-nu @actualMenu="actualOption"></me-nu>
                     </div>
                     <div class="menuHau exit"  style="">
-                        <ion-icon :src="exitOutline" @click="logout" size="larger"></ion-icon>
+                        <!-- <ion-icon :src="exitOutline" size="larger"></ion-icon> -->
+                        <circum-power @click="logout"></circum-power>
                     </div>
                     <div class="menuHau user"  style="">
                         {{ getUsername() }}
                     </div>
                     <div class="menuHau sync"  style="">
-                        <ion-icon :src="syncOutline" @click="askIndex"></ion-icon>
+                        <!-- <ion-icon :src="syncOutline"></ion-icon> -->
+                        <!-- <Icon icon="catppuccin:python-compiled" /> -->
+                        
+                        <fluent-cloud-sync28-regular @click="askIndex"></fluent-cloud-sync28-regular>
+
+
                     </div>
                     <div class="menuHau magnetic"  style="">
-                        <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon>
+                        <!-- <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon> -->
+                        <circum-pill></circum-pill>
                     </div>
                     <teleport to="body">
                         <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
@@ -171,6 +178,10 @@ import { useUserStore } from '../../store/user'
 import { 
     PanierAPI, PanierClient, ActiveLot, Umuti
 } from '../types'
+import CircumPower  from '../layout/icon/CircumPower.vue'
+import CircumPill from '../layout/icon/pill.vue'
+import BiCollection from '../layout/icon/collect.vue'
+import FluentCloudSync28Regular from '../layout/icon/cloud.vue'
 // import useCloseApprov from '../hooks/jove'
 
 const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
