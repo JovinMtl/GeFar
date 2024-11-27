@@ -1,7 +1,7 @@
 <template>
     <ion-page>
         <ion-content>
-            <div style="position: relative;overflow: hidden; width: 100%; height: 100%;">
+            <div class="mP">
                 <div v-if="server_process" class="loader" style="z-index: 15;">
                     <jove-loader></jove-loader>
                         
@@ -105,6 +105,8 @@
                         <div class="ending" style="text-align: left;">
                             <button class="confirmButton" @click="toSell">Confirmer</button>
                         </div>
+                        <div class="separation"></div>
+                        <div class="reduction"></div>
                     </div>
 
                     <div class="signeRecherche"></div>
@@ -646,6 +648,10 @@ provide('need_clear', clear_search) // in search component
 </script>
 
 <style scoped>
+.mP{
+    position: relative;overflow: hidden;
+             width: 100%; height: 100%;background-color:rgb(11 245 11 / 59%);
+}
 .addElement {
     position: absolute;
     width: 20px;
