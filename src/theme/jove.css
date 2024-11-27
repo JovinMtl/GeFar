@@ -91,3 +91,12 @@ body {
   font-weight: 500;
   box-shadow: 0 0 35px white;
 }
+.separation{
+    display: flex;
+    height: 50px;
+}
+.reduction{
+    display: flex;
+    min-height: 100px;
+    background-color: red;
+}
