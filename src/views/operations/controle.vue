@@ -90,13 +90,13 @@
 
                         <div class="contentElement4">
                             <span v-if="isAdmin">Px.Achat</span>
-                            <span v-else>Type du Med.</span>
+                            <span v-else>T. Med.</span>
                             
                         </div>
 
                         <div class="contentElement4">
                         <span v-if="isAdmin">Bénéfice</span>
-                        <span v-else>Localisation</span>  
+                        <span v-else>Loc.</span>  
                         </div>
 
                         <div class="contentElement4">
@@ -503,9 +503,11 @@ const closeControle = ()=>{
 }
 .contentElement11{
     display: inline-flex;
-    background-color: black; 
+    background-color: grey; 
     width: 4%;height: 100%; 
     color: white;
+    justify-content: center;
+    border-radius: 4px;
 }
 .contentElement2{
     display: inline-flex;
