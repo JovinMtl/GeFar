@@ -106,7 +106,11 @@
                             <button class="confirmButton" @click="toSell">Confirmer</button>
                         </div>
                         <div class="separation"></div>
-                        <div class="reduction"></div>
+                        <div class="reduction">
+                            <span style="font-style:italic;">
+                            Un client special ?
+                            <input type="radio" style="margin:0 20px;"/> </span>
+                        </div>
                     </div>
 
                     <div class="signeRecherche"></div>
