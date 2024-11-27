@@ -109,7 +109,8 @@
                         <div class="reduction">
                             <span style="font-style:italic;">
                             Un client special ?
-                            <input type="radio" style="margin:0 20px;"/> </span>
+                            <input type="radio" 
+                                style="margin:0 20px;"/> </span>
                         </div>
                     </div>
 
@@ -249,6 +250,7 @@ const url_sell:string = "api/out/sell/"
 const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 const { getAccessToken, getUsername, setUsername,
         setAccessToken, setRefreshToken } = useUserStore()
+
 
 const logout = ()=>{
     // proceed to logout
