@@ -6,15 +6,12 @@
                 <div class="authentif">
                     <div class="username">
                         <label for="input">Username</label> <br>
-                        <input v-model="username" type="text" style="padding: 15px 30px; 
-                            border-radius: 15px;border-style: hidden;
-                            background-color: rgb(28, 35, 49);">
+                        <input v-model="username" class="inpEl" type="text">
                     </div>
                     <div class="username">
                         <label for="input">Password</label> <br>
-                        <input v-model="password" type="password" style="padding: 15px 30px; 
-                            border-radius: 15px; border-spacing: 5px; 
-                            border-style: hidden; background-color: rgb(28, 35, 49);">
+                        <input v-model="password" class="inpEl bg-l"
+                         type="password">
                     </div>
                     <div class="confirmationContainer">
                         <!-- <div class="one" style="border-right: 1px solid black;">s'inscrire</div>
@@ -115,6 +112,18 @@ const login_hook = ()=>{
 
             .username{
                 margin: 10px 50px;
+                color: white;
+                .inpEl{
+                    padding: 15px 30px; 
+                    border-radius: 15px; border-spacing: 5px; 
+                    border-style: hidden; 
+                    background-color: rgb(28, 35, 49);
+                    background-color: grey;
+                    font-size: 1.2rem;
+                }
+                .bg-l{
+                    color: lime;
+                }
             }
             .confirmationContainer{
                 display: flex;
