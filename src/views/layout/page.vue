@@ -118,13 +118,15 @@
                                 </div>
                         </div>
                         <div v-if="rdBtnActive" style="height:50px;margin-top:15px;">
-                            <label for="pet-select">Choisissez sa profession:</label>
+                            <label for="metiers">Choisissez sa profession:</label>
 
-                            <select name="metiers" id="pet-select">
+                            <select name="metiers" id="profes">
                                 <option v-for="profession in professions" 
                                     :value="profession.value">{{profession.name}}
                                     </option>
                             </select>
+                        <div class="inpName" style="height:30px;
+                            background-color:red;"></div>
                         </div>
                     </div>
 
