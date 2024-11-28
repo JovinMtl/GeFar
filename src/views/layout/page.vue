@@ -117,6 +117,18 @@
                                 @click="isSpecial">
                                 </div>
                         </div>
+                        <div style="background-color:grey;
+                            height:50px">
+                            <label for="pet-select">Choisissez sa profession:</label>
+
+                            <select name="professions" id="pet-select">
+                                <option value="">--Quelle métier?--</option>
+                                <option value="motar">Motar</option>
+                                <option value="tv">Taxi Vélo</option>
+                                <option value="md">Domaine Santé</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="signeRecherche"></div>
