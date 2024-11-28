@@ -126,10 +126,10 @@
                                     </option>
                             </select>
                         <div class="inpName">
-                            <input 
+                            <input class="inpName-1"
                             placeholder="mubaze izina ryiwe" />
-                            <input 
-                            placeholder="numero telefone yiwe" />
+                            <input class="inpName-1"
+                            placeholder="numero ya telefone yiwe" />
                         </div>
                         </div>
                     </div>

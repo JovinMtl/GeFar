@@ -101,6 +101,7 @@ body {
     display: flex;
     min-height: 30px;
     color: grey;
+    background-color:rgba(255, 255, 255, 0.315);
 }
 .rdBtn{
     width:30px;
@@ -114,7 +115,6 @@ body {
 .rdBtn-2{
     background-color:#ffff00ba;
 }
-.inpName{
-    height:30px;
-    background-color:red;
+.inpName-1{
+    margin: 5px 0;
 }
