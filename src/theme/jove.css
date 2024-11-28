@@ -99,6 +99,6 @@ body {
 }
 .reduction{
     display: flex;
-    min-height: 100px;
+    min-height: 30px;
     color: grey;
 }

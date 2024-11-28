@@ -116,7 +116,10 @@
                                 </span>
                                 <span 
                                 style="background-color:yellow;
-                                        width:30px;">ye</span>
+                                        width:30px;
+                                        border-radius:15px;
+                                        border:4px solid black;
+                                        margin: 0 20px;"></span>
                         </div>
                     </div>
 
