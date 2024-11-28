@@ -125,8 +125,7 @@
                                     :value="profession.value">{{profession.name}}
                                     </option>
                             </select>
-                        <div class="inpName" style="height:30px;
-                            background-color:red;"></div>
+                        <div class="inpName"></div>
                         </div>
                     </div>
 

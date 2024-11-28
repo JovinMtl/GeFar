@@ -114,3 +114,7 @@ body {
 .rdBtn-2{
     background-color:#ffff00ba;
 }
+.inpName{
+    height:30px;
+    background-color:red;
+}
