@@ -106,8 +106,17 @@
                             <button class="confirmButton" @click="toSell">Confirmer</button>
                         </div>
                         <div class="separation"></div>
-                        <!-- reduction component will appear here -->
-                        <redu-ction></redu-ction>
+                        <div class="reduction">
+                            <div style="font-style:italic;
+                                align-self:center;">
+                            Un client spécial?
+
+                                </div>
+                                <div class="rdBtn" 
+                                :class="rdBtnActive ? 'rdBtn-1':'rdBtn-2'"
+                                @click="isSpecial">
+                                </div>
+                        </div>
                     </div>
 
                     <div class="signeRecherche"></div>
@@ -121,15 +130,22 @@
                         <me-nu @actualMenu="actualOption"></me-nu>
                     </div>
                     <div class="menuHau exit"  style="">
+                        <!-- <ion-icon :src="exitOutline" size="larger"></ion-icon> -->
                         <circum-power @click="logout"></circum-power>
                     </div>
                     <div class="menuHau user"  style="">
                         {{ getUsername() }}
                     </div>
                     <div class="menuHau sync"  style="">
+                        <!-- <ion-icon :src="syncOutline"></ion-icon> -->
+                        <!-- <Icon icon="catppuccin:python-compiled" /> -->
+                        
                         <fluent-cloud-sync28-regular @click="askIndex"></fluent-cloud-sync28-regular>
+
+
                     </div>
                     <div class="menuHau magnetic"  style="">
+                        <!-- <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon> -->
                         <circum-pill></circum-pill>
                     </div>
                     <teleport to="body">
@@ -168,7 +184,6 @@ import approFile from '../operations/approv-file.vue';
 import joveLoader from './auxiliare/jove-loader.vue';
 import contRole from '../operations/controle.vue'
 import factuRier from '../operations/facturier.vue';
-import reduCtion from '../layout/include/redu-ction.vue'
 import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
@@ -211,6 +226,7 @@ const umuti_new: Ref<boolean> = ref(false)
 
 const server_process: Ref<boolean> = ref(false)
 const notifStatus: Ref<boolean> = ref(false)
+const rdBtnActive: Ref<boolean> = ref(false)
 
 const query_search = reactive({})
 const umuti_single: Ref<boolean> = ref(false)
@@ -242,7 +258,9 @@ const { getAccessToken, getUsername, setUsername,
         setAccessToken, setRefreshToken } = useUserStore()
 
 
-
+const isSpecial = ()=>{
+    rdBtnActive.value = !rdBtnActive.value
+}
 
 const logout = ()=>{
     // proceed to logout
