@@ -11,3 +11,16 @@
             </div>
     </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import type { Ref } from 'vue'
+
+//Variable declaration
+const rdBtnActive: Ref<boolean> = ref(false)
+
+//Function declaration
+const isSpecial = ()=>{
+    rdBtnActive.value = !rdBtnActive.value
+}
+</script>
