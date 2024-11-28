@@ -120,12 +120,10 @@
                         <div v-if="rdBtnActive" style="height:50px;margin-top:15px;">
                             <label for="pet-select">Choisissez sa profession:</label>
 
-                            <select name="professions" id="pet-select">
-                                <option value="">--Quelle métier?--</option>
-                                <option value="motar">Motar</option>
-                                <option value="tv">Taxi Vélo</option>
-                                <option value="md">Domaine Santé</option>
-                                <option value="autre">Autre</option>
+                            <select name="metiers" id="pet-select">
+                                <option v-for="profession in professions" 
+                                    :value="profession.value">{{profession.name}}
+                                    </option>
                             </select>
                         </div>
                     </div>
@@ -253,8 +251,8 @@ const message = shallowRef<string>('hello')
 
 const professions = [
     {
-        'value': 'Quelle metier?',
-        'name': ''
+        'value': '',
+        'name': 'Quelle metier?'
     },
     {
         'value': 'mt',
