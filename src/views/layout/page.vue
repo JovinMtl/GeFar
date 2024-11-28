@@ -252,7 +252,7 @@ const message = shallowRef<string>('hello')
 const professions = [
     {
         'value': '',
-        'name': 'Quelle metier?'
+        'name': '--- Akora iki ? ---'
     },
     {
         'value': 'mt',
@@ -260,11 +260,11 @@ const professions = [
     },
     {
         'value': 'tv',
-        'name': 'Taxi Velo'
+        'name': 'Taxi Vélo'
     },
     {
         'value': 'md',
-        'name': 'Domaine Medicale'
+        'name': 'Domaine Médicale'
     },
     {
         'value': 'au',
