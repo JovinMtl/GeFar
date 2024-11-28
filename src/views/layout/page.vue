@@ -251,6 +251,29 @@ const last_umutiSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
 const message = shallowRef<string>('hello')
 
+const professions = [
+    {
+        'value': 'Quelle metier?',
+        'name': ''
+    },
+    {
+        'value': 'mt',
+        'name': 'Motar'
+    },
+    {
+        'value': 'tv',
+        'name': 'Taxi Velo'
+    },
+    {
+        'value': 'md',
+        'name': 'Domaine Medicale'
+    },
+    {
+        'value': 'au',
+        'name': 'Autre'
+    },
+]
+
 const url_reportIndex:string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
 const url_local:string = "//127.0.0.1:8002"
