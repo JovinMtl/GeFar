@@ -112,7 +112,9 @@
                             Un client spécial?
 
                                 </div>
-                                <div class="rdBtn" @click="isSpecial">
+                                <div class="rdBtn" 
+                                :class="rdBtnActive ? 'rdBtn-1':'rdBtn-2'"
+                                @click="isSpecial">
                                 </div>
                         </div>
                     </div>
