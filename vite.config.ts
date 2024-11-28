@@ -17,5 +17,11 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom'
+  },
+  server: {
+    // Enabling this allows the server to be accessible over LAN
+    host: true, // Set host to true to bind to all network interfaces
+    port: 5173, // Default port (can change if needed)
+    strictPort: false // Allows fallback to another port if 5173 is in use
   }
 })
