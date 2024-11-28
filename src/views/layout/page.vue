@@ -704,7 +704,9 @@ provide('need_clear', clear_search) // in search component
 <style scoped>
 .mP{
     position: relative;overflow: hidden;
-             width: 100%; height: 100%;background-color:rgb(11 245 11 / 59%);
+    width: 100%; height: 100%; 
+    background-color:#00ff00b0; 
+    
 }
 .addElement {
     position: absolute;

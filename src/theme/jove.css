@@ -1,6 +1,6 @@
 
 
-body {
+html, body {
     background-image: radial-gradient(circle closest-side at 55% 25%,green 55%, grey 60%, transparent 75%),
                             radial-gradient(50% 50% at 25% 75%, white 15%, green 20%, white 30%, transparent 40%) ;
     background-size: 100px 100px;
@@ -12,14 +12,12 @@ body {
     width: 89vw;
     height: 90vh;
     position: relative;
-    /* position: absolute; */
     left: 10vw;
     left: 11.5vw;
     top: 6vh;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
     padding-left: 1vw;
-    /* overflow: hidden; */
 }
 
 .sectA{
