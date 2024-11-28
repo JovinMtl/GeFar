@@ -112,7 +112,7 @@
                             Un client spécial?
 
                                 </div>
-                                <div class="rdBtn">
+                                <div class="rdBtn" @click="isSpecial">
                                 </div>
                         </div>
                     </div>
@@ -224,6 +224,7 @@ const umuti_new: Ref<boolean> = ref(false)
 
 const server_process: Ref<boolean> = ref(false)
 const notifStatus: Ref<boolean> = ref(false)
+const rdBtn: Ref<boolean> = ref(false)
 
 const query_search = reactive({})
 const umuti_single: Ref<boolean> = ref(false)
@@ -254,6 +255,10 @@ const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
 const { getAccessToken, getUsername, setUsername,
         setAccessToken, setRefreshToken } = useUserStore()
 
+
+const isSpecial = ()=>{
+    rdBtn.value = !rdBtn.value
+}
 
 const logout = ()=>{
     // proceed to logout
