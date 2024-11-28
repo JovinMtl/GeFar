@@ -117,8 +117,7 @@
                                 @click="isSpecial">
                                 </div>
                         </div>
-                        <div style="background-color:grey;
-                            height:50px">
+                        <div v-if="rdBtnActive" style="height:50px;margin-top:15px;">
                             <label for="pet-select">Choisissez sa profession:</label>
 
                             <select name="professions" id="pet-select">
