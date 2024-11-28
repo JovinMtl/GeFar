@@ -106,17 +106,7 @@
                             <button class="confirmButton" @click="toSell">Confirmer</button>
                         </div>
                         <div class="separation"></div>
-                        <div class="reduction">
-                            <div style="font-style:italic;
-                                align-self:center;">
-                            Un client spécial?
-
-                                </div>
-                                <div class="rdBtn" 
-                                :class="rdBtnActive ? 'rdBtn-1':'rdBtn-2'"
-                                @click="isSpecial">
-                                </div>
-                        </div>
+                        <!-- reduction component will appear here -->
                     </div>
 
                     <div class="signeRecherche"></div>
