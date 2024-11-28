@@ -125,7 +125,12 @@
                                     :value="profession.value">{{profession.name}}
                                     </option>
                             </select>
-                        <div class="inpName"></div>
+                        <div class="inpName">
+                            <input 
+                            placeholder="mubaze izina ryiwe" />
+                            <input 
+                            placeholder="numero telefone yiwe" />
+                        </div>
                         </div>
                     </div>
 
