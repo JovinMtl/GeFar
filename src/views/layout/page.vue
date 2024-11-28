@@ -107,19 +107,19 @@
                         </div>
                         <div class="separation"></div>
                         <div class="reduction">
-                            <span style="font-style:italic;
-                                background-color: red;">
-                            Un client special ?
-                            <!-- <input type="radio" 
-                                style="margin:0 20px;"/>  -->
+                            <div style="font-style:italic;
+                                align-self:center;">
+                            Un client spécial?
 
-                                </span>
-                                <span 
-                                style="background-color:yellow;
+                                </div>
+                                <div 
+                                style="background-color:rgba(13 103 205 / 30%);
+                                        background-color:#ffff00ba;
                                         width:30px;
                                         border-radius:15px;
                                         border:4px solid black;
-                                        margin: 0 20px;"></span>
+                                        margin: 0 20px;">
+                                </div>
                         </div>
                     </div>
 
