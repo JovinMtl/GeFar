@@ -224,7 +224,7 @@ const umuti_new: Ref<boolean> = ref(false)
 
 const server_process: Ref<boolean> = ref(false)
 const notifStatus: Ref<boolean> = ref(false)
-const rdBtn: Ref<boolean> = ref(false)
+const rdBtnActive: Ref<boolean> = ref(false)
 
 const query_search = reactive({})
 const umuti_single: Ref<boolean> = ref(false)
@@ -257,7 +257,7 @@ const { getAccessToken, getUsername, setUsername,
 
 
 const isSpecial = ()=>{
-    rdBtn.value = !rdBtn.value
+    rdBtnActive.value = !rdBtnActive.value
 }
 
 const logout = ()=>{
