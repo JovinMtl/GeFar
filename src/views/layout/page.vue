@@ -234,6 +234,7 @@ const activeLot:Ref<ActiveLot[]> = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
 const total_panier_client: Ref<number> = ref(0)
+const total_panier_client_r: Ref<number> = ref(0)
 const approvStatus: Ref<boolean> = ref(false)
 const approFileStatus: Ref<boolean> = ref(false)
 const need_to_updade: Ref<boolean> = ref(false)
@@ -356,6 +357,7 @@ const closeFacture = ()=>{
     panier_client.value = []
     panier_api.value = []
     total_panier_client.value = update_total_client()
+    total_panier_client_r.value = update_total_client(1)
 }
 const SearchBarManager = (value)=>{
     query_search.value = value
@@ -521,6 +523,7 @@ const removeUmuti = (obj) => {
     panier_client.value.splice(code,1)
     panier_api.value.splice(code,1)
     total_panier_client.value = update_total_client()
+    total_panier_client_r.value = update_total_client(1)
 }
 const somme_to_panier = () => {
     // This functions evaluates the sum of quantity chosen in different lots on a same umuti.
@@ -637,6 +640,7 @@ const moveToPanier = ():number => {
         panier_client.value.push(obj_Client)
         panier_api.value.push(obj_API)
         total_panier_client.value = update_total_client()
+        total_panier_client_r.value = update_total_client(1)
         // REinitializing
         if (panier_client.value && panier_api.value){
             selectedUmuti.value = undefined
