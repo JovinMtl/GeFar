@@ -576,14 +576,20 @@ const check_panier = (umuti_name) => {
     }
     return 1
 }
-const update_total_client = ():string => {
+const update_total_client = (reduction:number=0):string => {
     // This function updates the sum of the imiti in the panier
     let somme:number = 0
+    let somme_formatted:number = 0
     panier_client.value.forEach((element)=>{
         let p_T = element.price_out * element.qte
         somme += p_T
     })
-    let somme_formatted = number_To_string(somme) //formatting by three digits
+    if(reduction==0){
+        somme_formatted = number_To_string(somme) //formatting by three digits
+    } else{
+        somme = somme * 0.9
+        somme_formatted = number_To_string(somme) //formatting by three digits
+    }
     return somme_formatted
 }
 const somme_lote = ():number=>{
@@ -675,7 +681,7 @@ const getUmuti = (umuti) => {
 
 watch(selectedProf, (value)=>{
     // Now apply the reduction according to benefit of value 'md,tv'
-    console.log("The selected profession : ", selectedProf.value)
+    console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
 })
 watch(bothData, (value)=>{
     // should now send them to the remote server.
