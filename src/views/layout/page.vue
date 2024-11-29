@@ -144,12 +144,13 @@
                     <div class="menuBar">
                         <me-nu @actualMenu="actualOption"></me-nu>
                     </div>
-                    <div class="menuHau exit"  style="">
-                        <!-- <ion-icon :src="exitOutline" size="larger"></ion-icon> -->
+                    <div class="menuHau exit">
                         <circum-power @click="logout"></circum-power>
                     </div>
                     <div class="menuHau user"  style="">
-                        {{ getUsername() }}
+                        <a title="ni Wewe nyene" class="c-b">
+                            {{ getUsername() }}
+                        </a>
                     </div>
                     <div class="menuHau sync">
                         <a title="ku Mwanya (Sync)"  class="c-b">
