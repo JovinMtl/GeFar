@@ -151,14 +151,16 @@
                     <div class="menuHau user"  style="">
                         {{ getUsername() }}
                     </div>
-                    <div class="menuHau sync"  style="">
-                        <!-- <a title="Sync"> -->
-                        <fluent-cloud-sync28-regular @click="askIndex"></fluent-cloud-sync28-regular>
-                        <!-- </a> -->
+                    <div class="menuHau sync">
+                        <a title="ku Mwanya (Sync)"  class="c-b">
+                            <fluent-cloud-sync28-regular @click="askIndex">
+                            </fluent-cloud-sync28-regular>
+                        </a>
                     </div>
-                    <div class="menuHau magnetic"  style="">
-                        <!-- <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon> -->
+                    <div class="menuHau magnetic">
+                        <a title="ku Gihe (Update)" class="c-b">
                         <circum-pill @click="compileImitiSet"></circum-pill>
+                        </a>
                     </div>
                     <teleport to="body">
                         <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
