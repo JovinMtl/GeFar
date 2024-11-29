@@ -121,7 +121,7 @@
                             <div v-if="rdBtnActive" style="height:50px;margin-top:15px;">
                                 <label for="metiers">Choisissez sa profession:</label>
 
-                                <select name="metiers" id="profes">
+                                <select v-model="selectedProf" name="metiers" id="profes">
                                     <option v-for="profession in professions" 
                                         :value="profession.value">{{profession.name}}
                                         </option>
@@ -256,6 +256,7 @@ const last_umutiEntree: Ref<number> = ref(0)
 const last_umutiSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
 const message = shallowRef<string>('hello')
+const selectedProf:String = ref('')
 
 const professions = [
     {
@@ -672,6 +673,10 @@ const getUmuti = (umuti) => {
     
 }
 
+watch(selectedProf, (value)=>{
+    // Now apply the reduction according to benefit of value 'md,tv'
+    console.log("The selected profession : ", selectedProf.value)
+})
 watch(bothData, (value)=>{
     // should now send them to the remote server.
     kurungika()
