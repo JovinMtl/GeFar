@@ -158,7 +158,7 @@
                     </div>
                     <div class="menuHau magnetic"  style="">
                         <!-- <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon> -->
-                        <circum-pill></circum-pill>
+                        <circum-pill @click="compileImitiSet"></circum-pill>
                     </div>
                     <teleport to="body">
                         <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
@@ -278,7 +278,7 @@ const professions = [
 const url_reportIndex:string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
 // const url_local:string = "//127.0.0.1:8002"
-const url_local:string = "//10.10.9.148:8002"
+const url_local:string = baseURL
 const url_askInstances:string = "api/rep/getForSync/"
 const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_local)
 const [bothData, askInstances] = useKurungika(last_indexes ,url_askInstances) // on local server.
