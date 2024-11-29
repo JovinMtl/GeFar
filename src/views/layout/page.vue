@@ -106,30 +106,32 @@
                             <button class="confirmButton" @click="toSell">Confirmer</button>
                         </div>
                         <div class="separation"></div>
-                        <div class="reduction">
-                            <div style="font-style:italic;
-                                align-self:center;">
-                            Un client spécial?
+                        <div v-show="total_panier_client != '0'">
+                            <div class="reduction">
+                                <div style="font-style:italic;
+                                    align-self:center;">
+                                Un client spécial?
 
-                                </div>
-                                <div class="rdBtn" 
-                                :class="rdBtnActive ? 'rdBtn-1':'rdBtn-2'"
-                                @click="isSpecial">
-                                </div>
-                        </div>
-                        <div v-if="rdBtnActive" style="height:50px;margin-top:15px;">
-                            <label for="metiers">Choisissez sa profession:</label>
+                                    </div>
+                                    <div class="rdBtn" 
+                                    :class="rdBtnActive ? 'rdBtn-1':'rdBtn-2'"
+                                    @click="isSpecial">
+                                    </div>
+                            </div>
+                            <div v-if="rdBtnActive" style="height:50px;margin-top:15px;">
+                                <label for="metiers">Choisissez sa profession:</label>
 
-                            <select name="metiers" id="profes">
-                                <option v-for="profession in professions" 
-                                    :value="profession.value">{{profession.name}}
-                                    </option>
-                            </select>
-                        <div class="inpName">
-                            <input class="inpName-1"
-                            placeholder="mubaze izina ryiwe" />
-                            <input class="inpName-1"
-                            placeholder="numero ya telefone yiwe" />
+                                <select name="metiers" id="profes">
+                                    <option v-for="profession in professions" 
+                                        :value="profession.value">{{profession.name}}
+                                        </option>
+                                </select>
+                            <div class="inpName">
+                                <input class="inpName-1"
+                                placeholder="mubaze izina ryiwe" />
+                                <input class="inpName-1"
+                                placeholder="numero ya telefone yiwe" />
+                            </div>
                         </div>
                         </div>
                     </div>
