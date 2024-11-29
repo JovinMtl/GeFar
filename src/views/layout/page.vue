@@ -152,12 +152,9 @@
                         {{ getUsername() }}
                     </div>
                     <div class="menuHau sync"  style="">
-                        <!-- <ion-icon :src="syncOutline"></ion-icon> -->
-                        <!-- <Icon icon="catppuccin:python-compiled" /> -->
-                        
+                        <!-- <a title="Sync"> -->
                         <fluent-cloud-sync28-regular @click="askIndex"></fluent-cloud-sync28-regular>
-
-
+                        <!-- </a> -->
                     </div>
                     <div class="menuHau magnetic"  style="">
                         <!-- <ion-icon :src="magnetOutline" @click="compileImitiSet"></ion-icon> -->
@@ -280,7 +277,8 @@ const professions = [
 
 const url_reportIndex:string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
-const url_local:string = "//127.0.0.1:8002"
+// const url_local:string = "//127.0.0.1:8002"
+const url_local:string = "//10.10.9.148:8002"
 const url_askInstances:string = "api/rep/getForSync/"
 const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_local)
 const [bothData, askInstances] = useKurungika(last_indexes ,url_askInstances) // on local server.
@@ -777,19 +775,6 @@ provide('need_clear', clear_search) // in search component
     position: absolute;
     left: 62vw; 
     top: 89vh; 
-    font-size: xx-large; 
-    color: black;
-}
-.sync{
-    background-color: transparent; 
-    height: 25px; 
-    width: 25px; 
-    display: flex; 
-    position: absolute;
-    /* position: relative; */
-    left: 62vw; 
-    top: 89vh; 
-    /* top: 87vh; */
     font-size: xx-large; 
     color: black;
 }
