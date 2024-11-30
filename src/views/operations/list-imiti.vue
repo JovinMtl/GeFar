@@ -1,38 +1,33 @@
 <template>
     <div>
-        <div v-for="(umuti, index) in imitiset" v-show="umuti.name_umuti" 
-            style="display: inline-block ;"  @click.prevent="umutiOpen($event)">
-                <a :title="umuti.name_umuti" 
-            href="http://" target="_blank" rel="noopener noreferrer"
-                class="umutiContent">
-                    <div :id="index" class="umuti">
-                        <div class="umutiTitle">
-                            {{ (umuti.name_umuti).slice(0,7) }}<span v-show="(umuti.name_umuti).length > 8">...</span>
-                            
-                        </div>
-                        
-                        <div class="umutiPrice">{{ umuti.price_out }}</div>
+        <div v-for="(umuti, index) in imitiset" v-show="umuti.name_umuti" style="display: inline-block ;"
+            @click.prevent="umutiOpen($event)">
+            <a :title="umuti.name_umuti" href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
+                <div :id="index" class="umuti">
+                    <div class="umutiTitle">
+                        {{ (umuti.name_umuti).slice(0, 7) }}<span v-show="(umuti.name_umuti).length > 8">...</span>
+
                     </div>
-                </a>
+
+                    <div class="umutiPrice">{{ umuti.price_out }}</div>
+                </div>
+            </a>
         </div>
     </div>
-    
-    
-    
 </template>
 <script lang="ts">
-import { 
+import {
     defineComponent, reactive, ref, onUpdated,
     inject, watch,
 } from 'vue'
 import { UmutiSet } from '../layout/types'
 import { useUserStore } from '../../store/user.js'
-import { baseURL } from  '../../store/host'
-export default defineComponent ({
-    setup(_, {emit}) {
+import { baseURL } from '../../store/host'
+export default defineComponent({
+    setup(_, { emit }) {
         const data = reactive({})
-        const imitiset:UmutiSet[] = ref([])
-        const imitiset_copy:UmutiSet[] = ref([])
+        const imitiset: UmutiSet[] = ref([])
+        const imitiset_copy: UmutiSet[] = ref([])
         let codes = new Array()
         let imiti_for_search = []
 
@@ -40,33 +35,33 @@ export default defineComponent ({
         const need_search = inject('needSearch')
         const needUpdate_server = inject('needUpdate_server')
         var shouldUpdate = needUpdate
-        const { getAccessToken,getRefreshToken } = useUserStore()
+        const { getAccessToken, getRefreshToken } = useUserStore()
 
-        const search_umuti = (value)=>{
+        const search_umuti = (value) => {
             // value.field
             let fieldname = 'name_umuti'
-            if (value.field){
+            if (value.field) {
                 fieldname = value.field
             } else {
                 fieldname = 'name_umuti'
             }
-            return imiti_for_search.filter((element)=>{
+            return imiti_for_search.filter((element) => {
                 return (String(element[fieldname])).toLowerCase().match((String(value.query)).toLowerCase())
             })
         }
 
-        const showUmuti = (code:number) => {
-            if(code){
+        const showUmuti = (code: number) => {
+            if (code) {
                 let umuti: UmutiSet = imitiset.value[code]
                 emit('actualUmuti', umuti)
             } else {
                 console.log("null is selected")
             }
-            
+
             // console.log("attempting to emit 1")
             // console.log("You selected umuti: ", umuti)
         }
-        const umutiOpen = (value)=>{
+        const umutiOpen = (value) => {
             // updateImitiSet()
             console.log("And the ID is : ", (value.target.parentNode.parentNode).innerHTML)
             const current = (value.target.parentNode)
@@ -75,19 +70,19 @@ export default defineComponent ({
             showUmuti(code)
             // updateImitiSet() // disabling constant update on each selecting umuti
         }
-        
+
         const imiti = [
             {
-                'code':'', //1: igizwe n'indome zitatu hamwe n'ibiharuro bibiri
-                'name':'',  //2: ingene witwa. hazoba affiche 15caracteres
-                'description':'',//3: ukwo ukoreshwa hamwe n'ico ukora
+                'code': '', //1: igizwe n'indome zitatu hamwe n'ibiharuro bibiri
+                'name': '',  //2: ingene witwa. hazoba affiche 15caracteres
+                'description': '',//3: ukwo ukoreshwa hamwe n'ico ukora
                 'type': 'Flacon, comprime, tube', //4: ubwoko bwawo
                 'type_in': 'carton', //5: kurangura
                 'type_out': 'plaquette', //6: kudetailla
-                'price_in':'', //7: ayo Carton/plaquette yaranguwe
-                'price_out':'', //8: ayo plaquette tuyidandaza
+                'price_in': '', //7: ayo Carton/plaquette yaranguwe
+                'price_out': '', //8: ayo plaquette tuyidandaza
                 'difference': '', //9: benefice
-                'quantite_restant': '' ,//10: plaquette zisigaye
+                'quantite_restant': '',//10: plaquette zisigaye
                 'location': '', //11: ni nka cote yaho wowusanga vyoroshe
                 //kuri buri date hari hakwiye kuboneka iyihari yayo na COTE
                 //haca hakora gestion par LOT ivanze na FIFO
@@ -100,539 +95,539 @@ export default defineComponent ({
                 // 8, LOT(date_peremption) A|B|C
 
                 //NB: Uyo muti ntuja mugaseke hatabonetse LOT
-                'date_peremption':'',
+                'date_peremption': '',
             },
             {
-                'code':'QUI23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'QUI23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'1000', 
-                'price_out':'1300',
+                'price_in': '1000',
+                'price_out': '1300',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#3#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'QUI23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'QUI23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'1000', 
-                'price_out':'1300',
+                'price_in': '1000',
+                'price_out': '1300',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#3#',
-                'date_peremption':'Jan 2026',
+                'date_peremption': 'Jan 2026',
             },
             {
-                'code':'AMO23',
-                'name':'Betadine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Betadine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'7000', 
-                'price_out':'8100',
+                'price_in': '7000',
+                'price_out': '8100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
             {
-                'code':'AMO23',
-                'name':'Quinine',
-                'description':'Pour Malaria, 1-1-1',
+                'code': 'AMO23',
+                'name': 'Quinine',
+                'description': 'Pour Malaria, 1-1-1',
                 'type': 'comprime',
                 'type_in': 'carton',
                 'type_out': 'plaquette',
-                'price_in':'800', 
-                'price_out':'1100',
+                'price_in': '800',
+                'price_out': '1100',
                 'difference': '300',
-                'quantite_restant': '25' ,
+                'quantite_restant': '25',
                 'location': 'A#2#9#',
-                'date_peremption':'Jan 2025',
+                'date_peremption': 'Jan 2025',
             },
         ]
 
@@ -640,109 +635,101 @@ export default defineComponent ({
             const prefix = 'api/out/dispo/'
 
             try {
-                const response = await fetch(`${baseURL}/${prefix}`,{
-                    headers:{
-                        Authorization: 'Bearer '  + getAccessToken()
+                const response = await fetch(`${baseURL}/${prefix}`, {
+                    headers: {
+                        Authorization: 'Bearer ' + getAccessToken()
                     }
                 })
-                
-                if (response.ok){
+
+                if (response.ok) {
                     data.value = await response.json()
                     data.value = data.value.data
                     console.log("THings are well received", data.value.data)
                     updateImitiSet()
                     update_imiti_for_search()
                 }
-            } catch (value){
+            } catch (value) {
                 console.log("somehting may not be well because :", value)
             }
         }
-        kuvomaImiti ()
+        kuvomaImiti()
 
-        const updateImitiSet = ()=>{
+        const updateImitiSet = () => {
             imitiset.value = []
-            // console.log("ImitiSet has lenght: ", data.value.length)
-            let  i = 1
+            let i = 1
             data.value.forEach(element => {
-                let obj:UmutiSet = {
-                    'code_umuti' : element.code_umuti,
-                    'id' : i,
-                    'name_umuti' : element.name_umuti,
-                    'description_umuti' : element.description_umuti,
-                    'date_last_vente' : new Date(element.date_last_vente),
-                    'price_in' : element.price_in,
-                    'price_out' : element.price_out,
-                    'difference' : element.difference,
-                    'qte_entrant_big' : element.qte_entrant_big,
-                    'quantite_restant' : element.quantite_restant,
-                    'ratio_type' : element.ratio_type,
-                    'type_in' : element.type_in,
-                    'type_out' : element.type_out,
-                    'type_umuti' : element.type_umuti,
-                    'location' : element.location,
-                    'lot' : element.lot
+                let obj: UmutiSet = {
+                    'code_umuti': element.code_umuti,
+                    'id': i,
+                    'name_umuti': element.name_umuti,
+                    'description_umuti': element.description_umuti,
+                    'date_last_vente': new Date(element.date_last_vente),
+                    'price_in': element.price_in,
+                    'price_out': element.price_out,
+                    'difference': element.difference,
+                    'qte_entrant_big': element.qte_entrant_big,
+                    'quantite_restant': element.quantite_restant,
+                    'ratio_type': element.ratio_type,
+                    'type_in': element.type_in,
+                    'type_out': element.type_out,
+                    'type_umuti': element.type_umuti,
+                    'location': element.location,
+                    'lot': element.lot
                 }
                 imitiset.value.push(obj)
-                // imitiset_copy.value.push(obj)
-                // console.log("voici: ", obj)
             });
             console.log("Compiled : ", imitiset.value)
             imitiset_copy.value = imitiset.value
         }
 
-        const update_imiti_for_search = ()=>{
+        const update_imiti_for_search = () => {
             imitiset.value.forEach(element => {
                 let obj = {
-                    'code_umuti' : element.code_umuti,
-                    'date_last_vente' : element.date_last_vente,
-                    'description_umuti' : element.description_umuti,
+                    'code_umuti': element.code_umuti,
+                    'date_last_vente': element.date_last_vente,
+                    'description_umuti': element.description_umuti,
                     'location': element.location,
                     'lot': element.lot,
                     'name_umuti': (element.name_umuti),
-                    'price_in' : element.price_in,
-                    'price_out' : element.price_out,
-                    'qte_entrant_big' : element.qte_entrant_big,
+                    'price_in': element.price_in,
+                    'price_out': element.price_out,
+                    'qte_entrant_big': element.qte_entrant_big,
                     'quantite_restant': element.quantite_restant,
                     'type_in': element.type_in,
-                    'type_out' : element.type_out,
-                    'type_umuti' : element.type_umuti,
+                    'type_out': element.type_out,
+                    'type_umuti': element.type_umuti,
                 }
-                
+
                 imiti_for_search.push(obj)
             });
         }
-        // updateImitiSet()
-
-        // onUpdated(()=>{
-        //     // updateImitiSet()
-        // })
-        watch(shouldUpdate, (value)=>{
+        watch(shouldUpdate, (value) => {
             console.log("onUpdated, needToUpdate:..", value)
-            if(value){
+            if (value) {
                 emit('allImiti', imitiset)
             }
         })
-        watch(need_search, (value)=>{
+        watch(need_search, (value) => {
             // console.log("You want to search in list-imiti: ", value)
             let queryset = search_umuti(value.value)
-            
-            if(queryset && value.value.query.length > 0 && value.value.response==1){
+
+            if (queryset && value.value.query.length > 0 && value.value.response == 1) {
                 emit('allImiti', queryset)
                 // console.log("emitted on need_search")
-            } else if(queryset && value.value.query.length > 0 && value.value.response==0){
+            } else if (queryset && value.value.query.length > 0 && value.value.response == 0) {
                 imitiset.value = queryset
-            } else if(value.value.query.length == 0){
+            } else if (value.value.query.length == 0) {
                 imitiset.value = imitiset_copy.value
             }
-            if(queryset.length == 0 && value.value.query.length > 4 && value.value.response==0){
+            if (queryset.length == 0 && value.value.query.length > 4 && value.value.response == 0) {
                 emit('emptyResult', 1)
-            } else if(queryset.length == 0 && value.value.query.length < 5){
+            } else if (queryset.length == 0 && value.value.query.length < 5) {
                 emit('emptyResult', 0)
             }
         })
-        watch(needUpdate_server, (value)=>{
+        watch(needUpdate_server, (value) => {
             // request to api to give dispo
-            kuvomaImiti ()
+            kuvomaImiti()
         })
 
 
@@ -755,48 +742,50 @@ export default defineComponent ({
 })
 </script>
 <style scoped>
-.umuti{
+.umuti {
     width: 10vw;
     height: 14vh;
     background-color: black;
     border-radius: 15px;
     padding: 0px 5px;
-    margin: 10px 5px; /* Space between imiti */
+    margin: 10px 5px;
+    /* Space between imiti */
     box-shadow: 0 0 20px black;
     transition-delay: 0.1s;
     transition-property: all;
 }
-.umutiTitle{
+
+.umutiTitle {
     width: 100%;
     height: 70%;
-    /* background-color: rgb(11, 245, 11); */
     text-align: center;
     align-items: center;
     align-content: center;
 }
-.umutiPrice{
+
+.umutiPrice {
     width: 100%;
     height: 30%;
-    /* background-color: black; */
     text-align: center;
     border-top: 1px solid rgb(11, 245, 11);
     font-weight: 500;
     font-size: .8rem;
 
 }
-.umutiContent{
+
+.umutiContent {
     display: inline-flex;
-    text-decoration: none; 
+    text-decoration: none;
     color: white;
 }
-/* .umutiContent:active .umuti
-{
-    background-color: rgb(11, 245, 11);
-    box-shadow: 0 0 25px white;
-} */
-.umutiContent:focus{
+
+.umutiContent:focus {
     background-color: black;
+    background-color: white;
     border-radius: 25px;
-    box-shadow: 0 0 25px black;
+}
+
+.umuti:active {
+    box-shadow: 0 0 20px lime;
 }
 </style>
