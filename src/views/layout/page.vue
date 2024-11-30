@@ -87,8 +87,8 @@
                             @emptyResult="alertUmutiNew"></list-imiti>
                     </div>
                     <div class="sectB">
-                        <div style="text-align: center; margin: 10px 0px; font-weight: 900; font-size: 1.1rem;">
-                            <u>ORDONANCE DU PATIENT:</u>
+                        <div style="text-align: center; margin: 10px 0px; font-weight: 900;">
+                            <u>ORDONNANCE DU PATIENT:</u>
                         </div>
                         <div class="itemPanier" v-for="(umuti, index ) in panier_client">
                             <div class="nomination">
@@ -130,7 +130,8 @@
                             <div v-if="rdBtnActive" style="height:50px;margin-top:15px;">
                                 <label for="metiers">Choisissez sa profession:</label>
 
-                                <select v-model="selectedProf" name="metiers" id="profes">
+                                <select v-model="selectedProf" name="metiers" id="profes"
+                                    size=4>
                                     <option v-for="profession in professions" :value="profession.value">{{ profession.name
                                     }}
                                     </option>
@@ -138,6 +139,21 @@
                                 <div class="inpName">
                                     <input class="inpName-1" placeholder="mubaze izina ryiwe" />
                                     <input class="inpName-1" placeholder="numero ya telefone yiwe" />
+                                </div>
+                                <div>
+                                    <input type="text" name="myFruit" id="myFruit" list="mySuggestion" placeholder="Quelle Assureur?" />
+                                    <datalist id="mySuggestion" size=5>
+                                      <option>BIC</option>
+                                      <option>Jubilee</option>
+                                      <option>SOCAR VIE</option>
+                                      <option>Mutualité Santé Plus</option>
+                                      <option>ASCOMA BURUNDI</option>
+                                      <option>MFP</option>
+                                      <option>AMMS</option>
+                                      <option>Ministère de la Solidarité Nationale, des Affaires Sociales, des Droits de la Personne Humaine et du Genre</option>
+                                          <option>Femuscabu</option>
+                                          <option>Autre</option>
+                                    </datalist>
                                 </div>
                             </div>
                         </div>
