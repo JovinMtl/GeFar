@@ -107,10 +107,10 @@
                             </div>
                         </div>
                         <br>
-                        <p :class="[rdBtnActive ? 'tot-1' : 'c-b']" style="margin-left: .5rem;">
+                        <p :class="[rdBtnActive && selectedProf != '' ? 'tot-1' : 'c-b']" style="margin-left: .5rem;">
                             Total : <span>{{ total_panier_client }} Fbu</span>
                         </p>
-                        <p v-if="rdBtnActive" style="margin-left: .5rem;">
+                        <p v-if="rdBtnActive && selectedProf != ''" style="margin-left: .5rem;">
                             Total : <span style="color: black;">{{ total_panier_client_r }} Fbu</span>
                         </p>
                         <div class="ending" style="text-align: left;">
@@ -130,8 +130,7 @@
                             <div v-if="rdBtnActive" style="height:50px;margin-top:15px;">
                                 <label for="metiers">Choisissez sa profession:</label>
 
-                                <select v-model="selectedProf" name="metiers" id="profes"
-                                    >
+                                <select v-model="selectedProf" name="metiers" id="profes">
                                     <option v-for="profession in professions" :value="profession.value">{{ profession.name
                                     }}
                                     </option>
@@ -141,17 +140,19 @@
                                     <input class="inpName-1" placeholder="numero ya telefone yiwe" />
                                 </div>
                                 <div v-else style="margin:10px 0;">
-                                    <input type="text" name="myFruit" id="myFruit" list="mySuggestion" placeholder="Quelle Assureur?" />
+                                    <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
+                                        placeholder="Quelle Assureur?" />
                                     <datalist id="mySuggestion" size=5>
-                                      <option>BIC</option>
-                                      <option>Jubilee</option>
-                                      <option>SOCAR VIE</option>
-                                      <option>Mutualité Santé Plus</option>
-                                      <option>ASCOMA BURUNDI</option>
-                                      <option>MFP</option>
-                                      <option>AMMS</option>
-                                      <option>Ministère de la Solidarité Nationale, des Affaires Sociales, des Droits de la Personne Humaine et du Genre</option>
-                                          <option>Femuscabu</option>
+                                        <option>BIC</option>
+                                        <option>Jubilee</option>
+                                        <option>SOCAR VIE</option>
+                                        <option>Mutualité Santé Plus</option>
+                                        <option>ASCOMA BURUNDI</option>
+                                        <option>MFP</option>
+                                        <option>AMMS</option>
+                                        <option>Ministère de la Solidarité Nationale, des Affaires Sociales, des Droits de
+                                            la Personne Humaine et du Genre</option>
+                                        <option>Femuscabu</option>
                                     </datalist>
                                 </div>
                             </div>
@@ -172,7 +173,7 @@
                         <circum-power @click="logout"></circum-power>
                     </div>
                     <div class="menuHau user" style="">
-                        <a title="ni Wewe nyene" class="c-b">
+                        <a title="uyu ni Wewe nyene" class="c-b">
                             {{ getUsername() }}
                         </a>
                     </div>
