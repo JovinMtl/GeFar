@@ -107,10 +107,10 @@
                             </div>
                         </div>
                         <br>
-                        <p :class="total_panier_client_r != 0 ? 'tot-1' : ''" style="margin-left: .5rem;">
+                        <p :class="[rdBtnActive ? 'tot-1' : 'c-b']" style="margin-left: .5rem;">
                             Total : <span>{{ total_panier_client }} Fbu</span>
                         </p>
-                        <p style="margin-left: .5rem;">
+                        <p v-if="rdBtnActive" style="margin-left: .5rem;">
                             Total : <span style="color: black;">{{ total_panier_client_r }} Fbu</span>
                         </p>
                         <div class="ending" style="text-align: left;">
@@ -131,7 +131,8 @@
                                 <label for="metiers">Choisissez sa profession:</label>
 
                                 <select v-model="selectedProf" name="metiers" id="profes">
-                                    <option v-for="profession in professions" :value="profession.value">{{ profession.name }}
+                                    <option v-for="profession in professions" :value="profession.value">{{ profession.name
+                                    }}
                                     </option>
                                 </select>
                                 <div class="inpName">
@@ -1096,5 +1097,6 @@ provide('need_clear', clear_search) // in search component
 .approClass::-webkit-scrollbar-track {
     background-color: #f1f1f1;
     margin: 35px 0px;
-}</style>
+}
+</style>
 

@@ -122,4 +122,5 @@ html, body {
 .tot-1{
     color: #ad9393;
     font-size: .93rem;
+    text-decoration: line-through;
 }
