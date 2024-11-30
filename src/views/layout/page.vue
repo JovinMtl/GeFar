@@ -131,16 +131,16 @@
                                 <label for="metiers">Choisissez sa profession:</label>
 
                                 <select v-model="selectedProf" name="metiers" id="profes"
-                                    size=4>
+                                    >
                                     <option v-for="profession in professions" :value="profession.value">{{ profession.name
                                     }}
                                     </option>
                                 </select>
-                                <div class="inpName">
+                                <div v-if="selectedProf != 'au'" class="inpName">
                                     <input class="inpName-1" placeholder="mubaze izina ryiwe" />
                                     <input class="inpName-1" placeholder="numero ya telefone yiwe" />
                                 </div>
-                                <div>
+                                <div v-else style="margin:10px 0;">
                                     <input type="text" name="myFruit" id="myFruit" list="mySuggestion" placeholder="Quelle Assureur?" />
                                     <datalist id="mySuggestion" size=5>
                                       <option>BIC</option>
@@ -152,7 +152,6 @@
                                       <option>AMMS</option>
                                       <option>Ministère de la Solidarité Nationale, des Affaires Sociales, des Droits de la Personne Humaine et du Genre</option>
                                           <option>Femuscabu</option>
-                                          <option>Autre</option>
                                     </datalist>
                                 </div>
                             </div>
