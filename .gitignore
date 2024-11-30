@@ -8,5 +8,5 @@ src/views/HomeView.vue
 src/theme/pattern.css
 src/store/sync.js
 vue.config.js
-src/store/host.js
+#src/store/host.js
 .replit

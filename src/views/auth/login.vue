@@ -10,13 +10,9 @@
                     </div>
                     <div class="username">
                         <label for="input">Password</label> <br>
-                        <input v-model="password" class="inpEl bg-l"
-                         type="password">
+                        <input v-model="password" class="inpEl bg-l" type="password">
                     </div>
                     <div class="confirmationContainer">
-                        <!-- <div class="one" style="border-right: 1px solid black;">s'inscrire</div>
-                        <div class="one">se connecter</div> -->
-                        <!-- se connecter -->
                     </div>
                     <div @click="login_hook" class="enter">
                         <div class="btn">se connecter</div>
@@ -29,17 +25,18 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { 
+import {
     IonContent, IonPage
 } from '@ionic/vue';
 // import { useStore } from 'vuex'
 import { useUserStore } from '../../store/user.js'
-import { baseURL } from '../../store/host'
+// import { baseURL } from '../../store/host'
+import { baseURL } from '@/store/host'
 import axios from 'axios'
 
 const store = useUserStore()
-const {getUsername,getAccessToken,getRefreshToken,
-    setUsername,setAccessToken, setRefreshToken} = store
+const { getUsername, getAccessToken, getRefreshToken,
+    setUsername, setAccessToken, setRefreshToken } = store
 const router = useRouter()
 const username = ref(null)
 const password = ref(null)
@@ -48,19 +45,21 @@ let logs = ''
 
 
 const axiosInstance = axios.create({
-  baseURL: '//127.0.0.1:8002', // Base URL for your API
-  headers: {
-    'Authorization': 'Bearer YOUR_ACCESS_TOKEN' // Add your authorization token here
-  }
+    baseURL: '//127.0.0.1:8002', // Base URL for your API
+    headers: {
+        'Authorization': 'Bearer YOUR_ACCESS_TOKEN' // Add your authorization token here
+    }
 });
 
-const login_hook = ()=>{
+const login_hook = () => {
     const base = '//127.0.0.1:8002'
     const prefix = "api/login/"
 
-    axios.post(`${baseURL}/${prefix}`,{"username": username.value,
-        "password":password.value}
-       ).then((response) => {
+    axios.post(`${baseURL}/${prefix}`, {
+        "username": username.value,
+        "password": password.value
+    }
+    ).then((response) => {
         setUsername(username.value)
         setAccessToken(response.data.access)
         setRefreshToken(response.data.refresh)
@@ -69,9 +68,9 @@ const login_hook = ()=>{
         localStorage.setItem('refreshToken', response.data.refresh)
         // hide_authe()
         router.push('/home')
-       }).catch((error) => {
-         logs = error.response.data
-       })
+    }).catch((error) => {
+        logs = error.response.data
+    })
 }
 // const hide_authe = ()=>{
 //     const container = document.getElementById('authe')
@@ -84,12 +83,13 @@ const login_hook = ()=>{
 </script>
 <style scoped lang="scss">
 @media screen and (max-width: 400px) {
-    .LogContainer{
+    .LogContainer {
         background-color: white;
     }
 }
+
 @media screen and (min-width: 800px) {
-    .LogContainer{
+    .LogContainer {
         display: flex;
         width: 100%;
         height: 100%;
@@ -99,7 +99,7 @@ const login_hook = ()=>{
         justify-content: center;
         align-items: center;
 
-        .authentif{
+        .authentif {
             width: 30%;
             height: 90%;
             background-color: black;
@@ -110,22 +110,26 @@ const login_hook = ()=>{
             align-content: center;
             // z-index: -5;
 
-            .username{
+            .username {
                 margin: 10px 50px;
                 color: white;
-                .inpEl{
-                    padding: 15px 30px; 
-                    border-radius: 15px; border-spacing: 5px; 
-                    border-style: hidden; 
+
+                .inpEl {
+                    padding: 15px 30px;
+                    border-radius: 15px;
+                    border-spacing: 5px;
+                    border-style: hidden;
                     background-color: rgb(28, 35, 49);
                     background-color: grey;
                     font-size: 1.2rem;
                 }
-                .bg-l{
+
+                .bg-l {
                     color: lime;
                 }
             }
-            .confirmationContainer{
+
+            .confirmationContainer {
                 display: flex;
                 width: 100%;
                 height: 40px;
@@ -134,28 +138,30 @@ const login_hook = ()=>{
                 justify-content: center;
                 align-items: center;
 
-                &:hover{
+                &:hover {
                     font-weight: 800;
                 }
-                .one{
+
+                .one {
                     width: 50%;
                     height: 100%;
                     align-content: center;
 
-                    &:hover{
+                    &:hover {
                         // background: rgba(0, 255, 0, 0.692);
                         font-weight: 800;
                     }
                 }
             }
-            .enter{
+
+            .enter {
                 display: flex;
                 width: 100%;
                 height: 40px;
                 margin-top: 30px;
                 justify-content: center;
 
-                .btn{
+                .btn {
                     display: flex;
                     width: 50%;
                     height: 100%;
@@ -165,15 +171,16 @@ const login_hook = ()=>{
                     cursor: pointer;
                     box-shadow: 0 0 5px white;
                     align-content: center;
-                    background: linear-gradient(to right,black,rgb(99, 97, 97), white, gray);
+                    background: linear-gradient(to right, black, rgb(99, 97, 97), white, gray);
                     background-clip: text;
                     -webkit-text-fill-color: transparent;
 
-                    &:active{
+                    &:active {
                         background: rgba(255, 255, 255, 0.13);
-                        
+
                     }
-                    &:hover{
+
+                    &:hover {
                         font-weight: 700;
                         transform: rotateX(15deg);
                     }
