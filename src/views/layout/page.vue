@@ -4,45 +4,49 @@
             <div class="mP">
                 <div v-if="server_process" class="loader" style="z-index: 15;">
                     <jove-loader></jove-loader>
-                        
+
                 </div>
-                <div v-if="controleStatus" class="controleWrapper" style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
+                <div v-if="controleStatus" class="controleWrapper"
+                    style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
                     <cont-role @turn-control="closeControle"></cont-role>
                 </div>
-                
+
                 <div class="mainApprob" v-if="approvStatus">
-                    
+
                     <div class="approFile" v-if="approFileStatus">
                         <div class="approFileHeader">
                         </div>
                         <div class="approfileBody">
                             <appro-file @approFileClose="closeApproFile" @fileDataLoaded="getFileDataLoaded"></appro-file>
                         </div>
-                        
+
                     </div>
                     <div class="approClass">
-                        <div class="headerApprov" style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
-                            
-                        <span class="closeBtne" style="">
-                            <ion-icon :src="close" @click="closeApprov"></ion-icon>
-                        </span>
-                        <h3>Entrée en Stock</h3>
+                        <div class="headerApprov"
+                            style="display: block;position: sticky; top: 0px; width: 100%; height: 10%; background-color: white; align-items: center; align-content: center; text-align: center;">
+
+                            <span class="closeBtne" style="">
+                                <ion-icon :src="close" @click="closeApprov"></ion-icon>
+                            </span>
+                            <h3>Entrée en Stock</h3>
                         </div>
                         <div class="bodyApprov">
                             <div class="bodyApprov2">
-                                <app-rov @inputApprov="searchManager" @approFileOpen="openApproFile" @fileDataLoaded="getFileDataLoaded"></app-rov>
+                                <app-rov @inputApprov="searchManager" @approFileOpen="openApproFile"
+                                    @fileDataLoaded="getFileDataLoaded"></app-rov>
                             </div>
                         </div>
-                        <div class="footerApprov" style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">
-                            
+                        <div class="footerApprov"
+                            style="display: block;position: sticky; bottom: 0px; width: 100%; height: 10%; background-color: white; align-content: center;">
+
                             <button class="btnSave" @click="requestUpload">Enregister</button>
                         </div>
                     </div>
                 </div>
-                
-                <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft': ''">
+
+                <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft' : ''">
                     <div class="infoUmuti"></div>
-                    <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.name_umuti).slice(0,14) }}</div>
+                    <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.name_umuti).slice(0, 14) }}</div>
                     <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
                     <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_umuti }}</div>
                     <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
@@ -54,15 +58,18 @@
                         <div v-for="(lot, index) in activeLot" class="lote" :key="index">
                             <div class="head" style="padding-top: 3px; font-size: .88rem">
                                 {{ lot.qte }} <br>
-                                {{ (String(lot.date)).slice(4,8) }} {{ (String(lot.date)).slice(11,16) }}
+                                {{ (String(lot.date)).slice(4, 8) }} {{ (String(lot.date)).slice(11, 16) }}
                             </div>
                             <div class="sub" v-if="today < lot.date">
-                                <ion-icon :src="removeCircleOutline" @click="decrementQte" style="font-size: large;"></ion-icon>
+                                <ion-icon :src="removeCircleOutline" @click="decrementQte"
+                                    style="font-size: large;"></ion-icon>
                                 <span style="margin-right: .1rem;">&nbsp;</span>
-                            <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier" :id="'q' + index"
-                                style="background-color: white; width: 25px; height: 20px; position: relative; top: -4px; left: 1px"/>
-                            <span style="margin-right: .1rem;">&nbsp;</span>
-                            <ion-icon :src="addCircleOutline" @click="incrementQte" style="font-size: large;"></ion-icon>
+                                <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier"
+                                    :id="'q' + index"
+                                    style="background-color: white; width: 25px; height: 20px; position: relative; top: -4px; left: 1px" />
+                                <span style="margin-right: .1rem;">&nbsp;</span>
+                                <ion-icon :src="addCircleOutline" @click="incrementQte"
+                                    style="font-size: large;"></ion-icon>
                             </div>
                             <div v-else class="sub red">
                                 déjà perimé
@@ -74,36 +81,37 @@
                         <button class="sell" @click="moveToPanier">Vendre</button>
                     </div>
                 </div>
-                <div class="mainContainer" >
+                <div class="mainContainer">
                     <div class="sectA" style="text-align: center;">
-                        <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti" @emptyResult="alertUmutiNew"></list-imiti>
+                        <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
+                            @emptyResult="alertUmutiNew"></list-imiti>
                     </div>
                     <div class="sectB">
                         <div style="text-align: center; margin: 10px 0px; font-weight: 900; font-size: 1.1rem;">
-                            <u>COMMANDE DU PATIENT:</u>
+                            <u>ORDONANCE DU PATIENT:</u>
                         </div>
                         <div class="itemPanier" v-for="(umuti, index ) in panier_client">
                             <div class="nomination">
-                                {{ index + 1 }}. {{ (umuti.name_umuti).slice(0,8) }} : {{ umuti.price_out }} x {{ umuti.qte }} 
-                                
-                            <span style="margin-right: .3rem;">&nbsp;</span>
-                            <!-- <input style="background-color: white; width: 25px; height: 20px;"/> -->
-                            <span style="margin-right: .3rem;">&nbsp;</span>
-                            <div>{{ umuti.qte *  umuti.price_out }}</div>
+                                {{ index + 1 }}. {{ (umuti.name_umuti).slice(0, 8) }} : {{ umuti.price_out }} x {{ umuti.qte
+                                }}
+
+                                <span style="margin-right: .3rem;">&nbsp;</span>
+                                <!-- <input style="background-color: white; width: 25px; height: 20px;"/> -->
+                                <span style="margin-right: .3rem;">&nbsp;</span>
+                                <div>{{ umuti.qte * umuti.price_out }}</div>
                             </div>
-                            <div 
-                                class="cancelButto"  :id="'i'+index">
-                                    <ion-icon :id="'j'+index" @click="removeUmuti($event)"
-                                    :src="close" style="top: 0px; position: relative;">
-                                    </ion-icon>
+                            <div class="cancelButto" :id="'i' + index">
+                                <ion-icon :id="'j' + index" @click="removeUmuti($event)" :src="close"
+                                    style="top: 0px; position: relative;">
+                                </ion-icon>
                             </div>
                         </div>
                         <br>
-                        <p :class="total_panier_client_r != 0 ? 'tot-1':''" style="margin-left: .5rem;">
-                            Total : <span>{{ total_panier_client }} Fbu</span> 
+                        <p :class="total_panier_client_r != 0 ? 'tot-1' : ''" style="margin-left: .5rem;">
+                            Total : <span>{{ total_panier_client }} Fbu</span>
                         </p>
                         <p style="margin-left: .5rem;">
-                            Total : <span style="color: black;">{{ total_panier_client_r }} Fbu</span> 
+                            Total : <span style="color: black;">{{ total_panier_client_r }} Fbu</span>
                         </p>
                         <div class="ending" style="text-align: left;">
                             <button class="confirmButton" @click="toSell">Confirmer</button>
@@ -113,29 +121,24 @@
                             <div class="reduction">
                                 <div style="font-style:italic;
                                     align-self:center;">
-                                Un client spécial?
+                                    Un client spécial?
 
-                                    </div>
-                                    <div class="rdBtn" 
-                                    :class="rdBtnActive ? 'rdBtn-1':'rdBtn-2'"
-                                    @click="isSpecial">
-                                    </div>
+                                </div>
+                                <div class="rdBtn" :class="rdBtnActive ? 'rdBtn-1' : 'rdBtn-2'" @click="isSpecial">
+                                </div>
                             </div>
                             <div v-if="rdBtnActive" style="height:50px;margin-top:15px;">
                                 <label for="metiers">Choisissez sa profession:</label>
 
                                 <select v-model="selectedProf" name="metiers" id="profes">
-                                    <option v-for="profession in professions" 
-                                        :value="profession.value">{{profession.name}}
-                                        </option>
+                                    <option v-for="profession in professions" :value="profession.value">{{ profession.name }}
+                                    </option>
                                 </select>
-                            <div class="inpName">
-                                <input class="inpName-1"
-                                placeholder="mubaze izina ryiwe" />
-                                <input class="inpName-1"
-                                placeholder="numero ya telefone yiwe" />
+                                <div class="inpName">
+                                    <input class="inpName-1" placeholder="mubaze izina ryiwe" />
+                                    <input class="inpName-1" placeholder="numero ya telefone yiwe" />
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
 
@@ -152,28 +155,27 @@
                     <div class="menuHau exit">
                         <circum-power @click="logout"></circum-power>
                     </div>
-                    <div class="menuHau user"  style="">
+                    <div class="menuHau user" style="">
                         <a title="ni Wewe nyene" class="c-b">
                             {{ getUsername() }}
                         </a>
                     </div>
                     <div class="menuHau sync">
-                        <a title="ku Mwanya (Sync)"  class="c-b">
+                        <a title="ku Mwanya (Sync)" class="c-b">
                             <fluent-cloud-sync28-regular @click="askIndex">
                             </fluent-cloud-sync28-regular>
                         </a>
                     </div>
                     <div class="menuHau magnetic">
                         <a title="ku Gihe (Update)" class="c-b">
-                        <circum-pill @click="compileImitiSet"></circum-pill>
+                            <circum-pill @click="compileImitiSet"></circum-pill>
                         </a>
                     </div>
                     <teleport to="body">
                         <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
-                            <factu-rier @facture-active="closeFacture" 
-                            :commande-patient="[panier_client, total_panier_client]"
-                            :num_facture="numero_facture"
-                            :username="getUsername()"></factu-rier>
+                            <factu-rier @facture-active="closeFacture"
+                                :commande-patient="[panier_client, total_panier_client]" :num_facture="numero_facture"
+                                :username="getUsername()"></factu-rier>
                         </div>
                     </teleport>
                     <teleport to="body">
@@ -181,16 +183,16 @@
                             <p>{{ message }}</p>
                         </div>
                     </teleport>
-        
+
                 </div>
             </div>
-                
+
         </ion-content>
     </ion-page>
 </template>
 
 <script setup lang="ts">
-import { 
+import {
     defineAsyncComponent,
     reactive, ref, shallowRef,
     watch, provide,
@@ -207,33 +209,33 @@ import factuRier from '../operations/facturier.vue';
 import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
-import { 
+import {
     PanierAPI, PanierClient, ActiveLot, Umuti
 } from '../types'
-import CircumPower  from '../layout/icon/CircumPower.vue'
+import CircumPower from '../layout/icon/CircumPower.vue'
 import CircumPill from '../layout/icon/pill.vue'
 import BiCollection from '../layout/icon/collect.vue'
 import FluentCloudSync28Regular from '../layout/icon/cloud.vue'
 // import useCloseApprov from '../hooks/jove'
 
-const listImiti = defineAsyncComponent(()=>import('../operations/list-imiti.vue'))
-import { 
-    IonContent, IonPage, IonIcon, 
+const listImiti = defineAsyncComponent(() => import('../operations/list-imiti.vue'))
+import {
+    IonContent, IonPage, IonIcon,
 } from '@ionic/vue';
-import { 
-    close, addCircleOutline, removeCircleOutline, magnetOutline, 
+import {
+    close, addCircleOutline, removeCircleOutline, magnetOutline,
     add, exitOutline, syncOutline
 } from 'ionicons/icons'
 import { Lot } from './types';
 
 const router = useRouter()
 
-const today:Date = new Date
+const today: Date = new Date
 
-const selectedUmuti:Umuti = reactive({})
-const panier_client:Ref<PanierClient[]> = ref([])
-const panier_api:Ref<PanierAPI[]> = ref([])
-const activeLot:Ref<ActiveLot[]> = ref([])
+const selectedUmuti: Umuti = reactive({})
+const panier_client: Ref<PanierClient[]> = ref([])
+const panier_api: Ref<PanierAPI[]> = ref([])
+const activeLot: Ref<ActiveLot[]> = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
 const total_panier_client: Ref<number> = ref(0)
@@ -242,7 +244,7 @@ const approvStatus: Ref<boolean> = ref(false)
 const approFileStatus: Ref<boolean> = ref(false)
 const need_to_updade: Ref<boolean> = ref(false)
 const controleStatus: Ref<boolean> = ref(false)
-const all_imiti:Ref<Umuti[]> = ref([])
+const all_imiti: Ref<Umuti[]> = ref([])
 const umuti_new: Ref<boolean> = ref(false)
 
 const server_process: Ref<boolean> = ref(false)
@@ -287,35 +289,35 @@ const professions = [
     },
 ]
 
-const url_reportIndex:string = "api/rep/giveLastIndex/"
+const url_reportIndex: string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
 // const url_local:string = "//127.0.0.1:8002"
-const url_local:string = baseURL
-const url_askInstances:string = "api/rep/getForSync/"
+const url_local: string = baseURL
+const url_askInstances: string = "api/rep/getForSync/"
 const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_local)
-const [bothData, askInstances] = useKurungika(last_indexes ,url_askInstances) // on local server.
+const [bothData, askInstances] = useKurungika(last_indexes, url_askInstances) // on local server.
 
-const url_syncFromLocal:string = "api/rep/syncFromLocal/"
+const url_syncFromLocal: string = "api/rep/syncFromLocal/"
 const [rep_update, kurungika] = useKurungika(bothData, url_syncFromLocal)
 
 
 
-const url_sell:string = "api/out/sell/"
-const [sell_report, toSell ] = useKurungika(panier_api, url_sell)
+const url_sell: string = "api/out/sell/"
+const [sell_report, toSell] = useKurungika(panier_api, url_sell)
 const { getAccessToken, getUsername, setUsername,
-        setAccessToken, setRefreshToken } = useUserStore()
+    setAccessToken, setRefreshToken } = useUserStore()
 
 
-const isSpecial = ()=>{
+const isSpecial = () => {
     rdBtnActive.value = !rdBtnActive.value
-    if(rdBtnActive){
+    if (rdBtnActive) {
         total_r.value = 1
-    } else{
+    } else {
         total_r.value = 2
     }
 }
 
-const logout = ()=>{
+const logout = () => {
     // proceed to logout
     setUsername('')
     setAccessToken('')
@@ -331,26 +333,26 @@ const logout = ()=>{
 //     const container = document.getElementById('authe')
 //     container.style.display = 'flex'
 // }
-const noteUmuti = async ()=>{
+const noteUmuti = async () => {
     server_process.value = true
     let response = await useNoteUmuti(query_search.value.query)
-    if(response.ok){
+    if (response.ok) {
         console.log("Reussi")
         umuti_new.value = false
         server_process.value = false
-    } else{
+    } else {
         console.log("Echoue")
-        
+
     }
     umuti_new.value = false // in case of success
     server_process.value = false
     clear_search.value = 2 // in case of success
 
 }
-const alertUmutiNew = async (value)=>{
+const alertUmutiNew = async (value) => {
     // send that value to the url endpoint, it is the latter to decide
     // wether to keep it or not
-    if(value == 1){
+    if (value == 1) {
         console.log("Noticing that we have umuti_New")
         umuti_new.value = true
     } else {
@@ -360,7 +362,7 @@ const alertUmutiNew = async (value)=>{
     // let response = await useNoteUmuti(value)s
 
 }
-const closeFacture = ()=>{
+const closeFacture = () => {
     show_facture.value = false
     // Reinitializing panier_client and panier_api to start a new commande.
     console.log("Calling closeFacture.")
@@ -369,32 +371,32 @@ const closeFacture = ()=>{
     total_panier_client.value = update_total_client()
     total_panier_client_r.value = update_total_client(1)
 }
-const SearchBarManager = (value)=>{
+const SearchBarManager = (value) => {
     query_search.value = value
 }
-const requestUpload = ()=>{
-    umuti_single.value = !umuti_single.value 
+const requestUpload = () => {
+    umuti_single.value = !umuti_single.value
 }
-const closeControle = ()=>{
+const closeControle = () => {
     controleStatus.value = false
 }
-const compileImitiSet = async ()=>{
+const compileImitiSet = async () => {
     const endpoint = '/api/in/compileImitiSet/'
 
     try {
-        const response = await fetch(`${baseURL}${endpoint}`,{
+        const response = await fetch(`${baseURL}${endpoint}`, {
             headers: {
                 Authorization: 'Bearer ' + getAccessToken()
             }
         })
         // const server_data = await response.json()
-        if(response.ok){
+        if (response.ok) {
             console.log("The response is okay:", server_process.value)
             listImiti_update.value += 1
         } else {
             console.log("The response hasn't reached here yet")
         }
-    } catch (value){
+    } catch (value) {
         console.log("The error has occured:", value)
     }
 
@@ -407,20 +409,20 @@ const getFileDataLoaded = async (dataArray) => {
     const endpoint = '/api/in/kurangura/'
 
     try {
-        const response = await fetch(`${baseURL}${endpoint}`,{
+        const response = await fetch(`${baseURL}${endpoint}`, {
             method: 'POST',
             headers: {
-                'Content-type' : 'application/json',
-                Authorization : 'Bearer ' + getAccessToken()
+                'Content-type': 'application/json',
+                Authorization: 'Bearer ' + getAccessToken()
             },
             body: JSON.stringify({
                 'jov': dataArray
             })
         })
         const server_data = await response.json()
-        if(response.ok){
+        if (response.ok) {
             console.log("The response is okay:", server_process.value)
-            setTimeout(()=>{
+            setTimeout(() => {
                 compileImitiSet()
                 server_process.value = false
             }, 1500)
@@ -429,85 +431,85 @@ const getFileDataLoaded = async (dataArray) => {
         } else {
             console.log("The response hasn't reached here yet")
         }
-    } catch (value){
+    } catch (value) {
         console.log("The error has occured:", value)
     }
 }
-const openApproFile = ()=>{
+const openApproFile = () => {
     approFileStatus.value = true
 }
-const closeApproFile = ()=>{
+const closeApproFile = () => {
     approFileStatus.value = false
 }
-const searchManager = (value)=>{
+const searchManager = (value) => {
     // console.log("You typed: ", value)
     query_search.value = value
-    
+
 }
-const getAllImiti = (imiti)=>{
+const getAllImiti = (imiti) => {
     // Has to gets all imiti gathered by list-imiti
     // once they are assigned then they are ready to be injected into approv componenet.
     all_imiti.value = imiti
     console.log("All imiti are emitted : ", imiti)
-    
+
 }
-const closeApprov = ()=>{
+const closeApprov = () => {
     approvStatus.value = false
 }
-const actualOption = (value)=>{
+const actualOption = (value) => {
     console.log("THe actual menu is : ", value)
-    if(value == 2){
+    if (value == 2) {
         approvStatus.value = true
-    } else if(value == 3){
+    } else if (value == 3) {
         controleStatus.value = true
     }
 }
-const showChange = (event)=>{
+const showChange = (event) => {
     // This function takes the number which is in input and
     // makes it the actual value to be first considered when put to the panier
-    if (Number(event.target.value)){
+    if (Number(event.target.value)) {
         actualValue.value = event.target.value
         const code_s = event.target.getAttribute('id')
         const code = Number(code_s.slice(1))
         // console.log("THe code is: ", code, 'has: ', event.target.value)
         activeLot.value[code].to_panier = Number(event.target.value)
     } else {
-        console.log("You should type a Number: ", typeof(event.target.value))
+        console.log("You should type a Number: ", typeof (event.target.value))
     }
-    
+
 }
-const changeQte = (value)=>{
+const changeQte = (value) => {
     // this function is to ignore
     // console.log("You want to change : ", value.target.getAttribute('id'))
     console.log("You changed : ", value.target.value)
 
 }
-const incrementQte = (value)=>{
+const incrementQte = (value) => {
     // THis function is called when pressing the '+' button on lot
 
     const code_s = value.target.previousSibling.previousSibling.getAttribute('id')
     const code = Number(code_s.slice(1))
     let jov = (activeLot.value[code]).length
-    if( activeLot.value[code].qte > activeLot.value[code].to_panier) {
+    if (activeLot.value[code].qte > activeLot.value[code].to_panier) {
         activeLot.value[code].to_panier += 1
         console.log("Yes, incrementing")
     } else {
         console.log("No, incrementing")
     }
 }
-const decrementQte = (value)=>{
+const decrementQte = (value) => {
     const code_s = value.target.nextSibling.nextSibling.getAttribute('id')
     const code = Number(code_s.slice(1))
-    if(activeLot.value[code].to_panier > 0) {
+    if (activeLot.value[code].to_panier > 0) {
         actualQte.value -= 1
         activeLot.value[code].to_panier -= 1
         console.log("ok, decrementing")
     } else {
         console.log("No, decrementing")
     }
-    
+
 }
-const number_To_string = (value=10000) => {
+const number_To_string = (value = 10000) => {
     // This function is designed to format a number as a string
     // in a format of separation by 3digits
     let to_convert = value.toString()
@@ -515,73 +517,73 @@ const number_To_string = (value=10000) => {
     let i = 0
     let converted = ''
     let reversed = ''
-    reversed = to_convert.split('').reverse().toString().replaceAll(',','')
-    for(i=0; i < data_length; i++){
-        if(i%3==0){
-            converted =  converted.concat(`.${reversed[i]}`)
+    reversed = to_convert.split('').reverse().toString().replaceAll(',', '')
+    for (i = 0; i < data_length; i++) {
+        if (i % 3 == 0) {
+            converted = converted.concat(`.${reversed[i]}`)
         } else {
             converted = converted.concat(`${reversed[i]}`)
         }
     }
-    converted = converted.replace('.', '').split('').reverse().toString().replaceAll(',','')
+    converted = converted.replace('.', '').split('').reverse().toString().replaceAll(',', '')
     return converted
 }
 const removeUmuti = (obj) => {
     // This function handles the removal of umuti in panier.
     const code_s = obj.target.getAttribute('id')
     const code = Number(code_s.slice(1))
-    panier_client.value.splice(code,1)
-    panier_api.value.splice(code,1)
+    panier_client.value.splice(code, 1)
+    panier_api.value.splice(code, 1)
     total_panier_client.value = update_total_client()
     total_panier_client_r.value = update_total_client(1)
 }
 const somme_to_panier = () => {
     // This functions evaluates the sum of quantity chosen in different lots on a same umuti.
     let somme = 0
-    activeLot.value.forEach((element)=>{
+    activeLot.value.forEach((element) => {
         somme += element.to_panier
     })
     return somme
 }
-const lot_array = ():PanierAPI[]=> {
+const lot_array = (): PanierAPI[] => {
     // This functions builds and array which differentiates the lots have been selected on a same umuti.
-    let lote:PanierAPI[] = []
-    let value:number = 0
-    let right_date:number = 0
-    activeLot.value.forEach((element)=>{
-        if(element.date > today){
+    let lote: PanierAPI[] = []
+    let value: number = 0
+    let right_date: number = 0
+    activeLot.value.forEach((element) => {
+        if (element.date > today) {
             let obj = {
-            'code_operation' : element.code_operation,
-            'qte' : element.to_panier,
+                'code_operation': element.code_operation,
+                'qte': element.to_panier,
             }
             value += element.to_panier
             lote.push(obj)
             right_date += 1
         }
-        
+
     })
 
-    if(value){
+    if (value) {
         return lote
-    } else if(right_date) {
+    } else if (right_date) {
         lote[0].qte = 1
         return lote
-    } else{
+    } else {
         lote
     }
-    
+
 }
 const check_panier = (umuti_name) => {
     // This function checks the existence of umuti on panier in order not to duplicate it.
-    let panier_length:number = (panier_client.value).length
-    let i:number = 0
+    let panier_length: number = (panier_client.value).length
+    let i: number = 0
     console.log("Panier had length of : ", panier_length)
-    for(i = 0; i < panier_length; i++){
-        console.log("T: ", panier_client.value[i],'>>',umuti_name, '<<', i )
-        if(panier_client.value[i].name_umuti == umuti_name){
+    for (i = 0; i < panier_length; i++) {
+        console.log("T: ", panier_client.value[i], '>>', umuti_name, '<<', i)
+        if (panier_client.value[i].name_umuti == umuti_name) {
             notifStatus.value = true
             message.value = "Ce medicament existe deja sur le panier."
-            setTimeout(()=>{
+            setTimeout(() => {
                 notifStatus.value = false
             }, 1500)
             return 0
@@ -589,63 +591,63 @@ const check_panier = (umuti_name) => {
     }
     return 1
 }
-const update_total_client = (reduction:number=0):string => {
+const update_total_client = (reduction: number = 0): string => {
     // This function updates the sum of the imiti in the panier
-    let somme:number = 0
-    let somme_formatted:number = 0
-    panier_client.value.forEach((element)=>{
+    let somme: number = 0
+    let somme_formatted: number = 0
+    panier_client.value.forEach((element) => {
         let p_T = element.price_out * element.qte
         somme += p_T
     })
-    if(reduction==0){
+    if (reduction == 0) {
         somme_formatted = number_To_string(somme) //formatting by three digits
-    } else if(reduction==1){
+    } else if (reduction == 1) {
         somme = somme * 0.9
         somme_formatted = number_To_string(somme) //formatting by three digits
-    } else{
+    } else {
         somme = 0
         somme_formatted = number_To_string(somme) //formatting by three digits
     }
     return somme_formatted
 }
-const somme_lote = ():number=>{
-    let somme_qte:number = 0
-    let date_exp:number = 0
-    activeLot.value.forEach((element)=>{
+const somme_lote = (): number => {
+    let somme_qte: number = 0
+    let date_exp: number = 0
+    activeLot.value.forEach((element) => {
         somme_qte += Number(element.to_panier)
-        if((element.date >= today) && (element.qte > 0)){
+        if ((element.date >= today) && (element.qte > 0)) {
             date_exp += 1
         }
     })
-    if(somme_qte == 0){
-        if(date_exp){
+    if (somme_qte == 0) {
+        if (date_exp) {
             return 1
-        } else{
+        } else {
             return 0
-        } 
+        }
     } else {
         return somme_qte
     }
 }
-const moveToPanier = ():number => {
+const moveToPanier = (): number => {
     // this function manages to move umuti from selected into panier
-    let jove:string = check_panier(selectedUmuti.value.name_umuti)
-    if(jove){
+    let jove: string = check_panier(selectedUmuti.value.name_umuti)
+    if (jove) {
         let obj_Client = {
-            'name_umuti' : selectedUmuti.value.name_umuti,
-            'qte' : somme_lote(),
-            'price_out' : Number(selectedUmuti.value.price_out),
+            'name_umuti': selectedUmuti.value.name_umuti,
+            'qte': somme_lote(),
+            'price_out': Number(selectedUmuti.value.price_out),
         }
         let obj_API = {
-            'code_umuti' : selectedUmuti.value.code_umuti,
-            'qte' : somme_lote(),
-            'lot' : lot_array()
+            'code_umuti': selectedUmuti.value.code_umuti,
+            'qte': somme_lote(),
+            'lot': lot_array()
         }
 
-        if(!obj_Client.qte){
+        if (!obj_Client.qte) {
             notifStatus.value = true
             message.value = "Ce medicament est perimé. Veuillez le mettre a coté."
-            setTimeout(()=>{
+            setTimeout(() => {
                 notifStatus.value = false
             }, 1500)
             return 0
@@ -655,7 +657,7 @@ const moveToPanier = ():number => {
         total_panier_client.value = update_total_client()
         total_panier_client_r.value = update_total_client(1)
         // REinitializing
-        if (panier_client.value && panier_api.value){
+        if (panier_client.value && panier_api.value) {
             selectedUmuti.value = undefined
             activeLot.value = []
             actualQte.value = 1
@@ -664,11 +666,11 @@ const moveToPanier = ():number => {
     } else {
         console.log("No, the umuti already exist in Panier ", jove)
     }
-    return 1  
+    return 1
 }
-const strDate = (lot:Lot[]):Lot[]=>{
-    let lot_length:number = lot.length
-    for (let i=0; i<lot_length; i++){
+const strDate = (lot: Lot[]): Lot[] => {
+    let lot_length: number = lot.length
+    for (let i = 0; i < lot_length; i++) {
         let converted_date = new Date(lot[i].date)
         lot[i].date = converted_date
     }
@@ -676,14 +678,14 @@ const strDate = (lot:Lot[]):Lot[]=>{
 }
 const getUmuti = (umuti) => {
     // THis one handles the umuti when it was emitted from list-imiti component.
-    let temp_lot:Lot[] = []
-    if(selectedUmuti.value == undefined){
+    let temp_lot: Lot[] = []
+    if (selectedUmuti.value == undefined) {
         selectedUmuti.value = umuti
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         temp_lot = JSON.parse(lots_json) //setting the activeLot
         activeLot.value = strDate(temp_lot)
         need_to_updade.value = false  // to command not to provide an update from list-imiti
-    } else if(selectedUmuti.value.code_umuti === umuti.code_umuti){
+    } else if (selectedUmuti.value.code_umuti === umuti.code_umuti) {
         selectedUmuti.value = undefined
         activeLot.value = []
     } else {
@@ -691,30 +693,30 @@ const getUmuti = (umuti) => {
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         temp_lot = JSON.parse(lots_json) //setting the activeLot
         activeLot.value = strDate(temp_lot)
-        need_to_updade.value = false 
+        need_to_updade.value = false
     }
-    
+
 }
 
-watch(selectedProf, (value)=>{
+watch(selectedProf, (value) => {
     // Now apply the reduction according to benefit of value 'md,tv'
     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
 })
-watch(bothData, (value)=>{
+watch(bothData, (value) => {
     // should now send them to the remote server.
     kurungika()
     server_process.value = false
 })
-watch(should_sync, (value)=>{
+watch(should_sync, (value) => {
     askInstances()
 })
-watch(last_indexes, (value)=>{
+watch(last_indexes, (value) => {
     server_process.value = true
     last_umutiEntree.value = value.last_umutiEntree
     last_umutiSold.value = value.last_umutiSold
     should_sync.value += 1
 })
-watch(sell_report, value=>{
+watch(sell_report, value => {
     // Do something when the status response is OK
     console.log("Maintenant nous pouvons VOIR: facturier")
     show_facture.value = true
@@ -733,12 +735,15 @@ provide('need_clear', clear_search) // in search component
 </script>
 
 <style scoped>
-.mP{
-    position: relative;overflow: hidden;
-    width: 100%; height: 100%; 
-    background-color:#00ff00b0; 
-    
+.mP {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #00ff00b0;
+
 }
+
 .addElement {
     position: absolute;
     width: 20px;
@@ -754,7 +759,8 @@ provide('need_clear', clear_search) // in search component
     padding-top: 3px;
     margin: 0;
 }
-.facturierContainer{
+
+.facturierContainer {
     display: flex;
     position: absolute;
     width: 100vw;
@@ -766,7 +772,8 @@ provide('need_clear', clear_search) // in search component
     align-items: center;
 
 }
-.umutiLot{
+
+.umutiLot {
     overflow: auto;
     /* background-color: yellow; */
     height: 80px;
@@ -775,56 +782,61 @@ provide('need_clear', clear_search) // in search component
     /* padding: 5px 5px; */
     margin-left: 5px;
 }
-.exit{
-    background-color: transparent; 
-    height: 50px; 
-    width: 50px; 
-    display: flex; 
+
+.exit {
+    background-color: transparent;
+    height: 50px;
+    width: 50px;
+    display: flex;
     position: absolute;
-    left: 86vw; 
-    top: 89vh; 
+    left: 86vw;
+    top: 89vh;
     top: -4.9vh;
-    font-size: xx-large; 
+    font-size: xx-large;
     color: black;
 }
-.user{
-    background-color: transparent; 
-    height: 20px; 
-    width: 150px; 
-    display: flex; 
+
+.user {
+    background-color: transparent;
+    height: 20px;
+    width: 150px;
+    display: flex;
     position: absolute;
     /* position: relative; */
-    left: 55vw; 
-    top: 90.5vh; 
+    left: 55vw;
+    top: 90.5vh;
     /* top: 87vh; */
-    font-size: normal; 
+    font-size: normal;
     color: black;
 }
-.sync{
-    background-color: transparent; 
-    height: 25px; 
-    width: 25px; 
-    display: flex; 
+
+.sync {
+    background-color: transparent;
+    height: 25px;
+    width: 25px;
+    display: flex;
     position: absolute;
-    left: 62vw; 
-    top: 89vh; 
-    font-size: xx-large; 
+    left: 62vw;
+    top: 89vh;
+    font-size: xx-large;
     color: black;
 }
-.magnetic{
-    background-color: transparent; 
-    height: 25px; 
-    width: 25px; 
-    display: flex; 
+
+.magnetic {
+    background-color: transparent;
+    height: 25px;
+    width: 25px;
+    display: flex;
     position: absolute;
     /* position: relative; */
-    left: 66vw; 
-    top: 89vh; 
+    left: 66vw;
+    top: 89vh;
     /* top: 87vh; */
-    font-size: xx-large; 
+    font-size: xx-large;
     color: black;
 }
-.infoUmuti{
+
+.infoUmuti {
     width: 100%;
     height: 10%;
     margin-bottom: 5px;
@@ -832,95 +844,105 @@ provide('need_clear', clear_search) // in search component
     /* margin-left: 1px; */
     /* background-color: green; */
 }
-.umutiTitle{
-    background-color: rgba(128, 128, 128, 0.378); 
+
+.umutiTitle {
+    background-color: rgba(128, 128, 128, 0.378);
     background-color: rgba(255, 255, 255, 0.496);
     background-color: rgba(0, 50, 255, 0.315);
-    height: 5%; 
+    height: 5%;
     font-weight: 700;
     padding: 4px 10px;
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
     color: black;
-    
+
 }
-.umutiDescription{
+
+.umutiDescription {
     height: 10%;
 }
-.approFileHeader{
+
+.approFileHeader {
     width: 100%;
     height: 8%;
     background-color: gray;
-    display: block; 
+    display: block;
     align-content: center
 }
-.approfileBody{
+
+.approfileBody {
     display: block;
     position: absolute;
     background-color: rgba(79, 92, 75, 0.9);
-    width: 100%; 
-    height: 90%; 
+    width: 100%;
+    height: 90%;
     /* padding-top: 20%; */
-    z-index: 2; 
+    z-index: 2;
     /* left: 15vw; */
     overflow: auto;
 }
-.approFile{
+
+.approFile {
     display: block;
     position: absolute;
     background-color: rgba(79, 92, 75, 0.9);
-    width: 60vw; 
-    height: 90vh; 
+    width: 60vw;
+    height: 90vh;
     /* padding-top: 20%; */
-    z-index: 2; 
+    z-index: 2;
     /* left: 15vw; */
     left: 20vw;
     /* overflow: auto; */
 }
-.mainApprob{
-    position:absolute;
+
+.mainApprob {
+    position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(255, 255,255, 0.5); 
+    background-color: rgba(255, 255, 255, 0.5);
     text-align: center;
     z-index: 2;
 }
-.bodyApprov2{
+
+.bodyApprov2 {
     overflow: auto;
     border-top: 2px double black;
 }
-.bodyApprov{
+
+.bodyApprov {
     height: 80%;
     width: 100%;
     overflow: auto;
 }
 
-.closeBtn:active{
-    position: absolute; 
-    left: 88%; 
-    top: 10px; 
+.closeBtn:active {
+    position: absolute;
+    left: 88%;
+    top: 10px;
     font-size: 2rem;
     color: red;
 }
-.btnSave{
-    padding: 5px 15px; 
-    font-size: large; 
-    background-color: transparent; 
-    color: black; 
+
+.btnSave {
+    padding: 5px 15px;
+    font-size: large;
+    background-color: transparent;
+    color: black;
     /* border: 1px solid black; */
     box-shadow: 0 0 25px rgb(112, 110, 110);
 }
-.btnSave:active{
-    padding: 5px 15px; 
-    font-size: large; 
-    background-color: transparent; 
+
+.btnSave:active {
+    padding: 5px 15px;
+    font-size: large;
+    background-color: transparent;
     background-color: rgba(25, 255, 25, 0.521);
-    color: black; 
+    color: black;
     /* border: 1px solid black; */
     /* box-shadow: 0 0 20px black; */
 }
 
-.approClass{
+.approClass {
     width: 27.3vw;
     height: 97%;
     /* height: 100%; */
@@ -940,7 +962,8 @@ provide('need_clear', clear_search) // in search component
     color: black;
     /* color: green */
 }
-.menuLeft{
+
+.menuLeft {
     width: 11.6vw;
     height: 100%;
     /* background-color: red; */
@@ -948,46 +971,52 @@ provide('need_clear', clear_search) // in search component
     /* padding: 10px 10px; */
     color: rgb(63, 62, 62);
 }
-.hMenuLeft{
+
+.hMenuLeft {
     display: none;
 }
 
 
-.lote{
+.lote {
     background-color: rgba(128, 128, 128, 0.527);
-    height: 80%; 
-    width: 83%; 
-    margin-bottom: 15px; 
-    text-align: center; 
-    font-size: .9rem; 
+    height: 80%;
+    width: 83%;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: .9rem;
     border-radius: 15px;
     margin-left: 10px;
     margin-top: 10px;
 }
-.head{
-    width: 100%; 
-    height: 60%; 
+
+.head {
+    width: 100%;
+    height: 60%;
     background-color: transparent;
     color: white;
 }
-.sub{
-    width: 100%; 
+
+.sub {
+    width: 100%;
     height: 40%;
     background-color: transparent;
     text-align: center;
 }
-.sell{
-    padding: 5px 15px; 
+
+.sell {
+    padding: 5px 15px;
     margin-right: 12px;
     background-color: rgba(14, 14, 211, 0.384);
 }
-.confirmButton{
-    padding: 5px 15px; 
+
+.confirmButton {
+    padding: 5px 15px;
     border: 1px dashed seagreen;
-    background-color: rgba(255, 255, 255, 0.4); 
-    color: seagreen ;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: seagreen;
 }
-.itemPanier{
+
+.itemPanier {
     height: 25px;
     width: 100%;
     color: black;
@@ -997,15 +1026,17 @@ provide('need_clear', clear_search) // in search component
     background-color: rgba(255, 255, 255, 0.568);
     align-content: center;
 }
-.nomination{
-    width: 80%; 
-    height: 100%; 
+
+.nomination {
+    width: 80%;
+    height: 100%;
     display: inline-flex;
     position: absolute;
     /* align-items: center; */
 }
-.cancelButto{
-    background-color: rgb(236, 93, 93); 
+
+.cancelButto {
+    background-color: rgb(236, 93, 93);
     /* width: 10%;  */
     /* height: 100%;  */
     width: 13px;
@@ -1019,17 +1050,19 @@ provide('need_clear', clear_search) // in search component
 }
 
 
-.sell:active{
-    padding: 5px 15px; 
+.sell:active {
+    padding: 5px 15px;
     background-color: rgba(0, 0, 0, 0.568);
 }
-.confirmButton:active{
-    padding: 5px 15px; 
+
+.confirmButton:active {
+    padding: 5px 15px;
     border: 1px dashed seagreen;
-    background-color: rgba(0, 0, 0, 0.404); 
-    color: white ;
+    background-color: rgba(0, 0, 0, 0.404);
+    color: white;
 }
-.red{
+
+.red {
     color: red;
     font-size: .8rem;
 }
@@ -1037,29 +1070,31 @@ provide('need_clear', clear_search) // in search component
 ::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: 15px;
-  }
-  ::-webkit-scrollbar {
+}
+
+::-webkit-scrollbar {
     width: 3px;
     color: green;
-  }
-  ::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-track {
     background-color: #f1f1f1;
-  }
+}
 
 
 
-  .approClass::-webkit-scrollbar-thumb {
+.approClass::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: 15px;
-  }
-  .approClass::-webkit-scrollbar {
+}
+
+.approClass::-webkit-scrollbar {
     width: 3px;
     color: green;
-  }
-  .approClass::-webkit-scrollbar-track {
+}
+
+.approClass::-webkit-scrollbar-track {
     background-color: #f1f1f1;
     margin: 35px 0px;
-  }
-
-</style>
+}</style>
 
