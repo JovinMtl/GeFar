@@ -93,11 +93,10 @@ html, body {
     display: flex;
     width: auto;
     height: 30px;
-    margin: 30px 0;
 }
 .reduction{
     display: flex;
-    min-height: 30px;
+    height: 30px;
     color: grey;
     background-color:rgba(255, 255, 255, 0.315);
 }
