@@ -135,11 +135,11 @@
                                     }}
                                     </option>
                                 </select>
-                                <div v-if="selectedProf != 'au'" class="inpName">
+                                <div v-if="selectedProf != 'au' && selectedProf" class="inpName">
                                     <input class="inpName-1" placeholder="mubaze izina ryiwe" />
                                     <input class="inpName-1" placeholder="numero ya telefone yiwe" />
                                 </div>
-                                <div v-else style="margin:10px 0;">
+                                <div v-if="selectedProf == 'au'" style="margin:10px 0;">
                                     <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
                                         placeholder="Quelle Assureur?" ref="suggest" 
                                         @change="show_suggest" />
@@ -163,8 +163,9 @@
                                         <option>AMMS</option>
                                     </datalist>
                                     <div v-if="stage_redu==3" 
-                                        style="height: 30px;background-color: red;">
-                                        <input type="text" :value="assureur" disabled>
+                                        style="height: 30px;background-color: red;
+                                        margin: 20px 0">
+                                        <input type="text" :value="'   '+ assureur" disabled>
                                         <input type="text" placeholder="Numero Carte">
                                         <input type="number" placeholder="Numero bon">
                                         <input type="button" value="Valider">
