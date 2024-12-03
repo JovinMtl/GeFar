@@ -163,9 +163,12 @@
                                         <option>AMMS</option>
                                     </datalist>
                                     <div v-if="stage_redu==3" 
-                                        style="height: 30px;background-color: red;
-                                        margin: 20px 0">
-                                        <input type="text" :value="'   '+ assureur" disabled>
+                                        style="margin: 20px 0">
+                                        <input type="text"
+                                            style="color: #f50;
+                                            background-color: transparent;
+                                            border: 1px solid transparent;"
+                                         :value="'   '+ assureur.slice(0,20)" disabled>
                                         <input type="text" placeholder="Numero Carte">
                                         <input type="number" placeholder="Numero bon">
                                         <input type="button" value="Valider">
@@ -322,7 +325,7 @@ const professions = [
     },
     {
         'value': 'au',
-        'name': 'Autre'
+        'name': 'Assuré'
     },
 ]
 
