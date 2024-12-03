@@ -141,8 +141,9 @@
                                 </div>
                                 <div v-else style="margin:10px 0;">
                                     <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
-                                        placeholder="Quelle Assureur?" />
-                                    <datalist id="mySuggestion" size=5>
+                                        placeholder="Quelle Assureur?" ref="suggest" 
+                                        @change="show_suggest" />
+                                    <datalist id="mySuggestion">
                                         <option>BIC</option>
                                         <option>Jubilee</option>
                                         <option>SOCAR VIE</option>
@@ -153,7 +154,16 @@
                                         <option>Ministère de la Solidarité Nationale, des Affaires Sociales, des Droits de
                                             la Personne Humaine et du Genre</option>
                                         <option>Femuscabu</option>
+                                        <option>BIC</option>
+                                        <option>Jubilee</option>
+                                        <option>SOCAR VIE</option>
+                                        <option>Mutualité Santé Plus</option>
+                                        <option>ASCOMA BURUNDI</option>
+                                        <option>MFP</option>
+                                        <option>AMMS</option>
                                     </datalist>
+                                    <div v-if="stage_redu" 
+                                        style="height: 30px;background-color: red;"></div>
                                 </div>
                             </div>
                         </div>
@@ -279,8 +289,11 @@ const last_umutiEntree: Ref<number> = ref(0)
 const last_umutiSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
 const total_r: Ref<number> = ref(2)
+const stage_redu: Ref<number> = ref(0)
 const selectedProf: Ref<string> = ref('')
 const message = shallowRef<string>('hello')
+
+const suggest:Ref<string> = ref("Votre assureur")
 
 
 const professions = [
@@ -712,9 +725,15 @@ const getUmuti = (umuti) => {
         activeLot.value = strDate(temp_lot)
         need_to_updade.value = false
     }
-
+}
+const show_suggest = (e)=>{
+    console.log("You entered assureur: ", e.target.value)
+    stage_redu.value = 3
 }
 
+watch(suggest, (value)=>{
+    console.log("The selected option: ", suggest.value)
+})
 watch(selectedProf, (value) => {
     // Now apply the reduction according to benefit of value 'md,tv'
     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
