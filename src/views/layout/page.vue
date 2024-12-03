@@ -162,8 +162,13 @@
                                         <option>MFP</option>
                                         <option>AMMS</option>
                                     </datalist>
-                                    <div v-if="stage_redu" 
-                                        style="height: 30px;background-color: red;"></div>
+                                    <div v-if="stage_redu==3" 
+                                        style="height: 30px;background-color: red;">
+                                        <input type="text" :value="assureur" disabled>
+                                        <input type="text" placeholder="Numero Carte">
+                                        <input type="number" placeholder="Numero bon">
+                                        <input type="button" value="Valider">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -291,6 +296,7 @@ const should_sync: Ref<number> = ref(0)
 const total_r: Ref<number> = ref(2)
 const stage_redu: Ref<number> = ref(0)
 const selectedProf: Ref<string> = ref('')
+const assureur: Ref<string> = ref('')
 const message = shallowRef<string>('hello')
 
 const suggest:Ref<string> = ref("Votre assureur")
@@ -728,6 +734,7 @@ const getUmuti = (umuti) => {
 }
 const show_suggest = (e)=>{
     console.log("You entered assureur: ", e.target.value)
+    assureur.value = e.target.value
     stage_redu.value = 3
 }
 
