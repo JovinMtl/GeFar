@@ -87,36 +87,39 @@
                             @emptyResult="alertUmutiNew"></list-imiti>
                     </div>
                     <div class="sectB">
-                        <div style="text-align: center; margin: 10px 0px; font-weight: 900;">
-                            <u>ORDONNANCE DU PATIENT:</u>
-                        </div>
-                        <div class="itemPanier" v-for="(umuti, index ) in panier_client">
-                            <div class="nomination">
-                                {{ index + 1 }}. {{ (umuti.name_umuti).slice(0, 8) }} : {{ umuti.price_out }} x {{ umuti.qte
-                                }}
+                        <div style="max-height: 38vh; overflow: auto;">
+                            <div style="text-align: center; margin: 10px 0px; font-weight: 900;">
+                                <u>ORDONNANCE DU PATIENT:</u>
+                            </div>
+                            <div class="itemPanier"
+                             v-for="(umuti, index ) in panier_client">
+                                <div class="nomination">
+                                    {{ index + 1 }}. {{ (umuti.name_umuti).slice(0, 8) }} : {{ umuti.price_out }} x {{ umuti.qte
+                                    }}
 
-                                <span style="margin-right: .3rem;">&nbsp;</span>
-                                <!-- <input style="background-color: white; width: 25px; height: 20px;"/> -->
-                                <span style="margin-right: .3rem;">&nbsp;</span>
-                                <div>{{ umuti.qte * umuti.price_out }}</div>
+                                    <span style="margin-right: .3rem;">&nbsp;</span>
+                                    <!-- <input style="background-color: white; width: 25px; height: 20px;"/> -->
+                                    <span style="margin-right: .3rem;">&nbsp;</span>
+                                    <div>{{ umuti.qte * umuti.price_out }}</div>
+                                </div>
+                                <div class="cancelButto" :id="'i' + index">
+                                    <ion-icon :id="'j' + index" @click="removeUmuti($event)" :src="close"
+                                        style="top: 0px; position: relative;">
+                                    </ion-icon>
+                                </div>
                             </div>
-                            <div class="cancelButto" :id="'i' + index">
-                                <ion-icon :id="'j' + index" @click="removeUmuti($event)" :src="close"
-                                    style="top: 0px; position: relative;">
-                                </ion-icon>
+                            <br>
+                            <p :class="[rdBtnActive && selectedProf != '' ? 'tot-1' : 'c-b']" style="margin-left: .5rem;">
+                                Total : <span>{{ total_panier_client }} Fbu</span>
+                            </p>
+                            <p v-if="rdBtnActive && selectedProf != ''" style="margin-left: .5rem;">
+                                Total : <span style="color: black;">{{ total_panier_client_r }} Fbu</span>
+                            </p>
+                            <div class="ending" style="text-align: left;">
+                                <button class="confirmButton" @click="toSell">Confirmer</button>
                             </div>
                         </div>
-                        <br>
-                        <p :class="[rdBtnActive && selectedProf != '' ? 'tot-1' : 'c-b']" style="margin-left: .5rem;">
-                            Total : <span>{{ total_panier_client }} Fbu</span>
-                        </p>
-                        <p v-if="rdBtnActive && selectedProf != ''" style="margin-left: .5rem;">
-                            Total : <span style="color: black;">{{ total_panier_client_r }} Fbu</span>
-                        </p>
-                        <div class="ending" style="text-align: left;">
-                            <button class="confirmButton" @click="toSell">Confirmer</button>
-                        </div>
-                        <div class="separation"></div>
+                        <!-- <div class="separation"></div> -->
                         <div v-show="total_panier_client != '0'">
                             <div class="reduction">
                                 <div style="font-style:italic;
@@ -127,7 +130,8 @@
                                 <div class="rdBtn" :class="rdBtnActive ? 'rdBtn-1' : 'rdBtn-2'" @click="isSpecial">
                                 </div>
                             </div>
-                            <div v-if="rdBtnActive" style="height:50px;margin-top:15px;">
+                            <div v-if="rdBtnActive" style="height:39vh;margin-top:15px;
+                                overflow: auto;">
                                 <label for="metiers">Choisissez sa profession:</label>
 
                                 <select v-model="selectedProf" name="metiers" id="profes">
