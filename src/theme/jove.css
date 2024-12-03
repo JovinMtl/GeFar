@@ -123,3 +123,7 @@ html, body {
     font-size: .93rem;
     text-decoration: line-through;
 }
+.inpBl{
+    background-color: transparent;
+    border: 1px solid transparent;
+}

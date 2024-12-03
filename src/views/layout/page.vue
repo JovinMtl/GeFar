@@ -162,13 +162,13 @@
                                         <option>MFP</option>
                                         <option>AMMS</option>
                                     </datalist>
-                                    <div v-if="stage_redu==3" 
+                                    <div v-if="stage_redu==3 && assureur" 
                                         style="margin: 20px 0">
                                         <input type="text"
-                                            style="color: #f50;
-                                            background-color: transparent;
-                                            border: 1px solid transparent;"
+                                            class="inpBl"
+                                            style="color: rgb(12, 124, 216); font-weight: 700;"
                                          :value="'   '+ assureur.slice(0,20)" disabled>
+                                        <input type="text" placeholder="Nom du beneficiaire">
                                         <input type="text" placeholder="Numero Carte">
                                         <input type="number" placeholder="Numero bon">
                                         <input type="button" value="Valider">
