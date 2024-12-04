@@ -46,7 +46,14 @@
                 <!-- details for umuti were displayed here -->
                 <div class="fami"></div>
                 <div class="mainContainer">
-                    <div class="famil"></div>
+                    <div class="famil">
+                        <input type="text" value="     Familles"
+                            class="inpBl w-90"
+                            style="color: black;" disabled>
+                        <input type="text" class="w-90"
+                        placeholder="Trouver famille">
+                        <div class="fami-1"></div>
+                    </div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
                             @emptyResult="alertUmutiNew"></list-imiti>

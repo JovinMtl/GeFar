@@ -165,3 +165,12 @@ html, body {
 .noDisp{
     display: none;
 }
+.w-90{
+    width: 90%;
+}
+.fami-1{
+    width: 100%;
+    background-color: red;
+    height: 30px;
+    margin: 5px 0;
+}
