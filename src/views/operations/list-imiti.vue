@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div v-for="(umuti, index) in imitiset" v-show="umuti.name_med" style="display: inline-block ;"
+        <div v-for="(umuti, index) in imitiset" v-show="umuti.nom_med" style="display: inline-block ;"
             @click.prevent="umutiOpen($event)">
-            <a :title="umuti.name_med" href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
+            <a :title="umuti.nom_med" href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
                 <div :id="index" class="umuti">
                     <div class="umutiTitle">
-                        {{ (umuti.name_med).slice(0, 7) }}<span v-show="(umuti.name_med).length > 8">...</span>
+                        {{ (umuti.nom_med).slice(0, 7) }}<span v-show="(umuti.nom_med).length > 8">...</span>
 
                     </div>
 
@@ -39,11 +39,11 @@ export default defineComponent({
 
         const search_med = (value) => {
             // value.field
-            let fieldname = 'name_med'
+            let fieldname = 'nom_med'
             if (value.field) {
                 fieldname = value.field
             } else {
-                fieldname = 'name_med'
+                fieldname = 'nom_med'
             }
             return imiti_for_search.filter((element) => {
                 return (String(element[fieldname])).toLowerCase().match((String(value.query)).toLowerCase())
@@ -661,7 +661,7 @@ export default defineComponent({
                 let obj: UmutiSet = {
                     'code_med': element.code_med,
                     'id': i,
-                    'name_med': element.name_med,
+                    'nom_med': element.nom_med,
                     'description_med': element.description_med,
                     'date_last_vente': new Date(element.date_last_vente),
                     'price_in': element.price_in,
@@ -690,7 +690,7 @@ export default defineComponent({
                     'description_med': element.description_med,
                     'location': element.location,
                     'lot': element.lot,
-                    'name_med': (element.name_med),
+                    'nom_med': (element.nom_med),
                     'price_in': element.price_in,
                     'price_out': element.price_out,
                     'qte_entrant_big': element.qte_entrant_big,

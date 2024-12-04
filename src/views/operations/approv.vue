@@ -13,7 +13,7 @@
             <ul style="text-align: right;" v-if="!selected_search">
                 <button class="btnResearch" v-for="(umuti, index) in imiti_result" 
                     :id="'a' + index" @click="selectSearch">
-                    {{ umuti.name_med }} {{ umuti.code_med }} {{ umuti.description_med }}
+                    {{ umuti.nom_med }} {{ umuti.code_med }} {{ umuti.description_med }}
                 </button>
             </ul>
             <input v-model="umuti_price_in" type="text" placeholder="Price in: (Type_in)">
@@ -50,7 +50,7 @@
         <div v-if="selected_search">
             <br> <br>
             <label>Nom </label>
-            <input v-model="selected_search.name_med" type="text" 
+            <input v-model="selected_search.nom_med" type="text" 
                 disabled="true" placeholder="Nom du medicament">
                 <br> <br>
                 <label>Qnte </label>  
@@ -112,7 +112,7 @@ export default {
                 'code_med': '',
                 'date_winjiriyeko': new Date().toISOString(),
                 'date_uzohererako': umuti_date_exp.value,
-                'name_med': '',
+                'nom_med': '',
                 'description_med': '',
                 'type_med': '',
                 'type_in': '',
@@ -138,7 +138,7 @@ export default {
                 'code_med': selected_search.value.code_med,
                 'date_winjiriyeko': new Date().toISOString(),
                 'date_uzohererako': '',
-                'name_med': selected_search.value.name_med,
+                'nom_med': selected_search.value.nom_med,
                 'description_med': selected_search.value.description_med,
                 'type_med': selected_search.value.type_med,
                 'type_in': selected_search.value.type_in,
@@ -157,7 +157,7 @@ export default {
             if(selected_search.value){
                 // Update umuti_obj according to selected_search
                 umuti_obj.code_med = selected_search.value.code_med
-                umuti_obj.name_med = selected_search.value.name_med
+                umuti_obj.nom_med = selected_search.value.nom_med
                 umuti_obj.date_uzohererako = date_exp.value
                 // umuti_obj.date_winjiriyeko = new Date()
                 umuti_obj.price_in = selected_search.value.price_in
@@ -178,7 +178,7 @@ export default {
                     && (Date(date_exp.value))
                 ){
                     console.log("PASSABLE")
-                    umuti_obj.name_med = String(umutiName.value)
+                    umuti_obj.nom_med = String(umutiName.value)
                     umuti_obj.code_med = ''
                     umuti_obj.date_uzohererako = umuti_date_exp.value
                     // umuti_obj.date_winjiriyeko = Date(new Date().toISOString().substring(0,10))

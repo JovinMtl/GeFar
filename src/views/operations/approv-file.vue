@@ -146,7 +146,7 @@ export default {
                 'date_winjiriyeko': '',
                 // 'date_winjiriyeko': new Date().toISOString(),
                 'date_uzohererako': element.Date_exp,
-                'name_med': element.Nom,
+                'nom_med': element.Nom,
                 'description_med': element.Description,
                 'type_med': element.Type_medicament,
                 'type_in': element.Type_in,

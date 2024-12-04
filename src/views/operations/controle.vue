@@ -115,7 +115,7 @@
                             {{ index + 1 }}
                         </div> 
                         <div class="contentElement2">
-                            {{ umuti.name_med }}
+                            {{ umuti.nom_med }}
                         </div> <div class="contentElement3">
                             {{ (umuti.quantite_restant || umuti.quantity ) }}
                         </div>
@@ -241,7 +241,7 @@ const [actual_suggest, ukuvoma_suggest] = useKuvoma(suggest_url)
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
 const actual_opt = ref([]) // Tells the base fields we have for research
 const actual_type = ref([]) // Tells the input types we support for search
-const selected_field = ref('name_med') // The state that tells the base field for search.
+const selected_field = ref('nom_med') // The state that tells the base field for search.
 const selected_type = ref('text') // the state that tells the input type of RECHERCHE.
 const need_search = ref(null) // the state that mentions the need to perfom the search.
 const actual_imitiS = ref([]) // Contains the content to be displayed.
@@ -256,7 +256,7 @@ watch(allFine, (value)=>{
     else{
         actual_obj.value = value
         actual_imitiS.value = value
-        actual_opt.value = ['name_med', 
+        actual_opt.value = ['nom_med', 
         'quantite_restant','price_out', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Bon"
@@ -269,7 +269,7 @@ watch(outDate, (value)=>{
     else{
         actual_obj.value = value
         actual_imitiS.value = value
-        actual_opt.value = ['name_med', 
+        actual_opt.value = ['nom_med', 
         'quantite_restant','price_out', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Expiré"
@@ -282,7 +282,7 @@ watch(endStock, (value)=>{
     else{
         actual_obj.value = value
         actual_imitiS.value = value
-        actual_opt.value = ['name_med','description_med', 
+        actual_opt.value = ['nom_med','description_med', 
         'quantite_restant','price_out', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Zéro Stock"
@@ -295,7 +295,7 @@ watch(lowStock, (value)=>{
     else{
         actual_obj.value = value
         actual_imitiS.value = value
-        actual_opt.value = ['name_med','description_med', 
+        actual_opt.value = ['nom_med','description_med', 
         'quantite_restant','price_out', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Low Stock"
@@ -305,7 +305,7 @@ watch(actual_suggest, (value)=>{
     if (value){
         actual_obj.value = value
         actual_imitiS.value = value
-        actual_opt.value = ['name_med', 
+        actual_opt.value = ['nom_med', 
         'quantite_restant','price_out', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Suggestion"
@@ -315,7 +315,7 @@ watch(actual_entree, (value)=>{
     if (value){
         actual_obj.value = value
         actual_imitiS.value = value
-        actual_opt.value = ['name_med', 
+        actual_opt.value = ['nom_med', 
         'quantite_restant','price_out', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Achats"
@@ -325,7 +325,7 @@ watch(actual_vente, (value)=>{
     if (value){
         actual_obj.value = value
         actual_imitiS.value = value
-        actual_opt.value = ['name_med', 
+        actual_opt.value = ['nom_med', 
         'quantity','price_out', 'date_operation',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Ventes"
@@ -335,7 +335,7 @@ watch(actual_imiti, (value)=>{
     if (value){
         actual_obj.value = value.data
         actual_imitiS.value = value.data
-        actual_opt.value = ['name_med','description_med', 
+        actual_opt.value = ['nom_med','description_med', 
         'quantite_restant','price_out', 'date_last_vente',]
         actual_type.value = ['text','text','text','text','date']
         title_operation.value = "Disponibles"

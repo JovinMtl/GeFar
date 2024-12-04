@@ -5,7 +5,7 @@
 export interface UmutiSet {
     id : number;
     code_med : string;
-    name_med : string;
+    nom_med : string;
     description_med : string;
     date_last_vente : Object;
     price_in : number;
@@ -23,7 +23,7 @@ export interface UmutiSet {
 
 export interface PanierClient {
     code_med : string;
-    name_med : string;
+    nom_med : string;
     qte : number;
     price_out : number;
 }

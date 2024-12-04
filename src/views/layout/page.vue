@@ -54,7 +54,7 @@
                         <!-- details for selected umuti should appeal here -->
                         <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft' : ''">
                             <div class="infoUmuti"></div>
-                            <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.name_med).slice(0, 14) }}</div>
+                            <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.nom_med).slice(0, 14) }}</div>
                             <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_med }}</div>
                             <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_med }}</div>
                             <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_med }}</div>
@@ -98,7 +98,7 @@
                             <div class="itemPanier"
                              v-for="(umuti, index ) in panier_client">
                                 <div class="nomination">
-                                    {{ index + 1 }}. {{ (umuti.name_med).slice(0, 8) }} : {{ umuti.price_out }} x {{ umuti.qte
+                                    {{ index + 1 }}. {{ (umuti.nom_med).slice(0, 8) }} : {{ umuti.price_out }} x {{ umuti.qte
                                     }}
 
                                     <span style="margin-right: .3rem;">&nbsp;</span>
@@ -628,7 +628,7 @@ const check_panier = (umuti_name) => {
     console.log("Panier had length of : ", panier_length)
     for (i = 0; i < panier_length; i++) {
         console.log("T: ", panier_client.value[i], '>>', umuti_name, '<<', i)
-        if (panier_client.value[i].name_med == umuti_name) {
+        if (panier_client.value[i].nom_med == umuti_name) {
             notifStatus.value = true
             message.value = "Ce medicament existe deja sur le panier."
             setTimeout(() => {
@@ -679,10 +679,10 @@ const somme_lote = (): number => {
 }
 const moveToPanier = (): number => {
     // this function manages to move umuti from selected into panier
-    let jove: string = check_panier(selectedUmuti.value.name_med)
+    let jove: string = check_panier(selectedUmuti.value.nom_med)
     if (jove) {
         let obj_Client = {
-            'name_med': selectedUmuti.value.name_med,
+            'nom_med': selectedUmuti.value.nom_med,
             'qte': somme_lote(),
             'price_out': Number(selectedUmuti.value.price_out),
         }
