@@ -86,6 +86,7 @@
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
                             @emptyResult="alertUmutiNew"></list-imiti>
                     </div>
+                    <div style="width: 15vw;"></div>
                     <div class="sectB">
                         <div style="max-height: 38vh; overflow: auto;">
                             <div style="text-align: center; margin: 10px 0px; font-weight: 900;">

@@ -14,6 +14,7 @@ html, body {
     position: relative;
     left: 10vw;
     left: 11.5vw;
+    left: 8vw;
     top: 6vh;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
@@ -21,7 +22,7 @@ html, body {
 }
 
 .sectA{
-    width: 77%;
+    width: 67%;
     height: 98.4%;
     overflow: auto;
     margin-top: 5px;
@@ -34,7 +35,6 @@ html, body {
     background-color: rgba(11, 245, 11, 0.384);
     border-top: 8px dotted rgba(255, 255, 255, 0.589);
     position: relative;
-    left: -10px;
 }
 .signeRecherche{
     width: 10px;
