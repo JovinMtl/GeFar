@@ -508,28 +508,31 @@ const getAllImiti = (imiti) => {
     // once they are assigned then they are ready to be injected into approv componenet.
     all_imiti.value = imiti
     console.log("All imiti are emitted : ", imiti)
+    familleBuilder()
 
 }
 // let familles = []
-let familles = [
-    {
-        'nom_fam' : 'fami1',
-        'members':[0,2,9]
-    },
-    {
-        'nom_fam' : 'fami2',
-        'members':[0,2,9]
-    }
-]
+const familles = ref([])
 let famillesArray = ['fami1', 'fami2']
 const familleBuilder = ()=>{
+    let i = 0
+    let index = 0
     all_imiti.value.forEach(Element)=>{
-        if(famillesArray.indexOf(Element.type_med)== -1){
+        index = famillesArray.indexOf(Element.type_med)
+        if(index == -1){
             // ntayirimwo
+            famillesArray.push(Element.type_med);
+            familles.value.push({
+                'nom_fam' : Element.type_med,
+                'members':[]
+            });
+            (familles.value.members).push(i);
         } else{
             // irimwo
+            (familles.value[index].members).push(i)
         }
     }
+    console.log("The content of familles: ", familles)
 }
 const closeApprov = () => {
     approvStatus.value = false
