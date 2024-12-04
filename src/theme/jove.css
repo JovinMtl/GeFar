@@ -43,7 +43,7 @@ html, body {
     width: 13vw;
     height: 99%;
     overflow: auto;
-    background-color: red;
+    border-right: 1px solid grey;
 }
 
 .sectA{
@@ -57,6 +57,7 @@ html, body {
 }
 .sectA-1{
     width: 77%;
+    width: 64%;
 }
 .sectB{
     width: 23%;
