@@ -40,7 +40,10 @@ html, body {
     overflow: auto;
     margin-top: 5px;
     padding-top: 1vw;
-
+    transition-duration: 100ms;
+}
+.sectA-1{
+    width: 77%;
 }
 .sectB{
     width: 23%;
@@ -143,4 +146,7 @@ html, body {
 .inpBl{
     background-color: transparent;
     border: 1px solid transparent;
+}
+.noDisp{
+    display: none;
 }
