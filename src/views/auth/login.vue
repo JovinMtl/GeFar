@@ -72,14 +72,6 @@ const login_hook = () => {
         logs = error.response.data
     })
 }
-// const hide_authe = ()=>{
-//     const container = document.getElementById('authe')
-//     container.style.display = 'none'
-// }
-
-// watch(data, (value)=>{
-//     console.log("The LOGIN component got: ", value)
-// })
 </script>
 <style scoped lang="scss">
 @media screen and (max-width: 400px) {
@@ -93,8 +85,7 @@ const login_hook = () => {
         display: flex;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 255, 0, 0.692);
-        // background-color: rgba(128, 128, 128, 0.397);
+        background-color: rgba(59, 192, 59, 0.69);
         position: relative;
         justify-content: center;
         align-items: center;

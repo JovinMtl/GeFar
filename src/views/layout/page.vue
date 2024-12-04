@@ -795,7 +795,7 @@ provide('need_clear', clear_search) // in search component
     overflow: hidden;
     width: 100%;
     height: 100%;
-    background-color: #00ff00b0;
+    /* background-color: #00ff00b0; */
 
 }
 
