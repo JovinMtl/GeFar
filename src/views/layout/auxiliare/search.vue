@@ -97,7 +97,10 @@ export default {
     white-space: nowrap;
     overflow: hidden; 
     text-overflow: ellipsis;
-    color: blue;
+    color: black;
+}
+.SearchMed::placeholder{
+    color: rgb(199, 238, 160)
 }
 </style>
 
