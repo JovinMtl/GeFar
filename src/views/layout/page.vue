@@ -43,50 +43,52 @@
                         </div>
                     </div>
                 </div>
-
-                <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft' : ''">
-                    <div class="infoUmuti"></div>
-                    <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.name_umuti).slice(0, 14) }}</div>
-                    <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
-                    <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_umuti }}</div>
-                    <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
-                    <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
-                    <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.price_out }}</div>
-                    <!-- Need to display the number of lots -->
-                    <div v-if="activeLot.length" style="text-align: right;">{{ activeLot.length }}</div>
-                    <div class="umutiLot">
-                        <div v-for="(lot, index) in activeLot" class="lote" :key="index">
-                            <div class="head" style="padding-top: 3px; font-size: .88rem">
-                                {{ lot.qte }} <br>
-                                {{ (String(lot.date)).slice(4, 8) }} {{ (String(lot.date)).slice(11, 16) }}
-                            </div>
-                            <div class="sub" v-if="today < lot.date">
-                                <ion-icon :src="removeCircleOutline" @click="decrementQte"
-                                    style="font-size: large;"></ion-icon>
-                                <span style="margin-right: .1rem;">&nbsp;</span>
-                                <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier"
-                                    :id="'q' + index"
-                                    style="background-color: white; width: 25px; height: 20px; position: relative; top: -4px; left: 1px" />
-                                <span style="margin-right: .1rem;">&nbsp;</span>
-                                <ion-icon :src="addCircleOutline" @click="incrementQte"
-                                    style="font-size: large;"></ion-icon>
-                            </div>
-                            <div v-else class="sub red">
-                                déjà perimé
-                            </div>
-                        </div>
-                    </div>
-                    <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
-                        style="text-align: right;">
-                        <button class="sell" @click="moveToPanier">Vendre</button>
-                    </div>
-                </div>
+                <!-- details for umuti were displayed here -->
                 <div class="mainContainer">
                     <div class="sectA" style="text-align: center;">
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
                             @emptyResult="alertUmutiNew"></list-imiti>
                     </div>
-                    <div style="width: 15vw;"></div>
+                    <div style="width: 15vw;">
+                        <!-- details for selected umuti should appeal here -->
+                        <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft' : ''">
+                            <div class="infoUmuti"></div>
+                            <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.name_umuti).slice(0, 14) }}</div>
+                            <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
+                            <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_umuti }}</div>
+                            <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
+                            <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
+                            <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.price_out }}</div>
+                            <!-- Need to display the number of lots -->
+                            <div v-if="activeLot.length" style="text-align: right;">{{ activeLot.length }}</div>
+                            <div class="umutiLot">
+                                <div v-for="(lot, index) in activeLot" class="lote" :key="index">
+                                    <div class="head" style="padding-top: 3px; font-size: .88rem">
+                                        {{ lot.qte }} <br>
+                                        {{ (String(lot.date)).slice(4, 8) }} {{ (String(lot.date)).slice(11, 16) }}
+                                    </div>
+                                    <div class="sub" v-if="today < lot.date">
+                                        <ion-icon :src="removeCircleOutline" @click="decrementQte"
+                                            style="font-size: large;"></ion-icon>
+                                        <span style="margin-right: .1rem;">&nbsp;</span>
+                                        <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier"
+                                            :id="'q' + index"
+                                            style="background-color: white; width: 25px; height: 20px; position: relative; top: -4px; left: 1px" />
+                                        <span style="margin-right: .1rem;">&nbsp;</span>
+                                        <ion-icon :src="addCircleOutline" @click="incrementQte"
+                                            style="font-size: large;"></ion-icon>
+                                    </div>
+                                    <div v-else class="sub red">
+                                        déjà perimé
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
+                                style="text-align: right;">
+                                <button class="sell" @click="moveToPanier">Vendre</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="sectB">
                         <div style="max-height: 38vh; overflow: auto;">
                             <div style="text-align: center; margin: 10px 0px; font-weight: 900;">
