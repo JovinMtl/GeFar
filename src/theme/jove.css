@@ -34,13 +34,21 @@ html, body {
     width: 8vw;
     height: 79%;
     background-color: green;
+    background-color: rgba(147, 221, 147, 0.432);
     position: absolute;
     top: 11.5%;
     display: none;
 }
+.famil{
+    width: 13vw;
+    height: 99%;
+    overflow: auto;
+    background-color: red;
+}
 
 .sectA{
     width: 67%;
+    width: 54%;
     height: 98.4%;
     overflow: auto;
     margin-top: 5px;

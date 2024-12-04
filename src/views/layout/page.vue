@@ -46,6 +46,7 @@
                 <!-- details for umuti were displayed here -->
                 <div class="fami"></div>
                 <div class="mainContainer">
+                    <div class="famil"></div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
                             @emptyResult="alertUmutiNew"></list-imiti>
