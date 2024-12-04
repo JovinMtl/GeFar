@@ -55,7 +55,8 @@
                         <!-- All familles will be displayed here. -->
                         <div class="fami-1"
                             v-for="(famille, index) in familles"
-                            :key="index">{{ famille.nom_fam }}</div>
+                            :key="index" :id="'s'+index"
+                            @click="openFamilly">{{ famille.nom_fam }}</div>
                     </div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
@@ -518,6 +519,12 @@ const getFamilies = (famillies)=>{
     console.log("Les familles recus sont: ", famillies)
     familles.value = famillies
 }
+const openedFamilly = ref(0)
+const openFamilly = (e)=>{
+    let index = (e.target.id).slice(1)
+    // openedFamilly.value = (familles.value)[index]
+    openedFamilly.value = index
+}
 
 const closeApprov = () => {
     approvStatus.value = false
@@ -807,6 +814,7 @@ provide('need_upload', umuti_single) // in approv component
 provide('imiti_downloaded', all_imiti.value) // in search component
 // provide('commandePatient', panier_client.value) // in facturier component
 provide('need_clear', clear_search) // in search component
+provide('familly_displ', openedFamilly)
 
 </script>
 

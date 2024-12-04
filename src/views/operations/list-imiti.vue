@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="(umuti, index) in imitiset" v-show="umuti.nom_med" style="display: inline-block ;"
-            @click.prevent="umutiOpen($event)">
+            @click.prevent="umutiOpen($event)" :key="index">
             <a :title="umuti.nom_med" href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
                 <div :id="index" class="umuti">
                     <div class="umutiTitle">
@@ -34,6 +34,7 @@ export default defineComponent({
         const needUpdate = inject('needUpdate_list') // on search command
         const need_search = inject('needSearch')
         const needUpdate_server = inject('needUpdate_server')
+        const familly_display = inject('familly_displ')
         var shouldUpdate = needUpdate
         const { getAccessToken, getRefreshToken } = useUserStore()
 
@@ -753,6 +754,16 @@ export default defineComponent({
             } else if (queryset.length == 0 && value.value.query.length < 5) {
                 emit('emptyResult', 0)
             }
+        })
+
+        watch(familly_display, (value)=>{
+            imitiset.value = []
+            console.log("Imitiset is reset to: ", imitiset.value)
+            let selected_med = (familles.value)[value].members
+            selected_med.forEach((element)=>{
+                (imitiset.value).push((imitiset_copy.value)[element])
+            })
+            console.log("Imitiset ends up with: ", imitiset.value)
         })
         watch(needUpdate_server, (value) => {
             // request to api to give dispo
