@@ -2,13 +2,21 @@
 <template>
     <div>
         <span class="closeBtn" style="z-index: 10;">
+            <a
+  href="Template/imiti_exemplaire.csv"
+  :download="'exemplaire_achats-' + 
+  new Date().getDay() + '/'+new Date().getMonth()+'.csv'"
+>
+  <ion-icon :src="documentOutline" style="position: absolute; left: -4rem;"></ion-icon>
+</a>
+
             <ion-icon :src="checkmarkDoneOutline" @click="approveHandler"
                 style="margin-right: 2.2vw;"></ion-icon>
             <ion-icon :src="close" @click="closeApprov"></ion-icon>
         </span>
         <div style="position: fixed; top: 1%; left: 26vw; z-index: 9">
             Here we input the file
-        <input id="file1" type="file" @change="fileHandler" placeholder="choose file" />
+        <input id="file1" type="file" @change="fileHandler" placeholder="choisir fichier" />
         </div>
         <br><br>
         <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: -10px 10px; font-size: .8rem;position: sticky; top: 1%;">
@@ -90,7 +98,7 @@
 
 <script>
 import { IonIcon } from '@ionic/vue'
-import { close, checkmarkDoneOutline } from 'ionicons/icons'
+import { close, checkmarkDoneOutline, documentOutline } from 'ionicons/icons'
 import { ref } from 'vue'
 export default {
     components: {
@@ -241,7 +249,7 @@ export default {
             emit('approFileClose', 0)
         }
         return {
-            close,checkmarkDoneOutline,
+            close,checkmarkDoneOutline, documentOutline,
             message,
             ui_isActive, imiti_loaded, notifStatus,
             closeApprov, fileHandler, ListenNewChange,approveHandler,
