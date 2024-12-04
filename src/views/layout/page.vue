@@ -57,7 +57,7 @@
                     </div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
-                            @emptyResult="alertUmutiNew"></list-imiti>
+                            @emptyResult="alertUmutiNew" @families="getFamilies"></list-imiti>
                     </div>
                     <div :class="selectedUmuti.value ? '':'noDisp'" style="width: 15vw; padding: 1rem 5px;">
                         <!-- details for selected umuti should appeal here -->
@@ -322,6 +322,7 @@ const message = shallowRef<string>('hello')
 
 const suggest:Ref<string> = ref("Votre assureur")
 
+const familles = ref([])
 
 
 
@@ -510,6 +511,10 @@ const getAllImiti = (imiti) => {
     // once they are assigned then they are ready to be injected into approv componenet.
     all_imiti.value = imiti
     console.log("All imiti are emitted : ", imiti)
+}
+const getFamilies = (famillies)=>{
+    console.log("Les familles recus sont: ", famillies)
+    familles.value = famillies
 }
 
 const closeApprov = () => {
