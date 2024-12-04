@@ -1,21 +1,3 @@
-,,,,,,,,,,
-,Nom,Type_medicament,Description,Ratio,Type_in,Type_out,Price_in,Price_out,Qte_initial,Date_exp
-,ALBENDAZOLE,Cpe,Uvura inzoka,10,Carton,Piece,1400,1700,5,04/01/27
-,AMOXYCILLINE,Cpe,Uvura igikomere,10,Carton,Piece,1300,1600,10,04/01/27
-,COTRIMOXAZOLE,Cpe,Uvura inzoka,10,Carton,Piece,2000,2300,15,04/01/27
-,CEFIXIME,Gel,Ntavyo nzi,1,Carton,Piece,1500,1800,10,04/01/27
-,DOXYCYCLINE,Cpe,Ntavyo nzi,5,Carton,Piece,1200,1500,3s,04/01/27
-,IBUPROFENE,Cpe,Uvura uburuhe,10,Carton,Piece,1600,1900,10,04/01/27
-,METRONIDAZOLE,Cpe,Uvura inzoka,10,Carton,Piece,1200,1500,10,04/01/27
-,OMEPRAZOLE,Ovule,Ntavyo nzi,4,Carton,Piece,1400,1700,15,04/01/27
-,PARACETAMOL,Cpe,Ntavyo nzi,4,Carton,Piece,1500,1800,15,04/01/27
-,PHENOXYPENICILLINE,Sirop,Ntavyo nzi,1,Carton,Piece,1800,2100,8,04/01/27
-,PROMETHAZINE,Ovule,Ntavyo nzi,5,Carton,Piece,1300,1600,5,04/01/27
-,PREDINISOLONE,Inj,Ntavyo nzi,1,Carton,Piece,1400,1700,10,04/01/27
-,DICLOFENAC,Sirop,Ntavyo nzi,10,Carton,Piece,2000,2300,15,04/01/27
-,DIAZEPAN,Cpe,Ntavyo nzi,4,Carton,Piece,1500,1800,10,04/01/27
-,METAMIZOLE ,Sirop,Uvura inzoka,10,Carton,Piece,1200,1500,3,04/01/27
-,DETTOL,Sirop,Uroza ikiguma,10,Carton,Piece,1600,1900,10,04/01/27
-,POVIDONE ,Gel,Uvura igikomere,10,Carton,Piece,1200,1500,10,04/01/27
-,TETRACYCLINE,cpe,Uvura inzoka,5,Carton,Piece,1400,1700,15,04/01/27
-,AMINOPHYLLINE,Ovule,Uvura uburuhe,10,Carton,Piece,1500,1800,15,04/01/27
+,,,,,,,,,,,,
+,Nom,Type_medicament,Description,Ratio,Type_in,Type_out,Price_in,Price_out,Qte_initial,Date_exp,,
+,ALBENDAZOLE,Cpe,Uvura inzoka,10,Carton,Piece,1400,1700,5,04/01/27,,"Veuillez supprimer cette ligne, SVP!"
