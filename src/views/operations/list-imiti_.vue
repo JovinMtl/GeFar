@@ -10,7 +10,7 @@
                             {{ umuti.name }}
                         </div>
                         
-                        <div class="umutiPrice">{{ umuti.price_out }}</div>
+                        <div class="umutiPrice">{{ umuti.prix_out }}</div>
                     </div>
                 </a>
         </div>

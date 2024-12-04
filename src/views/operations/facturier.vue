@@ -20,8 +20,8 @@
                     <div class="number">{{ index + 1 }}.</div>
                     <div class="nom_med">{{ umuti.nom_med }}</div>
                     <div class="qte">{{ umuti.qte }}</div>
-                    <div class="Pu">{{ umuti.price_out }}</div>
-                    <div class="ptotal">{{ umuti.qte * umuti.price_out }} Fbu</div>
+                    <div class="Pu">{{ umuti.prix_out }}</div>
+                    <div class="ptotal">{{ umuti.qte * umuti.prix_out }} Fbu</div>
                 </div>
 
                 <div class="toTal">

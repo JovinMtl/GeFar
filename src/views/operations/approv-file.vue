@@ -32,10 +32,10 @@
                     Type_out 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    Price_in 
+                    prix_in 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    Price_out
+                    prix_out
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
                     Qte_initial
@@ -68,10 +68,10 @@
                     <input :id="index +';Type_out'" style="width: 100%; height: 100%;" :value="umuti.Type_out" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input :id="index +';Price_in'" style="width: 100%; height: 100%;" :value="umuti.Price_in" @blur="ListenNewChange"/> 
+                    <input :id="index +';prix_in'" style="width: 100%; height: 100%;" :value="umuti.prix_in" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input :id="index +';Price_out'" style="width: 100%; height: 100%;" :value="umuti.Price_out" @blur="ListenNewChange"/> 
+                    <input :id="index +';prix_out'" style="width: 100%; height: 100%;" :value="umuti.prix_out" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
                     <input type="number" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="umuti.Qte_initial" @blur="ListenNewChange"/> 
@@ -112,7 +112,7 @@ export default {
                 // let wrong = []
                 imiti_loaded.value.forEach((element)=>{
                     if(String(element.Nom) && Number(element.Qte_initial) && 
-                        Number(element.Price_in) && Number(element.Price_out) &&
+                        Number(element.prix_in) && Number(element.prix_out) &&
                         Date(element.Date_exp)
                     ){
                         // You can emit the imiti_loaded.value
@@ -152,8 +152,8 @@ export default {
                 'type_in': element.Type_in,
                 'ratio_type': element.Ratio,
                 'type_out': element.Type_out,
-                'price_in': element.Price_in,
-                'price_out': element.Price_out,
+                'prix_in': element.prix_in,
+                'prix_out': element.prix_out,
                 'quantite_initial': element.Qte_initial,
                 'location': '',
                 }

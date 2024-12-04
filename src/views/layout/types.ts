@@ -8,8 +8,8 @@ export interface UmutiSet {
     nom_med : string;
     description_med : string;
     date_last_vente : Object;
-    price_in : number;
-    price_out : number;
+    prix_in : number;
+    prix_out : number;
     difference : number;
     qte_entrant_big : number;
     quantite_restant : number;
@@ -25,7 +25,7 @@ export interface PanierClient {
     code_med : string;
     nom_med : string;
     qte : number;
-    price_out : number;
+    prix_out : number;
 }
 
 export interface PanierAPI {

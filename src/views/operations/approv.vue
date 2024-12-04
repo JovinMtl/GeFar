@@ -16,9 +16,9 @@
                     {{ umuti.nom_med }} {{ umuti.code_med }} {{ umuti.description_med }}
                 </button>
             </ul>
-            <input v-model="umuti_price_in" type="text" placeholder="Price in: (Type_in)">
+            <input v-model="umuti_prix_in" type="text" placeholder="Price in: (Type_in)">
             <br> <br>
-            <input v-model="umuti_price_out" type="text" placeholder="Price out : (Type_in)">
+            <input v-model="umuti_prix_out" type="text" placeholder="Price out : (Type_in)">
             <br> <br>
             <input v-model="umuti_quantite_initial" type="text" placeholder="Quantite Initial">
             <br> <br>
@@ -58,11 +58,11 @@
                 placeholder="Quantite Initial">
                 <br> <br>
                 <label>Px. A </label>  
-            <input v-model="selected_search.price_in" type="number" 
+            <input v-model="selected_search.prix_in" type="number" 
                 placeholder="Price in: (Type_in)">
             <br> <br>
             <label>Px. V </label> 
-            <input v-model="selected_search.price_out" type="number" 
+            <input v-model="selected_search.prix_out" type="number" 
                 placeholder="Price out : (Type_in)">
             <br> <br>
             <label>Date d'éxpiration </label> 
@@ -90,8 +90,8 @@ export default {
         const imiti_result = ref([]) 
         const selected_search = ref(null)
         const search_approve = reactive({})
-        const umuti_price_in = ref(null)
-        const umuti_price_out = ref(null)
+        const umuti_prix_in = ref(null)
+        const umuti_prix_out = ref(null)
         const umuti_quantite_initial = ref(null)
         const umuti_date_exp = ref(null)
         const date_exp = ref(null)
@@ -118,8 +118,8 @@ export default {
                 'type_in': '',
                 'ratio_type': '',
                 'type_out': '',
-                'price_in': null,
-                'price_out': undefined,
+                'prix_in': null,
+                'prix_out': undefined,
                 'quantite_initial': undefined,
                 'location': undefined,
             })
@@ -144,8 +144,8 @@ export default {
                 'type_in': selected_search.value.type_in,
                 'ratio_type': selected_search.value.ratio_type,
                 'type_out': selected_search.value.type_out,
-                'price_in': null,
-                'price_out': undefined,
+                'prix_in': null,
+                'prix_out': undefined,
                 'quantite_initial': undefined,
                 'location': undefined,
             }
@@ -160,8 +160,8 @@ export default {
                 umuti_obj.nom_med = selected_search.value.nom_med
                 umuti_obj.date_uzohererako = date_exp.value
                 // umuti_obj.date_winjiriyeko = new Date()
-                umuti_obj.price_in = selected_search.value.price_in
-                umuti_obj.price_out = selected_search.value.price_out
+                umuti_obj.prix_in = selected_search.value.prix_in
+                umuti_obj.prix_out = selected_search.value.prix_out
                 umuti_obj.quantite_initial = selected_search.value.quantite_initial
                 umuti_obj.ratio_type = selected_search.value.ratio_type
                 umuti_obj.location = selected_search.value.location
@@ -172,8 +172,8 @@ export default {
                 return umuti_obj
             } else{
                 // Fill Umuti_obj from the vmodels set in template
-                if((String(umutiName.value)) && (Number(umuti_price_in.value))
-                    && (Number(umuti_price_out.value)) 
+                if((String(umutiName.value)) && (Number(umuti_prix_in.value))
+                    && (Number(umuti_prix_out.value)) 
                     && (Number(umuti_quantite_initial.value)) 
                     && (Date(date_exp.value))
                 ){
@@ -182,8 +182,8 @@ export default {
                     umuti_obj.code_med = ''
                     umuti_obj.date_uzohererako = umuti_date_exp.value
                     // umuti_obj.date_winjiriyeko = Date(new Date().toISOString().substring(0,10))
-                    umuti_obj.price_in = Number(umuti_price_in.value)
-                    umuti_obj.price_out = Number(umuti_price_out.value)
+                    umuti_obj.prix_in = Number(umuti_prix_in.value)
+                    umuti_obj.prix_out = Number(umuti_prix_out.value)
                     umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
                     umuti_obj.ratio_type = ratio_type.value || 1
                     umuti_obj.location = location.value || 'vide'
@@ -194,8 +194,8 @@ export default {
                     return umuti_obj
                 } else{
                     console.log("NON PASSABLE")
-                    console.log(umutiName.value, umuti_price_in.value,
-                    umuti_price_out.value, umuti_quantite_initial.value,
+                    console.log(umutiName.value, umuti_prix_in.value,
+                    umuti_prix_out.value, umuti_quantite_initial.value,
                     date_exp.value
                     )
                     let info = "Veuillez saisir les données correctes."
@@ -246,7 +246,7 @@ export default {
         })
         return {
             umutiName, imiti_result, selected_search,
-            date_exp, umuti_price_in, umuti_price_out, umuti_date_exp,
+            date_exp, umuti_prix_in, umuti_prix_out, umuti_date_exp,
             umuti_quantite_initial, description_med,
             type_med, ratio_type, type_in, type_out, location,
             fileTray, notifStatus, message,
