@@ -74,7 +74,7 @@
                                         <span style="margin-right: .1rem;">&nbsp;</span>
                                         <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier"
                                             :id="'q' + index"
-                                            style="background-color: white; width: 25px; height: 20px; position: relative; top: -4px; left: 1px" />
+                                            style="background-color: rgba(14, 14, 211, 0.384); width: 25px; height: 25px; position: relative; top: -4px; left: 1px" />
                                         <span style="margin-right: .1rem;">&nbsp;</span>
                                         <ion-icon :src="addCircleOutline" @click="incrementQte"
                                             style="font-size: large;"></ion-icon>
@@ -86,7 +86,7 @@
                             </div>
                             <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
                                 style="text-align: right;">
-                                <button class="sell" @click="moveToPanier">Vendre</button>
+                                <button class="sell" @click="moveToPanier">Ajouter</button>
                             </div>
                         </div>
                     </div>
@@ -1119,6 +1119,7 @@ provide('need_clear', clear_search) // in search component
 
 ::-webkit-scrollbar {
     width: 3px;
+    width: 5px;
     color: green;
 }
 
