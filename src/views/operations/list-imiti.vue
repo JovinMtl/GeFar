@@ -644,7 +644,7 @@ export default defineComponent({
                 if (response.ok) {
                     data.value = await response.json()
                     data.value = data.value.data
-                    console.log("THings are well received", data.value.data)
+                    console.log("THings are well received", data.value)
                     updateImitiSet()
                     update_imiti_for_search()
                 }
@@ -659,20 +659,20 @@ export default defineComponent({
             let i = 1
             data.value.forEach(element => {
                 let obj: UmutiSet = {
-                    'code_med': element.code_med,
+                    'code_med': element.code_umuti,
                     'id': i,
-                    'nom_med': element.nom_med,
-                    'description_med': element.description_med,
+                    'nom_med': element.name_umuti,
+                    'description_med': element.description_umuti,
                     'date_last_vente': new Date(element.date_last_vente),
-                    'prix_in': element.prix_in,
-                    'prix_vente': element.prix_vente,
+                    'prix_in': element.price_in,
+                    'prix_vente': element.price_out,
                     'difference': element.difference,
                     'qte_entrant_big': element.qte_entrant_big,
                     'quantite_restant': element.quantite_restant,
                     'ratio_type': element.ratio_type,
                     'type_in': element.type_in,
-                    'type_vente': element.type_vente,
-                    'type_med': element.type_med,
+                    'type_vente': element.type_out,
+                    'type_med': element.type_umuti,
                     'location': element.location,
                     'lot': element.lot
                 }
