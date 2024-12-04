@@ -323,6 +323,8 @@ const message = shallowRef<string>('hello')
 const suggest:Ref<string> = ref("Votre assureur")
 
 
+
+
 const professions = [
     {
         'value': '',
@@ -508,32 +510,8 @@ const getAllImiti = (imiti) => {
     // once they are assigned then they are ready to be injected into approv componenet.
     all_imiti.value = imiti
     console.log("All imiti are emitted : ", imiti)
-    familleBuilder()
+}
 
-}
-// let familles = []
-const familles = ref([])
-let famillesArray = ['fami1', 'fami2']
-const familleBuilder = ()=>{
-    let i = 0
-    let index = 0
-    all_imiti.value.forEach(Element)=>{
-        index = famillesArray.indexOf(Element.type_med)
-        if(index == -1){
-            // ntayirimwo
-            famillesArray.push(Element.type_med);
-            familles.value.push({
-                'nom_fam' : Element.type_med,
-                'members':[]
-            });
-            (familles.value.members).push(i);
-        } else{
-            // irimwo
-            (familles.value[index].members).push(i)
-        }
-    }
-    console.log("The content of familles: ", familles)
-}
 const closeApprov = () => {
     approvStatus.value = false
 }
@@ -783,6 +761,9 @@ const show_suggest = (e)=>{
     stage_redu.value = 3
 }
 
+watch(all_imiti, (value)=>{
+    familleBuilder()
+})
 watch(suggest, (value)=>{
     console.log("The selected option: ", suggest.value)
 })

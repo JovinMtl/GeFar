@@ -680,6 +680,32 @@ export default defineComponent({
             });
             console.log("Compiled : ", imitiset.value)
             imitiset_copy.value = imitiset.value
+            familleBuilder(imitiset.value)
+        }
+        // let familles = []
+        const familles = ref([])
+        let famillesArray = []
+
+        const familleBuilder = (arr)=>{
+            console.log("Calling familleBUILDER")
+            let i = 0
+            let index = 0
+            let obj = {}
+            arr.forEach((Element)=>{
+                index = famillesArray.indexOf((Element.famille_med).toLowerCase())
+                if(index == -1){ // does not exist
+                    famillesArray.push((Element.famille_med).toLowerCase());
+                    obj = {
+                        'nom_fam' : (Element.famille_med).toLowerCase(),
+                        'members':[i]
+                    }
+                    familles.value.push(obj);
+                } else{ // does exist
+                    ((familles.value[index]).members).push(i)
+                }
+                i += 1
+            })
+            console.log("The content of familles: ", familles.value)
         }
 
         const update_imiti_for_search = () => {
