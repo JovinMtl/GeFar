@@ -40,5 +40,5 @@ export interface Umuti {
     'ratio_type': number;
     'type_in': string;
     'type_vente': string;
-    'type_med': string;
+    'famille_med': string;
 }

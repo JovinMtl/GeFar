@@ -28,7 +28,7 @@
             <br> <br>
             <label v-if="date_exp">Type de medicament</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
-            <select v-model="type_med" v-if="date_exp" style="background-color: white" placeholder="Type" value="Ovule">
+            <select v-model="famille_med" v-if="date_exp" style="background-color: white" placeholder="Type" value="Ovule">
                 <option>Cp</option>
                 <option>Gel</option>
                 <option>Ovule</option>
@@ -96,7 +96,7 @@ export default {
         const umuti_date_exp = ref(null)
         const date_exp = ref(null)
         const date_init = ref(new Date)
-        const type_med = ref('Cp')
+        const famille_med = ref('Cp')
         const ratio_type = ref(null)
         const type_in = ref(null)
         const type_vente = ref(null)
@@ -114,7 +114,7 @@ export default {
                 'date_uzohererako': umuti_date_exp.value,
                 'nom_med': '',
                 'description_med': '',
-                'type_med': '',
+                'famille_med': '',
                 'type_in': '',
                 'ratio_type': '',
                 'type_vente': '',
@@ -140,7 +140,7 @@ export default {
                 'date_uzohererako': '',
                 'nom_med': selected_search.value.nom_med,
                 'description_med': selected_search.value.description_med,
-                'type_med': selected_search.value.type_med,
+                'famille_med': selected_search.value.famille_med,
                 'type_in': selected_search.value.type_in,
                 'ratio_type': selected_search.value.ratio_type,
                 'type_vente': selected_search.value.type_vente,
@@ -248,7 +248,7 @@ export default {
             umutiName, imiti_result, selected_search,
             date_exp, umuti_prix_in, umuti_prix_vente, umuti_date_exp,
             umuti_quantite_initial, description_med,
-            type_med, ratio_type, type_in, type_vente, location,
+            famille_med, ratio_type, type_in, type_vente, location,
             fileTray, notifStatus, message,
             selectSearch, openApproFile, saveDate,
         }

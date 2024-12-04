@@ -17,7 +17,7 @@
                     Name
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    Type_med
+                    famille_med
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
                     Description
@@ -53,7 +53,7 @@
                     <input :id="index +';Nom'" style="width: 100%; height: 100%;" :value="umuti.Nom" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';Type_medicament'" style="width: 100%; height: 100%;" :value="umuti.Type_medicament" @blur="ListenNewChange"/> 
+                    <input :id="index +';famille_medicament'" style="width: 100%; height: 100%;" :value="umuti.famille_medicament" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
                     <input :id="index +';Description'" style="width: 100%; height: 100%;" :value="umuti.Description" @blur="ListenNewChange"/> 
@@ -148,7 +148,7 @@ export default {
                 'date_uzohererako': element.Date_exp,
                 'nom_med': element.Nom,
                 'description_med': element.Description,
-                'type_med': element.Type_medicament,
+                'famille_med': element.famille_medicament,
                 'type_in': element.Type_in,
                 'ratio_type': element.Ratio,
                 'type_vente': element.Type_vente,

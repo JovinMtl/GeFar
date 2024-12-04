@@ -56,7 +56,7 @@
                             <div class="infoUmuti"></div>
                             <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.nom_med).slice(0, 14) }}</div>
                             <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_med }}</div>
-                            <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_med }}</div>
+                            <div class="infoUmuti umutiTitle umutiFamille">{{ selectedUmuti.value.famille_med }}</div>
                             <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_med }}</div>
                             <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                             <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.prix_vente }}</div>
@@ -915,6 +915,10 @@ provide('need_clear', clear_search) // in search component
 
 .umutiDescription {
     height: 10%;
+}
+.umutiFamille{
+    /* background-color: rgb(42, 93, 233); */
+    border: 2px solid green
 }
 
 .approFileHeader {

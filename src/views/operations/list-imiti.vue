@@ -672,7 +672,7 @@ export default defineComponent({
                     'ratio_type': element.ratio_type,
                     'type_in': element.type_in,
                     'type_vente': element.type_out,
-                    'type_med': element.type_umuti,
+                    'famille_med': element.type_umuti,
                     'location': element.location,
                     'lot': element.lot
                 }
@@ -697,7 +697,7 @@ export default defineComponent({
                     'quantite_restant': element.quantite_restant,
                     'type_in': element.type_in,
                     'type_vente': element.type_vente,
-                    'type_med': element.type_med,
+                    'famille_med': element.famille_med,
                 }
 
                 imiti_for_search.push(obj)

@@ -128,9 +128,9 @@
                             {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity) }}
                         </div> 
 
-                        <div class="contentElement4 type_med">
+                        <div class="contentElement4 famille_med">
                             <span v-if="isAdmin">{{ umuti.prix_in }}</span>
-                            <span v-else>{{ umuti.type_med }}</span>
+                            <span v-else>{{ umuti.famille_med }}</span>
                             
                         </div>
 

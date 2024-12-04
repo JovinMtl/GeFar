@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="contentElement4">
-                    <!-- {{ umuti.type_med }} -->
+                    <!-- {{ umuti.famille_med }} -->
                       Type
                 </div>
             </div>

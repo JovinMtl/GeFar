@@ -32,6 +32,7 @@ html, body {
     background-color: green;
     position: absolute;
     top: 11.5%;
+    display: none;
 }
 
 .sectA{
