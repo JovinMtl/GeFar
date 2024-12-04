@@ -170,7 +170,10 @@ html, body {
 }
 .fami-1{
     width: 92%;
-    background-color: red;
+    background-color: rgba(0, 50, 255, 0.315);
     height: 30px;
     margin: 5px 0;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
 }
