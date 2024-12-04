@@ -20,12 +20,12 @@
                 </div>
 
                 <div class="contentElement3">
-                    <!-- {{ umuti.prix_out }} -->
+                    <!-- {{ umuti.prix_vente }} -->
                       P.U
                 </div>
 
                 <div class="contentElement3">
-                    <!-- {{ umuti.prix_out * (umuti.quantite_restant || umuti.quantity) }} -->
+                    <!-- {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity) }} -->
                       P.T
                 </div> 
 

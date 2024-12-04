@@ -29,13 +29,13 @@
                     Type_in
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    Type_out 
+                    Type_vente 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
                     prix_in 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    prix_out
+                    prix_vente
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
                     Qte_initial
@@ -65,13 +65,13 @@
                     <input :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="umuti.Type_in" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';Type_out'" style="width: 100%; height: 100%;" :value="umuti.Type_out" @blur="ListenNewChange"/> 
+                    <input :id="index +';Type_vente'" style="width: 100%; height: 100%;" :value="umuti.Type_vente" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
                     <input :id="index +';prix_in'" style="width: 100%; height: 100%;" :value="umuti.prix_in" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input :id="index +';prix_out'" style="width: 100%; height: 100%;" :value="umuti.prix_out" @blur="ListenNewChange"/> 
+                    <input :id="index +';prix_vente'" style="width: 100%; height: 100%;" :value="umuti.prix_vente" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
                     <input type="number" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="umuti.Qte_initial" @blur="ListenNewChange"/> 
@@ -112,7 +112,7 @@ export default {
                 // let wrong = []
                 imiti_loaded.value.forEach((element)=>{
                     if(String(element.Nom) && Number(element.Qte_initial) && 
-                        Number(element.prix_in) && Number(element.prix_out) &&
+                        Number(element.prix_in) && Number(element.prix_vente) &&
                         Date(element.Date_exp)
                     ){
                         // You can emit the imiti_loaded.value
@@ -151,9 +151,9 @@ export default {
                 'type_med': element.Type_medicament,
                 'type_in': element.Type_in,
                 'ratio_type': element.Ratio,
-                'type_out': element.Type_out,
+                'type_vente': element.Type_vente,
                 'prix_in': element.prix_in,
-                'prix_out': element.prix_out,
+                'prix_vente': element.prix_vente,
                 'quantite_initial': element.Qte_initial,
                 'location': '',
                 }

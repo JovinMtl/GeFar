@@ -9,13 +9,13 @@ export interface UmutiSet {
     description_med : string;
     date_last_vente : Object;
     prix_in : number;
-    prix_out : number;
+    prix_vente : number;
     difference : number;
     qte_entrant_big : number;
     quantite_restant : number;
     ratio_type : number;
     type_in : string;
-    type_out : string;
+    type_vente : string;
     type_med : string;
     location : string;
     lot : object[];
@@ -25,7 +25,7 @@ export interface PanierClient {
     code_med : string;
     nom_med : string;
     qte : number;
-    prix_out : number;
+    prix_vente : number;
 }
 
 export interface PanierAPI {

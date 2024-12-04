@@ -28,8 +28,8 @@ const search_value = ref(null)
 const search_result = ref([])
 const actualField = ref('nom_med')
 const clickSelect = ref(null)
-const searchableFields = ['nom_med', 'prix_out', 'quantite_restant',
-        'description_med', 'type_out', 'type_med']
+const searchableFields = ['nom_med', 'prix_vente', 'quantite_restant',
+        'description_med', 'type_vente', 'type_med']
 const emit = defineEmits(['valueSearch'])
 
 let imiti_injected = inject('imiti_downloaded')

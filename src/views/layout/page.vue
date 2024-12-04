@@ -59,7 +59,7 @@
                             <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_med }}</div>
                             <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_med }}</div>
                             <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
-                            <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.prix_out }}</div>
+                            <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.prix_vente }}</div>
                             <!-- Need to display the number of lots -->
                             <div v-if="activeLot.length" style="text-align: right;">{{ activeLot.length }}</div>
                             <div class="umutiLot">
@@ -98,13 +98,13 @@
                             <div class="itemPanier"
                              v-for="(umuti, index ) in panier_client">
                                 <div class="nomination">
-                                    {{ index + 1 }}. {{ (umuti.nom_med).slice(0, 8) }} : {{ umuti.prix_out }} x {{ umuti.qte
+                                    {{ index + 1 }}. {{ (umuti.nom_med).slice(0, 8) }} : {{ umuti.prix_vente }} x {{ umuti.qte
                                     }}
 
                                     <span style="margin-right: .3rem;">&nbsp;</span>
                                     <!-- <input style="background-color: white; width: 25px; height: 20px;"/> -->
                                     <span style="margin-right: .3rem;">&nbsp;</span>
-                                    <div>{{ umuti.qte * umuti.prix_out }}</div>
+                                    <div>{{ umuti.qte * umuti.prix_vente }}</div>
                                 </div>
                                 <div class="cancelButto" :id="'i' + index">
                                     <ion-icon :id="'j' + index" @click="removeUmuti($event)" :src="close"
@@ -644,7 +644,7 @@ const update_total_client = (reduction: number = 0): string => {
     let somme: number = 0
     let somme_formatted: number = 0
     panier_client.value.forEach((element) => {
-        let p_T = element.prix_out * element.qte
+        let p_T = element.prix_vente * element.qte
         somme += p_T
     })
     if (reduction == 0) {
@@ -684,7 +684,7 @@ const moveToPanier = (): number => {
         let obj_Client = {
             'nom_med': selectedUmuti.value.nom_med,
             'qte': somme_lote(),
-            'prix_out': Number(selectedUmuti.value.prix_out),
+            'prix_vente': Number(selectedUmuti.value.prix_vente),
         }
         let obj_API = {
             'code_med': selectedUmuti.value.code_med,

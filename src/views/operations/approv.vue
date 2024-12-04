@@ -18,7 +18,7 @@
             </ul>
             <input v-model="umuti_prix_in" type="text" placeholder="Price in: (Type_in)">
             <br> <br>
-            <input v-model="umuti_prix_out" type="text" placeholder="Price out : (Type_in)">
+            <input v-model="umuti_prix_vente" type="text" placeholder="Price out : (Type_in)">
             <br> <br>
             <input v-model="umuti_quantite_initial" type="text" placeholder="Quantite Initial">
             <br> <br>
@@ -42,7 +42,7 @@
             <br><br>
             <input v-model="type_in" v-if="date_exp" type="text" placeholder="Type in: Carton">
             <br> <br>
-            <input v-model="type_out" v-if="date_exp" type="text" placeholder="Type out : Plaquette">
+            <input v-model="type_vente" v-if="date_exp" type="text" placeholder="Type out : Plaquette">
             <br><br>
             <input v-model="location" v-if="date_exp" type="text" style="margin-bottom: 5px;" placeholder="Localisation">
             <br><br>
@@ -62,7 +62,7 @@
                 placeholder="Price in: (Type_in)">
             <br> <br>
             <label>Px. V </label> 
-            <input v-model="selected_search.prix_out" type="number" 
+            <input v-model="selected_search.prix_vente" type="number" 
                 placeholder="Price out : (Type_in)">
             <br> <br>
             <label>Date d'éxpiration </label> 
@@ -91,7 +91,7 @@ export default {
         const selected_search = ref(null)
         const search_approve = reactive({})
         const umuti_prix_in = ref(null)
-        const umuti_prix_out = ref(null)
+        const umuti_prix_vente = ref(null)
         const umuti_quantite_initial = ref(null)
         const umuti_date_exp = ref(null)
         const date_exp = ref(null)
@@ -99,7 +99,7 @@ export default {
         const type_med = ref('Cp')
         const ratio_type = ref(null)
         const type_in = ref(null)
-        const type_out = ref(null)
+        const type_vente = ref(null)
         const location = ref(null)
         const description_med = ref(null)
 
@@ -117,9 +117,9 @@ export default {
                 'type_med': '',
                 'type_in': '',
                 'ratio_type': '',
-                'type_out': '',
+                'type_vente': '',
                 'prix_in': null,
-                'prix_out': undefined,
+                'prix_vente': undefined,
                 'quantite_initial': undefined,
                 'location': undefined,
             })
@@ -143,9 +143,9 @@ export default {
                 'type_med': selected_search.value.type_med,
                 'type_in': selected_search.value.type_in,
                 'ratio_type': selected_search.value.ratio_type,
-                'type_out': selected_search.value.type_out,
+                'type_vente': selected_search.value.type_vente,
                 'prix_in': null,
-                'prix_out': undefined,
+                'prix_vente': undefined,
                 'quantite_initial': undefined,
                 'location': undefined,
             }
@@ -161,19 +161,19 @@ export default {
                 umuti_obj.date_uzohererako = date_exp.value
                 // umuti_obj.date_winjiriyeko = new Date()
                 umuti_obj.prix_in = selected_search.value.prix_in
-                umuti_obj.prix_out = selected_search.value.prix_out
+                umuti_obj.prix_vente = selected_search.value.prix_vente
                 umuti_obj.quantite_initial = selected_search.value.quantite_initial
                 umuti_obj.ratio_type = selected_search.value.ratio_type
                 umuti_obj.location = selected_search.value.location
                 umuti_obj.type_in = selected_search.value.type_in
-                umuti_obj.type_out = selected_search.value.type_out
+                umuti_obj.type_vente = selected_search.value.type_vente
                 umuti_obj.description_med = selected_search.value.description_med
 
                 return umuti_obj
             } else{
                 // Fill Umuti_obj from the vmodels set in template
                 if((String(umutiName.value)) && (Number(umuti_prix_in.value))
-                    && (Number(umuti_prix_out.value)) 
+                    && (Number(umuti_prix_vente.value)) 
                     && (Number(umuti_quantite_initial.value)) 
                     && (Date(date_exp.value))
                 ){
@@ -183,19 +183,19 @@ export default {
                     umuti_obj.date_uzohererako = umuti_date_exp.value
                     // umuti_obj.date_winjiriyeko = Date(new Date().toISOString().substring(0,10))
                     umuti_obj.prix_in = Number(umuti_prix_in.value)
-                    umuti_obj.prix_out = Number(umuti_prix_out.value)
+                    umuti_obj.prix_vente = Number(umuti_prix_vente.value)
                     umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
                     umuti_obj.ratio_type = ratio_type.value || 1
                     umuti_obj.location = location.value || 'vide'
                     umuti_obj.type_in = type_in.value || 'vide'
-                    umuti_obj.type_out =  type_out.value || 'vide'
+                    umuti_obj.type_vente =  type_vente.value || 'vide'
                     umuti_obj.description_med = description_med.value || "vide"
 
                     return umuti_obj
                 } else{
                     console.log("NON PASSABLE")
                     console.log(umutiName.value, umuti_prix_in.value,
-                    umuti_prix_out.value, umuti_quantite_initial.value,
+                    umuti_prix_vente.value, umuti_quantite_initial.value,
                     date_exp.value
                     )
                     let info = "Veuillez saisir les données correctes."
@@ -246,9 +246,9 @@ export default {
         })
         return {
             umutiName, imiti_result, selected_search,
-            date_exp, umuti_prix_in, umuti_prix_out, umuti_date_exp,
+            date_exp, umuti_prix_in, umuti_prix_vente, umuti_date_exp,
             umuti_quantite_initial, description_med,
-            type_med, ratio_type, type_in, type_out, location,
+            type_med, ratio_type, type_in, type_vente, location,
             fileTray, notifStatus, message,
             selectSearch, openApproFile, saveDate,
         }

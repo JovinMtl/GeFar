@@ -121,11 +121,11 @@
                         </div>
 
                         <div class="contentElement3">
-                            {{ umuti.prix_out }}
+                            {{ umuti.prix_vente }}
                         </div>
 
                         <div class="contentElement3 total">
-                            {{ umuti.prix_out * (umuti.quantite_restant || umuti.quantity) }}
+                            {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity) }}
                         </div> 
 
                         <div class="contentElement4 type_med">
@@ -135,7 +135,7 @@
                         </div>
 
                         <div class="contentElement4"> 
-                        <span v-if="isAdmin">{{ (umuti.prix_out - umuti.prix_in) * (umuti.quantite_restant || umuti.quantity) }}</span> 
+                        <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_in) * (umuti.quantite_restant || umuti.quantity) }}</span> 
                         <span v-else>{{ umuti.location }}</span>
                         </div>
 
@@ -257,7 +257,7 @@ watch(allFine, (value)=>{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['nom_med', 
-        'quantite_restant','prix_out', 'date_winjiriyeko',]
+        'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Bon"
     }})
@@ -270,7 +270,7 @@ watch(outDate, (value)=>{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['nom_med', 
-        'quantite_restant','prix_out', 'date_winjiriyeko',]
+        'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Expiré"
     }})
@@ -283,7 +283,7 @@ watch(endStock, (value)=>{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['nom_med','description_med', 
-        'quantite_restant','prix_out', 'date_last_vente',]
+        'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Zéro Stock"
     }})
@@ -296,7 +296,7 @@ watch(lowStock, (value)=>{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['nom_med','description_med', 
-        'quantite_restant','prix_out', 'date_last_vente',]
+        'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Low Stock"
     }
@@ -306,7 +306,7 @@ watch(actual_suggest, (value)=>{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['nom_med', 
-        'quantite_restant','prix_out', 'date_winjiriyeko',]
+        'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Suggestion"
     }
@@ -316,7 +316,7 @@ watch(actual_entree, (value)=>{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['nom_med', 
-        'quantite_restant','prix_out', 'date_winjiriyeko',]
+        'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Achats"
     }
@@ -326,7 +326,7 @@ watch(actual_vente, (value)=>{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['nom_med', 
-        'quantity','prix_out', 'date_operation',]
+        'quantity','prix_vente', 'date_operation',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Ventes"
     }
@@ -336,7 +336,7 @@ watch(actual_imiti, (value)=>{
         actual_obj.value = value.data
         actual_imitiS.value = value.data
         actual_opt.value = ['nom_med','description_med', 
-        'quantite_restant','prix_out', 'date_last_vente',]
+        'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','text','date']
         title_operation.value = "Disponibles"
     }
@@ -354,15 +354,15 @@ watch(actual_imitiS, (value)=>{
 
     actual_imitiS.value.forEach(element => {
         if(element.quantite_restant){
-            console.log("Quantite restant  pa:",  element.prix_out)
-            total += (element.prix_out * (element.quantite_restant))
+            console.log("Quantite restant  pa:",  element.prix_vente)
+            total += (element.prix_vente * (element.quantite_restant))
             pt_a += element.prix_in * (element.quantite_restant)
-            benefice += (element.prix_out - element.prix_in) * (element.quantite_restant) 
+            benefice += (element.prix_vente - element.prix_in) * (element.quantite_restant) 
         } else {
-            console.log("Quantity pa :", element.prix_out )
-            total += (element.prix_out * (element.quantity))
+            console.log("Quantity pa :", element.prix_vente )
+            total += (element.prix_vente * (element.quantity))
             pt_a += element.prix_in * (element.quantity)
-            benefice += (element.prix_out - element.prix_in) * (element.quantity) 
+            benefice += (element.prix_vente - element.prix_in) * (element.quantity) 
         }
         
         number += 1

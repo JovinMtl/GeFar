@@ -3,7 +3,7 @@
 export interface PanierClient {
     'nom_med': string;
     'qte': number;
-    'prix_out': number
+    'prix_vente': number
 }
 
 interface Lot {
@@ -34,11 +34,11 @@ export interface Umuti {
     'lot': Lot[];
     'nom_med': string;
     'prix_in': number;
-    'prix_out': number;
+    'prix_vente': number;
     'qte_entrant_big': number;
     'quantite_restant': number;
     'ratio_type': number;
     'type_in': string;
-    'type_out': string;
+    'type_vente': string;
     'type_med': string;
 }
