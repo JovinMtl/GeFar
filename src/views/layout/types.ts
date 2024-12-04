@@ -4,9 +4,9 @@
 
 export interface UmutiSet {
     id : number;
-    code_umuti : string;
-    name_umuti : string;
-    description_umuti : string;
+    code_med : string;
+    name_med : string;
+    description_med : string;
     date_last_vente : Object;
     price_in : number;
     price_out : number;
@@ -16,20 +16,20 @@ export interface UmutiSet {
     ratio_type : number;
     type_in : string;
     type_out : string;
-    type_umuti : string;
+    type_med : string;
     location : string;
     lot : object[];
 }
 
 export interface PanierClient {
-    code_umuti : string;
-    name_umuti : string;
+    code_med : string;
+    name_med : string;
     qte : number;
     price_out : number;
 }
 
 export interface PanierAPI {
-    code_umuti : string;
+    code_med : string;
     // code_operation : string;
     qte : number;
 }

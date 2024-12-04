@@ -1,7 +1,7 @@
 
 
 export interface PanierClient {
-    'name_umuti': string;
+    'name_med': string;
     'qte': number;
     'price_out': number
 }
@@ -12,7 +12,7 @@ interface Lot {
 }
 
 export interface PanierAPI {
-    'name_umuti': string;
+    'name_med': string;
     'qte': number;
     'lot': Lot [];
 }
@@ -25,14 +25,14 @@ export interface ActiveLot {
 }
 
 export interface Umuti {
-    'code_umuti': string;
+    'code_med': string;
     'date_last_vente': Date;
-    'description_umuti': string;
+    'description_med': string;
     'difference': number;
     'id': number;
     'location': string;
     'lot': Lot[];
-    'name_umuti': string;
+    'name_med': string;
     'price_in': number;
     'price_out': number;
     'qte_entrant_big': number;
@@ -40,5 +40,5 @@ export interface Umuti {
     'ratio_type': number;
     'type_in': string;
     'type_out': string;
-    'type_umuti': string;
+    'type_med': string;
 }

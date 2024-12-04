@@ -10,7 +10,7 @@
             <div class="factuBody">
                 <div class="content">
                     <div class="number"></div>
-                    <div class="name_umuti">Médicament</div>
+                    <div class="name_med">Médicament</div>
                     <div class="qte">Qte</div>
                     <div class="Pu">P.U</div>
                     <div class="ptotal">P.Total</div>
@@ -18,7 +18,7 @@
 
                 <div class="content2" v-for="(umuti, index) in props.commandePatient[0]">
                     <div class="number">{{ index + 1 }}.</div>
-                    <div class="name_umuti">{{ umuti.name_umuti }}</div>
+                    <div class="name_med">{{ umuti.name_med }}</div>
                     <div class="qte">{{ umuti.qte }}</div>
                     <div class="Pu">{{ umuti.price_out }}</div>
                     <div class="ptotal">{{ umuti.qte * umuti.price_out }} Fbu</div>
@@ -26,7 +26,7 @@
 
                 <div class="toTal">
                     <div class="number"></div>
-                    <div class="name_umuti">TOTAL</div>
+                    <div class="name_med">TOTAL</div>
                     <div class="qte">--</div>
                     <div class="Pu">--</div>
                     <div class="ptotal">{{ props.commandePatient[1] }} Fbu</div>
@@ -139,7 +139,7 @@ const closeFacturier = ()=>{
         // background: rgb(255, 0, 212);
         align-content: center;
     }
-    .name_umuti{
+    .name_med{
         width: 50%;
         height: 100%;
         // background: rgb(81, 255, 0);

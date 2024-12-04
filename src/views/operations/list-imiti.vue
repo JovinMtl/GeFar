@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div v-for="(umuti, index) in imitiset" v-show="umuti.name_umuti" style="display: inline-block ;"
+        <div v-for="(umuti, index) in imitiset" v-show="umuti.name_med" style="display: inline-block ;"
             @click.prevent="umutiOpen($event)">
-            <a :title="umuti.name_umuti" href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
+            <a :title="umuti.name_med" href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
                 <div :id="index" class="umuti">
                     <div class="umutiTitle">
-                        {{ (umuti.name_umuti).slice(0, 7) }}<span v-show="(umuti.name_umuti).length > 8">...</span>
+                        {{ (umuti.name_med).slice(0, 7) }}<span v-show="(umuti.name_med).length > 8">...</span>
 
                     </div>
 
@@ -37,13 +37,13 @@ export default defineComponent({
         var shouldUpdate = needUpdate
         const { getAccessToken, getRefreshToken } = useUserStore()
 
-        const search_umuti = (value) => {
+        const search_med = (value) => {
             // value.field
-            let fieldname = 'name_umuti'
+            let fieldname = 'name_med'
             if (value.field) {
                 fieldname = value.field
             } else {
-                fieldname = 'name_umuti'
+                fieldname = 'name_med'
             }
             return imiti_for_search.filter((element) => {
                 return (String(element[fieldname])).toLowerCase().match((String(value.query)).toLowerCase())
@@ -659,10 +659,10 @@ export default defineComponent({
             let i = 1
             data.value.forEach(element => {
                 let obj: UmutiSet = {
-                    'code_umuti': element.code_umuti,
+                    'code_med': element.code_med,
                     'id': i,
-                    'name_umuti': element.name_umuti,
-                    'description_umuti': element.description_umuti,
+                    'name_med': element.name_med,
+                    'description_med': element.description_med,
                     'date_last_vente': new Date(element.date_last_vente),
                     'price_in': element.price_in,
                     'price_out': element.price_out,
@@ -672,7 +672,7 @@ export default defineComponent({
                     'ratio_type': element.ratio_type,
                     'type_in': element.type_in,
                     'type_out': element.type_out,
-                    'type_umuti': element.type_umuti,
+                    'type_med': element.type_med,
                     'location': element.location,
                     'lot': element.lot
                 }
@@ -685,19 +685,19 @@ export default defineComponent({
         const update_imiti_for_search = () => {
             imitiset.value.forEach(element => {
                 let obj = {
-                    'code_umuti': element.code_umuti,
+                    'code_med': element.code_med,
                     'date_last_vente': element.date_last_vente,
-                    'description_umuti': element.description_umuti,
+                    'description_med': element.description_med,
                     'location': element.location,
                     'lot': element.lot,
-                    'name_umuti': (element.name_umuti),
+                    'name_med': (element.name_med),
                     'price_in': element.price_in,
                     'price_out': element.price_out,
                     'qte_entrant_big': element.qte_entrant_big,
                     'quantite_restant': element.quantite_restant,
                     'type_in': element.type_in,
                     'type_out': element.type_out,
-                    'type_umuti': element.type_umuti,
+                    'type_med': element.type_med,
                 }
 
                 imiti_for_search.push(obj)
@@ -711,7 +711,7 @@ export default defineComponent({
         })
         watch(need_search, (value) => {
             // console.log("You want to search in list-imiti: ", value)
-            let queryset = search_umuti(value.value)
+            let queryset = search_med(value.value)
 
             if (queryset && value.value.query.length > 0 && value.value.response == 1) {
                 emit('allImiti', queryset)

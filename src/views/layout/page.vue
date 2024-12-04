@@ -54,10 +54,10 @@
                         <!-- details for selected umuti should appeal here -->
                         <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft' : ''">
                             <div class="infoUmuti"></div>
-                            <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.name_umuti).slice(0, 14) }}</div>
-                            <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_umuti }}</div>
-                            <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_umuti }}</div>
-                            <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_umuti }}</div>
+                            <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.name_med).slice(0, 14) }}</div>
+                            <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_med }}</div>
+                            <div class="infoUmuti umutiTitle umutiType">{{ selectedUmuti.value.type_med }}</div>
+                            <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.description_med }}</div>
                             <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                             <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.price_out }}</div>
                             <!-- Need to display the number of lots -->
@@ -98,7 +98,7 @@
                             <div class="itemPanier"
                              v-for="(umuti, index ) in panier_client">
                                 <div class="nomination">
-                                    {{ index + 1 }}. {{ (umuti.name_umuti).slice(0, 8) }} : {{ umuti.price_out }} x {{ umuti.qte
+                                    {{ index + 1 }}. {{ (umuti.name_med).slice(0, 8) }} : {{ umuti.price_out }} x {{ umuti.qte
                                     }}
 
                                     <span style="margin-right: .3rem;">&nbsp;</span>
@@ -302,8 +302,8 @@ const clear_search: Ref<number> = ref(0)
 const listImiti_update: Ref<number> = ref(0)
 const numero_facture: Ref<number> = ref(0)
 
-const last_umutiEntree: Ref<number> = ref(0)
-const last_umutiSold: Ref<number> = ref(0)
+const last_medEntree: Ref<number> = ref(0)
+const last_medSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
 const total_r: Ref<number> = ref(2)
 const stage_redu: Ref<number> = ref(0)
@@ -628,7 +628,7 @@ const check_panier = (umuti_name) => {
     console.log("Panier had length of : ", panier_length)
     for (i = 0; i < panier_length; i++) {
         console.log("T: ", panier_client.value[i], '>>', umuti_name, '<<', i)
-        if (panier_client.value[i].name_umuti == umuti_name) {
+        if (panier_client.value[i].name_med == umuti_name) {
             notifStatus.value = true
             message.value = "Ce medicament existe deja sur le panier."
             setTimeout(() => {
@@ -679,15 +679,15 @@ const somme_lote = (): number => {
 }
 const moveToPanier = (): number => {
     // this function manages to move umuti from selected into panier
-    let jove: string = check_panier(selectedUmuti.value.name_umuti)
+    let jove: string = check_panier(selectedUmuti.value.name_med)
     if (jove) {
         let obj_Client = {
-            'name_umuti': selectedUmuti.value.name_umuti,
+            'name_med': selectedUmuti.value.name_med,
             'qte': somme_lote(),
             'price_out': Number(selectedUmuti.value.price_out),
         }
         let obj_API = {
-            'code_umuti': selectedUmuti.value.code_umuti,
+            'code_med': selectedUmuti.value.code_med,
             'qte': somme_lote(),
             'lot': lot_array()
         }
@@ -733,7 +733,7 @@ const getUmuti = (umuti) => {
         temp_lot = JSON.parse(lots_json) //setting the activeLot
         activeLot.value = strDate(temp_lot)
         need_to_updade.value = false  // to command not to provide an update from list-imiti
-    } else if (selectedUmuti.value.code_umuti === umuti.code_umuti) {
+    } else if (selectedUmuti.value.code_med === umuti.code_med) {
         selectedUmuti.value = undefined
         activeLot.value = []
     } else {
@@ -767,8 +767,8 @@ watch(should_sync, (value) => {
 })
 watch(last_indexes, (value) => {
     server_process.value = true
-    last_umutiEntree.value = value.last_umutiEntree
-    last_umutiSold.value = value.last_umutiSold
+    last_medEntree.value = value.last_medEntree
+    last_medSold.value = value.last_medSold
     should_sync.value += 1
 })
 watch(sell_report, value => {

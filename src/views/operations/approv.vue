@@ -13,7 +13,7 @@
             <ul style="text-align: right;" v-if="!selected_search">
                 <button class="btnResearch" v-for="(umuti, index) in imiti_result" 
                     :id="'a' + index" @click="selectSearch">
-                    {{ umuti.name_umuti }} {{ umuti.code_umuti }} {{ umuti.description_umuti }}
+                    {{ umuti.name_med }} {{ umuti.code_med }} {{ umuti.description_med }}
                 </button>
             </ul>
             <input v-model="umuti_price_in" type="text" placeholder="Price in: (Type_in)">
@@ -28,7 +28,7 @@
             <br> <br>
             <label v-if="date_exp">Type de medicament</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
-            <select v-model="type_umuti" v-if="date_exp" style="background-color: white" placeholder="Type" value="Ovule">
+            <select v-model="type_med" v-if="date_exp" style="background-color: white" placeholder="Type" value="Ovule">
                 <option>Cp</option>
                 <option>Gel</option>
                 <option>Ovule</option>
@@ -37,7 +37,7 @@
                 <!-- <option>Inj</option> -->
             </select>
             <br> <br>
-            <textarea v-model="description_umuti" v-if="date_exp" style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
+            <textarea v-model="description_med" v-if="date_exp" style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
             <input v-model="ratio_type" v-if="date_exp" type="text" placeholder="ratio: 1 : 1">
             <br><br>
             <input v-model="type_in" v-if="date_exp" type="text" placeholder="Type in: Carton">
@@ -50,7 +50,7 @@
         <div v-if="selected_search">
             <br> <br>
             <label>Nom </label>
-            <input v-model="selected_search.name_umuti" type="text" 
+            <input v-model="selected_search.name_med" type="text" 
                 disabled="true" placeholder="Nom du medicament">
                 <br> <br>
                 <label>Qnte </label>  
@@ -96,12 +96,12 @@ export default {
         const umuti_date_exp = ref(null)
         const date_exp = ref(null)
         const date_init = ref(new Date)
-        const type_umuti = ref('Cp')
+        const type_med = ref('Cp')
         const ratio_type = ref(null)
         const type_in = ref(null)
         const type_out = ref(null)
         const location = ref(null)
-        const description_umuti = ref(null)
+        const description_med = ref(null)
 
         const notifStatus = ref(false)
         const message = ref('message initial')
@@ -109,12 +109,12 @@ export default {
         
         console.log("La date de debut: ", date_init.value)
         const  umuti_obj = reactive ({
-                'code_umuti': '',
+                'code_med': '',
                 'date_winjiriyeko': new Date().toISOString(),
                 'date_uzohererako': umuti_date_exp.value,
-                'name_umuti': '',
-                'description_umuti': '',
-                'type_umuti': '',
+                'name_med': '',
+                'description_med': '',
+                'type_med': '',
                 'type_in': '',
                 'ratio_type': '',
                 'type_out': '',
@@ -135,12 +135,12 @@ export default {
         }
         const approve_handler = ()=>{
             let obj = {
-                'code_umuti': selected_search.value.code_umuti,
+                'code_med': selected_search.value.code_med,
                 'date_winjiriyeko': new Date().toISOString(),
                 'date_uzohererako': '',
-                'name_umuti': selected_search.value.name_umuti,
-                'description_umuti': selected_search.value.description_umuti,
-                'type_umuti': selected_search.value.type_umuti,
+                'name_med': selected_search.value.name_med,
+                'description_med': selected_search.value.description_med,
+                'type_med': selected_search.value.type_med,
                 'type_in': selected_search.value.type_in,
                 'ratio_type': selected_search.value.ratio_type,
                 'type_out': selected_search.value.type_out,
@@ -156,8 +156,8 @@ export default {
             // This function will be executed when received order to upload
             if(selected_search.value){
                 // Update umuti_obj according to selected_search
-                umuti_obj.code_umuti = selected_search.value.code_umuti
-                umuti_obj.name_umuti = selected_search.value.name_umuti
+                umuti_obj.code_med = selected_search.value.code_med
+                umuti_obj.name_med = selected_search.value.name_med
                 umuti_obj.date_uzohererako = date_exp.value
                 // umuti_obj.date_winjiriyeko = new Date()
                 umuti_obj.price_in = selected_search.value.price_in
@@ -167,7 +167,7 @@ export default {
                 umuti_obj.location = selected_search.value.location
                 umuti_obj.type_in = selected_search.value.type_in
                 umuti_obj.type_out = selected_search.value.type_out
-                umuti_obj.description_umuti = selected_search.value.description_umuti
+                umuti_obj.description_med = selected_search.value.description_med
 
                 return umuti_obj
             } else{
@@ -178,8 +178,8 @@ export default {
                     && (Date(date_exp.value))
                 ){
                     console.log("PASSABLE")
-                    umuti_obj.name_umuti = String(umutiName.value)
-                    umuti_obj.code_umuti = ''
+                    umuti_obj.name_med = String(umutiName.value)
+                    umuti_obj.code_med = ''
                     umuti_obj.date_uzohererako = umuti_date_exp.value
                     // umuti_obj.date_winjiriyeko = Date(new Date().toISOString().substring(0,10))
                     umuti_obj.price_in = Number(umuti_price_in.value)
@@ -189,7 +189,7 @@ export default {
                     umuti_obj.location = location.value || 'vide'
                     umuti_obj.type_in = type_in.value || 'vide'
                     umuti_obj.type_out =  type_out.value || 'vide'
-                    umuti_obj.description_umuti = description_umuti.value || "vide"
+                    umuti_obj.description_med = description_med.value || "vide"
 
                     return umuti_obj
                 } else{
@@ -247,8 +247,8 @@ export default {
         return {
             umutiName, imiti_result, selected_search,
             date_exp, umuti_price_in, umuti_price_out, umuti_date_exp,
-            umuti_quantite_initial, description_umuti,
-            type_umuti, ratio_type, type_in, type_out, location,
+            umuti_quantite_initial, description_med,
+            type_med, ratio_type, type_in, type_out, location,
             fileTray, notifStatus, message,
             selectSearch, openApproFile, saveDate,
         }

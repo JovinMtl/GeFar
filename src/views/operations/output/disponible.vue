@@ -12,7 +12,7 @@
                       #
                 </div> 
                 <div class="contentElement2">
-                    <!-- {{ umuti.name_umuti }} -->
+                    <!-- {{ umuti.name_med }} -->
                       Nom
                 </div> <div class="contentElement3">
                     <!-- {{ (umuti.quantite_restant || umuti.quantity ) }} -->
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="contentElement4">
-                    <!-- {{ umuti.type_umuti }} -->
+                    <!-- {{ umuti.type_med }} -->
                       Type
                 </div>
             </div>

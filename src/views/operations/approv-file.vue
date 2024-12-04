@@ -142,13 +142,13 @@ export default {
             let new_obj_array = []
             obj_array.forEach(element=>{
                 let obj = {
-                'code_umuti': '',
+                'code_med': '',
                 'date_winjiriyeko': '',
                 // 'date_winjiriyeko': new Date().toISOString(),
                 'date_uzohererako': element.Date_exp,
-                'name_umuti': element.Nom,
-                'description_umuti': element.Description,
-                'type_umuti': element.Type_medicament,
+                'name_med': element.Nom,
+                'description_med': element.Description,
+                'type_med': element.Type_medicament,
                 'type_in': element.Type_in,
                 'ratio_type': element.Ratio,
                 'type_out': element.Type_out,
