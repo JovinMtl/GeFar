@@ -53,7 +53,9 @@
                         <input type="text" class="w-90"
                         placeholder="Trouver famille">
                         <!-- All familles will be displayed here. -->
-                        <div class="fami-1"></div>
+                        <div class="fami-1"
+                            v-for="(famille, index) in familles"
+                            :key="index">{{ famille.nom_fam }}</div>
                     </div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
