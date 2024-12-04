@@ -4,8 +4,8 @@
         <span class="closeBtn" style="z-index: 10;">
             <a
   href="Template/imiti_exemplaire.csv"
-  :download="'exemplaire_achats-' + 
-  new Date().getDay() + '/'+new Date().getMonth()+'.csv'"
+  :download="'exemplaire_achats_du-' + 
+  new Date().getDay() + '_'+new Date().getMonth()+'.csv'"
 >
   <ion-icon :src="documentOutline" style="position: absolute; left: -4rem;"></ion-icon>
 </a>
