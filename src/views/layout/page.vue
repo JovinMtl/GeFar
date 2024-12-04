@@ -52,6 +52,7 @@
                             style="color: black;" disabled>
                         <input type="text" class="w-90"
                         placeholder="Trouver famille">
+                        <!-- All familles will be displayed here. -->
                         <div class="fami-1"></div>
                     </div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
@@ -508,6 +509,27 @@ const getAllImiti = (imiti) => {
     all_imiti.value = imiti
     console.log("All imiti are emitted : ", imiti)
 
+}
+// let familles = []
+let familles = [
+    {
+        'nom_fam' : 'fami1',
+        'members':[0,2,9]
+    },
+    {
+        'nom_fam' : 'fami2',
+        'members':[0,2,9]
+    }
+]
+let famillesArray = ['fami1', 'fami2']
+const familleBuilder = ()=>{
+    all_imiti.value.forEach(Element)=>{
+        if(famillesArray.indexOf(Element.type_med)== -1){
+            // ntayirimwo
+        } else{
+            // irimwo
+        }
+    }
 }
 const closeApprov = () => {
     approvStatus.value = false
