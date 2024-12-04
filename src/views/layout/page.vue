@@ -44,12 +44,13 @@
                     </div>
                 </div>
                 <!-- details for umuti were displayed here -->
+                <div class="fami"></div>
                 <div class="mainContainer">
                     <div class="sectA" style="text-align: center;">
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
                             @emptyResult="alertUmutiNew"></list-imiti>
                     </div>
-                    <div style="width: 15vw;">
+                    <div style="width: 15vw; padding: 1rem 5px;">
                         <!-- details for selected umuti should appeal here -->
                         <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft' : ''">
                             <div class="infoUmuti"></div>
@@ -1016,16 +1017,6 @@ provide('need_clear', clear_search) // in search component
     color: black;
     /* color: green */
 }
-
-.menuLeft {
-    width: 11.6vw;
-    height: 100%;
-    /* background-color: red; */
-    position: absolute;
-    /* padding: 10px 10px; */
-    color: rgb(63, 62, 62);
-}
-
 .hMenuLeft {
     display: none;
 }

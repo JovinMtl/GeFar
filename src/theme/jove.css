@@ -20,6 +20,19 @@ html, body {
     border-bottom-left-radius: 35px;
     padding-left: 1vw;
 }
+/* .menuLeft {
+    width: 11.6vw;
+    height: 100%;
+    position: absolute;
+    color: rgb(63, 62, 62);
+} */
+.fami{
+    width: 8vw;
+    height: 79%;
+    background-color: green;
+    position: absolute;
+    top: 11.5%;
+}
 
 .sectA{
     width: 67%;
@@ -125,6 +138,7 @@ html, body {
     color: #ad9393;
     font-size: .93rem;
     text-decoration: line-through;
+    margin-bottom: -1rem;
 }
 .inpBl{
     background-color: transparent;
