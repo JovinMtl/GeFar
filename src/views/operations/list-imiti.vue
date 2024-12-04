@@ -681,6 +681,7 @@ export default defineComponent({
             console.log("Compiled : ", imitiset.value)
             imitiset_copy.value = imitiset.value
             familleBuilder(imitiset.value)
+            emit('families', familles.value)
         }
         // let familles = []
         const familles = ref([])
