@@ -8,20 +8,56 @@
                 Fermer
             </button>
         </div>
-        <div class="bg-w c-b dB-3 d-f">
-            <div class="d-f dB-ctn" style="align-content: center;
-    justify-content: center;
-    flex-wrap: wrap;">
+        <div class="bg-w c-b dB-3" style="overflow: auto; display: flex;
+        flex-wrap: wrap;">
+            <div class="dB-ctn">
                 Rien pour le moment
+                <DoughnutChart :chartData="testData" />
             </div>
-            <div class="dB-ctn"></div>
+            <div class="dB-ctn">
+                Encore rien
+                <DoughnutChart :chartData="testData1" />
+            </div>
+            <div class="dB-ctn">
+                Rien pour le moment
+                <DoughnutChart :chartData="testData" />
+            </div>
+            <div class="dB-ctn">
+                Encore rien
+                <DoughnutChart :chartData="testData1" />
+            </div>
         </div>
     </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+import { DoughnutChart, LineChart } from 'vue-chart-3';
+import { Chart, registerables } from "chart.js";
+
+Chart.register(...registerables);
 
 const emit = defineEmits(['clos-d'])
+
+// Static data
+const testData = {
+      labels: ['Paris', 'Nîmes', 'Toulon', 'Autre'],
+      datasets: [
+        {
+          data: [30, 40, 60, 5],
+          backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#A5C8ED'],
+        },
+      ],
+    };
+const testData1 = {
+    labels: ['Paris', 'Nîmes', 'Toulon', 'Autre'],
+    datasets: [
+    {
+        data: [30, 40, 6, 50],
+        backgroundColor: ['#77CEFF', 'yellow', 'red', 'black'],
+    },
+    ],
+};
+
 
 // Begining of functions
 const fermerD = ()=>{
@@ -60,9 +96,10 @@ const fermerD = ()=>{
     padding: 8px; 
 }
 .dB-ctn{
-    width: 40vw; height: 70vh; 
-    background-color: grey;
-    margin: 5px;
+    width: 40vw; height: 60vh; 
+    /* background-color: grey; */
+    margin: 55px 0;
+    text-align: center;
 }
 .btn{
     padding: 4px 15px; 
