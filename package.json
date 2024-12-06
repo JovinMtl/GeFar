@@ -20,10 +20,12 @@
     "@ionic/vue": "^8.0.0",
     "@ionic/vue-router": "^8.0.0",
     "axios": "^1.7.2",
+    "chart.js": "^3.9.1",
     "ionicons": "^7.0.0",
     "pagedjs": "^0.4.3",
     "pinia": "^2.1.7",
     "vue": "^3.3.0",
+    "vue-chart-3": "^3.1.8",
     "vue-router": "^4.4.0",
     "vuetify": "^3.6.0-beta.0.0",
     "vuex": "^4.1.0"
