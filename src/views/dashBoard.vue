@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div class="dB-name nm-p1">Dawa Pharma</div>
         <div class="bg-w c-b dB-1">
             Dashboard</div>
         <div class="c-b dB-2">
@@ -11,7 +12,20 @@
         </div>
     </div>
 </template>
-<style scoped>
+<style>
+.nm-p1{
+    top: -0.3rem;
+    left: 9rem;
+}
+.dB-name{
+    font-family: RollingBeat;
+    position: absolute;
+    background: radial-gradient(20% 20%,lime, white);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 60px 60px;
+    font-size: 1.8rem;
+}
 .bg-w{
     background-color: white; 
 }
