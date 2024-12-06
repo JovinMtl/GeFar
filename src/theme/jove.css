@@ -1,4 +1,18 @@
-
+@font-face {
+    font-family: RollingBeat;
+    src: url(../assets/fonts/RollingBeat_PersonalUse.woff) format('woff'),
+         url(../assets/fonts/RollingBeat_PersonalUse.woff) format('woff2');
+}
+@font-face {
+    font-family: Kugiler;
+    src: url(../assets/fonts/Kugile.woff) format('woff'),
+         url(../assets/fonts/Kugile.woff2) format('woff2');
+}
+@font-face {
+    font-family: Mexcellent;
+    src: url(../assets/fonts/Mexcellent-Regular.woff) format('woff'),
+         url(../assets/fonts/Mexcellent-Regular.woff2) format('woff2');
+}
 
 html, body {
     background-image: radial-gradient(circle closest-side at 55% 25%,green 55%, grey 60%, transparent 75%),
@@ -81,6 +95,22 @@ html, body {
     top: -5vh;
     /* top: -8vh; */
     left: 3vw;
+}
+.namePharma{
+    position: absolute;
+    top: -6.5vh;
+    left: 28vw;
+    font-family: RollingBeat;
+    /* font-family: Mexcellent; */
+    font-size: 2rem;
+    /* color: black; */
+    background: linear-gradient(45deg, black,rgb(218, 46, 126), rgb(99, 97, 97), rgba(0, 50, 255, 0.515));
+    background: linear-gradient(175deg, black,rgb(46, 92, 218));
+    background: radial-gradient(50% 60%, black, #2f87c1d6);
+    background: radial-gradient(20% 20%,lime, white);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 60px 60px;
 }
 .menuBar{
     position: absolute;

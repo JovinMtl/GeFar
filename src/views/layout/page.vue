@@ -206,6 +206,10 @@
                     <div class="addElement" v-if="umuti_new" @click="noteUmuti">
                         <ion-icon :src="add"></ion-icon>
                     </div>
+                    <div class="namePharma">
+                        <!-- This space is for the name of Pharmacy -->
+                         Dawa Pharma
+                    </div>
                     <div class="menuBar">
                         <me-nu @actualMenu="actualOption"></me-nu>
                     </div>
