@@ -4,8 +4,9 @@
         <div class="bg-w c-b dB-1">
             Dashboard</div>
         <div class="c-b d-f">
-            <button class="btn">
-                Fermer</button>
+            <button class="btn" @click="fermerD">
+                Fermer
+            </button>
         </div>
         <div class="bg-w c-b dB-3 d-f">
             <div class="dB-ctn" style=""></div>
@@ -13,6 +14,17 @@
         </div>
     </div>
 </template>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const emit = defineEmits(['clos-d'])
+
+// Begining of functions
+const fermerD = ()=>{
+    emit('clos-d')
+}
+
+</script>
 <style>
 .nm-p1{
     top: -0.3rem;

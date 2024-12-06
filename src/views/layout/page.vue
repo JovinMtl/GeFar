@@ -6,8 +6,9 @@
                     <jove-loader></jove-loader>
 
                 </div>
-                <div class="dashBoardContainer">
-                    <dash-board></dash-board>
+                <div class="dashBoardContainer"
+                    v-if="dBOpen">
+                    <dash-board @closD="closeD"></dash-board>
                 </div>
                 <div v-if="controleStatus" class="controleWrapper"
                     style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
@@ -209,7 +210,7 @@
                     <div class="addElement" v-if="umuti_new" @click="noteUmuti">
                         <ion-icon :src="add"></ion-icon>
                     </div>
-                    <div class="namePharma nm-p2">
+                    <div class="namePharma nm-p2 nm-s2">
                         <!-- This space is for the name of Pharmacy -->
                          Dawa Pharma
                     </div>
@@ -315,6 +316,7 @@ const umuti_new: Ref<boolean> = ref(false)
 const server_process: Ref<boolean> = ref(false)
 const notifStatus: Ref<boolean> = ref(false)
 const rdBtnActive: Ref<boolean> = ref(false)
+const dBOpen: Ref<boolean> = ref(true)
 
 const query_search = reactive({})
 const umuti_single: Ref<boolean> = ref(false)
@@ -380,6 +382,10 @@ const { getAccessToken, getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
 
+const closeD = () => {
+    // Closing DashBoard
+    dBOpen.value = false
+}
 const isSpecial = () => {
     rdBtnActive.value = !rdBtnActive.value
     if (rdBtnActive) {
