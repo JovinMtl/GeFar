@@ -2,15 +2,9 @@
     <div class="menuContainer">
         <!-- //here is the menu -->
         <a @click.prevent="" href="http://" target="_blank" 
-        rel="noopener noreferrer" title="Donner Médicament au Patient">
+        rel="noopener noreferrer" title="Voir le Table de bord">
             <div :class="button1 ? 'clicked':'unclicked'" @click="turnA">
             Dashboard  
-        </div>
-        </a>
-        <a @click.prevent="" href="http://" target="_blank" 
-        rel="noopener noreferrer" title="Donner Médicament au Patient">
-            <div :class="button1 ? 'clicked':'unclicked'" @click="turnA">
-            Vendre  
         </div>
         </a>
         <a @click.prevent="" href="http://" target="_blank" rel="noopener noreferrer"
@@ -31,7 +25,6 @@
 import { ref } from 'vue'
 export default {
     setup(_, {emit}) {
-        const button0 = ref(false)
         const button1 = ref(true)
         const button2 = ref(false)
         const button3 = ref(false)
@@ -69,7 +62,7 @@ export default {
 }
 .unclicked{
     display: inline-block;
-    width: 22%;
+    width: 24%;
     height: 100%;
     background-color: black;
     margin: 0px 4px;
