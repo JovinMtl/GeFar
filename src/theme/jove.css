@@ -100,14 +100,16 @@ html, body {
     top: -6.5vh;
     left: 28vw;
 }
+.nm-s2{
+    font-size: 2rem;
+    background-size: 60px 60px;
+}
 .namePharma{
     position: absolute;
     font-family: RollingBeat;
-    font-size: 2rem;
     background: radial-gradient(20% 20%,lime, white);
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-size: 60px 60px;
 }
 .menuBar{
     position: absolute;

@@ -1,14 +1,15 @@
 <template>
     <div>
-        <div class="dB-name nm-p1">Dawa Pharma</div>
+        <div class="namePharma nm-p1 nm-s1">Dawa Pharma</div>
         <div class="bg-w c-b dB-1">
             Dashboard</div>
-        <div class="c-b dB-2">
+        <div class="c-b d-f">
             <button class="btn">
                 Fermer</button>
         </div>
-        <div class="bg-w c-b dB-3">
-        This is Dashboard
+        <div class="bg-w c-b dB-3 d-f">
+            <div class="dB-ctn" style=""></div>
+            <div class="dB-ctn"></div>
         </div>
     </div>
 </template>
@@ -17,12 +18,7 @@
     top: -0.3rem;
     left: 9rem;
 }
-.dB-name{
-    font-family: RollingBeat;
-    position: absolute;
-    background: radial-gradient(20% 20%,lime, white);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.nm-s1{
     background-size: 60px 60px;
     font-size: 1.8rem;
 }
@@ -32,9 +28,6 @@
 .c-b{
     color: black;
 }
-.dB{
-
-}
 .dB-1{
     position:absolute;
     left: 80%;top:4px;
@@ -42,13 +35,18 @@
     height: 25px; padding: 3px 2rem;
     border-top-left-radius: 5px; border-top-right-radius: 5px;
 }
-.dB-2{
+.d-f{
     display: flex; 
 }
 .dB-3{
     width: 98vw; height: 95vh; 
     border-radius: 15px;
     padding: 8px; 
+}
+.dB-ctn{
+    width: 40vw; height: 70vh; 
+    background-color: black;
+    margin: 5px;
 }
 .btn{
     padding: 4px 15px; 
