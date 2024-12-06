@@ -132,7 +132,7 @@ html, body {
     height: 30px;
     color: grey;
     background-color:rgba(255, 255, 255, 0.315);
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .rdBtn{
     width:30px;
@@ -176,4 +176,5 @@ html, body {
     display: flex;
     align-content: center;
     flex-wrap: wrap;
+    padding: 0 5px;
 }

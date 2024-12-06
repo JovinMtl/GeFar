@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div class="sectB">
-                        <div style="max-height: 38vh; overflow: auto;">
+                        <div style="max-height: 41vh; overflow: auto;">
                             <div style="text-align: center; margin: 10px 0px; font-weight: 900;">
                                 <u>ORDONNANCE DU PATIENT:</u>
                             </div>
@@ -114,7 +114,6 @@
                                     }}
 
                                     <span style="margin-right: .3rem;">&nbsp;</span>
-                                    <!-- <input style="background-color: white; width: 25px; height: 20px;"/> -->
                                     <span style="margin-right: .3rem;">&nbsp;</span>
                                     <div>{{ umuti.qte * umuti.prix_vente }}</div>
                                 </div>
@@ -135,7 +134,6 @@
                                 <button class="confirmButton" @click="toSell">Confirmer</button>
                             </div>
                         </div>
-                        <!-- <div class="separation"></div> -->
                         <div v-show="total_panier_client != '0'">
                             <div class="reduction">
                                 <div style="font-style:italic;
@@ -146,9 +144,10 @@
                                 <div class="rdBtn" :class="rdBtnActive ? 'rdBtn-1' : 'rdBtn-2'" @click="isSpecial">
                                 </div>
                             </div>
-                            <div v-if="rdBtnActive" style="height:39vh;margin-top:15px;
+                            <div v-if="rdBtnActive" style="height:38vh;margin-top:15px;
                                 overflow: auto;">
-                                <label for="metiers">Choisissez sa profession:</label>
+                                <label for="metiers"
+                                    style="font-size: .8rem">Choisissez sa profession:</label>
 
                                 <select v-model="selectedProf" name="metiers" id="profes">
                                     <option v-for="profession in professions" :value="profession.value">{{ profession.name
@@ -159,7 +158,7 @@
                                     <input class="inpName-1" placeholder="mubaze izina ryiwe" />
                                     <input class="inpName-1" placeholder="numero ya telefone yiwe" />
                                 </div>
-                                <div v-if="selectedProf == 'au'" style="margin:10px 0;">
+                                <div v-if="selectedProf == 'au'">
                                     <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
                                         placeholder="Quelle Assureur?" ref="suggest" 
                                         @change="show_suggest" />
@@ -191,7 +190,9 @@
                                         <input type="text" placeholder="Nom du beneficiaire">
                                         <input type="text" placeholder="Numero Carte">
                                         <input type="number" placeholder="Numero bon">
-                                        <input type="button" value="Valider">
+                                        <input type="date" name="" id="">
+                                        <input type="button" value="Valider" 
+                                            style="margin-left: 10px;">
                                     </div>
                                 </div>
                             </div>
