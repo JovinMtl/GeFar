@@ -25,12 +25,12 @@
 import { ref } from 'vue'
 export default {
     setup(_, {emit}) {
-        const button1 = ref(true)
+        const button1 = ref(false)
         const button2 = ref(false)
         const button3 = ref(false)
 
         const turnA = ()=>{
-            button1.value = true
+            // button1.value = true  //Never turn button1 to true
             button2.value = false
             button3.value = false
             emit('actualMenu', 1)

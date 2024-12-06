@@ -9,7 +9,11 @@
             </button>
         </div>
         <div class="bg-w c-b dB-3 d-f">
-            <div class="dB-ctn" style=""></div>
+            <div class="d-f dB-ctn" style="align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;">
+                Rien pour le moment
+            </div>
             <div class="dB-ctn"></div>
         </div>
     </div>
@@ -57,12 +61,13 @@ const fermerD = ()=>{
 }
 .dB-ctn{
     width: 40vw; height: 70vh; 
-    background-color: black;
+    background-color: grey;
     margin: 5px;
 }
 .btn{
     padding: 4px 15px; 
     margin: 3px auto;
+    background-color: #ef4b38;
 }
 .btn:active{
     scale: 1.2;
