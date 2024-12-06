@@ -33,6 +33,7 @@ export default {
             button1.value = true
             button2.value = false
             button3.value = false
+            emit('actualMenu', 1)
         }
         const turnB = ()=>{
             button2.value = true

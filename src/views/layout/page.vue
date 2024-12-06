@@ -4,7 +4,6 @@
             <div class="mP">
                 <div v-if="server_process" class="loader" style="z-index: 15;">
                     <jove-loader></jove-loader>
-
                 </div>
                 <div class="dashBoardContainer"
                     v-if="dBOpen">
@@ -546,7 +545,10 @@ const closeApprov = () => {
 }
 const actualOption = (value) => {
     console.log("THe actual menu is : ", value)
-    if (value == 2) {
+    if(value == 1){
+        dBOpen.value = true
+    }
+    else if (value == 2) {
         approvStatus.value = true
     } else if (value == 3) {
         controleStatus.value = true
