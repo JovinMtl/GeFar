@@ -6,6 +6,9 @@
                     <jove-loader></jove-loader>
 
                 </div>
+                <div class="dashBoardContainer">
+                    <dash-board></dash-board>
+                </div>
                 <div v-if="controleStatus" class="controleWrapper"
                     style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
                     <cont-role @turn-control="closeControle"></cont-role>
@@ -277,6 +280,8 @@ import CircumPower from '../layout/icon/CircumPower.vue'
 import CircumPill from '../layout/icon/pill.vue'
 import BiCollection from '../layout/icon/collect.vue'
 import FluentCloudSync28Regular from '../layout/icon/cloud.vue'
+// import DashBoard from '../dashBoard.vue'
+import dashBoard from '@/views/dashBoard.vue';
 
 const listImiti = defineAsyncComponent(() => import('../operations/list-imiti.vue'))
 import {
