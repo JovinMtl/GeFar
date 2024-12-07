@@ -16,7 +16,7 @@
                 </select>
             </div>
             <div v-if="selected_type != 'date'" class="inTitle">
-                debut
+                début
                 <input type="date" v-model="date_debut" class="dateInput" >
             </div>
             <div v-if="selected_type != 'date'" class="inTitle">
@@ -25,7 +25,7 @@
             </div>
             <div class="inTitle">
                 
-                <input type="button" value="Filter" @click="applyFilter"/>
+                <input type="button" value="Filtrers" @click="applyFilter"/>
             </div>
             <div class="inTitle" style="font-weight: 600; color: green">
                 {{ title_operation }}
@@ -61,7 +61,7 @@
                         <a title="En bonne état">
                             <div class="item green" @click="getLowStock"></div>
                         </a>
-                        <a title="En état critique">
+                        <a title="Date en état critique">
                             <div class="item yellow" @click="getEndStock"></div>
                         </a>
                         <a title="Périmé">
@@ -76,16 +76,16 @@
                     margin: 5px auto">Etat de Stock</div>
                     <div class="mainContainerCircle">
                         <a title="En bonne état">
-                            <div class="item green" @click="getLowStock"></div>
+                            <div class="item green" @click="getAllFine"></div>
                         </a>
-                        <a title="En état critique">
-                            <div class="item yellow" @click="getEndStock"></div>
+                        <a title="En état critique" @click="getLowStock">
+                            <div class="item yellow"></div>
                         </a>
                         <a title="Stock en alerte">
-                            <div class="item red" @click="getOutDate"></div>
+                            <div class="item red"></div>
                         </a>
-                        <a title="Stock epuisé">
-                            <div class="item black" @click="getAllFine"></div>
+                        <a title="Stock epuisé" @click="getEndStock">
+                            <div class="item black"></div>
                         </a>
                     </div>
                 </div>
@@ -105,18 +105,18 @@
                             Quantite
                         </div>
 
-                        <div class="contentElement3">
-                            Prix de V.
-                        </div>
-
-                        <div class="contentElement3">
-                            Total
-                        </div>
-
                         <div class="contentElement4">
                             <span v-if="isAdmin">Px.Achat</span>
                             <span v-else>T. Med.</span>
                             
+                        </div>
+
+                        <div class="contentElement3">
+                            Px. Vente
+                        </div>
+
+                        <div class="contentElement3">
+                            Total
                         </div>
 
                         <div class="contentElement4">
@@ -128,39 +128,42 @@
                             Date
                         </div>
                         <div class="contentElement4">
-                            Author
+                            Auteur
                         </div>
                     </div>
                 </div>
 
                 <div class="controlBody">
-                    <div v-for="(umuti, index) in actual_imitiS" class="controlContent" style="display: block;width: 100%; height: 20px; background-color: rgba(255, 255, 255, 0.5);margin-bottom: 5px;
+                    <div v-for="(umuti, index) in actual_imitiS" 
+                        class="controlContent" style="display: block;
+                        width: 100%; height: 20px; background-color: rgba(255, 255, 255, 0.5);
+                        margin-bottom: 5px;
                         border: 1px solid white;">
                         <div class="contentElement11">
                             {{ index + 1 }}
                         </div> 
                         <div class="contentElement2">
-                            {{ umuti.nom_med }}
+                            {{ umuti.name_umuti }}
                         </div> <div class="contentElement3">
                             {{ (umuti.quantite_restant || umuti.quantity ) }}
-                        </div>
-
-                        <div class="contentElement3">
-                            {{ umuti.prix_vente }}
-                        </div>
-
-                        <div class="contentElement3 total">
-                            {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity) }}
                         </div> 
 
                         <div class="contentElement4 famille_med">
-                            <span v-if="isAdmin">{{ umuti.prix_in }}</span>
+                            <span v-if="isAdmin">{{ umuti.price_in }}</span>
                             <span v-else>{{ umuti.famille_med }}</span>
                             
                         </div>
 
+                        <div class="contentElement3">
+                            {{ umuti.price_out }}
+                        </div>
+
+                        <div class="contentElement3 total">
+                            {{ umuti.price_out * (umuti.quantite_restant || umuti.quantity) }}
+                        </div>
+
                         <div class="contentElement4"> 
-                        <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_in) * (umuti.quantite_restant || umuti.quantity) }}</span> 
+                        <span v-if="isAdmin">{{ (umuti.price_out - umuti.price_in) * (umuti.quantite_restant || umuti.quantity) }}</span> 
                         <span v-else>{{ umuti.location }}</span>
                         </div>
 
@@ -190,7 +193,10 @@
 
                         <div class="contentElement3">
                             <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
-                              ----
+                              <!-- ---- -->
+                              
+                            <span v-if="isAdmin">{{ totaux[2] }}</span>
+                            <span v-else>----</span>
                         </div>
 
                         <div class="contentElement3">
@@ -198,9 +204,7 @@
                         </div>
 
                         <div class="contentElement4">
-                            <span v-if="isAdmin">{{ totaux[2] }}</span>
-                            <span v-else>----</span>
-                            
+                            ----
                         </div>
 
                         <div class="contentElement4">
@@ -385,9 +389,9 @@ watch(actual_imitiS, (value)=>{
             benefice += (element.prix_vente - element.prix_in) * (element.quantite_restant) 
         } else {
             console.log("Quantity pa :", element.prix_vente )
-            total += (element.prix_vente * (element.quantity))
-            pt_a += element.prix_in * (element.quantity)
-            benefice += (element.prix_vente - element.prix_in) * (element.quantity) 
+            total += (element.price_out * (element.quantity))
+            pt_a += element.price_in * (element.quantity)
+            benefice += (element.price_out - element.price_in) * (element.quantity) 
         }
         
         number += 1
