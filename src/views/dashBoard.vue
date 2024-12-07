@@ -20,18 +20,20 @@
             </div>
             <div class="dB-ctn">
                 Rien pour le moment
-                <DoughnutChart :chartData="testData" />
+                <BarChart :chartData="testData" :options="chartOptions" />
             </div>
             <div class="dB-ctn">
-                Encore rien
-                <DoughnutChart :chartData="testData1" />
+                Autre exemplaire
+                <LineChart :chartData="chartData" :options="chartOptions" />
             </div>
         </div>
     </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { DoughnutChart, LineChart } from 'vue-chart-3';
+import { 
+    DoughnutChart, LineChart, BarChart
+} from 'vue-chart-3';
 import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables);
@@ -57,6 +59,96 @@ const testData1 = {
     },
     ],
 };
+const chartData = ref({
+    labels: ['Nzero', 'Ruhuhuma', 'Ntwarante', 'Ndamukiza', 
+    'Rusama', 'Ruheshi', 'Mukakaro'],
+    datasets: [
+    {
+        label: 'Ventes mensuelles',
+        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+        borderColor: 'blue',
+        data: [65, 59, 80, 121, 56, 55, 80],
+        fill: true,
+    }
+    ]
+});
+const chartOptions = ref({
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'bottom',
+            labels:{
+                font:{
+                    // size: 25,
+                },
+                // color: 'red'
+            }
+            
+        },
+        title: {
+            display: true,
+            text: 'Graphique: tendance des ventes',
+            color: 'blue'
+        },
+        tooltip:{
+            enabled: true,
+            mode: 'index',
+            intersect: false,
+            backgroundColor: 'grey',
+            titleColor: 'black',
+            bodyColor: 'white',
+            callbacks:{
+                label: function(jove){
+                    return `Habonetse: ${jove.raw}`
+                }
+            }
+        },
+        
+    },
+    scales:{
+            x:{
+                grid:{
+                    color: 'rgba(70, 64, 64, 0.384)',
+                    lineWidth: 1,
+                    drawBorder: true,
+                },
+                title:{
+                    display: true,
+                    text: 'Ukwezi'
+                }
+            },
+            y:{
+                grid:{
+                    color: 'rgba(70, 64, 64, 0.384)',
+                    lineWidth: 1,
+                    drawBorder: true,
+                },
+                title:{
+                    display: true,
+                    text: 'Umwimbu'
+                }
+            }
+    },
+    elements:{
+        line:{
+            tension: 0.5,  // Smoothness of the line (0 for straight lines)
+            borderWidth: 1
+        },
+        point:{
+            radius: 5,
+            backgroundColor: 'red',
+            borderColor: 'black',
+            borderWidth: 2
+        }
+    },
+    animation: {
+        duration: 1000, // Animation duration in milliseconds
+        easing: 'easeOutBounce', // Easing function for animation
+        onComplete: function() {
+            console.log('Animation completed!');
+        }
+    }
+});
 
 
 // Begining of functions
