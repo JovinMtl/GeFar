@@ -54,14 +54,39 @@
                     <span class="textMenu">Suggérer</span>
                 </div>
 
-                <div class="circlesMenu" style="text-align: center; 
-                justify-content: center; align-items: center; padding-top: 15%">
+                <div class="circlesMenu">
+                    <div style="display:flex; justify-content: center; 
+                    margin: 5px auto">Péremption</div>
                     <div class="mainContainerCircle">
-                        <!-- Here are the circles -->
-                        <div class="item violet" @click="getLowStock"></div>
-                        <div class="item yellow" @click="getEndStock"></div>
-                        <div class="item red" @click="getOutDate"></div>
-                        <div class="item black" @click="getAllFine"></div>
+                        <a title="En bonne état">
+                            <div class="item green" @click="getLowStock"></div>
+                        </a>
+                        <a title="En état critique">
+                            <div class="item yellow" @click="getEndStock"></div>
+                        </a>
+                        <a title="Périmé">
+                            <div class="item red" @click="getOutDate"></div>
+                        </a>
+                        <!-- <div class="item black" @click="getAllFine"></div> -->
+                    </div>
+                </div>
+
+                <div class="circlesMenu">
+                    <div style="display:flex; justify-content: center; 
+                    margin: 5px auto">Etat de Stock</div>
+                    <div class="mainContainerCircle">
+                        <a title="En bonne état">
+                            <div class="item green" @click="getLowStock"></div>
+                        </a>
+                        <a title="En état critique">
+                            <div class="item yellow" @click="getEndStock"></div>
+                        </a>
+                        <a title="Stock en alerte">
+                            <div class="item red" @click="getOutDate"></div>
+                        </a>
+                        <a title="Stock epuisé">
+                            <div class="item black" @click="getAllFine"></div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -391,11 +416,12 @@ const closeControle = ()=>{
     grid-row-gap: 20px;
     grid-auto-rows: 20px;
     justify-items: center;
+    margin-bottom: 10px;
 }
 .item{
     color: white;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 15px;
 }
 .item:active{
@@ -407,16 +433,18 @@ const closeControle = ()=>{
     border: 2px solid black;
 }
 .yellow{
-    background-color: rgb(117, 9, 206);
+    background-color: yellow;
     box-shadow: 0 0 10px greenyellow;
     border: 2px solid rgb(117, 9, 206);
 }
-.violet{
+.green{
     background-color: rgb(12, 124, 216);
     border: 2px solid rgb(12, 124, 216);
+    background-color: lime;
+    border: 2px solid green;
 }
 .red{
-    background-color: rgb(206, 9, 35);
+    background-color: rgb(253, 37, 37);
     border: 2px solid rgb(206, 9, 35);
 }
 ::-webkit-scrollbar-thumb {
@@ -463,14 +491,14 @@ const closeControle = ()=>{
 .circlesMenu{
     display: block;
     background-color: transparent; 
-    width: 100%;height: 20%; 
+    width: 100%;max-height: 14%; 
     padding: 5px 5px; 
     border-bottom: 2px solid white;
 }
 .logoMenu{
     display: block;
     background-color: transparent; 
-    width: 100%;height: 20%; 
+    width: 100%;height: 18%; 
     padding: 5px 5px; 
     border-bottom: 2px solid white;
 }
