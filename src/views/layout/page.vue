@@ -206,9 +206,11 @@
                     <div class="searchBar">
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
-                    <div class="addElement" v-if="umuti_new" @click="noteUmuti">
-                        <ion-icon :src="add"></ion-icon>
-                    </div>
+                    <a title="Ajouter pour suggestion ultérieure">
+                        <div class="addElement" v-if="umuti_new" @click="noteUmuti">
+                            <ion-icon :src="add"></ion-icon>
+                        </div>
+                    </a>
                     <div class="namePharma nm-p2 nm-s2">
                         <!-- This space is for the name of Pharmacy -->
                          Pharmacie Ubuzima
@@ -853,9 +855,9 @@ provide('familly_displ', openedFamilly)
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: white;
+    background-color: rgb(211, 243, 27);
     border-radius: 20px;
-    left: 24vw;
+    left: 23vw;
     top: -4.5vh;
     /* color: #0bf532; */
     color: black;
