@@ -45,7 +45,6 @@ export default defineComponent({
             let fieldname = 'nom_med'
             let j = '8'
             let reg = new RegExp(`^${j}$`)
-            // let quer = String(value.query)
             console.log("Query 0:", value.query[0], 'jove: ', jove)
             if(value.query[0] == undefined){
                 console.log("It is empty")
@@ -53,7 +52,7 @@ export default defineComponent({
             }
             
             if ((value.query).length ==1 && value.query == '='
-                || value.query == '<'
+                || value.query == '<' || value.query == '>'
             ){
                 jove = true
                 return imiti_for_search
@@ -71,25 +70,16 @@ export default defineComponent({
                     return (String(element[fieldname])).toLowerCase().match((String(value.query)).toLowerCase())
                 })
             }
-            else if(value.query[0] == "=" || value.query[0] == '>'){
+            else if(value.query[0] == "="){
                 j = (String(value.query).slice(1))
                 reg = new RegExp(`^${j}$`)
-                // reg = new RegExp(`/^(?:[${j}-9]|[1-9][0-9]+)$/`)
                 return imiti_for_search.filter((element) => {
                     return (String(element[fieldname])).toLowerCase().match(reg)
                 })
-                // imiti_for_search.forEach((element) => {
-                //     console.log(element[fieldname],"==", value.query)
-                //     if(element[fieldname] == value.query){
-                //         found_med.push((element))
-                //     }
-                // })
-                // console.log("The med found: ", found_med)
-                // return found_med
             } 
             else if(value.query[0] == '<') {
                 found_med = [] // initializing the result
-                console.log("Now searching for superior value")
+                console.log("Now searching for inferior value")
                 imiti_for_search.forEach((element) => {
                     console.log(element[fieldname],"==", value.query)
                     if(element[fieldname] < (value.query).slice(1)){
@@ -99,7 +89,18 @@ export default defineComponent({
                 console.log("The med found: ", found_med)
                 return found_med
             }
-            
+            else if(value.query[0] == '>') {
+                found_med = [] // initializing the result
+                console.log("Now searching for superior value")
+                imiti_for_search.forEach((element) => {
+                    console.log(element[fieldname],"==", value.query)
+                    if(element[fieldname] > (value.query).slice(1)){
+                        found_med.push((element))
+                    }
+                })
+                console.log("The med found: ", found_med)
+                return found_med
+            }
         }
 
         const showUmuti = (code: number) => {
