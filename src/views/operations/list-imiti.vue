@@ -30,6 +30,8 @@ export default defineComponent({
         const imitiset_copy: UmutiSet[] = ref([])
         let codes = new Array()
         let imiti_for_search = []
+        let found_med = []
+        let jove = false
 
         const needUpdate = inject('needUpdate_list') // on search command
         const need_search = inject('needSearch')
@@ -41,14 +43,52 @@ export default defineComponent({
         const search_med = (value) => {
             // value.field
             let fieldname = 'nom_med'
+            let j = '8'
+            let reg = new RegExp(`^${j}$`)
+            // let quer = String(value.query)
+            console.log("Query 0:", value.query[0], 'jove: ', jove)
+            if(value.query[0] == undefined){
+                console.log("It is empty")
+                jove = false
+            }
+            
+            if ((value.query).length ==1 && value.query == '='){
+                jove = true
+                return imiti_for_search
+            }
             if (value.field) {
                 fieldname = value.field
             } else {
                 fieldname = 'nom_med'
             }
-            return imiti_for_search.filter((element) => {
-                return (String(element[fieldname])).toLowerCase().match((String(value.query)).toLowerCase())
-            })
+            if(value.query[0] !== '=' && !jove){
+                console.log("Search is normal: ", value.query[0] == '=',
+                    value.query[0]
+                )
+                return imiti_for_search.filter((element) => {
+                    return (String(element[fieldname])).toLowerCase().match((String(value.query)).toLowerCase())
+                })
+            }
+            if(value.query[0] == "=" || value.query[0] == '>' 
+                || value.query[0] == '<'
+            ){
+                // value.query = ((value.query).slice(1))
+                j = (String(value.query).slice(1))
+                reg = new RegExp(`^${j}$`)
+                console.log("Search is for numbers: ", (value.query).slice(1))
+                return imiti_for_search.filter((element) => {
+                    return (String(element[fieldname])).toLowerCase().match(reg)
+                })
+                // imiti_for_search.forEach((element) => {
+                //     console.log(element[fieldname],"==", value.query)
+                //     if(element[fieldname] == value.query){
+                //         found_med.push((element))
+                //     }
+                // })
+                // console.log("The med found: ", found_med)
+                // return found_med
+            }
+            
         }
 
         const showUmuti = (code: number) => {

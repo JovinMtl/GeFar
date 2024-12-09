@@ -211,7 +211,7 @@
                     </div>
                     <div class="namePharma nm-p2 nm-s2">
                         <!-- This space is for the name of Pharmacy -->
-                         Dawa Pharma
+                         Pharmacie Ubuzima
                     </div>
                     <div class="menuBar">
                         <me-nu @actualMenu="actualOption"></me-nu>

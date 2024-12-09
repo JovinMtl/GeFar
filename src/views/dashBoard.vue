@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="namePharma nm-p1 nm-s1">Dawa Pharma</div>
+        <div class="namePharma nm-p1 nm-s1">Pharma Ubuzima</div>
         <div class="bg-w c-b dB-1">
             Dashboard</div>
         <div class="c-b d-f">
@@ -159,12 +159,12 @@ const fermerD = ()=>{
 </script>
 <style>
 .nm-p1{
-    top: -0.3rem;
+    top: -0.2rem;
     left: 9rem;
 }
 .nm-s1{
     background-size: 60px 60px;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 .bg-w{
     background-color: white; 
