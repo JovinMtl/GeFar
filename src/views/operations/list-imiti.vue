@@ -71,13 +71,10 @@ export default defineComponent({
                     return (String(element[fieldname])).toLowerCase().match((String(value.query)).toLowerCase())
                 })
             }
-            if(value.query[0] == "=" || value.query[0] == '>' 
-                || value.query[0] == '<'
-            ){
+            else if(value.query[0] == "=" || value.query[0] == '>'){
                 j = (String(value.query).slice(1))
                 reg = new RegExp(`^${j}$`)
                 // reg = new RegExp(`/^(?:[${j}-9]|[1-9][0-9]+)$/`)
-                console.log("Search is for numbers: ", (value.query).slice(1))
                 return imiti_for_search.filter((element) => {
                     return (String(element[fieldname])).toLowerCase().match(reg)
                 })
@@ -89,6 +86,18 @@ export default defineComponent({
                 // })
                 // console.log("The med found: ", found_med)
                 // return found_med
+            } 
+            else if(value.query[0] == '<') {
+                found_med = [] // initializing the result
+                console.log("Now searching for superior value")
+                imiti_for_search.forEach((element) => {
+                    console.log(element[fieldname],"==", value.query)
+                    if(element[fieldname] < (value.query).slice(1)){
+                        found_med.push((element))
+                    }
+                })
+                console.log("The med found: ", found_med)
+                return found_med
             }
             
         }
