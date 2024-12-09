@@ -52,7 +52,9 @@ export default defineComponent({
                 jove = false
             }
             
-            if ((value.query).length ==1 && value.query == '='){
+            if ((value.query).length ==1 && value.query == '='
+                || value.query == '<'
+            ){
                 jove = true
                 return imiti_for_search
             }
@@ -72,9 +74,9 @@ export default defineComponent({
             if(value.query[0] == "=" || value.query[0] == '>' 
                 || value.query[0] == '<'
             ){
-                // value.query = ((value.query).slice(1))
                 j = (String(value.query).slice(1))
                 reg = new RegExp(`^${j}$`)
+                // reg = new RegExp(`/^(?:[${j}-9]|[1-9][0-9]+)$/`)
                 console.log("Search is for numbers: ", (value.query).slice(1))
                 return imiti_for_search.filter((element) => {
                     return (String(element[fieldname])).toLowerCase().match(reg)
