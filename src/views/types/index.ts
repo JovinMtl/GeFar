@@ -44,19 +44,17 @@ export interface Medi {
 }
 
 export interface clInfo{
-    client: {
-        nom_client: string;
-        numero_tel: string;
-        categorie: string;
-        assureur: string;
-        numero_carte: string;
-        numero_bon: string;
-        date_bon: string;
-    }
+    'nom_client': string;
+    'numero_tel': string;
+    'categorie': string;
+    'assureur': string;
+    'numero_carte': string;
+    'numero_bon': string;
+    'date_bon': string;
 
 }
 
 export interface DataToAPI{
-    panier: PanierAPI;
-    client: clInfo;
+    'panier': PanierAPI [];
+    'client': clInfo;
 }
