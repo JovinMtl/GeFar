@@ -337,8 +337,31 @@ const stage_redu: Ref<number> = ref(0)
 const selectedProf: Ref<string> = ref('')
 const assureur: Ref<string> = ref('')
 const clName: Ref<string> = ref('')
-const clPhone: Ref<string> = ref('')
+const clPhone: Ref<number> = ref() // omitting initial value for placeholder
 const message = shallowRef<string>('hello')
+const clClean: Ref<boolean> = ref(false)
+
+interface clInfo{
+    client: {
+        nom_client: string;
+        numero_tel: string;
+        assureur: string;
+        numero_carte: string;
+        numero_bon: string;
+        date_bon: string;
+    }
+
+}
+const clientInfo: clInfo = reactive({
+    client:{
+        'nom_client': '',
+        'numero_tel': '',
+        'assureur': '',
+        'numero_carte': '',
+        'numero_bon': '',
+        'date_bon': '',
+    }
+})
 
 const suggest:Ref<string> = ref("Votre assureur")
 
