@@ -296,13 +296,13 @@ import {
     close, addCircleOutline, removeCircleOutline, magnetOutline,
     add, exitOutline, syncOutline
 } from 'ionicons/icons'
-import { Lot } from './types';
+import { Lot, clInfo, Medi } from './types';
 
 const router = useRouter()
 
 const today: Date = new Date
 
-const selectedUmuti: Umuti = reactive({})
+const selectedUmuti: Medi = reactive({})
 const panier_client: Ref<PanierClient[]> = ref([])
 const panier_api: Ref<PanierAPI[]> = ref([])
 const activeLot: Ref<ActiveLot[]> = ref([])
@@ -314,7 +314,7 @@ const approvStatus: Ref<boolean> = ref(false)
 const approFileStatus: Ref<boolean> = ref(false)
 const need_to_updade: Ref<boolean> = ref(false)
 const controleStatus: Ref<boolean> = ref(false)
-const all_imiti: Ref<Umuti[]> = ref([])
+const all_imiti: Ref<Medi[]> = ref([])
 const umuti_new: Ref<boolean> = ref(false)
 
 const server_process: Ref<boolean> = ref(false)
@@ -322,7 +322,7 @@ const notifStatus: Ref<boolean> = ref(false)
 const rdBtnActive: Ref<boolean> = ref(false)
 const dBOpen: Ref<boolean> = ref(false)
 
-const query_search = reactive({})
+const query_search:Medi = reactive({})
 const umuti_single: Ref<boolean> = ref(false)
 const show_facture: Ref<boolean> = ref(false)
 const clear_search: Ref<number> = ref(0)
@@ -341,17 +341,7 @@ const clPhone: Ref<number> = ref() // omitting initial value for placeholder
 const message = shallowRef<string>('hello')
 const clClean: Ref<boolean> = ref(false)
 
-interface clInfo{
-    client: {
-        nom_client: string;
-        numero_tel: string;
-        assureur: string;
-        numero_carte: string;
-        numero_bon: string;
-        date_bon: string;
-    }
 
-}
 const clientInfo: clInfo = reactive({
     client:{
         'nom_client': '',
@@ -365,7 +355,7 @@ const clientInfo: clInfo = reactive({
 
 const suggest:Ref<string> = ref("Votre assureur")
 
-const familles = ref([])
+const familles:Ref<Medi[]> = ref([])
 
 
 
@@ -411,7 +401,7 @@ const { getAccessToken, getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
 
-const simplValid = ()=>{
+const simplValid = ():void=>{
     // validate Taxi moto, taxi velo and domaine medicale
     console.log("His name: ", clName.value)
     console.log("His phone: ", clPhone.value)

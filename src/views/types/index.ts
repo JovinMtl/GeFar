@@ -24,7 +24,7 @@ export interface ActiveLot {
     'code_operation': any [];
 }
 
-export interface Umuti {
+export interface Medi {
     'code_med': string;
     'date_last_vente': Date;
     'description_med': string;
@@ -41,4 +41,16 @@ export interface Umuti {
     'type_in': string;
     'type_vente': string;
     'famille_med': string;
+}
+
+export interface clInfo{
+    client: {
+        nom_client: string;
+        numero_tel: string;
+        assureur: string;
+        numero_carte: string;
+        numero_bon: string;
+        date_bon: string;
+    }
+
 }
