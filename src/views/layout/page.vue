@@ -409,7 +409,7 @@ const simplValid = ():void=>{
         clPhone.value = 1111
     }
     clientInfo.client.clName = clName.value
-    clientInfo.client.clPhone = clPhone.value
+    clientInfo.client.clPhone = String(clPhone.value)
     clClean.value = true
 }    
 setTimeout(()=>{
