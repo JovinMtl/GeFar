@@ -403,8 +403,14 @@ const { getAccessToken, getUsername, setUsername,
 
 const simplValid = ():void=>{
     // validate Taxi moto, taxi velo and domaine medicale
-    console.log("His name: ", clName.value)
-    console.log("His phone: ", clPhone.value)
+    if(!clName.value){
+        clName.value = "inconnu"
+    } else if (!clPhone.value){
+        clPhone.value = 1111
+    }
+    clientInfo.client.clName = clName.value
+    clientInfo.client.clPhone = clPhone.value
+    clClean.value = true
 }    
 setTimeout(()=>{
     dBOpen.value = true // making dashboard to open successfully
