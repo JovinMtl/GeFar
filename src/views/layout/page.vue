@@ -346,6 +346,7 @@ const clientInfo: clInfo = reactive({
     client:{
         'nom_client': '',
         'numero_tel': '',
+        'categorie': '',
         'assureur': '',
         'numero_carte': '',
         'numero_bon': '',
@@ -408,8 +409,10 @@ const simplValid = ():void=>{
     } else if (!clPhone.value){
         clPhone.value = 1111
     }
-    clientInfo.client.clName = clName.value
-    clientInfo.client.clPhone = String(clPhone.value)
+    clientInfo.client.nom_client = clName.value;
+    clientInfo.client.numero_tel = String(clPhone.value);
+    clientInfo.client.categorie = String(selectedProf.value);
+    clientInfo.client.assureur = 'Pharmacie Ubuzima';
     clClean.value = true
 }    
 setTimeout(()=>{

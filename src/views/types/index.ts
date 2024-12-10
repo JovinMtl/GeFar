@@ -47,6 +47,7 @@ export interface clInfo{
     client: {
         nom_client: string;
         numero_tel: string;
+        categorie: string;
         assureur: string;
         numero_carte: string;
         numero_bon: string;
