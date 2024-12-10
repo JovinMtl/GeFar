@@ -843,6 +843,8 @@ const initClient = ():clInfo=>{
 watch(rdBtnActive, (value)=>{
     if (value){
         panier_api.value.client = clientInfo.value
+    } else {
+        panier_api.value.client = initClient()
     }
 })
 watch(all_imiti, (value)=>{
