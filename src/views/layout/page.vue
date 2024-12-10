@@ -417,6 +417,7 @@ const simplValid = ():void=>{
     clientInfo.client.numero_tel = String(clPhone.value);
     clientInfo.client.categorie = String(selectedProf.value);
     clientInfo.client.assureur = 'Pharmacie Ubuzima';
+    panier_api.client = clientInfo
     clClean.value = true
 }    
 setTimeout(()=>{
