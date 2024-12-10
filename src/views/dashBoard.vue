@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="namePharma nm-p1 nm-s1">Pharma Ubuzima</div>
+        <div class="namePharma nm-p1 nm-s1">Pharmacie Ubuzima</div>
         <div class="bg-w c-b dB-1">
             Dashboard</div>
         <div class="c-b d-f">

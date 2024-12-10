@@ -158,8 +158,11 @@
                                     </option>
                                 </select>
                                 <div v-if="selectedProf != 'au' && selectedProf" class="inpName">
-                                    <input class="inpName-1" placeholder="mubaze izina ryiwe" />
-                                    <input class="inpName-1" placeholder="numero ya telefone yiwe" />
+                                    <input class="inpName-1" placeholder="mubaze izina ryiwe"
+                                        v-model="clName"/>
+                                    <input class="inpName-1" placeholder="numero ya telefone yiwe" 
+                                        v-model="clPhone" type="number" />
+                                    <input type="button" value="Valider" @click="simplValid">
                                 </div>
                                 <div v-if="selectedProf == 'au'">
                                     <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
@@ -333,6 +336,8 @@ const total_r: Ref<number> = ref(2)
 const stage_redu: Ref<number> = ref(0)
 const selectedProf: Ref<string> = ref('')
 const assureur: Ref<string> = ref('')
+const clName: Ref<string> = ref('')
+const clPhone: Ref<string> = ref('')
 const message = shallowRef<string>('hello')
 
 const suggest:Ref<string> = ref("Votre assureur")
@@ -383,9 +388,13 @@ const { getAccessToken, getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
 
-    
+const simplValid = ()=>{
+    // validate Taxi moto, taxi velo and domaine medicale
+    console.log("His name: ", clName.value)
+    console.log("His phone: ", clPhone.value)
+}    
 setTimeout(()=>{
-    dBOpen.value = true
+    dBOpen.value = true // making dashboard to open successfully
 }, 1)
 const closeD = () => {
     // Closing DashBoard
