@@ -780,7 +780,7 @@ const moveToPanier = (): number => {
             return 0
         }
         panier_client.value.push(obj_Client)
-        panier_api.value.panier.panier.push(obj_API)
+        panier_api.value.panier.push(obj_API)
         total_panier_client.value = update_total_client()
         total_panier_client_r.value = update_total_client(1)
         // REinitializing
@@ -828,7 +828,23 @@ const show_suggest = (e)=>{
     assureur.value = e.target.value
     stage_redu.value = 3
 }
+const initClient = ():clInfo=>{
+    return {
+        'nom_client': '',
+        'numero_tel': '',
+        'categorie': '',
+        'assureur': '',
+        'numero_carte': '',
+        'numero_bon': '',
+        'date_bon': '',
+    }
+}
 
+watch(rdBtnActive, (value)=>{
+    if (value){
+        panier_api.value.client = clientInfo.value
+    }
+})
 watch(all_imiti, (value)=>{
     familleBuilder()
 })
