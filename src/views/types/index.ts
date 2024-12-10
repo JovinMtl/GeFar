@@ -55,3 +55,8 @@ export interface clInfo{
     }
 
 }
+
+export interface DataToAPI{
+    panier: PanierAPI;
+    client: clInfo;
+}
