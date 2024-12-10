@@ -833,6 +833,17 @@ const show_suggest = (e)=>{
     assureur.value = e.target.value
     stage_redu.value = 3
 }
+const initClient = ():clInfo=>{
+    return {
+        'nom_client': '',
+        'numero_tel': '',
+        'categorie': '',
+        'assureur': '',
+        'numero_carte': '',
+        'numero_bon': '',
+        'date_bon': '',
+    }
+}
 
 watch(rdBtnActive, (value)=>{
     if(value){
