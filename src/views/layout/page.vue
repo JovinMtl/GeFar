@@ -296,7 +296,7 @@ import {
     close, addCircleOutline, removeCircleOutline, magnetOutline,
     add, exitOutline, syncOutline
 } from 'ionicons/icons'
-import { Lot, clInfo, Medi } from './types';
+import { Lot, clInfo, Medi, DataToAPI } from './types';
 
 const router = useRouter()
 
@@ -304,7 +304,11 @@ const today: Date = new Date
 
 const selectedUmuti: Medi = reactive({})
 const panier_client: Ref<PanierClient[]> = ref([])
-const panier_api: Ref<PanierAPI[]> = ref([])
+// const panier_api: Ref<PanierAPI[]> = ref([])
+const panier_api: DataToAPI = reactive({
+    'panier': [],
+    'client': {}
+})
 const activeLot: Ref<ActiveLot[]> = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
@@ -481,7 +485,7 @@ const closeFacture = () => {
     // Reinitializing panier_client and panier_api to start a new commande.
     console.log("Calling closeFacture.")
     panier_client.value = []
-    panier_api.value = []
+    panier_api.panier = []
     total_panier_client.value = update_total_client()
     total_panier_client_r.value = update_total_client(1)
 }
@@ -660,7 +664,7 @@ const removeUmuti = (obj) => {
     const code_s = obj.target.getAttribute('id')
     const code = Number(code_s.slice(1))
     panier_client.value.splice(code, 1)
-    panier_api.value.splice(code, 1)
+    panier_api.panier.splice(code, 1)
     total_panier_client.value = update_total_client()
     total_panier_client_r.value = update_total_client(1)
 }
@@ -780,11 +784,11 @@ const moveToPanier = (): number => {
             return 0
         }
         panier_client.value.push(obj_Client)
-        panier_api.value.push(obj_API)
+        panier_api.panier.push(obj_API)
         total_panier_client.value = update_total_client()
         total_panier_client_r.value = update_total_client(1)
         // REinitializing
-        if (panier_client.value && panier_api.value) {
+        if (panier_client.value && panier_api.panier) {
             selectedUmuti.value = undefined
             activeLot.value = []
             actualQte.value = 1
@@ -829,6 +833,13 @@ const show_suggest = (e)=>{
     stage_redu.value = 3
 }
 
+watch(rdBtnActive, (value)=>{
+    if(value){
+        console.log("The PanierToAPI: ", panier_api)
+    } else{
+        console.log("Now the Panier2API: ", panier_api)
+    }
+})
 watch(all_imiti, (value)=>{
     familleBuilder()
 })
