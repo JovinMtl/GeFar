@@ -849,6 +849,7 @@ watch(rdBtnActive, (value)=>{
     if(value){
         console.log("The PanierToAPI: ", panier_api)
     } else{
+        panier_api.client = initClient()
         console.log("Now the Panier2API: ", panier_api)
     }
 })
