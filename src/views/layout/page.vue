@@ -133,8 +133,11 @@
                             <p v-if="rdBtnActive && selectedProf != ''" style="margin-left: .5rem;">
                                 Total : <span style="color: black;">{{ total_panier_client_r }} Fbu</span>
                             </p>
-                            <div v-show="confirmRdBtn" class="ending" style="text-align: left;">
+                            <div v-if="confirmRdBtn" class="ending" style="text-align: left;">
                                 <button class="confirmButton" @click="toSell">Confirmer</button>
+                            </div>
+                            <div v-else class="ending" style="text-align: left;">
+                                <button class="confirmButton">Veuillez valider les infos du Patient</button>
                             </div>
                         </div>
                         <div v-show="total_panier_client != '0'">
