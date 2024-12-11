@@ -359,15 +359,13 @@ const message = shallowRef<string>('hello')
 const clClean: Ref<boolean> = ref(false)
 const isWarning: Ref<boolean> = ref(false)
 const clientInfo: clInfo = reactive({
-    client:{
-        'nom_client': '',
-        'numero_tel': '',
-        'categorie': '',
-        'assureur': '',
-        'numero_carte': '',
-        'numero_bon': '',
-        'date_bon': '',
-    }
+    'nom_client': '',
+    'numero_tel': '',
+    'categorie': '',
+    'assureur': '',
+    'numero_carte': '',
+    'numero_bon': '',
+    'date_bon': '',
 })
 
 const suggest:Ref<string> = ref("Votre assureur")
@@ -433,7 +431,7 @@ const simplValid = ():void=>{
     panier_api.client = clientInfo
     clClean.value = true
 
-    console.log("Validated: ", panier_api)
+    console.log("Simp Validated: ", panier_api.client)
 }
 const complValid = ():void=>{
     let dateBon = new Date(bonDate.value)
@@ -886,23 +884,21 @@ const show_suggest = (e)=>{
     stage_redu.value = 3
     clClean.value = false
 }
-const initClient = ():clInfo=>{
-    return {
-        'nom_client': '',
-        'numero_tel': '',
-        'categorie': '',
-        'assureur': '',
-        'numero_carte': '',
-        'numero_bon': '',
-        'date_bon': '',
-    }
+const initClient = ()=>{
+    clientInfo.nom_client = ''
+    clientInfo.numero_tel = ''
+    clientInfo.categorie = ''
+    clientInfo.assureur = ''
+    clientInfo.numero_carte = ''
+    clientInfo.numero_bon = ''
+    clientInfo.date_bon = ''
 }
 
 watch(rdBtnActive, (value)=>{
     if(value){
         console.log("The PanierToAPI: ", panier_api)
     } else{
-        panier_api.client = initClient()
+        initClient()
         console.log("Now the Panier2API: ", panier_api)
     }
 })
@@ -915,6 +911,8 @@ watch(suggest, (value)=>{
 watch(selectedProf, (value) => {
     // Now apply the reduction according to benefit of value 'md,tv'
     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
+    initClient()
+    console.log("After changing profess: ", panier_api.client)
 })
 watch(bothData, (value) => {
     // should now send them to the remote server.
