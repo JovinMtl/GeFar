@@ -426,10 +426,10 @@ const simplValid = ():void=>{
     } else if (!clPhone.value){
         clPhone.value = 1111
     }
-    clientInfo.client.nom_client = clName.value;
-    clientInfo.client.numero_tel = String(clPhone.value);
-    clientInfo.client.categorie = String(selectedProf.value);
-    clientInfo.client.assureur = 'Pharmacie Ubuzima';
+    clientInfo.nom_client = clName.value;
+    clientInfo.numero_tel = String(clPhone.value);
+    clientInfo.categorie = String(selectedProf.value);
+    clientInfo.assureur = 'Pharmacie Ubuzima';
     panier_api.client = clientInfo
     clClean.value = true
 
@@ -448,9 +448,19 @@ const complValid = ():void=>{
         warnDateMessage.value = "Données du Patient incomplets"
     }
     if (dateBon < today){
+        // Starting to build up an object for client
+        clientInfo.nom_client = clName1.value
+        clientInfo.numero_tel = ''
+        clientInfo.categorie = String(selectedProf.value)
+        clientInfo.assureur = assureur.value
+        clientInfo.numero_carte = clCardNumber.value
+        clientInfo.numero_bon = clBonNumber.value 
+        clientInfo.date_bon = String(dateBon)
+        panier_api.client = clientInfo
         warnDateMessage.value = ""
         clClean.value = true
-        // Starting to build up an object for client
+
+        console.log("Validated: ", panier_api)
     }else{
         warnDateMessage.value = "La date du Bon doit être valide. "
         clClean.value = false
