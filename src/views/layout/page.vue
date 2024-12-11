@@ -147,7 +147,7 @@
                                 <div class="rdBtn" :class="rdBtnActive ? 'rdBtn-1' : 'rdBtn-2'" @click="isSpecial">
                                 </div>
                             </div>
-                            <div v-if="rdBtnActive" style="height:38vh;margin-top:15px;
+                            <div v-if="rdBtnActive" style="height:39vh;margin-top:15px;
                                 overflow: auto;">
                                 <label for="metiers"
                                     style="font-size: .8rem">Choisissez sa profession:</label>
@@ -896,10 +896,9 @@ const initClient = ()=>{
 
 watch(rdBtnActive, (value)=>{
     if(value){
-        console.log("The PanierToAPI: ", panier_api)
+        panier_api.client = clInfo
     } else{
         initClient()
-        console.log("Now the Panier2API: ", panier_api)
     }
 })
 watch(all_imiti, (value)=>{
