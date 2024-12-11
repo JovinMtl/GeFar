@@ -133,7 +133,7 @@
                             <p v-if="rdBtnActive && selectedProf != ''" style="margin-left: .5rem;">
                                 Total : <span style="color: black;">{{ total_panier_client_r }} Fbu</span>
                             </p>
-                            <div class="ending" style="text-align: left;">
+                            <div v-show="confirmRdBtn" class="ending" style="text-align: left;">
                                 <button class="confirmButton" @click="toSell">Confirmer</button>
                             </div>
                         </div>
@@ -313,7 +313,6 @@ const today: Date = new Date
 
 const selectedUmuti: Medi = reactive({})
 const panier_client: Ref<PanierClient[]> = ref([])
-// const panier_api: Ref<PanierAPI[]> = ref([])
 const panier_api: DataToAPI = reactive({
     'panier': [],
     'client': {}
@@ -334,6 +333,7 @@ const server_process: Ref<boolean> = ref(false)
 const notifStatus: Ref<boolean> = ref(false)
 const rdBtnActive: Ref<boolean> = ref(false)
 const dBOpen: Ref<boolean> = ref(false)
+const confirmRdBtn:Ref<boolean> = ref(true)
 
 const query_search:Medi = reactive({})
 const umuti_single: Ref<boolean> = ref(false)
@@ -430,6 +430,7 @@ const simplValid = ():void=>{
     clientInfo.assureur = 'Pharmacie Ubuzima';
     panier_api.client = clientInfo
     clClean.value = true
+    confirmRdBtn.value = true
 
     console.log("Simp Validated: ", panier_api.client)
 }
@@ -457,6 +458,7 @@ const complValid = ():void=>{
         panier_api.client = clientInfo
         warnDateMessage.value = ""
         clClean.value = true
+        confirmRdBtn.value = true
 
         console.log("Validated: ", panier_api)
     }else{
@@ -894,10 +896,16 @@ const initClient = ()=>{
     clientInfo.date_bon = ''
 }
 
+
 watch(rdBtnActive, (value)=>{
     if(!value){
         initClient()
         console.log("Now the Panier2API: ", panier_api)
+    }
+    if(clClean.value){
+        confirmRdBtn.value = true
+    } else{
+        confirmRdBtn.value = false
     }
 })
 watch(all_imiti, (value)=>{
@@ -911,6 +919,7 @@ watch(selectedProf, (value) => {
     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
     initClient()
     clClean.value = false
+    confirmRdBtn.value = false
 })
 watch(bothData, (value) => {
     // should now send them to the remote server.
