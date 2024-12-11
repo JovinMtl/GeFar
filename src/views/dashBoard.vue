@@ -197,6 +197,7 @@ const fermerD = ()=>{
     padding: 4px 15px; 
     margin: 3px auto;
     background-color: #ef4b38;
+    border-radius: 4px;
 }
 .btn:active{
     scale: 1.2;
