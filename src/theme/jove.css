@@ -216,3 +216,8 @@ html, body {
     height: 100%;
     justify-content: center;
 }
+.warning{
+    color: red;
+    font-size: .8rem;
+    margin-top: -1rem;
+}

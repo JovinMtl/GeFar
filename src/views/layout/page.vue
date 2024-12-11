@@ -193,13 +193,24 @@
                                             class="inpBl"
                                             style="color: rgb(12, 124, 216); font-weight: 700;"
                                          :value="'   '+ assureur.slice(0,20)" disabled>
-                                        <input type="text" placeholder="Nom du beneficiaire">
-                                        <input type="text" placeholder="Numero Carte">
-                                        <input type="number" placeholder="Numero bon">
-                                        <input type="date" name="" id="">
-                                        <input type="button" value="Valider" 
+                                        <input type="text" placeholder="Nom du beneficiaire"
+                                            v-model="clName1">
+                                        <input type="text" placeholder="Numero Carte"
+                                            v-model="clCardNumber">
+                                        <input type="text" placeholder="Numero bon"
+                                            v-model="clBonNumber">
+                                        <input type="date" name="" id=""
+                                            v-model="bonDate">
+                                        <input type="button" value="Valider" @click="complValid"
                                             style="margin-left: 10px;">
                                     </div>
+                                </div>
+                                <div v-if="isWarning" class="warning">
+                                    <span v-show="warnDateMessage==''">Completer ces champs</span> {{ warnDateMessage}}
+                                </div>
+                                <div v-if="clClean" 
+                                    style="margin-top:-1rem">
+                                    C'est normal
                                 </div>
                             </div>
                         </div>
@@ -341,11 +352,14 @@ const stage_redu: Ref<number> = ref(0)
 const selectedProf: Ref<string> = ref('')
 const assureur: Ref<string> = ref('')
 const clName: Ref<string> = ref('')
+const clName1: Ref<string> = ref('')
+const clCardNumber: Ref<string> = ref('')
+const clBonNumber: Ref<string> = ref('')
+const bonDate:Date = ref(new Date)
 const clPhone: Ref<number> = ref() // omitting initial value for placeholder
 const message = shallowRef<string>('hello')
 const clClean: Ref<boolean> = ref(false)
-
-
+const isWarning: Ref<boolean> = ref(false)
 const clientInfo: clInfo = reactive({
     client:{
         'nom_client': '',
@@ -359,6 +373,7 @@ const clientInfo: clInfo = reactive({
 })
 
 const suggest:Ref<string> = ref("Votre assureur")
+const warnDateMessage: Ref<string> = ref('')
 
 const familles:Ref<Medi[]> = ref([])
 
@@ -419,7 +434,29 @@ const simplValid = ():void=>{
     clientInfo.client.assureur = 'Pharmacie Ubuzima';
     panier_api.client = clientInfo
     clClean.value = true
-}    
+
+    console.log("Validated: ", panier_api)
+}
+const complValid = ():void=>{
+    let dateBon = new Date(bonDate.value)
+    if (dateBon < today){
+        warnDateMessage.value = ""
+    }else{
+        warnDateMessage.value = "La date du Bon, doit etre inferieur. "
+    }
+    if(clName1.value && clCardNumber.value
+        && clBonNumber.value && (dateBon < today)
+    ){
+        clClean.value = true
+    } else{
+        clClean.value = false
+        isWarning.value = true
+        setTimeout(()=>{
+            isWarning.value = false
+            warnDateMessage.value = ""
+        }, 3000)
+    }
+} 
 setTimeout(()=>{
     dBOpen.value = true // making dashboard to open successfully
 }, 1)
