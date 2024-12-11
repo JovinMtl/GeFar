@@ -212,3 +212,6 @@ html, body {
     font-size: .8rem;
     margin-top: -1rem;
 }
+.BtnClean{
+    background-color: rgba(0, 50, 255, 0.315);
+}

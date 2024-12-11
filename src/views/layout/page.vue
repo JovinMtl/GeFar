@@ -162,7 +162,8 @@
                                         v-model="clName"/>
                                     <input class="inpName-1" placeholder="numero ya telefone yiwe" 
                                         v-model="clPhone" type="number" />
-                                    <input type="button" value="Valider" @click="simplValid">
+                                    <input type="button" :class="clClean ? 'BtnClean':''" 
+                                    value="Valider" @click="simplValid">
                                 </div>
                                 <div v-if="selectedProf == 'au'">
                                     <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
@@ -201,16 +202,13 @@
                                             v-model="clBonNumber">
                                         <input type="date" name="" id=""
                                             v-model="bonDate">
-                                        <input type="button" value="Valider" @click="complValid"
+                                        <input type="button" :class="clClean ? 'BtnClean':''"  
+                                            value="Valider" @click="complValid"
                                             style="margin-left: 10px;">
                                     </div>
                                 </div>
                                 <div v-if="isWarning" class="warning">
-                                    <span v-show="warnDateMessage==''">Completer ces champs</span> {{ warnDateMessage}}
-                                </div>
-                                <div v-if="clClean" 
-                                    style="margin-top:-1rem">
-                                    C'est normal
+                                     {{ warnDateMessage}}
                                 </div>
                             </div>
                         </div>
@@ -439,23 +437,30 @@ const simplValid = ():void=>{
 }
 const complValid = ():void=>{
     let dateBon = new Date(bonDate.value)
-    if (dateBon < today){
-        warnDateMessage.value = ""
-    }else{
-        warnDateMessage.value = "La date du Bon, doit etre inferieur. "
-    }
+    
     if(clName1.value && clCardNumber.value
-        && clBonNumber.value && (dateBon < today)
+        && clBonNumber.value 
     ){
         clClean.value = true
     } else{
         clClean.value = false
         isWarning.value = true
-        setTimeout(()=>{
+        warnDateMessage.value = "Données du Patient incomplets"
+    }
+    if (dateBon < today){
+        warnDateMessage.value = ""
+        clClean.value = true
+        // Starting to build up an object for client
+    }else{
+        warnDateMessage.value = "La date du Bon doit être valide. "
+        clClean.value = false
+        isWarning.value = true
+    }
+    
+    setTimeout(()=>{
             isWarning.value = false
             warnDateMessage.value = ""
         }, 3000)
-    }
 } 
 setTimeout(()=>{
     dBOpen.value = true // making dashboard to open successfully
@@ -869,6 +874,7 @@ const show_suggest = (e)=>{
     console.log("You entered assureur: ", e.target.value)
     assureur.value = e.target.value
     stage_redu.value = 3
+    clClean.value = false
 }
 const initClient = ():clInfo=>{
     return {
