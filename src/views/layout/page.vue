@@ -895,10 +895,9 @@ const initClient = ()=>{
 }
 
 watch(rdBtnActive, (value)=>{
-    if(value){
-        panier_api.client = clInfo
-    } else{
+    if(!value){
         initClient()
+        console.log("Now the Panier2API: ", panier_api)
     }
 })
 watch(all_imiti, (value)=>{
@@ -912,7 +911,6 @@ watch(selectedProf, (value) => {
     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
     initClient()
     clClean.value = false
-    console.log("After changing profess: ", panier_api.client)
 })
 watch(bothData, (value) => {
     // should now send them to the remote server.
