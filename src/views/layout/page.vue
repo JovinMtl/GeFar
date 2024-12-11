@@ -912,6 +912,7 @@ watch(selectedProf, (value) => {
     // Now apply the reduction according to benefit of value 'md,tv'
     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
     initClient()
+    clClean.value = false
     console.log("After changing profess: ", panier_api.client)
 })
 watch(bothData, (value) => {
