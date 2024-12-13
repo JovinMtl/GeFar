@@ -407,10 +407,10 @@ const url_reportIndex: string = "api/rep/giveLastIndex/"
 const url_local: string = baseURL
 const url_askInstances: string = "api/rep/getForSync/"
 const [last_indexes, askIndex] = useKuvoma(url_reportIndex, url_local)
-const [bothData, askInstances] = useKurungika(last_indexes, url_askInstances) // on local server.
+const [bothData, askInstances] = useKurungika(last_indexes.value, url_askInstances) // on local server.
 
 const url_syncFromLocal: string = "api/rep/syncFromLocal/"
-const [rep_update, kurungika] = useKurungika(bothData, url_syncFromLocal)
+const [rep_update, kurungika] = useKurungika(bothData.value, url_syncFromLocal)
 
 
 

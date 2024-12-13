@@ -84,7 +84,7 @@ export function useKurungika(
                         Authorization: "Bearer " + getAccessToken(),
                     },
                     body: JSON.stringify({
-                        imiti: imitiArray.value,
+                        imiti: imitiArray,
                     }),
                 });
 
