@@ -172,6 +172,7 @@
                                     <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
                                         placeholder="Quelle Assureur?" ref="suggest" 
                                         @change="show_suggest" />
+                                    <input type="button" value="+"/>
                                     <datalist id="mySuggestion">
                                         <option>BIC</option>
                                         <option>Jubilee</option>
@@ -180,8 +181,7 @@
                                         <option>ASCOMA BURUNDI</option>
                                         <option>MFP</option>
                                         <option>AMMS</option>
-                                        <option>Ministère de la Solidarité Nationale, des Affaires Sociales, des Droits de
-                                            la Personne Humaine et du Genre</option>
+                                        <option>MSNASDPHG</option>
                                         <option>Femuscabu</option>
                                         <option>BIC</option>
                                         <option>Jubilee</option>
