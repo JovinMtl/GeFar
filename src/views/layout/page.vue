@@ -172,9 +172,20 @@
                                     <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
                                         placeholder="Quelle Assureur?" ref="suggest" 
                                         @change="show_suggest" />
-                                    <a title="Ajouter un nouveau assurance">
-                                        <input type="button" value="+" class="ml-10"/>
+                                    <a title="Ajouter une nouvelle assurance">
+                                        <input type="button" v-show="!need_assureur"
+                                            @click="need_assureur=true" 
+                                            value="+" class="ml-10"/>
                                     </a>
+                                    <div class="newAssu" v-if="!assureur && need_assureur">
+                                        <label for="nAssu">Ajouter une nouvelle assurance</label>
+                                        <input type="text" id='nAssu'
+                                        placeholder="Nom de l'assurance">
+
+                                        <input type="text" 
+                                        placeholder="Taux d'assurance. e.x: 20">
+                                        <input type="button" value="Ok" class="ml-10">
+                                    </div>
                                     <datalist id="mySuggestion">
                                         <option>BIC</option>
                                         <option>Jubilee</option>
@@ -363,6 +374,7 @@ const clPhone: Ref<number> = ref() // omitting initial value for placeholder
 const message = shallowRef<string>('hello')
 const clClean: Ref<boolean> = ref(false)
 const isWarning: Ref<boolean> = ref(false)
+const need_assureur: Ref<boolean> = ref(false)
 const clientInfo: clInfo = reactive({
     'nom_client': '',
     'numero_tel': '',
