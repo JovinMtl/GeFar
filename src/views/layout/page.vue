@@ -172,7 +172,9 @@
                                     <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
                                         placeholder="Quelle Assureur?" ref="suggest" 
                                         @change="show_suggest" />
-                                    <input type="button" value="+"/>
+                                    <a title="Ajouter un nouveau assurance">
+                                        <input type="button" value="+" class="ml-10"/>
+                                    </a>
                                     <datalist id="mySuggestion">
                                         <option>BIC</option>
                                         <option>Jubilee</option>

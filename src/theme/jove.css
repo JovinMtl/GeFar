@@ -215,3 +215,6 @@ html, body {
 .BtnClean{
     background-color: rgba(0, 50, 255, 0.315);
 }
+.ml-10{
+    margin: 0 10px;
+}
