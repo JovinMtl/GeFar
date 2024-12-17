@@ -179,3 +179,5 @@ export function useAskPriviledge() {
     };
     return [isAdmin, askPriviledge];
 }
+
+export function useAddAssu(){}

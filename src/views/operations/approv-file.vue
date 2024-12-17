@@ -16,7 +16,7 @@
         </span>
         <div style="position: fixed; top: 1%; left: 26vw; z-index: 9">
             Here we input the file
-        <input id="file1" type="file" @change="fileHandler" placeholder="choisir fichier" />
+        <input id="file1" type="file" @change="xlsxFileReader" placeholder="choisir fichier" />
         </div>
         <br><br>
         <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: -10px 10px; font-size: .8rem;position: sticky; top: 1%;">
@@ -179,6 +179,7 @@ export default {
             console.log("the second line : ", imiti_loaded.value[1][j])
             imiti_loaded.value[i][j] = event.target.value
         }
+        const xlsxFileReader = async()=>{}
         const fileHandler = async ()=>{
             const selectedFile = document.getElementById('file1').files[0]
             console.log("The filename is :", selectedFile.type)
@@ -247,6 +248,7 @@ export default {
             message,
             ui_isActive, imiti_loaded, notifStatus,
             closeApprov, fileHandler, ListenNewChange,approveHandler,
+            xlsxFileReader,
         }
     },
 }

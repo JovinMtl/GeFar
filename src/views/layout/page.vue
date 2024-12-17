@@ -184,7 +184,8 @@
 
                                         <input type="text" 
                                         placeholder="Taux d'assurance. e.x: 20">
-                                        <input type="button" value="Ok" class="ml-10">
+                                        <input type="button" value="Ok" 
+                                            class="ml-10" @click="addAssu">
                                     </div>
                                     <datalist id="mySuggestion">
                                         <option>BIC</option>
