@@ -179,7 +179,34 @@ export default {
             console.log("the second line : ", imiti_loaded.value[1][j])
             imiti_loaded.value[i][j] = event.target.value
         }
-        const xlsxFileReader = async()=>{}
+        const xlsxFileReader = async()=>{
+            console.log("Calling xlsxFileReader.")
+            const fileInput = document.getElementById('file1');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Read the file content
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+
+                    // Get the first sheet
+                    const firstSheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[firstSheetName];
+
+                    // Convert the sheet to JSON
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+                    // Display the data
+                    console.log("The Gotten file data is : ", jsonData)
+                    // document.getElementById('output').textContent = JSON.stringify(jsonData, null, 2);
+                };
+
+                reader.readAsArrayBuffer(file);
+            } else {
+                alert('Please select a file first.');
+            }
+        }
         const fileHandler = async ()=>{
             const selectedFile = document.getElementById('file1').files[0]
             console.log("The filename is :", selectedFile.type)
