@@ -49,34 +49,34 @@
                     Ty. Vente
                 </div>
             </div>
-        <div class="imitiDisplay" v-for="(umuti, index) in imiti_loaded" v-if="imiti_loaded">
+        <div class="imitiDisplay" v-for="(med, index) in med_loaded" v-if="med_loaded">
             <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
-                    <input :id="index +';Nom'" style="width: 100%; height: 100%;" :value="umuti.Nom" @blur="ListenNewChange"/> 
+                    <input :id="index +';Nom'" style="width: 100%; height: 100%;" :value="med.nom_med" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';famille_medicament'" style="width: 100%; height: 100%;" :value="umuti.famille_medicament" @blur="ListenNewChange"/> 
+                    <input :id="index +';famille_medicament'" style="width: 100%; height: 100%;" :value="med.classe_med" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input :id="index +';Description'" style="width: 100%; height: 100%;" :value="umuti.Description" @blur="ListenNewChange"/> 
+                    <input :id="index +';Description'" style="width: 100%; height: 100%;" :value="med.sous_classe_med" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input :id="index +';Ratio'" style="width: 100%; height: 100%;" :value="umuti.Ratio" @blur="ListenNewChange"/> 
+                    <input :id="index +';Ratio'" style="width: 100%; height: 100%;" :value="med.forme" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="umuti.Type_in" @blur="ListenNewChange"/> 
+                    <input :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="med.qte" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';Type_vente'" style="width: 100%; height: 100%;" :value="umuti.Type_vente" @blur="ListenNewChange"/> 
+                    <input :id="index +';Type_vente'" style="width: 100%; height: 100%;" :value="med.prix_achat" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input :id="index +';prix_in'" style="width: 100%; height: 100%;" :value="umuti.prix_in" @blur="ListenNewChange"/> 
+                    <input :id="index +';prix_in'" style="width: 100%; height: 100%;" :value="med.date_peremption" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input :id="index +';prix_vente'" style="width: 100%; height: 100%;" :value="umuti.prix_vente" @blur="ListenNewChange"/> 
+                    <input :id="index +';prix_vente'" style="width: 100%; height: 100%;" :value="med.type_achat" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input type="number" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="umuti.Qte_initial" @blur="ListenNewChange"/> 
+                    <input type="number" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="med.type_vente" @blur="ListenNewChange"/> 
                 </div>
             </div>
         </div>
@@ -96,25 +96,25 @@ import { ref } from 'vue'
 import { MedApprov } from '../layout/types'
 
 const ui_isActive = ref<boolean>(true)
-const imiti_loaded = ref<MedApprov[]>([])
+const med_loaded = ref<MedApprov[]>([])
 const notifStatus = ref<boolean>(false)
 const message = ref<string>('')
 const emit = defineEmits(['approFileClose',])
 
 const approveHandler = ()=>{
-    if(imiti_loaded.value[0]){
+    if(med_loaded.value[0]){
         // can process
         // check the fields (Nom, Qnte, Px.A, Px.V, Date_exp)
-        console.log("THe loaded is :", imiti_loaded.value)
+        console.log("THe loaded is :", med_loaded.value)
         let counter = 0
-        let imiti_length = (imiti_loaded.value).length
+        let imiti_length = (med_loaded.value).length
         // let wrong = []
-        imiti_loaded.value.forEach((element)=>{
-            if(String(element.Nom) && Number(element.Qte_initial) && 
-                Number(element.prix_in) && Number(element.prix_vente) &&
-                Date(element.Date_exp)
+        med_loaded.value.forEach((element)=>{
+            if(String(element.nom_med) && Number(element.qte) && 
+                Number(element.prix_achat) && Number(element.type_achat) &&
+                Date(element.date_peremption)
             ){
-                // You can emit the imiti_loaded.value
+                // You can emit the med_loaded.value
                 console.log("Your data is well formatted")
                 counter += 1
             }
@@ -125,7 +125,7 @@ const approveHandler = ()=>{
             
         if (counter == imiti_length -1){
             console.log("Things are Okay")
-            let converted_imiti = convertToStandard(imiti_loaded.value)
+            let converted_imiti = convertToStandard(med_loaded.value)
             emit('fileDataLoaded', converted_imiti)
         } else {
             let info = "There is one or more fields non well formatted!"
@@ -173,8 +173,8 @@ const ListenNewChange = (event)=>{
     console.log("You onBlured  on ID: ", event.target.getAttribute('id'))
     let [ i, j ] = (event.target.getAttribute('id')).split(';')
     console.log("The left value : ", event.target.value)
-    console.log("the second line : ", imiti_loaded.value[1][j])
-    imiti_loaded.value[i][j] = event.target.value
+    console.log("the second line : ", med_loaded.value[1][j])
+    med_loaded.value[i][j] = event.target.value
 }
 const xlsxFileReader = async()=>{
     console.log("Calling xlsxFileReader.")
@@ -214,9 +214,8 @@ const xlsxFileReader = async()=>{
                 obj.type_vente = element[8]
                 obj.ratio = element[9]
 
-                imiti_loaded.value.push(obj)
+                med_loaded.value.push(obj)
             })
-            console.log("These are the packed data: ", obj_arr)
         };
 
         reader.readAsArrayBuffer(file);
@@ -272,7 +271,7 @@ const fileHandler = async ()=>{
             //no need to check, if it is new then those keys sent
             // are the only 5 mandatory.
             // should be managed on the Backend
-            imiti_loaded.value = obj_array
+            med_loaded.value = obj_array
             console.log("The obj array is : ", obj_array)
         };
     } else {
