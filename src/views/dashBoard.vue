@@ -11,20 +11,20 @@
         <div class="bg-w c-b dB-3" style="overflow: auto; display: flex;
         flex-wrap: wrap;">
             <div class="dB-ctn">
-                Rien pour le moment
-                <DoughnutChart :chartData="testData" />
+                Tendance des ventes
+                <LineChart :chartData="chartData" :options="chartOptions" />
             </div>
             <div class="dB-ctn">
-                Encore rien
+                Etat de stocks: +2years; >1 years<; < 1years; < 6months
                 <DoughnutChart :chartData="testData1" />
             </div>
             <div class="dB-ctn">
-                Rien pour le moment
+                CashFlow: Sans et avec BonDeCommande
                 <BarChart :chartData="testData" :options="chartOptions" />
             </div>
             <div class="dB-ctn">
-                Autre exemplaire
-                <LineChart :chartData="chartData" :options="chartOptions" />
+                Comparaison entre les clients: tv, mt, md, au
+                <DoughnutChart :chartData="testData" />
             </div>
         </div>
     </div>
