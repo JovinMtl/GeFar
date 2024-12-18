@@ -36,3 +36,17 @@ export interface PanierAPI {
 
  export type Lot = { date: Date, code_operation:String, qte:Number }
 
+
+export interface MedApprov {
+    nom_med : string;
+    classe_med: string;
+    sous_classe_med : string;
+    forme :string;
+    qte: number;
+    prix_achat: number;
+    date_peremption: Date;
+    type_achat: string; // carton
+    type_vente: string; // piece ou plaquette
+    ratio: number; // 1 if no detail, 10, ...
+}
+
