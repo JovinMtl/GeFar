@@ -10,8 +10,7 @@
         </div>
         <div class="bg-w c-b dB-3" style="overflow: auto; display: flex;
         flex-wrap: wrap;">
-            <div style="width: 85%; height: 100%; display:flex;
-                flex-wrap: wrap;overflow: auto;">
+            <div class="chartContainer">
                 <div id="cha1" @click="openChart"
                     class="dB-ctn" :class="ch1 ? 'dB-ctn-o':''">
                     Tendance des ventes
@@ -192,6 +191,10 @@ const openChart = (e:Event)=>{
 
 </script>
 <style>
+.chartContainer{
+    width: 85%; height: 100%; display:flex;
+    flex-wrap: wrap;overflow: auto;
+}
 .nm-p1{
     top: -0.2rem;
     left: 9rem;
