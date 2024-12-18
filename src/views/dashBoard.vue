@@ -10,25 +10,28 @@
         </div>
         <div class="bg-w c-b dB-3" style="overflow: auto; display: flex;
         flex-wrap: wrap;">
-            <div id="cha1" @click="openChart"
-                class="dB-ctn" :class="ch1 ? 'dB-ctn-o':''">
-                Tendance des ventes
-                <LineChart :chartData="chartData" :options="chartOptions" />
-            </div>
-            <div id="cha2" @click="openChart"
-                class="dB-ctn" :class="ch2 ? 'dB-ctn-o':''">
-                Etat de stocks: +2years; >1 years<; < 1years; < 6months
-                <DoughnutChart :chartData="testData1" />
-            </div>
-            <div id="cha3" @click="openChart"
-                class="dB-ctn" :class="ch3 ? 'dB-ctn-o':''">
-                CashFlow: Sans et avec BonDeCommande
-                <BarChart :chartData="testData" :options="chartOptions" />
-            </div>
-            <div id="cha4" @click="openChart"
-                class="dB-ctn" :class="ch4 ? 'dB-ctn-o':''">
-                Comparaison entre les clients: tv, mt, md, au
-                <DoughnutChart :chartData="testData" />
+            <div style="width: 85%; height: 100%; display:flex;
+                flex-wrap: wrap;overflow: auto;">
+                <div id="cha1" @click="openChart"
+                    class="dB-ctn" :class="ch1 ? 'dB-ctn-o':''">
+                    Tendance des ventes
+                    <LineChart :chartData="chartData" :options="chartOptions" />
+                </div>
+                <div id="cha2" @click="openChart"
+                    class="dB-ctn" :class="ch2 ? 'dB-ctn-o':''">
+                    Etat de stocks: +2 ans; >1 an<; < 1 an; < 6 mois
+                    <DoughnutChart :chartData="testData1" />
+                </div>
+                <div id="cha3" @click="openChart"
+                    class="dB-ctn" :class="ch3 ? 'dB-ctn-o':''">
+                    CashFlow: Sans et avec BonDeCommande
+                    <BarChart :chartData="testData" :options="chartOptions" />
+                </div>
+                <div id="cha4" @click="openChart"
+                    class="dB-ctn" :class="ch4 ? 'dB-ctn-o':''">
+                    Comparaison entre les clients: tv, mt, md, au
+                    <DoughnutChart :chartData="testData" />
+                </div>
             </div>
         </div>
     </div>
