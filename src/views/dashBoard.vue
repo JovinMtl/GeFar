@@ -33,7 +33,10 @@
                 </div>
             </div>
             <div class="chartControl">
-                <div>{{ title }}</div>
+                <div style="border-bottom: 1px solid black; height: 2rem;
+                    width: 90%;text-align: center;">
+                    {{ title }}
+                </div>
             </div>
         </div>
     </div>
@@ -184,7 +187,7 @@ const openChart = (e:Event)=>{
         ch1.value = true;
     }else if(id == 'cha2'){
         makeFalse()
-        title.value = "Demander Etats de Stocks"
+        title.value = "Etats de Stocks"
         ch2.value = true
     } else if(id == 'cha3'){
         makeFalse()
