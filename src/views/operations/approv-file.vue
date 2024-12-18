@@ -25,28 +25,28 @@
                     Name
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    famille_med
+                    Classe
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    Description
+                    S-Classe
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    Ratio
+                    Forme
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    Type_in
+                    Qte
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    Type_vente 
+                    P.A 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    prix_in 
+                    Date Per. 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    prix_vente
+                    Ty. Achat
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    Qte_initial
+                    Ty. Vente
                 </div>
             </div>
         <div class="imitiDisplay" v-for="(umuti, index) in imiti_loaded" v-if="imiti_loaded">
@@ -92,13 +92,13 @@
 <script setup lang="ts">
 import { IonIcon } from '@ionic/vue'
 import { close, checkmarkDoneOutline, documentOutline } from 'ionicons/icons'
-import { ref } from 'vue'
+import { ref, Ref } from 'vue'
 import { MedApprov } from '../layout/types'
 
-const ui_isActive = ref(true)
-const imiti_loaded = ref([])
-const notifStatus = ref(false)
-const message = ref('')
+const ui_isActive = ref<boolean>(true)
+const imiti_loaded = ref<MedApprov[]>([])
+const notifStatus = ref<boolean>(false)
+const message = ref<string>('')
 const emit = defineEmits(['approFileClose',])
 
 const approveHandler = ()=>{
