@@ -94,6 +94,7 @@
 import { IonIcon } from '@ionic/vue'
 import { close, checkmarkDoneOutline, documentOutline } from 'ionicons/icons'
 import { ref } from 'vue'
+import MedApprov from '../layout/types'
 export default {
     components: {
         IonIcon,
@@ -203,7 +204,7 @@ export default {
 
                     // Begin to pack the data into obj to be submitted
                     const niceData = jsonData.splice(5)
-                    let obj = {}  // it's type of Umuti
+                    let obj:MedApprov = {}  // it's type of MedApprov
                     let obj_arr = []
                     niceData.forEach((element)=>{
                         // Should gather each line into obj, then append it to obj_arr
