@@ -188,8 +188,8 @@ const fermerD = ()=>{
     padding: 8px; 
 }
 .dB-ctn{
-    width: 40vw; height: 60vh; 
-    /* background-color: grey; */
+    width: 40vw; height: 75vh; 
+    background-color: grey;
     margin: 55px 0;
     text-align: center;
 }
