@@ -162,8 +162,8 @@ const fermerD = ()=>{
 }
 const openChart = (e:Event)=>{
     console.log("You chose element with ID: ", e.target.parentElement.parentElement.id)
-    // e.target.style.height = '200px'
-    e.target.style.height = '1.3'
+    e.target.style.height = '300px'
+    // e.target.style.height = '1.3'
     let id = e.target.parentElement.parentElement.id
     const makeFalse = ()=>{
         ch1.value = false
