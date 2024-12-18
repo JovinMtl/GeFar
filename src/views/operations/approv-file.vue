@@ -92,7 +92,7 @@
 <script setup lang="ts">
 import { IonIcon } from '@ionic/vue'
 import { close, checkmarkDoneOutline, documentOutline } from 'ionicons/icons'
-import { ref, Ref } from 'vue'
+import { ref } from 'vue'
 import { MedApprov } from '../layout/types'
 
 const ui_isActive = ref<boolean>(true)
@@ -199,9 +199,8 @@ const xlsxFileReader = async()=>{
             // document.getElementById('output').textContent = JSON.stringify(jsonData, null, 2);
 
             // Begin to pack the data into obj to be submitted
-            const niceData = jsonData.slice(5)
-            let obj_arr: MedApprov[] = []
-            niceData.forEach((element)=>{
+            const niceData: MedApprov[] = jsonData.slice(5)
+            niceData.forEach((element:MedApprov)=>{
                 // Should gather each line into obj, then append it to obj_arr
                 let obj = {} as MedApprov  // it's type of MedApprov
                 obj.nom_med = element[0];
@@ -215,7 +214,7 @@ const xlsxFileReader = async()=>{
                 obj.type_vente = element[8]
                 obj.ratio = element[9]
 
-                obj_arr.push(obj)
+                imiti_loaded.value.push(obj)
             })
             console.log("These are the packed data: ", obj_arr)
         };
