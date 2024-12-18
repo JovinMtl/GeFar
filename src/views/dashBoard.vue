@@ -189,9 +189,16 @@ const fermerD = ()=>{
 }
 .dB-ctn{
     width: 40vw; height: 75vh; 
-    background-color: grey;
+    /* background-color: grey; */
     margin: 55px 0;
     text-align: center;
+    padding-top: 1.3rem;
+}
+.dB-ctn:active{
+    border: 4px double grey;
+    /* background-color: rgba(128, 128, 128, 0.589); */
+    border-radius: 50px;
+    transition-duration: 300ms;
 }
 .btn{
     padding: 4px 15px; 
