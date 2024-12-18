@@ -10,15 +10,18 @@
         </div>
         <div class="bg-w c-b dB-3" style="overflow: auto; display: flex;
         flex-wrap: wrap;">
-            <div id="cha1" class="dB-ctn" :class="ch1 ? 'dB-ctn-o':''">
+            <div id="cha1" @click="openChart"
+                class="dB-ctn" :class="ch1 ? 'dB-ctn-o':''">
                 Tendance des ventes
                 <LineChart :chartData="chartData" :options="chartOptions" />
             </div>
-            <div id="cha2" class="dB-ctn" :class="ch2 ? 'dB-ctn-o':''">
+            <div id="cha2" @click="openChart"
+                class="dB-ctn" :class="ch2 ? 'dB-ctn-o':''">
                 Etat de stocks: +2years; >1 years<; < 1years; < 6months
                 <DoughnutChart :chartData="testData1" />
             </div>
-            <div id="cha3" class="dB-ctn" :class="ch3 ? 'dB-ctn-o':''">
+            <div id="cha3" @click="openChart"
+                class="dB-ctn" :class="ch3 ? 'dB-ctn-o':''">
                 CashFlow: Sans et avec BonDeCommande
                 <BarChart :chartData="testData" :options="chartOptions" />
             </div>
@@ -161,9 +164,7 @@ const fermerD = ()=>{
     emit('clos-d')
 }
 const openChart = (e:Event)=>{
-    console.log("You chose element with ID: ", e.target.parentElement.parentElement.id)
     e.target.style.height = '300px'
-    // e.target.style.height = '1.3'
     let id = e.target.parentElement.parentElement.id
     const makeFalse = ()=>{
         ch1.value = false
@@ -181,7 +182,7 @@ const openChart = (e:Event)=>{
         makeFalse()
         ch3.value = true
     } else if(id == 'cha4'){
-        makeFalse
+        makeFalse()
         ch4.value = true
     }
 }
