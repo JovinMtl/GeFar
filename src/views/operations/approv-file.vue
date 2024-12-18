@@ -199,12 +199,12 @@ const xlsxFileReader = async()=>{
             // document.getElementById('output').textContent = JSON.stringify(jsonData, null, 2);
 
             // Begin to pack the data into obj to be submitted
-            const niceData = jsonData.splice(5)
-            let obj = {} as MedApprov  // it's type of MedApprov
+            const niceData = jsonData.slice(5)
             let obj_arr: MedApprov[] = []
             niceData.forEach((element)=>{
                 // Should gather each line into obj, then append it to obj_arr
-                obj.nom_med = element[0];
+                let obj = {} as MedApprov  // it's type of MedApprov
+                obj['nom_med'] = element[0];
                 obj.classe_med = element[1]
                 obj.sous_classe_med = element[2]
                 obj.forme = element[3]
@@ -217,6 +217,7 @@ const xlsxFileReader = async()=>{
 
                 obj_arr.push(obj)
             })
+            console.log("These are the packed data: ", obj_arr)
         };
 
         reader.readAsArrayBuffer(file);
