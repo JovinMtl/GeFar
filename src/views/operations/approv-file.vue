@@ -204,7 +204,7 @@ const xlsxFileReader = async()=>{
             niceData.forEach((element)=>{
                 // Should gather each line into obj, then append it to obj_arr
                 let obj = {} as MedApprov  // it's type of MedApprov
-                obj['nom_med'] = element[0];
+                obj.nom_med = element[0];
                 obj.classe_med = element[1]
                 obj.sous_classe_med = element[2]
                 obj.forme = element[3]
