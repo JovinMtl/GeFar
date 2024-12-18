@@ -52,7 +52,9 @@
                     Ratio
                 </div>
             </div>
-        <div class="imitiDisplay" v-for="(med, index) in med_loaded" v-if="med_loaded">
+        <div class="imitiDisplay" v-for="(med, index) in med_loaded" 
+            :key="index"
+            v-if="med_loaded">
             <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
                     <input :id="index +';Nom'" style="width: 100%; height: 100%;" :value="med.nom_med" @blur="ListenNewChange"/> 
@@ -208,20 +210,23 @@ const xlsxFileReader = async()=>{
             const niceData: MedApprov[] = jsonData.slice(5)
             niceData.forEach((element:MedApprov)=>{
                 // Should gather each line into obj, then append it to obj_arr
-                let obj = {} as MedApprov  // it's type of MedApprov
-                obj.nom_med = element[0];
-                obj.classe_med = element[1]
-                obj.sous_classe_med = element[2]
-                obj.forme = element[3]
-                obj.qte = element[4]
-                obj.prix_achat = element[5]
-                obj.date_peremption = element[6]
-                obj.type_achat = element[7]
-                obj.type_vente = element[8]
-                obj.ratio = element[9]
+                if(element[0] != 'TOTAL'){
+                    let obj = {} as MedApprov  // it's type of MedApprov
+                    obj.nom_med = element[0];
+                    obj.classe_med = element[1]
+                    obj.sous_classe_med = element[2]
+                    obj.forme = element[3]
+                    obj.qte = element[4]
+                    obj.prix_achat = element[5]
+                    obj.date_peremption = element[6]
+                    obj.type_achat = element[7]
+                    obj.type_vente = element[8]
+                    obj.ratio = element[9]
 
-                med_loaded.value.push(obj)
+                    med_loaded.value.push(obj)
+                }
             })
+            med_loaded.value.pop()
         };
 
         reader.readAsArrayBuffer(file);
