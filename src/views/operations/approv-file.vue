@@ -200,6 +200,14 @@ export default {
                     // Display the data
                     console.log("The Gotten file data is : ", jsonData)
                     // document.getElementById('output').textContent = JSON.stringify(jsonData, null, 2);
+
+                    // Begin to pack the data into obj to be submitted
+                    const niceData = jsonData.splice(5)
+                    let obj = {}  // it's type of Umuti
+                    let obj_arr = []
+                    niceData.forEach((element)=>{
+                        // Should gather each line into obj, then append it to obj_arr
+                    })
                 };
 
                 reader.readAsArrayBuffer(file);
