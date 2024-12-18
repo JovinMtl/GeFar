@@ -48,6 +48,9 @@
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
                     Ty. Vente
                 </div>
+                <div class="fname" style="background-color: salmon; width: 5%;height: 100%;">
+                    Ratio
+                </div>
             </div>
         <div class="imitiDisplay" v-for="(med, index) in med_loaded" v-if="med_loaded">
             <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
@@ -77,6 +80,9 @@
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
                     <input type="number" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="med.type_vente" @blur="ListenNewChange"/> 
+                </div>
+                <div class="fname" style="background-color: olivedrab; width: 5%;height: 100%;">
+                    <input type="number" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="med.ratio" @blur="ListenNewChange"/> 
                 </div>
             </div>
         </div>
