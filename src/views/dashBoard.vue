@@ -32,6 +32,7 @@
                     <DoughnutChart :chartData="testData" />
                 </div>
             </div>
+            <div class="chartControl"></div>
         </div>
     </div>
 </template>
@@ -194,6 +195,9 @@ const openChart = (e:Event)=>{
 .chartContainer{
     width: 85%; height: 100%; display:flex;
     flex-wrap: wrap;overflow: auto;
+}
+.chartControl{
+    width: 15%;height: 100%;
 }
 .nm-p1{
     top: -0.2rem;
