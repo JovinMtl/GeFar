@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="chartControl">
-                <div style="border-bottom: 1px solid black; height: 2rem;
+                <div v-show="title" style="border-bottom: 1px solid black; height: 2rem;
                     width: 90%;text-align: center;">
                     {{ title }}
                 </div>
