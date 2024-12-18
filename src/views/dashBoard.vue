@@ -32,7 +32,9 @@
                     <DoughnutChart :chartData="testData" />
                 </div>
             </div>
-            <div class="chartControl"></div>
+            <div class="chartControl">
+                <div>{{ title }}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -50,6 +52,7 @@ const ch1 = ref<boolean>(false)
 const ch2 = ref<boolean>(false)
 const ch3 = ref<boolean>(false)
 const ch4 = ref<boolean>(false)
+const title = ref<string>('')
 
 // Static data
 const testData = {
@@ -177,15 +180,19 @@ const openChart = (e:Event)=>{
     }
     if(id == 'cha1'){
         makeFalse()
+        title.value = "Detail pour des Ventes"
         ch1.value = true;
     }else if(id == 'cha2'){
         makeFalse()
+        title.value = "Demander Etats de Stocks"
         ch2.value = true
     } else if(id == 'cha3'){
         makeFalse()
+        title.value = "Bons de Commande"
         ch3.value = true
     } else if(id == 'cha4'){
         makeFalse()
+        title.value = "Diversite des Clients"
         ch4.value = true
     }
 }
@@ -198,6 +205,9 @@ const openChart = (e:Event)=>{
 }
 .chartControl{
     width: 15%;height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
 }
 .nm-p1{
     top: -0.2rem;
@@ -253,14 +263,15 @@ const openChart = (e:Event)=>{
 
 ::-webkit-scrollbar-thumb {
     background-color: black;
-    background-color: salmon;
+    /* background-color: rgb(250, 128, 114); */
+    background-color: gray;
     border-radius: 15px;
 }
 
 ::-webkit-scrollbar {
     width: 3px;
     width: 5px;
-    width: 1px;
+    width: 2px;
     color: green;
 }
 
