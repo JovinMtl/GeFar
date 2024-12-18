@@ -81,7 +81,7 @@
                     <input :id="index +';prix_vente'" style="width: 100%; height: 100%;" :value="med.type_achat" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input type="number" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="med.type_vente" @blur="ListenNewChange"/> 
+                    <input type="text" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="med.type_vente" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 5%;height: 100%;">
                     <input type="number" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="med.ratio" @blur="ListenNewChange"/> 
@@ -107,7 +107,7 @@ const ui_isActive = ref<boolean>(true)
 const med_loaded = ref<MedApprov[]>([])
 const notifStatus = ref<boolean>(false)
 const message = ref<string>('')
-const emit = defineEmits(['approFileClose',])
+const emit = defineEmits(['approFileClose','fileDataLoaded'])
 
 const approveHandler = ()=>{
     if(med_loaded.value[0]){
@@ -145,23 +145,26 @@ const approveHandler = ()=>{
         notifSwitch(info)
     }
 }
-const convertToStandard = (obj_array)=>{
+const convertToStandard = (obj_array:MedApprov[])=>{
+    return med_loaded.value
+    // THis will add the prix_vente and other
     let new_obj_array = []
-    obj_array.forEach(element=>{
+    obj_array.forEach((element:MedApprov)=>{
         let obj = {
         'code_med': '',
         'date_winjiriyeko': '',
         // 'date_winjiriyeko': new Date().toISOString(),
-        'date_uzohererako': element.Date_exp,
-        'nom_med': element.Nom,
-        'description_med': element.Description,
-        'famille_med': element.famille_medicament,
-        'type_in': element.Type_in,
-        'ratio_type': element.Ratio,
-        'type_vente': element.Type_vente,
-        'prix_in': element.prix_in,
-        'prix_vente': element.prix_vente,
-        'quantite_initial': element.Qte_initial,
+        'date_uzohererako': element.date_peremption,
+        'nom_med': element.nom_med,
+        'famille_med': element.classe_med,
+        'description_med': element.sous_classe_med,
+        'forme': element.forme,
+        'type_in': element.type_achat,
+        'ratio_type': element.ratio,
+        'type_vente': element.type_vente,
+        'prix_in': element.prix_achat,
+        'prix_vente': element.prix_achat * 1.3,
+        'quantite_initial': element.qte,
         'location': '',
         }
         new_obj_array.push(obj)
@@ -209,7 +212,7 @@ const xlsxFileReader = async()=>{
             // Begin to pack the data into obj to be submitted
             const niceData: MedApprov[] = jsonData.slice(5)
             niceData.forEach((element:MedApprov)=>{
-                // Should gather each line into obj, then append it to obj_arr
+                // Should gather each line into obj, then append it into med_loaded
                 if(element[0] != 'TOTAL'){
                     let obj = {} as MedApprov  // it's type of MedApprov
                     obj.nom_med = element[0];
