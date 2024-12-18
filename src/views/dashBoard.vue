@@ -243,4 +243,21 @@ const openChart = (e:Event)=>{
 .btn:active{
     scale: 1.2;
 }
+
+::-webkit-scrollbar-thumb {
+    background-color: black;
+    background-color: salmon;
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    width: 5px;
+    width: 1px;
+    color: green;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
 </style>
