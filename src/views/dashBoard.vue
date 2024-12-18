@@ -10,19 +10,20 @@
         </div>
         <div class="bg-w c-b dB-3" style="overflow: auto; display: flex;
         flex-wrap: wrap;">
-            <div class="dB-ctn">
+            <div id="cha1" class="dB-ctn" :class="ch1 ? 'dB-ctn-o':''">
                 Tendance des ventes
                 <LineChart :chartData="chartData" :options="chartOptions" />
             </div>
-            <div class="dB-ctn">
+            <div id="cha2" class="dB-ctn" :class="ch2 ? 'dB-ctn-o':''">
                 Etat de stocks: +2years; >1 years<; < 1years; < 6months
                 <DoughnutChart :chartData="testData1" />
             </div>
-            <div class="dB-ctn">
+            <div id="cha3" class="dB-ctn" :class="ch3 ? 'dB-ctn-o':''">
                 CashFlow: Sans et avec BonDeCommande
                 <BarChart :chartData="testData" :options="chartOptions" />
             </div>
-            <div class="dB-ctn">
+            <div id="cha4" @click="openChart"
+                class="dB-ctn" :class="ch4 ? 'dB-ctn-o':''">
                 Comparaison entre les clients: tv, mt, md, au
                 <DoughnutChart :chartData="testData" />
             </div>
@@ -39,6 +40,10 @@ import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
 const emit = defineEmits(['clos-d'])
+const ch1 = ref<boolean>(false)
+const ch2 = ref<boolean>(false)
+const ch3 = ref<boolean>(false)
+const ch4 = ref<boolean>(false)
 
 // Static data
 const testData = {
@@ -155,6 +160,31 @@ const chartOptions = ref({
 const fermerD = ()=>{
     emit('clos-d')
 }
+const openChart = (e:Event)=>{
+    console.log("You chose element with ID: ", e.target.parentElement.parentElement.id)
+    // e.target.style.height = '200px'
+    e.target.style.height = '1.3'
+    let id = e.target.parentElement.parentElement.id
+    const makeFalse = ()=>{
+        ch1.value = false
+        ch2.value = false
+        ch3.value = false
+        ch4.value = false
+    }
+    if(id == 'cha1'){
+        makeFalse()
+        ch1.value = true;
+    }else if(id == 'cha2'){
+        makeFalse()
+        ch2.value = true
+    } else if(id == 'cha3'){
+        makeFalse()
+        ch3.value = true
+    } else if(id == 'cha4'){
+        makeFalse
+        ch4.value = true
+    }
+}
 
 </script>
 <style>
@@ -188,13 +218,13 @@ const fermerD = ()=>{
     padding: 8px; 
 }
 .dB-ctn{
-    width: 40vw; height: 75vh; 
+    width: 40vw; height: 60vh; 
     /* background-color: grey; */
     margin: 55px 0;
     text-align: center;
     padding-top: 1.3rem;
 }
-.dB-ctn:active{
+.dB-ctn-o{
     border: 4px double grey;
     /* background-color: rgba(128, 128, 128, 0.589); */
     border-radius: 50px;
