@@ -201,9 +201,21 @@ const xlsxFileReader = async()=>{
             // Begin to pack the data into obj to be submitted
             const niceData = jsonData.splice(5)
             let obj = {} as MedApprov  // it's type of MedApprov
-            let obj_arr = []
+            let obj_arr: MedApprov[] = []
             niceData.forEach((element)=>{
                 // Should gather each line into obj, then append it to obj_arr
+                obj.nom_med = element[0];
+                obj.classe_med = element[1]
+                obj.sous_classe_med = element[2]
+                obj.forme = element[3]
+                obj.qte = element[4]
+                obj.prix_achat = element[5]
+                obj.date_peremption = element[6]
+                obj.type_achat = element[7]
+                obj.type_vente = element[8]
+                obj.ratio = element[9]
+
+                obj_arr.push(obj)
             })
         };
 
