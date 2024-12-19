@@ -34,8 +34,15 @@
             </div>
             <div class="chartControl">
                 <div v-show="title" style="border-bottom: 1px solid black; height: 2rem;
-                    width: 90%;text-align: center;">
+                    width: 90%;text-align: center;display:block">
                     {{ title }}
+                </div>
+                <div style="margin: 1rem 0">
+                    <label for="">Debut</label><br>
+                    <input style="margin-bottom: 1rem;" type="date"/> <br>
+                    <label for="">Fin</label><br>
+                    <input type="date"/><br><br>
+                    <input type="button" value="Traiter">
                 </div>
             </div>
         </div>
@@ -217,9 +224,10 @@ watch(lineData, (value)=>{
 }
 .chartControl{
     width: 15%;height: 100%;
-    display: flex;
+    /* display: flex; */
+    display: block;
     justify-content: center;
-    padding: 1rem 0;
+    padding: 1rem 5px;
 }
 .nm-p1{
     top: -0.2rem;
