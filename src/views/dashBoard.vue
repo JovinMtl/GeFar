@@ -44,6 +44,8 @@
                     <label for="" class="la">Fin</label><br>
                     <input type="date" v-model="date2"/><br><br>
                     <input type="button" value="Traiter" @click="checkDate">
+                    <br>
+                    <div class="dWarn">Veuillez bien choisir les dates correctes.</div>
                 </div>
             </div>
         </div>
@@ -243,6 +245,9 @@ watch(lineData, (value)=>{
 input{
     background-color: rgb(177, 174, 174);
     border-radius: 5px;
+}
+.dWarn{
+    color: red;font-size: .8rem;margin-top: 20px;
 }
 .la{
     font-size: .7rem;
