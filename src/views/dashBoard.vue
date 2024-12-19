@@ -37,7 +37,7 @@
                     width: 90%;text-align: center;display:block">
                     {{ title }}
                 </div>
-                <div style="margin: 1rem 0">
+                <div v-show="title" style="margin: 1rem 0">
                     <label for="" class="la">Début</label><br>
                     <input style="margin-bottom: 1rem;"
                         v-model="date1" type="date"/> <br>
@@ -45,7 +45,7 @@
                     <input type="date" v-model="date2"/><br><br>
                     <input type="button" value="Traiter" @click="checkDate">
                     <br>
-                    <div v-show="dWarning" class="dWarn">Veuillez bien choisir les dates correctes.</div>
+                    <div v-if="dWarning" class="dWarn">Veuillez bien choisir les dates correctes.</div>
                 </div>
             </div>
         </div>
@@ -219,7 +219,7 @@ const openChart = (e:Event)=>{
 const checkDate = ()=>{
     const today = Date(new Date())
     if (today >= date1.value && today > date2.value){
-        dWarning.value = true
+        dWarning.value = false
         askData('api/rep/getVentes/',[date1.value, date2.value])
     } else{
         console.log("The dates are not correct")
