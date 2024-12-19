@@ -205,7 +205,9 @@ const openChart = (e:Event)=>{
 }
 
 watch(lineData, (value)=>{
-    console.log("THe data of Chart:", value)
+    console.log("THe data of Chart:", value.X)
+    chartData.value.labels = value.X
+    chartData.value.datasets[0].data = value.Y
 })
 </script>
 <style>
