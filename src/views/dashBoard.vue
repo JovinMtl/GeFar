@@ -38,11 +38,12 @@
                     {{ title }}
                 </div>
                 <div style="margin: 1rem 0">
-                    <label for="">Debut</label><br>
-                    <input style="margin-bottom: 1rem;" type="date"/> <br>
-                    <label for="">Fin</label><br>
-                    <input type="date"/><br><br>
-                    <input type="button" value="Traiter">
+                    <label for="" class="la">Début</label><br>
+                    <input style="margin-bottom: 1rem;"
+                        v-model="date1" type="date"/> <br>
+                    <label for="" class="la">Fin</label><br>
+                    <input type="date" v-model="date2"/><br><br>
+                    <input type="button" value="Traiter" @click="checkDate">
                 </div>
             </div>
         </div>
@@ -64,6 +65,8 @@ const ch2 = ref<boolean>(false)
 const ch3 = ref<boolean>(false)
 const ch4 = ref<boolean>(false)
 const title = ref<string>('')
+const date1 = ref<Date>(null)
+const date2 = ref<Date>(null)
 
 const [lineData, askData] = useChart('/rep/getVentes/')
 askData('api/rep/getVentes/')
@@ -210,11 +213,22 @@ const openChart = (e:Event)=>{
         ch4.value = true
     }
 }
+const checkDate = ()=>{
+    const today = Date(new Date())
+    if (today >= date1.value && today > date2.value){
+        askData('api/rep/getVentes/')
+    } else{
+        console.log("The dates are not correct")
+    }
+}
 
 watch(lineData, (value)=>{
     console.log("THe data of Chart:", value.X)
     chartData.value.labels = value.X
     chartData.value.datasets[0].data = value.Y
+})
+watch(date1, (value)=>{
+    console.log("The date1: ", value)
 })
 </script>
 <style>
@@ -228,6 +242,9 @@ watch(lineData, (value)=>{
     display: block;
     justify-content: center;
     padding: 1rem 5px;
+}
+.la{
+    font-size: .7rem;
 }
 .nm-p1{
     top: -0.2rem;
