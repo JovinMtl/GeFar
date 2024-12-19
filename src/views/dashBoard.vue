@@ -42,11 +42,12 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { 
     DoughnutChart, LineChart, BarChart
 } from 'vue-chart-3';
 import { Chart, registerables } from "chart.js";
+import { useChart } from './hooks/useChart';
 
 Chart.register(...registerables);
 
@@ -56,6 +57,9 @@ const ch2 = ref<boolean>(false)
 const ch3 = ref<boolean>(false)
 const ch4 = ref<boolean>(false)
 const title = ref<string>('')
+
+const [lineData, askData] = useChart('/rep/getVentes/')
+askData('api/rep/getVentes/')
 
 // Static data
 const testData = {
@@ -200,6 +204,9 @@ const openChart = (e:Event)=>{
     }
 }
 
+watch(lineData, (value)=>{
+    console.log("THe data of Chart:", value)
+})
 </script>
 <style>
 .chartContainer{

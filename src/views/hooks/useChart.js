@@ -6,7 +6,7 @@ import { useUserStore } from "../../store/user";
 
 const data = ref(null) 
 
-export async function useChart(prefix='', command=null){
+export function useChart(prefix='', command=null){
     const { getAccessToken } = useUserStore();
 
     const askData = async (prefix)=>{
