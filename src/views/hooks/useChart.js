@@ -8,14 +8,21 @@ const data = ref(null)
 
 export function useChart(prefix='', command=null){
     const { getAccessToken } = useUserStore();
+    console.log("Sending: ", command)
 
-    const askData = async (prefix)=>{
+    const askData = async (prefix, command)=>{
+        console.log("f-Sending: ", command)
         let response = ''
         try{
             response = await fetch(`${baseURL}/${prefix}`, {
-                headers: {
-                    Authorization: "Bearer " + getAccessToken(),
-                },
+                method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                        Authorization: "Bearer " + getAccessToken(),
+                    },
+                    body: JSON.stringify({
+                        dates: command,
+                    }),
             });
             if(response.ok){
                 data.value = await response.json()

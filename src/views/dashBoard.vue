@@ -216,7 +216,8 @@ const openChart = (e:Event)=>{
 const checkDate = ()=>{
     const today = Date(new Date())
     if (today >= date1.value && today > date2.value){
-        askData('api/rep/getVentes/')
+        console.log("Dates are correct. now send")
+        askData('api/rep/getVentes/',[date1.value, date2.value])
     } else{
         console.log("The dates are not correct")
     }
@@ -226,9 +227,6 @@ watch(lineData, (value)=>{
     console.log("THe data of Chart:", value.X)
     chartData.value.labels = value.X
     chartData.value.datasets[0].data = value.Y
-})
-watch(date1, (value)=>{
-    console.log("The date1: ", value)
 })
 </script>
 <style>
