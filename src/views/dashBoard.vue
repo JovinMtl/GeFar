@@ -197,15 +197,26 @@ const openChart = (e:Event)=>{
         ch2.value = false
         ch3.value = false
         ch4.value = false
+        title.value = ''
     }
     if(id == 'cha1'){
+        if(ch1.value){
+            makeFalse()
+            e.target.style.height = '400px'
+        }else{
         makeFalse()
         title.value = "Detail pour des Ventes"
         ch1.value = true;
+        }
     }else if(id == 'cha2'){
-        makeFalse()
-        title.value = "Etats de Stocks"
-        ch2.value = true
+        if(ch2.value){
+            makeFalse()
+            e.target.style.height = '400px'
+        }else{
+            makeFalse()
+            title.value = "Etats de Stocks"
+            ch2.value = true
+        }
     } else if(id == 'cha3'){
         makeFalse()
         title.value = "Bons de Commande"
