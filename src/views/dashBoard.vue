@@ -245,8 +245,9 @@ const checkDate = ()=>{
 
 watch(chart2Data, (value)=>{
     // Updating the ChartData whenever we do a request to the server
-    testData1.labels = value.X
-    testData1.datasets[0].data = value.Y
+    testData1.labels = value.Y
+    testData1.datasets[0].data = value.X
+    console.log("THe value received: ", value)
 })
 watch(lineData, (value)=>{
     // Updating the ChartData whenever we do a request to the server
