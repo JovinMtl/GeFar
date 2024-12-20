@@ -4,9 +4,10 @@ import { ref } from "vue";
 import { baseURL } from "@/store/host";
 import { useUserStore } from "../../store/user";
 
-const data = ref(null) 
+
 
 export function useChart(prefix='', command=null){
+    const data = ref(null) 
     const { getAccessToken } = useUserStore();
     console.log("Sending: ", command)
 
