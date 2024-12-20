@@ -52,7 +52,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref,reactive, watch } from 'vue'
 import { 
     DoughnutChart, LineChart, BarChart
 } from 'vue-chart-3';
@@ -71,8 +71,13 @@ const title = ref<string>('')
 const date1 = ref<Date>(null)
 const date2 = ref<Date>(null)
 
-const [lineData, askData] = useChart('/rep/getVentes/')
+const [lineData, askData] = useChart()
+const [chart2Data, askForChart2] = useChart()
 askData('api/rep/getVentes/')
+
+setTimeout(()=>{
+    askForChart2('api/rep/getDiffStock/')
+}, 2000)
 
 // Static data
 const testData = {
@@ -84,7 +89,7 @@ const testData = {
         },
       ],
     };
-const testData1 = {
+const testData1 = reactive({
     labels: ['Paris', 'Nîmes', 'Toulon', 'Autre'],
     datasets: [
     {
@@ -92,7 +97,7 @@ const testData1 = {
         backgroundColor: ['#77CEFF', 'yellow', 'red', 'black'],
     },
     ],
-};
+});
 const chartData = ref({
     labels: ['Nzero', 'Ruhuhuma', 'Ntwarante', 'Ndamukiza', 
     'Rusama', 'Ruheshi', 'Mukakaro'],
@@ -238,6 +243,11 @@ const checkDate = ()=>{
     }
 }
 
+watch(chart2Data, (value)=>{
+    // Updating the ChartData whenever we do a request to the server
+    testData1.labels = value.X
+    testData1.datasets[0].data = value.Y
+})
 watch(lineData, (value)=>{
     // Updating the ChartData whenever we do a request to the server
     chartData.value.labels = value.X
