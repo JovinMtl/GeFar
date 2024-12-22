@@ -712,20 +712,20 @@ export default defineComponent({
             let i = 1
             data.value.forEach(element => {
                 let obj: UmutiSet = {
-                    'code_med': element.code_umuti,
+                    'code_med': element.code_code,
                     'id': i,
-                    'nom_med': element.name_umuti,
+                    'nom_med': element.nom_med,
                     'description_med': element.description_umuti,
                     'date_last_vente': new Date(element.date_last_vente),
-                    'prix_in': element.price_in,
-                    'prix_vente': element.price_out,
+                    'prix_in': element.prix_achat,
+                    'prix_vente': element.prix_vente,
                     'difference': element.difference,
                     'qte_entrant_big': element.qte_entrant_big,
                     'quantite_restant': element.quantite_restant,
-                    'ratio_type': element.ratio_type,
-                    'type_in': element.type_in,
-                    'type_vente': element.type_out,
-                    'famille_med': element.type_umuti,
+                    'ratio_type': element.ratio,
+                    'type_in': element.type_achat,
+                    'type_vente': element.type_vente,
+                    'famille_med': element.type_med,
                     'location': element.location,
                     'lot': element.lot
                 }
@@ -733,7 +733,7 @@ export default defineComponent({
             });
             console.log("Compiled : ", imitiset.value)
             imitiset_copy.value = imitiset.value
-            familleBuilder(imitiset.value)
+            // familleBuilder(imitiset.value)
             emit('families', familles.value)
         }
         // let familles = []

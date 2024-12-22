@@ -94,7 +94,7 @@ const testData1 = reactive({
     datasets: [
     {
         data: [30, 40, 6, 50],
-        backgroundColor: ['red', 'yellow', 'lime', 'green', 'blue'],
+        backgroundColor: ['red', 'salmon', 'yellow', '#2fe22f', '#4ff7c0'],
     },
     ],
 });
@@ -253,6 +253,7 @@ watch(lineData, (value)=>{
     // Updating the ChartData whenever we do a request to the server
     chartData.value.labels = value.X
     chartData.value.datasets[0].data = value.Y
+    console.log("THe Line value received: ", value)
 })
 </script>
 <style>
