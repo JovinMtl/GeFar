@@ -712,7 +712,7 @@ export default defineComponent({
             let i = 1
             data.value.forEach(element => {
                 let obj: UmutiSet = {
-                    'code_med': element.code_code,
+                    'code_med': element.code_med,
                     'id': i,
                     'nom_med': element.nom_med,
                     'description_med': element.description_umuti,
