@@ -13,6 +13,7 @@ interface Lot {
 
 export interface PanierAPI {
     'nom_med': string;
+    'code_med': string;
     'qte': number;
     'lot': Lot [];
 }
