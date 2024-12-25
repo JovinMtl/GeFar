@@ -69,6 +69,7 @@ export function useKurungika(
     otherData2 = null,
 ) {
     const data = ref(null);
+    const error = ref(null)
     const { getAccessToken } = useUserStore();
     // return prefix
     if (!(otherData1 && otherData2)) {
@@ -92,9 +93,13 @@ export function useKurungika(
                     data.value = await response.json();
                 }
             } catch (value) {
+                error.value = value
                 console.log("somehting may not be well because :", value);
             }
         };
+        if(error.value){
+            return [error, kurungikaImiti]
+        }
         return [data, kurungikaImiti];
     } else {
         return "not really";
