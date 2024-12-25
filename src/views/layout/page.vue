@@ -169,25 +169,45 @@
                                     value="Valider" @click="simplValid">
                                 </div>
                                 <div v-if="selectedProf == 'au'">
-                                    <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
+                                    <!-- <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
                                         placeholder="Quelle Assureur?" ref="suggest" 
-                                        @change="show_suggest" />
-                                    <a title="Ajouter une nouvelle assurance">
-                                        <input type="button" v-show="!need_assureur"
-                                            @click="need_assureur=true" 
-                                            value="+" class="ml-10"/>
-                                    </a>
+                                        @change="show_suggest" /> -->
+                                    <div>
+                                        <label for="assur"
+                                             style="font-size: .8rem;
+                                             color: black;margin-right: 4px;">Son assureur:</label>
+                                        <select  id="assur">
+                                            <!-- Should have twenty char -->
+                                            <option>BIC</option>
+                                            <option>Jubilee</option>
+                                            <option>SOCAR VIE</option>
+                                            <option>Mutualité Santé Plus</option>
+                                            <option>ASCOMA BURUNDI</option>
+                                        </select>
+                                        <a title="Ajouter une nouvelle assurance">
+                                            <input
+                                            type="button" v-show="!need_assureur"
+                                                @click="need_assureur=true" 
+                                                value="+"/>
+                                        </a>
+                                    </div>
+                                    
                                     <div class="newAssu" v-if="!assureur && need_assureur">
                                         <label for="nAssu">Ajouter une nouvelle assurance</label>
                                         <input type="text" id='nAssu'
                                             v-model="assu_name"
                                         placeholder="Nom de l'assurance">
-
+                                        <input type="button" value="No" 
+                                            class="ml-10" @click="need_assureur=false">
+                                        <hr>
                                         <input type="text"  v-model="assu_rate"
                                         placeholder="Taux d'assurance. e.x: 20">
                                         <input type="button" value="Ok" 
                                             class="ml-10" @click="checkAssu">
+                                        
+                                        <div>{{ message }}</div>
                                     </div>
+                                    
                                     <datalist id="mySuggestion">
                                         <option>BIC</option>
                                         <option>Jubilee</option>
@@ -378,7 +398,7 @@ const assu_name: Ref<string> = ref('')
 const assu_rate: Ref<string> = ref('')
 const bonDate = ref(new Date)
 const clPhone: Ref<number> = ref() // omitting initial value for placeholder
-const message = shallowRef<string>('hello')
+const message = shallowRef<string>('')
 const clClean: Ref<boolean> = ref(false)
 const isWarning: Ref<boolean> = ref(false)
 const need_assureur: Ref<boolean> = ref(false)
@@ -440,6 +460,9 @@ const [rep_update, kurungika] = useKurungika(bothData.value, url_syncFromLocal)
 const url_addAssu: string = "api/gOps/addAssu/"
 const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
 
+const url_getAssurances = "api/gOps/getAssu/"
+const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
+
 
 
 const url_sell: string = "api/out/sell/"
@@ -458,12 +481,17 @@ const checkAssu = ()=>{
     if(rate < 0 || rate > 100){
         status = false
     }
-    status = true //temporary
+    // status = true //temporary
     if ( status){
             datAssu.assu[0] = assu_name.value
             datAssu.assu[1] = rate
             addAssu()
-        }
+    } else{
+        message.value = "Champs invalides"
+        setTimeout(()=>{
+            message.value = ""
+        }, 2000)
+    }
 }
 const simplValid = ():void=>{
     // validate Taxi moto, taxi velo and domaine medicale
@@ -949,11 +977,23 @@ watch(addAssuResp, (value)=>{
     console.log("Resp from addAssu: ", value)
     assu_state.value = value.status
     message.value = value.reason
+    if(assu_state.value){
+        getAssurances()
+        setTimeout(()=>{
+            need_assureur.value = false
+        }, 2000)
+    }
+    if(value.code == 'token_not_valid'){
+        message.value = "Veuillez vous reconnecter"
+    }
 })
 watch(rdBtnActive, (value)=>{
     if(!value){
         initClient()
         console.log("Now the Panier2API: ", panier_api)
+    } else{
+        getAssurances()
+        console.log("Assurances we have:", assurances.value)
     }
     if(clClean.value){
         confirmRdBtn.value = true
