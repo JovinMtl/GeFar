@@ -305,7 +305,7 @@ import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
 import {
-    PanierAPI, PanierClient, ActiveLot, Umuti
+    PanierAPI, PanierClient, ActiveLot
 } from '../types'
 import CircumPower from '../layout/icon/CircumPower.vue'
 import CircumPill from '../layout/icon/pill.vue'
@@ -322,18 +322,20 @@ import {
     close, addCircleOutline, removeCircleOutline, magnetOutline,
     add, exitOutline, syncOutline
 } from 'ionicons/icons'
-import { Lot, clInfo, Medi, DataToAPI } from './types';
+import { 
+    Lot, clInfo, Medi, DataToAPI, DataAssurance
+} from './types';
 
 const router = useRouter()
 
 const today: Date = new Date
 
-const selectedUmuti: Medi = reactive({})
+const selectedUmuti: Medi = reactive({}) as Medi
 const panier_client: Ref<PanierClient[]> = ref([])
 const panier_api: DataToAPI = reactive({
     'panier': [],
     'client': {}
-})
+}) as DataToAPI
 const activeLot: Ref<ActiveLot[]> = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
@@ -390,6 +392,9 @@ const suggest:Ref<string> = ref("Votre assureur")
 const warnDateMessage: Ref<string> = ref('')
 
 const familles:Ref<Medi[]> = ref([])
+const datAssu = reactive({
+    'assu': []
+})
 
 
 
@@ -426,6 +431,9 @@ const [bothData, askInstances] = useKurungika(last_indexes.value, url_askInstanc
 
 const url_syncFromLocal: string = "api/rep/syncFromLocal/"
 const [rep_update, kurungika] = useKurungika(bothData.value, url_syncFromLocal)
+
+const url_addAssu: string = "api/gOps/addAssu/"
+const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
 
 
 
