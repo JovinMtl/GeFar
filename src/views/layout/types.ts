@@ -50,9 +50,9 @@ export interface MedApprov {
     ratio: number; // 1 if no detail, 10, ...
 }
 
-type Assu = [string, number]
+export type Assu = [string, number]
 export interface DataAssurance{
-    'assu': Assu;
+    'assu': Assu[];
 }
 
 

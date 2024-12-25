@@ -323,7 +323,8 @@ import {
     add, exitOutline, syncOutline
 } from 'ionicons/icons'
 import { 
-    Lot, clInfo, Medi, DataToAPI, DataAssurance
+    Lot, clInfo, Medi, DataToAPI, 
+    DataAssurance,Assu
 } from './types';
 
 const router = useRouter()
@@ -335,7 +336,7 @@ const panier_client: Ref<PanierClient[]> = ref([])
 const panier_api: DataToAPI = reactive({
     'panier': [],
     'client': {}
-}) as DataToAPI
+})
 const activeLot: Ref<ActiveLot[]> = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
@@ -392,7 +393,7 @@ const suggest:Ref<string> = ref("Votre assureur")
 const warnDateMessage: Ref<string> = ref('')
 
 const familles:Ref<Medi[]> = ref([])
-const datAssu = reactive({
+const datAssu: DataAssurance = reactive({
     'assu': []
 })
 
