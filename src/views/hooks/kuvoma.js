@@ -69,7 +69,8 @@ export function useKurungika(
     otherData2 = null,
 ) {
     const data = ref(null);
-    const error = ref(null)
+    const isError = ref(false)
+    const error_message = ref(null)
     const { getAccessToken } = useUserStore();
     // return prefix
     if (!(otherData1 && otherData2)) {
@@ -88,19 +89,19 @@ export function useKurungika(
                         imiti: imitiArray,
                     }),
                 });
-
-                if (response.ok) {
-                    data.value = await response.json();
-                }
-            } catch (value) {
-                error.value = value
-                console.log("somehting may not be well because :", value);
+                data.value = await response.json();
+            } catch (error) {
+                isError.value =true
+                error_message.value = error
+                console.log("something has not be well because :", error);
             }
         };
-        if(error.value){
-            return [error, kurungikaImiti]
+        if(isError.value){
+            return [error_message, kurungikaImiti]
+        } else{
+            return [data, kurungikaImiti];
         }
-        return [data, kurungikaImiti];
+
     } else {
         return "not really";
     }

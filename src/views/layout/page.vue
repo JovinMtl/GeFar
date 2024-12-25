@@ -382,6 +382,7 @@ const message = shallowRef<string>('hello')
 const clClean: Ref<boolean> = ref(false)
 const isWarning: Ref<boolean> = ref(false)
 const need_assureur: Ref<boolean> = ref(false)
+const assu_state: Ref<boolean> = ref(false)
 const clientInfo: clInfo = reactive({
     'nom_client': '',
     'numero_tel': '',
@@ -457,6 +458,7 @@ const checkAssu = ()=>{
     if(rate < 0 || rate > 100){
         status = false
     }
+    status = true //temporary
     if ( status){
             datAssu.assu[0] = assu_name.value
             datAssu.assu[1] = rate
@@ -943,7 +945,11 @@ const initClient = ()=>{
     clientInfo.date_bon = ''
 }
 
-
+watch(addAssuResp, (value)=>{
+    console.log("Resp from addAssu: ", value)
+    assu_state.value = value.status
+    message.value = value.reason
+})
 watch(rdBtnActive, (value)=>{
     if(!value){
         initClient()
