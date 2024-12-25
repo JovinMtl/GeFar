@@ -449,9 +449,15 @@ const { getAccessToken, getUsername, setUsername,
 
 const checkAssu = ()=>{
     // will check the validity of assurance fields
+    let status = false
     let rate = Number(assu_rate.value)
-    if ((assu_name.value).length > 3 &&
-        rate > -1 ){
+    if ((assu_name.value).length > 3){
+        status = true
+    }
+    if(rate < 0 || rate > 100){
+        status = false
+    }
+    if ( status){
             datAssu.assu[0] = assu_name.value
             datAssu.assu[1] = rate
             addAssu()
