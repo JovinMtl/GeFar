@@ -180,12 +180,13 @@
                                     <div class="newAssu" v-if="!assureur && need_assureur">
                                         <label for="nAssu">Ajouter une nouvelle assurance</label>
                                         <input type="text" id='nAssu'
+                                            v-model="assu_name"
                                         placeholder="Nom de l'assurance">
 
-                                        <input type="text" 
+                                        <input type="text"  v-model="assu_rate"
                                         placeholder="Taux d'assurance. e.x: 20">
                                         <input type="button" value="Ok" 
-                                            class="ml-10" @click="addAssu">
+                                            class="ml-10" @click="checkAssu">
                                     </div>
                                     <datalist id="mySuggestion">
                                         <option>BIC</option>
@@ -373,7 +374,9 @@ const clName: Ref<string> = ref('')
 const clName1: Ref<string> = ref('')
 const clCardNumber: Ref<string> = ref('')
 const clBonNumber: Ref<string> = ref('')
-const bonDate:Date = ref(new Date)
+const assu_name: Ref<string> = ref('')
+const assu_rate: Ref<string> = ref('')
+const bonDate = ref(new Date)
 const clPhone: Ref<number> = ref() // omitting initial value for placeholder
 const message = shallowRef<string>('hello')
 const clClean: Ref<boolean> = ref(false)
@@ -444,6 +447,16 @@ const { getAccessToken, getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
 
+const checkAssu = ()=>{
+    // will check the validity of assurance fields
+    let rate = Number(assu_rate.value)
+    if ((assu_name.value).length > 3 &&
+        rate > -1 ){
+            datAssu.assu[0] = assu_name.value
+            datAssu.assu[1] = rate
+            addAssu()
+        }
+}
 const simplValid = ():void=>{
     // validate Taxi moto, taxi velo and domaine medicale
     if(!clName.value){
