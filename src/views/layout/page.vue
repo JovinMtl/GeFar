@@ -178,7 +178,7 @@
                                              color: black;margin-right: 4px;">Son assureur:</label>
                                         <select  id="assur">
                                             <!-- Should have twenty char -->
-                                            <option v-for="assu in assurances">{{ assu.name }}</option>
+                                            <option v-for="assu in assurances">{{ (assu.name).slice(0,20) }}</option>
                                         </select>
                                         <a title="Ajouter une nouvelle assurance">
                                             <input
