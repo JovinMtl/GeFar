@@ -178,11 +178,7 @@
                                              color: black;margin-right: 4px;">Son assureur:</label>
                                         <select  id="assur">
                                             <!-- Should have twenty char -->
-                                            <option>BIC</option>
-                                            <option>Jubilee</option>
-                                            <option>SOCAR VIE</option>
-                                            <option>Mutualité Santé Plus</option>
-                                            <option>ASCOMA BURUNDI</option>
+                                            <option v-for="assu in assurances">{{ assu.name }}</option>
                                         </select>
                                         <a title="Ajouter une nouvelle assurance">
                                             <input
