@@ -57,7 +57,7 @@
                         placeholder="Trouver classe">
                         <!-- All familles will be displayed here. -->
                         <div class="fami-1"
-                            v-for="(classe, index) in familles"
+                            v-for="(classe, index) in classes"
                             :key="index" :id="'s'+index"
                             @click="openFamilly">{{ classe.classe_med }}</div>
                     </div>
@@ -413,7 +413,7 @@ const clientInfo: clInfo = reactive({
 const suggest:Ref<string> = ref("Votre assureur")
 const warnDateMessage: Ref<string> = ref('')
 
-const familles:Ref<Medi[]> = ref([])
+const classes:Ref<Medi[]> = ref([])
 const datAssu: DataAssurance = reactive({
     'assu': []
 })
@@ -698,7 +698,7 @@ const getAllImiti = (imiti) => {
 }
 const getFamilies = (famillies)=>{
     console.log("Les familles recus sont: ", famillies)
-    familles.value = famillies
+    classes.value = famillies
 }
 const openedFamilly = ref(0)
 const openFamilly = (e)=>{
