@@ -32,7 +32,7 @@
             </div>
             
         </div>
-        <div style="background-color: yellowgreen;background-color: yellow; height: 92%; width: 100%;display: flex;">
+        <div style="background-color: yellowgreen; height: 92%; width: 100%;display: flex;">
             <div class="controlIcons">
                 <div class="logoMenu" @click="ukuvoma_dispo">
                     <ion-icon :src="statsChartOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
@@ -92,7 +92,9 @@
             </div>
             <!-- The dynamic content will be here. -->
             
-            <disPo :med="actual_imitiS" v-if="title_operation == 'Disponibles'"/>
+            <disPo :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Disponibles'"/>
             
             
         </div>

@@ -10,43 +10,45 @@
                     Nom du Med.
                 </div> 
                 <div class="contentElement3">
-                    Quantite
+                    Qte
                 </div>
 
-                <!-- <div class="contentElement4">
-                    <span v-if="isAdmin">Px.Achat</span>
-                    <span v-else>T. Med.</span>
-                    
-                </div> -->
-
-                <div class="contentElement3">
-                    Px. Vente
+                <div class="contentElement4">
+                    <span v-if="isAdmin">P. Achat</span>
+                    <!-- <span v-else>T. Med.</span>  -->
                 </div>
 
-                <div class="contentElement3">
+                <div class="contentElement4">
+                    P. Vente
+                </div>
+
+                <div class="contentElement4">
                     Total
                 </div>
 
                 <div class="contentElement4">
-                <!-- <span v-if="isAdmin">Bénéfice</span>
-                <span v-else>Loc.</span>   -->
+                <span v-if="isAdmin">Bénéfice</span> 
                 </div>
 
                 <div class="contentElement4">
                     Date
                 </div>
                 <div class="contentElement4">
-                    Auteur
+                    Classe
+                </div>
+                <div class="contentElement4">
+                    S-Classe
                 </div>
             </div>
         </div>
 
         <div class="controlBody">
             <div v-for="(umuti, index) in actual_imitiS" 
-                class="controlContent" style="display: block;
+                style="display: block;
                 width: 100%; height: 20px; background-color: rgba(255, 255, 255, 0.5);
                 margin-bottom: 5px;
-                border: 1px solid white;">
+                border: 1px solid white;
+                font-size: .8rem;">
                 <div class="contentElement11">
                     {{ index + 1 }}
                 </div> 
@@ -57,34 +59,33 @@
                 </div> 
 
                 <div class="contentElement4 famille_med">
-                    <!-- <span v-if="isAdmin">{{ umuti.price_in }}</span> -->
-                    <span >{{ umuti.prix_achat }}</span>
-                    <!-- <span v-else>{{ umuti.classe_med }}</span> -->
+                    <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
                     
                 </div>
 
-                <div class="contentElement3">
+                <div class="contentElement4">
                     {{ umuti.prix_vente }}
                 </div>
 
-                <div class="contentElement3 total">
-                    {{ umuti.price_out * (umuti.quantite_restant || umuti.quantity) }}
+                <div class="contentElement4 total">
+                    {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity) }}
                 </div>
 
                 <div class="contentElement4"> 
-                <!-- <span v-if="isAdmin">{{ (umuti.price_out - umuti.price_in) * (umuti.quantite_restant || umuti.quantity) }}</span> 
-                <span v-else>{{ umuti.location }}</span> -->
+                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity) }}</span> 
+                <span v-else>{{ umuti.location }}</span>
                 </div>
 
                 <div class="contentElement4">
-                    {{ (umuti.date_last_vente 
-                    || umuti.date_operation || 
-                    umuti.date_winjiriyeko ||
-                    '_____________').slice(6,10) }}
+{{ (umuti.date_last_vente).slice(8,10) }}/{{ (umuti.date_last_vente).slice(5,7) }}/{{ (umuti.date_last_vente).slice(2,4) }}
                 </div>
                 <div class="contentElement4">
-                    {{ umuti.operator }}
+                    {{ (umuti.classe_med).slice(0,15) }}
                 </div>
+                <div class="contentElement4">
+                    {{ (umuti.sous_classe_med).slice(0,15) }}
+                </div>
+                
             </div>
         </div>
 
@@ -97,15 +98,15 @@
                     TOTAL
                 </div> 
                 <div class="contentElement3">
-                    <!-- {{ totaux[0] }} -->
+                    {{ totaux[0] }}
                 </div>
 
                 <div class="contentElement3">
-                    <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
+                    {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }}
                         <!-- ---- -->
                         
-                    <!-- <span v-if="isAdmin">{{ totaux[2] }}</span>
-                    <span v-else>----</span> -->
+                    <span v-if="isAdmin">{{ totaux[2] }}</span>
+                    <span v-else>----</span>
                 </div>
 
                 <div class="contentElement3">
@@ -131,9 +132,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const props = defineProps(['med'])
+import { ref, watch } from 'vue'
+const props = defineProps(['med','admin'])
 const actual_imitiS = ref(props.med)
+const isAdmin = props.admin
+const totaux = ref([0,0]) // To display totals on the footer.
 
 console.log("THe props: ",actual_imitiS.value[3])
+
+watch(actual_imitiS, (value)=>{
+    console.log("We got this: ", value)
+    let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
+
+    actual_imitiS.value.forEach(element => {
+        if(element.quantite_restant){
+            console.log("Quantite restant  pa:",  element.prix_vente)
+            total += (element.prix_vente * (element.quantite_restant))
+            pt_a += element.prix_in * (element.quantite_restant)
+            benefice += (element.prix_vente - element.prix_in) * (element.quantite_restant) 
+        } else {
+            console.log("Quantity pa :", element.prix_vente )
+            total += (element.price_out * (element.quantity))
+            pt_a += element.price_in * (element.quantity)
+            benefice += (element.price_out - element.price_in) * (element.quantity) 
+        }
+        
+        number += 1
+    });
+
+    totaux.value = [number, total, pt_a, benefice]
+})
+
 </script>
