@@ -2,10 +2,7 @@
     <ion-page>
         <ion-content>
             <div class="mP">
-                <!-- <div v-if="server_process" class="loader" style="z-index: 15;">
-                    <jove-loader></jove-loader>
-                </div> -->
-                <div class="loader" style="z-index: 15;position:absolute">
+                <div v-if="server_process" class="loader" style="z-index: 15;position:absolute">
                     <jove-loader></jove-loader>
                 </div>
                 <div class="dashBoardContainer"
