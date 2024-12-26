@@ -218,3 +218,9 @@ html, body {
 .ml-10{
     margin: 0 10px;
 }
+.loader{
+    background-color: transparent;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}

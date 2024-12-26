@@ -14,20 +14,21 @@
     background-color: rgb(70, 67, 67);
     /* background-color: white; */
 }
-body{
+/* body{
     position: relative;
     width: 100vw;
     height: 100vh;
-}
+} */
 .container-processing{
     position: absolute;
     height: 150px;
     width: 140px;
     border-radius: 25px;
     background-color: white;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    box-shadow: 0 0 25px rgb(105, 103, 103);
+    top: 40%;
+    left: 45%;
+    /* transform: translate(300%, 100%); */
 }
 .line1{
     position: relative;
