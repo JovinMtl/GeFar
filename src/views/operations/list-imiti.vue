@@ -715,17 +715,18 @@ export default defineComponent({
                     'code_med': element.code_med,
                     'id': i,
                     'nom_med': element.nom_med,
-                    'description_med': element.description_umuti,
                     'date_last_vente': new Date(element.date_last_vente),
-                    'prix_in': element.prix_achat,
+                    'prix_achat': element.prix_achat,
                     'prix_vente': element.prix_vente,
                     'difference': element.difference,
                     'qte_entrant_big': element.qte_entrant_big,
                     'quantite_restant': element.quantite_restant,
-                    'ratio_type': element.ratio,
-                    'type_in': element.type_achat,
+                    'ratio': element.ratio,
+                    'type_achat': element.type_achat,
                     'type_vente': element.type_vente,
-                    'famille_med': element.type_med,
+                    'type_med': element.type_med,
+                    'classe_med': element.classe_med,
+                    'sous_classe_med': element.sous_classe_med,
                     'location': element.location,
                     'lot': element.lot
                 }
@@ -733,7 +734,7 @@ export default defineComponent({
             });
             console.log("Compiled : ", imitiset.value)
             imitiset_copy.value = imitiset.value
-            // familleBuilder(imitiset.value)
+            familleBuilder(imitiset.value)
             emit('families', familles.value)
         }
         // let familles = []
@@ -741,16 +742,16 @@ export default defineComponent({
         let famillesArray = []
 
         const familleBuilder = (arr)=>{
-            console.log("Calling familleBUILDER")
+            console.log("Calling familleBUILDER with: ", arr)
             let i = 0
             let index = 0
             let obj = {}
             arr.forEach((Element)=>{
-                index = famillesArray.indexOf((Element.famille_med).toLowerCase())
+                index = famillesArray.indexOf((Element.classe_med).toLowerCase())
                 if(index == -1){ // does not exist
-                    famillesArray.push((Element.famille_med).toLowerCase());
+                    famillesArray.push((Element.classe_med).toLowerCase());
                     obj = {
-                        'nom_fam' : (Element.famille_med).toLowerCase(),
+                        'classe_med' : (Element.classe_med).toLowerCase(),
                         'members':[i]
                     }
                     familles.value.push(obj);
@@ -767,17 +768,17 @@ export default defineComponent({
                 let obj = {
                     'code_med': element.code_med,
                     'date_last_vente': element.date_last_vente,
-                    'description_med': element.description_med,
                     'location': element.location,
                     'lot': element.lot,
                     'nom_med': (element.nom_med),
-                    'prix_in': element.prix_in,
+                    'prix_achat': element.prix_in,
                     'prix_vente': element.prix_vente,
                     'qte_entrant_big': element.qte_entrant_big,
                     'quantite_restant': element.quantite_restant,
-                    'type_in': element.type_in,
+                    'type_achat': element.type_achat,
                     'type_vente': element.type_vente,
-                    'famille_med': element.famille_med,
+                    'classe_med': element.classe_med,
+                    'sous_classe_med': element.sous_classe_med,
                 }
 
                 imiti_for_search.push(obj)

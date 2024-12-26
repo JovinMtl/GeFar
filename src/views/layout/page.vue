@@ -50,16 +50,16 @@
                 <div class="fami"></div>
                 <div class="mainContainer">
                     <div class="famil">
-                        <input type="text" value="     Familles"
+                        <input type="text" value="Classe therap."
                             class="inpBl w-90"
-                            style="color: black;" disabled>
+                            style="color: black;scale: .8;" disabled>
                         <input type="text" class="w-90"
-                        placeholder="Trouver famille">
+                        placeholder="Trouver classe">
                         <!-- All familles will be displayed here. -->
                         <div class="fami-1"
-                            v-for="(famille, index) in familles"
+                            v-for="(classe, index) in familles"
                             :key="index" :id="'s'+index"
-                            @click="openFamilly">{{ famille.nom_fam }}</div>
+                            @click="openFamilly">{{ classe.classe_med }}</div>
                     </div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
@@ -178,7 +178,8 @@
                                              color: black;margin-right: 4px;">Son assureur:</label>
                                         <select  id="assur">
                                             <!-- Should have twenty char -->
-                                            <option v-for="assu in assurances">{{ (assu.name).slice(0,20) }}</option>
+                                            <option v-for="assurance in assurances" v-show="assurance.name !='Sans'"
+                                                v-if="assurance.name !='Pharmacie Ubuzima'">{{ (assurance.name).slice(0,20) }}</option>
                                         </select>
                                         <a title="Ajouter une nouvelle assurance">
                                             <input
@@ -997,9 +998,7 @@ watch(rdBtnActive, (value)=>{
         confirmRdBtn.value = false
     }
 })
-watch(all_imiti, (value)=>{
-    familleBuilder()
-})
+
 watch(suggest, (value)=>{
     console.log("The selected option: ", suggest.value)
 })
