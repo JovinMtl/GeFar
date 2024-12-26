@@ -302,7 +302,7 @@ html, body {
 }
 
 .controlIcons{
-    display: inline-block; 
+    /* display: inline-block;  */
     width: 20%; 
     height: 100%; 
     border:2px solid white; 
@@ -339,8 +339,15 @@ html, body {
     display: block;
     width: 100%; height: 20px; 
     background-color: transparent;
+    background-color: blue;
     margin-bottom: 5px;
     border: 1px solid white;
+}
+.dynContent{
+    width: 80%; height: 100%; 
+    border:2px solid white; 
+    background-color: red; 
+    color: black; position: relative; 
 }
 .contentElement1{
     display: inline-flex;
