@@ -36,9 +36,6 @@
                 <div class="contentElement4">
                     Classe
                 </div>
-                <div class="contentElement4">
-                    S-Classe
-                </div>
             </div>
         </div>
 
@@ -82,9 +79,6 @@
                 <div class="contentElement4">
                     {{ (umuti.classe_med).slice(0,15) }}
                 </div>
-                <div class="contentElement4">
-                    {{ (umuti.sous_classe_med).slice(0,15) }}
-                </div>
                 
             </div>
         </div>
@@ -97,29 +91,27 @@
                 <div class="contentElement2">
                     TOTAL
                 </div> 
-                <div class="contentElement3">
+                <div class="contentElement1">
                     {{ totaux[0] }}
                 </div>
 
-                <div class="contentElement3">
-                    {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }}
-                        <!-- ---- -->
-                        
-                    <span v-if="isAdmin">{{ totaux[2] }}</span>
-                    <span v-else>----</span>
-                </div>
-
-                <div class="contentElement3">
-                    <!-- {{ totaux[1] }} -->
+                <div class="contentElement4">
+                    <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
+    
+                    {{ totaux[2] }}
+                    
                 </div>
 
                 <div class="contentElement4">
-                    ----
+                    {{ totaux[1] }}
                 </div>
 
                 <div class="contentElement4">
-                    <!-- <span v-if="isAdmin">{{ totaux[3] }}</span> 
-                    <span v-else>----</span>  -->
+                    -----
+                </div>
+
+                <div class="contentElement4">
+                    {{ totaux[3] }}
                 </div>
 
                 <div class="contentElement4">
@@ -140,27 +132,33 @@ const totaux = ref([0,0]) // To display totals on the footer.
 
 console.log("THe props: ",actual_imitiS.value[3])
 
-watch(actual_imitiS, (value)=>{
-    console.log("We got this: ", value)
+const updateTotaux = ()=>{
+    console.log("Attempt to build totaux",)
     let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
 
     actual_imitiS.value.forEach(element => {
-        if(element.quantite_restant){
-            console.log("Quantite restant  pa:",  element.prix_vente)
-            total += (element.prix_vente * (element.quantite_restant))
-            pt_a += element.prix_in * (element.quantite_restant)
-            benefice += (element.prix_vente - element.prix_in) * (element.quantite_restant) 
-        } else {
-            console.log("Quantity pa :", element.prix_vente )
-            total += (element.price_out * (element.quantity))
-            pt_a += element.price_in * (element.quantity)
-            benefice += (element.price_out - element.price_in) * (element.quantity) 
+        // console.log("Quantite restant  pa:",  element.prix_vente)
+        let tot = Number(element.prix_vente * (element.quantite_restant))
+        let achat = Number(element.prix_achat * (element.quantite_restant))
+        if (tot && achat){
+            pt_a += achat
+            total += tot
+            benefice += (element.prix_vente - element.prix_achat) * (element.quantite_restant) 
         }
+
         
+        
+        
+        
+        console.log("total: ", total)
         number += 1
     });
 
     totaux.value = [number, total, pt_a, benefice]
-})
+
+}
+
+updateTotaux()
+
 
 </script>
