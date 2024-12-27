@@ -75,7 +75,7 @@
 {{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
                 </div>
                 <div class="elt5">
-                     <span :id="'i'+ index" class="btn w-22 bg-w"
+                     <span :id="'i'+ index" class="btn2 br mt w-22 bg-g"
                         :class="selectIndex.has(index)? 'bg-b':''"
                        @click="checkBon"></span>
                 </div>
@@ -131,6 +131,8 @@ const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
 const selectIndex =ref(new Set())
 
+let tempSelected = 0
+
 
 
 const updateTotaux = ()=>{
@@ -161,17 +163,26 @@ const updateTotaux = ()=>{
 
 const checkBon = (e)=>{
     let index = Number((e.target.id).slice(1))
-    if (!selectIndex.value.has(index)){
-        selectIndex.value.add(index)
+    if(e.shiftKey && index >= tempSelected){
+        for(let i= tempSelected; i <= index; i++){
+            selectIndex.value.add(i)
+        }
+        tempSelected = index
+    }else if(e.shiftKey && index <= tempSelected ){
+        for(let i=index; i <= tempSelected; i++){
+            selectIndex.value.add(i)
+        }
+        tempSelected = index
     } else{
-        selectIndex.value.delete(index)
+        if (!selectIndex.value.has(index)){
+            selectIndex.value.add(index)
+            tempSelected = index
+        } else{
+            selectIndex.value.delete(index)
+            tempSelected = index
+        }
     }
-    console.log("Have: ", selectIndex.value)
-    if(e.shiftKey){
-        console.log("THe shift key was pressed")
-    } else{
-        console.log("The shift key was not pressed")
-    }
+    tempSelected = index
 }
 
 

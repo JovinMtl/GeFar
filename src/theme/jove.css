@@ -411,8 +411,14 @@ html, body {
 .d-f{
     display: flex;
 }
-.bg-w{
+.bg-g{
     background-color: grey;
+}
+.br{
+    border-radius: 5px;
+}
+.mt{
+    margin-top: 2px;
 }
 .bg-b{
     background-color: rgb(86, 105, 211);
@@ -420,7 +426,7 @@ html, body {
 .w-22{
     width: 25%;
 }
-.btn{
+.btn2{
     width: 30%;
     height: 80%;
 }
