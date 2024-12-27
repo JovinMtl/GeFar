@@ -412,8 +412,15 @@ html, body {
     display: flex;
 }
 .bg-w{
-    background-color: wheat;
+    background-color: grey;
 }
-.bg-p{
-    background-color: rgb(179, 243, 245);
+.bg-b{
+    background-color: rgb(86, 105, 211);
+}
+.w-22{
+    width: 25%;
+}
+.btn{
+    width: 30%;
+    height: 80%;
 }

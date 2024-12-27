@@ -75,8 +75,8 @@
 {{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
                 </div>
                 <div class="elt5">
-                     <span :id="'i'+ index" class="rdBtn bg-w"
-                        :class="selectIndex.has(index)? 'bg-p':''"
+                     <span :id="'i'+ index" class="btn w-22 bg-w"
+                        :class="selectIndex.has(index)? 'bg-b':''"
                        @click="checkBon"></span>
                 </div>
                 
