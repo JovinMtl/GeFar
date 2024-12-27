@@ -42,8 +42,9 @@
 
         <div class="controlBody">
             <div v-for="(umuti, index) in (actual_imitiS)" 
+                class="d-f"
                 :class="index%2 ? 'ln-1':'ln-2'">
-                <div  style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
+                <div class="contentElement11">
                     {{ index + 1 }}
                 </div> 
                 <div class="contentElement2">

@@ -401,3 +401,7 @@ html, body {
     border: 1px solid white;
     font-size: .8rem;
 }
+
+.d-f{
+    display: flex;
+}
