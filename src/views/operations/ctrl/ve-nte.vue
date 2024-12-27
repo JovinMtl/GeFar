@@ -117,6 +117,13 @@
                 <div class="contentElement4">
                     ----
                 </div>
+                <div class="contentElement4">
+                    <span style="border: 1px solid black;
+                        padding: 0 5px; cursor: pointer;
+                        position: absolute">
+                        Payer
+                    </span>
+                </div>
             </div>
         </div>
                             
