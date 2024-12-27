@@ -62,11 +62,11 @@
                 </div>
 
                 <div class="contentElement4 total">
-                    {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity) }}
+                        {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 1) }}
                 </div>
 
                 <div class="contentElement4"> 
-                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity) }}</span> 
+                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 1) }}</span> 
                 <span v-else>{{ umuti.location }}</span>
                 </div>
 

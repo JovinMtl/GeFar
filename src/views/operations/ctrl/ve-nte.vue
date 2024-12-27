@@ -49,7 +49,7 @@
                 <div class="contentElement2">
                     {{ umuti.nom_med }}
                 </div> <div class="contentElement3">
-                    {{ (umuti.quantite_restant || umuti.quantity ) }}
+                    {{ (umuti.quantity || umuti.quantity ) }}
                 </div> 
 
                 <div class="contentElement4 famille_med">
@@ -62,16 +62,16 @@
                 </div>
 
                 <div class="contentElement4 total">
-                    {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity) }}
+                        {{ umuti.prix_vente * (umuti.quantity || umuti.quantity || 1) }}
                 </div>
 
                 <div class="contentElement4"> 
-                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity) }}</span> 
+                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantity || umuti.quantity || 1) }}</span> 
                 <span v-else>{{ umuti.location }}</span>
                 </div>
 
                 <div class="contentElement4">
-{{ (umuti.date_last_vente).slice(8,10) }}/{{ (umuti.date_last_vente).slice(5,7) }}/{{ (umuti.date_last_vente).slice(2,4) }}
+{{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
                 </div>
                 <div class="contentElement4">
                     {{ (umuti.classe_med).slice(0,15) }}
@@ -135,12 +135,12 @@ const updateTotaux = ()=>{
 
     actual_imitiS.value.forEach(element => {
         // console.log("Quantite restant  pa:",  element.prix_vente)
-        let tot = Number(element.prix_vente * (element.quantite_restant))
-        let achat = Number(element.prix_achat * (element.quantite_restant))
+        let tot = Number(element.prix_vente * (element.quantity))
+        let achat = Number(element.prix_achat * (element.quantity))
         if (tot && achat){
             pt_a += achat
             total += tot
-            benefice += (element.prix_vente - element.prix_achat) * (element.quantite_restant) 
+            benefice += (element.prix_vente - element.prix_achat) * (element.quantity) 
         }
 
         

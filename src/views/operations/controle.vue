@@ -111,6 +111,7 @@ import {
 import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
 import cirCle from './circle.vue'
 import disPo from './ctrl/dis-po.vue'
+import veNte from './ctrl/ve-nte.vue'
 
 const emit = defineEmits(['turnControl',])
 const title_operation = ref('Opérations')
