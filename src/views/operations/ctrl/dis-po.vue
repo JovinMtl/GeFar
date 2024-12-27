@@ -2,7 +2,8 @@
     <div class="dynContent" style="">
         
         <div class="controlHeader" style="height: 5%; width: 100%;">
-            <div  class="controlContent">
+            <div  class="controlContent" style="font-size: .8rem;
+                background-color: navy; color: white">
                 <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
                     #
                 </div> 
@@ -40,13 +41,9 @@
         </div>
 
         <div class="controlBody">
-            <div v-for="(umuti, index) in actual_imitiS" 
-                style="display: block;
-                width: 100%; height: 20px; background-color: rgba(255, 255, 255, 0.5);
-                margin-bottom: 5px;
-                border: 1px solid white;
-                font-size: .8rem;">
-                <div class="contentElement11">
+            <div v-for="(umuti, index) in (actual_imitiS)" 
+                :class="index%2 ? 'ln-1':'ln-2'">
+                <div  style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
                     {{ index + 1 }}
                 </div> 
                 <div class="contentElement2">
