@@ -167,6 +167,11 @@ const checkBon = (e)=>{
         selectIndex.value.delete(index)
     }
     console.log("Have: ", selectIndex.value)
+    if(e.shiftKey){
+        console.log("THe shift key was pressed")
+    } else{
+        console.log("The shift key was not pressed")
+    }
 }
 
 
