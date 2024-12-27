@@ -76,6 +76,7 @@
                 </div>
                 <div class="elt5">
                      <span :id="'i'+ index" class="rdBtn bg-w"
+                        :class="selectIndex.has(index)? 'bg-p':''"
                        @click="checkBon"></span>
                 </div>
                 
@@ -128,7 +129,7 @@ const props = defineProps(['med','admin'])
 const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
-const selectIndex = new Set()
+const selectIndex =ref(new Set())
 
 
 
@@ -160,11 +161,12 @@ const updateTotaux = ()=>{
 
 const checkBon = (e)=>{
     let index = Number((e.target.id).slice(1))
-    if (!selectIndex.has(index)){
-        selectIndex.add(index)
+    if (!selectIndex.value.has(index)){
+        selectIndex.value.add(index)
     } else{
-        selectIndex.delete(index)
+        selectIndex.value.delete(index)
     }
+    console.log("Have: ", selectIndex.value)
 }
 
 
