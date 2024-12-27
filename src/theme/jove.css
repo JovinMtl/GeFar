@@ -377,6 +377,12 @@ html, body {
     width: 12%;height: 100%;
     /* border: 1px solid blue; */
 }
+.elt5{
+    display: inline-flex;
+    background-color: transparent; 
+    width: 8%;height: 100%;
+    /* border: 1px solid blue; */
+}
 .controlBody{
     height: 90%; width: 100%; 
     overflow: auto;
@@ -404,4 +410,7 @@ html, body {
 
 .d-f{
     display: flex;
+}
+.bg-w{
+    background-color: wheat;
 }

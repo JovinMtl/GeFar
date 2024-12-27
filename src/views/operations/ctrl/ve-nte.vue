@@ -34,8 +34,8 @@
                 <div class="contentElement4">
                     Date
                 </div>
-                <div class="contentElement4">
-                    Classe
+                <div class="elt5">
+                    Assu.
                 </div>
             </div>
         </div>
@@ -74,8 +74,9 @@
                 <div class="contentElement4">
 {{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
                 </div>
-                <div class="contentElement4">
-                    <!-- {{ (umuti.classe_med).slice(0,15) }} -->
+                <div class="elt5">
+                    <!-- <input type="radio"/> -->
+                     <span class="rdBtn bg-w"></span>
                 </div>
                 
             </div>
