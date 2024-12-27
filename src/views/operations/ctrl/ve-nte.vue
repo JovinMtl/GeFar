@@ -75,8 +75,8 @@
 {{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
                 </div>
                 <div class="elt5">
-                    <!-- <input type="radio"/> -->
-                     <span class="rdBtn bg-w"></span>
+                     <span :id="'i'+ index" class="rdBtn bg-w"
+                        @click="checkBon"></span>
                 </div>
                 
             </div>
@@ -129,7 +129,6 @@ const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
 
-console.log("THe props: ",actual_imitiS.value[3])
 
 const updateTotaux = ()=>{
     console.log("Attempt to build totaux",)
@@ -156,6 +155,11 @@ const updateTotaux = ()=>{
     totaux.value = [number, total, pt_a, benefice]
 
 }
+
+const checkBon = (e)=>{
+    console.log("The selected bon has id:", e.target.id)
+}
+
 
 updateTotaux()
 
