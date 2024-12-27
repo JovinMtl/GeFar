@@ -42,7 +42,8 @@
 
         <div class="controlBody">
             <div v-for="(umuti, index) in (actual_imitiS)" 
-                :class="index%2 ? 'ln-1':'ln-2'">
+                :class="index%2 ? 'ln-1':'ln-2'"
+                style="display: flex;">
                 <div  style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
                     {{ index + 1 }}
                 </div> 
@@ -74,7 +75,7 @@
 {{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
                 </div>
                 <div class="contentElement4">
-                    {{ (umuti.classe_med).slice(0,15) }}
+                    <!-- {{ (umuti.classe_med).slice(0,15) }} -->
                 </div>
                 
             </div>

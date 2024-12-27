@@ -95,6 +95,9 @@
             <disPo :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Disponibles'"/>
+            <veNte :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Ventes'"/>
             
             
         </div>
@@ -232,6 +235,7 @@ watch(actual_entree, (value)=>{
 })
 watch(actual_vente, (value)=>{
     if (value){
+        // title_operation.value = "Ventes"
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['nom_med', 
