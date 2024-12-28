@@ -37,7 +37,7 @@
                     width: 90%;text-align: center;display:block">
                     {{ title }}
                 </div>
-                <div v-show="title" style="margin: 1rem 0">
+                <div v-show="title=='Detail pour des Ventes'" style="margin: 1rem 0">
                     <label for="" class="la">Début</label><br>
                     <input style="margin-bottom: 1rem;"
                         v-model="date1" type="date"/> <br>
