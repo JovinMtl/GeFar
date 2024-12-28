@@ -213,6 +213,7 @@ const checkBon = (e)=>{
     tempSelected = index
 }
 const removeBadBons = ()=>{
+    // removeBadBons returns the clean list of id's needed
     let indexes1 = selectIndex.value
     // find falses
     let false_ids = []
@@ -231,8 +232,15 @@ const removeBadBons = ()=>{
         i += 1
     })
     console.log("The remaining Indexes:", selectIndex.value,
-        ":remain:", false_ids
+        ":removed:", false_ids
     )
+    // building new and related bon ids
+    let arr = []
+    selectIndex.value.forEach(elm=>{
+        console.log("Consider:", repBons.value[elm].id)
+        arr.push(repBons.value[elm].id)
+    })
+    return arr
 }
 const buildBons = ()=>{
     let arr = []
