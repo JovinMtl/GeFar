@@ -118,9 +118,7 @@
                     ----
                 </div>
                 <div class="contentElement4">
-                    <span style="border: 1px solid black;
-                        padding: 0 5px; cursor: pointer;
-                        position: absolute">
+                    <span class="pay" @click="fIndex">
                         Payer
                     </span>
                 </div>
@@ -132,7 +130,9 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import { useKurungika } from '../../hooks/kuvoma'
 const props = defineProps(['med','admin'])
+const emit = defineEmits(['lsIndex'])
 const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
@@ -140,8 +140,13 @@ const selectIndex =ref(new Set())
 
 let tempSelected = 0
 
+const url_sendIndex = 'api/gOps/setBons/'
+const [repIndex, sendIndex] = useKurungika(selectIndex.value, url_sendIndex)
 
-
+const fIndex = ()=>{
+    console.log("Really wish to send: ", selectIndex.value)
+    sendIndex()
+}
 const updateTotaux = ()=>{
     console.log("Attempt to build totaux",)
     let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
@@ -195,5 +200,8 @@ const checkBon = (e)=>{
 
 updateTotaux()
 
-
+watch(()=>repIndex, ()=>{
+    console.log("La reponse: ", value)
+    emit('lsIndex', selectIndex)
+})
 </script>
