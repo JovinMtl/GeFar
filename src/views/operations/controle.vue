@@ -142,7 +142,8 @@ const [lowStock, getLowStock] = useKuvoma(lowStock_url)
 const dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
 
-const vente_url = 'api/rep/reportSold/'
+// const vente_url = 'api/rep/reportSold/'
+const vente_url = 'api/rep/reportVentes/'
 const [actual_vente, ukuvoma_vente] = useKuvoma(vente_url)
 
 const entree_url = 'api/rep/reportEntree/'
@@ -238,7 +239,7 @@ watch(actual_vente, (value)=>{
     if (value){
         // title_operation.value = "Ventes"
         actual_obj.value = value
-        actual_imitiS.value = value
+        actual_imitiS.value = value.response
         actual_opt.value = ['nom_med', 
         'quantity','prix_vente', 'date_operation',]
         actual_type.value = ['text','text','text','date']
