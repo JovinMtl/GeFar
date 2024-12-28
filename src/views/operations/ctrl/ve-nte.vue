@@ -4,7 +4,7 @@
         <div class="controlHeader" style="height: 5%; width: 100%;">
             <div  class="controlContent" style="font-size: .8rem;
                 background-color: navy; color: white">
-                <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
+                <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: inherit; ">
                     #
                 </div> 
                 <div class="contentElement2">
@@ -14,28 +14,28 @@
                     Qte
                 </div>
 
-                <div class="contentElement4">
-                    <span v-if="isAdmin">P. Achat</span>
+                <div class="contentElement3">
+                    <span v-if="isAdmin">P. A.</span>
                     <!-- <span v-else>T. Med.</span>  -->
                 </div>
 
-                <div class="contentElement4">
-                    P. Vente
+                <div class="contentElement3">
+                    P. V.
                 </div>
 
-                <div class="contentElement4">
+                <div class="contentElement3">
                     Total
                 </div>
 
-                <div class="contentElement4">
-                <span v-if="isAdmin">Bénéfice</span> 
+                <div class="contentElement3">
+                <span v-if="isAdmin">Bnf</span> 
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt5">
                     Date
                 </div>
                 <div class="elt5">
-                    Assu.
+                    Dette
                 </div>
             </div>
         </div>
@@ -54,25 +54,25 @@
                     {{ (umuti.quantity || umuti.quantity ) }}
                 </div> 
 
-                <div class="contentElement4 famille_med">
+                <div class="contentElement3 famille_med">
                     <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
                     
                 </div>
 
-                <div class="contentElement4">
+                <div class="contentElement3">
                     {{ umuti.prix_vente }}
                 </div>
 
-                <div class="contentElement4 total">
+                <div class="contentElement3 total">
                         {{ umuti.prix_vente * (umuti.quantity || umuti.quantity || 1) }}
                 </div>
 
-                <div class="contentElement4"> 
+                <div class="contentElement3"> 
                 <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantity || umuti.quantity || 1) }}</span> 
                 <span v-else>{{ umuti.location }}</span>
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt5">
 {{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
                 </div>
                 <div class="elt5">
@@ -88,7 +88,7 @@
         </div>
 
         <div class="controlFooter">
-            <div  class="controlContent" style="font-weight: 700;">
+            <div  class="controlContent" style="font-weight: 700;font-size: .8rem;">
                 <div class="contentElement1">
                     #
                 </div> 
@@ -99,29 +99,29 @@
                     {{ totaux[0] }}
                 </div>
 
-                <div class="contentElement4">
+                <div class="contentElement3">
                     <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
     
                     {{ totaux[2] }}
                     
                 </div>
 
-                <div class="contentElement4">
+                <div class="contentElement3">
+                    ----
+                </div>
+
+                <div class="contentElement3 total" style="color: blue;">
                     {{ totaux[1] }}
                 </div>
 
-                <div class="contentElement4">
-                    -----
-                </div>
-
-                <div class="contentElement4">
+                <div class="contentElement3">
                     {{ totaux[3] }}
                 </div>
 
-                <div class="contentElement4">
-                    ----
+                <div class="elt5">
+                    ----------
                 </div>
-                <div class="contentElement4">
+                <div class="elt5">
                     <span v-show="repStatus==0 && selectIndex.size" class="pay" @click="fIndex">
                         Payer
                     </span>
