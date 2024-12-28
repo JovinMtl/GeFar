@@ -153,7 +153,7 @@ const idBons = ref([])
 let tempSelected = 0
 
 const url_sendIndex = 'api/gOps/setBons/'
-const [repIndex, sendIndex] = useKurungika(selectIndex.value, url_sendIndex)
+const [repIndex, sendIndex] = usePostRequest()
 
 const url_sendBons = 'api/gOps/getBons/'
 const [repBons, sendBons] = usePostRequest()
@@ -161,7 +161,7 @@ const [repBons, sendBons] = usePostRequest()
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)
     removeBadBons()
-    sendIndex()
+    sendIndex(selectIndex.value, url_sendIndex)
 }
 const updateTotaux = ()=>{
     // console.log("Attempt to build totaux",)
