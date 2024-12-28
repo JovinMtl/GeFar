@@ -30,12 +30,24 @@
                 <div class="contentElement3">
                 <span v-if="isAdmin">Bnf</span> 
                 </div>
+                <div class="elt5">
+                    Caisse
+                </div>
+                <div class="elt5">
+                    Dette
+                </div>
+                <div class="elt5">
+                    Assu.
+                </div>
+                <div class="elt5">
+                    Catég.
+                </div>
 
                 <div class="elt5">
                     Date
                 </div>
                 <div class="elt5">
-                    Dette
+                    Payer
                 </div>
             </div>
         </div>
@@ -71,6 +83,18 @@
                 <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantity || umuti.quantity || 1) }}</span> 
                 <span v-else>{{ umuti.location }}</span>
                 </div>
+                <div class="elt5">
+                     bon
+                </div>
+                <div class="elt5">
+                     bon
+                </div>
+                <div class="elt5">
+                     bon
+                </div>
+                <div class="elt5">
+                     bon
+                </div>
 
                 <div class="elt5">
 {{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
@@ -80,9 +104,6 @@
                         :class="selectIndex.has(index)? 'bg-b':''"
                        @click="checkBon"></span>
                 </div>
-                <!-- <div class="elt5">
-                     {{ repBons[index].is_paid }}
-                </div> -->
                 
             </div>
         </div>
@@ -116,6 +137,18 @@
 
                 <div class="contentElement3">
                     {{ totaux[3] }}
+                </div>
+                <div class="elt5">
+                     bon
+                </div>
+                <div class="elt5">
+                     bon
+                </div>
+                <div class="elt5">
+                     bon
+                </div>
+                <div class="elt5">
+                     bon
                 </div>
 
                 <div class="elt5">
