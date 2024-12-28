@@ -200,7 +200,7 @@ const checkBon = (e)=>{
 
 updateTotaux()
 
-watch(()=>repIndex, ()=>{
+watch(repIndex, (value)=>{
     console.log("La reponse: ", value)
     emit('lsIndex', selectIndex)
 })
