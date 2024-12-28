@@ -43,7 +43,8 @@
         <div class="controlBody">
             <div v-for="(umuti, index) in (actual_imitiS)" 
                 :class="index%2 ? 'ln-1':'ln-2'"
-                class="d-f">
+                class="d-f"
+                :key="index">
                 <div class="contentElement11">
                     {{ index + 1 }}
                 </div> 
@@ -75,10 +76,13 @@
 {{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
                 </div>
                 <div class="elt5">
-                     <span :id="'i'+ index" class="btn2 br mt w-22 bg-g"
+                     <span v-if="!repBons[index].is_paid" :id="'i'+ index" class="btn2 br mt w-22 bg-g"
                         :class="selectIndex.has(index)? 'bg-b':''"
                        @click="checkBon"></span>
                 </div>
+                <!-- <div class="elt5">
+                     {{ repBons[index].is_paid }}
+                </div> -->
                 
             </div>
         </div>
@@ -133,7 +137,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useKurungika, usePostRequest } from '../../hooks/kuvoma'
 import { Value } from 'sass'
 const props = defineProps(['med','admin'])
@@ -156,6 +160,7 @@ const [repBons, sendBons] = usePostRequest()
 
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)
+    removeBadBons()
     sendIndex()
 }
 const updateTotaux = ()=>{
@@ -207,6 +212,28 @@ const checkBon = (e)=>{
     }
     tempSelected = index
 }
+const removeBadBons = ()=>{
+    let indexes1 = selectIndex.value
+    // find falses
+    let false_ids = []
+    let i = 0
+    console.log("Rep Bons", repBons.value, 
+    "selInd:", selectIndex.value)
+    repBons.value.forEach(elm=>{
+        if(!elm.is_paid){
+            console.log("Not paid:", elm.is_paid)
+            false_ids.push(i)
+            // remove that index in selectIndex
+            
+        } else{
+            selectIndex.value.delete(i)
+        }
+        i += 1
+    })
+    console.log("The remaining Indexes:", selectIndex.value,
+        ":remain:", false_ids
+    )
+}
 const buildBons = ()=>{
     let arr = []
     actual_imitiS.value.forEach((elm)=>{
@@ -215,7 +242,9 @@ const buildBons = ()=>{
     idBons.value = arr
     console.log("Bons to request:", idBons.value)
     sendBons(idBons.value, url_sendBons)
+    // removeBadBons()
 }
+
 
 
 updateTotaux()
@@ -223,6 +252,7 @@ buildBons()
 
 watch(repBons, (value)=>{
     console.log("SendBon: ", value)
+    // removeBadBons()
 })
 watch(repIndex, (value)=>{
     // console.log("La reponse: ", value)
