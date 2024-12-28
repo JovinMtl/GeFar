@@ -160,8 +160,8 @@ const [repBons, sendBons] = usePostRequest()
 
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)
-    removeBadBons()
-    sendIndex(selectIndex.value, url_sendIndex)
+   const bon_ids = removeBadBons()
+    sendIndex(bon_ids, url_sendIndex)
 }
 const updateTotaux = ()=>{
     // console.log("Attempt to build totaux",)
