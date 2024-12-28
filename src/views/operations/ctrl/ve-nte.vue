@@ -135,18 +135,24 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useKurungika } from '../../hooks/kuvoma'
+import { Value } from 'sass'
 const props = defineProps(['med','admin'])
 const emit = defineEmits(['lsIndex'])
 const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
 const selectIndex =ref(new Set())
-const repStatus  = ref(0)
+const repStatus  = ref<number>(0)
+
+const idBons = ref<number[]>([])
 
 let tempSelected = 0
 
 const url_sendIndex = 'api/gOps/setBons/'
 const [repIndex, sendIndex] = useKurungika(selectIndex.value, url_sendIndex)
+
+const url_sendBons = 'api/gOps/getBons/'
+const [repBons, sendBons] = useKurungika(idBons.value, url_sendBons)
 
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)
@@ -201,15 +207,26 @@ const checkBon = (e)=>{
     }
     tempSelected = index
 }
+const buildBons = ()=>{
+    idBons.value = []
+    actual_imitiS.value.forEach(elm=>{
+        idBons.value.push(elm.bon_de_commande)
+    })
+    sendBons()
+}
 
 
 updateTotaux()
+buildBons()
 
+watch(repBons, (value)=>{
+    console.log("SendBon: ", value)
+})
 watch(repIndex, (value)=>{
-    console.log("La reponse: ", value)
+    // console.log("La reponse: ", value)
     if(value.status==1){
         repStatus.value = 1
-        console.log("Succes")
+        // console.log("Succes")
         setTimeout(()=>{
             emit('lsIndex', selectIndex)
         }, 2000)
