@@ -134,7 +134,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useKurungika } from '../../hooks/kuvoma'
+import { useKurungika, usePostRequest } from '../../hooks/kuvoma'
 import { Value } from 'sass'
 const props = defineProps(['med','admin'])
 const emit = defineEmits(['lsIndex'])
@@ -144,7 +144,7 @@ const totaux = ref([0,0]) // To display totals on the footer.
 const selectIndex =ref(new Set())
 const repStatus  = ref<number>(0)
 
-const idBons = ref<number[]>([])
+const idBons = ref([])
 
 let tempSelected = 0
 
@@ -152,14 +152,14 @@ const url_sendIndex = 'api/gOps/setBons/'
 const [repIndex, sendIndex] = useKurungika(selectIndex.value, url_sendIndex)
 
 const url_sendBons = 'api/gOps/getBons/'
-const [repBons, sendBons] = useKurungika(idBons.value, url_sendBons)
+const [repBons, sendBons] = usePostRequest()
 
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)
     sendIndex()
 }
 const updateTotaux = ()=>{
-    console.log("Attempt to build totaux",)
+    // console.log("Attempt to build totaux",)
     let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
 
     actual_imitiS.value.forEach(element => {
@@ -176,7 +176,7 @@ const updateTotaux = ()=>{
         
         
         
-        console.log("total: ", total)
+        // console.log("total: ", total)
         number += 1
     });
 
@@ -208,11 +208,13 @@ const checkBon = (e)=>{
     tempSelected = index
 }
 const buildBons = ()=>{
-    idBons.value = []
-    actual_imitiS.value.forEach(elm=>{
-        idBons.value.push(elm.bon_de_commande)
+    let arr = []
+    actual_imitiS.value.forEach((elm)=>{
+        arr.push(elm.bon_de_commande)
     })
-    sendBons()
+    idBons.value = arr
+    console.log("Bons to request:", idBons.value)
+    sendBons(idBons.value, url_sendBons)
 }
 
 
