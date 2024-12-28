@@ -118,8 +118,12 @@
                     ----
                 </div>
                 <div class="contentElement4">
-                    <span class="pay" @click="fIndex">
+                    <span v-show="repStatus==0 && selectIndex.size" class="pay" @click="fIndex">
                         Payer
+                    </span>
+                    <span v-if="repStatus">
+                        <span v-if="repStatus==1">Ok</span>
+                        <span v-if="repStatus==2">No</span>
                     </span>
                 </div>
             </div>
@@ -137,6 +141,7 @@ const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
 const selectIndex =ref(new Set())
+const repStatus  = ref(0)
 
 let tempSelected = 0
 
@@ -203,8 +208,13 @@ updateTotaux()
 watch(repIndex, (value)=>{
     console.log("La reponse: ", value)
     if(value.status==1){
+        repStatus.value = 1
         console.log("Succes")
-        emit('lsIndex', selectIndex)
+        setTimeout(()=>{
+            emit('lsIndex', selectIndex)
+        }, 2000)
+    } else{
+        repStatus.value = 2
     }
 })
 </script>
