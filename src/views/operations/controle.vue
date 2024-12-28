@@ -97,7 +97,8 @@
                 v-if="title_operation == 'Disponibles'"/>
             <veNte :med="actual_imitiS" 
                 :admin="isAdmin"
-                v-if="title_operation == 'Ventes'"/>
+                v-if="title_operation == 'Ventes'"
+                @lsIndex="refreshVente"/>
             
             
         </div>
@@ -292,6 +293,12 @@ const applyFilter = ()=>{
 const closeControle = ()=>{
     //emitting 0, to close the component
     emit("turnControl")
+}
+const refreshVente = ()=>{
+    title_operation.value = ""
+    setTimeout(()=>{
+        title_operation.value = "Ventes"
+    }, 1000)
 }
 </script>
 
