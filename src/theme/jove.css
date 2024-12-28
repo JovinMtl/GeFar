@@ -430,3 +430,12 @@ html, body {
     width: 30%;
     height: 80%;
 }
+.pay{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0 5px; cursor: pointer;
+    position: absolute
+}
+.pay:active{
+    scale: .8;
+}
