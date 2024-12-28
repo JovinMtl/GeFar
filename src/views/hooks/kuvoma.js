@@ -72,10 +72,12 @@ export function useKurungika(
     const isError = ref(false)
     const error_message = ref(null)
     const { getAccessToken } = useUserStore();
+    // console.log("Attempting to send:", imitiArray)
     // return prefix
     if (!(otherData1 && otherData2)) {
         const kurungikaImiti = async () => {
             // const base = '//muteule.pythonanywhere.com'
+            console.log("Attempt to send:", imitiArray)
             console.log("prefix dukorerako: ", prefix);
 
             try {
@@ -106,6 +108,54 @@ export function useKurungika(
         return "not really";
     }
 }
+
+export function usePostRequest(
+    otherData1 = null,
+    otherData2 = null,
+) {
+    const data = ref(null);
+    const isError = ref(false)
+    const error_message = ref(null)
+    const { getAccessToken } = useUserStore();
+    // console.log("Attempting to send:", imitiArray)
+    // return prefix
+    if (!(otherData1 && otherData2)) {
+        const kurungikaImiti = async (
+            imitiArray,
+            prefix,) => {
+            // const base = '//muteule.pythonanywhere.com'
+            console.log("Attempt to send:", imitiArray)
+            console.log("prefix dukorerako: ", prefix);
+
+            try {
+                const response = await fetch(`${baseURL}/${prefix}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                        Authorization: "Bearer " + getAccessToken(),
+                    },
+                    body: JSON.stringify({
+                        imiti: imitiArray,
+                    }),
+                });
+                data.value = await response.json();
+            } catch (error) {
+                isError.value =true
+                error_message.value = error
+                console.log("something has not be well because :", error);
+            }
+        };
+        if(isError.value){
+            return [error_message, kurungikaImiti]
+        } else{
+            return [data, kurungikaImiti];
+        }
+
+    } else {
+        return "not really";
+    }
+}
+
 
 export async function useNoteUmuti(value) {
     // send that value to the url endpoint, it is the latter to decide
