@@ -369,7 +369,8 @@ html, body {
 .contentElement3{
     display: inline-flex;
     background-color: transparent; 
-    width: 4%;height: 100%;
+    width: 5%;height: 100%;
+    margin: 0 3px;
 }
 .contentElement4{
     display: inline-flex;
@@ -439,4 +440,7 @@ html, body {
 }
 .pay:active{
     scale: .8;
+}
+.c-g{
+    color: grey;
 }

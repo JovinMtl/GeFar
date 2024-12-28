@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div class="controlBody">
+        <!-- <div class="controlBody" style="display: none;">
             <div v-for="(umuti, index) in (actual_imitiS)" 
                 :class="index%2 ? 'ln-1':'ln-2'"
                 class="d-f"
@@ -80,20 +80,23 @@
                 </div>
 
                 <div class="contentElement3"> 
-                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantity || umuti.quantity || 1) }}</span> 
+                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantity || 1) }}</span> 
                 <span v-else>{{ umuti.location }}</span>
                 </div>
                 <div class="elt5">
-                     bon
+                     <span v-if="repBons[index].is_paid">{{umuti.prix_vente * (umuti.quantity || 1)}}</span>
+                     <span v-else>
+                          20
+                     </span>
                 </div>
                 <div class="elt5">
-                     bon
+                     dette
                 </div>
                 <div class="elt5">
-                     bon
+                     assu
                 </div>
                 <div class="elt5">
-                     bon
+                     categ
                 </div>
 
                 <div class="elt5">
@@ -101,6 +104,67 @@
                 </div>
                 <div class="elt5">
                      <span v-if="!repBons[index].is_paid" :id="'i'+ index" class="btn2 br mt w-22 bg-g"
+                        :class="selectIndex.has(index)? 'bg-b':''"
+                       @click="checkBon"></span>
+                </div>
+                
+            </div>
+        </div> -->
+
+        <div class="controlBody">
+            <div v-for="(umuti, index) in (actual_imitiS)" 
+                :class="index%2 ? 'ln-1':'ln-2'"
+                class="d-f"
+                :key="index">
+                <div class="contentElement11">
+                    {{ index + 1 }}
+                </div> 
+                <div class="contentElement2">
+                    {{ umuti.nom_med }}
+                </div> <div class="contentElement3">
+                    {{ (umuti.qte ) }}
+                </div> 
+
+                <div class="contentElement3 famille_med">
+                    <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
+                    
+                </div>
+
+                <div class="contentElement3">
+                    {{ umuti.prix_vente }}
+                </div>
+
+                <div class="contentElement3 total">
+                        {{ umuti.total }}
+                </div>
+
+                <div class="contentElement3"> 
+                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.qte || 1) }}</span> 
+                
+                </div>
+                <div class="elt5">
+                     <span >{{umuti.caisse}}</span>
+                </div>
+                <div class="elt5">
+                    <span :class="umuti.assu=='Pharmacie Ubuzima' ? 'c-g':''">
+                        {{ umuti.dette }}</span>
+                     
+                </div>
+                <div class="elt5">
+                    <span v-show="umuti.assu !='Sans'">
+                        {{ (umuti.assu).slice(0,5) }}...
+                    </span>
+                </div>
+                <div class="elt5">
+                    <span v-show="umuti.categ!='null'">{{ umuti.categ }}</span>
+                     
+                </div>
+
+                <div class="elt5">
+{{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
+                </div>
+                <div class="elt5">
+                     <span v-if="!umuti.is_paid" class="btn2 br mt w-22 bg-g"
                         :class="selectIndex.has(index)? 'bg-b':''"
                        @click="checkBon"></span>
                 </div>
@@ -131,7 +195,7 @@
                     ----
                 </div>
 
-                <div class="contentElement3 total" style="color: blue;">
+                <div class="contentElement3 total" style="margin-right: 5px;">
                     {{ totaux[1] }}
                 </div>
 
@@ -139,16 +203,16 @@
                     {{ totaux[3] }}
                 </div>
                 <div class="elt5">
-                     bon
+                     caisse
                 </div>
                 <div class="elt5">
-                     bon
+                     dette
                 </div>
                 <div class="elt5">
-                     bon
+                     assu
                 </div>
                 <div class="elt5">
-                     bon
+                     categ
                 </div>
 
                 <div class="elt5">
