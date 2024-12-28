@@ -202,6 +202,9 @@ updateTotaux()
 
 watch(repIndex, (value)=>{
     console.log("La reponse: ", value)
-    emit('lsIndex', selectIndex)
+    if(value.status==1){
+        console.log("Succes")
+        emit('lsIndex', selectIndex)
+    }
 })
 </script>
