@@ -165,6 +165,7 @@
                 </div>
                 <div class="elt5">
                      <span v-if="!umuti.is_paid" class="btn2 br mt w-22 bg-g"
+                        :id="'j'+index"
                         :class="selectIndex.has(index)? 'bg-b':''"
                        @click="checkBon"></span>
                 </div>
@@ -317,26 +318,26 @@ const removeBadBons = ()=>{
     let i = 0
     console.log("Rep Bons", repBons.value, 
     "selInd:", selectIndex.value)
-    repBons.value.forEach(elm=>{
-        if(!elm.is_paid){
-            console.log("Not paid:", elm.is_paid)
-            false_ids.push(i)
-            // remove that index in selectIndex
+    // repBons.value.forEach(elm=>{
+    //     if(!elm.is_paid){
+    //         console.log("Not paid:", elm.is_paid)
+    //         false_ids.push(i)
+    //         // remove that index in selectIndex
             
-        } else{
-            selectIndex.value.delete(i)
-        }
-        i += 1
-    })
+    //     } else{
+    //         selectIndex.value.delete(i)
+    //     }
+    //     i += 1
+    // })
     console.log("The remaining Indexes:", selectIndex.value,
         ":removed:", false_ids
     )
     // building new and related bon ids
     let arr = []
-    selectIndex.value.forEach(elm=>{
-        console.log("Consider:", repBons.value[elm].id)
-        arr.push(repBons.value[elm].id)
-    })
+    // selectIndex.value.forEach(elm=>{
+    //     console.log("Consider:", repBons.value[elm].id)
+    //     arr.push(repBons.value[elm].id)
+    // })
     return arr
 }
 const buildBons = ()=>{
