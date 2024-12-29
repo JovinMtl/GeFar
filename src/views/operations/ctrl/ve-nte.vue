@@ -249,6 +249,7 @@ const repStatus  = ref<number>(0)
 const idBons = ref([])
 
 let tempSelected = 0
+let numsBon: number[] = []
 
 const url_sendIndex = 'api/gOps/setBons/'
 const [repIndex, sendIndex] = usePostRequest()
@@ -258,8 +259,8 @@ const [repBons, sendBons] = usePostRequest()
 
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)
-   const bon_ids = removeBadBons()
-    sendIndex(bon_ids, url_sendIndex)
+    numsBon = removeBadBons()
+    sendIndex(numsBon, url_sendIndex)
 }
 const updateTotaux = ()=>{
     // console.log("Attempt to build totaux",)
@@ -312,32 +313,22 @@ const checkBon = (e)=>{
 }
 const removeBadBons = ()=>{
     // removeBadBons returns the clean list of id's needed
-    let indexes1 = selectIndex.value
     // find falses
-    let false_ids = []
-    let i = 0
-    console.log("Rep Bons", repBons.value, 
-    "selInd:", selectIndex.value)
-    // repBons.value.forEach(elm=>{
-    //     if(!elm.is_paid){
-    //         console.log("Not paid:", elm.is_paid)
-    //         false_ids.push(i)
-    //         // remove that index in selectIndex
+    let i = 0;
+
+    // to fish the bad ones
+    actual_imitiS.value.forEach(elm=>{
+        if(elm.is_paid){
+            selectIndex.value.delete(i)
+        }
+        i +=1
+    })
             
-    //     } else{
-    //         selectIndex.value.delete(i)
-    //     }
-    //     i += 1
-    // })
-    console.log("The remaining Indexes:", selectIndex.value,
-        ":removed:", false_ids
-    )
-    // building new and related bon ids
     let arr = []
-    // selectIndex.value.forEach(elm=>{
-    //     console.log("Consider:", repBons.value[elm].id)
-    //     arr.push(repBons.value[elm].id)
-    // })
+    selectIndex.value.forEach(elm=>{
+        console.log("Consider:", actual_imitiS.value[elm].num_du_bon)
+        arr.push(actual_imitiS.value[elm].num_du_bon)
+    })
     return arr
 }
 const buildBons = ()=>{
@@ -347,14 +338,14 @@ const buildBons = ()=>{
     })
     idBons.value = arr
     console.log("Bons to request:", idBons.value)
-    sendBons(idBons.value, url_sendBons)
     // removeBadBons()
+    // sendBons(selectIndex.value, url_sendBons)
 }
 
 
 
 updateTotaux()
-buildBons()
+// buildBons()
 
 watch(repBons, (value)=>{
     console.log("SendBon: ", value)
@@ -365,6 +356,12 @@ watch(repIndex, (value)=>{
     if(value.status==1){
         repStatus.value = 1
         // console.log("Succes")
+        console.log("Numbons are:", numsBon)
+        console.log("all: ",actual_imitiS.value)
+        let i = 0
+        selectIndex.value.forEach((num)=>{
+            actual_imitiS.value[num].is_paid = true
+        })
         setTimeout(()=>{
             emit('lsIndex', selectIndex)
         }, 2000)
