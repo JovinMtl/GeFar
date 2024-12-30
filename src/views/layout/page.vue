@@ -176,10 +176,11 @@
                                         <label for="assur"
                                              style="font-size: .8rem;
                                              color: black;margin-right: 4px;">Son assureur:</label>
-                                        <select  id="assur">
+                                        <select  id="assur" v-model="assureur">
                                             <!-- Should have twenty char -->
-                                            <option v-for="assurance in assurances" v-show="assurance.name !='Sans'"
-                                                v-if="assurance.name !='Pharmacie Ubuzima'">{{ (assurance.name).slice(0,20) }}</option>
+                                            <option v-for="assurance in assurances">
+                                                {{ (assurance.name).slice(0,20) }}
+                                            </option>
                                         </select>
                                         <a title="Ajouter une nouvelle assurance">
                                             <input
@@ -197,7 +198,7 @@
                                         <input type="button" value="No" 
                                             class="ml-10" @click="need_assureur=false">
                                         <hr>
-                                        <input type="text"  v-model="assu_rate"
+                                        <input type="number"  v-model="assu_rate"
                                         placeholder="Taux d'assurance. e.x: 20">
                                         <input type="button" value="Ok" 
                                             class="ml-10" @click="checkAssu">
@@ -392,7 +393,7 @@ const clName1: Ref<string> = ref('')
 const clCardNumber: Ref<string> = ref('')
 const clBonNumber: Ref<string> = ref('')
 const assu_name: Ref<string> = ref('')
-const assu_rate: Ref<string> = ref('')
+// const assu_rate: Ref<string> = ref('')
 const bonDate = ref(new Date)
 const clPhone: Ref<number> = ref() // omitting initial value for placeholder
 const message = shallowRef<string>('')
@@ -400,6 +401,8 @@ const clClean: Ref<boolean> = ref(false)
 const isWarning: Ref<boolean> = ref(false)
 const need_assureur: Ref<boolean> = ref(false)
 const assu_state: Ref<boolean> = ref(false)
+const assu_rate: Ref<number> = ref()
+const rate_assure: Ref<number> = ref(1)
 const clientInfo: clInfo = reactive({
     'nom_client': '',
     'numero_tel': '',
@@ -859,7 +862,9 @@ const update_total_client = (reduction: number = 0): string => {
     if (reduction == 0) {
         somme_formatted = number_To_string(somme) //formatting by three digits
     } else if (reduction == 1) {
-        somme = somme * 0.9
+        console.log("The assurances:", assurances.value)
+        console.log("from:", clientInfo.assureur)
+        somme = somme *( rate_assure.value / 100)
         somme_formatted = number_To_string(somme) //formatting by three digits
     } else {
         somme = 0
@@ -970,6 +975,13 @@ const initClient = ()=>{
     clientInfo.date_bon = ''
 }
 
+watch(assureur, (value)=>{
+    assurances.value.forEach((elm)=>{
+        if(elm.name == value){
+            rate_assure.value = elm.rate_assure
+        }
+    })
+})
 watch(addAssuResp, (value)=>{
     console.log("Resp from addAssu: ", value)
     assu_state.value = value.status
