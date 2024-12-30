@@ -299,7 +299,7 @@ const refreshVente = ()=>{
     title_operation.value = ""
     setTimeout(()=>{
         title_operation.value = "Ventes"
-    }, 1000)
+    }, 0)
 }
 </script>
 
