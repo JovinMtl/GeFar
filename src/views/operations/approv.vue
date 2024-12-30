@@ -16,19 +16,19 @@
                     {{ umuti.nom_med }} {{ umuti.code_med }} {{ umuti.description_med }}
                 </button>
             </ul>
-            <input v-model="umuti_prix_achat" type="text" placeholder="Price in: (type_vente)">
+            <input v-model="umuti_prix_achat" type="number" placeholder="Price in: (type_vente)">
             <br> <br>
-            <input v-model="umuti_prix_vente" type="text" placeholder="Price out : (type_vente)">
+            <input v-model="umuti_prix_vente" type="number" placeholder="Price out : (type_vente)">
             <br> <br>
-            <input v-model="umuti_quantite_initial" type="text" placeholder="Quantite Initial">
+            <input v-model="umuti_quantite_initial" type="number" placeholder="Quantite Initial">
             <br> <br>
             <label>Date d'exp. </label> 
             <!-- <br> -->
             <input v-model="umuti_date_exp" type="date" placeholder="Nom du medicament">
             <br> <br>
-            <label v-if="date_exp">Type de medicament</label>
+            <label v-if="umuti_date_exp">Type de medicament</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
-            <select v-model="famille_med" v-if="date_exp" style="background-color: white" placeholder="Type" value="Ovule">
+            <select v-model="famille_med" v-if="umuti_date_exp" style="background-color: white" placeholder="Type" value="Ovule">
                 <option>Cp</option>
                 <option>Gel</option>
                 <option>Ovule</option>
