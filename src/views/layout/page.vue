@@ -1016,6 +1016,16 @@ watch(suggest, (value)=>{
 })
 watch(selectedProf, (value) => {
     // Now apply the reduction according to benefit of value 'md,tv'
+    if(selectedProf.value == 'tv' ||
+        selectedProf.value == 'mt' ||
+        selectedProf.value == 'md'
+    ){
+        assurances.value.forEach((elm)=>{
+        if(elm.name == 'Pharmacie Ubuzima'){
+            rate_assure.value = elm.rate_assure
+        }
+    })
+    }
     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
     initClient()
     clClean.value = false
