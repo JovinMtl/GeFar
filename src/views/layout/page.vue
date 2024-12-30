@@ -789,6 +789,31 @@ const number_To_string = (value = 10000) => {
     converted = converted.replace('.', '').split('').reverse().toString().replaceAll(',', '')
     return converted
 }
+const readableNumber = (value=1000):String=>{
+    let data = String(value)
+    let r_data = data.split('').reverse()
+    let len = data.length
+    let result = ''
+    console.log("The r_data:", data, r_data,"l:", len)
+    for(let i=0; i <= len-1; i++){
+        if(i && i%3==0){
+            console.log("O")
+            result = result.concat(`.${r_data[i]}`)
+        } else{
+            console.log("N")
+            result = result.concat(r_data[i])
+        }
+        console.log("now:", r_data[i])
+    }
+    let len2 = result.length
+    let result2 = ''
+    for (let i=len2-1; i>=0; i--){
+        result2 = result2.concat(result[i])
+    }
+    console.log("result is: ", result2)
+    // let final_result = result.
+    return result2
+}
 const removeUmuti = (obj) => {
     // This function handles the removal of umuti in panier.
     const code_s = obj.target.getAttribute('id')
@@ -861,15 +886,15 @@ const update_total_client = (reduction: number = 0): string => {
         somme += p_T
     })
     if (reduction == 0) {
-        somme_formatted = number_To_string(somme) //formatting by three digits
+        somme_formatted = readableNumber(somme) //formatting by three digits
     } else if (reduction == 1) {
         console.log("The assurances:", assurances.value)
         console.log("from:", clientInfo.assureur)
-        somme = somme - (somme *( rate_assure.value / 100))
-        somme_formatted = number_To_string(somme) //formatting by three digits
+        somme = somme - (somme *( rate_assure.value / 100)).toFixed()
+        somme_formatted = readableNumber(somme) //formatting by three digits
     } else {
         somme = 0
-        somme_formatted = number_To_string(somme) //formatting by three digits
+        somme_formatted = readableNumber(somme) //formatting by three digits
     }
     return somme_formatted
 }
