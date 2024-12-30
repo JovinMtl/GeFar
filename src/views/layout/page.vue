@@ -309,7 +309,7 @@
 import {
     defineAsyncComponent,
     reactive, ref, shallowRef,
-    watch, provide,
+    watch, provide, computed,
 } from 'vue'
 import type { Ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -403,6 +403,7 @@ const need_assureur: Ref<boolean> = ref(false)
 const assu_state: Ref<boolean> = ref(false)
 const assu_rate: Ref<number> = ref()
 const rate_assure: Ref<number> = ref(1)
+// const somme_formatted: Ref<string> = ref('')
 const clientInfo: clInfo = reactive({
     'nom_client': '',
     'numero_tel': '',
@@ -615,8 +616,8 @@ const closeFacture = () => {
     console.log("Calling closeFacture.")
     panier_client.value = []
     panier_api.panier = []
-    total_panier_client.value = update_total_client()
-    total_panier_client_r.value = update_total_client(1)
+    total_panier_client.value = computed(()=>{ return update_total_client()}) 
+    total_panier_client_r.value =  computed(()=>{ return update_total_client(1)}) 
 }
 const SearchBarManager = (value) => {
     query_search.value = value
@@ -794,8 +795,8 @@ const removeUmuti = (obj) => {
     const code = Number(code_s.slice(1))
     panier_client.value.splice(code, 1)
     panier_api.panier.splice(code, 1)
-    total_panier_client.value = update_total_client()
-    total_panier_client_r.value = update_total_client(1)
+    total_panier_client.value = computed(()=>{ return update_total_client()}) 
+    total_panier_client_r.value = computed(()=>{ return update_total_client(1)}) 
 }
 const somme_to_panier = () => {
     // This functions evaluates the sum of quantity chosen in different lots on a same umuti.
@@ -916,8 +917,8 @@ const moveToPanier = (): number => {
         }
         panier_client.value.push(obj_Client)
         panier_api.panier.push(obj_API)
-        total_panier_client.value = update_total_client()
-        total_panier_client_r.value = update_total_client(1)
+        total_panier_client.value = computed(()=>{ return update_total_client()}) 
+        total_panier_client_r.value = computed(()=>{return update_total_client(1)}) 
         // REinitializing
         if (panier_client.value && panier_api.panier) {
             selectedUmuti.value = undefined
