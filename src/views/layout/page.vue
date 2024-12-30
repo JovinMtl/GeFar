@@ -864,7 +864,7 @@ const update_total_client = (reduction: number = 0): string => {
     } else if (reduction == 1) {
         console.log("The assurances:", assurances.value)
         console.log("from:", clientInfo.assureur)
-        somme = somme *( rate_assure.value / 100)
+        somme = somme - (somme *( rate_assure.value / 100))
         somme_formatted = number_To_string(somme) //formatting by three digits
     } else {
         somme = 0
