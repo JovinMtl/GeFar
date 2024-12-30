@@ -85,7 +85,7 @@ export interface ActiveLot {
 export interface Medi {
     'code_med': string;
     'date_last_vente': Date;
-    'description_med': string;
+    'classe_med': string;
     'difference': number;
     'id': number;
     'location': string;
@@ -98,7 +98,7 @@ export interface Medi {
     'ratio_type': number;
     'type_in': string;
     'type_vente': string;
-    'famille_med': string;
+    'sous_classe_med': string;
 }
 
 export interface clInfo{
