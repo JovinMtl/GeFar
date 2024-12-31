@@ -127,13 +127,13 @@
                                 </div>
                             </div>
                             <br>
-                            <p :class="[rdBtnActive && selectedProf != '' ? 'tot-1' : 'c-b']" style="margin-left: .5rem;">
+                            <p v-show="panier_client.value" :class="[rdBtnActive && selectedProf != '' ? 'tot-1' : 'c-b']" style="margin-left: .5rem;">
                                 Total : <span>{{ (String(total_panier_client.value).replaceAll("\"",'')) }} Fbu</span>
                             </p>
                             <p v-if="rdBtnActive && selectedProf != ''" style="margin-left: .5rem;">
                                 Total : <span style="color: black;">{{ (String(total_panier_client_r.value).replaceAll("\"",'')) }} Fbu</span>
                             </p>
-                            <div v-if="confirmRdBtn" class="ending" style="text-align: left;">
+                            <div v-if="confirmRdBtn && panier_client.value" class="ending" style="text-align: left;">
                                 <button class="confirmButton" @click="toSell">Confirmer</button>
                             </div>
                             <div v-else class="ending" style="text-align: left;">
@@ -1002,6 +1002,7 @@ watch(rdBtnActive, (value)=>{
     if(!value){
         initClient()
         console.log("Now the Panier2API: ", panier_api)
+        clClean.value = true
     } else{
         getAssurances()
         console.log("Assurances we have:", assurances.value)
