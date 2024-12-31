@@ -127,13 +127,13 @@
                                 </div>
                             </div>
                             <br>
-                            <p v-show="panier_client.value" :class="[rdBtnActive && selectedProf != '' ? 'tot-1' : 'c-b']" style="margin-left: .5rem;">
+                            <p v-show="show_total" :class="[rdBtnActive && selectedProf != '' ? 'tot-1' : 'c-b']" style="margin-left: .5rem;">
                                 Total : <span>{{ (String(total_panier_client.value).replaceAll("\"",'')) }} Fbu</span>
                             </p>
                             <p v-if="rdBtnActive && selectedProf != ''" style="margin-left: .5rem;">
                                 Total : <span style="color: black;">{{ (String(total_panier_client_r.value).replaceAll("\"",'')) }} Fbu</span>
                             </p>
-                            <div v-if="confirmRdBtn && panier_client.value" class="ending" style="text-align: left;">
+                            <div v-if="confirmRdBtn && show_total" class="ending" style="text-align: left;">
                                 <button class="confirmButton" @click="toSell">Confirmer</button>
                             </div>
                             <div v-else class="ending" style="text-align: left;">
@@ -359,8 +359,8 @@ const panier_api: DataToAPI = reactive({
 const activeLot: Ref<ActiveLot[]> = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
-const total_panier_client: Ref<string> = ref('')
-const total_panier_client_r: Ref<string> = ref('')
+const total_panier_client: Ref<string> = ref('0')
+const total_panier_client_r: Ref<string> = ref('0')
 const approvStatus: Ref<boolean> = ref(false)
 const approFileStatus: Ref<boolean> = ref(false)
 const need_to_updade: Ref<boolean> = ref(false)
@@ -377,6 +377,7 @@ const confirmRdBtn:Ref<boolean> = ref(true)
 const query_search:Medi = reactive({})
 const umuti_single: Ref<boolean> = ref(false)
 const show_facture: Ref<boolean> = ref(false)
+const show_total : Ref<boolean> = ref(false)
 const clear_search: Ref<number> = ref(0)
 const listImiti_update: Ref<number> = ref(0)
 const numero_facture: Ref<number> = ref(0)
@@ -871,6 +872,11 @@ const update_total_client = (reduction: number = 0): string => {
     } else {
         somme = 0
         somme_formatted = readableNumber(somme) //formatting by three digits
+    }
+    if(somme){
+        show_total.value = true
+    } else{
+        show_total.value = false
     }
     return somme_formatted
 }
