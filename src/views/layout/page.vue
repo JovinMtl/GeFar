@@ -128,10 +128,10 @@
                             </div>
                             <br>
                             <p :class="[rdBtnActive && selectedProf != '' ? 'tot-1' : 'c-b']" style="margin-left: .5rem;">
-                                Total : <span>{{ total_panier_client }} Fbu</span>
+                                Total : <span>{{ (String(total_panier_client.value).replaceAll("\"",'')) }} Fbu</span>
                             </p>
                             <p v-if="rdBtnActive && selectedProf != ''" style="margin-left: .5rem;">
-                                Total : <span style="color: black;">{{ total_panier_client_r }} Fbu</span>
+                                Total : <span style="color: black;">{{ (String(total_panier_client_r.value).replaceAll("\"",'')) }} Fbu</span>
                             </p>
                             <div v-if="confirmRdBtn" class="ending" style="text-align: left;">
                                 <button class="confirmButton" @click="toSell">Confirmer</button>
@@ -359,8 +359,8 @@ const panier_api: DataToAPI = reactive({
 const activeLot: Ref<ActiveLot[]> = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
-const total_panier_client: Ref<number> = ref(0)
-const total_panier_client_r: Ref<number> = ref(0)
+const total_panier_client: Ref<string> = ref('')
+const total_panier_client_r: Ref<string> = ref('')
 const approvStatus: Ref<boolean> = ref(false)
 const approFileStatus: Ref<boolean> = ref(false)
 const need_to_updade: Ref<boolean> = ref(false)
@@ -782,10 +782,9 @@ const readableNumber = (value:number=1000):String=>{
         } else{
             result = result.concat(r_data[i])
         }
-        console.log("now:", r_data[i])
     }
     let len2 = result.length
-    let result2 = ''
+    let result2 = new String()
     for (let i=len2-1; i>=0; i--){
         result2 = result2.concat(result[i])
     }
