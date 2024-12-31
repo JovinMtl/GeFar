@@ -789,18 +789,15 @@ const number_To_string = (value = 10000) => {
     converted = converted.replace('.', '').split('').reverse().toString().replaceAll(',', '')
     return converted
 }
-const readableNumber = (value=1000):String=>{
+const readableNumber = (value:number=1000):String=>{
     let data = String(value)
     let r_data = data.split('').reverse()
     let len = data.length
     let result = ''
-    console.log("The r_data:", data, r_data,"l:", len)
     for(let i=0; i <= len-1; i++){
         if(i && i%3==0){
-            console.log("O")
             result = result.concat(`.${r_data[i]}`)
         } else{
-            console.log("N")
             result = result.concat(r_data[i])
         }
         console.log("now:", r_data[i])
@@ -810,8 +807,6 @@ const readableNumber = (value=1000):String=>{
     for (let i=len2-1; i>=0; i--){
         result2 = result2.concat(result[i])
     }
-    console.log("result is: ", result2)
-    // let final_result = result.
     return result2
 }
 const removeUmuti = (obj) => {
