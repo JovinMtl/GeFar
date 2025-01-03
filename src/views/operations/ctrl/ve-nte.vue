@@ -127,8 +127,6 @@
                 </div>
 
                 <div class="contentElement3">
-                    <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
-    
                     {{ totaux[2] }}
                     
                 </div>
@@ -205,7 +203,7 @@ const fIndex = ()=>{
 }
 const updateTotaux = ()=>{
     // console.log("Attempt to build totaux",)
-    let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
+    let [ number, total, pt_a, benefice, caisse, dette ] = [0, 0, 0, 0, 0, 0]
 
     actual_imitiS.value.forEach(element => {
         // console.log("Quantite restant  pa:",  element.prix_vente)
@@ -215,12 +213,14 @@ const updateTotaux = ()=>{
             pt_a += achat
             total += tot
             benefice += (element.prix_vente - element.prix_achat) * (element.qte) 
+            caisse += element.caisse
+            dette += element.dette
         }
 
         number += 1
     });
 
-    totaux.value = [number, total, pt_a, benefice]
+    totaux.value = [number, total, pt_a, benefice, caisse, dette]
 
 }
 
