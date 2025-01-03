@@ -102,6 +102,8 @@
             <achAts :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Achats'"/>
+            <suggEst :med="actual_imitiS" 
+                v-if="title_operation == 'Suggestion'"/>
             
         </div>
     </div>
@@ -119,6 +121,7 @@ import cirCle from './circle.vue'
 import disPo from './ctrl/dis-po.vue'
 import veNte from './ctrl/ve-nte.vue'
 import achAts from './ctrl/ach-ats.vue'
+import suggEst from './ctrl/sugg-est.vue'
 
 const emit = defineEmits(['turnControl',])
 const title_operation = ref('Opérations')
