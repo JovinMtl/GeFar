@@ -143,10 +143,10 @@
                     {{ totaux[3] }}
                 </div>
                 <div class="elt5">
-                     caisse
+                     {{ totaux[4] }}
                 </div>
                 <div class="elt5">
-                     dette
+                     {{ totaux[5] }}
                 </div>
                 <div class="elt5">
                      assu
