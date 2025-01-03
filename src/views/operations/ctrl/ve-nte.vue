@@ -123,10 +123,12 @@
                     TOTAL
                 </div> 
                 <div class="contentElement1">
+                    <!-- Nombre -->
                     {{ totaux[0] }}
                 </div>
 
                 <div class="contentElement3">
+                    <!-- P.A -->
                     {{ totaux[2] }}
                     
                 </div>
@@ -136,23 +138,29 @@
                 </div>
 
                 <div class="contentElement3 total" style="margin-right: 5px;">
+                    <!-- P.V -->
                     {{ totaux[1] }}
                 </div>
 
                 <div class="contentElement3">
+                    <!-- Benefice -->
                     {{ totaux[3] }}
                 </div>
                 <div class="elt5">
+                    <!-- Caisse -->
                      {{ totaux[4] }}
                 </div>
                 <div class="elt5">
+                    <!-- Dette -->
                      {{ totaux[5] }}
                 </div>
                 <div class="elt5">
-                     assu
+                     <!-- assu -->
+                     ------
                 </div>
                 <div class="elt5">
-                     categ
+                     <!-- categ -->
+                     ------
                 </div>
 
                 <div class="elt5">

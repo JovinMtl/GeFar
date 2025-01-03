@@ -174,9 +174,9 @@ const closeFacturier = ()=>{
 
 @media only print {
     
-    @page{
-        size: 8cm 10cm
-    }
+    // @page{
+    //     size: 8cm 10cm
+    // }
     .modal{
         display: none;
     }
