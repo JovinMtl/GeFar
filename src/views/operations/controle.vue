@@ -99,7 +99,9 @@
                 :admin="isAdmin"
                 v-if="title_operation == 'Ventes'"
                 @lsIndex="refreshVente"/>
-            
+            <achAts :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Achats'"/>
             
         </div>
     </div>
@@ -116,6 +118,7 @@ import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../
 import cirCle from './circle.vue'
 import disPo from './ctrl/dis-po.vue'
 import veNte from './ctrl/ve-nte.vue'
+import achAts from './ctrl/ach-ats.vue'
 
 const emit = defineEmits(['turnControl',])
 const title_operation = ref('Opérations')
