@@ -52,65 +52,6 @@
             </div>
         </div>
 
-        <!-- <div class="controlBody" style="display: none;">
-            <div v-for="(umuti, index) in (actual_imitiS)" 
-                :class="index%2 ? 'ln-1':'ln-2'"
-                class="d-f"
-                :key="index">
-                <div class="contentElement11">
-                    {{ index + 1 }}
-                </div> 
-                <div class="contentElement2">
-                    {{ umuti.nom_med }}
-                </div> <div class="contentElement3">
-                    {{ (umuti.quantity || umuti.quantity ) }}
-                </div> 
-
-                <div class="contentElement3 famille_med">
-                    <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
-                    
-                </div>
-
-                <div class="contentElement3">
-                    {{ umuti.prix_vente }}
-                </div>
-
-                <div class="contentElement3 total">
-                        {{ umuti.prix_vente * (umuti.quantity || umuti.quantity || 1) }}
-                </div>
-
-                <div class="contentElement3"> 
-                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantity || 1) }}</span> 
-                <span v-else>{{ umuti.location }}</span>
-                </div>
-                <div class="elt5">
-                     <span v-if="repBons[index].is_paid">{{umuti.prix_vente * (umuti.quantity || 1)}}</span>
-                     <span v-else>
-                          20
-                     </span>
-                </div>
-                <div class="elt5">
-                     dette
-                </div>
-                <div class="elt5">
-                     assu
-                </div>
-                <div class="elt5">
-                     categ
-                </div>
-
-                <div class="elt5">
-{{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
-                </div>
-                <div class="elt5">
-                     <span v-if="!repBons[index].is_paid" :id="'i'+ index" class="btn2 br mt w-22 bg-g"
-                        :class="selectIndex.has(index)? 'bg-b':''"
-                       @click="checkBon"></span>
-                </div>
-                
-            </div>
-        </div> -->
-
         <div class="controlBody">
             <div v-for="(umuti, index) in (actual_imitiS)" 
                 :class="index%2 ? 'ln-1':'ln-2'"
@@ -268,19 +209,14 @@ const updateTotaux = ()=>{
 
     actual_imitiS.value.forEach(element => {
         // console.log("Quantite restant  pa:",  element.prix_vente)
-        let tot = Number(element.prix_vente * (element.quantity))
-        let achat = Number(element.prix_achat * (element.quantity))
+        let tot = Number(element.prix_vente * (element.qte))
+        let achat = Number(element.prix_achat * (element.qte))
         if (tot && achat){
             pt_a += achat
             total += tot
-            benefice += (element.prix_vente - element.prix_achat) * (element.quantity) 
+            benefice += (element.prix_vente - element.prix_achat) * (element.qte) 
         }
 
-        
-        
-        
-        
-        // console.log("total: ", total)
         number += 1
     });
 
