@@ -23,13 +23,13 @@
                 </div>
                 <div id="cha3" @click="openChart"
                     class="dB-ctn" :class="ch3 ? 'dB-ctn-o':''">
-                    CashFlow: Sans et avec BonDeCommande
-                    <BarChart :chartData="testData" :options="chartOptions" />
+                    Comparaison entre les clients: tv, mt, md, au
+                    <BarChart :chartData="testData3" :options="chartOptions" />
                 </div>
                 <div id="cha4" @click="openChart"
                     class="dB-ctn" :class="ch4 ? 'dB-ctn-o':''">
-                    Comparaison entre les clients: tv, mt, md, au
-                    <DoughnutChart :chartData="testData" />
+                    CashFlow: Sans et avec BonDeCommande
+                    <DoughnutChart :chartData="testData4" />
                 </div>
             </div>
             <div class="chartControl">
@@ -73,14 +73,19 @@ const date2 = ref<Date>(null)
 
 const [lineData, askData] = useChart()
 const [chart2Data, askForChart2] = useChart()
+const [chart3Data, askForChart3] = useChart()
+const [chart4Data, askForChart4] = useChart()
 askData('api/rep/getVentes/')
 
 setTimeout(()=>{
     askForChart2('api/rep/getDiffStock/')
 }, 2000)
+setTimeout(()=>{
+    askForChart3('api/rep/getCate/')
+}, 2500)
 
 // Static data
-const testData = {
+const testData3 = reactive({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Autre'],
       datasets: [
         {
@@ -88,7 +93,16 @@ const testData = {
           backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#A5C8ED'],
         },
       ],
-    };
+    });
+const testData4 = reactive({
+      labels: ['Paris', 'Nîmes', 'Toulon', 'Autre'],
+      datasets: [
+        {
+          data: [30, 40, 60, 5],
+          backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#A5C8ED'],
+        },
+      ],
+    });
 const testData1 = reactive({
     labels: ['Paris', 'Nîmes', 'Toulon', 'Autre'],
     datasets: [
@@ -153,7 +167,7 @@ const chartOptions = ref({
                 },
                 title:{
                     display: true,
-                    text: 'Ukwezi'
+                    text: 'Période'
                 }
             },
             y:{
@@ -243,6 +257,10 @@ const checkDate = ()=>{
     }
 }
 
+watch(chart3Data, (value)=>{
+    testData3.labels = value.Y
+    testData3.datasets[0].data = value.X
+})
 watch(chart2Data, (value)=>{
     // Updating the ChartData whenever we do a request to the server
     testData1.labels = value.Y
