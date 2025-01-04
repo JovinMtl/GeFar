@@ -159,7 +159,7 @@
                                     <option v-for="profession in professions" :value="profession.value">{{ profession.name
                                     }}
                                     </option>
-                                </select>
+                                </select> <span style="color:brown"> {{ rate_assure }}%</span> 
                                 <div v-if="selectedProf != 'au' && selectedProf" class="inpName">
                                     <input class="inpName-1" placeholder="mubaze izina ryiwe"
                                         v-model="clName"/>
