@@ -104,6 +104,9 @@
                 v-if="title_operation == 'Achats'"/>
             <suggEst :med="actual_imitiS" 
                 v-if="title_operation == 'Suggestion'"/>
+            <dateGreen :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Low Stock'"/>
             
         </div>
     </div>
@@ -122,6 +125,7 @@ import disPo from './ctrl/dis-po.vue'
 import veNte from './ctrl/ve-nte.vue'
 import achAts from './ctrl/ach-ats.vue'
 import suggEst from './ctrl/sugg-est.vue'
+import dateGreen from './ctrl/date-green.vue'
 
 const emit = defineEmits(['turnControl',])
 const title_operation = ref('Opérations')

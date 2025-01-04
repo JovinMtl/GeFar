@@ -83,6 +83,9 @@ setTimeout(()=>{
 setTimeout(()=>{
     askForChart3('api/rep/getCate/')
 }, 2500)
+setTimeout(()=>{
+    askForChart4('api/rep/getOnNoBon/')
+}, 3000)
 
 // Static data
 const testData3 = reactive({
@@ -117,7 +120,7 @@ const chartData = ref({
     'Rusama', 'Ruheshi', 'Mukakaro'],
     datasets: [
     {
-        label: 'Ventes mensuelles',
+        label: 'Ventes',
         backgroundColor: 'rgba(75, 192, 192, 0.5)',
         borderColor: 'blue',
         data: [65, 59, 80, 121, 56, 55, 80],
@@ -257,6 +260,11 @@ const checkDate = ()=>{
     }
 }
 
+watch(chart4Data, (value)=>{
+    console.log("Bon:", value)
+    testData4.labels = value.Y
+    testData4.datasets[0].data = value.X
+})
 watch(chart3Data, (value)=>{
     testData3.labels = value.Y
     testData3.datasets[0].data = value.X
@@ -265,7 +273,7 @@ watch(chart2Data, (value)=>{
     // Updating the ChartData whenever we do a request to the server
     testData1.labels = value.Y
     testData1.datasets[0].data = value.X
-    console.log("THe value received: ", value)
+    console.log("THe Diff Stock ", value)
 })
 watch(lineData, (value)=>{
     // Updating the ChartData whenever we do a request to the server
