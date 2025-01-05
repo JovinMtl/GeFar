@@ -1,17 +1,14 @@
 <template>
     <div style="display: inline-flex;">
-
-        <ion-icon @click="turnSelect" :src="search" style="font-size: larger;"></ion-icon>
-
-        <span  ref="clickSelect" style="position: absolute;left: -31vw; font-size: .9rem; z-index: -9;">
-            <ion-select aria-label="Fruit" interface="popover"
-            placeholder="choisir" cancel-text="Annuler" v-model="actualField" >
-                <ion-select-option
-                    v-for="(jove, index) in searchableFields"> 
-                    {{ jove }}
-                </ion-select-option>
-            </ion-select>
-        </span>
+        <select ref="clickSelect" 
+                    style="position: absolute; 
+                    transform: translate(-60%);
+                    width: 20px;padding: 0;"
+                    v-model="actualField">
+            <option 
+                v-for="(jove, index) in searchableFields">
+                {{jove}}</option>
+        </select>
         <span style="margin-right: .4rem;">&nbsp;</span> 
 
         <div>
@@ -21,7 +18,6 @@
 </template>
 <script setup>
 import { inject, ref, watch} from 'vue'
-import { IonSelect, IonSelectOption } from '@ionic/vue'
 import { useSearchUmuti } from '../../hooks/kuvoma.js'
 
 const search_value = ref(null)
@@ -34,14 +30,7 @@ const emit = defineEmits(['valueSearch'])
 
 let imiti_injected = inject('imiti_downloaded')
 let order_search = inject('need_clear')
-console.log("The imiti first injected are: ", imiti_injected)
 
-
-const turnSelect = async()=>{
-    clickSelect.value.firstChild.click()
-    actualField.value = await (clickSelect.value.firstChild.value)
-    
-}
 watch(order_search, value=>{
     if(value == 2){
         console.log("Now we need to clear the input search.")
@@ -60,32 +49,6 @@ watch(search_value, (value)=>{
             }
     emit('valueSearch', obj)
 })
-watch(search_result, (value)=>{
-    // have to emit the result
-})
-watch(imiti_injected, (value)=>{
-    console.log("The change in search: ", value)
-})
-</script>
-
-
-<script>
-import { 
-    search
-} from 'ionicons/icons'
-import {
-    IonIcon, IonSearchbar
-} from '@ionic/vue'
-export default {
-    components:{
-        IonIcon, IonSearchbar,
-    },
-    setup() {
-        return {
-            search,
-        }
-    },
-}
 </script>
 
 <style scoped>
