@@ -206,24 +206,6 @@
                                         <div>{{ message }}</div>
                                     </div>
                                     
-                                    <datalist id="mySuggestion">
-                                        <option>BIC</option>
-                                        <option>Jubilee</option>
-                                        <option>SOCAR VIE</option>
-                                        <option>Mutualité Santé Plus</option>
-                                        <option>ASCOMA BURUNDI</option>
-                                        <option>MFP</option>
-                                        <option>AMMS</option>
-                                        <option>MSNASDPHG</option>
-                                        <option>Femuscabu</option>
-                                        <option>BIC</option>
-                                        <option>Jubilee</option>
-                                        <option>SOCAR VIE</option>
-                                        <option>Mutualité Santé Plus</option>
-                                        <option>ASCOMA BURUNDI</option>
-                                        <option>MFP</option>
-                                        <option>AMMS</option>
-                                    </datalist>
                                     <div v-if="stage_redu==3 && assureur" 
                                         style="margin: 20px 0">
                                         <input type="text"
@@ -982,7 +964,10 @@ const initClient = ()=>{
     clientInfo.numero_bon = ''
     clientInfo.date_bon = ''
 }
-
+// watch(assurances, (value)=>{
+    // console.log("Voila assurances:", (new Array(value.value)).slice(1))
+    // assurances.value = value.slice(1)
+// })
 watch(assureur, (value)=>{
     assurances.value.forEach((elm)=>{
         if(elm.name == value){
