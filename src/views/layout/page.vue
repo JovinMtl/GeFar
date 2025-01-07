@@ -964,10 +964,7 @@ const initClient = ()=>{
     clientInfo.numero_bon = ''
     clientInfo.date_bon = ''
 }
-// watch(assurances, (value)=>{
-    // console.log("Voila assurances:", (new Array(value.value)).slice(1))
-    // assurances.value = value.slice(1)
-// })
+
 watch(assureur, (value)=>{
     assurances.value.forEach((elm)=>{
         if(elm.name == value){
