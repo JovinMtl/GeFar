@@ -66,23 +66,22 @@
             <label>Nom </label>
             <input v-model="selected_search.nom_med" type="text" 
                 disabled="true" placeholder="Nom du medicament">
-                <br> <br>
+                <hr>
                 <label>Qnte </label>  
             <input v-model="selected_search.quantite_initial" type="number" 
                 placeholder="Quantite Initial">
-                <br> 
+                <hr> 
                 <label>Px. A </label>  
             <input v-model="selected_search.prix_achat" type="number" 
-                placeholder="Price in: (type_vente)">
-            <br> 
+                placeholder="P.A: (Unité sortant)">
+            <hr> 
             <label>Px. V </label> 
             <input v-model="selected_search.prix_vente" type="number" 
-                placeholder="Price out : (type_vente)">
-            <br>
+                placeholder="P.V: (Unité sortant)">
+            <hr>
             <label>Date d'exp. </label> 
             <!-- <span style="margin-right: .1rem;">&nbsp;</span> -->
             <input @blur="saveDate" v-model="date_exp" type="date" placeholder="Nom du medicament">
-            <br> <br>
         </div>
         <teleport to="body">
             <div class="notif" v-if="notifStatus">
