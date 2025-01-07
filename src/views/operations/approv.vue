@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h6>Ici on gère des approvisionnements</h6>
+        <!-- <h6>Ici on gère des approvisionnements</h6> -->
         <div v-if="!selected_search">
             <a title="Importer les medicaments dans un fichier " 
                 target="_blank" rel="noopener noreferrer"
@@ -41,21 +41,20 @@
                 <option>Inj</option>
             </select>
             <br> <br>
-            <input v-model="umuti_prix_achat" type="number" placeholder="Price in: (type_vente)">
-            <br> <br>
-            <input v-model="umuti_prix_vente" type="number" placeholder="Price out : (type_vente)">
-            <br> <br>
             <input v-model="umuti_quantite_initial" type="number" placeholder="Quantite Initial">
             <br> <br>
+            <input v-model="umuti_prix_achat" type="number" placeholder="P.A: (Unité sortant)">
+            <br> <br>
+            <input v-model="umuti_prix_vente" type="number" placeholder="P.V : (Unité sortant)">
+            <br> <br>
             <label>Date d'exp. </label> 
-            <!-- <br> -->
             <input v-model="umuti_date_exp" type="date" placeholder="Nom du medicament">
             
             
             <textarea v-model="description_med" v-if="date_exp" style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
             <input v-model="ratio" v-if="date_exp" type="text" placeholder="ratio: 1 : 1">
             <br><br>
-            <input v-model="type_vente" v-if="date_exp" type="text" placeholder="Type in: Carton">
+            <input v-model="type_achat" v-if="date_exp" type="text" placeholder="Type in: Carton">
             <br> <br>
             <input v-model="type_vente" v-if="date_exp" type="text" placeholder="Type out : Plaquette">
             <br><br>
@@ -71,16 +70,16 @@
                 <label>Qnte </label>  
             <input v-model="selected_search.quantite_initial" type="number" 
                 placeholder="Quantite Initial">
-                <br> <br>
+                <br> 
                 <label>Px. A </label>  
             <input v-model="selected_search.prix_achat" type="number" 
                 placeholder="Price in: (type_vente)">
-            <br> <br>
+            <br> 
             <label>Px. V </label> 
             <input v-model="selected_search.prix_vente" type="number" 
                 placeholder="Price out : (type_vente)">
-            <br> <br>
-            <label>Date d'éxpiration </label> 
+            <br>
+            <label>Date d'exp. </label> 
             <!-- <span style="margin-right: .1rem;">&nbsp;</span> -->
             <input @blur="saveDate" v-model="date_exp" type="date" placeholder="Nom du medicament">
             <br> <br>
@@ -113,6 +112,7 @@ const date_exp = ref(null)
 const date_init = ref(new Date)
 const forme_med = ref('Cp')
 const ratio = ref(null)
+const type_achat = ref(null)
 const type_vente = ref(null)
 const location = ref(null)
 const description_med = ref(null)
