@@ -16,9 +16,20 @@
                     {{ umuti.nom_med }} {{ umuti.code_med }} {{ umuti.description_med }}
                 </button>
             </ul>
-            <select>
-                <option v-for="classe in allClasses">{{ (classe).slice(0,30) }}</option>
-            </select>
+            <span class="s-cl">
+                <label for="">Classe therap.</label>
+                <select v-model="classeRef">
+                    <option v-for="(classe,index) in allClasses"
+                        :id="'c'+index">{{ (classe).slice(0,30) }}</option>
+                </select>
+            </span>
+            <hr>
+            <span v-if="classeRef" class="s-cl">
+                <label for="">S-Classe therap.</label>
+                <select>
+                    <option v-for="subClasse in selectedSubClass">{{ (subClasse).slice(0,30) }}</option>
+                </select>
+            </span>
             <input v-model="umuti_prix_achat" type="number" placeholder="Price in: (type_vente)">
             <br> <br>
             <input v-model="umuti_prix_vente" type="number" placeholder="Price out : (type_vente)">
@@ -110,6 +121,7 @@ const message = ref('message initial')
 const allClasses = ref(null)
 const allSubClasses = ref(null)
 const selectedSubClass = ref(null)
+const classeRef = ref(null)
 
 const url_local = '//127.0.0.1:8002/'
 const url_reportIndex = 'api/gOps/getClasses/'
@@ -215,10 +227,17 @@ const selectSearch = (event)=>{
     approve_handler()
 }
 
+watch(classeRef, (value)=>{
+    console.log("Chose:", value)
+    let index = (allClasses.value).indexOf(value)
+    console.log("its index:", index)
+    selectedSubClass.value = (allSubClasses.value)[index]
+})
 watch(cls, (value)=>{
     console.log("Classes are:", value)
     allClasses.value = value.x
     allSubClasses.value = value.y
+    console.log("THe selected ref has:", classeRef.value)
 })
 watch(date_exp, (value)=>{
     umuti_obj.date_peremption = value
