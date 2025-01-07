@@ -17,7 +17,7 @@
                 </button>
             </ul>
             <span class="s-cl">
-                <label for="">Classe therap.</label>
+                <label for="">Classe therap.</label> <br>
                 <select v-model="classeRef">
                     <option v-for="(classe,index) in allClasses"
                         :id="'c'+index">{{ (classe).slice(0,30) }}</option>
@@ -25,11 +25,22 @@
             </span>
             <hr>
             <span v-if="classeRef" class="s-cl">
-                <label for="">S-Classe therap.</label>
+                <label for="">S-Classe therap.</label><br>
                 <select v-model="sClasseRef">
                     <option v-for="subClasse in selectedSubClass">{{ (subClasse).slice(0,30) }}</option>
                 </select>
             </span>
+            <br> <br>
+            <label>Forme du medicament</label>
+            <span style="margin-right: .1rem;">&nbsp;</span>
+            <select v-model="forme_med" style="background-color: white" placeholder="Type" value="Ovule">
+                <option>Cp</option>
+                <option>Gel</option>
+                <option>Ovule</option>
+                <option>Sirop</option>
+                <option>Inj</option>
+            </select>
+            <br> <br>
             <input v-model="umuti_prix_achat" type="number" placeholder="Price in: (type_vente)">
             <br> <br>
             <input v-model="umuti_prix_vente" type="number" placeholder="Price out : (type_vente)">
@@ -39,18 +50,8 @@
             <label>Date d'exp. </label> 
             <!-- <br> -->
             <input v-model="umuti_date_exp" type="date" placeholder="Nom du medicament">
-            <br> <br>
-            <label v-if="umuti_date_exp">Type de medicament</label>
-            <span style="margin-right: .1rem;">&nbsp;</span>
-            <select v-model="famille_med" v-if="umuti_date_exp" style="background-color: white" placeholder="Type" value="Ovule">
-                <option>Cp</option>
-                <option>Gel</option>
-                <option>Ovule</option>
-                <option>Sirop</option>
-                <option>Inj</option>
-                <!-- <option>Inj</option> -->
-            </select>
-            <br> <br>
+            
+            
             <textarea v-model="description_med" v-if="date_exp" style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
             <input v-model="ratio" v-if="date_exp" type="text" placeholder="ratio: 1 : 1">
             <br><br>
@@ -110,7 +111,7 @@ const umuti_quantite_initial = ref(null)
 const umuti_date_exp = ref(null)
 const date_exp = ref(null)
 const date_init = ref(new Date)
-const famille_med = ref('Cp')
+const forme_med = ref('Cp')
 const ratio = ref(null)
 const type_vente = ref(null)
 const location = ref(null)
