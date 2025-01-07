@@ -16,6 +16,9 @@
                     {{ umuti.nom_med }} {{ umuti.code_med }} {{ umuti.description_med }}
                 </button>
             </ul>
+            <select>
+                <option v-for="classe in allClasses">{{ (classe).slice(0,30) }}</option>
+            </select>
             <input v-model="umuti_prix_achat" type="number" placeholder="Price in: (type_vente)">
             <br> <br>
             <input v-model="umuti_prix_vente" type="number" placeholder="Price out : (type_vente)">
