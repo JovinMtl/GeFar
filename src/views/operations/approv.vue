@@ -81,6 +81,7 @@
 import { watch, ref, inject, reactive } from 'vue'
 import { fileTray } from 'ionicons/icons'
 import { IonIcon } from '@ionic/vue'
+import { useKuvoma } from '../hooks/kuvoma.js'
 
 const emit = defineEmits(['inputApprov', 'approFileOpen',
     'fileDataLoaded'
@@ -103,8 +104,14 @@ const description_med = ref(null)
 
 const notifStatus = ref(false)
 const message = ref('message initial')
+const allClasses = ref(null)
+const allSubClasses = ref(null)
+const selectedSubClass = ref(null)
 
-
+const url_local = '//127.0.0.1:8002/'
+const url_reportIndex = 'api/gOps/getClasses/'
+const [cls, getClasses] = useKuvoma(url_reportIndex, url_local)
+getClasses()
 const  umuti_obj = reactive ({
         'code_med': '',
         'date_entrant': new Date().toISOString(),
@@ -205,7 +212,11 @@ const selectSearch = (event)=>{
     approve_handler()
 }
 
-
+watch(cls, (value)=>{
+    console.log("Classes are:", value)
+    allClasses.value = value.x
+    allSubClasses.value = value.y
+})
 watch(date_exp, (value)=>{
     umuti_obj.date_peremption = value
 })
