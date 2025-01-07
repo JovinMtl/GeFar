@@ -26,7 +26,7 @@
             <hr>
             <span v-if="classeRef" class="s-cl">
                 <label for="">S-Classe therap.</label>
-                <select>
+                <select v-model="sClasseRef">
                     <option v-for="subClasse in selectedSubClass">{{ (subClasse).slice(0,30) }}</option>
                 </select>
             </span>
@@ -122,6 +122,7 @@ const allClasses = ref(null)
 const allSubClasses = ref(null)
 const selectedSubClass = ref(null)
 const classeRef = ref(null)
+const sClasseRef = ref(null)
 
 const url_local = '//127.0.0.1:8002/'
 const url_reportIndex = 'api/gOps/getClasses/'
@@ -228,16 +229,12 @@ const selectSearch = (event)=>{
 }
 
 watch(classeRef, (value)=>{
-    console.log("Chose:", value)
     let index = (allClasses.value).indexOf(value)
-    console.log("its index:", index)
     selectedSubClass.value = (allSubClasses.value)[index]
 })
 watch(cls, (value)=>{
-    console.log("Classes are:", value)
     allClasses.value = value.x
     allSubClasses.value = value.y
-    console.log("THe selected ref has:", classeRef.value)
 })
 watch(date_exp, (value)=>{
     umuti_obj.date_peremption = value
