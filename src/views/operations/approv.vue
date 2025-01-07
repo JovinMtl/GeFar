@@ -105,7 +105,6 @@ const notifStatus = ref(false)
 const message = ref('message initial')
 
 
-console.log("La date de debut: ", date_init.value)
 const  umuti_obj = reactive ({
         'code_med': '',
         'date_entrant': new Date().toISOString(),
@@ -125,9 +124,6 @@ const  umuti_obj = reactive ({
 let need_to_upload = inject('need_upload')
 var result = inject('imiti_search')
 
-const saveDate = ()=>{
-    console.log("You're trying to Update de DATE")
-}
 const openApproFile = ()=>{
     emit('approFileOpen', 1)
 }
@@ -175,7 +171,6 @@ const checkBeforeUpload = ()=>{
             && (Number(umuti_quantite_initial.value)) 
             && (Date(date_exp.value))
         ){
-            console.log("PASSABLE")
             umuti_obj.nom_med = String(umutiName.value)
             umuti_obj.code_med = ''
             umuti_obj.date_peremption = umuti_date_exp.value
@@ -190,11 +185,6 @@ const checkBeforeUpload = ()=>{
 
             return umuti_obj
         } else{
-            console.log("NON PASSABLE")
-            console.log(umutiName.value, umuti_prix_achat.value,
-            umuti_prix_vente.value, umuti_quantite_initial.value,
-            date_exp.value
-            )
             let info = "Veuillez saisir les données correctes."
             showMessage(info)
             return undefined
@@ -210,22 +200,17 @@ const showMessage = (info)=>{
     }, 1800)
 }
 const selectSearch = (event)=>{
-    console.log("You selected ID: ", event.target.getAttribute('id'))
     let code_s = Number((event.target.getAttribute('id')).slice(1))
     selected_search.value = imiti_result.value[code_s]
-    console.log("You selected umuti : ", selected_search.value)
     approve_handler()
 }
 
 
 watch(date_exp, (value)=>{
     umuti_obj.date_peremption = value
-    console.log("Date_exp: ", value)
 })
 watch(need_to_upload, (value)=>{
-    // console.log("Want to emit from APPROV")
     let reponse = checkBeforeUpload()
-    console.log("Attempting to send: ", reponse)
     if(reponse){
         emit('fileDataLoaded', [umuti_obj,])
     }
