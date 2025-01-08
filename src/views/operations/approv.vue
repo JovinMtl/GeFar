@@ -50,15 +50,13 @@
             <label>Date d'exp. </label> 
             <input v-model="umuti_date_exp" type="date" placeholder="Nom du medicament">
             
-            
-            <textarea v-model="description_med" v-if="date_exp" style="border-radius: 15px;" name="description" placeholder="Description du medicament" id="" cols="20" rows="3"></textarea>
-            <input v-model="ratio" v-if="date_exp" type="text" placeholder="ratio: 1 : 1">
+            <!-- <input v-model="ratio" v-if="umuti_date_exp" type="text" placeholder="ratio: 1 : 1">
             <br><br>
-            <input v-model="type_achat" v-if="date_exp" type="text" placeholder="Type in: Carton">
+            <input v-model="type_achat" v-if="umuti_date_exp" type="text" placeholder="Unité entrant: Carton">
             <br> <br>
-            <input v-model="type_vente" v-if="date_exp" type="text" placeholder="Type out : Plaquette">
+            <input v-model="type_vente" v-if="umuti_date_exp" type="text" placeholder="Unité Sortant: Plaquette">
             <br><br>
-            <input v-model="location" v-if="date_exp" type="text" style="margin-bottom: 5px;" placeholder="Localisation">
+            <input v-model="location" v-if="umuti_date_exp" type="text" style="margin-bottom: 5px;" placeholder="Localisation"> -->
             <br><br>
         </div>
         <div v-if="selected_search">
@@ -124,7 +122,7 @@ const selectedSubClass = ref(null)
 const classeRef = ref(null)
 const sClasseRef = ref(null)
 
-const url_local = '//127.0.0.1:8002/'
+const url_local = '//127.0.0.1:8002'
 const url_reportIndex = 'api/gOps/getClasses/'
 const [cls, getClasses] = useKuvoma(url_reportIndex, url_local)
 getClasses()
