@@ -78,6 +78,10 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const toPage = defineEmits([])
+const fromPage = defineProps([])
 </script>
 
 <style>
