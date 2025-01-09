@@ -78,8 +78,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, Ref, reactive, watch } from 'vue'
-import { useKurungika, useKuvoma} from '../../hooks/kuvoma.js'
+import { 
+    ref, Ref, reactive, watch 
+} from 'vue'
+import { 
+    useKurungika, useKuvoma
+} from '../../hooks/kuvoma.js'
+import { clInfo, Medi, DataAssurance} from '../../layout/types.js'
 
 const toPage = defineEmits(['rdBtn'])
 const fromPage = defineProps([])
