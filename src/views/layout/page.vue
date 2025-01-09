@@ -370,67 +370,67 @@ const last_medEntree: Ref<number> = ref(0)
 const last_medSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
 const total_r: Ref<number> = ref(2)
-const stage_redu: Ref<number> = ref(0)
-const selectedProf: Ref<string> = ref('')
-const assureur: Ref<string> = ref('')
-const clName: Ref<string> = ref('')
-const clName1: Ref<string> = ref('')
-const clCardNumber: Ref<string> = ref('')
-const clBonNumber: Ref<string> = ref('')
-const assu_name: Ref<string> = ref('')
+// const stage_redu: Ref<number> = ref(0)
+// const selectedProf: Ref<string> = ref('')
+// const assureur: Ref<string> = ref('')
+// const clName: Ref<string> = ref('')
+// const clName1: Ref<string> = ref('')
+// const clCardNumber: Ref<string> = ref('')
+// const clBonNumber: Ref<string> = ref('')
+// const assu_name: Ref<string> = ref('')
 // const assu_rate: Ref<string> = ref('')
-const bonDate = ref(new Date)
-const clPhone: Ref<number> = ref() // omitting initial value for placeholder
-const message = shallowRef<string>('')
-const clClean: Ref<boolean> = ref(false)
-const isWarning: Ref<boolean> = ref(false)
-const need_assureur: Ref<boolean> = ref(false)
-const assu_state: Ref<boolean> = ref(false)
-const assu_rate: Ref<number> = ref()
-const rate_assure: Ref<number> = ref(1)
-// const somme_formatted: Ref<string> = ref('')
-const clientInfo: clInfo = reactive({
-    'nom_client': '',
-    'numero_tel': '',
-    'categorie': '',
-    'assureur': '',
-    'numero_carte': '',
-    'numero_bon': '',
-    'date_bon': '',
-})
+// const bonDate = ref(new Date)
+// const clPhone: Ref<number> = ref() // omitting initial value for placeholder
+// const message = shallowRef<string>('')
+// const clClean: Ref<boolean> = ref(false)
+// const isWarning: Ref<boolean> = ref(false)
+// const need_assureur: Ref<boolean> = ref(false)
+// const assu_state: Ref<boolean> = ref(false)
+// const assu_rate: Ref<number> = ref()
+// const rate_assure: Ref<number> = ref(1)
+// // const somme_formatted: Ref<string> = ref('')
+// const clientInfo: clInfo = reactive({
+//     'nom_client': '',
+//     'numero_tel': '',
+//     'categorie': '',
+//     'assureur': '',
+//     'numero_carte': '',
+//     'numero_bon': '',
+//     'date_bon': '',
+// })
 
-const suggest:Ref<string> = ref("Votre assureur")
-const warnDateMessage: Ref<string> = ref('')
+// const suggest:Ref<string> = ref("Votre assureur")
+// const warnDateMessage: Ref<string> = ref('')
 
-const classes:Ref<Medi[]> = ref([])
-const datAssu: DataAssurance = reactive({
-    'assu': []
-})
+// const classes:Ref<Medi[]> = ref([])
+// const datAssu: DataAssurance = reactive({
+//     'assu': []
+// })
 
 
 
-const professions = [
-    {
-        'value': '',
-        'name': '--- Akora iki ? ---'
-    },
-    {
-        'value': 'mt',
-        'name': 'Motar'
-    },
-    {
-        'value': 'tv',
-        'name': 'Taxi Vélo'
-    },
-    {
-        'value': 'md',
-        'name': 'Domaine Médicale'
-    },
-    {
-        'value': 'au',
-        'name': 'Assuré'
-    },
-]
+// const professions = [
+//     {
+//         'value': '',
+//         'name': '--- Akora iki ? ---'
+//     },
+//     {
+//         'value': 'mt',
+//         'name': 'Motar'
+//     },
+//     {
+//         'value': 'tv',
+//         'name': 'Taxi Vélo'
+//     },
+//     {
+//         'value': 'md',
+//         'name': 'Domaine Médicale'
+//     },
+//     {
+//         'value': 'au',
+//         'name': 'Assuré'
+//     },
+// ]
 
 const url_reportIndex: string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
