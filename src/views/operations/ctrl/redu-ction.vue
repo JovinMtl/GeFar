@@ -84,9 +84,12 @@ import {
 import { 
     useKurungika, useKuvoma
 } from '../../hooks/kuvoma.js'
-import { clInfo, Medi, DataAssurance} from '../../layout/types.js'
+import { 
+    clInfo, Medi, DataAssurance
+} from '../../layout/types.js'
+import { baseURL } from '../../../store/host'
 
-const emit = defineEmits(['cfrBtn'])
+const emit = defineEmits(['cfrBtn', 'seleProf'])
 const props = defineProps(['rdBtn'])
 
 const stage_redu: Ref<number> = ref(0)
@@ -148,6 +151,7 @@ const professions = [
 ]
 
 // Composables 
+const url_local: string = baseURL
 
 const url_addAssu: string = "api/gOps/addAssu/"
 const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
@@ -269,7 +273,7 @@ watch(addAssuResp, (value)=>{
         message.value = "Veuillez vous reconnecter"
     }
 })
-watch(props.rdBtn, (value)=>{
+watch(()=>props.rdBtn, (value)=>{
     if(!value){
         initClient()
         console.log("Now the Panier2API: ", panier_api)
@@ -298,6 +302,7 @@ watch(selectedProf, (value) => {
     }
     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
     initClient()
+    emit("seleProf", selectedProf.value)
     clClean.value = false
     // confirmRdBtn.value = false
 })

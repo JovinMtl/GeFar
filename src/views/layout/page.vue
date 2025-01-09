@@ -229,7 +229,8 @@
                             </div> -->
                             
                             <reduCtion v-if="rdBtnActive" 
-                                :rdBtn="rdBtnActive"  
+                                :rdBtn="rdBtnActive"
+                                @seleProf=getSelectProf
                                 @cfrBtn="setCfrBtn"/>
                             <!-- end of reduCtion -->
                         </div>
@@ -373,7 +374,7 @@ const last_medSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
 const total_r: Ref<number> = ref(2)
 // const stage_redu: Ref<number> = ref(0)
-// const selectedProf: Ref<string> = ref('')
+const selectedProf: Ref<string> = ref('')
 // const assureur: Ref<string> = ref('')
 // const clName: Ref<string> = ref('')
 // const clName1: Ref<string> = ref('')
@@ -389,7 +390,7 @@ const total_r: Ref<number> = ref(2)
 // const need_assureur: Ref<boolean> = ref(false)
 // const assu_state: Ref<boolean> = ref(false)
 // const assu_rate: Ref<number> = ref()
-// const rate_assure: Ref<number> = ref(1)
+const rate_assure: Ref<number> = ref(1)
 // // const somme_formatted: Ref<string> = ref('')
 // const clientInfo: clInfo = reactive({
 //     'nom_client': '',
@@ -458,10 +459,14 @@ const [sell_report, toSell] = useKurungika(panier_api, url_sell)
 const { getAccessToken, getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
-
+// from reduction
 const setCfrBtn = (value)=>{
     // receiving the value emitted from reduCtion
-    console.log("reduCtion emitted:", value)
+    console.log("reduCtion emitted comfirmBtn:", value)
+}
+const getSelectProf = (value)=>{
+    console.log("reduCtion emitted selectedProf:", value)
+    selectedProf.value = value
 }
 // const checkAssu = ()=>{
 //     // will check the validity of assurance fields
@@ -856,8 +861,8 @@ const update_total_client = (reduction: number = 0): string => {
     if (reduction == 0) {
         somme_formatted = readableNumber(somme) //formatting by three digits
     } else if (reduction == 1) {
-        console.log("The assurances:", assurances.value)
-        console.log("from:", clientInfo.assureur)
+        // console.log("The assurances:", assurances.value)
+        // console.log("from:", clientInfo.assureur)
         somme = somme - (somme *( rate_assure.value / 100)).toFixed()
         somme_formatted = readableNumber(somme) //formatting by three digits
     } else {
