@@ -319,7 +319,7 @@ import BiCollection from '../layout/icon/collect.vue'
 import FluentCloudSync28Regular from '../layout/icon/cloud.vue'
 // import DashBoard from '../dashBoard.vue'
 import dashBoard from '@/views/dashBoard.vue';
-import reduCtion from '../operations/ctrl/redu-ction.vue';
+import reduCtion from '../operations/reduction/redu-ction.vue';
 
 const listImiti = defineAsyncComponent(() => import('../operations/list-imiti.vue'))
 import {

@@ -36,16 +36,14 @@
             </a>
         </div>
         
-        <div class="newAssu" v-if="!assureur && need_assureur">
+        <div class="newAssu" v-if="need_assureur">
             <label for="nAssu">Ajouter une nouvelle assurance</label>
             <input type="text" id='nAssu'
                 v-model="assu_name"
             placeholder="Nom de l'assurance">
+            <br><br>
             <input type="button" value="No" 
-                class="ml-10" @click="need_assureur=false">
-            <hr>
-            <input type="number"  v-model="assu_rate"
-            placeholder="Taux d'assurance. e.x: 20">
+                @click="need_assureur=false">
             <input type="button" value="Ok" 
                 class="ml-10" @click="checkAssu">
             
@@ -87,7 +85,7 @@ import {
 import { 
     clInfo, Medi, DataAssurance
 } from '../../layout/types.js'
-import { baseURL } from '../../../store/host'
+import { baseURL } from '../../../store/host.js'
 
 const emit = defineEmits(['cfrBtn', 'seleProf', 'assuRatel'])
 const props = defineProps(['rdBtn'])
@@ -164,16 +162,27 @@ const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 const checkAssu = ()=>{
     // will check the validity of assurance fields
     let status = false
-    let rate = Number(assu_rate.value)
+    
     if ((assu_name.value).length > 3){
         status = true
     }
+    if ( status){
+            datAssu.assu[0] = assu_name.value
+            addAssu()
+    } else{
+        message.value = "Champs invalides"
+        setTimeout(()=>{
+            message.value = ""
+        }, 2000)
+    }
+}
+const checkRate = ()=>{
+    let status = false
+    let rate = Number(assu_rate.value)
     if(rate < 0 || rate > 100){
         status = false
     }
-    // status = true //temporary
     if ( status){
-            datAssu.assu[0] = assu_name.value
             datAssu.assu[1] = rate
             addAssu()
     } else{
