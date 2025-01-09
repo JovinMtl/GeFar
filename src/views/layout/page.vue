@@ -443,11 +443,11 @@ const [bothData, askInstances] = useKurungika(last_indexes.value, url_askInstanc
 const url_syncFromLocal: string = "api/rep/syncFromLocal/"
 const [rep_update, kurungika] = useKurungika(bothData.value, url_syncFromLocal)
 
-const url_addAssu: string = "api/gOps/addAssu/"
-const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
+// const url_addAssu: string = "api/gOps/addAssu/"
+// const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
 
-const url_getAssurances = "api/gOps/getAssu/"
-const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
+// const url_getAssurances = "api/gOps/getAssu/"
+// const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
 
 

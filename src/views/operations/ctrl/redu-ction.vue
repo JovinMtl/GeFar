@@ -79,10 +79,10 @@
 
 <script setup lang="ts">
 import { ref, Ref, reactive, watch } from 'vue'
+import { useKurungika, useKuvoma} from '../../hooks/kuvoma.js'
 
 const toPage = defineEmits(['rdBtn'])
 const fromPage = defineProps([])
-const assurances = ref(null)
 
 const stage_redu: Ref<number> = ref(0)
 const selectedProf: Ref<string> = ref('')
@@ -142,6 +142,13 @@ const professions = [
     },
 ]
 
+// Composables 
+
+const url_addAssu: string = "api/gOps/addAssu/"
+const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
+
+const url_getAssurances = "api/gOps/getAssu/"
+const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
 
 // Function definition
