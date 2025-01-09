@@ -151,7 +151,8 @@
                                 </div>
                             </div>
                             <!-- Begin of reduCtion -->
-                            <div v-if="rdBtnActive" style="height:39vh;margin-top:15px;
+                             
+                            <!-- <div v-if="rdBtnActive" style="height:39vh;margin-top:15px;
                                 overflow: auto;">
                                 <label for="metiers"
                                     style="font-size: .8rem">Choisissez sa profession:</label>
@@ -170,15 +171,11 @@
                                     value="Valider" @click="simplValid">
                                 </div>
                                 <div v-if="selectedProf == 'au'">
-                                    <!-- <input type="text" name="myFruit" id="myFruit" list="mySuggestion"
-                                        placeholder="Quelle Assureur?" ref="suggest" 
-                                        @change="show_suggest" /> -->
                                     <div>
                                         <label for="assur"
                                              style="font-size: .8rem;
                                              color: black;margin-right: 4px;">Son assureur:</label>
                                         <select  id="assur" v-model="assureur">
-                                            <!-- Should have twenty char -->
                                             <option v-for="assurance in assurances">
                                                 {{ (assurance.name).slice(0,20) }}
                                             </option>
@@ -229,7 +226,8 @@
                                 <div v-if="isWarning" class="warning">
                                      {{ warnDateMessage}}
                                 </div>
-                            </div>
+                            </div> -->
+                            
                             <!-- end of reduCtion -->
                         </div>
                     </div>
