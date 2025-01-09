@@ -230,6 +230,7 @@
                             
                             <reduCtion v-if="rdBtnActive" 
                                 :rdBtn="rdBtnActive"
+                                @assuRatel="getassuRate"
                                 @seleProf=getSelectProf
                                 @cfrBtn="setCfrBtn"/>
                             <!-- end of reduCtion -->
@@ -459,6 +460,7 @@ const [sell_report, toSell] = useKurungika(panier_api, url_sell)
 const { getAccessToken, getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
+
 // from reduction
 const setCfrBtn = (value)=>{
     // receiving the value emitted from reduCtion
@@ -467,6 +469,9 @@ const setCfrBtn = (value)=>{
 const getSelectProf = (value)=>{
     console.log("reduCtion emitted selectedProf:", value)
     selectedProf.value = value
+}
+const getassuRate = (value)=>{
+    rate_assure.value = value
 }
 // const checkAssu = ()=>{
 //     // will check the validity of assurance fields
@@ -858,6 +863,7 @@ const update_total_client = (reduction: number = 0): string => {
         let p_T = element.prix_vente * element.qte
         somme += p_T
     })
+    console.log("Assurance rate :", rate_assure.value)
     if (reduction == 0) {
         somme_formatted = readableNumber(somme) //formatting by three digits
     } else if (reduction == 1) {
@@ -1016,6 +1022,9 @@ const show_suggest = (e)=>{
 //     }
 // })
 
+watch(rate_assure, (value)=>{
+    console.log("rate_assure does change into:", value)
+})
 watch(suggest, (value)=>{
     console.log("The selected option: ", suggest.value)
 })

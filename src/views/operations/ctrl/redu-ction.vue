@@ -89,7 +89,7 @@ import {
 } from '../../layout/types.js'
 import { baseURL } from '../../../store/host'
 
-const emit = defineEmits(['cfrBtn', 'seleProf'])
+const emit = defineEmits(['cfrBtn', 'seleProf', 'assuRatel'])
 const props = defineProps(['rdBtn'])
 
 const stage_redu: Ref<number> = ref(0)
@@ -252,12 +252,18 @@ const initClient = ()=>{
     clientInfo.date_bon = ''
 }
 
+if(props.rdBtn){
+    getAssurances()
+    console.log("Assurances we have:", assurances.value)
+}
+
 watch(assureur, (value)=>{
     assurances.value.forEach((elm)=>{
         if(elm.name == value){
             rate_assure.value = elm.rate_assure
         }
     })
+    emit('assuRatel', rate_assure.value)
 })
 watch(addAssuResp, (value)=>{
     console.log("Resp from addAssu: ", value)
@@ -273,21 +279,6 @@ watch(addAssuResp, (value)=>{
         message.value = "Veuillez vous reconnecter"
     }
 })
-watch(()=>props.rdBtn, (value)=>{
-    if(!value){
-        initClient()
-        console.log("Now the Panier2API: ", panier_api)
-        clClean.value = true
-    } else{
-        getAssurances()
-        console.log("Assurances we have:", assurances.value)
-    }
-    if(clClean.value){
-        // confirmRdBtn.value = true
-    } else{
-        // confirmRdBtn.value = false
-    }
-})
 watch(selectedProf, (value) => {
     // Now apply the reduction according to benefit of value 'md,tv'
     if(selectedProf.value == 'tv' ||
@@ -300,11 +291,11 @@ watch(selectedProf, (value) => {
         }
     })
     }
-    console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
+    console.log("The selected profession : ", selectedProf.value)
     initClient()
     emit("seleProf", selectedProf.value)
+    emit('assuRatel', rate_assure.value) //for tv,mt, md, au
     clClean.value = false
-    // confirmRdBtn.value = false
 })
 </script>
 
