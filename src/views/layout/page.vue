@@ -150,6 +150,7 @@
                                 <div class="rdBtn" :class="rdBtnActive ? 'rdBtn-1' : 'rdBtn-2'" @click="isSpecial">
                                 </div>
                             </div>
+                            <!-- Begin of reduCtion -->
                             <div v-if="rdBtnActive" style="height:39vh;margin-top:15px;
                                 overflow: auto;">
                                 <label for="metiers"
@@ -229,6 +230,7 @@
                                      {{ warnDateMessage}}
                                 </div>
                             </div>
+                            <!-- end of reduCtion -->
                         </div>
                     </div>
 
