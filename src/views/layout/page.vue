@@ -958,52 +958,52 @@ const show_suggest = (e)=>{
     stage_redu.value = 3
     clClean.value = false
 }
-const initClient = ()=>{
-    clientInfo.nom_client = ''
-    clientInfo.numero_tel = ''
-    clientInfo.categorie = ''
-    clientInfo.assureur = ''
-    clientInfo.numero_carte = ''
-    clientInfo.numero_bon = ''
-    clientInfo.date_bon = ''
-}
+// const initClient = ()=>{
+//     clientInfo.nom_client = ''
+//     clientInfo.numero_tel = ''
+//     clientInfo.categorie = ''
+//     clientInfo.assureur = ''
+//     clientInfo.numero_carte = ''
+//     clientInfo.numero_bon = ''
+//     clientInfo.date_bon = ''
+// }
 
-watch(assureur, (value)=>{
-    assurances.value.forEach((elm)=>{
-        if(elm.name == value){
-            rate_assure.value = elm.rate_assure
-        }
-    })
-})
-watch(addAssuResp, (value)=>{
-    console.log("Resp from addAssu: ", value)
-    assu_state.value = value.status
-    message.value = value.reason
-    if(assu_state.value){
-        getAssurances()
-        setTimeout(()=>{
-            need_assureur.value = false
-        }, 2000)
-    }
-    if(value.code == 'token_not_valid'){
-        message.value = "Veuillez vous reconnecter"
-    }
-})
-watch(rdBtnActive, (value)=>{
-    if(!value){
-        initClient()
-        console.log("Now the Panier2API: ", panier_api)
-        clClean.value = true
-    } else{
-        getAssurances()
-        console.log("Assurances we have:", assurances.value)
-    }
-    if(clClean.value){
-        confirmRdBtn.value = true
-    } else{
-        confirmRdBtn.value = false
-    }
-})
+// watch(assureur, (value)=>{
+//     assurances.value.forEach((elm)=>{
+//         if(elm.name == value){
+//             rate_assure.value = elm.rate_assure
+//         }
+//     })
+// })
+// watch(addAssuResp, (value)=>{
+//     console.log("Resp from addAssu: ", value)
+//     assu_state.value = value.status
+//     message.value = value.reason
+//     if(assu_state.value){
+//         getAssurances()
+//         setTimeout(()=>{
+//             need_assureur.value = false
+//         }, 2000)
+//     }
+//     if(value.code == 'token_not_valid'){
+//         message.value = "Veuillez vous reconnecter"
+//     }
+// })
+// watch(rdBtnActive, (value)=>{
+//     if(!value){
+//         initClient()
+//         console.log("Now the Panier2API: ", panier_api)
+//         clClean.value = true
+//     } else{
+//         getAssurances()
+//         console.log("Assurances we have:", assurances.value)
+//     }
+//     if(clClean.value){
+//         confirmRdBtn.value = true
+//     } else{
+//         confirmRdBtn.value = false
+//     }
+// })
 
 watch(suggest, (value)=>{
     console.log("The selected option: ", suggest.value)
