@@ -228,7 +228,7 @@
                                 </div>
                             </div> -->
                             
-                            <reduCtion v-if="rdBtnActive"  />
+                            <reduCtion v-if="rdBtnActive" :rdBtn="rdBtnActive"  />
                             <!-- end of reduCtion -->
                         </div>
                     </div>
@@ -757,6 +757,7 @@ const decrementQte = (value) => {
 }
 
 const readableNumber = (value:number=1000):String=>{
+    // makes 1000000 into a string of 1.000.000
     let data = String(value)
     let r_data = data.split('').reverse()
     let len = data.length
@@ -1007,23 +1008,23 @@ watch(rdBtnActive, (value)=>{
 watch(suggest, (value)=>{
     console.log("The selected option: ", suggest.value)
 })
-watch(selectedProf, (value) => {
-    // Now apply the reduction according to benefit of value 'md,tv'
-    if(selectedProf.value == 'tv' ||
-        selectedProf.value == 'mt' ||
-        selectedProf.value == 'md'
-    ){
-        assurances.value.forEach((elm)=>{
-        if(elm.name == 'Pharmacie Ubuzima'){
-            rate_assure.value = elm.rate_assure
-        }
-    })
-    }
-    console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
-    initClient()
-    clClean.value = false
-    confirmRdBtn.value = false
-})
+// watch(selectedProf, (value) => {
+//     // Now apply the reduction according to benefit of value 'md,tv'
+//     if(selectedProf.value == 'tv' ||
+//         selectedProf.value == 'mt' ||
+//         selectedProf.value == 'md'
+//     ){
+//         assurances.value.forEach((elm)=>{
+//         if(elm.name == 'Pharmacie Ubuzima'){
+//             rate_assure.value = elm.rate_assure
+//         }
+//     })
+//     }
+//     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
+//     initClient()
+//     clClean.value = false
+//     confirmRdBtn.value = false
+// })
 watch(bothData, (value) => {
     // should now send them to the remote server.
     kurungika()

@@ -80,7 +80,7 @@
 <script setup lang="ts">
 import { ref, Ref, reactive, watch } from 'vue'
 
-const toPage = defineEmits(['rdBtnActive'])
+const toPage = defineEmits(['rdBtn'])
 const fromPage = defineProps([])
 const assurances = ref(null)
 
