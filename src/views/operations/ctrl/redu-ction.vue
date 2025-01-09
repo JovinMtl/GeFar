@@ -142,6 +142,87 @@ const professions = [
     },
 ]
 
+
+
+// Function definition
+const checkAssu = ()=>{
+    // will check the validity of assurance fields
+    let status = false
+    let rate = Number(assu_rate.value)
+    if ((assu_name.value).length > 3){
+        status = true
+    }
+    if(rate < 0 || rate > 100){
+        status = false
+    }
+    // status = true //temporary
+    if ( status){
+            datAssu.assu[0] = assu_name.value
+            datAssu.assu[1] = rate
+            addAssu()
+    } else{
+        message.value = "Champs invalides"
+        setTimeout(()=>{
+            message.value = ""
+        }, 2000)
+    }
+}
+const simplValid = ():void=>{
+    // validate Taxi moto, taxi velo and domaine medicale
+    if(!clName.value){
+        clName.value = "inconnu"
+    } else if (!clPhone.value){
+        clPhone.value = 1111
+    }
+    clientInfo.nom_client = clName.value;
+    clientInfo.numero_tel = String(clPhone.value);
+    clientInfo.categorie = String(selectedProf.value);
+    clientInfo.assureur = 'Pharmacie Ubuzima';
+    panier_api.client = clientInfo
+    clClean.value = true
+    confirmRdBtn.value = true
+
+    console.log("Simp Validated: ", panier_api.client)
+}
+const complValid = ():void=>{
+    let dateBon = new Date(bonDate.value)
+    
+    if(clName1.value && clCardNumber.value
+        && clBonNumber.value 
+    ){
+        clClean.value = true
+    } else{
+        clClean.value = false
+        isWarning.value = true
+        warnDateMessage.value = "Données du Patient incomplets"
+    }
+    if (dateBon < today){
+        // Starting to build up an object for client
+        clientInfo.nom_client = clName1.value
+        clientInfo.numero_tel = ''
+        clientInfo.categorie = String(selectedProf.value)
+        clientInfo.assureur = assureur.value
+        clientInfo.numero_carte = clCardNumber.value
+        clientInfo.numero_bon = clBonNumber.value 
+        clientInfo.date_bon = String(dateBon)
+        panier_api.client = clientInfo
+        warnDateMessage.value = ""
+        clClean.value = true
+        confirmRdBtn.value = true
+
+        console.log("Validated: ", panier_api)
+    }else{
+        warnDateMessage.value = "La date du Bon doit être valide. "
+        clClean.value = false
+        isWarning.value = true
+    }
+    
+    setTimeout(()=>{
+            isWarning.value = false
+            warnDateMessage.value = ""
+        }, 3000)
+}
+
 </script>
 
 <style>
