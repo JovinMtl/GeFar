@@ -151,7 +151,7 @@
                                 </div>
                             </div>
                             <!-- Begin of reduCtion -->
-                             
+
                             <!-- <div v-if="rdBtnActive" style="height:39vh;margin-top:15px;
                                 overflow: auto;">
                                 <label for="metiers"
@@ -228,6 +228,7 @@
                                 </div>
                             </div> -->
                             
+                            <reduCtion v-if="rdBtnActive"  />
                             <!-- end of reduCtion -->
                         </div>
                     </div>
@@ -314,6 +315,7 @@ import BiCollection from '../layout/icon/collect.vue'
 import FluentCloudSync28Regular from '../layout/icon/cloud.vue'
 // import DashBoard from '../dashBoard.vue'
 import dashBoard from '@/views/dashBoard.vue';
+import reduCtion from '../operations/ctrl/redu-ction.vue';
 
 const listImiti = defineAsyncComponent(() => import('../operations/list-imiti.vue'))
 import {
