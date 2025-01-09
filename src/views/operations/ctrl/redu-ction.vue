@@ -79,15 +79,15 @@
 
 <script setup lang="ts">
 import { 
-    ref, Ref, reactive, watch 
+    ref, Ref, reactive, watch, shallowRef
 } from 'vue'
 import { 
     useKurungika, useKuvoma
 } from '../../hooks/kuvoma.js'
 import { clInfo, Medi, DataAssurance} from '../../layout/types.js'
 
-const toPage = defineEmits(['rdBtn'])
-const fromPage = defineProps([])
+const emit = defineEmits(['cfrBtn'])
+const props = defineProps(['rdBtn'])
 
 const stage_redu: Ref<number> = ref(0)
 const selectedProf: Ref<string> = ref('')
@@ -116,10 +116,10 @@ const clientInfo: clInfo = reactive({
     'numero_bon': '',
     'date_bon': '',
 })
-const suggest:Ref<string> = ref("Votre assureur")
+// const suggest:Ref<string> = ref("Votre assureur")
 const warnDateMessage: Ref<string> = ref('')
 
-const classes:Ref<Medi[]> = ref([])
+// const classes:Ref<Medi[]> = ref([])
 const datAssu: DataAssurance = reactive({
     'assu': []
 })
@@ -192,7 +192,9 @@ const simplValid = ():void=>{
     clientInfo.assureur = 'Pharmacie Ubuzima';
     panier_api.client = clientInfo
     clClean.value = true
-    confirmRdBtn.value = true
+    // confirmRdBtn.value = true
+    
+    emit("cfrBtn", 1)
 
     console.log("Simp Validated: ", panier_api.client)
 }
@@ -220,7 +222,7 @@ const complValid = ():void=>{
         panier_api.client = clientInfo
         warnDateMessage.value = ""
         clClean.value = true
-        confirmRdBtn.value = true
+        // confirmRdBtn.value = true
 
         console.log("Validated: ", panier_api)
     }else{
@@ -267,7 +269,7 @@ watch(addAssuResp, (value)=>{
         message.value = "Veuillez vous reconnecter"
     }
 })
-watch(toPage.rdBtn, (value)=>{
+watch(props.rdBtn, (value)=>{
     if(!value){
         initClient()
         console.log("Now the Panier2API: ", panier_api)
@@ -277,9 +279,9 @@ watch(toPage.rdBtn, (value)=>{
         console.log("Assurances we have:", assurances.value)
     }
     if(clClean.value){
-        confirmRdBtn.value = true
+        // confirmRdBtn.value = true
     } else{
-        confirmRdBtn.value = false
+        // confirmRdBtn.value = false
     }
 })
 watch(selectedProf, (value) => {
@@ -297,7 +299,7 @@ watch(selectedProf, (value) => {
     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
     initClient()
     clClean.value = false
-    confirmRdBtn.value = false
+    // confirmRdBtn.value = false
 })
 </script>
 

@@ -228,7 +228,9 @@
                                 </div>
                             </div> -->
                             
-                            <reduCtion v-if="rdBtnActive" :rdBtn="rdBtnActive"  />
+                            <reduCtion v-if="rdBtnActive" 
+                                :rdBtn="rdBtnActive"  
+                                @cfrBtn="setCfrBtn"/>
                             <!-- end of reduCtion -->
                         </div>
                     </div>
@@ -399,10 +401,10 @@ const total_r: Ref<number> = ref(2)
 //     'date_bon': '',
 // })
 
-// const suggest:Ref<string> = ref("Votre assureur")
+const suggest:Ref<string> = ref("Votre assureur")
 // const warnDateMessage: Ref<string> = ref('')
 
-// const classes:Ref<Medi[]> = ref([])
+const classes:Ref<Medi[]> = ref([])
 // const datAssu: DataAssurance = reactive({
 //     'assu': []
 // })
@@ -457,6 +459,10 @@ const { getAccessToken, getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
 
+const setCfrBtn = (value)=>{
+    // receiving the value emitted from reduCtion
+    console.log("reduCtion emitted:", value)
+}
 // const checkAssu = ()=>{
 //     // will check the validity of assurance fields
 //     let status = false
