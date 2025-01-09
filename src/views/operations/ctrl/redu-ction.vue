@@ -78,9 +78,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, Ref, reactive } from 'vue'
+import { ref, Ref, reactive, watch } from 'vue'
 
-const toPage = defineEmits([])
+const toPage = defineEmits(['rdBtnActive'])
 const fromPage = defineProps([])
 const assurances = ref(null)
 
@@ -223,6 +223,25 @@ const complValid = ():void=>{
         }, 3000)
 }
 
+
+
+watch(selectedProf, (value) => {
+    // Now apply the reduction according to benefit of value 'md,tv'
+    if(selectedProf.value == 'tv' ||
+        selectedProf.value == 'mt' ||
+        selectedProf.value == 'md'
+    ){
+        assurances.value.forEach((elm)=>{
+        if(elm.name == 'Pharmacie Ubuzima'){
+            rate_assure.value = elm.rate_assure
+        }
+    })
+    }
+    console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
+    initClient()
+    clClean.value = false
+    confirmRdBtn.value = false
+})
 </script>
 
 <style>
