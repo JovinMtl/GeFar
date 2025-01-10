@@ -71,11 +71,14 @@
             <label class="little-lab" for="client">Client:</label>
             <input
                 v-model="selectedClient"
+                style="width: 100px;margin:0 20px;"
                 list="clients" name="client" id="client">
 
             <datalist id="clients">
                 <option v-for="client in clients" :value="client.beneficiaire">{{ client.nom_adherant }}</option>
             </datalist>
+            <input type="button" @click="need_new_client=true"
+                value="+" />
             <!-- clInfo component should be here. -->
             <createClient v-if="need_new_client" @clData="getclData"/>
         </div>
