@@ -67,16 +67,18 @@
                 value="Valider" @click="complValid"
                 style="margin-left: 10px;">
         </div>
-        <label class="little-lab" for="client">Client:</label>
-        <input
-            v-model="selectedClient"
-            list="clients" name="client" id="client">
+        <div v-if="assureur">
+            <label class="little-lab" for="client">Client:</label>
+            <input
+                v-model="selectedClient"
+                list="clients" name="client" id="client">
 
-        <datalist id="clients">
-            <option v-for="client in clients" :value="client.beneficiaire">{{ client.nom_adherant }}</option>
-        </datalist>
-        <!-- clInfo component should be here. -->
-         <createClient @clData="getclData"/>
+            <datalist id="clients">
+                <option v-for="client in clients" :value="client.beneficiaire">{{ client.nom_adherant }}</option>
+            </datalist>
+            <!-- clInfo component should be here. -->
+            <createClient @clData="getclData"/>
+        </div>
     </div>
     <div v-if="isWarning" class="warning">
             {{ warnDateMessage}}
@@ -319,6 +321,7 @@ watch(selectedProf, (value) => {
         if(elm.name == 'Pharmacie Ubuzima'){
             rate_assure.value = elm.rate_assure
         }
+        assureur.value = null
     })
     } else if(selectedProf.value == 'au'){
         getClients()
