@@ -30,7 +30,8 @@
             <a title="Ajouter une nouvelle assurance">
                 <input
                 type="button" v-show="!need_assureur"
-                    @click="need_assureur=true" 
+                    @click="need_assureur=true"
+                    class="bg-g"
                     value="+"/>
             </a>
         </div>
@@ -78,7 +79,9 @@
                 <option v-for="client in clients" :value="client.beneficiaire">{{ client.nom_adherant }}</option>
             </datalist>
             <input type="button" @click="need_new_client=true"
-                value="+" />
+                value="+" class="bg-g" />
+            <input v-show="need_new_client" type="button" @click="need_new_client=false"
+                value="x" class="s1-cl bg-r"/>
             <!-- clInfo component should be here. -->
             <createClient v-if="need_new_client" @clData="getclData"/>
         </div>
