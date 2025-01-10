@@ -31,8 +31,22 @@ const relation = ref<string>("Lui-même")
 const nomBen = ref<string>('')
 const rateAssu = ref<number | null>(null)
 
+const  message = ref<string>('')
+
 // Functions
 const checkBen = ()=>{
-    if (nomAd.value)
+    let status = true
+    if ((String(nomAd.value).length < 4) 
+        || (String(employeur.value).length < 4)
+        || (String(nomBen.value).length) < 4){
+        status = false
+        message.value = "Nom invalide;"
+    }
+    if(Number(rateAssu.value) < 0 ||
+        Number(rateAssu.value) > 100){
+            status = false
+            message.value += "Taux invalide"
+        }
+    
 }
 </script>
