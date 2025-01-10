@@ -69,7 +69,7 @@
                 style="margin-left: 10px;">
         </div>
         <!-- clInfo component should be here. -->
-         <createClient />
+         <createClient @clData="getclData"/>
     </div>
     <div v-if="isWarning" class="warning">
             {{ warnDateMessage}}
