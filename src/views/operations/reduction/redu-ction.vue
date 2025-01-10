@@ -77,7 +77,7 @@
                 <option v-for="client in clients" :value="client.beneficiaire">{{ client.nom_adherant }}</option>
             </datalist>
             <!-- clInfo component should be here. -->
-            <createClient @clData="getclData"/>
+            <createClient v-if="need_new_client" @clData="getclData"/>
         </div>
     </div>
     <div v-if="isWarning" class="warning">
@@ -111,15 +111,15 @@ const clCardNumber: Ref<string> = ref('')
 const clBonNumber: Ref<string> = ref('')
 const assu_name: Ref<string> = ref('')
 const bonDate = ref(new Date)
-const clPhone: Ref<number> = ref() // omitting initial value for placeholder
+const clPhone: Ref<number|null> = ref(null) // omitting initial value for placeholder
 const message = shallowRef<string>('')
 const clClean: Ref<boolean> = ref(false)
 const isWarning: Ref<boolean> = ref(false)
 const need_assureur: Ref<boolean> = ref(false)
 const assu_state: Ref<boolean> = ref(false)
-const assu_rate: Ref<number> = ref()
+const assu_rate: Ref<number | null> = ref(null)
 const rate_assure: Ref<number> = ref(1)
-// const somme_formatted: Ref<string> = ref('')
+const need_new_client: Ref<boolean> = ref(false)
 const clientInfo: clInfo = reactive({
     'nom_client': '',
     'numero_tel': '',
@@ -129,15 +129,12 @@ const clientInfo: clInfo = reactive({
     'numero_bon': '',
     'date_bon': '',
 })
-// const suggest:Ref<string> = ref("Votre assureur")
-const warnDateMessage: Ref<string> = ref('')
 
-// const classes:Ref<Medi[]> = ref([])
+const warnDateMessage: Ref<string> = ref('')
 const datAssu: DataAssurance = reactive({
     'assu': []
 })
 const selectedClient: Ref<string | null> = ref(null)
-
 const professions = [
     {
         'value': '',
