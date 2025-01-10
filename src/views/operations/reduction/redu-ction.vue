@@ -68,6 +68,8 @@
                 value="Valider" @click="complValid"
                 style="margin-left: 10px;">
         </div>
+        <!-- clInfo component should be here. -->
+         <createClient />
     </div>
     <div v-if="isWarning" class="warning">
             {{ warnDateMessage}}
@@ -86,6 +88,7 @@ import {
     clInfo, Medi, DataAssurance
 } from '../../layout/types.js'
 import { baseURL } from '../../../store/host.js'
+import createClient from './create-client.vue'
 
 const emit = defineEmits(['cfrBtn', 'seleProf', 'assuRatel'])
 const props = defineProps(['rdBtn'])
