@@ -21,8 +21,7 @@
     <div v-if="selectedProf == 'au'">
         <div>
             <label for="assur"
-                    style="font-size: .8rem;
-                    color: black;margin-right: 4px;">Son assureur:</label>
+                    class="little-lab">Son assureur:</label>
             <select  id="assur" v-model="assureur">
                 <option v-for="assurance in assurances">
                     {{ (assurance.name).slice(0,20) }}
@@ -68,11 +67,13 @@
                 value="Valider" @click="complValid"
                 style="margin-left: 10px;">
         </div>
-        <label for="browser">Choose your browser from the list:</label>
-        <input list="browsers" name="browser" id="browser">
+        <label class="little-lab" for="client">Client:</label>
+        <input
+            v-model="selectedClient"
+            list="clients" name="client" id="client">
 
-        <datalist id="browsers">
-            <option v-for="client in clients" value="Edge">{{ client }}</option>
+        <datalist id="clients">
+            <option v-for="client in clients" :value="client.beneficiaire">{{ client.nom_adherant }}</option>
         </datalist>
         <!-- clInfo component should be here. -->
          <createClient @clData="getclData"/>
@@ -133,6 +134,7 @@ const warnDateMessage: Ref<string> = ref('')
 const datAssu: DataAssurance = reactive({
     'assu': []
 })
+const selectedClient: Ref<string | null> = ref(null)
 
 const professions = [
     {
@@ -169,7 +171,7 @@ const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 const url_addClient = "api/gOps/addClient/"
 const [addCliResp, addClient] = useKurungika(datAssu, url_addClient)
 
-const url_getClients = "api/gOps/getClient/"
+const url_getClients = "api/gOps/getClients/"
 const [clients, getClients] = useKuvoma(url_getClients, url_local)
 
 
@@ -318,6 +320,8 @@ watch(selectedProf, (value) => {
             rate_assure.value = elm.rate_assure
         }
     })
+    } else if(selectedProf.value == 'au'){
+        getClients()
     }
     console.log("The selected profession : ", selectedProf.value)
     initClient()
