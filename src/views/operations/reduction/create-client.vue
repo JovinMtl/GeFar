@@ -13,6 +13,8 @@
         <label for="">Nom du benéficiaire</label>
         <input type="text"
             placeholder="beneficiaire" />
+        <input type="number"
+            placeholder="Taux d'assurance" />
         <input type="button" value="Ok"/>
     </div>
 </template>
