@@ -9,6 +9,7 @@
             <option>Conjoint</option>
             <option>Enfant</option>
         </select>
+        <label v-if="message" class="sm-l c-r ml-5">{{ message }}</label>
         <br>
         <label class="little-lab" for="">Nom du benéficiaire</label>
         <input v-model="nomBen" type="text"
@@ -50,6 +51,7 @@ const checkBen = ()=>{
         }
     if (status){
         // should emit the gathered data as an object
+        message.value = ""
         emit('clData',{
             'nomAd': nomAd,
             'employeur': employeur,
