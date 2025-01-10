@@ -459,6 +459,12 @@ html, body {
 .c-r{
     color: red;
 }
+.c-g{
+    color: green;
+}
+.fw-8{
+    font-weight: 800;
+}
 .little-lab{
     font-size: .8rem;
     color: black;
