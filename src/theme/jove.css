@@ -447,6 +447,15 @@ html, body {
 .s-cl{
     margin: 20px 0;
 }
+.s1-cl{
+    margin: 0 10px;
+}
+.bg-r{
+    background-color: red;
+}
+.bg-g{
+    background-color: green;
+}
 .little-lab{
     font-size: .8rem;
     color: black;
