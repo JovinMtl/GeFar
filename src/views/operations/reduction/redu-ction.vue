@@ -100,7 +100,7 @@ import {
     useKurungika, useKuvoma
 } from '../../hooks/kuvoma.js'
 import { 
-    clInfo, Medi, DataAssurance
+    clInfo, Medi, DataAssurance, CreatedClient
 } from '../../layout/types.js'
 import { baseURL } from '../../../store/host.js'
 import createClient from './create-client.vue'
@@ -186,7 +186,7 @@ const [clients, getClients] = useKuvoma(url_getClients, url_local)
 
 
 // Function definition
-const getclData = (data)=>{
+const getclData = (data:CreatedClient)=>{
     // We catch the emitted data from createClient component
     nom_adherant = data.nomAd
     employeur = data.employeur
