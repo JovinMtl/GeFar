@@ -68,6 +68,16 @@
                 value="Valider" @click="complValid"
                 style="margin-left: 10px;">
         </div>
+        <label for="browser">Choose your browser from the list:</label>
+        <input list="browsers" name="browser" id="browser">
+
+        <datalist id="browsers">
+            <option value="Edge"></option>
+            <option value="Firefox"></option>
+            <option value="Chrome"></option>
+            <option value="Opera"></option>
+            <option value="Safari"></option>
+        </datalist>
         <!-- clInfo component should be here. -->
          <createClient @clData="getclData"/>
     </div>
@@ -160,10 +170,17 @@ const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
 const url_getAssurances = "api/gOps/getAssu/"
 const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
+const url_addClient = "api/gOps/addClient/"
+const [addCliResp, addClient] = useKurungika(datAssu, url_addClient)
+
+const url_getClients = "api/gOps/getAssu/"
+const [clients, getClients] = useKuvoma(url_getClients, url_local)
+
 
 // Function definition
-const getclData = ()=>{
+const getclData = (data)=>{
     // We catch the emitted data from createClient component
+    // 
 }
 const checkAssu = ()=>{
     // will check the validity of assurance fields
