@@ -447,3 +447,8 @@ html, body {
 .s-cl{
     margin: 20px 0;
 }
+.little-lab{
+    font-size: .8rem;
+    color: black;
+    margin-right: 4px;
+}
