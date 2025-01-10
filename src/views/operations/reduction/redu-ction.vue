@@ -72,11 +72,7 @@
         <input list="browsers" name="browser" id="browser">
 
         <datalist id="browsers">
-            <option value="Edge"></option>
-            <option value="Firefox"></option>
-            <option value="Chrome"></option>
-            <option value="Opera"></option>
-            <option value="Safari"></option>
+            <option v-for="client in clients" value="Edge">{{ client }}</option>
         </datalist>
         <!-- clInfo component should be here. -->
          <createClient @clData="getclData"/>
@@ -173,7 +169,7 @@ const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 const url_addClient = "api/gOps/addClient/"
 const [addCliResp, addClient] = useKurungika(datAssu, url_addClient)
 
-const url_getClients = "api/gOps/getAssu/"
+const url_getClients = "api/gOps/getClient/"
 const [clients, getClients] = useKuvoma(url_getClients, url_local)
 
 
