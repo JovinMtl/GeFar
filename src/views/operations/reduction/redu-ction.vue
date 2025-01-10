@@ -162,6 +162,9 @@ const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
 
 // Function definition
+const getclData = ()=>{
+    // We catch the emitted data from createClient component
+}
 const checkAssu = ()=>{
     // will check the validity of assurance fields
     let status = false
