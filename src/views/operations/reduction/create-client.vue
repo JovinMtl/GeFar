@@ -24,13 +24,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const emit = defineEmits(['clData'])
+
 // Variables
 const nomAd = ref<string>('')
 const employeur = ref<string>('')
 const relation = ref<string>("Lui-même")
 const nomBen = ref<string>('')
 const rateAssu = ref<number | null>(null)
-
 const  message = ref<string>('')
 
 // Functions
@@ -47,6 +48,15 @@ const checkBen = ()=>{
             status = false
             message.value += "Taux invalide"
         }
-    
+    if (status){
+        // should emit the gathered data as an object
+        emit('clData',{
+            'nomAd': nomAd,
+            'employeur': employeur,
+            'relation' : relation,
+            'nomBen': nomBen,
+            'rateAssu': rateAssu
+        })
+    }
 }
 </script>
