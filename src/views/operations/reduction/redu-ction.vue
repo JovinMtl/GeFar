@@ -165,9 +165,9 @@ const professions = [
 ]
 
 let nom_adherant: string = ''
-let nom_client: string = ''
-let relation: string = ''
 let employeur: string = ''
+let nom_beneficiaire: string = ''
+let relation: string = ''
 
 // Composables 
 const url_local: string = baseURL
@@ -188,7 +188,10 @@ const [clients, getClients] = useKuvoma(url_getClients, url_local)
 // Function definition
 const getclData = (data)=>{
     // We catch the emitted data from createClient component
-    
+    nom_adherant = data.nomAd
+    employeur = data.employeur
+    relation = data.relation
+    nom_beneficiaire = data.nomBen
     rate_assure.value = data.rateAssu
     console.log("Now the assuRate:", rate_assure.value)
     emit('assuRatel', rate_assure.value)
