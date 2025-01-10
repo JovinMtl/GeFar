@@ -116,3 +116,11 @@ export interface DataToAPI{
     'panier': PanierAPI [];
     'client': clInfo;
 }
+type Relationship =  'Lui-même' | 'Conjoint' | 'Enfant' 
+export interface CreatedClient{
+    'nomAd': string;
+    'employeur': string;
+    'nomBen': string;
+    'rateAssu': number;
+    'relation': Relationship;
+}
