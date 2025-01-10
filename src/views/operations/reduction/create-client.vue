@@ -10,7 +10,7 @@
             <option>Enfant</option>
         </select>
         <br>
-        <label for="">Nom du benéficiaire</label>
+        <label class="little-lab" for="">Nom du benéficiaire</label>
         <input v-model="nomBen" type="text"
             placeholder="beneficiaire" />
         <input v-model="rateAssu" type="number"
