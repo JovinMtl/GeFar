@@ -15,16 +15,24 @@
             placeholder="beneficiaire" />
         <input v-model="rateAssu" type="number"
             placeholder="Taux d'assurance" />
-        <input type="button" value="Ok"/>
+        <input type="button" 
+            value="Ok"
+            @click="checkBen"/>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const nomAd = ref('')
-const employeur = ref('')
-const relation = ref("Lui-même")
-const nomBen = ref('')
-const rateAssu = ref(null)
+// Variables
+const nomAd = ref<string>('')
+const employeur = ref<string>('')
+const relation = ref<string>("Lui-même")
+const nomBen = ref<string>('')
+const rateAssu = ref<number | null>(null)
+
+// Functions
+const checkBen = ()=>{
+    if (nomAd.value)
+}
 </script>
