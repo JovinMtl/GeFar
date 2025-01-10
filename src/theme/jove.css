@@ -456,8 +456,17 @@ html, body {
 .bg-g{
     background-color: green;
 }
+.c-r{
+    color: red;
+}
 .little-lab{
     font-size: .8rem;
     color: black;
     margin-right: 4px;
+}
+.sm-l{
+    font-size: .8rem;
+}
+.ml-5{
+    margin-left: 5px;
 }
