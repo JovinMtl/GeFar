@@ -183,7 +183,10 @@ const [clients, getClients] = useKuvoma(url_getClients, url_local)
 // Function definition
 const getclData = (data)=>{
     // We catch the emitted data from createClient component
-    // 
+    console.log("The data:", data)
+    rate_assure.value = data.rateAssu
+    console.log("Now the assuRate:", rate_assure.value)
+    emit('assuRatel', rate_assure.value)
 }
 const checkAssu = ()=>{
     // will check the validity of assurance fields

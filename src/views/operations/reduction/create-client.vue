@@ -63,11 +63,11 @@ const checkBen = ()=>{
         // should emit the gathered data as an object
         success.value = 'OK'
         emit('clData',{
-            'nomAd': nomAd,
-            'employeur': employeur,
-            'relation' : relation,
-            'nomBen': nomBen,
-            'rateAssu': rateAssu
+            'nomAd': nomAd.value,
+            'employeur': employeur.value,
+            'relation' : relation.value,
+            'nomBen': nomBen.value,
+            'rateAssu': rateAssu.value
         })
     }
     setTimeout(()=>{
