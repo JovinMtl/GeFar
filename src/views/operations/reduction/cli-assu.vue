@@ -72,6 +72,9 @@ const getclData = (data:CreatedClient)=>{
     relation = data.relation
     nom_beneficiaire = data.nomBen
     rateAssu = data.rateAssu
+
+    // Compiling other user data to be emitted
+    // and gets linked too panier_api
     console.log("Now the assuRate:", rateAssu)
     emit('rate_assu_e', rateAssu)
 }
