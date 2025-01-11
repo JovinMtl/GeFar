@@ -15,11 +15,13 @@
             value="x" class="s1-cl bg-r"/>
         <!-- clInfo component should be here. -->
         <createClient v-if="need_new_client" @clData="getclData"/>
-    
-        <input  v-if="existingClient"
-            type="number"
-            v-model="previous_rate_assure"
-            placeholder="Taux d'assurance">
+        
+        <div  v-if="existingClient && !need_add_client && selectedClient">
+            <input type="number"
+                v-model="previous_rate_assure"
+                placeholder="Taux d'assurance">
+            <input type="button" value="Ok" />
+        </div>
     </div>
 </template>
 

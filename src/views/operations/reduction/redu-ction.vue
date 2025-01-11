@@ -5,8 +5,8 @@
         style="font-size: .8rem">Choisissez sa profession:</label>
 
     <select v-model="selectedProf" name="metiers" id="profes">
-        <option v-for="profession in professions" :value="profession.value">{{ profession.name
-        }}
+        <option v-for="profession in professions" :value="profession.value">
+            {{ profession.name }}
         </option>
     </select> <span style="color:brown"> {{ rate_assure }}%</span> 
     <div v-if="selectedProf != 'au' && selectedProf" class="inpName">
