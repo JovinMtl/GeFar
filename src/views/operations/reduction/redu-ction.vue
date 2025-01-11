@@ -68,7 +68,7 @@
                 value="Valider" @click="complValid"
                 style="margin-left: 10px;">
         </div>
-        <div v-if="assureur">
+        <div>
             <!-- <label class="little-lab" for="client">Client:</label>
             <input
                 v-model="selectedClient"
@@ -90,7 +90,7 @@
                 placeholder="Taux d'assurance"> -->
         </div>
         <!-- assuReur component should be here -->
-         <cliAssu 
+         <cliAssu  v-if="assureur && openCliAssu"
             @rate_assu_e="getRateAssu"
             :rate_assu_p="rate_assure" />
     </div>
@@ -134,6 +134,7 @@ const need_assureur: Ref<boolean> = ref(false)
 const assu_state: Ref<boolean> = ref(false)
 const assu_rate: Ref<number | null> = ref(null)
 const rate_assure: Ref<number> = ref(1)
+const openCliAssu: Ref<boolean> = ref(false)
 // const need_new_client: Ref<boolean> = ref(false)
 // const need_add_client: Ref<boolean> = ref(false)
 // const previous_rate_assure:Ref<number|null> = ref(null)
@@ -333,6 +334,10 @@ if(props.rdBtn){
 //     }
 // })
 watch(assureur, (value)=>{
+    openCliAssu.value = false
+    setTimeout(()=>{
+        openCliAssu.value = true
+    }, 500)
     assurances.value.forEach((elm)=>{
         if(elm.name == value){
             rate_assure.value = elm.rate_assure
