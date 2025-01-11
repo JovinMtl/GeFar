@@ -84,9 +84,9 @@
                 value="x" class="s1-cl bg-r"/>
             <!-- clInfo component should be here. -->
             <createClient v-if="need_new_client" @clData="getclData"/>
-        </div>
-        <div v-if="existingClient">
-            <input type="number"
+        
+            <input  v-if="existingClient"
+                type="number"
                 v-model="previous_rate_assure"
                 placeholder="Taux d'assurance">
         </div>
@@ -330,6 +330,9 @@ watch(selectedClient, (value)=>{
         setTimeout(()=>{
             previous_rate_assure.value = rate_assure.value
         }, 1500)
+    }
+    if(! value){
+        previous_rate_assure.value = null
     }
 })
 watch(assureur, (value)=>{
