@@ -150,84 +150,7 @@
                                 <div class="rdBtn" :class="rdBtnActive ? 'rdBtn-1' : 'rdBtn-2'" @click="isSpecial">
                                 </div>
                             </div>
-                            <!-- Begin of reduCtion -->
-
-                            <!-- <div v-if="rdBtnActive" style="height:39vh;margin-top:15px;
-                                overflow: auto;">
-                                <label for="metiers"
-                                    style="font-size: .8rem">Choisissez sa profession:</label>
-
-                                <select v-model="selectedProf" name="metiers" id="profes">
-                                    <option v-for="profession in professions" :value="profession.value">{{ profession.name
-                                    }}
-                                    </option>
-                                </select> <span style="color:brown"> {{ rate_assure }}%</span> 
-                                <div v-if="selectedProf != 'au' && selectedProf" class="inpName">
-                                    <input class="inpName-1" placeholder="mubaze izina ryiwe"
-                                        v-model="clName"/>
-                                    <input class="inpName-1" placeholder="numero ya telefone yiwe" 
-                                        v-model="clPhone" type="number" />
-                                    <input type="button" :class="clClean ? 'BtnClean':''" 
-                                    value="Valider" @click="simplValid">
-                                </div>
-                                <div v-if="selectedProf == 'au'">
-                                    <div>
-                                        <label for="assur"
-                                             style="font-size: .8rem;
-                                             color: black;margin-right: 4px;">Son assureur:</label>
-                                        <select  id="assur" v-model="assureur">
-                                            <option v-for="assurance in assurances">
-                                                {{ (assurance.name).slice(0,20) }}
-                                            </option>
-                                        </select>
-                                        <a title="Ajouter une nouvelle assurance">
-                                            <input
-                                            type="button" v-show="!need_assureur"
-                                                @click="need_assureur=true" 
-                                                value="+"/>
-                                        </a>
-                                    </div>
-                                    
-                                    <div class="newAssu" v-if="!assureur && need_assureur">
-                                        <label for="nAssu">Ajouter une nouvelle assurance</label>
-                                        <input type="text" id='nAssu'
-                                            v-model="assu_name"
-                                        placeholder="Nom de l'assurance">
-                                        <input type="button" value="No" 
-                                            class="ml-10" @click="need_assureur=false">
-                                        <hr>
-                                        <input type="number"  v-model="assu_rate"
-                                        placeholder="Taux d'assurance. e.x: 20">
-                                        <input type="button" value="Ok" 
-                                            class="ml-10" @click="checkAssu">
-                                        
-                                        <div>{{ message }}</div>
-                                    </div>
-                                    
-                                    <div v-if="stage_redu==3 && assureur" 
-                                        style="margin: 20px 0">
-                                        <input type="text"
-                                            class="inpBl"
-                                            style="color: rgb(12, 124, 216); font-weight: 700;"
-                                         :value="'   '+ assureur.slice(0,20)" disabled>
-                                        <input type="text" placeholder="Nom du beneficiaire"
-                                            v-model="clName1">
-                                        <input type="text" placeholder="Numero Carte"
-                                            v-model="clCardNumber">
-                                        <input type="text" placeholder="Numero bon"
-                                            v-model="clBonNumber">
-                                        <input type="date" name="" id=""
-                                            v-model="bonDate">
-                                        <input type="button" :class="clClean ? 'BtnClean':''"  
-                                            value="Valider" @click="complValid"
-                                            style="margin-left: 10px;">
-                                    </div>
-                                </div>
-                                <div v-if="isWarning" class="warning">
-                                     {{ warnDateMessage}}
-                                </div>
-                            </div> -->
-                            
+                            <!-- Begin of reduCtion -->             
                             <reduCtion v-if="rdBtnActive" 
                                 :rdBtn="rdBtnActive"
                                 @assuRatel="getassuRate"
@@ -317,7 +240,6 @@ import CircumPower from '../layout/icon/CircumPower.vue'
 import CircumPill from '../layout/icon/pill.vue'
 import BiCollection from '../layout/icon/collect.vue'
 import FluentCloudSync28Regular from '../layout/icon/cloud.vue'
-// import DashBoard from '../dashBoard.vue'
 import dashBoard from '@/views/dashBoard.vue';
 import reduCtion from '../operations/reduction/redu-ction.vue';
 
@@ -374,67 +296,11 @@ const last_medEntree: Ref<number> = ref(0)
 const last_medSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
 const total_r: Ref<number> = ref(2)
-// const stage_redu: Ref<number> = ref(0)
 const selectedProf: Ref<string> = ref('')
-// const assureur: Ref<string> = ref('')
-// const clName: Ref<string> = ref('')
-// const clName1: Ref<string> = ref('')
-// const clCardNumber: Ref<string> = ref('')
-// const clBonNumber: Ref<string> = ref('')
-// const assu_name: Ref<string> = ref('')
-// const assu_rate: Ref<string> = ref('')
-// const bonDate = ref(new Date)
-// const clPhone: Ref<number> = ref() // omitting initial value for placeholder
-// const message = shallowRef<string>('')
-// const clClean: Ref<boolean> = ref(false)
-// const isWarning: Ref<boolean> = ref(false)
-// const need_assureur: Ref<boolean> = ref(false)
-// const assu_state: Ref<boolean> = ref(false)
-// const assu_rate: Ref<number> = ref()
 const rate_assure: Ref<number> = ref(1)
-// // const somme_formatted: Ref<string> = ref('')
-// const clientInfo: clInfo = reactive({
-//     'nom_client': '',
-//     'numero_tel': '',
-//     'categorie': '',
-//     'assureur': '',
-//     'numero_carte': '',
-//     'numero_bon': '',
-//     'date_bon': '',
-// })
-
 const suggest:Ref<string> = ref("Votre assureur")
-// const warnDateMessage: Ref<string> = ref('')
-
 const classes:Ref<Medi[]> = ref([])
-// const datAssu: DataAssurance = reactive({
-//     'assu': []
-// })
 
-
-
-// const professions = [
-//     {
-//         'value': '',
-//         'name': '--- Akora iki ? ---'
-//     },
-//     {
-//         'value': 'mt',
-//         'name': 'Motar'
-//     },
-//     {
-//         'value': 'tv',
-//         'name': 'Taxi Vélo'
-//     },
-//     {
-//         'value': 'md',
-//         'name': 'Domaine Médicale'
-//     },
-//     {
-//         'value': 'au',
-//         'name': 'Assuré'
-//     },
-// ]
 
 const url_reportIndex: string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
@@ -446,14 +312,6 @@ const [bothData, askInstances] = useKurungika(last_indexes.value, url_askInstanc
 
 const url_syncFromLocal: string = "api/rep/syncFromLocal/"
 const [rep_update, kurungika] = useKurungika(bothData.value, url_syncFromLocal)
-
-// const url_addAssu: string = "api/gOps/addAssu/"
-// const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
-
-// const url_getAssurances = "api/gOps/getAssu/"
-// const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
-
-
 
 const url_sell: string = "api/out/sell/"
 const [sell_report, toSell] = useKurungika(panier_api, url_sell)
@@ -473,83 +331,7 @@ const getSelectProf = (value)=>{
 const getassuRate = (value)=>{
     rate_assure.value = value
 }
-// const checkAssu = ()=>{
-//     // will check the validity of assurance fields
-//     let status = false
-//     let rate = Number(assu_rate.value)
-//     if ((assu_name.value).length > 3){
-//         status = true
-//     }
-//     if(rate < 0 || rate > 100){
-//         status = false
-//     }
-//     // status = true //temporary
-//     if ( status){
-//             datAssu.assu[0] = assu_name.value
-//             datAssu.assu[1] = rate
-//             addAssu()
-//     } else{
-//         message.value = "Champs invalides"
-//         setTimeout(()=>{
-//             message.value = ""
-//         }, 2000)
-//     }
-// }
-// const simplValid = ():void=>{
-//     // validate Taxi moto, taxi velo and domaine medicale
-//     if(!clName.value){
-//         clName.value = "inconnu"
-//     } else if (!clPhone.value){
-//         clPhone.value = 1111
-//     }
-//     clientInfo.nom_client = clName.value;
-//     clientInfo.numero_tel = String(clPhone.value);
-//     clientInfo.categorie = String(selectedProf.value);
-//     clientInfo.assureur = 'Pharmacie Ubuzima';
-//     panier_api.client = clientInfo
-//     clClean.value = true
-//     confirmRdBtn.value = true
 
-//     console.log("Simp Validated: ", panier_api.client)
-// }
-// const complValid = ():void=>{
-//     let dateBon = new Date(bonDate.value)
-    
-//     if(clName1.value && clCardNumber.value
-//         && clBonNumber.value 
-//     ){
-//         clClean.value = true
-//     } else{
-//         clClean.value = false
-//         isWarning.value = true
-//         warnDateMessage.value = "Données du Patient incomplets"
-//     }
-//     if (dateBon < today){
-//         // Starting to build up an object for client
-//         clientInfo.nom_client = clName1.value
-//         clientInfo.numero_tel = ''
-//         clientInfo.categorie = String(selectedProf.value)
-//         clientInfo.assureur = assureur.value
-//         clientInfo.numero_carte = clCardNumber.value
-//         clientInfo.numero_bon = clBonNumber.value 
-//         clientInfo.date_bon = String(dateBon)
-//         panier_api.client = clientInfo
-//         warnDateMessage.value = ""
-//         clClean.value = true
-//         confirmRdBtn.value = true
-
-//         console.log("Validated: ", panier_api)
-//     }else{
-//         warnDateMessage.value = "La date du Bon doit être valide. "
-//         clClean.value = false
-//         isWarning.value = true
-//     }
-    
-//     setTimeout(()=>{
-//             isWarning.value = false
-//             warnDateMessage.value = ""
-//         }, 3000)
-// } 
 setTimeout(()=>{
     dBOpen.value = true // making dashboard to open successfully
 }, 1)
@@ -575,13 +357,8 @@ const logout = () => {
     localStorage.setItem('accessToken', '')
     localStorage.setItem('refreshToken', '')
     console.log("Logging out...")
-    // show_authe()
     router.push('/')
 }
-// const show_authe = ()=>{
-//     const container = document.getElementById('authe')
-//     container.style.display = 'flex'
-// }
 const noteUmuti = async () => {
     server_process.value = true
     let response = await useNoteUmuti(query_search.value.query)
@@ -608,7 +385,6 @@ const alertUmutiNew = async (value) => {
         console.log("Umuti name should probably be more than 4 caracters.")
         umuti_new.value = false
     }
-    // let response = await useNoteUmuti(value)s
 
 }
 const closeFacture = () => {
@@ -638,7 +414,6 @@ const compileImitiSet = async () => {
                 Authorization: 'Bearer ' + getAccessToken()
             }
         })
-        // const server_data = await response.json()
         if (response.ok) {
             console.log("The response is okay:", server_process.value)
             listImiti_update.value += 1
@@ -691,7 +466,6 @@ const closeApproFile = () => {
     approFileStatus.value = false
 }
 const searchManager = (value) => {
-    // console.log("You typed: ", value)
     query_search.value = value
 
 }
@@ -708,7 +482,6 @@ const getFamilies = (famillies)=>{
 const openedFamilly = ref(0)
 const openFamilly = (e)=>{
     let index = (e.target.id).slice(1)
-    // openedFamilly.value = (familles.value)[index]
     openedFamilly.value = index
 }
 
@@ -733,7 +506,6 @@ const showChange = (event) => {
         actualValue.value = event.target.value
         const code_s = event.target.getAttribute('id')
         const code = Number(code_s.slice(1))
-        // console.log("THe code is: ", code, 'has: ', event.target.value)
         activeLot.value[code].to_panier = Number(event.target.value)
     } else {
         console.log("You should type a Number: ", typeof (event.target.value))
@@ -863,13 +635,11 @@ const update_total_client = (reduction: number = 0): string => {
         let p_T = element.prix_vente * element.qte
         somme += p_T
     })
-    // somme = ((somme / 97)+1) * 97 // should round
+    // somme = ((somme / 97)+1) * 97 // should round the number
     console.log("Assurance rate :", rate_assure.value)
     if (reduction == 0) {
         somme_formatted = readableNumber(somme) //formatting by three digits
     } else if (reduction == 1) {
-        // console.log("The assurances:", assurances.value)
-        // console.log("from:", clientInfo.assureur)
         somme = somme - (somme *( rate_assure.value / 100)).toFixed()
         somme_formatted = readableNumber(somme) //formatting by three digits
     } else {
@@ -976,52 +746,7 @@ const show_suggest = (e)=>{
     stage_redu.value = 3
     clClean.value = false
 }
-// const initClient = ()=>{
-//     clientInfo.nom_client = ''
-//     clientInfo.numero_tel = ''
-//     clientInfo.categorie = ''
-//     clientInfo.assureur = ''
-//     clientInfo.numero_carte = ''
-//     clientInfo.numero_bon = ''
-//     clientInfo.date_bon = ''
-// }
 
-// watch(assureur, (value)=>{
-//     assurances.value.forEach((elm)=>{
-//         if(elm.name == value){
-//             rate_assure.value = elm.rate_assure
-//         }
-//     })
-// })
-// watch(addAssuResp, (value)=>{
-//     console.log("Resp from addAssu: ", value)
-//     assu_state.value = value.status
-//     message.value = value.reason
-//     if(assu_state.value){
-//         getAssurances()
-//         setTimeout(()=>{
-//             need_assureur.value = false
-//         }, 2000)
-//     }
-//     if(value.code == 'token_not_valid'){
-//         message.value = "Veuillez vous reconnecter"
-//     }
-// })
-// watch(rdBtnActive, (value)=>{
-//     if(!value){
-//         initClient()
-//         console.log("Now the Panier2API: ", panier_api)
-//         clClean.value = true
-//     } else{
-//         getAssurances()
-//         console.log("Assurances we have:", assurances.value)
-//     }
-//     if(clClean.value){
-//         confirmRdBtn.value = true
-//     } else{
-//         confirmRdBtn.value = false
-//     }
-// })
 
 watch(rate_assure, (value)=>{
     console.log("rate_assure does change into:", value)
@@ -1029,23 +754,6 @@ watch(rate_assure, (value)=>{
 watch(suggest, (value)=>{
     console.log("The selected option: ", suggest.value)
 })
-// watch(selectedProf, (value) => {
-//     // Now apply the reduction according to benefit of value 'md,tv'
-//     if(selectedProf.value == 'tv' ||
-//         selectedProf.value == 'mt' ||
-//         selectedProf.value == 'md'
-//     ){
-//         assurances.value.forEach((elm)=>{
-//         if(elm.name == 'Pharmacie Ubuzima'){
-//             rate_assure.value = elm.rate_assure
-//         }
-//     })
-//     }
-//     console.log("The selected profession : ", selectedProf.value, "total:", total_panier_client)
-//     initClient()
-//     clClean.value = false
-//     confirmRdBtn.value = false
-// })
 watch(bothData, (value) => {
     // should now send them to the remote server.
     kurungika()
@@ -1073,7 +781,6 @@ provide('needUpdate_server', listImiti_update) // in list-imiti component
 provide('imiti_search', all_imiti) // in approv component
 provide('need_upload', umuti_single) // in approv component
 provide('imiti_downloaded', all_imiti.value) // in search component
-// provide('commandePatient', panier_client.value) // in facturier component
 provide('need_clear', clear_search) // in search component
 provide('familly_displ', openedFamilly)
 
@@ -1085,8 +792,6 @@ provide('familly_displ', openedFamilly)
     overflow: hidden;
     width: 100%;
     height: 100%;
-    /* background-color: #00ff00b0; */
-
 }
 
 .addElement {
@@ -1097,7 +802,6 @@ provide('familly_displ', openedFamilly)
     border-radius: 20px;
     left: 23vw;
     top: -4.5vh;
-    /* color: #0bf532; */
     color: black;
     text-align: center;
     align-content: center;
@@ -1115,19 +819,15 @@ provide('familly_displ', openedFamilly)
     justify-content: center;
     justify-items: center;
     align-items: center;
-
 }
 
 .umutiLot {
     overflow: auto;
-    /* background-color: yellow; */
     height: 80px;
     width: 60%;
     width: 10vw;
-    /* padding: 5px 5px; */
     margin-left: 5px;
 }
-
 .exit {
     background-color: transparent;
     height: 50px;
@@ -1140,21 +840,17 @@ provide('familly_displ', openedFamilly)
     font-size: xx-large;
     color: black;
 }
-
 .user {
     background-color: transparent;
     height: 20px;
     width: 150px;
     display: flex;
     position: absolute;
-    /* position: relative; */
     left: 55vw;
     top: 90.5vh;
-    /* top: 87vh; */
     font-size: normal;
     color: black;
 }
-
 .sync {
     background-color: transparent;
     height: 25px;
@@ -1166,17 +862,14 @@ provide('familly_displ', openedFamilly)
     font-size: xx-large;
     color: black;
 }
-
 .magnetic {
     background-color: transparent;
     height: 25px;
     width: 25px;
     display: flex;
     position: absolute;
-    /* position: relative; */
     left: 66vw;
     top: 89vh;
-    /* top: 87vh; */
     font-size: xx-large;
     color: black;
 }
@@ -1186,13 +879,8 @@ provide('familly_displ', openedFamilly)
     height: 10%;
     margin-bottom: 5px;
     align-content: center;
-    /* margin-left: 1px; */
-    /* background-color: green; */
 }
-
 .umutiTitle {
-    background-color: rgba(128, 128, 128, 0.378);
-    background-color: rgba(255, 255, 255, 0.496);
     background-color: rgba(0, 50, 255, 0.315);
     height: 5%;
     font-weight: 700;
@@ -1200,14 +888,11 @@ provide('familly_displ', openedFamilly)
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
     color: black;
-
 }
-
 .umutiDescription {
     height: 10%;
 }
 .umutiFamille{
-    /* background-color: rgb(42, 93, 233); */
     border: 2px solid green
 }
 
@@ -1225,25 +910,18 @@ provide('familly_displ', openedFamilly)
     background-color: rgba(79, 92, 75, 0.9);
     width: 100%;
     height: 90%;
-    /* padding-top: 20%; */
     z-index: 2;
-    /* left: 15vw; */
     overflow: auto;
 }
-
 .approFile {
     display: block;
     position: absolute;
     background-color: rgba(79, 92, 75, 0.9);
     width: 60vw;
     height: 90vh;
-    /* padding-top: 20%; */
     z-index: 2;
-    /* left: 15vw; */
     left: 20vw;
-    /* overflow: auto; */
 }
-
 .mainApprob {
     position: absolute;
     width: 100vw;
@@ -1252,18 +930,15 @@ provide('familly_displ', openedFamilly)
     text-align: center;
     z-index: 2;
 }
-
 .bodyApprov2 {
     overflow: auto;
     border-top: 2px double black;
 }
-
 .bodyApprov {
     height: 80%;
     width: 100%;
     overflow: auto;
 }
-
 .closeBtn:active {
     position: absolute;
     left: 88%;
@@ -1271,37 +946,25 @@ provide('familly_displ', openedFamilly)
     font-size: 2rem;
     color: red;
 }
-
 .btnSave {
     padding: 5px 15px;
     font-size: large;
     background-color: transparent;
     color: black;
-    /* border: 1px solid black; */
     box-shadow: 0 0 25px rgb(112, 110, 110);
 }
-
 .btnSave:active {
     padding: 5px 15px;
     font-size: large;
     background-color: transparent;
     background-color: rgba(25, 255, 25, 0.521);
     color: black;
-    /* border: 1px solid black; */
-    /* box-shadow: 0 0 20px black; */
 }
-
 .approClass {
     width: 27.3vw;
     height: 97%;
-    /* height: 100%; */
-    /* background-color: #ff000079; */
     background-color: rgb(255, 255, 255);
-    /* position: absolute; */
     position: relative;
-    /* padding: 0px 0px; */
-    /* color: rgb(63, 62, 62); */
-    /* color: rgba(255, 255, 255, 0.3); */
     z-index: 1;
     top: 5px;
     text-align: center;
@@ -1309,13 +972,10 @@ provide('familly_displ', openedFamilly)
     border-radius: 15px;
     overflow: auto;
     color: black;
-    /* color: green */
 }
 .hMenuLeft {
     display: none;
 }
-
-
 .lote {
     background-color: rgba(128, 128, 128, 0.527);
     height: 80%;
@@ -1327,34 +987,29 @@ provide('familly_displ', openedFamilly)
     margin-left: 10px;
     margin-top: 10px;
 }
-
 .head {
     width: 100%;
     height: 60%;
     background-color: transparent;
     color: white;
 }
-
 .sub {
     width: 100%;
     height: 40%;
     background-color: transparent;
     text-align: center;
 }
-
 .sell {
     padding: 5px 15px;
     margin-right: 12px;
     background-color: rgba(14, 14, 211, 0.384);
 }
-
 .confirmButton {
     padding: 5px 15px;
     border: 1px dashed seagreen;
     background-color: rgba(255, 255, 255, 0.4);
     color: seagreen;
 }
-
 .itemPanier {
     height: 25px;
     width: 100%;
@@ -1365,42 +1020,32 @@ provide('familly_displ', openedFamilly)
     background-color: rgba(255, 255, 255, 0.568);
     align-content: center;
 }
-
 .nomination {
     width: 80%;
     height: 100%;
     display: inline-flex;
     position: absolute;
-    /* align-items: center; */
 }
-
 .cancelButto {
     background-color: rgb(236, 93, 93);
-    /* width: 10%;  */
-    /* height: 100%;  */
     width: 13px;
     height: 13px;
     border-radius: 7px;
     display: inline-flex;
     position: relative;
     left: 85%;
-    /* align-content: flex-end; */
     top: 2px;
 }
-
-
 .sell:active {
     padding: 5px 15px;
     background-color: rgba(0, 0, 0, 0.568);
 }
-
 .confirmButton:active {
     padding: 5px 15px;
     border: 1px dashed seagreen;
     background-color: rgba(0, 0, 0, 0.404);
     color: white;
 }
-
 .red {
     color: red;
     font-size: .8rem;
@@ -1410,29 +1055,22 @@ provide('familly_displ', openedFamilly)
     background-color: black;
     border-radius: 15px;
 }
-
 ::-webkit-scrollbar {
     width: 3px;
     width: 5px;
     color: green;
 }
-
 ::-webkit-scrollbar-track {
     background-color: #f1f1f1;
 }
-
-
-
 .approClass::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: 15px;
 }
-
 .approClass::-webkit-scrollbar {
     width: 3px;
     color: green;
 }
-
 .approClass::-webkit-scrollbar-track {
     background-color: #f1f1f1;
     margin: 35px 0px;
