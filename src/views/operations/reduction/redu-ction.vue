@@ -311,6 +311,14 @@ if(props.rdBtn){
     console.log("Assurances we have:", assurances.value)
 }
 
+watch(previous_rate_assure, (value)=>{
+    if((Number(value))>=0 && 
+        (Number(value))<=100){
+        rate_assure.value = value
+        // signal the change of rate_assure
+        emit('assuRatel', rate_assure.value)
+    }
+})
 watch(selectedClient, (value)=>{
     if(value=='Nouveau'){
         need_add_client.value = true
@@ -318,7 +326,10 @@ watch(selectedClient, (value)=>{
         need_add_client.value = false
         need_new_client.value = false
         existingClient.value = true
-        
+
+        setTimeout(()=>{
+            previous_rate_assure.value = rate_assure.value
+        }, 1500)
     }
 })
 watch(assureur, (value)=>{
