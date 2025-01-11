@@ -863,6 +863,7 @@ const update_total_client = (reduction: number = 0): string => {
         let p_T = element.prix_vente * element.qte
         somme += p_T
     })
+    // somme = ((somme / 97)+1) * 97 // should round
     console.log("Assurance rate :", rate_assure.value)
     if (reduction == 0) {
         somme_formatted = readableNumber(somme) //formatting by three digits

@@ -85,6 +85,11 @@
             <!-- clInfo component should be here. -->
             <createClient v-if="need_new_client" @clData="getclData"/>
         </div>
+        <div>
+            <input type="number"
+                v-model="previous_rate_assure"
+                placeholder="Taux d'assurance">
+        </div>
     </div>
     <div v-if="isWarning" class="warning">
             {{ warnDateMessage}}
@@ -126,6 +131,7 @@ const assu_state: Ref<boolean> = ref(false)
 const assu_rate: Ref<number | null> = ref(null)
 const rate_assure: Ref<number> = ref(1)
 const need_new_client: Ref<boolean> = ref(false)
+const previous_rate_assure:Ref<number> = ref(0)
 const clientInfo: clInfo = reactive({
     'nom_client': '',
     'numero_tel': '',
