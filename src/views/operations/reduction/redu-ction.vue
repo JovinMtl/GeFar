@@ -90,6 +90,9 @@
                 placeholder="Taux d'assurance"> -->
         </div>
         <!-- assuReur component should be here -->
+         <cliAssu 
+            @rate_assu_e="getRateAssu"
+            :rate_assu_p="rate_assure" />
     </div>
     <div v-if="isWarning" class="warning">
             {{ warnDateMessage}}
@@ -108,7 +111,8 @@ import {
     clInfo, Medi, DataAssurance, CreatedClient
 } from '../../layout/types.js'
 import { baseURL } from '../../../store/host.js'
-import createClient from './create-client.vue'
+// import createClient from './create-client.vue'
+import cliAssu from './cli-assu.vue'
 
 const emit = defineEmits(['cfrBtn', 'seleProf', 'assuRatel'])
 const props = defineProps(['rdBtn'])
@@ -172,10 +176,10 @@ const professions = [
     },
 ]
 
-let nom_adherant: string = ''
-let employeur: string = ''
-let nom_beneficiaire: string = ''
-let relation: string = ''
+// let nom_adherant: string = ''
+// let employeur: string = ''
+// let nom_beneficiaire: string = ''
+// let relation: string = ''
 
 // Composables 
 const url_local: string = baseURL
@@ -194,15 +198,8 @@ const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
 
 // Function definition
-const getclData = (data:CreatedClient)=>{
-    // We catch the emitted data from createClient component
-    nom_adherant = data.nomAd
-    employeur = data.employeur
-    relation = data.relation
-    nom_beneficiaire = data.nomBen
-    rate_assure.value = data.rateAssu
-    console.log("Now the assuRate:", rate_assure.value)
-    emit('assuRatel', rate_assure.value)
+const getRateAssu = (value)=>{
+    rate_assure.value = value
 }
 const checkAssu = ()=>{
     // will check the validity of assurance fields
@@ -311,30 +308,30 @@ if(props.rdBtn){
     console.log("Assurances we have:", assurances.value)
 }
 
-watch(previous_rate_assure, (value)=>{
-    if((Number(value))>=0 && 
-        (Number(value))<=100){
-        rate_assure.value = value
-        // signal the change of rate_assure
-        emit('assuRatel', rate_assure.value)
-    }
-})
-watch(selectedClient, (value)=>{
-    if(value=='Nouveau'){
-        need_add_client.value = true
-    } else{
-        need_add_client.value = false
-        need_new_client.value = false
-        existingClient.value = true
+// watch(previous_rate_assure, (value)=>{
+//     if((Number(value))>=0 && 
+//         (Number(value))<=100){
+//         rate_assure.value = value
+//         // signal the change of rate_assure
+//         emit('assuRatel', rate_assure.value)
+//     }
+// })
+// watch(selectedClient, (value)=>{
+//     if(value=='Nouveau'){
+//         need_add_client.value = true
+//     } else{
+//         need_add_client.value = false
+//         need_new_client.value = false
+//         existingClient.value = true
 
-        setTimeout(()=>{
-            previous_rate_assure.value = rate_assure.value
-        }, 1500)
-    }
-    if(! value){
-        previous_rate_assure.value = null
-    }
-})
+//         setTimeout(()=>{
+//             previous_rate_assure.value = rate_assure.value
+//         }, 1500)
+//     }
+//     if(! value){
+//         previous_rate_assure.value = null
+//     }
+// })
 watch(assureur, (value)=>{
     assurances.value.forEach((elm)=>{
         if(elm.name == value){
@@ -370,7 +367,7 @@ watch(selectedProf, (value) => {
         assureur.value = null
     })
     } else if(selectedProf.value == 'au'){
-        getClients()
+        // getClients()
     }
     console.log("The selected profession : ", selectedProf.value)
     initClient()
