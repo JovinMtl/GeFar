@@ -1,7 +1,6 @@
 <template>
   <div style="height:39vh;margin-top:15px;
                                 overflow: auto;">
-    <!-- THis is a reduction component -->
     <label for="metiers"
         style="font-size: .8rem">Choisissez sa profession:</label>
 
@@ -68,27 +67,6 @@
                 value="Valider" @click="complValid"
                 style="margin-left: 10px;">
         </div>
-        <div>
-            <!-- <label class="little-lab" for="client">Client:</label>
-            <input
-                v-model="selectedClient"
-                style="width: 100px;margin:0 20px;"
-                list="clients" name="client" id="client">
-
-            <datalist id="clients">
-                <option v-for="client in clients" :value="client.beneficiaire">{{ client.nom_adherant }}</option>
-            </datalist>
-            <input v-if="need_add_client" type="button" @click="need_new_client=true"
-                value="+" class="bg-g" />
-            <input v-show="need_new_client" type="button" @click="need_new_client=false"
-                value="x" class="s1-cl bg-r"/>
-            <createClient v-if="need_new_client" @clData="getclData"/>
-        
-            <input  v-if="existingClient"
-                type="number"
-                v-model="previous_rate_assure"
-                placeholder="Taux d'assurance"> -->
-        </div>
         <!-- assuReur component should be here -->
          <cliAssu  v-if="assureur && openCliAssu"
             @rate_assu_e="getRateAssu"
@@ -111,7 +89,6 @@ import {
     clInfo, Medi, DataAssurance, CreatedClient
 } from '../../layout/types.js'
 import { baseURL } from '../../../store/host.js'
-// import createClient from './create-client.vue'
 import cliAssu from './cli-assu.vue'
 
 const emit = defineEmits(['cfrBtn', 'seleProf', 'assuRatel'])
@@ -135,10 +112,6 @@ const assu_state: Ref<boolean> = ref(false)
 const assu_rate: Ref<number | null> = ref(null)
 const rate_assure: Ref<number> = ref(1)
 const openCliAssu: Ref<boolean> = ref(false)
-// const need_new_client: Ref<boolean> = ref(false)
-// const need_add_client: Ref<boolean> = ref(false)
-// const previous_rate_assure:Ref<number|null> = ref(null)
-// const existingClient: Ref<boolean> = ref(false)
 const clientInfo: clInfo = reactive({
     'nom_client': '',
     'numero_tel': '',
@@ -177,10 +150,6 @@ const professions = [
     },
 ]
 
-// let nom_adherant: string = ''
-// let employeur: string = ''
-// let nom_beneficiaire: string = ''
-// let relation: string = ''
 
 // Composables 
 const url_local: string = baseURL
@@ -190,12 +159,6 @@ const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
 
 const url_getAssurances = "api/gOps/getAssu/"
 const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
-
-// const url_addClient = "api/gOps/addClient/"
-// const [addCliResp, addClient] = useKurungika(datAssu, url_addClient)
-
-// const url_getClients = "api/gOps/getClients/"
-// const [clients, getClients] = useKuvoma(url_getClients, url_local)
 
 
 // Function definition
@@ -248,7 +211,6 @@ const simplValid = ():void=>{
     clientInfo.assureur = 'Pharmacie Ubuzima';
     panier_api.client = clientInfo
     clClean.value = true
-    // confirmRdBtn.value = true
     
     emit("cfrBtn", 1)
 
@@ -278,7 +240,6 @@ const complValid = ():void=>{
         panier_api.client = clientInfo
         warnDateMessage.value = ""
         clClean.value = true
-        // confirmRdBtn.value = true
 
         console.log("Validated: ", panier_api)
     }else{
@@ -309,30 +270,7 @@ if(props.rdBtn){
     console.log("Assurances we have:", assurances.value)
 }
 
-// watch(previous_rate_assure, (value)=>{
-//     if((Number(value))>=0 && 
-//         (Number(value))<=100){
-//         rate_assure.value = value
-//         // signal the change of rate_assure
-//         emit('assuRatel', rate_assure.value)
-//     }
-// })
-// watch(selectedClient, (value)=>{
-//     if(value=='Nouveau'){
-//         need_add_client.value = true
-//     } else{
-//         need_add_client.value = false
-//         need_new_client.value = false
-//         existingClient.value = true
 
-//         setTimeout(()=>{
-//             previous_rate_assure.value = rate_assure.value
-//         }, 1500)
-//     }
-//     if(! value){
-//         previous_rate_assure.value = null
-//     }
-// })
 watch(assureur, (value)=>{
     openCliAssu.value = false
     setTimeout(()=>{
@@ -371,9 +309,7 @@ watch(selectedProf, (value) => {
         }
         assureur.value = null
     })
-    } else if(selectedProf.value == 'au'){
-        // getClients()
-    }
+    } 
     console.log("The selected profession : ", selectedProf.value)
     initClient()
     emit("seleProf", selectedProf.value)
@@ -381,7 +317,3 @@ watch(selectedProf, (value) => {
     clClean.value = false
 })
 </script>
-
-<style>
-
-</style>
