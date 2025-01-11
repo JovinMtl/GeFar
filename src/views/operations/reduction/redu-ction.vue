@@ -69,7 +69,7 @@
                 style="margin-left: 10px;">
         </div>
         <div v-if="assureur">
-            <label class="little-lab" for="client">Client:</label>
+            <!-- <label class="little-lab" for="client">Client:</label>
             <input
                 v-model="selectedClient"
                 style="width: 100px;margin:0 20px;"
@@ -82,14 +82,14 @@
                 value="+" class="bg-g" />
             <input v-show="need_new_client" type="button" @click="need_new_client=false"
                 value="x" class="s1-cl bg-r"/>
-            <!-- clInfo component should be here. -->
             <createClient v-if="need_new_client" @clData="getclData"/>
         
             <input  v-if="existingClient"
                 type="number"
                 v-model="previous_rate_assure"
-                placeholder="Taux d'assurance">
+                placeholder="Taux d'assurance"> -->
         </div>
+        <!-- assuReur component should be here -->
     </div>
     <div v-if="isWarning" class="warning">
             {{ warnDateMessage}}
@@ -130,10 +130,10 @@ const need_assureur: Ref<boolean> = ref(false)
 const assu_state: Ref<boolean> = ref(false)
 const assu_rate: Ref<number | null> = ref(null)
 const rate_assure: Ref<number> = ref(1)
-const need_new_client: Ref<boolean> = ref(false)
-const need_add_client: Ref<boolean> = ref(false)
-const previous_rate_assure:Ref<number|null> = ref(null)
-const existingClient: Ref<boolean> = ref(false)
+// const need_new_client: Ref<boolean> = ref(false)
+// const need_add_client: Ref<boolean> = ref(false)
+// const previous_rate_assure:Ref<number|null> = ref(null)
+// const existingClient: Ref<boolean> = ref(false)
 const clientInfo: clInfo = reactive({
     'nom_client': '',
     'numero_tel': '',
@@ -148,7 +148,7 @@ const warnDateMessage: Ref<string> = ref('')
 const datAssu: DataAssurance = reactive({
     'assu': []
 })
-const selectedClient: Ref<string | null> = ref(null)
+// const selectedClient: Ref<string | null> = ref(null)
 const professions = [
     {
         'value': '',
@@ -186,11 +186,11 @@ const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
 const url_getAssurances = "api/gOps/getAssu/"
 const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
-const url_addClient = "api/gOps/addClient/"
-const [addCliResp, addClient] = useKurungika(datAssu, url_addClient)
+// const url_addClient = "api/gOps/addClient/"
+// const [addCliResp, addClient] = useKurungika(datAssu, url_addClient)
 
-const url_getClients = "api/gOps/getClients/"
-const [clients, getClients] = useKuvoma(url_getClients, url_local)
+// const url_getClients = "api/gOps/getClients/"
+// const [clients, getClients] = useKuvoma(url_getClients, url_local)
 
 
 // Function definition
