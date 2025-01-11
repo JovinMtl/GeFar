@@ -78,7 +78,7 @@
             <datalist id="clients">
                 <option v-for="client in clients" :value="client.beneficiaire">{{ client.nom_adherant }}</option>
             </datalist>
-            <input type="button" @click="need_new_client=true"
+            <input v-if="need_add_client" type="button" @click="need_new_client=true"
                 value="+" class="bg-g" />
             <input v-show="need_new_client" type="button" @click="need_new_client=false"
                 value="x" class="s1-cl bg-r"/>
@@ -131,7 +131,8 @@ const assu_state: Ref<boolean> = ref(false)
 const assu_rate: Ref<number | null> = ref(null)
 const rate_assure: Ref<number> = ref(1)
 const need_new_client: Ref<boolean> = ref(false)
-const previous_rate_assure:Ref<number> = ref(0)
+const need_add_client: Ref<boolean> = ref(false)
+const previous_rate_assure:Ref<number|null> = ref(null)
 const clientInfo: clInfo = reactive({
     'nom_client': '',
     'numero_tel': '',
@@ -309,6 +310,14 @@ if(props.rdBtn){
     console.log("Assurances we have:", assurances.value)
 }
 
+watch(selectedClient, (value)=>{
+    if(value=='Nouveau'){
+        need_add_client.value = true
+    } else{
+        need_add_client.value = false
+        need_new_client.value = false
+    }
+})
 watch(assureur, (value)=>{
     assurances.value.forEach((elm)=>{
         if(elm.name == value){
