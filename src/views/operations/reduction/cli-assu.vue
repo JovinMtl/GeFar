@@ -24,7 +24,9 @@
                 placeholder="Taux d'assurance">
             <input type="text" v-model="numBon"
                 placeholder="Numero du Bon" />
-            <input type="button" value="Ok" />
+            <input type="button" 
+                value="Ok" 
+                @click="checkCliAssu"/>
         </div>
     </div>
 </template>
@@ -35,6 +37,9 @@ import {
     useKurungika, useKuvoma
 } from '../../hooks/kuvoma.js'
 import { baseURL } from '../../../store/host.js'
+import { 
+    KnownClient, CreatedClient
+} from '../../layout/types'
 import createClient from './create-client.vue'
 
 // Communication way
@@ -70,6 +75,29 @@ const [clients, getClients] = useKuvoma(url_getClients, url_local)
 getClients()
 
 // Functions
+const checkCliAssu = ()=>{
+    // Here should emit after a solid check and
+    // write before total
+    // let cli = (clients.value).indexOf(selectedClient.value)
+    // let i = 0
+    let obj:KnownClient = {} as KnownClient
+    clients.value.forEach((elm)=>{
+        if (elm.beneficiaire == selectedClient.value){
+            obj = elm
+        }
+    })
+    if(Number(numBon.value) && 
+        (Number(previous_rate_assure.value )>= 0)){ // checks if numBon is a number
+        emit("cli-assu-data", {
+            'nomAd': obj.nom_adherant,
+            'employeur': obj.employeur,
+            'relation' : obj.relation,
+            'nomBen': obj.beneficiaire,
+            'rateAssu': previous_rate_assure.value
+        })
+    }
+    console.log("Nom d'adherant est:", obj)
+}
 const getclData = (data:CreatedClient)=>{
     // We catch the emitted data from createClient component
     nom_adherant = data.nomAd
