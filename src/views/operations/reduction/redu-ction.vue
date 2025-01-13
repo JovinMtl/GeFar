@@ -274,7 +274,9 @@ if(props.rdBtn){
     console.log("Assurances we have:", assurances.value)
 }
 
-
+watch(rate_assure, ()=>{
+    emit('assuRatel', rate_assure.value)
+})
 watch(assureur, (value)=>{
     openCliAssu.value = false
     setTimeout(()=>{
