@@ -79,7 +79,6 @@ const checkBen = ()=>{
             status = false
             message.value = " Date invalide"
         }
-    console.log("Date: ", date_prescr.value)
     if (status){
         // should emit the gathered data as an object
         success.value = 'OK'
