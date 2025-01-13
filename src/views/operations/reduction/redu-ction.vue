@@ -70,6 +70,7 @@
         <!-- assuReur component should be here -->
          <cliAssu  v-if="assureur && openCliAssu"
             @rate_assu_e="getRateAssu"
+            @cliAssuData="getcliAssuData"
             :rate_assu_p="rate_assure" />
     </div>
     <div v-if="isWarning" class="warning">
@@ -162,6 +163,9 @@ const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
 
 // Function definition
+const getcliAssuData = (value)=>{
+    // Here to complile 'value' with clInfo
+}
 const getRateAssu = (value)=>{
     rate_assure.value = value
 }

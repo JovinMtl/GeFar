@@ -77,6 +77,7 @@ const getclData = (data:CreatedClient)=>{
     // and gets linked too panier_api
     console.log("Now the assuRate:", rateAssu)
     emit('rate_assu_e', rateAssu)
+    emit('cli-assu-data', data)
 }
 
 // Watchers
