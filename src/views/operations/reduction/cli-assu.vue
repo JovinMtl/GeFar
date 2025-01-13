@@ -52,7 +52,14 @@ import {
 import createClient from './create-client.vue'
 
 // Communication way
-const props = defineProps(['rate_assu_p'])
+const props = defineProps({
+        rate_assu_p: { 
+            type: Number,
+            required: true,
+            validator: (value:number)=>{
+                return value >= 0 || value <= 100
+            }},
+    })
 const emit = defineEmits(['rate_assu_e', 'cli-assu-data'])
 
 // Refs
