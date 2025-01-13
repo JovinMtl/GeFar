@@ -11,7 +11,9 @@
         </datalist>
         <input v-if="need_add_client" type="button" @click="need_new_client=true"
             value="+" class="bg-g" />
-        <input v-show="need_new_client" type="button" @click="need_new_client=false"
+        <input v-show="need_new_client" type="button" 
+            @click="need_new_client=false;
+                selectedClient=''"
             value="x" class="s1-cl bg-r"/>
         <!-- clInfo component should be here. -->
         <createClient v-if="need_new_client" @clData="getclData"/>
