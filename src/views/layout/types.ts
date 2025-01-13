@@ -109,7 +109,10 @@ export interface clInfo{
     'numero_carte': string;
     'numero_bon': string;
     'date_bon': string;
-
+    'rate_assure': number;
+    'nom_adherant': string;
+    'employeur': string;
+    'relation': string;
 }
 
 export interface DataToAPI{
