@@ -22,6 +22,8 @@
             <input type="number"
                 v-model="previous_rate_assure"
                 placeholder="Taux d'assurance">
+            <input type="text" v-model="numBon"
+                placeholder="Numero du Bon" />
             <input type="button" value="Ok" />
         </div>
     </div>
@@ -46,6 +48,7 @@ const need_new_client: Ref<boolean> = ref(false)
 const need_add_client: Ref<boolean> = ref(false)
 const previous_rate_assure:Ref<number|null> = ref(null)
 const existingClient: Ref<boolean> = ref(false)
+const numBon: Ref<number|null> = ref(null)
 
 // Simple Variables
 let nom_adherant: string = ''

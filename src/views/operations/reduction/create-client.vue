@@ -2,6 +2,8 @@
     <div>
         <input v-model="nomAd" type="text" 
             placeholder="Nom de l'adhérant" />
+        <input v-model="nomAd" type="text" 
+            placeholder="Num adhérant" />
         <input v-model="employeur" type="text"
             placeholder="Employeur" />
         <label class="little-lab">Benéficiaire</label>
@@ -20,6 +22,8 @@
         </span>
         <input v-model="rateAssu" type="number"
             placeholder="Taux d'assurance" />
+        <input type="text" v-model="numBon"
+            placeholder="Numero du Bon" />
         <input type="button" 
             value="Ok"
             @click="checkBen"/>
@@ -37,6 +41,7 @@ const employeur = ref<string>('')
 const relation = ref<string>("Lui-même")
 const nomBen = ref<string>('')
 const rateAssu = ref<number | null>(null)
+const numBon: Ref<number|null> = ref(null)
 const  message = ref<string>('')
 const success: Ref<string> = ref('')
 
