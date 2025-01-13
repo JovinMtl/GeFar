@@ -35,7 +35,7 @@ import createClient from './create-client.vue'
 
 // Communication way
 const props = defineProps(['rate_assu_p'])
-const emit = defineEmits(['rate_assu_e'])
+const emit = defineEmits(['rate_assu_e', 'cli-assu-data'])
 
 // Refs
 const selectedClient: Ref<string | null> = ref(null)
