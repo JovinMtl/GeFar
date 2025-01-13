@@ -79,7 +79,7 @@ const checkBen = ()=>{
             status = false
             message.value = " Date invalide"
         }
-    if (status){
+    if (status && date_prescr.value){
         // should emit the gathered data as an object
         success.value = 'OK'
         emit('clData',{
@@ -92,6 +92,8 @@ const checkBen = ()=>{
             'numCard': numCard.value,
             'datePrescr': date_prescr.value
         })
+    } else{
+        message.value = " Date invalide"
     }
     setTimeout(()=>{
         message.value = ''

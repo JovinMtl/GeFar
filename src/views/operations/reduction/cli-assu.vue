@@ -104,7 +104,7 @@ const checkCliAssu = ()=>{
             status = false
             message1.value = " Date invalide"
         }
-    if(Number(numBon.value) && 
+    if(Number(numBon.value) && date_prescr.value &&
         (Number(previous_rate_assure.value )>= 0) &&
         status){ // checks if numBon is a number
         message2.value = "Ok"
@@ -123,7 +123,6 @@ const checkCliAssu = ()=>{
         message1.value = ''
         message2.value = ''
     }, 1500)
-    console.log("Nom d'adherant est:", obj)
 }
 const getclData = (data:CreatedClient)=>{
     // We catch the emitted data from createClient component
