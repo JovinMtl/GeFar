@@ -127,3 +127,9 @@ export interface CreatedClient{
     'rateAssu': number;
     'relation': Relationship;
 }
+export interface KnownClient{
+    'nom_adherant': string;
+    'employeur': string;
+    'beneficiaire': string;
+    'relation': Relationship;
+}
