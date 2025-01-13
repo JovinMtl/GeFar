@@ -2,7 +2,7 @@
     <div>
         <input v-model="nomAd" type="text" 
             placeholder="Nom de l'adhérant" />
-        <input v-model="nomAd" type="text" 
+        <input v-model="numCard" type="text" 
             placeholder="Num adhérant" />
         <input v-model="employeur" type="text"
             placeholder="Employeur" />
@@ -42,6 +42,7 @@ const relation = ref<string>("Lui-même")
 const nomBen = ref<string>('')
 const rateAssu = ref<number | null>(null)
 const numBon: Ref<number|null> = ref(null)
+const numCard: Ref<number|null> = ref(null)
 const  message = ref<string>('')
 const success: Ref<string> = ref('')
 
