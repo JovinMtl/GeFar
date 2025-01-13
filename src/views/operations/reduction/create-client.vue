@@ -4,7 +4,8 @@
             placeholder="Nom de l'adhérant" />
         <input v-model="numCard" type="number" 
             placeholder="Num adhérant" />
-        <input v-model="employeur" type="text"
+        <input class="bg-g"
+            v-model="employeur" type="text"
             placeholder="Employeur" />
         <label class="little-lab">Benéficiaire</label>
         <select v-model="relation">
@@ -26,7 +27,8 @@
             placeholder="Numero du Bon" />
         <br>
         <label class="little-lab">Date préscr.</label>
-        <input type="date" />
+        <input class="w-7" type="date" 
+            v-model="date_prescr" />
         <input type="button" class=" ml-5"
             value="Ok"
             @click="checkBen"/>
@@ -48,11 +50,14 @@ const numBon: Ref<number|null> = ref(null)
 const numCard: Ref<number|null> = ref(null)
 const  message = ref<string>('')
 const success: Ref<string> = ref('')
+const date_prescr = ref(null)
 
 // Functions
 const checkBen = ()=>{
     console.log("Calling checkBon function")
     let status = true
+    let dateBon = new Date(date_prescr.value)
+    let today = new Date()
     if ((String(nomAd.value).length < 4) 
         || (String(employeur.value).length < 4)){
         status = false
@@ -68,6 +73,13 @@ const checkBen = ()=>{
             status = false
             message.value = " Taux invalide"
         }
+
+    if(dateBon && 
+        (dateBon > today)){
+            status = false
+            message.value = " Date invalide"
+        }
+    console.log("Date: ", date_prescr.value)
     if (status){
         // should emit the gathered data as an object
         success.value = 'OK'
@@ -78,7 +90,8 @@ const checkBen = ()=>{
             'nomBen': nomBen.value,
             'rateAssu': rateAssu.value,
             'numBon': numBon.value,
-            'numCard': numCard.value
+            'numCard': numCard.value,
+            'datePrescr': date_prescr.value
         })
     }
     setTimeout(()=>{
