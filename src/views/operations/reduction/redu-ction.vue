@@ -93,7 +93,12 @@ import { baseURL } from '../../../store/host.js'
 import cliAssu from './cli-assu.vue'
 
 const emit = defineEmits(['cfrBtn', 'seleProf', 'assuRatel'])
-const props = defineProps(['rdBtn'])
+const props = defineProps({
+    rdBtn:{
+        type: Boolean,
+        default: true,
+    }
+})
 
 const stage_redu: Ref<number> = ref(0)
 const selectedProf: Ref<string> = ref('')
