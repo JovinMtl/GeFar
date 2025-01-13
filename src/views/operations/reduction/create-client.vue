@@ -2,7 +2,7 @@
     <div>
         <input v-model="nomAd" type="text" 
             placeholder="Nom de l'adhérant" />
-        <input v-model="numCard" type="text" 
+        <input v-model="numCard" type="number" 
             placeholder="Num adhérant" />
         <input v-model="employeur" type="text"
             placeholder="Employeur" />
@@ -22,9 +22,12 @@
         </span>
         <input v-model="rateAssu" type="number"
             placeholder="Taux d'assurance" />
-        <input type="text" v-model="numBon"
+        <input type="number" v-model="numBon"
             placeholder="Numero du Bon" />
-        <input type="button" 
+        <br>
+        <label class="little-lab">Date préscr.</label>
+        <input type="date" />
+        <input type="button" class=" ml-5"
             value="Ok"
             @click="checkBen"/>
     </div>
@@ -73,7 +76,9 @@ const checkBen = ()=>{
             'employeur': employeur.value,
             'relation' : relation.value,
             'nomBen': nomBen.value,
-            'rateAssu': rateAssu.value
+            'rateAssu': rateAssu.value,
+            'numBon': numBon.value,
+            'numCard': numCard.value
         })
     }
     setTimeout(()=>{
