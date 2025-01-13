@@ -126,6 +126,9 @@ export interface CreatedClient{
     'nomBen': string;
     'rateAssu': number;
     'relation': Relationship;
+    'numBon': number;
+    'numCard': number;
+    'datePrescr': Date;
 }
 export interface KnownClient{
     'nom_adherant': string;
