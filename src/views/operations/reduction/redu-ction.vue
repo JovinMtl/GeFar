@@ -163,8 +163,18 @@ const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
 
 // Function definition
-const getcliAssuData = (value)=>{
+const getcliAssuData = (data:CreatedClient)=>{
     // Here to complile 'value' with clInfo
+    clientInfo.assureur = assureur.value
+    clientInfo.nom_client = data.nomBen  //beneficiaire
+    clientInfo.categorie = 'au'
+    clientInfo.date_bon = data.datePrescr
+    clientInfo.numero_bon = data.numBon
+    clientInfo.numero_carte = data.numCard
+    clientInfo.rate_assure = data.rateAssu
+    clientInfo.nom_adherant = data.nomAd
+    clientInfo.employeur = data.employeur
+    clientInfo.relation = data.relation
 }
 const getRateAssu = (value)=>{
     rate_assure.value = value
