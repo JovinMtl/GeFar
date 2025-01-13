@@ -7,7 +7,10 @@
             list="clients" name="client" id="client">
 
         <datalist id="clients">
-            <option v-for="client in clients" :value="client.beneficiaire">{{ client.nom_adherant }}</option>
+            <option v-for="(client, index) in clients" :key="index"
+                :value="client.beneficiaire">
+                {{ client.nom_adherant }}
+            </option>
         </datalist>
         <input v-if="need_add_client" type="button" @click="need_new_client=true"
             value="+" class="bg-g" />
