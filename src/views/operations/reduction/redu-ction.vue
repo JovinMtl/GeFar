@@ -81,8 +81,9 @@
 
 <script setup lang="ts">
 import { 
-    ref, Ref, reactive, watch, shallowRef
+    ref, reactive, watch, shallowRef
 } from 'vue'
+import type { Ref } from 'vue'
 import { 
     useKurungika, useKuvoma
 } from '../../hooks/kuvoma.js'
@@ -92,7 +93,10 @@ import {
 import { baseURL } from '../../../store/host.js'
 import cliAssu from './cli-assu.vue'
 
-const emit = defineEmits(['cfrBtn', 'seleProf', 'assuRatel'])
+const emit = defineEmits([
+    'cfrBtn', 'seleProf', 
+    'assuRatel', 'objCli'
+])
 const props = defineProps({
     rdBtn:{
         type: Boolean,
@@ -180,6 +184,8 @@ const getcliAssuData = (data:CreatedClient)=>{
     clientInfo.nom_adherant = data.nomAd
     clientInfo.employeur = data.employeur
     clientInfo.relation = data.relation
+
+    emit("objCli", clientInfo)
 }
 const getRateAssu = (value)=>{
     rate_assure.value = value

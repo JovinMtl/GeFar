@@ -155,7 +155,8 @@
                                 :rdBtn="rdBtnActive"
                                 @assuRatel="getassuRate"
                                 @seleProf=getSelectProf
-                                @cfrBtn="setCfrBtn"/>
+                                @cfrBtn="setCfrBtn"
+                                @objCli="getobjCli"/>
                             <!-- end of reduCtion -->
                         </div>
                     </div>
@@ -320,6 +321,8 @@ const { getAccessToken, getUsername, setUsername,
 
 
 // from reduction
+const getobjCli = (obj:Object)=>{}
+
 const setCfrBtn = (value)=>{
     // receiving the value emitted from reduCtion
     console.log("reduCtion emitted comfirmBtn:", value)
