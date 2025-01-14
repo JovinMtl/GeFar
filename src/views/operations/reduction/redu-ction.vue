@@ -234,12 +234,10 @@ const simplValid = ():void=>{
     clientInfo.numero_tel = String(clPhone.value);
     clientInfo.categorie = String(selectedProf.value);
     clientInfo.assureur = 'Pharmacie Ubuzima';
-    panier_api.client = clientInfo
     clClean.value = true
     
     emit("cfrBtn", 1)
-
-    console.log("Simp Validated: ", panier_api.client)
+    emit("objCli", clientInfo)
 }
 const complValid = ():void=>{
     let dateBon = new Date(bonDate.value)
@@ -262,11 +260,10 @@ const complValid = ():void=>{
         clientInfo.numero_carte = clCardNumber.value
         clientInfo.numero_bon = clBonNumber.value 
         clientInfo.date_bon = String(dateBon)
-        panier_api.client = clientInfo
         warnDateMessage.value = ""
         clClean.value = true
 
-        console.log("Validated: ", panier_api)
+        emit("objCli", clientInfo)
     }else{
         warnDateMessage.value = "La date du Bon doit être valide. "
         clClean.value = false
