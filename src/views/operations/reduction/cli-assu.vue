@@ -59,7 +59,7 @@ import createClient from './create-client.vue'
 const props = defineProps({
         rate_assu_p: { 
             type: Number,
-            required: true,
+            required: false,
             validator: (value:number)=>{
                 return value >= 0 || value <= 100
             }},
