@@ -134,5 +134,6 @@ export interface KnownClient{
     'nom_adherant': string;
     'employeur': string;
     'beneficiaire': string;
+    'numero_carte': number;
     'relation': Relationship;
 }
