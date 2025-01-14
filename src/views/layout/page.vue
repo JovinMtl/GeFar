@@ -156,7 +156,8 @@
                                 @assuRatel="getassuRate"
                                 @seleProf=getSelectProf
                                 @cfrBtn="setCfrBtn"
-                                @objCli="getobjCli"/>
+                                @objCli="getobjCli"
+                                @stateBtn="getstateBtn"/>
                             <!-- end of reduCtion -->
                         </div>
                     </div>
@@ -284,8 +285,9 @@ const notifStatus: Ref<boolean> = ref(false)
 const rdBtnActive: Ref<boolean> = ref(false)
 const dBOpen: Ref<boolean> = ref(false)
 const confirmRdBtn:Ref<boolean> = ref(true)
+const clClean: Ref<boolean> = ref(false)
 
-const query_search:Medi = reactive({})
+const query_search:Medi = reactive({}) as Medi
 const umuti_single: Ref<boolean> = ref(false)
 const show_facture: Ref<boolean> = ref(false)
 const show_total : Ref<boolean> = ref(false)
@@ -321,6 +323,9 @@ const { getAccessToken, getUsername, setUsername,
 
 
 // from reduction
+const getstateBtn = (value:boolean)=>{
+    clClean.value = value
+}
 const getobjCli = (obj)=>{
     console.log("Final obj clientInfo:", obj)
     panier_api.client = obj
@@ -753,7 +758,9 @@ const show_suggest = (e)=>{
     clClean.value = false
 }
 
-
+watch(clClean, (value)=>{
+    console.log("clClean status is: ", clClean.value)
+})
 watch(rate_assure, (value)=>{
     console.log("rate_assure does change into:", value)
 })

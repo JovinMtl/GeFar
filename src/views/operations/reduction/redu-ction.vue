@@ -95,7 +95,8 @@ import cliAssu from './cli-assu.vue'
 
 const emit = defineEmits([
     'cfrBtn', 'seleProf', 
-    'assuRatel', 'objCli'
+    'assuRatel', 'objCli',
+    'stateBtn'
 ])
 const props = defineProps({
     rdBtn:{
@@ -186,6 +187,7 @@ const getcliAssuData = (data:CreatedClient)=>{
     clientInfo.relation = data.relation
 
     emit("objCli", clientInfo)
+    emit("stateBtn", true)
 }
 const getRateAssu = (value)=>{
     rate_assure.value = value
@@ -238,6 +240,7 @@ const simplValid = ():void=>{
     
     emit("cfrBtn", 1)
     emit("objCli", clientInfo)
+    emit("stateBtn", true)
 }
 const complValid = ():void=>{
     let dateBon = new Date(bonDate.value)
@@ -264,6 +267,7 @@ const complValid = ():void=>{
         clClean.value = true
 
         emit("objCli", clientInfo)
+        emit("stateBtn", true)
     }else{
         warnDateMessage.value = "La date du Bon doit être valide. "
         clClean.value = false
@@ -294,6 +298,7 @@ if(props.rdBtn){
 
 watch(rate_assure, ()=>{
     emit('assuRatel', rate_assure.value)
+    emit("stateBtn", false)
 })
 watch(assureur, (value)=>{
     openCliAssu.value = false
@@ -306,6 +311,7 @@ watch(assureur, (value)=>{
         }
     })
     emit('assuRatel', rate_assure.value)
+    emit("stateBtn", false)
 })
 watch(addAssuResp, (value)=>{
     console.log("Resp from addAssu: ", value)
@@ -320,6 +326,7 @@ watch(addAssuResp, (value)=>{
     if(value.code == 'token_not_valid'){
         message.value = "Veuillez vous reconnecter"
     }
+    emit("stateBtn", false)
 })
 watch(selectedProf, (value) => {
     // Now apply the reduction according to benefit of value 'md,tv'
@@ -338,6 +345,6 @@ watch(selectedProf, (value) => {
     initClient()
     emit("seleProf", selectedProf.value)
     emit('assuRatel', rate_assure.value) //for tv,mt, md, au
-    clClean.value = false
+    emit("stateBtn", false)
 })
 </script>
