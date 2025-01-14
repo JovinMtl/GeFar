@@ -124,6 +124,8 @@ const checkCliAssu = ()=>{
             'employeur': obj.employeur,
             'relation' : obj.relation,
             'nomBen': obj.beneficiaire,
+            'numCard': obj.numero_carte,
+            'numBon': numBon.value,
             'rateAssu': previous_rate_assure.value,
             'datePrescr': date_prescr.value
         })
