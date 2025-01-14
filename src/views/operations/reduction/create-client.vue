@@ -3,7 +3,7 @@
         <input v-model="nomAd" type="text" 
             placeholder="Nom de l'adhérant" />
         <input v-model="numCard" type="number" 
-            placeholder="Num adhérant" />
+            placeholder="Code d' adhérant" />
         <input class="bg-g"
             v-model="employeur" type="text"
             placeholder="Employeur" />
