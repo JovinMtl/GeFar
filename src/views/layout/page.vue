@@ -321,7 +321,10 @@ const { getAccessToken, getUsername, setUsername,
 
 
 // from reduction
-const getobjCli = (obj:Object)=>{}
+const getobjCli = (obj)=>{
+    console.log("Final obj clientInfo:", obj)
+    panier_api.client = obj
+}
 
 const setCfrBtn = (value)=>{
     // receiving the value emitted from reduCtion
