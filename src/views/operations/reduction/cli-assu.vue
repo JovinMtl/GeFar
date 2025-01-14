@@ -44,7 +44,8 @@
 </template>
 
 <script setup lang="ts">
-import {ref, Ref, watch } from 'vue'
+import {ref, watch } from 'vue'
+import type { Ref} from 'vue'
 import { 
     useKurungika, useKuvoma
 } from '../../hooks/kuvoma.js'
