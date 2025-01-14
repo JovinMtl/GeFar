@@ -652,6 +652,7 @@ const update_total_client = (reduction: number = 0): string => {
         somme_formatted = readableNumber(somme) //formatting by three digits
     } else if (reduction == 1) {
         somme = somme - (somme *( rate_assure.value / 100)).toFixed()
+        somme = ((somme / 100).toFixed() ) * 100
         somme_formatted = readableNumber(somme) //formatting by three digits
     } else {
         somme = 0
