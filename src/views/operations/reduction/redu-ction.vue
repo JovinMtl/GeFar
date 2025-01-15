@@ -171,6 +171,9 @@ const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
 const url_getAssurances = "api/gOps/getAssu/"
 const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
+const url_getDefRate = "api/gOps/getAssu/"
+const [defRate, getDefRate] = useKuvoma(url_getAssurances, url_local)
+
 
 // Function definition
 const getcliAssuData = (data:CreatedClient)=>{
@@ -296,6 +299,10 @@ if(props.rdBtn){
     console.log("Assurances we have:", assurances.value)
 }
 
+watch(defRate, (value)=>{
+    // should assign to assu_rate.value
+    console.log("THe default rate:", value)
+})
 watch(rate_assure, ()=>{
     emit('assuRatel', rate_assure.value)
     emit("stateBtn", false)
