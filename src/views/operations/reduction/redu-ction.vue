@@ -171,7 +171,7 @@ const [addAssuResp, addAssu] = useKurungika(datAssu, url_addAssu)
 const url_getAssurances = "api/gOps/getAssu/"
 const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
-const url_getDefRate = "api/gOps/getAssu/"
+const url_getDefRate = "api/gOps/getDefRate/"
 const [defRate, getDefRate] = useKuvoma(url_getAssurances, url_local)
 
 
