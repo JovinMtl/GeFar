@@ -121,7 +121,7 @@ const isWarning: Ref<boolean> = ref(false)
 const need_assureur: Ref<boolean> = ref(false)
 const assu_state: Ref<boolean> = ref(false)
 const assu_rate: Ref<number | null> = ref(null)
-const rate_assure: Ref<number> = ref(10)
+const rate_assure: Ref<number> = ref(1)
 const openCliAssu: Ref<boolean> = ref(false)
 const clientInfo: clInfo = reactive({
     'nom_client': '',
@@ -303,6 +303,7 @@ if(props.rdBtn){
 watch(defRate, (value)=>{
     // should assign to assu_rate.value
     console.log("THe default rate:", value)
+    rate_assure.value = value.rep
 })
 watch(rate_assure, ()=>{
     emit('assuRatel', rate_assure.value)
@@ -342,14 +343,9 @@ watch(selectedProf, (value) => {
         selectedProf.value == 'mt' ||
         selectedProf.value == 'md'
     ){
-        assurances.value.forEach((elm)=>{
-        if(elm.name == 'Pharmacie Ubuzima'){
-            rate_assure.value = elm.rate_assure
-        }
+        rate_assure.value = defRate.value.rep
         assureur.value = null
-    })
-    } 
-    console.log("The selected profession : ", selectedProf.value)
+    }
     initClient()
     emit("seleProf", selectedProf.value)
     emit('assuRatel', rate_assure.value) //for tv,mt, md, au
