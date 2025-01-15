@@ -293,6 +293,11 @@ const initClient = ()=>{
     clientInfo.numero_carte = ''
     clientInfo.numero_bon = ''
     clientInfo.date_bon = ''
+
+    clientInfo.rate_assure = 0
+    clientInfo.nom_adherant = ''
+    clientInfo.employeur = ''
+    clientInfo.relation = ''
 }
 
 if(props.rdBtn){
