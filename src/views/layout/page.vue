@@ -759,6 +759,12 @@ const show_suggest = (e)=>{
     clClean.value = false
 }
 
+
+watch(rdBtnActive, (value)=>{
+    if (!value){
+        clClean.value = true
+    }
+})
 watch(clClean, (value)=>{
     console.log("clClean status is: ", clClean.value)
 })
