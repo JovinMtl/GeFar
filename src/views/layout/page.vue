@@ -285,7 +285,7 @@ const notifStatus: Ref<boolean> = ref(false)
 const rdBtnActive: Ref<boolean> = ref(false)
 const dBOpen: Ref<boolean> = ref(false)
 const confirmRdBtn:Ref<boolean> = ref(true)
-const clClean: Ref<boolean> = ref(false)
+const clClean: Ref<boolean> = ref(true)
 
 const query_search:Medi = reactive({}) as Medi
 const umuti_single: Ref<boolean> = ref(false)
