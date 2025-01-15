@@ -121,7 +121,7 @@ const isWarning: Ref<boolean> = ref(false)
 const need_assureur: Ref<boolean> = ref(false)
 const assu_state: Ref<boolean> = ref(false)
 const assu_rate: Ref<number | null> = ref(null)
-const rate_assure: Ref<number> = ref(1)
+const rate_assure: Ref<number> = ref(10)
 const openCliAssu: Ref<boolean> = ref(false)
 const clientInfo: clInfo = reactive({
     'nom_client': '',
