@@ -172,7 +172,8 @@ const url_getAssurances = "api/gOps/getAssu/"
 const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
 const url_getDefRate = "api/gOps/getDefRate/"
-const [defRate, getDefRate] = useKuvoma(url_getAssurances, url_local)
+const [defRate, getDefRate] = useKuvoma(url_getDefRate, url_local)
+getDefRate()
 
 
 // Function definition
