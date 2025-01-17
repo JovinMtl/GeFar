@@ -196,6 +196,9 @@ const closeFacturier = ()=>{
     // @page{
     //     size: 8cm 10cm
     // }
+    @page{
+        size: 72mm 297mn;
+    }
     .modal{
         display: none;
     }
