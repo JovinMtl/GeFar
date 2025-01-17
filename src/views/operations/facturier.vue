@@ -69,17 +69,19 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import type { Ref } from 'vue'
 const message = "facture"
 const props = defineProps(['commandePatient', 'num_facture', 'username', 'rate_assure','assureur'])
 const emit = defineEmits(['factureActive'])
 
 const year: String = String(new Date()).slice(10,15)
-let reste: number = 0
-let assured: number = 0
+const reste: Ref<number> = ref(0)
+const assured: Ref<number> = ref(0)
 
 if(props.rate_assure){
-    assured = props.commandePatient[1] * (props.rate_assure / 100)
-    reste = props.commandePatient[1] - assured
+    assured.value = props.commandePatient[1] * (props.rate_assure / 100)
+    reste.value = props.commandePatient[1] - assured.value
 }
 
 console.log("Facturier INITIALIZED: ", props)
