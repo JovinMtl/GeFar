@@ -201,7 +201,9 @@
                         <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
                             <factu-rier @facture-active="closeFacture"
                                 :commande-patient="[panier_client, total_panier_client]" :num_facture="numero_facture"
-                                :username="getUsername()"></factu-rier>
+                                :username="getUsername()"
+                                :rate_assure="rate_assure"
+                                :assureur="panier_api.client.assureur"></factu-rier>
                         </div>
                     </teleport>
                     <teleport to="body">
