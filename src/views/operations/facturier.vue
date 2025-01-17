@@ -29,7 +29,7 @@
                 </div>
                 <div class="toTal">
                     <div class="number"></div>
-                    <div class="nom_med">ASSUREUR: {{ props.assureur }}  ({{ props.rate_assure }} %)</div>
+                    <div class="nom_med">ASSUREUR: {{ props.assureur }}  ({{ props.assure_rate }} %)</div>
                     <div class="qte">--</div>
                     <div class="Pu">--</div>
                     <div class="ptotal">{{ assured }} Fbu</div>
@@ -72,23 +72,28 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 const message = "facture"
-const props = defineProps(['commandePatient', 'num_facture', 'username', 'rate_assure','assureur'])
+const props = defineProps([
+    'commandePatient', 'num_facture', 
+    'username', 'assure_rate','assureur'
+])
 const emit = defineEmits(['factureActive'])
 
 const year: String = String(new Date()).slice(10,15)
 const reste: Ref<number> = ref(0)
 const assured: Ref<number> = ref(0)
-
-if(props.rate_assure){
-    assured.value = props.commandePatient[1] * (props.rate_assure / 100)
-    reste.value = props.commandePatient[1] - assured.value
-}
+const total: Ref<number> = ref(0)
 
 console.log("Facturier INITIALIZED: ", props)
 console.log("THe first thing: ", props.commandePatient[0], "second: ", props.commandePatient[1])
+console.log("Assureur: ", props.assureur)
+console.log("assure_rate:", props.assure_rate)
 
-// Has to launch print functionality at the mount cycle
-// window.print()
+// Functions
+const makeTotal = ()=>{
+    (props.commandePatient[0]).forEach((elm)=>{
+        total.value += elm.prix_vente
+    })
+}
 const printerF = async () => {
     window.print()
     emit("factureActive")
@@ -97,6 +102,14 @@ const closeFacturier = ()=>{
     // emitting a signal for closing / unmounting
     emit("factureActive")
 }
+// Execution
+if(props.commandePatient[0]){ 
+    makeTotal()
+    assured.value = total.value * (props.assure_rate / 100)
+    reste.value = total.value - assured.value
+}
+
+// END
 </script>
 <style lang="scss" scoped>
 @media not print {
