@@ -202,7 +202,7 @@
                             <factu-rier @facture-active="closeFacture"
                                 :commande-patient="[panier_client, total_panier_client]" :num_facture="numero_facture"
                                 :username="getUsername()"
-                                :rate_assure="rate_assure"
+                                :assure_rate="rate_assure"
                                 :assureur="panier_api.client.assureur"></factu-rier>
                         </div>
                     </teleport>
@@ -270,6 +270,7 @@ const panier_api: DataToAPI = reactive({
     'panier': [],
     'client': {}
 })
+const message = shallowRef<string>('')
 const activeLot: Ref<ActiveLot[]> = ref([])
 const actualQte: Ref<number> = ref(1)
 const actualValue: Ref<number> = ref(0)
