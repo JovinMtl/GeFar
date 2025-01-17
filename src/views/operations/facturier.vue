@@ -25,7 +25,9 @@
                     <div class="nom_med">TOTAL</div>
                     <div class="qte">--</div>
                     <div class="Pu">--</div>
-                    <div class="ptotal">{{ props.commandePatient[1] }} Fbu</div>
+                    <div class="ptotal">
+                        {{ (String(props.commandePatient[1].value)).replaceAll("\"",'') }} Fbu
+                    </div>
                 </div>
                 <div class="toTal">
                     <div class="number"></div>
@@ -90,9 +92,11 @@ console.log("assure_rate:", props.assure_rate)
 
 // Functions
 const makeTotal = ()=>{
-    (props.commandePatient[0]).forEach((elm)=>{
-        total.value += elm.prix_vente
-    })
+    console.log("The INPUT of total:", props.commandePatient[0])
+    console.log("and:", props.commandePatient[1].value)
+    // (props.commandePatient[0][0]).forEach((elm)=>{
+    //     total.value += elm.prix_vente
+    // })
 }
 const printerF = async () => {
     window.print()
@@ -103,11 +107,9 @@ const closeFacturier = ()=>{
     emit("factureActive")
 }
 // Execution
-if(props.commandePatient[0]){ 
-    makeTotal()
-    assured.value = total.value * (props.assure_rate / 100)
-    reste.value = total.value - assured.value
-}
+makeTotal()
+assured.value = total.value * (props.assure_rate / 100)
+reste.value = total.value - assured.value
 
 // END
 </script>
