@@ -17,7 +17,7 @@
                     <div class="nom_med">{{ umuti.nom_med }}</div>
                     <div class="qte">{{ umuti.qte }}</div>
                     <div class="Pu">{{ umuti.prix_vente }}</div>
-                    <div class="ptotal">{{ umuti.qte * umuti.prix_vente }} Fbu</div>
+                    <div class="ptotal">{{ umuti.qte * umuti.prix_vente }}</div>
                 </div>
 
                 <div class="toTal">
@@ -236,6 +236,7 @@ const closeFacturier = ()=>{
                 margin-top: 5px;
                 @include content;
                 height: 15px;
+                border-bottom: 2px solid black;
             }
             .toTal {
                 margin-top: 25px;
