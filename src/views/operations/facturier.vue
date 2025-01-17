@@ -1,12 +1,8 @@
 <template>
     <div class="factureContainer">
-        <!-- <div class="factuTitle">
-            <h3>DAWA - PHARMA: FACTURE</h3>
-        </div> -->
-        <!-- <div class="factuContent"> -->
             <div class="factuHead">
-                <span style="font-weight: 600;">DAWA - PHARMA </span><br>
-                Facture n. {{ num_facture }}/2024</div>
+                <span style="font-weight: 600;">PHARMACIE UBUZIMA </span><br>
+                Facture n. {{ num_facture }}/{{ year }}</div>
             <div class="factuBody">
                 <div class="content">
                     <div class="number"></div>
@@ -62,6 +58,8 @@
 const message = "facture"
 const props = defineProps(['commandePatient', 'num_facture', 'username'])
 const emit = defineEmits(['factureActive'])
+
+const year = String(new Date()).slice(10,15)
 
 console.log("Facturier INITIALIZED: ", props)
 console.log("THe first thing: ", props.commandePatient[0], "second: ", props.commandePatient[1])
