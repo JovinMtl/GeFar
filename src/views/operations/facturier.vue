@@ -27,6 +27,20 @@
                     <div class="Pu">--</div>
                     <div class="ptotal">{{ props.commandePatient[1] }} Fbu</div>
                 </div>
+                <div class="toTal">
+                    <div class="number"></div>
+                    <div class="nom_med">ASSUREUR: {{ props.assureur }}  ({{ props.rate_assure }} %)</div>
+                    <div class="qte">--</div>
+                    <div class="Pu">--</div>
+                    <div class="ptotal">{{ assured }} Fbu</div>
+                </div>
+                <div class="toTal">
+                    <div class="number"></div>
+                    <div class="nom_med">NET.</div>
+                    <div class="qte">--</div>
+                    <div class="Pu">--</div>
+                    <div class="ptotal">{{ reste }} Fbu</div>
+                </div>
             </div>
             <div class="authorizer">
                 Servi par: {{ username }} <hr>
@@ -35,7 +49,7 @@
             <div class="factuFooter">
                 <!-- Footer <hr> addres -->
                 <!-- <button >print</button> -->
-                 <div class="conf">Dawa-Pharma.  NIF: 40000230011</div>
+                 <div class="conf">Pharmacie UBUZIMA.  NIF: 40000230011</div>
                  <div class="address">Kamenge, 14è Av. Bujumbura - Burundi</div>
             </div>
         <!-- </div> -->
@@ -56,10 +70,17 @@
 
 <script setup lang="ts">
 const message = "facture"
-const props = defineProps(['commandePatient', 'num_facture', 'username'])
+const props = defineProps(['commandePatient', 'num_facture', 'username', 'rate_assure','assureur'])
 const emit = defineEmits(['factureActive'])
 
-const year = String(new Date()).slice(10,15)
+const year: String = String(new Date()).slice(10,15)
+let reste: number = 0
+let assured: number = 0
+
+if(props.rate_assure){
+    assured = props.commandePatient[1] * (props.rate_assure / 100)
+    reste = props.commandePatient[1] - assured
+}
 
 console.log("Facturier INITIALIZED: ", props)
 console.log("THe first thing: ", props.commandePatient[0], "second: ", props.commandePatient[1])
