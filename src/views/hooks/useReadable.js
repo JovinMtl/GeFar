@@ -1,7 +1,8 @@
 
 
-export default function readableNumber (value=1000){
+export default function useReadableNumber (value=1000){
     // makes 1000000 into a string of 1.000.000
+    console.log("useReadable to work on:", value)
     let data = String(value)
     let r_data = data.split('').reverse()
     let len = data.length

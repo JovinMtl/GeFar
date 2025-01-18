@@ -73,6 +73,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Ref } from 'vue'
+import useReadable from '../hooks/useReadable'
+
 const message = "facture"
 const props = defineProps([
     'commandePatient', 'num_facture', 
@@ -81,8 +83,8 @@ const props = defineProps([
 const emit = defineEmits(['factureActive'])
 
 const year: String = String(new Date()).slice(10,15)
-const reste: Ref<number> = ref(0)
-const assured: Ref<number> = ref(0)
+const reste: Ref<String> = ref('')
+const assured: Ref<String> = ref('')
 const total: Ref<number> = ref(0)
 
 console.log("Facturier INITIALIZED: ", props)
@@ -95,7 +97,7 @@ const makeTotal = ()=>{
     console.log("The INPUT of total:", props.commandePatient[0])
     // console.log("and:", props.commandePatient[0])
     props.commandePatient[0].forEach((elm)=>{
-        total.value += elm.prix_vente
+        total.value += (elm.prix_vente * elm.qte)
     })
     console.log("the Total found:", total.value)
 }
@@ -109,8 +111,9 @@ const closeFacturier = ()=>{
 }
 // Execution
 makeTotal()
-assured.value = total.value * (props.assure_rate / 100)
-reste.value = total.value - assured.value
+let assure_value = total.value * (props.assure_rate / 100)
+assured.value = useReadable(assure_value)
+reste.value = useReadable(total.value - assure_value)
 
 // END
 </script>
