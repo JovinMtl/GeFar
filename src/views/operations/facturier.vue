@@ -38,7 +38,7 @@
                 </div>
                 <div class="toTal rm-m">
                     <div class="number"></div>
-                    <div class="nom_med">NET.</div>
+                    <div class="nom_med">NET. à Payer</div>
                     <div class="qte">--</div>
                     <div class="Pu">--</div>
                     <div class="ptotal">{{ reste }} Fbu</div>
