@@ -17,7 +17,7 @@
                     <div class="nom_med">{{ umuti.nom_med }}</div>
                     <div class="qte">{{ umuti.qte }}</div>
                     <div class="Pu">{{ umuti.prix_vente }}</div>
-                    <div class="ptotal">{{ umuti.qte * umuti.prix_vente }}</div>
+                    <div class="ptotal">{{ umuti.qte * umuti.prix_vente }} Fbu</div>
                 </div>
 
                 <div class="toTal sepA m-25">
