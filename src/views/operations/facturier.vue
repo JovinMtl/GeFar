@@ -29,7 +29,7 @@
                         {{ (String(props.commandePatient[1].value)).replaceAll("\"",'') }} Fbu
                     </div>
                 </div>
-                <div class="toTal">
+                <div class="toTal sepA">
                     <div class="number"></div>
                     <div class="nom_med">ASSUREUR: {{ props.assureur }}  ({{ props.assure_rate }} %)</div>
                     <div class="qte">--</div>
@@ -93,10 +93,11 @@ console.log("assure_rate:", props.assure_rate)
 // Functions
 const makeTotal = ()=>{
     console.log("The INPUT of total:", props.commandePatient[0])
-    console.log("and:", props.commandePatient[1].value)
-    // (props.commandePatient[0][0]).forEach((elm)=>{
-    //     total.value += elm.prix_vente
-    // })
+    // console.log("and:", props.commandePatient[0])
+    props.commandePatient[0].forEach((elm)=>{
+        total.value += elm.prix_vente
+    })
+    console.log("the Total found:", total.value)
 }
 const printerF = async () => {
     window.print()
@@ -253,12 +254,14 @@ reste.value = total.value - assured.value
                 margin-top: 5px;
                 @include content;
                 height: 15px;
-                border-bottom: 2px solid black;
             }
             .toTal {
                 margin-top: 25px;
                 @include content;
                 height: 15px;
+            }
+            .sepA{
+                border-top: 2px solid black;
             }
         }
         .authorizer{
