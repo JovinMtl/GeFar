@@ -20,7 +20,7 @@
                     <div class="ptotal">{{ umuti.qte * umuti.prix_vente }}</div>
                 </div>
 
-                <div class="toTal">
+                <div class="toTal sepA m-25">
                     <div class="number"></div>
                     <div class="nom_med">TOTAL</div>
                     <div class="qte">--</div>
@@ -29,14 +29,14 @@
                         {{ (String(props.commandePatient[1].value)).replaceAll("\"",'') }} Fbu
                     </div>
                 </div>
-                <div class="toTal sepA">
+                <div class="toTal rm-m">
                     <div class="number"></div>
                     <div class="nom_med">ASSUREUR: {{ props.assureur }}  ({{ props.assure_rate }} %)</div>
                     <div class="qte">--</div>
                     <div class="Pu">--</div>
                     <div class="ptotal">{{ assured }} Fbu</div>
                 </div>
-                <div class="toTal">
+                <div class="toTal rm-m">
                     <div class="number"></div>
                     <div class="nom_med">NET.</div>
                     <div class="qte">--</div>
@@ -256,9 +256,11 @@ reste.value = total.value - assured.value
                 height: 15px;
             }
             .toTal {
-                margin-top: 25px;
                 @include content;
                 height: 15px;
+            }
+            .m-25{
+                margin-top: 25px;
             }
             .sepA{
                 border-top: 2px solid black;
