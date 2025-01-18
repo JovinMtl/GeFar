@@ -252,15 +252,25 @@ reste.value = useReadable(total.value - assure_value)
             .content{
                 border: 1px dashed black;
                 @include content();
+                .ptotal{
+                    text-align: right;
+                }
             }
             .content2 {
                 margin-top: 5px;
                 @include content;
                 height: 15px;
+                .ptotal{
+                    text-align: right;
+                }
             }
             .toTal {
                 @include content;
                 height: 15px;
+                .ptotal{
+                    text-align: right;
+                }
+                
             }
             .m-25{
                 margin-top: 25px;
