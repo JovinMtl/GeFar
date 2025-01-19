@@ -721,13 +721,14 @@ export default defineComponent({
                     'difference': element.difference,
                     'qte_entrant_big': element.qte_entrant_big,
                     'quantite_restant': element.quantite_restant,
-                    'ratio': element.ratio,
-                    'type_achat': element.type_achat,
-                    'type_vente': element.type_vente,
-                    'type_med': element.type_med,
+                    // 'ratio': element.ratio,
+                    // 'type_achat': element.type_achat,
+                    // 'type_vente': element.type_vente,
+                    // 'type_med': element.type_med,
                     'classe_med': element.classe_med,
                     'sous_classe_med': element.sous_classe_med,
-                    'location': element.location,
+                    'forme': element.forme,
+                    // 'location': element.location,
                     'lot': element.lot
                 }
                 imitiset.value.push(obj)

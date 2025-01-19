@@ -72,7 +72,7 @@
                             <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.nom_med).slice(0, 14) }}</div>
                             <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_med }}</div>
                             <div class="infoUmuti umutiTitle umutiFamille">{{ selectedUmuti.value.classe_med }}</div>
-                            <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.type_med || 'type_med:vide' }}</div>
+                            <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.forme || 'forme:vide' }}</div>
                             <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                             <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.prix_vente }}</div>
                             <!-- Need to display the number of lots -->

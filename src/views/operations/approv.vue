@@ -136,7 +136,7 @@ const  umuti_obj: MedApprov = reactive ({
         'sous_classe_med': '',
         'type_achat': '',
         'ratio': '',
-        'type_vente': '',
+        'forme': '',
         'prix_achat': null,
         'prix_vente': undefined,
         'quantite_initial': undefined,
@@ -201,6 +201,7 @@ const checkBeforeUpload = ()=>{
             umuti_obj.prix_achat = Number(umuti_prix_achat.value)
             umuti_obj.prix_vente = Number(umuti_prix_vente.value)
             umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
+            umuti_obj.forme = forme_med.value
             // umuti_obj.ratio = ratio.value || 1
             // umuti_obj.location = location.value || 'vide'
             // umuti_obj.type_vente = type_vente.value || 'vide'
