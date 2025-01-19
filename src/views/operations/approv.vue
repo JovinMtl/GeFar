@@ -131,8 +131,8 @@ const  umuti_obj = reactive ({
         'date_entrant': new Date().toISOString(),
         'date_peremption': umuti_date_exp.value,
         'nom_med': '',
-        'description_med': '',
-        'famille_med': '',
+        'classe_med': '',
+        'sous_classe_med': '',
         'type_achat': '',
         'ratio': '',
         'type_vente': '',
@@ -154,8 +154,8 @@ const approve_handler = ()=>{
         'date_entrant': new Date().toISOString(),
         'date_peremption': '',
         'nom_med': selected_search.value.nom_med,
-        'description_med': selected_search.value.description_med,
-        'famille_med': selected_search.value.famille_med,
+        'classe_med': selected_search.value.description_med,
+        'sous_classe_med': selected_search.value.famille_med,
         'type_vente': selected_search.value.type_vente,
         'ratio': selected_search.value.ratio,
         'type_vente': selected_search.value.type_vente,
@@ -182,7 +182,7 @@ const checkBeforeUpload = ()=>{
         umuti_obj.location = selected_search.value.location
         umuti_obj.type_vente = selected_search.value.type_vente
         umuti_obj.type_vente = selected_search.value.type_vente
-        umuti_obj.description_med = selected_search.value.description_med
+        umuti_obj.classe_med = selected_search.value.description_med
 
         return umuti_obj
     } else{
@@ -193,16 +193,17 @@ const checkBeforeUpload = ()=>{
             && (Date(date_exp.value))
         ){
             umuti_obj.nom_med = String(umutiName.value)
-            umuti_obj.code_med = ''
             umuti_obj.date_peremption = umuti_date_exp.value
             // umuti_obj.date_entrant = Date(new Date().toISOString().substring(0,10))
+            umuti_obj.classe_med = classeRef.value
+            umuti_obj.sous_classe_med = sClasseRef.value
             umuti_obj.prix_achat = Number(umuti_prix_achat.value)
             umuti_obj.prix_vente = Number(umuti_prix_vente.value)
             umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
-            umuti_obj.ratio = ratio.value || 1
-            umuti_obj.location = location.value || 'vide'
-            umuti_obj.type_vente = type_vente.value || 'vide'
-            umuti_obj.type_vente =  type_vente.value || 'vide'
+            // umuti_obj.ratio = ratio.value || 1
+            // umuti_obj.location = location.value || 'vide'
+            // umuti_obj.type_vente = type_vente.value || 'vide'
+            // umuti_obj.type_vente =  type_vente.value || 'vide'
 
             return umuti_obj
         } else{
