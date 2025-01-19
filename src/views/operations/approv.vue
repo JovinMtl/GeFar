@@ -93,6 +93,7 @@ import { watch, ref, inject, reactive } from 'vue'
 import { fileTray } from 'ionicons/icons'
 import { IonIcon } from '@ionic/vue'
 import { useKuvoma } from '../hooks/kuvoma.js'
+import { MedApprov } from '../layout/types'
 
 const emit = defineEmits(['inputApprov', 'approFileOpen',
     'fileDataLoaded'
@@ -126,7 +127,7 @@ const url_local = '//127.0.0.1:8002'
 const url_reportIndex = 'api/gOps/getClasses/'
 const [cls, getClasses] = useKuvoma(url_reportIndex, url_local)
 getClasses()
-const  umuti_obj = reactive ({
+const  umuti_obj: MedApprov = reactive ({
         'code_med': '',
         'date_entrant': new Date().toISOString(),
         'date_peremption': umuti_date_exp.value,
@@ -156,9 +157,9 @@ const approve_handler = ()=>{
         'nom_med': selected_search.value.nom_med,
         'classe_med': selected_search.value.description_med,
         'sous_classe_med': selected_search.value.famille_med,
-        'type_vente': selected_search.value.type_vente,
-        'ratio': selected_search.value.ratio,
-        'type_vente': selected_search.value.type_vente,
+        // 'type_vente': selected_search.value.type_vente,
+        // 'ratio': selected_search.value.ratio,
+        // 'type_vente': selected_search.value.type_vente,
         'prix_achat': null,
         'prix_vente': undefined,
         'quantite_initial': undefined,
