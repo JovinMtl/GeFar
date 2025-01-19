@@ -144,6 +144,7 @@ const  umuti_obj: MedApprov = reactive ({
     })
 
 let need_to_upload = inject('need_upload')
+let long_name:string = ''
 var result = inject('imiti_search')
 
 const openApproFile = ()=>{
@@ -230,12 +231,19 @@ const selectSearch = (event)=>{
 }
 
 watch(classeRef, (value)=>{
-    let index = (allClasses.value).indexOf(value)
+    
+    (allClasses.value).forEach((elm)=>{
+        if (elm.slice(0,30) == value){
+            long_name = elm
+        }
+    })
+    let index = (allClasses.value).indexOf(long_name)
     selectedSubClass.value = (allSubClasses.value)[index]
 })
 watch(cls, (value)=>{
     allClasses.value = value.x
     allSubClasses.value = value.y
+    console.log("The Classes are:", allClasses.value)
 })
 watch(date_exp, (value)=>{
     umuti_obj.date_peremption = value
