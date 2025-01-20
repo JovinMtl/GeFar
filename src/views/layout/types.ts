@@ -44,7 +44,7 @@ export interface MedApprov {
     forme :string;
     qte: number;
     prix_achat: number;
-    date_peremption: Date;
+    date_peremption: string;
     type_achat: string; // carton
     type_vente: string; // piece ou plaquette
     ratio: number; // 1 if no detail, 10, ...
