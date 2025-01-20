@@ -231,7 +231,7 @@ const selectSearch = (event)=>{
 }
 
 watch(classeRef, (value)=>{
-    
+    // getting the equivalence of the shorten(30char) name
     (allClasses.value).forEach((elm)=>{
         if (elm.slice(0,30) == value){
             long_name = elm

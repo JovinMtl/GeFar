@@ -197,14 +197,14 @@ const xlsxFileReader = async()=>{
         reader.onload = function(e) {
             // Read the file content
             const data = new Uint8Array(e.target.result);
-            const workbook = XLSX.read(data, { type: 'array' });
+            const workbook = XLSX.read(data, { type: 'array'});
 
             // Get the first sheet
             const firstSheetName = workbook.SheetNames[0];
             const worksheet = workbook.Sheets[firstSheetName];
 
             // Convert the sheet to JSON
-            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1,raw: false});
             // Display the data
             console.log("The Gotten file data is : ", jsonData)
             // document.getElementById('output').textContent = JSON.stringify(jsonData, null, 2);
@@ -222,9 +222,9 @@ const xlsxFileReader = async()=>{
                     obj.qte = element[4]
                     obj.prix_achat = element[5]
                     obj.date_peremption = element[6]
-                    obj.type_achat = element[7]
-                    obj.type_vente = element[8]
-                    obj.ratio = element[9]
+                    // obj.type_achat = element[7]
+                    // obj.type_vente = element[8]
+                    // obj.ratio = element[9]
 
                     med_loaded.value.push(obj)
                 }
