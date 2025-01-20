@@ -304,7 +304,7 @@ const last_medSold: Ref<number> = ref(0)
 const should_sync: Ref<number> = ref(0)
 const total_r: Ref<number> = ref(2)
 const selectedProf: Ref<string> = ref('')
-const rate_assure: Ref<number> = ref(1)
+const rate_assure: Ref<number> = ref(0)
 const suggest:Ref<string> = ref("Votre assureur")
 const classes:Ref<Medi[]> = ref([])
 
