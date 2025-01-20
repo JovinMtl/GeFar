@@ -119,24 +119,24 @@ const approveHandler = ()=>{
         // let wrong = []
         med_loaded.value.forEach((element)=>{
             if(String(element.nom_med) && Number(element.qte) && 
-                Number(element.prix_achat) && Number(element.type_achat) &&
-                Date(element.date_peremption)
+                Number(element.prix_achat) && String(element.forme) &&
+                new Date(element.date_peremption)
             ){
                 // You can emit the med_loaded.value
                 console.log("Your data is well formatted")
                 counter += 1
             }
             else {
-                console.log("Your data is Wrong formatted")
+                console.log("Your data is Wrong formed:", element.date_peremption)
             }
         })
             
-        if (counter == imiti_length -1){
+        if (counter == imiti_length){
             console.log("Things are Okay")
             let converted_imiti = convertToStandard(med_loaded.value)
-            emit('fileDataLoaded', converted_imiti)
+            // emit('fileDataLoaded', converted_imiti)
         } else {
-            let info = "There is one or more fields non well formatted!"
+            let info = `There is one or more fields non well formatted!, ${counter}`
             notifSwitch(info)
         }
     } else{
@@ -221,7 +221,8 @@ const xlsxFileReader = async()=>{
                     obj.forme = element[3]
                     obj.qte = element[4]
                     obj.prix_achat = element[5]
-                    obj.date_peremption = element[6]
+                    let date_one = (String(new Date(element[6]).toJSON())).slice(0,10)
+                    obj.date_peremption = date_one
                     // obj.type_achat = element[7]
                     // obj.type_vente = element[8]
                     // obj.ratio = element[9]
