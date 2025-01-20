@@ -115,19 +115,21 @@ const approveHandler = ()=>{
         // check the fields (Nom, Qnte, Px.A, Px.V, Date_exp)
         console.log("THe loaded is :", med_loaded.value)
         let counter = 0
+        let today = Date(new Date())
         let imiti_length = (med_loaded.value).length
         // let wrong = []
         med_loaded.value.forEach((element)=>{
             if(String(element.nom_med) && Number(element.qte) && 
                 Number(element.prix_achat) && String(element.forme) &&
-                new Date(element.date_peremption)
+                (Date(element.date_peremption))
             ){
                 // You can emit the med_loaded.value
                 console.log("Your data is well formatted")
                 counter += 1
             }
             else {
-                console.log("Your data is Wrong formed:", element.date_peremption)
+                console.log("Your data is Wrong formed:",element.date_peremption,
+                ":today:", today, (Date(element.date_peremption)) > today)
             }
         })
             
@@ -211,6 +213,7 @@ const xlsxFileReader = async()=>{
 
             // Begin to pack the data into obj to be submitted
             const niceData: MedApprov[] = jsonData.slice(5)
+            let today = new Date()
             niceData.forEach((element:MedApprov)=>{
                 // Should gather each line into obj, then append it into med_loaded
                 if(element[0] != 'TOTAL'){
