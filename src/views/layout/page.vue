@@ -54,7 +54,7 @@
                             class="inpBl w-90"
                             style="color: black;scale: .8;" disabled>
                         <input type="text" class="w-90"
-                        placeholder="Trouver classe">
+                        placeholder="Trouver classe" disabled>
                         <!-- All familles will be displayed here. -->
                         <div class="fami-1"
                             v-for="(classe, index) in classes"

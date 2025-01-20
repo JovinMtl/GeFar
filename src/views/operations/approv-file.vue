@@ -134,7 +134,7 @@ const approveHandler = ()=>{
         if (counter == imiti_length){
             console.log("Things are Okay")
             let converted_imiti = convertToStandard(med_loaded.value)
-            // emit('fileDataLoaded', converted_imiti)
+            emit('fileDataLoaded', converted_imiti)
         } else {
             let info = `There is one or more fields non well formatted!, ${counter}`
             notifSwitch(info)
