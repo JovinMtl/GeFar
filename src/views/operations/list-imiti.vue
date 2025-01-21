@@ -780,6 +780,7 @@ export default defineComponent({
                     'type_vente': element.type_vente,
                     'classe_med': element.classe_med,
                     'sous_classe_med': element.sous_classe_med,
+                    'forme': element.forme
                 }
 
                 imiti_for_search.push(obj)

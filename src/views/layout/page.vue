@@ -468,7 +468,13 @@ const getFileDataLoaded = async (dataArray) => {
             approvStatus.value = false
             approFileStatus.value = false
         } else {
-            console.log("The response hasn't reached here yet")
+            message.value = "The response hasn't reached here yet"
+            server_process.value = false
+            notifStatus.value = true
+            setTimeout(()=>{
+                notifStatus.value = false
+            }, 1500)
+            console.log("The error has occured:", value)
         }
     } catch (value) {
         message.value = "The error has occured:"

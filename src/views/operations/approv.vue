@@ -156,8 +156,8 @@ const approve_handler = ()=>{
         'date_entrant': new Date().toISOString(),
         'date_peremption': '',
         'nom_med': selected_search.value.nom_med,
-        'classe_med': selected_search.value.description_med,
-        'sous_classe_med': selected_search.value.famille_med,
+        'classe_med': selected_search.value.classe_med,
+        'sous_classe_med': selected_search.value.sous_classe_med,
         // 'type_vente': selected_search.value.type_vente,
         // 'ratio': selected_search.value.ratio,
         // 'type_vente': selected_search.value.type_vente,
@@ -180,11 +180,13 @@ const checkBeforeUpload = ()=>{
         umuti_obj.prix_achat = selected_search.value.prix_achat
         umuti_obj.prix_vente = selected_search.value.prix_vente
         umuti_obj.quantite_initial = selected_search.value.quantite_initial
-        umuti_obj.ratio = selected_search.value.ratio
-        umuti_obj.location = selected_search.value.location
-        umuti_obj.type_vente = selected_search.value.type_vente
-        umuti_obj.type_vente = selected_search.value.type_vente
-        umuti_obj.classe_med = selected_search.value.description_med
+        // umuti_obj.ratio = selected_search.value.ratio
+        // umuti_obj.location = selected_search.value.location
+        // umuti_obj.type_vente = selected_search.value.type_vente
+        // umuti_obj.type_vente = selected_search.value.type_vente
+        umuti_obj.classe_med = selected_search.value.classe_med
+        umuti_obj.sous_classe_med = selected_search.value.sous_classe_med
+        umuti_obj.forme = selected_search.value.forme
 
         return umuti_obj
     } else{
@@ -230,6 +232,10 @@ const selectSearch = (event)=>{
     approve_handler()
 }
 
+
+watch(selected_search, (value)=>{
+    console.log("The selected Search:", selected_search.value)
+})
 watch(classeRef, (value)=>{
     // getting the equivalence of the shorten(30char) name
     (allClasses.value).forEach((elm)=>{
