@@ -59,8 +59,8 @@ const checkBen = ()=>{
     let status = true
     let dateBon = new Date(date_prescr.value)
     let today = new Date()
-    if ((String(nomAd.value).length < 4) 
-        || (String(employeur.value).length < 4)){
+    if ((String(nomAd.value).length < 3) 
+        || (String(employeur.value).length < 3)){
         status = false
         message.value = "Nom invalide;"
     }
