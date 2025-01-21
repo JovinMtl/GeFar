@@ -479,3 +479,6 @@ html, body {
 .w-7{
     width: 7.5rem;
 }
+.hide{
+    display: none;
+}

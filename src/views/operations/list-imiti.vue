@@ -116,7 +116,7 @@ export default defineComponent({
         }
         const umutiOpen = (value) => {
             // updateImitiSet()
-            console.log("And the ID is : ", (value.target.parentNode.parentNode).innerHTML)
+            // console.log("And the ID is : ", (value.target.parentNode.parentNode).innerHTML)
             const current = (value.target.parentNode)
             const code = current.getAttribute("id")
             console.log("ID : ", code)

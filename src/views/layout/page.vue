@@ -78,11 +78,12 @@
                             <!-- Need to display the number of lots -->
                             <div v-if="activeLot.length" style="text-align: right;">{{ activeLot.length }}</div>
                             <div class="umutiLot">
-                                <div v-for="(lot, index) in activeLot" class="lote" :key="index">
+                                <div v-for="(lot, index) in activeLot" class="lote" :class="lot.qte == 0? 'hide':''"  :key="index">
                                     <div class="head" style="padding-top: 3px; font-size: .88rem">
                                         {{ lot.qte }} <br>
                                         {{ (String(lot.date)).slice(4, 8) }} {{ (String(lot.date)).slice(11, 16) }}
                                     </div>
+                                    <!-- Here should not display Med with qte zero -->
                                     <div class="sub" v-if="today < lot.date">
                                         <ion-icon :src="removeCircleOutline" @click="decrementQte"
                                             style="font-size: large;"></ion-icon>
