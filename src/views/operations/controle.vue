@@ -108,6 +108,14 @@
                 :admin="isAdmin"
                 v-if="title_operation == 'Low Stock'"/>
             
+                <!-- Etat de stock will use disPo component -->
+            <disPo :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Stock normale'"/>
+            <disPo :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Niveau Critique'"/>
+            
         </div>
     </div>
 </template>
@@ -126,6 +134,7 @@ import veNte from './ctrl/ve-nte.vue'
 import achAts from './ctrl/ach-ats.vue'
 import suggEst from './ctrl/sugg-est.vue'
 import dateGreen from './ctrl/date-green.vue'
+
 
 const emit = defineEmits(['turnControl',])
 const title_operation = ref('Opérations')
