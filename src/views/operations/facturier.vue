@@ -82,7 +82,7 @@ const props = defineProps([
 ])
 const emit = defineEmits(['factureActive'])
 
-const year: String = String(new Date()).slice(10,15)
+const year: String = String(new Date()).slice(11,15)
 const reste: Ref<String> = ref('')
 const assured: Ref<String> = ref('')
 const total: Ref<number> = ref(0)
