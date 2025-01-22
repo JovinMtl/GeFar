@@ -199,6 +199,15 @@ const actual_imitiS = ref([]) // Contains the content to be displayed.
 const totaux = ref([0,0]) // To display totals on the footer.
 
 let [date_debut, date_fin] = [null, null]
+// functions
+const nRoutine = (value)=>{
+    actual_obj.value = value
+    actual_imitiS.value = value
+    actual_opt.value = ['nom_med', 
+    'quantite_restant','prix_vente', 'date_winjiriyeko',]
+    actual_type.value = ['text','text','text','date']
+}
+
 watch(allFine, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
@@ -250,6 +259,12 @@ watch(lowStock, (value)=>{
         'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Low Stock"
+    }
+})
+watch(less30, (value)=>{
+    if (value){
+        nRoutine(value)
+        title_operation.value = "En Alerte"
     }
 })
 watch(actual_suggest, (value)=>{
