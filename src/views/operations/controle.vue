@@ -78,7 +78,7 @@
                         <a title="En bonne état">
                             <div class="item green" @click="getAllFine"></div>
                         </a>
-                        <a title="En état critique" @click="getLowStock">
+                        <a title="En état critique" @click="getStockYellow">
                             <div class="item yellow"></div>
                         </a>
                         <a title="Stock en alerte" @click="getStockRed">
@@ -209,6 +209,13 @@ const nRoutine = (value)=>{
 }
 
 // watchers
+watch(stockYellow, (value)=>{
+    if (value){
+        console.log("Niveau Critique")
+        nRoutine(value)
+        title_operation.value = "Niveau Critique"
+    }
+})
 watch(stockRed, (value)=>{
     if (value){
         console.log("En Alerte")
