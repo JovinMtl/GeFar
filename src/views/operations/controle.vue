@@ -75,8 +75,8 @@
                     <div style="display:flex; justify-content: center; 
                     margin: 5px auto">Etat de Stock</div>
                     <div class="mainContainerCircle">
-                        <a title="En bonne état">
-                            <div class="item green" @click="getAllFine"></div>
+                        <a title="Stock normale">
+                            <div class="item green" @click="getStockGreen"></div>
                         </a>
                         <a title="En état critique" @click="getStockYellow">
                             <div class="item yellow"></div>
@@ -209,6 +209,13 @@ const nRoutine = (value)=>{
 }
 
 // watchers
+watch(stockGreen, (value)=>{
+    if (value){
+        console.log("Stock normale")
+        nRoutine(value)
+        title_operation.value = "Stock normale"
+    }
+})
 watch(stockZero, (value)=>{
     if (value){
         console.log("Stock epuise")
