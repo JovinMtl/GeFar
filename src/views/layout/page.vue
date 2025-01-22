@@ -78,6 +78,7 @@
                             <!-- Need to display the number of lots -->
                             <div v-if="activeLot.length" style="text-align: right;" class="c-g">{{ activeLot.length }}</div>
                             <div class="umutiLot">
+                                <!--  :class="lot.qte == 0? 'hide':''"   bellow -->
                                 <div v-for="(lot, index) in activeLot" class="lote" :class="lot.qte == 0? 'hide':''"  :key="index">
                                     <div class="head" style="padding-top: 3px; font-size: .88rem">
                                         {{ lot.qte }} <br>
@@ -612,29 +613,44 @@ const somme_to_panier = () => {
 const lot_array = (): PanierAPI[] => {
     // This functions builds and array which differentiates the lots have been selected on a same umuti.
     let lote: PanierAPI[] = []
-    let value: number = 0
-    let right_date: number = 0
+    let value: number = 0  // counting number of requested items
+    let right_date: number = 0 //counting items with right date of expirity
+    console.log("ActiveLot is:", activeLot.value)
+    let with_qte = 0
+    let i = 0
+    let j = 0
     activeLot.value.forEach((element) => {
         if (element.date > today) {
             let obj = {
                 'code_operation': element.code_operation,
                 'qte': element.to_panier,
             }
-            value += element.to_panier
+            value += element.to_panier // gathering the requested qte
             lote.push(obj)
             right_date += 1
         }
+        if(element.qte && (j == 0)){
+            with_qte = i
+            j += 1
+        }
+        i += 1
 
     })
 
-    if (value) {
+    if (value) { // in case there are requested qte
+        console.log("The default lote:", lote)
         return lote
-    } else if (right_date) {
-        lote[0].qte = 1
+    } else{
+        lote[with_qte].qte = 1
+        console.log("The withQte is:", with_qte, "now:", lote)
         return lote
-    } else {
-        lote
     }
+    // else if (right_date) {
+    //     lote[0].qte = 1
+    //     return lote
+    // } else {
+    //     lote
+    // }
 
 }
 const check_panier = (umuti_name) => {
@@ -808,6 +824,7 @@ watch(last_indexes, (value) => {
 watch(sell_report, value => {
     // Do something when the status response is OK
     console.log("Maintenant nous pouvons VOIR: facturier")
+    listImiti_update.value += 1  // Triggering update
     show_facture.value = true
     numero_facture.value = value.sold
     console.log("Le facturier: ", show_facture.value)
