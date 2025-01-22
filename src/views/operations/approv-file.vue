@@ -109,7 +109,7 @@ const notifStatus = ref<boolean>(false)
 const message = ref<string>('')
 const emit = defineEmits(['approFileClose','fileDataLoaded'])
 
-const convertDate = (dateString:String)=>{
+const convertDate = (dateString:String):String=>{
     // will take '2025-1-22' and make it '1/21/25'
     let spl = dateString.split('-')
     let joined = `${spl[1]}/${spl[2]}/${spl[0].slice(2)}`
