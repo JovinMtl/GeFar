@@ -84,7 +84,7 @@
                         <a title="Stock en alerte" @click="getStockRed">
                             <div class="item red"></div>
                         </a>
-                        <a title="Stock epuisé" @click="getEndStock">
+                        <a title="Stock epuisé" @click="getStockZero">
                             <div class="item black"></div>
                         </a>
                     </div>
@@ -209,6 +209,13 @@ const nRoutine = (value)=>{
 }
 
 // watchers
+watch(stockZero, (value)=>{
+    if (value){
+        console.log("Stock epuise")
+        nRoutine(value)
+        title_operation.value = "Stock epuisé"
+    }
+})
 watch(stockYellow, (value)=>{
     if (value){
         console.log("Niveau Critique")
