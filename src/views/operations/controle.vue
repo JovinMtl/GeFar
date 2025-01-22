@@ -61,8 +61,8 @@
                         <a title="En bonne état">
                             <div class="item green" @click="getLowStock"></div>
                         </a>
-                        <a title="Date en état critique">
-                            <div class="item yellow" @click="getEndStock"></div>
+                        <a title="Date en état critique" @click="getMedYellow">
+                            <div class="item yellow"></div>
                         </a>
                         <a title="Périmé" @click="getMedRed">
                             <div class="item red"></div>
@@ -224,6 +224,13 @@ const nRoutine = (value)=>{
 }
 
 // watchers
+watch(medYellow, (value)=>{
+    if (value){
+        console.log("Date critique")
+        nRoutine(value)
+        title_operation.value = "Date critique"
+    }
+})
 watch(medRed, (value)=>{
     if (value){
         console.log("Med périmé")
