@@ -42,7 +42,7 @@ export interface MedApprov {
     classe_med: string;
     sous_classe_med : string;
     forme :string;
-    qte: number;
+    quantite_initial: number;
     prix_achat: number;
     date_peremption: string;
     type_achat: string; // carton
