@@ -34,7 +34,7 @@
                     Forme
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    Qte
+                    quantite_initial
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
                     P.A 
@@ -69,7 +69,7 @@
                     <input :id="index +';Ratio'" style="width: 100%; height: 100%;" :value="med.forme" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="med.qte" @blur="ListenNewChange"/> 
+                    <input :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="med.quantite_initial" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
                     <input :id="index +';Type_vente'" style="width: 100%; height: 100%;" :value="med.prix_achat" @blur="ListenNewChange"/> 
@@ -81,10 +81,10 @@
                     <input :id="index +';prix_vente'" style="width: 100%; height: 100%;" :value="med.type_achat" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input type="text" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="med.type_vente" @blur="ListenNewChange"/> 
+                    <input type="text" :id="index +';quantite_initial_initial'" style="width: 100%; height: 100%;" :value="med.type_vente" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 5%;height: 100%;">
-                    <input type="number" :id="index +';Qte_initial'" style="width: 100%; height: 100%;" :value="med.ratio" @blur="ListenNewChange"/> 
+                    <input type="number" :id="index +';quantite_initial_initial'" style="width: 100%; height: 100%;" :value="med.ratio" @blur="ListenNewChange"/> 
                 </div>
             </div>
         </div>
@@ -109,6 +109,11 @@ const notifStatus = ref<boolean>(false)
 const message = ref<string>('')
 const emit = defineEmits(['approFileClose','fileDataLoaded'])
 
+const convertDate = (dateString)=>{
+    let spl = dateString.split('-')
+    let joined = `${spl[1]}/${spl[2]}/${spl[0]}`
+    return joined
+}
 const approveHandler = ()=>{
     if(med_loaded.value[0]){
         // can process
@@ -119,7 +124,7 @@ const approveHandler = ()=>{
         let imiti_length = (med_loaded.value).length
         // let wrong = []
         med_loaded.value.forEach((element)=>{
-            if(String(element.nom_med) && Number(element.qte) && 
+            if(String(element.nom_med) && Number(element.quantite_initial) && 
                 Number(element.prix_achat) && String(element.forme) &&
                 (Date(element.date_peremption))
             ){
@@ -166,7 +171,7 @@ const convertToStandard = (obj_array:MedApprov[])=>{
         'type_vente': element.type_vente,
         'prix_in': element.prix_achat,
         'prix_vente': element.prix_achat * 1.3,
-        'quantite_initial': element.qte,
+        'quantite_initial': element.quantite_initial,
         'location': '',
         }
         new_obj_array.push(obj)
@@ -222,9 +227,10 @@ const xlsxFileReader = async()=>{
                     obj.classe_med = element[1]
                     obj.sous_classe_med = element[2]
                     obj.forme = element[3]
-                    obj.qte = element[4]
+                    obj.quantite_initial = element[4]
                     obj.prix_achat = element[5]
                     let date_one = (String(new Date(element[6]).toJSON())).slice(0,10)
+                    let date_two = convertDate(date_one)
                     obj.date_peremption = date_one
                     // obj.type_achat = element[7]
                     // obj.type_vente = element[8]
