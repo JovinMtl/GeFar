@@ -109,10 +109,10 @@ const notifStatus = ref<boolean>(false)
 const message = ref<string>('')
 const emit = defineEmits(['approFileClose','fileDataLoaded'])
 
-const convertDate = (dateString)=>{
-    // will take '2025-1-25' and make it '1/25/2025'
+const convertDate = (dateString:String)=>{
+    // will take '2025-1-22' and make it '1/21/25'
     let spl = dateString.split('-')
-    let joined = `${spl[1]}/${spl[2]}/${spl[0]}`
+    let joined = `${spl[1]}/${spl[2]}/${spl[0].slice(2)}`
     return joined
 }
 const approveHandler = ()=>{
@@ -232,7 +232,7 @@ const xlsxFileReader = async()=>{
                     obj.prix_achat = element[5]
                     let date_one = (String(new Date(element[6]).toJSON())).slice(0,10)
                     let date_two = convertDate(date_one)
-                    obj.date_peremption = date_one
+                    obj.date_peremption = date_two
                     // obj.type_achat = element[7]
                     // obj.type_vente = element[8]
                     // obj.ratio = element[9]
