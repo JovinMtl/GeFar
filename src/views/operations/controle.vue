@@ -58,8 +58,11 @@
                     <div style="display:flex; justify-content: center; 
                     margin: 5px auto">Péremption</div>
                     <div class="mainContainerCircle">
-                        <a title="En bonne état">
-                            <div class="item green" @click="getLowStock"></div>
+                        <a title="En bonne état" @click="">
+                            <div class="item green"></div>
+                        </a>
+                        <a title="Date en état critique" @click="getMedMedium">
+                            <div class="item yellow"></div>
                         </a>
                         <a title="Date en état critique" @click="getMedYellow">
                             <div class="item yellow"></div>
@@ -224,6 +227,13 @@ const nRoutine = (value)=>{
 }
 
 // watchers
+watch(medMedium, (value)=>{
+    if (value){
+        console.log("Date alerte")
+        nRoutine(value)
+        title_operation.value = "Date alerte"
+    }
+})
 watch(medYellow, (value)=>{
     if (value){
         console.log("Date critique")
