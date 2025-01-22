@@ -58,13 +58,13 @@
                     <div style="display:flex; justify-content: center; 
                     margin: 5px auto">Péremption</div>
                     <div class="mainContainerCircle">
-                        <a title="En bonne état" @click="">
+                        <a title="En bonne état" @click="getMedGreen">
                             <div class="item green"></div>
                         </a>
                         <a title="Date en état critique" @click="getMedMedium">
-                            <div class="item yellow"></div>
+                            <div class="item cyan"></div>
                         </a>
-                        <a title="Date en état critique" @click="getMedYellow">
+                        <a title="Date en état alerte" @click="getMedYellow">
                             <div class="item yellow"></div>
                         </a>
                         <a title="Périmé" @click="getMedRed">
@@ -82,13 +82,13 @@
                             <div class="item green" @click="getStockGreen"></div>
                         </a>
                         <a title="En état critique" @click="getStockYellow">
-                            <div class="item yellow"></div>
+                            <div class="item cyan"></div>
                         </a>
                         <a title="Stock en alerte" @click="getStockRed">
-                            <div class="item red"></div>
+                            <div class="item yellow"></div>
                         </a>
                         <a title="Stock epuisé" @click="getStockZero">
-                            <div class="item black"></div>
+                            <div class="item red"></div>
                         </a>
                     </div>
                 </div>
@@ -227,16 +227,23 @@ const nRoutine = (value)=>{
 }
 
 // watchers
+watch(medGreen, (value)=>{
+    if (value){
+        console.log("Bonne état")
+        nRoutine(value)
+        title_operation.value = "Bonne état"
+    }
+})
 watch(medMedium, (value)=>{
     if (value){
-        console.log("Date alerte")
+        console.log("Date critique")
         nRoutine(value)
-        title_operation.value = "Date alerte"
+        title_operation.value = "Date critique"
     }
 })
 watch(medYellow, (value)=>{
     if (value){
-        console.log("Date critique")
+        console.log("Date alerte")
         nRoutine(value)
         title_operation.value = "Date critique"
     }

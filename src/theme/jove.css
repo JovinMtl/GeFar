@@ -251,6 +251,10 @@ html, body {
     background-color: black;
     border: 2px solid black;
 }
+.cyan{
+    background-color: cyan;
+    border: 2px solid green;
+}
 .yellow{
     background-color: yellow;
     box-shadow: 0 0 10px greenyellow;
