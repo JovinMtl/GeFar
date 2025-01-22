@@ -81,7 +81,7 @@
                         <a title="En état critique" @click="getLowStock">
                             <div class="item yellow"></div>
                         </a>
-                        <a title="Stock en alerte">
+                        <a title="Stock en alerte" @click="getStockRed">
                             <div class="item red"></div>
                         </a>
                         <a title="Stock epuisé" @click="getEndStock">
@@ -163,8 +163,8 @@ const suggest_url = 'api/rep/workOn35/'
 const [actual_suggest, ukuvoma_suggest] = useKuvoma(suggest_url)
 
 // the newer links
-const getLess30_url = 'api/rep/getLess30/'
-const [less30, getLess30] = useKuvoma(getLess30_url)
+const getStockRed_url = 'api/rep/getStockRed/'
+const [stockRed, getStockRed] = useKuvoma(getStockRed_url)
 
 const getStockYellow_url = 'api/rep/getStockYellow/'
 const [stockYellow, getStockYellow] = useKuvoma(getStockYellow_url)
@@ -208,6 +208,14 @@ const nRoutine = (value)=>{
     actual_type.value = ['text','text','text','date']
 }
 
+// watchers
+watch(stockRed, (value)=>{
+    if (value){
+        console.log("En Alerte")
+        nRoutine(value)
+        title_operation.value = "En Alerte"
+    }
+})
 watch(allFine, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
@@ -259,12 +267,6 @@ watch(lowStock, (value)=>{
         'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Low Stock"
-    }
-})
-watch(less30, (value)=>{
-    if (value){
-        nRoutine(value)
-        title_operation.value = "En Alerte"
     }
 })
 watch(actual_suggest, (value)=>{
