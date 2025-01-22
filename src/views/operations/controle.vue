@@ -64,8 +64,8 @@
                         <a title="Date en état critique">
                             <div class="item yellow" @click="getEndStock"></div>
                         </a>
-                        <a title="Périmé">
-                            <div class="item red" @click="getOutDate"></div>
+                        <a title="Périmé" @click="getMedRed">
+                            <div class="item red"></div>
                         </a>
                         <!-- <div class="item black" @click="getAllFine"></div> -->
                     </div>
@@ -115,6 +115,12 @@
             <disPo :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Niveau Critique'"/>
+            <disPo :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'En Alerte'"/>
+            <disPo :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Stock epuisé'"/>
             
         </div>
     </div>
@@ -218,6 +224,14 @@ const nRoutine = (value)=>{
 }
 
 // watchers
+watch(medRed, (value)=>{
+    if (value){
+        console.log("Med périmé")
+        nRoutine(value)
+        title_operation.value = "Med périmé"
+    }
+})
+
 watch(stockGreen, (value)=>{
     if (value){
         console.log("Stock normale")
