@@ -110,6 +110,7 @@ const message = ref<string>('')
 const emit = defineEmits(['approFileClose','fileDataLoaded'])
 
 const convertDate = (dateString)=>{
+    // will take '2025-1-25' and make it '1/25/2025'
     let spl = dateString.split('-')
     let joined = `${spl[1]}/${spl[2]}/${spl[0]}`
     return joined
