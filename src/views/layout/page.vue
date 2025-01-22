@@ -59,7 +59,9 @@
                         <div class="fami-1"
                             v-for="(classe, index) in classes"
                             :key="index" :id="'s'+index"
-                            @click="openFamilly">{{ classe.classe_med }}</div>
+                            @click="openFamilly">{{ (classe.classe_med).slice(0, 13) }}
+                            <span v-show="(classe.classe_med).length > 13">...</span>
+                        </div>
                     </div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
