@@ -813,12 +813,10 @@ export default defineComponent({
 
         watch(familly_display, (value)=>{
             imitiset.value = []
-            console.log("Imitiset is reset to: ", imitiset.value)
-            let selected_med = (familles.value)[value].members
+            let selected_med = new Set((familles.value)[value].members) // make it Set to avoid doublon
             selected_med.forEach((element)=>{
                 (imitiset.value).push((imitiset_copy.value)[element])
             })
-            console.log("Imitiset ends up with: ", imitiset.value)
         })
         watch(needUpdate_server, (value) => {
             // request to api to give dispo
