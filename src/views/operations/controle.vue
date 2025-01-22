@@ -162,6 +162,33 @@ const [actual_entree, ukuvoma_entree] = useKuvoma(entree_url)
 const suggest_url = 'api/rep/workOn35/'
 const [actual_suggest, ukuvoma_suggest] = useKuvoma(suggest_url)
 
+// the newer links
+const getLess30_url = 'api/rep/getLess30/'
+const [less30, getLess30] = useKuvoma(getLess30_url)
+
+const getStockYellow_url = 'api/rep/getStockYellow/'
+const [stockYellow, getStockYellow] = useKuvoma(getStockYellow_url)
+
+const getStockGreen_url = 'api/rep/getStockGreen/'
+const [stockGreen, getStockGreen] = useKuvoma(getStockGreen_url)
+
+const getStockZero_url = 'api/rep/getStockZero/ '
+const [stockZero, getStockZero] = useKuvoma(getStockZero_url)
+
+
+const getMedGreen_url = 'api/rep/getMedGreen/ '
+const [medGreen, getMedGreen] = useKuvoma(getMedGreen_url)
+
+const getMedMedium_url = 'api/rep/getMedMedium/'
+const [medMedium, getMedMedium] = useKuvoma(getMedMedium_url)
+
+const getMedYellow_url = 'api/rep/getMedYellow/'
+const [medYellow, getMedYellow] = useKuvoma(getMedYellow_url)
+
+const getMedRed_url = 'api/rep/getMedRed/'
+const [medRed, getMedRed] = useKuvoma(getMedRed_url)
+
+
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
 const actual_opt = ref([]) // Tells the base fields we have for research
 const actual_type = ref([]) // Tells the input types we support for search
