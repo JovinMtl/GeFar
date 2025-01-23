@@ -128,6 +128,9 @@
             <achAts :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Bonne état'"/>
+            <achAts :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Date critique'"/>
             
         </div>
     </div>
