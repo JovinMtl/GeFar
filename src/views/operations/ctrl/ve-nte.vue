@@ -114,7 +114,7 @@
                        @click="checkBon"></span>
                 </div>
                 <div class="elt7">
-                    num_bon
+                    {{ (umuti.num_bon).slice(0,7) }}
                 </div>
                 
             </div>
