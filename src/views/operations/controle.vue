@@ -78,17 +78,17 @@
                     <div style="display:flex; justify-content: center; 
                     margin: 5px auto">Etat de Stock</div>
                     <div class="mainContainerCircle">
-                        <a title="Stock normale">
-                            <div class="item green" @click="getStockGreen"></div>
+                        <a title="Stock normale" @click="getStockGreen">
+                            <div class="item green" :class="title_operation == 'Stock normale'? 'bd-w':''"></div>
                         </a>
                         <a title="En état critique" @click="getStockYellow">
-                            <div class="item cyan"></div>
+                            <div class="item cyan" :class="title_operation == 'Niveau Critique'? 'bd-w':''"></div>
                         </a>
                         <a title="Stock en alerte" @click="getStockRed">
-                            <div class="item yellow"></div>
+                            <div class="item yellow" :class="title_operation == 'En Alerte'? 'bd-w':''"></div>
                         </a>
                         <a title="Stock epuisé" @click="getStockZero">
-                            <div class="item red"></div>
+                            <div class="item red" :class="title_operation == 'Stock epuisé'? 'bd-w':''"></div>
                         </a>
                     </div>
                 </div>

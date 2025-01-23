@@ -485,6 +485,9 @@ html, body {
 .ta-r{
     text-align: right; 
 }
+.bd-w{
+    border: 4px dashed white
+}
 .w-7{
     width: 7.5rem;
 }
