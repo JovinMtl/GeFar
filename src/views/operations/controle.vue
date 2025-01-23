@@ -125,16 +125,16 @@
                 :admin="isAdmin"
                 v-if="title_operation == 'Stock epuisé'"/>
                 <!-- Peremption -->
-            <achAts :med="actual_imitiS" 
+            <achAts1 :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Bonne état'"/>
-            <achAts :med="actual_imitiS" 
+            <achAts1 :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Date critique'"/>
-            <achAts :med="actual_imitiS" 
+            <achAts1 :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'En alerte'"/>
-            <achAts :med="actual_imitiS" 
+            <achAts1 :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Med périmé'"/>
             
@@ -154,6 +154,7 @@ import cirCle from './circle.vue'
 import disPo from './ctrl/dis-po.vue'
 import veNte from './ctrl/ve-nte.vue'
 import achAts from './ctrl/ach-ats.vue'
+import achAts1 from './ctrl/ach-ats-1.vue'
 import suggEst from './ctrl/sugg-est.vue'
 import dateGreen from './ctrl/date-green.vue'
 
