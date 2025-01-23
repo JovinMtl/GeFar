@@ -488,6 +488,9 @@ html, body {
 .bd-w{
     border: 4px dashed white
 }
+.bd-b{
+    border: 4px dashed black;
+}
 .w-7{
     width: 7.5rem;
 }

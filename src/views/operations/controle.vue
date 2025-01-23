@@ -59,16 +59,16 @@
                     margin: 5px auto">Péremption</div>
                     <div class="mainContainerCircle">
                         <a title="En bonne état" @click="getMedGreen">
-                            <div class="item green"></div>
+                            <div class="item green" :class="title_operation == 'Bonne état'? 'bd-w':''"></div>
                         </a>
                         <a title="Date en état critique" @click="getMedMedium">
-                            <div class="item cyan"></div>
+                            <div class="item cyan" :class="title_operation == 'Date critique'? 'bd-w':''"></div>
                         </a>
                         <a title="Date en état alerte" @click="getMedYellow">
-                            <div class="item yellow"></div>
+                            <div class="item yellow" :class="title_operation == 'En alerte'? 'bd-b':''"></div>
                         </a>
                         <a title="Périmé" @click="getMedRed">
-                            <div class="item red"></div>
+                            <div class="item red" :class="title_operation == 'Med périmé'? 'bd-w':''"></div>
                         </a>
                         <!-- <div class="item black" @click="getAllFine"></div> -->
                     </div>
@@ -85,7 +85,7 @@
                             <div class="item cyan" :class="title_operation == 'Niveau Critique'? 'bd-w':''"></div>
                         </a>
                         <a title="Stock en alerte" @click="getStockRed">
-                            <div class="item yellow" :class="title_operation == 'En Alerte'? 'bd-w':''"></div>
+                            <div class="item yellow" :class="title_operation == 'En Alerte'? 'bd-b':''"></div>
                         </a>
                         <a title="Stock epuisé" @click="getStockZero">
                             <div class="item red" :class="title_operation == 'Stock epuisé'? 'bd-w':''"></div>
