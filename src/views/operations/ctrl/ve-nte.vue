@@ -105,9 +105,9 @@
 {{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
                 </div>
                 <div class="elt5">
-                     <span v-if="!umuti.is_paid" class="btn2 br mt w-22 bg-g"
+                     <span v-if="!umuti.is_paid" class="btn2 br mt w-22 bg-b"
                         :id="'j'+index"
-                        :class="selectIndex.has(index)? 'bg-b':''"
+                        :class="selectIndex.has(index)? 'bg-g':''"
                        @click="checkBon"></span>
                 </div>
                 
@@ -167,7 +167,7 @@
                     ----------
                 </div>
                 <div class="elt5">
-                    <span v-show="repStatus==0 && selectIndex.size" class="pay" @click="fIndex">
+                    <span v-show="repStatus==0 && selectIndex.size" class="pay bg-g" @click="fIndex">
                         Payer
                     </span>
                     <span v-if="repStatus">
@@ -233,7 +233,10 @@ const updateTotaux = ()=>{
 }
 
 const checkBon = (e)=>{
+    console.log("The selected index:", selectIndex.value)
+    console.log("And the ALL: ", actual_imitiS.value)
     let index = Number((e.target.id).slice(1))
+    console.log("Has:", selectIndex.value.has(index))
     if(e.shiftKey && index >= tempSelected){
         for(let i= tempSelected; i <= index; i++){
             selectIndex.value.add(i)

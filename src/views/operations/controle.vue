@@ -410,7 +410,7 @@ watch(actual_imitiS, (value)=>{
             pt_a += element.prix_in * (element.quantite_restant)
             benefice += (element.prix_vente - element.prix_in) * (element.quantite_restant) 
         } else {
-            console.log("Quantity pa :", element.prix_vente )
+            // console.log("Quantity pa :", element.prix_vente )
             total += (element.price_out * (element.quantity))
             pt_a += element.price_in * (element.quantity)
             benefice += (element.price_out - element.price_in) * (element.quantity) 
