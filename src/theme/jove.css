@@ -482,6 +482,9 @@ html, body {
 .ml-5{
     margin-left: 5px;
 }
+.ta-r{
+    text-align: right; 
+}
 .w-7{
     width: 7.5rem;
 }
