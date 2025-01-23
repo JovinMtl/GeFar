@@ -96,12 +96,14 @@
                 <div class="contentElement4">
                     <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
     
-                    {{ totaux[2] }}
+                    <!-- {{ totaux[2] }} -->
+                    {{ useReadable(totaux[2]) }}
                     
                 </div>
 
                 <div class="contentElement4">
-                    {{ totaux[1] }}
+                    <!-- {{ totaux[1] }} -->
+                    {{ useReadable(totaux[1]) }}
                 </div>
 
                 <div class="contentElement4">
@@ -109,7 +111,8 @@
                 </div>
 
                 <div class="contentElement4">
-                    {{ totaux[3] }}
+                    <!-- {{ totaux[3] }} -->
+                    {{ useReadable(totaux[3]) }}
                 </div>
 
                 <div class="contentElement4">
@@ -123,6 +126,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import useReadable from '../../hooks/useReadable'
 const props = defineProps(['med','admin'])
 const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
