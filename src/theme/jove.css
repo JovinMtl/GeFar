@@ -486,10 +486,15 @@ html, body {
     text-align: right; 
 }
 .bd-w{
-    border: 4px dashed white
+    border: 4px dashed white;
+    transition-duration: 500ms;
 }
 .bd-b{
     border: 4px dashed black;
+    transition-duration: 500ms;
+}
+.bd-b:hover, .bd-w:hover{
+    transform: rotate(180deg);
 }
 .w-7{
     width: 7.5rem;
