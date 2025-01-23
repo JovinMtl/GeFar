@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="elt5">
-{{ (umuti.date_operation).slice(8,10) }}/{{ (umuti.date_operation).slice(5,7) }}/{{ (umuti.date_operation).slice(2,4) }}
+{{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
                 </div>
                 <div class="elt5">
                      <span v-if="!umuti.is_paid" class="btn2 br mt w-22 bg-b"
