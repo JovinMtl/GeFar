@@ -233,10 +233,7 @@ const updateTotaux = ()=>{
 }
 
 const checkBon = (e)=>{
-    console.log("The selected index:", selectIndex.value)
-    console.log("And the ALL: ", actual_imitiS.value)
     let index = Number((e.target.id).slice(1))
-    console.log("Has:", selectIndex.value.has(index))
     if(e.shiftKey && index >= tempSelected){
         for(let i= tempSelected; i <= index; i++){
             selectIndex.value.add(i)
@@ -273,8 +270,7 @@ const removeBadBons = ()=>{
             
     let arr = []
     selectIndex.value.forEach(elm=>{
-        console.log("Consider:", actual_imitiS.value[elm].num_du_bon)
-        arr.push(actual_imitiS.value[elm].num_du_bon)
+        arr.push(actual_imitiS.value[elm].num_bon)
     })
     return arr
 }
@@ -284,7 +280,6 @@ const buildBons = ()=>{
         arr.push(elm.bon_de_commande)
     })
     idBons.value = arr
-    console.log("Bons to request:", idBons.value)
     // removeBadBons()
     // sendBons(selectIndex.value, url_sendBons)
 }

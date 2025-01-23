@@ -697,7 +697,6 @@ export default defineComponent({
                 if (response.ok) {
                     data.value = await response.json()
                     data.value = data.value.data
-                    console.log("THings are well received", data.value)
                     updateImitiSet()
                     update_imiti_for_search()
                 }
@@ -733,7 +732,6 @@ export default defineComponent({
                 }
                 imitiset.value.push(obj)
             });
-            console.log("Compiled : ", imitiset.value)
             imitiset_copy.value = imitiset.value
             familleBuilder(imitiset.value)
             emit('families', familles.value)
@@ -743,7 +741,6 @@ export default defineComponent({
         let famillesArray = []
 
         const familleBuilder = (arr)=>{
-            console.log("Calling familleBUILDER with: ", arr)
             let i = 0
             let index = 0
             let obj = {}
@@ -761,7 +758,6 @@ export default defineComponent({
                 }
                 i += 1
             })
-            console.log("The content of familles: ", familles.value)
         }
 
         const update_imiti_for_search = () => {

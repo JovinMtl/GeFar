@@ -202,7 +202,7 @@ const chartOptions = ref({
         duration: 1000, // Animation duration in milliseconds
         easing: 'easeOutBounce', // Easing function for animation
         onComplete: function() {
-            console.log('Animation completed!');
+            // console.log('Animation completed!');
         }
     }
 });
@@ -256,13 +256,11 @@ const checkDate = ()=>{
         dWarning.value = false
         askData('api/rep/getVentes/',[date1.value, date2.value])
     } else{
-        console.log("The dates are not correct")
         dWarning.value = true
     }
 }
 
 watch(chart4Data, (value)=>{
-    console.log("Bon:", value)
     testData4.labels = value.Y
     testData4.datasets[0].data = value.X
 })
@@ -274,13 +272,11 @@ watch(chart2Data, (value)=>{
     // Updating the ChartData whenever we do a request to the server
     testData1.labels = value.Y
     testData1.datasets[0].data = value.X
-    console.log("THe Diff Stock ", value)
 })
 watch(lineData, (value)=>{
     // Updating the ChartData whenever we do a request to the server
     chartData.value.labels = value.X
     chartData.value.datasets[0].data = value.Y
-    console.log("THe Line value received: ", value)
 })
 </script>
 <style>

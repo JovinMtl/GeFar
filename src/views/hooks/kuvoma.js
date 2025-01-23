@@ -29,14 +29,12 @@ export function useKuvoma(prefix, remote = "") {
 
             if (response.ok) {
                 data.value = await response.json();
-                // data.value = data.value.data
             }
         } catch (value) {
             console.log("somehting may not be well because :", value);
         }
     };
 
-    console.log("useKuvoma got: ", data.value);
     return [data, kuvomaImiti];
 }
 
@@ -77,8 +75,6 @@ export function useKurungika(
     if (!(otherData1 && otherData2)) {
         const kurungikaImiti = async () => {
             // const base = '//muteule.pythonanywhere.com'
-            console.log("Attempt to send:", imitiArray)
-            console.log("prefix dukorerako: ", prefix);
 
             try {
                 const response = await fetch(`${baseURL}/${prefix}`, {
@@ -124,8 +120,6 @@ export function usePostRequest(
             imitiArray,
             prefix,) => {
             // const base = '//muteule.pythonanywhere.com'
-            console.log("Attempt to send:", imitiArray)
-            console.log("prefix dukorerako: ", prefix);
 
             try {
                 const response = await fetch(`${baseURL}/${prefix}`, {
@@ -165,7 +159,6 @@ export async function useNoteUmuti(value) {
     const data = ref(null);
     // const base = '//muteule.pythonanywhere.com'
     const prefix = "api/in/requested/";
-    console.log("Using umuti_new as: ", value);
 
     try {
         const response = await fetch(`${baseURL}/${prefix}`, {
@@ -199,7 +192,7 @@ export async function useLogin(username, password) {
         })
         .then((response) => {
             //  store.state.user = response.data
-            console.log("the data: ", response.data);
+            // console.log("the data: ", response.data);
         })
         .catch((error) => {
             let logs = error.response.data;

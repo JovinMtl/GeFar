@@ -9,10 +9,8 @@ import { useUserStore } from "../../store/user";
 export function useChart(prefix='', command=null){
     const data = ref(null) 
     const { getAccessToken } = useUserStore();
-    console.log("Sending: ", command)
 
     const askData = async (prefix, command)=>{
-        console.log("f-Sending: ", command)
         let response = ''
         try{
             response = await fetch(`${baseURL}/${prefix}`, {

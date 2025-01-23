@@ -335,16 +335,13 @@ const getstateBtn = (value:boolean)=>{
     clClean.value = value
 }
 const getobjCli = (obj)=>{
-    console.log("Final obj clientInfo:", obj)
     panier_api.client = obj
 }
 
 const setCfrBtn = (value)=>{
     // receiving the value emitted from reduCtion
-    console.log("reduCtion emitted comfirmBtn:", value)
 }
 const getSelectProf = (value)=>{
-    console.log("reduCtion emitted selectedProf:", value)
     selectedProf.value = value
 }
 const getassuRate = (value)=>{
@@ -375,7 +372,6 @@ const logout = () => {
     localStorage.setItem('username', '')
     localStorage.setItem('accessToken', '')
     localStorage.setItem('refreshToken', '')
-    console.log("Logging out...")
     router.push('/')
 }
 const noteUmuti = async () => {
@@ -398,10 +394,8 @@ const alertUmutiNew = async (value) => {
     // send that value to the url endpoint, it is the latter to decide
     // wether to keep it or not
     if (value == 1) {
-        console.log("Noticing that we have umuti_New")
         umuti_new.value = true
     } else {
-        console.log("Umuti name should probably be more than 4 caracters.")
         umuti_new.value = false
     }
 
@@ -409,7 +403,6 @@ const alertUmutiNew = async (value) => {
 const closeFacture = () => {
     show_facture.value = false
     // Reinitializing panier_client and panier_api to start a new commande.
-    console.log("Calling closeFacture.")
     panier_client.value = []
     panier_api.panier = []
     total_panier_client.value = computed(()=>{ return update_total_client()}) 
@@ -434,10 +427,7 @@ const compileImitiSet = async () => {
             }
         })
         if (response.ok) {
-            console.log("The response is okay:", server_process.value)
             listImiti_update.value += 1
-        } else {
-            console.log("The response hasn't reached here yet")
         }
     } catch (value) {
         console.log("The error has occured:", value)
@@ -447,7 +437,6 @@ const compileImitiSet = async () => {
 const getFileDataLoaded = async (dataArray) => {
     // submitting the data to the server
     // provide send-status and inject it in approv-file
-    console.log("Taking Releve on sending DATA to API: ", dataArray)
     server_process.value = true
     const endpoint = '/api/in/kurangura/'
 
@@ -464,7 +453,6 @@ const getFileDataLoaded = async (dataArray) => {
         })
         const server_data = await response.json()
         if (response.ok) {
-            console.log("The response is okay:", server_process.value)
             setTimeout(() => {
                 compileImitiSet()
                 server_process.value = false
@@ -478,7 +466,6 @@ const getFileDataLoaded = async (dataArray) => {
             setTimeout(()=>{
                 notifStatus.value = false
             }, 1500)
-            console.log("The error has occured:", value)
         }
     } catch (value) {
         message.value = "The error has occured:"
@@ -487,7 +474,6 @@ const getFileDataLoaded = async (dataArray) => {
         setTimeout(()=>{
             notifStatus.value = false
         }, 1500)
-        console.log("The error has occured:", value)
     }
 }
 const openApproFile = () => {
@@ -504,10 +490,8 @@ const getAllImiti = (imiti) => {
     // Has to gets all imiti gathered by list-imiti
     // once they are assigned then they are ready to be injected into approv componenet.
     all_imiti.value = imiti
-    console.log("All imiti are emitted : ", imiti)
 }
 const getFamilies = (famillies)=>{
-    console.log("Les familles recus sont: ", famillies)
     classes.value = famillies
 }
 const openedFamilly = ref(0)
