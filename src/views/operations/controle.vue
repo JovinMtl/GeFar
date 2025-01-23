@@ -131,6 +131,12 @@
             <achAts :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Date critique'"/>
+            <achAts :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Date critique'"/>
+            <achAts :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'En alerte'"/>
             
         </div>
     </div>
@@ -252,7 +258,7 @@ watch(medYellow, (value)=>{
     if (value){
         console.log("Date alerte")
         nRoutine(value)
-        title_operation.value = "Date critique"
+        title_operation.value = "En alerte"
     }
 })
 watch(medRed, (value)=>{
