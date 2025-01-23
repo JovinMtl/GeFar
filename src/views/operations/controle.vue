@@ -133,10 +133,10 @@
                 v-if="title_operation == 'Date critique'"/>
             <achAts :med="actual_imitiS" 
                 :admin="isAdmin"
-                v-if="title_operation == 'Date critique'"/>
+                v-if="title_operation == 'En alerte'"/>
             <achAts :med="actual_imitiS" 
                 :admin="isAdmin"
-                v-if="title_operation == 'En alerte'"/>
+                v-if="title_operation == 'Med périmé'"/>
             
         </div>
     </div>
