@@ -129,7 +129,7 @@
 
                 <div class="contentElement3">
                     <!-- P.A -->
-                    {{ totaux[2] }}
+                    {{ useReadable(totaux[2]) }}
                     
                 </div>
 
@@ -139,20 +139,20 @@
 
                 <div class="contentElement3 total" style="margin-right: 5px;">
                     <!-- P.V -->
-                    {{ totaux[1] }}
+                    {{ useReadable(totaux[1]) }}
                 </div>
 
                 <div class="contentElement3">
                     <!-- Benefice -->
-                    {{ totaux[3] }}
+                    {{ useReadable(totaux[3]) }}
                 </div>
                 <div class="elt5">
                     <!-- Caisse -->
-                     {{ totaux[4] }}
+                     {{ useReadable(totaux[4]) }}
                 </div>
                 <div class="elt5">
                     <!-- Dette -->
-                     {{ totaux[5] }}
+                     {{ useReadable(totaux[5]) }}
                 </div>
                 <div class="elt5">
                      <!-- assu -->
@@ -184,6 +184,7 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 import { useKurungika, usePostRequest } from '../../hooks/kuvoma'
+import useReadable from '../../hooks/useReadable'
 import { Value } from 'sass'
 const props = defineProps(['med','admin'])
 const emit = defineEmits(['lsIndex'])
