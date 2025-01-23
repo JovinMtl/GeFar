@@ -102,12 +102,12 @@
                 </div>
 
                 <div class="contentElement4">
-                    <!-- {{ totaux[1] }} -->
-                    {{ useReadable(totaux[1]) }}
+                    -----
                 </div>
 
-                <div class="contentElement4">
-                    -----
+                <div class="contentElement4 c-b-1">
+                    <!-- {{ totaux[1] }} -->
+                    {{ useReadable(totaux[1]) }}
                 </div>
 
                 <div class="contentElement4">

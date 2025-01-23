@@ -50,7 +50,7 @@
                 <div class="contentElement2">
                     {{ umuti.nom_med }}
                 </div> <div class="contentElement3">
-                    {{ (umuti.quantite_restant || umuti.quantity ) }}
+                    {{ umuti.quantite_initial  }}
                 </div> 
 
                 <div class="contentElement4 famille_med">
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="contentElement4">
-{{ (umuti.date_last_vente).slice(8,10) }}/{{ (umuti.date_last_vente).slice(5,7) }}/{{ (umuti.date_last_vente).slice(2,4) }}
+{{ (umuti.date_peremption).slice(8,10) }}/{{ (umuti.date_peremption).slice(5,7) }}/{{ (umuti.date_peremption).slice(2,4) }}
                 </div>
                 <div class="contentElement4">
                     {{ (umuti.classe_med).slice(0,15) }}
@@ -96,22 +96,19 @@
                 <div class="contentElement4">
                     <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
     
-                    <!-- {{ totaux[2] }} -->
                     {{ useReadable(totaux[2]) }}
                     
                 </div>
 
-                <div class="contentElement4">
-                    -----
+                <div class="contentElement4 ml-5">
+                    -------
                 </div>
 
                 <div class="contentElement4 c-b-1">
-                    <!-- {{ totaux[1] }} -->
                     {{ useReadable(totaux[1]) }}
                 </div>
 
                 <div class="contentElement4">
-                    <!-- {{ totaux[3] }} -->
                     {{ useReadable(totaux[3]) }}
                 </div>
 
