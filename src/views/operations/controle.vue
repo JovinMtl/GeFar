@@ -124,6 +124,10 @@
             <disPo :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Stock epuisé'"/>
+                <!-- Peremption -->
+            <achAts :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Bonne état'"/>
             
         </div>
     </div>
