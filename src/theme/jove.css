@@ -515,3 +515,6 @@ html, body {
 .hide{
     display: none;
 }
+select{
+    background-color: rgba(25, 255, 25, 0.5);
+}
