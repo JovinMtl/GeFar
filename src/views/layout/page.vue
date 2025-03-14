@@ -808,12 +808,14 @@ watch(last_indexes, (value) => {
     should_sync.value += 1
 })
 watch(sell_report, value => {
-    // Do something when the status response is OK
-    console.log("Maintenant nous pouvons VOIR: facturier")
-    listImiti_update.value += 1  // Triggering update
-    show_facture.value = true
-    numero_facture.value = value.sold
-    console.log("Le facturier: ", show_facture.value)
+    if (value.sold){
+        // Do something when the status response is OK
+        console.log("Maintenant nous pouvons VOIR: facturier")
+        listImiti_update.value += 1  // Triggering update
+        show_facture.value = true
+        numero_facture.value = value.sold
+        console.log("Le facturier: ", show_facture.value)
+    }
 })
 provide('needUpdate_list', need_to_updade) // in list-imiti component
 provide('needSearch', query_search) // in list-imiti component
