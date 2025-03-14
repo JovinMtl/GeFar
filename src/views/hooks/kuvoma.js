@@ -61,7 +61,7 @@ export function useFilterRange(imiti_for_search, dateDebut, dateFin) {
 }
 
 async function refreshToken(){
-    const { getRefreshToken, setRefreshToken } = useUserStore();
+    const { getRefreshToken, setAccessToken } = useUserStore();
     console.log("Using RefreshToken: " + getRefreshToken())
     const prefix = 'api/refresh/'
 
@@ -80,7 +80,7 @@ async function refreshToken(){
         newToken = await response.json()
         if (response.ok){
             console.log("The new access Token: " + newToken.access)
-            // setRefreshToken()
+            setAccessToken(newToken.access)
         } else{
             console.warn("No new access token: " + newToken)
         }
