@@ -87,6 +87,7 @@ async function refreshToken(){
     }catch(e){
         console.warn(e)
     }
+    return 0
 }
 
 export function useKurungika(
@@ -97,6 +98,9 @@ export function useKurungika(
 ) {
     let shouldRefresh = false
     do{
+        if (shouldRefresh){
+            console.log("Refreshing once again ...")
+        }
         const data = ref(null);
         const isError = ref(false)
         const error_message = ref(null)
@@ -124,6 +128,9 @@ export function useKurungika(
                     } else{
                         console.log("The response is not OK")
                         refreshToken()
+                        let secondData = kurungikaImiti()
+                        console.log("The returned secondData: " + secondData[0])
+                        data.value = secondData
                     }
                 } catch (error) {
                     isError.value =true
