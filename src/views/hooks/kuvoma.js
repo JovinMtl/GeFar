@@ -60,49 +60,87 @@ export function useFilterRange(imiti_for_search, dateDebut, dateFin) {
     }
 }
 
+async function refreshToken(){
+    const { getRefreshToken, setRefreshToken } = useUserStore();
+    console.log("Using RefreshToken: " + getRefreshToken())
+    const prefix = 'api/refresh/'
+
+    try{
+        let newToken = ''
+        const response = await fetch(`${baseURL}/${prefix}`,{
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+                // Authorization: "Bearer " + getRefreshToken(),
+            },
+            body: JSON.stringify({
+                'refresh': getRefreshToken()
+            })
+        });
+        newToken = await response.json()
+        if (response.ok){
+            console.log("The new access Token: " + newToken.access)
+            // setRefreshToken()
+        } else{
+            console.warn("No new access token: " + newToken)
+        }
+    }catch(e){
+        console.warn(e)
+    }
+}
+
 export function useKurungika(
     imitiArray,
     prefix,
     otherData1 = null,
     otherData2 = null,
 ) {
-    const data = ref(null);
-    const isError = ref(false)
-    const error_message = ref(null)
-    const { getAccessToken } = useUserStore();
-    // console.log("Attempting to send:", imitiArray)
-    // return prefix
-    if (!(otherData1 && otherData2)) {
-        const kurungikaImiti = async () => {
-            // const base = '//muteule.pythonanywhere.com'
+    let shouldRefresh = false
+    do{
+        const data = ref(null);
+        const isError = ref(false)
+        const error_message = ref(null)
+        const { getAccessToken } = useUserStore();
+        // console.log("Attempting to send:", imitiArray)
+        // return prefix
+        if (!(otherData1 && otherData2)) {
+            const kurungikaImiti = async () => {
+                // const base = '//muteule.pythonanywhere.com'
 
-            try {
-                const response = await fetch(`${baseURL}/${prefix}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json",
-                        Authorization: "Bearer " + getAccessToken(),
-                    },
-                    body: JSON.stringify({
-                        imiti: imitiArray,
-                    }),
-                });
-                data.value = await response.json();
-            } catch (error) {
-                isError.value =true
-                error_message.value = error
-                console.log("something has not be well because :", error);
+                try {
+                    const response = await fetch(`${baseURL}/${prefix}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-type": "application/json",
+                            Authorization: "Bearer " + getAccessToken(),
+                        },
+                        body: JSON.stringify({
+                            imiti: imitiArray,
+                        }),
+                    });
+                    data.value = await response.json();
+                    if(response.ok){
+                        console.log("THe response is OK")
+                    } else{
+                        console.log("The response is not OK")
+                        refreshToken()
+                    }
+                } catch (error) {
+                    isError.value =true
+                    error_message.value = error
+                    console.log("something has not be well because :", error);
+                }
+            };
+            if(isError.value){
+                return [error_message, kurungikaImiti]
+            } else{
+                return [data, kurungikaImiti];
             }
-        };
-        if(isError.value){
-            return [error_message, kurungikaImiti]
-        } else{
-            return [data, kurungikaImiti];
-        }
 
-    } else {
-        return "not really";
-    }
+        } else {
+            return "not really";
+        }
+    }while(shouldRefresh)
 }
 
 export function usePostRequest(
