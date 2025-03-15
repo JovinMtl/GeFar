@@ -227,7 +227,7 @@ const showMessage = (info)=>{
     notifStatus.value = true
     setTimeout(()=>{
         notifStatus.value = false
-    }, 1800)
+    }, 3000)
 }
 const selectSearch = (event)=>{
     let code_s = Number((event.target.getAttribute('id')).slice(1))
@@ -262,6 +262,9 @@ watch(report_achat, (value)=>{
         console.log("Les choses se sont bien passee")  
     } else {
         console.log("Les choses pas bien")
+        let info = `Opération echouée.
+            Il se peut que certaines informations sont incorrectes.`
+            showMessage(info)
     }
     emit("reportAchat", 2)
 
