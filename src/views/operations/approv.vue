@@ -96,7 +96,7 @@ import { useKuvoma, useKurungika } from '../hooks/kuvoma.js'
 import { MedApprov } from '../layout/types'
 
 const emit = defineEmits(['inputApprov', 'approFileOpen',
-    'fileDataLoaded'
+    'fileDataLoaded', 'reportAchat'
 ])
 var umutiName = ref('')
 const imiti_result = ref([]) 
@@ -257,10 +257,21 @@ watch(cls, (value)=>{
 watch(date_exp, (value)=>{
     umuti_obj.date_peremption = value
 })
+watch(report_achat, (value)=>{
+    if (value.detail == 'ok'){
+        console.log("Les choses se sont bien passee")  
+    } else {
+        console.log("Les choses pas bien")
+    }
+    emit("reportAchat", 2)
+
+})
 watch(need_to_upload, (value)=>{
     let reponse = checkBeforeUpload()
     if(reponse){
-        sendFileDataLoaded()
+        emit("reportAchat", 1)
+        setTimeout(sendFileDataLoaded, 500)
+        // sendFileDataLoaded()
         // emit('fileDataLoaded', [umuti_obj,])
     }
     
