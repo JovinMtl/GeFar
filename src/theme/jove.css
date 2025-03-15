@@ -517,4 +517,5 @@ html, body {
 }
 select{
     background-color: rgba(25, 255, 25, 0.5);
+    border-radius: 6px;
 }
