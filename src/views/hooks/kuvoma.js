@@ -5,60 +5,6 @@ import { useUserStore } from "../../store/user";
 // const { getAccessToken } = useUserStore()
 const isAdmin = ref(false);
 
-export function useKuvoma(prefix, remote = "") {
-    const data = ref(null);
-    const { getAccessToken } = useUserStore();
-
-    const kuvomaImiti = async () => {
-        // const base = '//127.0.0.1:8002'
-        try {
-            let response = "";
-            if (!remote) {
-                response = await fetch(`${baseURL}/${prefix}`, {
-                    headers: {
-                        Authorization: "Bearer " + getAccessToken(),
-                    },
-                });
-            } else {
-                response = await fetch(`${remote}/${prefix}`, {
-                    headers: {
-                        Authorization: "Bearer " + getAccessToken(),
-                    },
-                });
-            }
-
-            if (response.ok) {
-                data.value = await response.json();
-            }
-        } catch (value) {
-            console.log("somehting may not be well because :", value);
-        }
-    };
-
-    return [data, kuvomaImiti];
-}
-
-export function useSearchUmuti(imiti_for_search, value, field) {
-    return imiti_for_search.filter((element) => {
-        return String(element[field]).toLowerCase().match(value.toLowerCase());
-    });
-}
-
-export function useFilterRange(imiti_for_search, dateDebut, dateFin) {
-    if (!dateFin) {
-        // handling the case dateFin was not given
-        return imiti_for_search.filter((element) => {
-            return element.date_last_vente > dateDebut;
-        });
-    } else {
-        return imiti_for_search.filter((element) => {
-            return (
-                element.date_last_vente > dateDebut &&
-                element.date_last_vente < dateFin
-            );
-        });
-    }
-}
 
 async function refreshToken(){
     const { getRefreshToken, setAccessToken } = useUserStore();
@@ -88,6 +34,67 @@ async function refreshToken(){
         console.warn(e)
     }
     return 0
+}
+
+export function useKuvoma(prefix, remote = "") {
+    const data = ref(null);
+    const { getAccessToken } = useUserStore();
+
+    const kuvomaImiti = async () => {
+        // const base = '//127.0.0.1:8002'
+        try {
+            let response = "";
+            if (!remote) {
+                response = await fetch(`${baseURL}/${prefix}`, {
+                    headers: {
+                        Authorization: "Bearer " + getAccessToken(),
+                    },
+                });
+            } else {
+                response = await fetch(`${remote}/${prefix}`, {
+                    headers: {
+                        Authorization: "Bearer " + getAccessToken(),
+                    },
+                });
+            }
+
+            if (response.ok) {
+                data.value = await response.json();
+            }  else{
+                console.log("The response is not OK")
+                refreshToken()
+                let secondData = kuvomaImiti()
+                console.log("The returned secondData: " + secondData[0])
+                data.value = secondData
+            }
+        } catch (value) {
+            console.log("somehting may not be well because :", value);
+        }
+    };
+
+    return [data, kuvomaImiti];
+}
+
+export function useSearchUmuti(imiti_for_search, value, field) {
+    return imiti_for_search.filter((element) => {
+        return String(element[field]).toLowerCase().match(value.toLowerCase());
+    });
+}
+
+export function useFilterRange(imiti_for_search, dateDebut, dateFin) {
+    if (!dateFin) {
+        // handling the case dateFin was not given
+        return imiti_for_search.filter((element) => {
+            return element.date_last_vente > dateDebut;
+        });
+    } else {
+        return imiti_for_search.filter((element) => {
+            return (
+                element.date_last_vente > dateDebut &&
+                element.date_last_vente < dateFin
+            );
+        });
+    }
 }
 
 export function useKurungika(
