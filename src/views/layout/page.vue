@@ -36,7 +36,7 @@
                         <div class="bodyApprov">
                             <div class="bodyApprov2">
                                 <app-rov @inputApprov="searchManager" @approFileOpen="openApproFile"
-                                    @fileDataLoaded="getFileDataLoaded"></app-rov>
+                                    @reportAchat="reportAchatHandler"></app-rov>
                             </div>
                         </div>
                         <div class="footerApprov"
@@ -434,9 +434,25 @@ const compileImitiSet = async () => {
     }
 
 }
+
+const reportAchatHandler = (reportAchat:number)=>{
+    if(reportAchat == 1){
+        server_process.value = true
+    } else if (reportAchat == 2){
+        server_process.value = false
+    }
+}
+
+const url_achat = 'api/in/kurangura/'
+const inputData = ref(null)
+const [report_achat, sendFileDataLoaded] = useKurungika(inputData.value, url_achat)
+
 const getFileDataLoaded = async (dataArray) => {
     // submitting the data to the server
     // provide send-status and inject it in approv-file
+    inputData.value = dataArray
+    console.warn("About to send inputData : " + JSON.stringify(dataArray))
+    return 0
     server_process.value = true
     const endpoint = '/api/in/kurangura/'
 
@@ -777,8 +793,21 @@ const show_suggest = (e)=>{
     stage_redu.value = 3
     clClean.value = false
 }
-
-
+watch(report_achat, (value)=>{
+    console.log("The report achat: " + value.detail)
+    if(value.detail == 'ok'){
+        setTimeout(() => {
+            compileImitiSet()
+            server_process.value = false
+        }, 1500)
+        approvStatus.value = false
+        approFileStatus.value = false
+    }
+})
+watch(inputData, (value)=>{
+    server_process.value = true
+    setTimeout(sendFileDataLoaded, 300)
+})
 watch(rdBtnActive, (value)=>{
     if (!value){
         clClean.value = true
