@@ -92,7 +92,7 @@
 import { watch, ref, inject, reactive } from 'vue'
 import { fileTray } from 'ionicons/icons'
 import { IonIcon } from '@ionic/vue'
-import { useKuvoma } from '../hooks/kuvoma.js'
+import { useKuvoma, useKurungika } from '../hooks/kuvoma.js'
 import { MedApprov } from '../layout/types'
 
 const emit = defineEmits(['inputApprov', 'approFileOpen',
@@ -146,6 +146,9 @@ const  umuti_obj: MedApprov = reactive ({
 let need_to_upload = inject('need_upload')
 let long_name:string = ''
 var result = inject('imiti_search')
+
+const url_achat = 'api/in/kurangura/'
+const [report_achat, sendFileDataLoaded] = useKurungika([umuti_obj,], url_achat)
 
 const openApproFile = ()=>{
     emit('approFileOpen', 1)
@@ -257,7 +260,8 @@ watch(date_exp, (value)=>{
 watch(need_to_upload, (value)=>{
     let reponse = checkBeforeUpload()
     if(reponse){
-        emit('fileDataLoaded', [umuti_obj,])
+        sendFileDataLoaded()
+        // emit('fileDataLoaded', [umuti_obj,])
     }
     
 })
