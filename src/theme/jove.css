@@ -138,10 +138,11 @@ html, body {
   top: 30vh;
   align-content: center;
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: red;
   font-weight: 500;
-  box-shadow: 0 0 35px white;
+  box-shadow: 0 0 35px black;
+  padding: 0 0.3rem;
 }
 .separation{
     display: flex;
