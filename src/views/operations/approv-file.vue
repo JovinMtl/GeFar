@@ -100,14 +100,19 @@
 <script setup lang="ts">
 import { IonIcon } from '@ionic/vue'
 import { close, checkmarkDoneOutline, documentOutline } from 'ionicons/icons'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { MedApprov } from '../layout/types'
+import { useKurungika } from '../hooks/kuvoma.js'
 
 const ui_isActive = ref<boolean>(true)
 const med_loaded = ref<MedApprov[]>([])
 const notifStatus = ref<boolean>(false)
 const message = ref<string>('')
+const umuti_obj = ref<any>(null)
 const emit = defineEmits(['approFileClose','fileDataLoaded'])
+
+const url_achat = 'api/in/kurangura/'
+const [report_achat, sendFileDataLoaded] = useKurungika([umuti_obj,], url_achat)
 
 const convertDate = (dateString:String):String=>{
     // will take '2025-1-22' and make it '1/21/25'
@@ -142,7 +147,9 @@ const approveHandler = ()=>{
         if (counter == imiti_length){
             console.log("Things are Okay")
             let converted_imiti = convertToStandard(med_loaded.value)
-            emit('fileDataLoaded', converted_imiti)
+            umuti_obj.value = converted_imiti
+            sendFileDataLoaded()
+            // emit('fileDataLoaded', converted_imiti)
         } else {
             let info = `There is one or more fields non well formatted!, ${counter}`
             notifSwitch(info)
@@ -311,4 +318,13 @@ const closeApprov = ()=>{
     ui_isActive.value = false
     emit('approFileClose', 0)
 }
+
+//watchers
+watch(report_achat, (value)=>{
+    if (value.detail){
+        console.log("operation reussi")
+    } else {
+        console.warn("Pas bien reussi")
+    }
+})
 </script>
