@@ -150,7 +150,7 @@ const approveHandler = ()=>{
             let converted_imiti = convertToStandard(med_loaded.value)
             umuti_obj.value = converted_imiti
             emit('reportAchat', 1)
-            sendFileDataLoaded()
+            setTimeout(sendFileDataLoaded, 1000)
             // emit('fileDataLoaded', converted_imiti)
         } else {
             let info = `There is one or more fields non well formatted!, ${counter}`
