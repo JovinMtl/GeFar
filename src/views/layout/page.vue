@@ -417,23 +417,9 @@ const requestUpload = () => {
 const closeControle = () => {
     controleStatus.value = false
 }
-const compileImitiSet = async () => {
-    const endpoint = '/api/in/compileImitiSet/'
+const  url_compile_imiti_set = '/api/in/compileImitiSet/'
+const[reportCompileImitiSet, compileImitiSet] = useKuvoma(url_compile_imiti_set)
 
-    try {
-        const response = await fetch(`${baseURL}${endpoint}`, {
-            headers: {
-                Authorization: 'Bearer ' + getAccessToken()
-            }
-        })
-        if (response.ok) {
-            listImiti_update.value += 1
-        }
-    } catch (value) {
-        console.log("The error has occured:", value)
-    }
-
-}
 
 const reportAchatHandler = (reportAchat:number)=>{
     if(reportAchat == 1){
@@ -793,6 +779,11 @@ const show_suggest = (e)=>{
     stage_redu.value = 3
     clClean.value = false
 }
+watch(reportCompileImitiSet, (value)=>{
+    if (value.detail == 'ok'){
+        listImiti_update.value += 1
+    }
+})
 watch(report_achat, (value)=>{
     console.log("The report achat: " + value.detail)
     if(value.detail == 'ok'){
