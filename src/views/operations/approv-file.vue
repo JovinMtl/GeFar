@@ -330,5 +330,6 @@ watch(report_achat, (value)=>{
         console.warn("Pas bien reussi")
     }
     emit('reportAchat', 2)
+    emit('approFileClose', 0)
 })
 </script>
