@@ -109,7 +109,8 @@ const med_loaded = ref<MedApprov[]>([])
 const notifStatus = ref<boolean>(false)
 const message = ref<string>('')
 const umuti_obj = ref<any>(null)
-const emit = defineEmits(['approFileClose','fileDataLoaded'])
+const emit = defineEmits(['approFileClose',
+    'fileDataLoaded', 'reportAchat'])
 
 const url_achat = 'api/in/kurangura/'
 const [report_achat, sendFileDataLoaded] = useKurungika([umuti_obj,], url_achat)
@@ -148,6 +149,7 @@ const approveHandler = ()=>{
             console.log("Things are Okay")
             let converted_imiti = convertToStandard(med_loaded.value)
             umuti_obj.value = converted_imiti
+            emit('reportAchat', 1)
             sendFileDataLoaded()
             // emit('fileDataLoaded', converted_imiti)
         } else {
@@ -323,8 +325,10 @@ const closeApprov = ()=>{
 watch(report_achat, (value)=>{
     if (value.detail){
         console.log("operation reussi")
+        
     } else {
         console.warn("Pas bien reussi")
     }
+    emit('reportAchat', 2)
 })
 </script>

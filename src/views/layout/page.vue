@@ -20,7 +20,8 @@
                         <div class="approFileHeader">
                         </div>
                         <div class="approfileBody">
-                            <appro-file @approFileClose="closeApproFile" @fileDataLoaded="getFileDataLoaded"></appro-file>
+                            <appro-file @approFileClose="closeApproFile" 
+                                @reportAchat="reportAchatHandler"></appro-file>
                         </div>
 
                     </div>
