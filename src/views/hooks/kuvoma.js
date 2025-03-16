@@ -41,6 +41,9 @@ export function useKuvoma(prefix, remote = "") {
     const { getAccessToken } = useUserStore();
 
     const kuvomaImiti = async () => {
+        if (!getAccessToken()){
+            return 0
+        }
         // const base = '//127.0.0.1:8002'
         try {
             let response = "";
@@ -116,6 +119,9 @@ export function useKurungika(
         // return prefix
         if (!(otherData1 && otherData2)) {
             const kurungikaImiti = async () => {
+                if (!getAccessToken()){
+                    return 0
+                }
                 // const base = '//muteule.pythonanywhere.com'
 
                 try {
