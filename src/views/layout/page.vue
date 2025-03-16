@@ -822,6 +822,7 @@ watch(rdBtnActive, (value)=>{
     if (!value){
         clClean.value = true
         panier_api.client = {}
+        rate_assure.value = 0
     }
 })
 watch(clClean, (value)=>{
