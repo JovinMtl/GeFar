@@ -821,6 +821,7 @@ watch(inputData, (value)=>{
 watch(rdBtnActive, (value)=>{
     if (!value){
         clClean.value = true
+        panier_api.client = {}
     }
 })
 watch(clClean, (value)=>{
