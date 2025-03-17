@@ -113,7 +113,7 @@ const emit = defineEmits(['approFileClose',
     'fileDataLoaded', 'reportAchat'])
 
 const url_achat = 'api/in/kurangura/'
-const [report_achat, sendFileDataLoaded] = useKurungika([umuti_obj,], url_achat)
+const [report_achat, sendFileDataLoaded] = useKurungika(med_loaded.value, url_achat)
 
 const convertDate = (dateString:String):String=>{
     // will take '2025-1-22' and make it '1/21/25'
@@ -147,11 +147,8 @@ const approveHandler = ()=>{
             
         if (counter == imiti_length){
             console.log("Things are Okay")
-            let converted_imiti = convertToStandard(med_loaded.value)
-            umuti_obj.value = converted_imiti
             emit('reportAchat', 1)
             setTimeout(sendFileDataLoaded, 1000)
-            // emit('fileDataLoaded', converted_imiti)
         } else {
             let info = `There is one or more fields non well formatted!, ${counter}`
             notifSwitch(info)
@@ -161,32 +158,6 @@ const approveHandler = ()=>{
         let info = "Vous n'avez pas ajouté des données !"
         notifSwitch(info)
     }
-}
-const convertToStandard = (obj_array:MedApprov[])=>{
-    return med_loaded.value
-    // THis will add the prix_vente and other
-    let new_obj_array = []
-    obj_array.forEach((element:MedApprov)=>{
-        let obj = {
-        'code_med': '',
-        'date_winjiriyeko': '',
-        // 'date_winjiriyeko': new Date().toISOString(),
-        'date_uzohererako': element.date_peremption,
-        'nom_med': element.nom_med,
-        'famille_med': element.classe_med,
-        'description_med': element.sous_classe_med,
-        'forme': element.forme,
-        'type_in': element.type_achat,
-        'ratio_type': element.ratio,
-        'type_vente': element.type_vente,
-        'prix_in': element.prix_achat,
-        'prix_vente': element.prix_achat * 1.3,
-        'quantite_initial': element.quantite_initial,
-        'location': '',
-        }
-        new_obj_array.push(obj)
-    })
-    return new_obj_array
 }
 const notifSwitch = (info)=>{
     message.value = String(info)
