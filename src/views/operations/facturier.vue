@@ -94,12 +94,12 @@ const total: Ref<number> = ref(0)
 
 // Functions
 const makeTotal = ()=>{
-    console.log("The INPUT of total:", props.commandePatient[0])
+    // console.log("The INPUT of total:", props.commandePatient[0])
     // console.log("and:", props.commandePatient[0])
     props.commandePatient[0].forEach((elm)=>{
         total.value += (elm.prix_vente * elm.qte)
     })
-    console.log("the Total found:", total.value)
+    // console.log("the Total found:", total.value)
 }
 const printerF = async () => {
     window.print()
