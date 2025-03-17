@@ -2,7 +2,7 @@
     <ion-page>
         <ion-content>
             <div class="mP">
-                <div v-if="server_process" class="loader" style="z-index: 15;position:absolute">
+                <div v-show="server_process" class="loader" style="z-index: 15;position:absolute">
                     <jove-loader></jove-loader>
                 </div>
                 <div class="dashBoardContainer"
@@ -330,7 +330,7 @@ const [sell_report, toSell] = useKurungika(panier_api, url_sell)
 const { getAccessToken, getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
-
+sell_report.value = {}
 // from reduction
 const getstateBtn = (value:boolean)=>{
     clClean.value = value
@@ -408,6 +408,9 @@ const closeFacture = () => {
     panier_api.panier = []
     total_panier_client.value = computed(()=>{ return update_total_client()}) 
     total_panier_client_r.value =  computed(()=>{ return update_total_client(1)}) 
+    // Here should be initializing sell_report
+    // console.log("The sell_report is: " + JSON.stringify(sell_report))
+    // sell_report.value = {}
 }
 const SearchBarManager = (value) => {
     query_search.value = value
@@ -450,51 +453,51 @@ const url_achat = 'api/in/kurangura/'
 const inputData = ref(null)
 const [report_achat, sendFileDataLoaded] = useKurungika(inputData.value, url_achat)
 
-const getFileDataLoaded = async (dataArray) => {
-    // submitting the data to the server
-    // provide send-status and inject it in approv-file
-    inputData.value = dataArray
-    console.warn("About to send inputData : " + JSON.stringify(dataArray))
-    return 0
-    server_process.value = true
-    const endpoint = '/api/in/kurangura/'
+// const getFileDataLoaded = async (dataArray) => {
+//     // submitting the data to the server
+//     // provide send-status and inject it in approv-file
+//     inputData.value = dataArray
+//     console.warn("About to send inputData : " + JSON.stringify(dataArray))
+//     return 0
+//     server_process.value = true
+//     const endpoint = '/api/in/kurangura/'
 
-    try {
-        const response = await fetch(`${baseURL}${endpoint}`, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-                Authorization: 'Bearer ' + getAccessToken()
-            },
-            body: JSON.stringify({
-                'jov': dataArray
-            })
-        })
-        const server_data = await response.json()
-        if (response.ok) {
-            setTimeout(() => {
-                compileImitiSet()
-                server_process.value = false
-            }, 1500)
-            approvStatus.value = false
-            approFileStatus.value = false
-        } else {
-            message.value = "The response hasn't reached here yet"
-            server_process.value = false
-            notifStatus.value = true
-            setTimeout(()=>{
-                notifStatus.value = false
-            }, 1500)
-        }
-    } catch (value) {
-        message.value = "The error has occured:"
-        server_process.value = false
-        notifStatus.value = true
-        setTimeout(()=>{
-            notifStatus.value = false
-        }, 1500)
-    }
-}
+//     try {
+//         const response = await fetch(`${baseURL}${endpoint}`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-type': 'application/json',
+//                 Authorization: 'Bearer ' + getAccessToken()
+//             },
+//             body: JSON.stringify({
+//                 'jov': dataArray
+//             })
+//         })
+//         const server_data = await response.json()
+//         if (response.ok) {
+//             setTimeout(() => {
+//                 compileImitiSet()
+//                 server_process.value = false
+//             }, 1500)
+//             approvStatus.value = false
+//             approFileStatus.value = false
+//         } else {
+//             message.value = "The response hasn't reached here yet"
+//             server_process.value = false
+//             notifStatus.value = true
+//             setTimeout(()=>{
+//                 notifStatus.value = false
+//             }, 1500)
+//         }
+//     } catch (value) {
+//         message.value = "The error has occured:"
+//         server_process.value = false
+//         notifStatus.value = true
+//         setTimeout(()=>{
+//             notifStatus.value = false
+//         }, 1500)
+//     }
+// }
 const openApproFile = () => {
     approFileStatus.value = true
 }
@@ -620,7 +623,7 @@ const lot_array = (): PanierAPI[] => {
     let lote: PanierAPI[] = []
     let value: number = 0  // counting number of requested items
     let right_date: number = 0 //counting items with right date of expirity
-    console.log("ActiveLot is:", activeLot.value)
+    // console.log("ActiveLot is:", activeLot.value)
     let with_qte = 0
     let i = 0
     let j = 0
@@ -647,7 +650,7 @@ const lot_array = (): PanierAPI[] => {
         return lote
     } else{
         lote[with_qte].qte = 1
-        console.log("The withQte is:", with_qte, "now:", lote)
+        // console.log("The withQte is:", with_qte, "now:", lote)
         return lote
     }
     // else if (right_date) {
@@ -662,7 +665,7 @@ const check_panier = (umuti_name) => {
     // This function checks the existence of umuti on panier in order not to duplicate it.
     let panier_length: number = (panier_client.value).length
     let i: number = 0
-    console.log("Panier had length of : ", panier_length)
+    // console.log("Panier had length of : ", panier_length)
     for (i = 0; i < panier_length; i++) {
         console.log("T: ", panier_client.value[i], '>>', umuti_name, '<<', i)
         if (panier_client.value[i].nom_med == umuti_name) {
@@ -685,7 +688,7 @@ const update_total_client = (reduction: number = 0): string => {
         somme += p_T
     })
     // somme = ((somme / 97)+1) * 97 // should round the number
-    console.log("Assurance rate :", rate_assure.value)
+    // console.log("Assurance rate :", rate_assure.value)
     if (reduction == 0) {
         somme_formatted = readableNumber(somme) //formatting by three digits
     } else if (reduction == 1) {
@@ -788,7 +791,7 @@ const getUmuti = (umuti) => {
         activeLot.value = strDate(temp_lot)
         need_to_updade.value = false
     }
-    console.log("THe selected umuti: ", selectedUmuti.value)
+    // console.log("THe selected umuti: ", selectedUmuti.value)
 }
 const show_suggest = (e)=>{
     console.log("You entered assureur: ", e.target.value)
@@ -800,7 +803,7 @@ watch(reportCompileImitiSet, (value)=>{
     if (value.detail == 'ok'){
         listImiti_update.value += 1
     } else{
-        console.warn("CompileSet strange" + JSON.stringify(value))
+        // console.warn("CompileSet strange" + JSON.stringify(value))
     }
 })
 watch(report_achat, (value)=>{
@@ -849,12 +852,15 @@ watch(last_indexes, (value) => {
     should_sync.value += 1
 })
 watch(sell_report, value => {
+    console.warn("Begin: " + server_process.value + " at" + JSON.stringify(sell_report.value))
     server_process.value = true
+    console.warn("Begin2: " + server_process.value)
     if (value.sold){
         // Do something when the status response is OK
         console.log("Maintenant nous pouvons VOIR: facturier")
         listImiti_update.value += 1  // Triggering update
         server_process.value = false
+        console.warn("end: " + server_process.value)
         show_facture.value = true
         numero_facture.value = value.sold
         console.log("Le facturier: ", show_facture.value)
