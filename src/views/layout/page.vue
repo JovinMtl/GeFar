@@ -138,7 +138,9 @@
                             <p v-if="rdBtnActive && selectedProf != ''" style="margin-left: .5rem;">
                                 Total : <span style="color: black;">{{ (String(total_panier_client_r.value).replaceAll("\"",'')) }} Fbu</span>
                             </p>
-                            <div v-if="confirmRdBtn && show_total && clClean" class="ending" style="text-align: left;">
+                            <div v-if="confirmRdBtn && show_total && clClean" 
+                                @click="server_process=true"
+                                class="ending" style="text-align: left;">
                                 <button class="confirmButton" @click="toSell">Confirmer</button>
                             </div>
                             <div v-else class="ending" style="text-align: left;">
@@ -330,7 +332,7 @@ const [sell_report, toSell] = useKurungika(panier_api, url_sell)
 const { getAccessToken, getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
-sell_report.value = {}
+
 // from reduction
 const getstateBtn = (value:boolean)=>{
     clClean.value = value
