@@ -87,10 +87,10 @@ const reste: Ref<String> = ref('')
 const assured: Ref<String> = ref('')
 const total: Ref<number> = ref(0)
 
-console.log("Facturier INITIALIZED: ", props)
-console.log("THe first thing: ", props.commandePatient[0], "second: ", props.commandePatient[1])
-console.log("Assureur: ", props.assureur)
-console.log("assure_rate:", props.assure_rate)
+// console.log("Facturier INITIALIZED: ", props)
+// console.log("THe first thing: ", props.commandePatient[0], "second: ", props.commandePatient[1])
+// console.log("Assureur: ", props.assureur)
+// console.log("assure_rate:", props.assure_rate)
 
 // Functions
 const makeTotal = ()=>{

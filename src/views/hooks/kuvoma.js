@@ -8,7 +8,7 @@ const isAdmin = ref(false);
 
 async function refreshToken(){
     const { getRefreshToken, setAccessToken } = useUserStore();
-    console.log("Using RefreshToken: " + getRefreshToken())
+    // console.log("Using RefreshToken: " + getRefreshToken())
     const prefix = 'api/refresh/'
 
     try{
@@ -25,8 +25,9 @@ async function refreshToken(){
         });
         newToken = await response.json()
         if (response.ok){
-            console.log("The new access Token: " + newToken.access)
+            // console.log("The new access Token: " + newToken.access)
             setAccessToken(newToken.access)
+            console.log("Refresh done successfully.")
         } else{
             console.warn("No new access token: " + newToken)
         }
@@ -64,10 +65,10 @@ export function useKuvoma(prefix, remote = "") {
             if (response.ok) {
                 data.value = await response.json();
             }  else{
-                console.log("The response is not OK")
+                // console.log("The response is not OK")
                 refreshToken()
                 let secondData = kuvomaImiti()
-                console.log("The returned secondData: " + secondData[0])
+                // console.log("The returned secondData: " + secondData[0])
                 data.value = secondData
             }
         } catch (value) {

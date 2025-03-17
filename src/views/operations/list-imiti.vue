@@ -119,7 +119,7 @@ export default defineComponent({
             // console.log("And the ID is : ", (value.target.parentNode.parentNode).innerHTML)
             const current = (value.target.parentNode)
             const code = current.getAttribute("id")
-            console.log("ID : ", code)
+            // console.log("ID : ", code)
             showUmuti(code)
             // updateImitiSet() // disabling constant update on each selecting umuti
         }
