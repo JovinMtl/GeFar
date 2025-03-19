@@ -209,7 +209,7 @@ const xlsxFileReader = async()=>{
                     obj.sous_classe_med = element[2]
                     obj.forme = element[3]
                     obj.quantite_initial = element[4]
-                    obj.prix_achat = element[5]
+                    obj.prix_achat = Number(element[5])
                     let date_one = (String(new Date(element[6]).toJSON())).slice(0,10)
                     let date_two = convertDate(date_one)
                     obj.date_peremption = date_two
