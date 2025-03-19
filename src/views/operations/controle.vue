@@ -311,7 +311,11 @@ watch(stockZero, (value)=>{
     }
 })
 watch(stockYellow, (value)=>{
-    if (value){
+    console.log("stockYellow : " + JSON.stringify(value))
+    if (value[0] == undefined){
+        console.log("stockYellow is likely to be empty.")
+    } 
+    else{
         console.log("Niveau Critique")
         nRoutine(value)
         title_operation.value = "Niveau Critique"
