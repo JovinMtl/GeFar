@@ -239,8 +239,12 @@ const nRoutine = (value)=>{
     'quantite_restant','prix_vente', 'date_winjiriyeko',]
     actual_type.value = ['text','text','text','date']
 }
-
+// 
+console.log("The INIT title is : " + title_operation.value)
 // watchers
+watch(title_operation, (value)=>{
+    console.log("The title is changing into: " + value)
+})
 watch(medGreen, (value)=>{
     if (value){
         console.log("Bonne état")
@@ -323,6 +327,7 @@ watch(outDate, (value)=>{
         'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Expiré"
+        console.log("new title...: " + title_operation.value)
     }})
 watch(endStock, (value)=>{
     if(value.data == 'empty'){
@@ -336,11 +341,13 @@ watch(endStock, (value)=>{
         'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Zéro Stock"
+        console.log("new title...: " + title_operation.value)
     }})
 watch(lowStock, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
         title_operation.value = "Pas low Stock"
+        console.log("new title...: " + title_operation.value)
     }
     else{
         actual_obj.value = value
@@ -349,37 +356,52 @@ watch(lowStock, (value)=>{
         'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Low Stock"
+        console.log("new title...: " + title_operation.value)
     }
 })
 watch(actual_suggest, (value)=>{
-    if (value){
+    if (value[0] == undefined){
+        console.log("Achats is likely to be empty.")
+    } 
+    else{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['nom_med', 
         'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Suggestion"
+        console.log("new title...: " + title_operation.value)
     }
 })
 watch(actual_entree, (value)=>{
-    if (value){
+    console.log("Achats: " + value)
+    if (value[0] == undefined){
+        console.log("Achats is likely to be empty.")
+    } 
+    else{
         actual_obj.value = value
         actual_imitiS.value = value
         actual_opt.value = ['nom_med', 
         'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Achats"
+        console.log("new title...: " + title_operation.value)
+        // console.log("Titlte is actual_entree...: " + title_operation.value)
     }
 })
 watch(actual_vente, (value)=>{
-    if (value){
-        // title_operation.value = "Ventes"
+    if (value[0] == undefined){
+        console.log("Ventes are likely to be empty.")
+    } 
+    else{
         actual_obj.value = value
         actual_imitiS.value = value.response
         actual_opt.value = ['nom_med', 
         'quantity','prix_vente', 'date_operation',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Ventes"
+        // console.log("Titlte is actual_vente...: " + title_operation.value)
+        console.log("new title...: " + title_operation.value)
     }
 })
 watch(actual_imiti, (value)=>{
@@ -390,6 +412,7 @@ watch(actual_imiti, (value)=>{
         'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','text','date']
         title_operation.value = "Disponibles"
+        console.log("new title...: " + title_operation.value)
     }
 })
 watch(selected_field, (value)=>{
@@ -400,12 +423,18 @@ watch(need_search, (value)=>{
     actual_imitiS.value = useSearchUmuti(actual_obj.value, value, selected_field.value )
 })
 watch(actual_imitiS, (value)=>{
-    console.log("We got this: ", value)
+    console.log("Actual_imitiS is " + JSON.stringify(actual_imitiS.value))
+    if(actual_imitiS.value == undefined){
+        console.log("Can't go further.")
+        title_operation.value = "Opérations"
+        // return 0
+    } else{
+        
     let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
 
     actual_imitiS.value.forEach(element => {
         if(element.quantite_restant){
-            console.log("Quantite restant  pa:",  element.prix_vente)
+            // console.log("Quantite restant  pa:",  element.prix_vente)
             total += (element.prix_vente * (element.quantite_restant))
             pt_a += element.prix_in * (element.quantite_restant)
             benefice += (element.prix_vente - element.prix_in) * (element.quantite_restant) 
@@ -419,7 +448,8 @@ watch(actual_imitiS, (value)=>{
         number += 1
     });
 
-    totaux.value = [number, total, pt_a, benefice]
+    totaux.value = [number, total, pt_a, benefice] 
+    }
 })
 
 const applyFilter = ()=>{
