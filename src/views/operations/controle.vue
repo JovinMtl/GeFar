@@ -165,8 +165,15 @@ import dateGreen from './ctrl/date-green.vue'
 const emit = defineEmits(['turnControl',])
 const title_operation = ref('Opérations')
 
-const message: Ref<string> = ref("zéro element")
+const message: Ref<string> = ref("zéro element.")
 const shouldNotif: Ref<boolean> = ref(false)
+
+const turnOnNotif = (msg:string)=>{
+    shouldNotif.value = true
+    setTimeout(()=>{
+        shouldNotif.value = false
+    }, 1500)
+}
 
 const [ isAdmin, askPriviledge] = useAskPriviledge()
 askPriviledge()
@@ -300,6 +307,7 @@ watch(stockGreen, (value)=>{
         console.log("stockGreen is likely to be empty.")
     } 
     else{
+        shouldNotif.value = false
         console.log("Stock normale")
         nRoutine(value)
         title_operation.value = "Stock normale"
@@ -309,9 +317,11 @@ watch(stockZero, (value)=>{
     console.log("stockZero : " + JSON.stringify(value))
     if (value[0] == undefined){
         console.log("stockZero is likely to be empty.")
+        shouldNotif.value = true
     } 
     else{
         console.log("Stock epuise")
+        shouldNotif.value =true
         nRoutine(value)
         title_operation.value = "Stock epuisé"
     }
