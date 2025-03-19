@@ -139,6 +139,11 @@
                 v-if="title_operation == 'Med périmé'"/>
             
         </div>
+        <div>
+            <teleport to="body">
+                <div class="notif notifControle">Hello jove</div>
+            </teleport>
+        </div>
     </div>
 </template>
 
