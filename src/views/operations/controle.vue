@@ -266,7 +266,11 @@ watch(medMedium, (value)=>{
     }
 })
 watch(medYellow, (value)=>{
-    if (value){
+    console.log("medYellow : " + JSON.stringify(value))
+    if (value[0] == undefined){
+        console.log("medYellow is likely to be empty.")
+    } 
+    else{
         console.log("Date alerte")
         nRoutine(value)
         title_operation.value = "En alerte"
