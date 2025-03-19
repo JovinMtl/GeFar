@@ -140,7 +140,7 @@
             
         </div>
         <teleport to="body">
-            <div v-show="shouldNotif" class="notif notifCtl">Hello jove</div>
+            <div v-show="shouldNotif" class="notif notifCtl">{{ message }}</div>
         </teleport>
     </div>
 </template>
@@ -265,6 +265,7 @@ watch(title_operation, (value)=>{
 watch(medGreen, (value)=>{
     if (value[0] == undefined){
         console.log("medGreen is likely to be empty.")
+        turnOnNotif()
     } 
     else{
         console.log("Bonne état")
@@ -275,6 +276,7 @@ watch(medGreen, (value)=>{
 watch(medMedium, (value)=>{
     if (value[0] == undefined){
         console.log("medMedium is likely to be empty.")
+        turnOnNotif()
     } 
     else{
         console.log("Date critique")
@@ -286,6 +288,7 @@ watch(medYellow, (value)=>{
     console.log("medYellow : " + JSON.stringify(value))
     if (value[0] == undefined){
         console.log("medYellow is likely to be empty.")
+        turnOnNotif()
     } 
     else{
         console.log("Date alerte")
@@ -297,6 +300,7 @@ watch(medRed, (value)=>{
     console.log("medRed : " + JSON.stringify(value))
     if (value[0] == undefined){
         console.log("medRed is likely to be empty.")
+        turnOnNotif()
     } 
     else{
         console.log("Med périmé")
@@ -309,6 +313,7 @@ watch(stockGreen, (value)=>{
     console.log("stockGreen : " + JSON.stringify(value))
     if (value[0] == undefined){
         console.log("stockGreen is likely to be empty.")
+        turnOnNotif()
     } 
     else{
         shouldNotif.value = false
@@ -321,11 +326,10 @@ watch(stockZero, (value)=>{
     console.log("stockZero : " + JSON.stringify(value))
     if (value[0] == undefined){
         console.log("stockZero is likely to be empty.")
-        shouldNotif.value = true
+        turnOnNotif()
     } 
     else{
         console.log("Stock epuise")
-        shouldNotif.value =true
         nRoutine(value)
         title_operation.value = "Stock epuisé"
     }
@@ -334,6 +338,7 @@ watch(stockYellow, (value)=>{
     console.log("stockYellow : " + JSON.stringify(value))
     if (value[0] == undefined){
         console.log("stockYellow is likely to be empty.")
+        turnOnNotif()
     } 
     else{
         console.log("Niveau Critique")
@@ -345,6 +350,7 @@ watch(stockRed, (value)=>{
     console.log("stockRed : " + JSON.stringify(value))
     if (value[0] == undefined){
         console.log("stockRed is likely to be empty.")
+        turnOnNotif()
     } 
     else{
         console.log("En Alerte")
@@ -356,6 +362,7 @@ watch(allFine, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
         title_operation.value = "Pas Bon"
+        turnOnNotif()
     }
     else{
         actual_obj.value = value
@@ -369,6 +376,7 @@ watch(outDate, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
         title_operation.value = "Zéro Expiré"
+        turnOnNotif()
     }
     else{
         actual_obj.value = value
@@ -383,6 +391,7 @@ watch(endStock, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
         title_operation.value = "Pas zéro Stock"
+        turnOnNotif()
     }
     else{
         actual_obj.value = value
@@ -398,6 +407,7 @@ watch(lowStock, (value)=>{
         console.log("It is empty")
         title_operation.value = "Pas low Stock"
         console.log("new title...: " + title_operation.value)
+        turnOnNotif()
     }
     else{
         actual_obj.value = value
@@ -412,6 +422,7 @@ watch(lowStock, (value)=>{
 watch(actual_suggest, (value)=>{
     if (value[0] == undefined){
         console.log("Achats is likely to be empty.")
+        turnOnNotif()
     } 
     else{
         actual_obj.value = value
@@ -427,6 +438,7 @@ watch(actual_entree, (value)=>{
     console.log("Achats: " + value)
     if (value[0] == undefined){
         console.log("Achats is likely to be empty.")
+        turnOnNotif()
     } 
     else{
         actual_obj.value = value
@@ -442,6 +454,7 @@ watch(actual_entree, (value)=>{
 watch(actual_vente, (value)=>{
     if (value.response == undefined){
         console.log("Ventes are likely to be empty.")
+        turnOnNotif()
     } 
     else{
         actual_obj.value = value
@@ -457,6 +470,7 @@ watch(actual_vente, (value)=>{
 watch(actual_imiti, (value)=>{
     if (value.data == undefined){
         console.log("Dispo is likely to be empty.")
+        turnOnNotif()
     } 
     else{
         actual_obj.value = value.data
