@@ -139,16 +139,14 @@
                 v-if="title_operation == 'Med périmé'"/>
             
         </div>
-        <div>
-            <teleport to="body">
-                <div class="notif notifCtl">Hello jove</div>
-            </teleport>
-        </div>
+        <teleport to="body">
+            <div v-show="shouldNotif" class="notif notifCtl">Hello jove</div>
+        </teleport>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { ref, Ref, watch } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { 
     close, statsChartOutline, snowOutline, thermometer, pricetagOutline,
@@ -166,6 +164,9 @@ import dateGreen from './ctrl/date-green.vue'
 
 const emit = defineEmits(['turnControl',])
 const title_operation = ref('Opérations')
+
+const message: Ref<string> = ref("zéro element")
+const shouldNotif: Ref<boolean> = ref(false)
 
 const [ isAdmin, askPriviledge] = useAskPriviledge()
 askPriviledge()
