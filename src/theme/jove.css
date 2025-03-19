@@ -376,6 +376,7 @@ html, body {
     background-color: transparent; 
     width: 5%;height: 100%;
     margin: 0 3px;
+    justify-content: right;
 }
 .contentElement4{
     display: inline-flex;
@@ -387,7 +388,7 @@ html, body {
     display: inline-flex;
     background-color: transparent; 
     width: 8%;height: 100%;
-    /* border: 1px solid blue; */
+    justify-content: right;
 }
 .elt6{
     display: inline-flex;
