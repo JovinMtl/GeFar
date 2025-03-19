@@ -277,7 +277,11 @@ watch(medYellow, (value)=>{
     }
 })
 watch(medRed, (value)=>{
-    if (value){
+    console.log("medRed : " + JSON.stringify(value))
+    if (value[0] == undefined){
+        console.log("medRed is likely to be empty.")
+    } 
+    else{
         console.log("Med périmé")
         nRoutine(value)
         title_operation.value = "Med périmé"
