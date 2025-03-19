@@ -256,7 +256,10 @@ watch(medGreen, (value)=>{
     }
 })
 watch(medMedium, (value)=>{
-    if (value){
+    if (value[0] == undefined){
+        console.log("medMedium is likely to be empty.")
+    } 
+    else{
         console.log("Date critique")
         nRoutine(value)
         title_operation.value = "Date critique"
