@@ -322,7 +322,11 @@ watch(stockYellow, (value)=>{
     }
 })
 watch(stockRed, (value)=>{
-    if (value){
+    console.log("stockRed : " + JSON.stringify(value))
+    if (value[0] == undefined){
+        console.log("stockRed is likely to be empty.")
+    } 
+    else{
         console.log("En Alerte")
         nRoutine(value)
         title_operation.value = "En Alerte"
