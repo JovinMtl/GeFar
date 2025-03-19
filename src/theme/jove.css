@@ -522,3 +522,6 @@ select{
     color: black;
     font-weight: 600;
 }
+.notifControle{
+    transform: translate(28%);color:grey;
+}
