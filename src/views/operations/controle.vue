@@ -300,7 +300,11 @@ watch(stockGreen, (value)=>{
     }
 })
 watch(stockZero, (value)=>{
-    if (value){
+    console.log("stockZero : " + JSON.stringify(value))
+    if (value[0] == undefined){
+        console.log("stockZero is likely to be empty.")
+    } 
+    else{
         console.log("Stock epuise")
         nRoutine(value)
         title_operation.value = "Stock epuisé"
