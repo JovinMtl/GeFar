@@ -169,9 +169,13 @@ const message: Ref<string> = ref("zéro element.")
 const shouldNotif: Ref<boolean> = ref(false)
 
 const turnOnNotif = (msg:string)=>{
+    if(msg){
+        message.value = msg
+    }
     shouldNotif.value = true
     setTimeout(()=>{
         shouldNotif.value = false
+        message.value = "zéro element."
     }, 1500)
 }
 
