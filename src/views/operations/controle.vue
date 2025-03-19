@@ -405,7 +405,10 @@ watch(actual_vente, (value)=>{
     }
 })
 watch(actual_imiti, (value)=>{
-    if (value){
+    if (value.data == undefined){
+        console.log("Dispo is likely to be empty.")
+    } 
+    else{
         actual_obj.value = value.data
         actual_imitiS.value = value.data
         actual_opt.value = ['nom_med','description_med', 
