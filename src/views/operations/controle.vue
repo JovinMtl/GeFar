@@ -246,7 +246,10 @@ watch(title_operation, (value)=>{
     console.log("The title is changing into: " + value)
 })
 watch(medGreen, (value)=>{
-    if (value){
+    if (value[0] == undefined){
+        console.log("medGreen is likely to be empty.")
+    } 
+    else{
         console.log("Bonne état")
         nRoutine(value)
         title_operation.value = "Bonne état"
