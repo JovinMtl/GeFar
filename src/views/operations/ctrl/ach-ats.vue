@@ -32,10 +32,10 @@
                 </div>
 
                 <div class="contentElement4">
-                    Date
+                    Date Achat
                 </div>
                 <div class="contentElement4">
-                    Classe
+                    Classe Thérap.
                 </div>
             </div>
         </div>
