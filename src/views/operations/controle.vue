@@ -390,7 +390,7 @@ watch(actual_entree, (value)=>{
     }
 })
 watch(actual_vente, (value)=>{
-    if (value[0] == undefined){
+    if (value.response == undefined){
         console.log("Ventes are likely to be empty.")
     } 
     else{
