@@ -289,7 +289,11 @@ watch(medRed, (value)=>{
 })
 
 watch(stockGreen, (value)=>{
-    if (value){
+    console.log("stockGreen : " + JSON.stringify(value))
+    if (value[0] == undefined){
+        console.log("stockGreen is likely to be empty.")
+    } 
+    else{
         console.log("Stock normale")
         nRoutine(value)
         title_operation.value = "Stock normale"
