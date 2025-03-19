@@ -149,7 +149,7 @@ const updateTotaux = ()=>{
         
         
         
-        console.log("total: ", total)
+        // console.log("total: ", total)
         number += 1
     });
 

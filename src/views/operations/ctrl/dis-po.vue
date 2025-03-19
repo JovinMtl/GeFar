@@ -132,10 +132,10 @@ const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
 
-console.log("THe props: ",actual_imitiS.value[3])
+// console.log("THe props: ",actual_imitiS.value[3])
 
 const updateTotaux = ()=>{
-    console.log("Attempt to build totaux",)
+    // console.log("Attempt to build totaux",)
     let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
 
     actual_imitiS.value.forEach(element => {
@@ -152,7 +152,7 @@ const updateTotaux = ()=>{
         
         
         
-        console.log("total: ", total)
+        // console.log("total: ", total)
         number += 1
     });
 
