@@ -141,7 +141,7 @@
         </div>
         <div>
             <teleport to="body">
-                <div class="notif notifControle">Hello jove</div>
+                <div class="notif notifCtl">Hello jove</div>
             </teleport>
         </div>
     </div>
