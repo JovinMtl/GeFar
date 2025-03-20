@@ -310,14 +310,12 @@ const buildBons = ()=>{
 updateTotaux()
 // buildBons()
 watch(assurances, (value)=>{
-    console.log("Assu: " + JSON.stringify(value))
-    let assu = new Array(value)
-    value.forEach((elm)=>{
-        console.log("Id:" + elm.id)
-        setAssurance(elm.id, elm.name)
-    })
-    console.log("The all assu: " + JSON.stringify(getObjAssurances()))
-    console.log("THe 15: " + getOneAssurance('15'))
+    if(value[0] != undefined){
+        value.forEach((elm)=>{
+            console.log("Id:" + elm.id)
+            setAssurance(elm.id, elm.name)
+        })
+    }
 })
 watch(repBons, (value)=>{
     console.log("SendBon: ", value)
