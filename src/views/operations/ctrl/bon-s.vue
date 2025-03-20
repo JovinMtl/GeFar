@@ -1,0 +1,344 @@
+<template>
+    <div class="dynContent" style="">
+        
+        <div class="controlHeader" style="height: 5%; width: 100%;">
+            <div  class="controlContent" style="font-size: .8rem;
+                background-color: navy; color: white">
+                <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: inherit; ">
+                    #
+                </div> 
+                <div class="contentElement2">
+                    Nom du Med.
+                </div> 
+                <!-- <div class="contentElement3">
+                    Qte
+                </div>
+
+                <div class="contentElement3">
+                    <span v-if="isAdmin">P. A.</span>
+                </div> -->
+
+                <div class="contentElement3">
+                    Assu.
+                </div>
+
+                <div class="contentElement3">
+                    Total
+                </div>
+
+                <div class="contentElement3">
+                <span v-if="isAdmin">Bnf</span> 
+                </div>
+                <div class="elt5">
+                    Caisse
+                </div>
+                <div class="elt5">
+                    Dette
+                </div>
+                <div class="elt5">
+                    Regléé
+                </div>
+                <div class="elt5">
+                    Catég.
+                </div>
+
+                <div class="elt5">
+                    Date
+                </div>
+                <div class="elt6">
+                    Payer
+                </div>
+                <div class="elt7">
+                    Id Bon
+                </div>
+            </div>
+        </div>
+
+        <div class="controlBody">
+            <div v-for="(umuti, index) in (actual_imitiS)" 
+                :class="index%2 ? 'ln-1':'ln-2'"
+                class="d-f"
+                :key="index">
+                <div class="contentElement11">
+                    {{ index + 1 }}
+                </div> 
+                <div class="contentElement2">
+                    <!-- {{ umuti.meds }} -->
+                    <a>Ouvrir</a>
+                </div> 
+                <!-- <div class="contentElement3">
+                    {{ (umuti.qte ) }}
+                </div> 
+
+                <div class="contentElement3 famille_med">
+                    <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
+                    
+                </div> -->
+
+                <div class="contentElement3">
+                    <span  v-show="organization !='Sans'">
+                        {{ getOneAssurance(umuti.organization)  }}
+                    </span>
+                </div>
+
+                <div class="contentElement3 total">
+                        {{ umuti.total }}
+                </div>
+
+                <div class="contentElement3"> 
+                <!-- <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.qte || 1) }}</span>  -->
+                    {{ umuti.beneficiaire }}
+                </div>
+                <div class="elt5">
+                     <span >{{umuti.cout}}</span>
+                </div>
+                <div class="elt5" style="color: blue;">
+                    <span v-show="(umuti.is_paid)==false" :class="umuti.assu=='Pharmacie Ubuzima' ? 'c-g':''">
+                        {{ umuti.montant_dette }}</span>
+                     
+                </div>
+                <div class="elt5" style="color: white;">
+                    <span v-show="umuti.is_paid">
+                        <!-- {{ (umuti.assu).slice(0,5) }}... -->
+                        {{ umuti.montant_dette }}
+                    </span>
+                </div>
+                <div class="elt5">
+                    <span v-show="umuti.categ!='null'">{{ umuti.categorie }}</span>
+                     
+                </div>
+
+                <div class="elt5">
+{{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
+                </div>
+                <div class="elt6">
+                     <span v-if="!umuti.is_paid" class="btn2 br mt w-22 bg-b"
+                        :id="'j'+index"
+                        :class="selectIndex.has(index)? 'bg-g':''"
+                       @click="checkBon"></span>
+                </div>
+                <div class="elt7">
+                    {{ (umuti.num_bon).slice(0,7) }}
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="controlFooter">
+            <div  class="controlContent" style="font-weight: 700;font-size: .8rem;">
+                <div class="contentElement1">
+                    #
+                </div> 
+                <div class="contentElement2">
+                    TOTAL
+                </div> 
+                <div class="contentElement1">
+                    <!-- Nombre -->
+                    {{ totaux[0] }}
+                </div>
+
+                <div class="contentElement3">
+                    {{ useReadable(totaux[2]) }}
+                    
+                </div>
+
+                <div class="contentElement3">
+                    ----
+                </div>
+
+                <div class="contentElement3 total" style="margin-right: 5px;">
+                    <!-- P.V -->
+                    {{ useReadable(totaux[1]) }}
+                </div>
+
+                <div class="contentElement3">
+                    <!-- Benefice -->
+                    {{ useReadable(totaux[3]) }}
+                </div>
+                <div class="elt5">
+                    <!-- Caisse -->
+                     {{ useReadable(totaux[2]) }}
+                </div>
+                <div class="elt5">
+                    <!-- Dette -->
+                     {{ useReadable(totaux[5]) }}
+                </div>
+                <div class="elt5">
+                     <!-- assu -->
+                     ------
+                </div>
+                <div class="elt5">
+                     <!-- categ -->
+                     ------
+                </div>
+
+                <div class="elt5">
+                    ----------
+                </div>
+                <div class="elt5">
+                    <span v-show="repStatus==0 && selectIndex.size" class="pay bg-g" @click="fIndex">
+                        Payer
+                    </span>
+                    <span v-if="repStatus">
+                        <span v-if="repStatus==1">Ok</span>
+                        <span v-if="repStatus==2">No</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+                            
+    </div>
+</template>
+
+<script setup lang="ts">
+import { ref, watch, computed } from 'vue'
+import { useKurungika, usePostRequest, useKuvoma } from '../../hooks/kuvoma'
+import useReadable from '../../hooks/useReadable'
+import { Value } from 'sass'
+import { useAssuStore } from '../../../store/assu'
+import { baseURL } from '../../../store/host.js'
+import { jsx } from 'vue/jsx-runtime'
+const props = defineProps(['med','admin'])
+const emit = defineEmits(['lsIndex'])
+const actual_imitiS = ref(props.med)
+const isAdmin = props.admin
+const totaux = ref([0,0]) // To display totals on the footer.
+const selectIndex =ref(new Set())
+const repStatus  = ref<number>(0)
+const {getObjAssurances, setAssurance, getOneAssurance} = useAssuStore()
+
+const idBons = ref([])
+
+let tempSelected = 0
+let numsBon: number[] = []
+
+const url_sendIndex = 'api/gOps/setBons/'
+const [repIndex, sendIndex] = usePostRequest()
+
+const url_sendBons = 'api/gOps/getBons/'
+const [repBons, sendBons] = usePostRequest()
+
+const url_getAssurances = "api/gOps/getAssu/"
+const url_local: string = baseURL
+const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
+
+
+getAssurances()
+
+//Functions
+const fIndex = ()=>{
+    console.log("Really wish to send: ", selectIndex.value)
+    numsBon = removeBadBons()
+    sendIndex(numsBon, url_sendIndex)
+}
+const updateTotaux = ()=>{
+    // console.log("Attempt to build totaux",)
+    let [ number, total, cout, benefice, caisse, dette ] = [0, 0, 0, 0, 0, 0]
+
+    actual_imitiS.value.forEach(element => {
+        console.log("Quantite restant  pa:",  element.montant_dette)
+        let tot = Number(element.total)
+        let c = Number(element.cout)
+        if (tot ){
+            total += tot
+            cout += c
+            benefice += (element.prix_vente - element.prix_achat) * (element.qte) 
+            caisse += element.caisse
+            dette += element.montant_dette
+        }
+
+        number += 1
+    });
+    totaux.value = [number, total, cout, benefice, caisse, dette]
+
+}
+
+const checkBon = (e)=>{
+    let index = Number((e.target.id).slice(1))
+    if(e.shiftKey && index >= tempSelected){
+        for(let i= tempSelected; i <= index; i++){
+            selectIndex.value.add(i)
+        }
+        tempSelected = index
+    }else if(e.shiftKey && index <= tempSelected ){
+        for(let i=index; i <= tempSelected; i++){
+            selectIndex.value.add(i)
+        }
+        tempSelected = index
+    } else{
+        if (!selectIndex.value.has(index)){
+            selectIndex.value.add(index)
+            tempSelected = index
+        } else{
+            selectIndex.value.delete(index)
+            tempSelected = index
+        }
+    }
+    tempSelected = index
+}
+const removeBadBons = ()=>{
+    // removeBadBons returns the clean list of id's needed
+    // find falses
+    let i = 0;
+
+    // to fish the bad ones
+    actual_imitiS.value.forEach(elm=>{
+        if(elm.is_paid){
+            selectIndex.value.delete(i)
+        }
+        i +=1
+    })
+            
+    let arr = []
+    selectIndex.value.forEach(elm=>{
+        arr.push(actual_imitiS.value[elm].num_bon)
+    })
+    return arr
+}
+const buildBons = ()=>{
+    let arr = []
+    actual_imitiS.value.forEach((elm)=>{
+        arr.push(elm.bon_de_commande)
+    })
+    idBons.value = arr
+    // removeBadBons()
+    // sendBons(selectIndex.value, url_sendBons)
+}
+
+
+
+updateTotaux()
+// buildBons()
+watch(assurances, (value)=>{
+    console.log("Assu: " + JSON.stringify(value))
+    let assu = new Array(value)
+    value.forEach((elm)=>{
+        console.log("Id:" + elm.id)
+        setAssurance(elm.id, elm.name)
+    })
+    console.log("The all assu: " + JSON.stringify(getObjAssurances()))
+    console.log("THe 15: " + getOneAssurance('15'))
+})
+watch(repBons, (value)=>{
+    console.log("SendBon: ", value)
+    // removeBadBons()
+})
+watch(repIndex, (value)=>{
+    // console.log("La reponse: ", value)
+    if(value.status==1){
+        repStatus.value = 1
+        // console.log("Succes")
+        console.log("Numbons are:", numsBon)
+        console.log("all: ",actual_imitiS.value)
+        let i = 0
+        selectIndex.value.forEach((num)=>{
+            actual_imitiS.value[num].is_paid = true
+        })
+        setTimeout(()=>{
+            emit('lsIndex', selectIndex)
+        }, 2000)
+    } else{
+        repStatus.value = 2
+    }
+})
+</script>
