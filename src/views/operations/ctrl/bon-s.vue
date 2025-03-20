@@ -8,7 +8,7 @@
                     #
                 </div> 
                 <div class="contentElement2">
-                    Nom du Med.
+                    Bon de Commande
                 </div> 
                 <!-- <div class="contentElement3">
                     Qte
@@ -19,7 +19,7 @@
                 </div> -->
 
                 <div class="contentElement3">
-                <span v-if="isAdmin">Bnf</span> 
+                <span v-if="isAdmin">Benéficiaire</span> 
                 </div>
 
 
