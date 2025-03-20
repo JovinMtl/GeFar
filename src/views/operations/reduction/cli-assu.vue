@@ -4,12 +4,13 @@
         <input
             v-model="selectedClient"
             style="width: 100px;margin:0 20px;"
-            list="clients" name="client" id="client">
+            list="clients" name="client" id="client"
+            @blur="checkClient">
 
         <datalist id="clients">
             <option v-for="(client, index) in clients" :key="index"
                 :value="client.beneficiaire">
-                {{ client.nom_adherant }}
+                {{ client.beneficiaire }}
             </option>
         </datalist>
         <input v-if="need_add_client" type="button" @click="need_new_client=true"
@@ -22,6 +23,10 @@
         <createClient v-if="need_new_client" @clData="getclData"/>
         
         <div  v-if="existingClient && !need_add_client && selectedClient">
+            <input :value="nomAdherantFiltered"
+                placeholder="Nom de l'adhérant"
+                disabled
+                style="color: rgb(86, 105, 211);">
             <input type="number"
                 v-model="previous_rate_assure"
                 placeholder="Taux d'assurance">
@@ -85,6 +90,8 @@ let nom_beneficiaire: string = ''
 let relation: string = ''
 let rateAssu: number = 0
 
+const nomAdherantFiltered: Ref<string> = ref('')
+
 // Simple console.log for test
 console.log("the rate_assure:", props.rate_assu_p)
 
@@ -98,6 +105,18 @@ const [clients, getClients] = useKuvoma(url_getClients, url_local)
 getClients()
 
 // Functions
+const checkClient = ()=>{
+    console.log('should check client name')
+    let client = ''
+    client = clients.value.filter((elm)=>elm.beneficiaire==selectedClient.value)
+    console.log("The checkClient found: " + JSON.stringify(client))
+    
+    if (client[0]){
+        nomAdherantFiltered.value = client[0].nom_adherant
+    } else{
+        nomAdherantFiltered.value = ''
+    }
+}
 const checkCliAssu = ()=>{
     // Here should emit after a solid check when the
     // client already existed
