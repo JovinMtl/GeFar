@@ -9,12 +9,16 @@ export const useAssuStore = defineStore('assu',()=>{
     const getObjAssurances = ()=>{
         return assurances
     }
+    const getOneAssurance = (id)=>{
+        return assurances[id]
+    }
     const setAssurance = (id, value)=>{
         assurances[id] = value
     }
 
     return {
-        getObjAssurances, setAssurance
+        getObjAssurances, setAssurance,
+        getOneAssurance
     }
 })
 
