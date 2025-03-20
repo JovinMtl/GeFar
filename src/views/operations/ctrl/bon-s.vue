@@ -87,7 +87,7 @@
 
                 <div class="contentElement3"> 
                 <!-- <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.qte || 1) }}</span>  -->
-                    {{ umuti.beneficiaire }}
+                    {{ getOneclient(umuti.beneficiaire) }}
                 </div>
                 <div class="elt5">
                      <span >{{umuti.cout}}</span>
@@ -191,13 +191,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue'
-import { useKurungika, usePostRequest, useKuvoma } from '../../hooks/kuvoma'
+import { ref, watch } from 'vue'
+import {  usePostRequest, useKuvoma } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
-import { Value } from 'sass'
 import { useAssuStore } from '../../../store/assu'
+import { useClientStore } from '../../../store/clients'
 import { baseURL } from '../../../store/host.js'
-import { jsx } from 'vue/jsx-runtime'
 const props = defineProps(['med','admin'])
 const emit = defineEmits(['lsIndex'])
 const actual_imitiS = ref(props.med)
@@ -205,7 +204,9 @@ const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
 const selectIndex =ref(new Set())
 const repStatus  = ref<number>(0)
-const {getObjAssurances, setAssurance, getOneAssurance} = useAssuStore()
+const {setAssurance, getOneAssurance} = useAssuStore()
+const {setclient, getOneclient, getObjclients} = useClientStore()
+
 
 const idBons = ref([])
 
@@ -222,8 +223,12 @@ const url_getAssurances = "api/gOps/getAssu/"
 const url_local: string = baseURL
 const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 
+const url_getClients = "api/gOps/getClients/"
+const [clients, getClients] = useKuvoma(url_getClients, url_local)
+
 
 getAssurances()
+getClients()
 
 //Functions
 const fIndex = ()=>{
@@ -309,10 +314,19 @@ const buildBons = ()=>{
 
 updateTotaux()
 // buildBons()
-watch(assurances, (value)=>{
+watch(clients, (value)=>{
     if(value[0] != undefined){
         value.forEach((elm)=>{
             console.log("Id:" + elm.id)
+            setclient(elm.id, elm.beneficiaire)
+        })
+    }
+    console.log("All clients: " + JSON.stringify(getObjclients()))
+})
+watch(assurances, (value)=>{
+    if(value[0] != undefined){
+        value.forEach((elm)=>{
+            // console.log("Id:" + elm.id)
             setAssurance(elm.id, elm.name)
         })
     }
