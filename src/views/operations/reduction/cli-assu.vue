@@ -83,6 +83,8 @@ const message1: Ref<string> = ref('')
 const message2: Ref<string> = ref('')
 const date_prescr = ref(null)
 
+let obj:KnownClient = {} as KnownClient
+
 // Simple Variables
 let nom_adherant: string = ''
 let employeur: string = ''
@@ -113,6 +115,7 @@ const checkClient = ()=>{
     
     if (client[0]){
         nomAdherantFiltered.value = client[0].nom_adherant
+        obj = client[0]
     } else{
         nomAdherantFiltered.value = ''
     }
@@ -120,7 +123,7 @@ const checkClient = ()=>{
 const checkCliAssu = ()=>{
     // Here should emit after a solid check when the
     // client already existed
-    let obj:KnownClient = {} as KnownClient
+    // let obj:KnownClient = {} as KnownClient
     let dateBon = new Date(date_prescr.value)
     let today = new Date()
     let status = true
