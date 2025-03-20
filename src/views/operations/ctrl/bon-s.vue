@@ -19,15 +19,15 @@
                 </div> -->
 
                 <div class="contentElement3">
+                <span v-if="isAdmin">Bnf</span> 
+                </div>
+
+
+                <div class="contentElement3">
                     Assu.
                 </div>
-
                 <div class="contentElement3">
                     Total
-                </div>
-
-                <div class="contentElement3">
-                <span v-if="isAdmin">Bnf</span> 
                 </div>
                 <div class="elt5">
                     Caisse
@@ -62,32 +62,22 @@
                 <div class="contentElement11">
                     {{ index + 1 }}
                 </div> 
-                <div class="contentElement2">
-                    <!-- {{ umuti.meds }} -->
-                    <a>Ouvrir</a>
-                </div> 
-                <!-- <div class="contentElement3">
-                    {{ (umuti.qte ) }}
+                <div class="contentElement2" style="cursor: pointer;">
+                    <a :data-ids="umuti.meds" @click="showData">Ouvrir</a>
                 </div> 
 
-                <div class="contentElement3 famille_med">
-                    <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
-                    
-                </div> -->
+                <div class="contentElement3"> 
+                    {{ getOneclient(umuti.beneficiaire) }}
+                </div>
+
 
                 <div class="contentElement3">
                     <span  v-show="organization !='Sans'">
                         {{ getOneAssurance(umuti.organization)  }}
                     </span>
                 </div>
-
                 <div class="contentElement3 total">
                         {{ umuti.total }}
-                </div>
-
-                <div class="contentElement3"> 
-                <!-- <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.qte || 1) }}</span>  -->
-                    {{ getOneclient(umuti.beneficiaire) }}
                 </div>
                 <div class="elt5">
                      <span >{{umuti.cout}}</span>
@@ -99,7 +89,6 @@
                 </div>
                 <div class="elt5" style="color: white;">
                     <span v-show="umuti.is_paid">
-                        <!-- {{ (umuti.assu).slice(0,5) }}... -->
                         {{ umuti.montant_dette }}
                     </span>
                 </div>
@@ -192,7 +181,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import {  usePostRequest, useKuvoma } from '../../hooks/kuvoma'
+import {  usePostRequest, useKuvoma, useKurungika } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
 import { useAssuStore } from '../../../store/assu'
 import { useClientStore } from '../../../store/clients'
@@ -226,11 +215,20 @@ const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 const url_getClients = "api/gOps/getClients/"
 const [clients, getClients] = useKuvoma(url_getClients, url_local)
 
+const url_getInfo = "api/gOps/getClients/"
+const ids = ref('')
+const [response, getInfo] = useKurungika(ids, url_getInfo)
+
 
 getAssurances()
 getClients()
 
 //Functions
+const showData = (e)=>{
+    console.log("your Data: " + e.target.getAttribute("data-ids"))
+    ids.value = e.target.getAttribute("data-ids")
+    setTimeout(getInfo, 10)
+}
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)
     numsBon = removeBadBons()
@@ -314,19 +312,19 @@ const buildBons = ()=>{
 
 updateTotaux()
 // buildBons()
+watch(response, (value)=>{
+    console.log("The rep from getInfo: " + JSON.stringify(value))
+})
 watch(clients, (value)=>{
     if(value[0] != undefined){
         value.forEach((elm)=>{
-            console.log("Id:" + elm.id)
             setclient(elm.id, elm.beneficiaire)
         })
     }
-    console.log("All clients: " + JSON.stringify(getObjclients()))
 })
 watch(assurances, (value)=>{
     if(value[0] != undefined){
         value.forEach((elm)=>{
-            // console.log("Id:" + elm.id)
             setAssurance(elm.id, elm.name)
         })
     }
