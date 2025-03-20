@@ -2,7 +2,7 @@ import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 
 
-export const useAssuStore = defineStore('client',()=>{
+export const useClientStore = defineStore('client',()=>{
     const clients = reactive({})
 
 
