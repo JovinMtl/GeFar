@@ -118,6 +118,7 @@ const checkClient = ()=>{
         obj = client[0]
     } else{
         nomAdherantFiltered.value = ''
+        need_add_client.value = true
     }
 }
 const checkCliAssu = ()=>{
