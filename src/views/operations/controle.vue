@@ -98,7 +98,11 @@
             <disPo :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Disponibles'"/>
-            <veNte :med="actual_imitiS" 
+            <!-- <veNte :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == 'Ventes'"
+                @lsIndex="refreshVente"/> -->
+            <bonS :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Ventes'"
                 @lsIndex="refreshVente"/>
@@ -155,7 +159,8 @@ import {
 import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
 import cirCle from './circle.vue'
 import disPo from './ctrl/dis-po.vue'
-import veNte from './ctrl/ve-nte.vue'
+// import veNte from './ctrl/ve-nte.vue'
+import bonS from './ctrl/bon-s.vue'
 import achAts from './ctrl/ach-ats.vue'
 import achAts1 from './ctrl/ach-ats-1.vue'
 import suggEst from './ctrl/sugg-est.vue'
@@ -201,8 +206,8 @@ const [lowStock, getLowStock] = useKuvoma(lowStock_url)
 const dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
 
-// const vente_url = 'api/rep/reportSold/'
-const vente_url = 'api/rep/reportVentes/'
+const vente_url = 'api/rep/reportBons/'
+// const vente_url = 'api/rep/reportVentes/'
 const [actual_vente, ukuvoma_vente] = useKuvoma(vente_url)
 
 const entree_url = 'api/rep/reportEntree/'
@@ -452,6 +457,7 @@ watch(actual_entree, (value)=>{
     }
 })
 watch(actual_vente, (value)=>{
+    console.log("The bons: " + value)
     if (value.response == undefined){
         console.log("Ventes are likely to be empty.")
         turnOnNotif()
