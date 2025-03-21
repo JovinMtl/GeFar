@@ -61,22 +61,25 @@
                         <li v-for="elm in response.response">{{ elm.nom_med }}</li>
                     </ol> -->
                     <table>
-                        <caption>Bon de Commande: {{ numberIndex }}</caption>
+                        <caption class="captBon">Bon de Commande: {{ numberIndex }}</caption>
                         <tr>
                             <th>#<span class="c-t">_</span></th>
                             <th>Nom du Med.<span class="c-t">_</span></th>
                             <th>Qte<span class="c-t">_</span></th>
                             <th>Prix V.<span class="c-t">_</span></th>
                             <th><span class="c-t">_</span> Total</th>
+                            <th><span class="c-t">_</span>Autheur</th>
                         </tr>
                         <tr v-for="(elm, index) in updatedImiti"
+                            :class="index%2==0 ? 'bg-g2':'bg-b'"
                             style="justify-content: right;">
-                            <td>{{ index+1 }}</td>
+                            <td>{{ index+1 }}.</td>
                             <td>{{ elm.nom_med }}</td>
                             <td>{{ elm.quantity }}</td>
                             <td>{{ elm.prix_vente }}</td>
                             <td style="text-align: right;">{{ elm.prix_vente * elm.quantity }}</td>
-                        </tr>
+                            <td style="text-align: right;"> {{( String(elm.operator)).charAt(0).toUpperCase().concat((String(elm.operator)).slice(1)) }}</td>
+                        </tr>  
                     </table>
                 </span>
             </div>
