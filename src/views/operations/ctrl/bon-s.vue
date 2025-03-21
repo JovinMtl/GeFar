@@ -55,7 +55,31 @@
         </div>
 
         <div class="controlBody">
-            <div popover id="pop">Jove</div>
+            <div v-show="shouldPop" popover id="pop">
+                 <span> 
+                    <!-- <ol>
+                        <li v-for="elm in response.response">{{ elm.nom_med }}</li>
+                    </ol> -->
+                    <table>
+                        <caption>Bon de Commande: {{ numberIndex }}</caption>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom du Med.</th>
+                            <th>Qte</th>
+                            <th>Prix V.</th>
+                            <th> Total</th>
+                        </tr>
+                        <tr v-for="(elm, index) in updatedImiti"
+                            style="justify-content: right;">
+                            <td>{{ index+1 }}</td>
+                            <td>{{ elm.nom_med }}</td>
+                            <td>{{ elm.quantity }}</td>
+                            <td>{{ elm.prix_vente }}</td>
+                            <td>{{ elm.prix_vente * elm.quantity }}</td>
+                        </tr>
+                    </table>
+                </span>
+            </div>
             <div v-for="(umuti, index) in (actual_imitiS)" 
                 :class="index%2 ? 'ln-1':'ln-2'"
                 class="d-f"
@@ -65,7 +89,7 @@
                 </div> 
                 
                 <div class="contentElement2" style="cursor: pointer;">
-                    <button popovertarget="pop" :data-ids="umuti.meds" @click="showData">Ouvrir</button>
+                    <button popovertarget="pop" :data-ids="umuti.meds" :data-index="index+1" @click="showData">Ouvrir</button>
                 </div> 
 
                 <div class="contentElement3"> 
@@ -188,6 +212,7 @@ import useReadable from '../../hooks/useReadable'
 import { useAssuStore } from '../../../store/assu'
 import { useClientStore } from '../../../store/clients'
 import { baseURL } from '../../../store/host.js'
+import { UpdateModeEnum } from 'chart.js'
 const props = defineProps(['med','admin'])
 const emit = defineEmits(['lsIndex'])
 const actual_imitiS = ref(props.med)
@@ -217,7 +242,7 @@ const [assurances, getAssurances] = useKuvoma(url_getAssurances, url_local)
 const url_getClients = "api/gOps/getClients/"
 const [clients, getClients] = useKuvoma(url_getClients, url_local)
 
-const url_getInfo = "api/gOps/getClients/"
+const url_getInfo = "api/gOps/getInfo/"
 const ids = ref('')
 const [response, getInfo] = useKurungika(ids, url_getInfo)
 
@@ -229,6 +254,7 @@ getClients()
 const showData = (e)=>{
     console.log("your Data: " + e.target.getAttribute("data-ids"))
     ids.value = e.target.getAttribute("data-ids")
+    numberIndex.value = e.target.getAttribute("data-index")
     setTimeout(getInfo, 10)
 }
 const fIndex = ()=>{
@@ -310,11 +336,23 @@ const buildBons = ()=>{
     // sendBons(selectIndex.value, url_sendBons)
 }
 
-
+const shouldPop = ref<boolean>(true)
+const defaultPop = ref<string>('')
+const updatedImiti = ref(null)
+const numberIndex = ref(0)
 
 updateTotaux()
 // buildBons()
 watch(response, (value)=>{
+    shouldPop.value = true
+    if(value.response[0] != undefined){
+        updatedImiti.value = value.response
+        
+        defaultPop.value = 'something'
+
+    } else{
+        defaultPop.value = "La liste est vide."
+    }
     console.log("The rep from getInfo: " + JSON.stringify(value))
 })
 watch(clients, (value)=>{
