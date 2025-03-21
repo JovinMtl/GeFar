@@ -25,7 +25,8 @@
             </div>
             <div class="inTitle">
                 
-                <input type="button" value="Filtrers" @click="applyFilter"/>
+                <!-- <input type="button" value="Filtrers" @click="applyFilter"/> -->
+                <input type="checkbox"/>
             </div>
             <div class="inTitle" style="font-weight: 600; color: green">
                 {{ title_operation }}
@@ -150,7 +151,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, Ref, watch } from 'vue'
+import { ref, watch } from 'vue'
+import type { Ref } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { 
     close, statsChartOutline, snowOutline, thermometer, pricetagOutline,
@@ -172,6 +174,7 @@ const title_operation = ref('Opérations')
 
 const message: Ref<string> = ref("zéro element.")
 const shouldNotif: Ref<boolean> = ref(false)
+
 
 const turnOnNotif = (msg:string)=>{
     if(msg){
