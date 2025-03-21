@@ -857,7 +857,16 @@ watch(sell_report, value => {
     console.warn("Begin: " + server_process.value + " at" + JSON.stringify(sell_report.value))
     server_process.value = true
     console.warn("Begin2: " + server_process.value)
-    if (value.sold){
+    if (value.sold == "FailedBecauseAlreadyExist"){
+        // notify the user to change the Numero du Bon
+        message.value = "Operation echouée, car ce numero du Bon a été enregistré."
+        server_process.value = false
+        notifStatus.value = true
+        setTimeout(()=>{
+            notifStatus.value = false
+        }, 2500)
+    }
+    else if (value.sold){
         // Do something when the status response is OK
         console.log("Maintenant nous pouvons VOIR: facturier")
         listImiti_update.value += 1  // Triggering update
