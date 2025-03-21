@@ -55,6 +55,7 @@
         </div>
 
         <div class="controlBody">
+            <div popover id="pop">Jove</div>
             <div v-for="(umuti, index) in (actual_imitiS)" 
                 :class="index%2 ? 'ln-1':'ln-2'"
                 class="d-f"
@@ -62,8 +63,9 @@
                 <div class="contentElement11">
                     {{ index + 1 }}
                 </div> 
+                
                 <div class="contentElement2" style="cursor: pointer;">
-                    <a :data-ids="umuti.meds" @click="showData">Ouvrir</a>
+                    <button popovertarget="pop" :data-ids="umuti.meds" @click="showData">Ouvrir</button>
                 </div> 
 
                 <div class="contentElement3"> 
