@@ -71,7 +71,7 @@
                             <th><span class="c-t">_</span>Autheur</th>
                         </tr>
                         <tr v-for="(elm, index) in updatedImiti"
-                            :class="index%2==0 ? 'bg-g2':'bg-b'"
+                            :class="index%2==0 ? 'bg-g2':'bg-g1'"
                             style="justify-content: right;">
                             <td>{{ index+1 }}.</td>
                             <td>{{ elm.nom_med }}</td>

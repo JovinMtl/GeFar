@@ -530,5 +530,8 @@ select{
     color: transparent;
 }
 .bg-g2{
-    background-color: #ad9393;
+    background-color: grey;
+}
+.bg-g1{
+    background-color: rgba(216, 211, 211, 0.163);
 }
