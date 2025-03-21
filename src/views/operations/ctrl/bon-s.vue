@@ -48,7 +48,7 @@
                 <div class="elt6">
                     Payer
                 </div>
-                <div class="elt7">
+                <div class="elt6">
                     Id Bon
                 </div>
             </div>
@@ -106,19 +106,19 @@
                     </span>
                 </div>
                 <div class="contentElement3 total">
-                        {{ umuti.total }}
+                        {{ useReadable(umuti.total) }}
                 </div>
                 <div class="elt5">
-                     <span >{{umuti.cout}}</span>
+                     <span >{{ useReadable(umuti.cout) }}</span>
                 </div>
                 <div class="elt5" style="color: blue;">
                     <span v-show="(umuti.is_paid)==false" :class="umuti.assu=='Pharmacie Ubuzima' ? 'c-g':''">
-                        {{ umuti.montant_dette }}</span>
+                        {{ useReadable(umuti.montant_dette) }}</span>
                      
                 </div>
-                <div class="elt5" style="color: white;">
+                <div class="elt5" style="color: green; font-weight: bold;">
                     <span v-show="umuti.is_paid">
-                        {{ umuti.montant_dette }}
+                        {{ useReadable(umuti.montant_dette) }}
                     </span>
                 </div>
                 <div class="elt5">
@@ -156,26 +156,26 @@
                 </div>
 
                 <div class="contentElement3">
-                    {{ useReadable(totaux[2]) }}
+                    <!-- {{ useReadable(totaux[2]) }} -->
                     
                 </div>
 
                 <div class="contentElement3">
-                    ----
+                    {{ useReadable(totaux[1]) }}
                 </div>
 
                 <div class="contentElement3 total" style="margin-right: 5px;">
                     <!-- P.V -->
-                    {{ useReadable(totaux[1]) }}
+                    <!-- {{ useReadable(totaux[1]) }} -->
                 </div>
 
                 <div class="contentElement3">
                     <!-- Benefice -->
-                    {{ useReadable(totaux[3]) }}
+                    {{ useReadable(totaux[2]) }}
                 </div>
                 <div class="elt5">
                     <!-- Caisse -->
-                     {{ useReadable(totaux[2]) }}
+                     {{ useReadable(totaux[3]) }}
                 </div>
                 <div class="elt5">
                     <!-- Dette -->
@@ -267,23 +267,28 @@ const fIndex = ()=>{
 }
 const updateTotaux = ()=>{
     // console.log("Attempt to build totaux",)
-    let [ number, total, cout, benefice, caisse, dette ] = [0, 0, 0, 0, 0, 0]
+    let [ number, total, cout, dette, caisse, paid ] = [0, 0, 0, 0, 0, 0]
+    let tot = 0
+    let c = 0
 
     actual_imitiS.value.forEach(element => {
-        console.log("Quantite restant  pa:",  element.montant_dette)
-        let tot = Number(element.total)
-        let c = Number(element.cout)
+        tot = Number(element.total)
+        c = Number(element.cout)
+        if((element.is_paid) && tot ){
+            paid += element.montant_dette
+        } else if(!element.is_paid){
+            dette += element.montant_dette
+            console.log("Found: " + tot )
+        }
         if (tot ){
             total += tot
             cout += c
-            benefice += (element.prix_vente - element.prix_achat) * (element.qte) 
             caisse += element.caisse
-            dette += element.montant_dette
         }
 
         number += 1
     });
-    totaux.value = [number, total, cout, benefice, caisse, dette]
+    totaux.value = [number, total, cout, dette, caisse, paid]
 
 }
 
