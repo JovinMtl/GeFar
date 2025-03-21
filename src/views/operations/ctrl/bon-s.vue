@@ -77,8 +77,8 @@
                             <td>{{ elm.nom_med }}</td>
                             <td>{{ elm.quantity }}</td>
                             <td>{{ elm.prix_vente }}</td>
-                            <td style="text-align: right;">{{ elm.prix_vente * elm.quantity }}</td>
-                            <td style="text-align: right;"> {{( String(elm.operator)).charAt(0).toUpperCase().concat((String(elm.operator)).slice(1)) }}</td>
+                            <td class="ta-r">{{ elm.prix_vente * elm.quantity }}</td>
+                            <td class="ta-r"> {{( String(elm.operator)).charAt(0).toUpperCase().concat((String(elm.operator)).slice(1)) }}</td>
                         </tr>  
                     </table>
                 </span>
