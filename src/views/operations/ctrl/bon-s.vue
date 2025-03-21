@@ -63,11 +63,11 @@
                     <table>
                         <caption>Bon de Commande: {{ numberIndex }}</caption>
                         <tr>
-                            <th>#</th>
-                            <th>Nom du Med.</th>
-                            <th>Qte</th>
-                            <th>Prix V.</th>
-                            <th> Total</th>
+                            <th>#<span class="c-t">_</span></th>
+                            <th>Nom du Med.<span class="c-t">_</span></th>
+                            <th>Qte<span class="c-t">_</span></th>
+                            <th>Prix V.<span class="c-t">_</span></th>
+                            <th><span class="c-t">_</span> Total</th>
                         </tr>
                         <tr v-for="(elm, index) in updatedImiti"
                             style="justify-content: right;">
@@ -75,7 +75,7 @@
                             <td>{{ elm.nom_med }}</td>
                             <td>{{ elm.quantity }}</td>
                             <td>{{ elm.prix_vente }}</td>
-                            <td>{{ elm.prix_vente * elm.quantity }}</td>
+                            <td style="text-align: right;">{{ elm.prix_vente * elm.quantity }}</td>
                         </tr>
                     </table>
                 </span>

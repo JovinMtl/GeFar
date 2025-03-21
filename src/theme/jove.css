@@ -526,3 +526,6 @@ select{
 .notifCtl{
     transform: translate(28%);color:grey;
 }
+.c-t{
+    color: transparent;
+}
