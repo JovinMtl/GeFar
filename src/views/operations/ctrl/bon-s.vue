@@ -10,14 +10,6 @@
                 <div class="contentElement2">
                     Bon de Commande
                 </div> 
-                <!-- <div class="contentElement3">
-                    Qte
-                </div>
-
-                <div class="contentElement3">
-                    <span v-if="isAdmin">P. A.</span>
-                </div> -->
-
                 <div class="contentElement3">
                 <span v-if="isAdmin">Benéficiaire</span> 
                 </div>
@@ -159,14 +151,13 @@
                     <!-- {{ useReadable(totaux[2]) }} -->
                     
                 </div>
-
-                <div class="contentElement3">
+                <div class="elt7">
+                </div>
+                <div class="contentElement3 total" style="margin: 5px;">
+                    <!-- P.V -->
                     {{ useReadable(totaux[1]) }}
                 </div>
-
-                <div class="contentElement3 total" style="margin-right: 5px;">
-                    <!-- P.V -->
-                    <!-- {{ useReadable(totaux[1]) }} -->
+                <div class="elt7">
                 </div>
 
                 <div class="contentElement3">
@@ -191,9 +182,6 @@
                 </div>
 
                 <div class="elt5">
-                    ----------
-                </div>
-                <div class="elt5">
                     <span v-show="repStatus==0 && selectIndex.size" class="pay bg-g" @click="fIndex">
                         Payer
                     </span>
@@ -201,6 +189,8 @@
                         <span v-if="repStatus==1">Ok</span>
                         <span v-if="repStatus==2">No</span>
                     </span>
+                </div>
+                <div class="elt5">
                 </div>
             </div>
         </div>
