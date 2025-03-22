@@ -45,7 +45,6 @@ export function useKuvoma(prefix, remote = "") {
         if (!getAccessToken()){
             return 0
         }
-        
         // const base = '//127.0.0.1:8002'
         try {
             let response = "";
@@ -55,7 +54,7 @@ export function useKuvoma(prefix, remote = "") {
             } else {
                 url = `${remote}/${prefix}`
             }
-            if (isFilter){
+            if (toValue(isFilter)){
                 const params = new URLSearchParams({
                     'date_debut': toValue(val),
                     'date_fin' : toValue(val2)
