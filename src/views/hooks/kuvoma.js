@@ -55,6 +55,13 @@ export function useKuvoma(prefix, remote = "") {
             } else {
                 url = `${remote}/${prefix}`
             }
+            if (isFilter){
+                const params = new URLSearchParams({
+                    'date_debut': toValue(val),
+                    'date_fin' : toValue(val2)
+                })
+                url = `${url}?${params.toString()}`
+            }
             response = await fetch(`${url}`, {
                 headers: {
                     Authorization: "Bearer " + getAccessToken(),
