@@ -26,7 +26,7 @@
             <div class="inTitle">
                 
                 <!-- <input type="button" value="Filtrer" @click="applyFilter"/> -->
-                <input type="checkbox"/>
+                <input type="checkbox" v-model="isFilter"/>
             </div>
             <div class="inTitle" style="font-weight: 600; color: green">
                 {{ title_operation }}
@@ -174,6 +174,7 @@ const title_operation = ref('Opérations')
 
 const message: Ref<string> = ref("zéro element.")
 const shouldNotif: Ref<boolean> = ref(false)
+const isFilter: Ref<boolean> = ref(false)
 
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
 const actual_opt = ref([]) // Tells the base fields we have for research
@@ -219,7 +220,7 @@ const [lowStock, getLowStock] = useKuvoma(lowStock_url)
 
 const dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
-const kuvoma_dispo =  ukuvoma_dispo.bind(null, date_debut, date_fin, true)
+const kuvoma_dispo =  ukuvoma_dispo.bind(null, date_debut, date_fin, isFilter)
 
 const vente_url = 'api/rep/reportBons/'
 // const vente_url = 'api/rep/reportVentes/'
@@ -269,6 +270,9 @@ const nRoutine = (value)=>{
 // 
 console.log("The INIT title is : " + title_operation.value)
 // watchers
+watch(isFilter, (value)=>{
+    console.log("isFilter: " + value)
+})
 watch(title_operation, (value)=>{
     console.log("The title is changing into: " + value)
 })
