@@ -41,10 +41,11 @@ export function useKuvoma(prefix, remote = "") {
     const data = ref(null);
     const { getAccessToken } = useUserStore();
 
-    const kuvomaImiti = async () => {
+    const kuvomaImiti = async (val='') => {
         if (!getAccessToken()){
             return 0
         }
+        console.log("the Param: " + JSON.stringify(val))
         // const base = '//127.0.0.1:8002'
         try {
             let response = "";

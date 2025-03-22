@@ -35,7 +35,7 @@
         </div>
         <div style="background-color: yellowgreen; height: 92%; width: 100%;display: flex;">
             <div class="controlIcons">
-                <div class="logoMenu" @click="ukuvoma_dispo">
+                <div class="logoMenu" @click="kuvoma_dispo">
                     <ion-icon :src="statsChartOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
                     <span class="textMenu">Disponible</span>
                 </div>
@@ -219,6 +219,7 @@ const [lowStock, getLowStock] = useKuvoma(lowStock_url)
 
 const dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
+const kuvoma_dispo =  ukuvoma_dispo.bind(null, 'jove')
 
 const vente_url = 'api/rep/reportBons/'
 // const vente_url = 'api/rep/reportVentes/'
