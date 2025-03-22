@@ -45,7 +45,7 @@ export function useKuvoma(prefix, remote = "") {
         if (!getAccessToken()){
             return 0
         }
-        console.log("the Param: " + toValue(val) + ' and ' + toValue(val2))
+        
         // const base = '//127.0.0.1:8002'
         try {
             let response = "";
@@ -61,6 +61,7 @@ export function useKuvoma(prefix, remote = "") {
                     'date_fin' : toValue(val2)
                 })
                 url = `${url}?${params.toString()}`
+                console.log("the Param: " + toValue(val) + ' and ' + toValue(val2))
             }
             response = await fetch(`${url}`, {
                 headers: {
