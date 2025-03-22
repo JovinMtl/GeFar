@@ -25,7 +25,7 @@
             </div>
             <div class="inTitle">
                 
-                <!-- <input type="button" value="Filtrers" @click="applyFilter"/> -->
+                <!-- <input type="button" value="Filtrer" @click="applyFilter"/> -->
                 <input type="checkbox"/>
             </div>
             <div class="inTitle" style="font-weight: 600; color: green">
@@ -175,6 +175,17 @@ const title_operation = ref('Opérations')
 const message: Ref<string> = ref("zéro element.")
 const shouldNotif: Ref<boolean> = ref(false)
 
+const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
+const actual_opt = ref([]) // Tells the base fields we have for research
+const actual_type = ref([]) // Tells the input types we support for search
+const selected_field = ref('nom_med') // The state that tells the base field for search.
+const selected_type = ref('text') // the state that tells the input type of RECHERCHE.
+const need_search = ref(null) // the state that mentions the need to perfom the search.
+const actual_imitiS = ref([]) // Contains the content to be displayed.
+const totaux = ref([0,0]) // To display totals on the footer.
+
+const [date_debut, date_fin] = [ref(null), ref(null)]
+
 
 const turnOnNotif = (msg:string)=>{
     if(msg){
@@ -246,16 +257,6 @@ const getMedRed_url = 'api/rep/getMedRed/'
 const [medRed, getMedRed] = useKuvoma(getMedRed_url)
 
 
-const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
-const actual_opt = ref([]) // Tells the base fields we have for research
-const actual_type = ref([]) // Tells the input types we support for search
-const selected_field = ref('nom_med') // The state that tells the base field for search.
-const selected_type = ref('text') // the state that tells the input type of RECHERCHE.
-const need_search = ref(null) // the state that mentions the need to perfom the search.
-const actual_imitiS = ref([]) // Contains the content to be displayed.
-const totaux = ref([0,0]) // To display totals on the footer.
-
-let [date_debut, date_fin] = [null, null]
 // functions
 const nRoutine = (value)=>{
     actual_obj.value = value
