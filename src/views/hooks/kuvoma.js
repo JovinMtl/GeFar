@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, toValue } from "vue";
 import { baseURL } from "@/store/host";
 import { useUserStore } from "../../store/user";
 
@@ -41,27 +41,25 @@ export function useKuvoma(prefix, remote = "") {
     const data = ref(null);
     const { getAccessToken } = useUserStore();
 
-    const kuvomaImiti = async (val='') => {
+    const kuvomaImiti = async (val=null, val2=null, isFilter=false) => {
         if (!getAccessToken()){
             return 0
         }
-        console.log("the Param: " + JSON.stringify(val))
+        console.log("the Param: " + toValue(val) + ' and ' + toValue(val2))
         // const base = '//127.0.0.1:8002'
         try {
             let response = "";
+            let url = null;
             if (!remote) {
-                response = await fetch(`${baseURL}/${prefix}`, {
-                    headers: {
-                        Authorization: "Bearer " + getAccessToken(),
-                    },
-                });
+                url = baseURL
             } else {
-                response = await fetch(`${remote}/${prefix}`, {
-                    headers: {
-                        Authorization: "Bearer " + getAccessToken(),
-                    },
-                });
+                url = remote
             }
+            response = await fetch(`${url}/${prefix}`, {
+                headers: {
+                    Authorization: "Bearer " + getAccessToken(),
+                },
+            });
 
             if (response.ok) {
                 data.value = await response.json();
