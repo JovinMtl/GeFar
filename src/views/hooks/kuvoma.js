@@ -51,11 +51,11 @@ export function useKuvoma(prefix, remote = "") {
             let response = "";
             let url = null;
             if (!remote) {
-                url = baseURL
+                url = `${baseURL}/${prefix}`
             } else {
-                url = remote
+                url = `${remote}/${prefix}`
             }
-            response = await fetch(`${url}/${prefix}`, {
+            response = await fetch(`${url}`, {
                 headers: {
                     Authorization: "Bearer " + getAccessToken(),
                 },

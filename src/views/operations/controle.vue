@@ -151,7 +151,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { ref, watch, toValue } from 'vue'
 import type { Ref } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { 
@@ -219,7 +219,7 @@ const [lowStock, getLowStock] = useKuvoma(lowStock_url)
 
 const dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
-const kuvoma_dispo =  ukuvoma_dispo.bind(null, 'jove')
+const kuvoma_dispo =  ukuvoma_dispo.bind(null, date_debut, date_fin)
 
 const vente_url = 'api/rep/reportBons/'
 // const vente_url = 'api/rep/reportVentes/'
