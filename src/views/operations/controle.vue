@@ -35,12 +35,12 @@
         </div>
         <div style="background-color: yellowgreen; height: 92%; width: 100%;display: flex;">
             <div class="controlIcons">
-                <div class="logoMenu" @click="kuvoma_dispo">
+                <div class="logoMenu" @click="ukuvoma_dispo">
                     <ion-icon :src="statsChartOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
                     <span class="textMenu">Disponible</span>
                 </div>
                 
-                <div class="logoMenu" @click="ukuvoma_vente">
+                <div class="logoMenu" @click="kuvoma_vente">
                     <ion-icon :src="snowOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
                     <span class="textMenu">Ventes</span>
                 </div>
@@ -185,7 +185,7 @@ const need_search = ref(null) // the state that mentions the need to perfom the 
 const actual_imitiS = ref([]) // Contains the content to be displayed.
 const totaux = ref([0,0]) // To display totals on the footer.
 
-const [date_debut, date_fin] = [ref(null), ref(null)]
+const [date_debut, date_fin] = [ref(''), ref('')]
 
 
 const turnOnNotif = (msg:string)=>{
@@ -220,13 +220,14 @@ const [lowStock, getLowStock] = useKuvoma(lowStock_url)
 
 const dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
-const kuvoma_dispo =  ukuvoma_dispo.bind(
-    null, date_debut, date_fin, 
-    isFilter) // In case we want additional parameters
 
 const vente_url = 'api/rep/reportBons/'
 // const vente_url = 'api/rep/reportVentes/'
 const [actual_vente, ukuvoma_vente] = useKuvoma(vente_url)
+const kuvoma_vente =  ukuvoma_vente.bind(
+    null, date_debut, date_fin, 
+    isFilter) // In case we want additional parameters
+
 
 const entree_url = 'api/rep/reportEntree/'
 const [actual_entree, ukuvoma_entree] = useKuvoma(entree_url)
