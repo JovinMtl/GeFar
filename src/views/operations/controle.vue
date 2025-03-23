@@ -45,7 +45,7 @@
                     <span class="textMenu">Ventes</span>
                 </div>
 
-                <div class="logoMenu" @click="ukuvoma_entree">
+                <div class="logoMenu" @click="kuvoma_entree">
                     <ion-icon :src="pricetagOutline" style="position: absolute; font-size: 50pt;margin-left: 3vw;"></ion-icon>
                     <span class="textMenu">Achats</span>
                 </div>
@@ -231,6 +231,11 @@ const kuvoma_vente =  ukuvoma_vente.bind(
 
 const entree_url = 'api/rep/reportEntree/'
 const [actual_entree, ukuvoma_entree] = useKuvoma(entree_url)
+const kuvoma_entree =  ukuvoma_entree.bind(
+    null, date_debut, date_fin, 
+    isFilter) // In case we want additional parameters
+
+
 
 const suggest_url = 'api/rep/workOn35/'
 const [actual_suggest, ukuvoma_suggest] = useKuvoma(suggest_url)
