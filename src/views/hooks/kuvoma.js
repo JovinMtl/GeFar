@@ -41,7 +41,7 @@ export function useKuvoma(prefix, remote = "") {
     const data = ref(null);
     const { getAccessToken } = useUserStore();
 
-    const kuvomaImiti = async (val=null, val2=null, isFilter=false) => {
+    const kuvomaImiti = async (val='', val2='', isFilter=false) => {
         if (!getAccessToken()){
             return 0
         }
