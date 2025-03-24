@@ -46,10 +46,11 @@
                 <div class="elt5">
                     Date
                 </div>
-                <div class="elt6">
+                <!-- <div class="elt6">
                     Payer
-                </div>
-                <div class="elt7">
+                </div> -->
+                <div class="elt7"></div>
+                <div class="elt6">
                     Id Bon
                 </div>
             </div>
@@ -107,12 +108,13 @@
                 <div class="elt5">
 {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
                 </div>
-                <div class="elt6">
+                <!-- <div class="elt6">
                      <span v-if="!umuti.is_paid" class="btn2 br mt w-22 bg-b"
                         :id="'j'+index"
                         :class="selectIndex.has(index)? 'bg-g':''"
                        @click="checkBon"></span>
-                </div>
+                </div> -->
+                <div class="elt7"></div>
                 <div class="elt7">
                     {{ (umuti.num_bon).slice(0,7) }}
                 </div>
@@ -172,7 +174,7 @@
                 <div class="elt5">
                     ----------
                 </div>
-                <div class="elt5">
+                <!-- <div class="elt5">
                     <span v-show="repStatus==0 && selectIndex.size" class="pay bg-g" @click="fIndex">
                         Payer
                     </span>
@@ -180,7 +182,7 @@
                         <span v-if="repStatus==1">Ok</span>
                         <span v-if="repStatus==2">No</span>
                     </span>
-                </div>
+                </div> -->
             </div>
         </div>
                             
