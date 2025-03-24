@@ -193,7 +193,7 @@ import { useKurungika, usePostRequest } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
 import { Value } from 'sass'
 const props = defineProps(['med','admin'])
-const emit = defineEmits(['lsIndex'])
+// const emit = defineEmits(['lsIndex'])
 const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
@@ -311,9 +311,9 @@ watch(repIndex, (value)=>{
         selectIndex.value.forEach((num)=>{
             actual_imitiS.value[num].is_paid = true
         })
-        setTimeout(()=>{
-            emit('lsIndex', selectIndex)
-        }, 2000)
+        // setTimeout(()=>{
+        //     emit('lsIndex', selectIndex)
+        // }, 2000)
     } else{
         repStatus.value = 2
     }

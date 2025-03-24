@@ -106,8 +106,7 @@
                 v-if="title_operation == 'Disponibles'"/>
             <veNte :med="actual_imitiS" 
                 :admin="isAdmin"
-                v-if="title_operation == 'Ventes'"
-                @lsIndex="refreshVente"/>
+                v-if="title_operation == 'Ventes'"/>
             <bonS :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Bons'"
@@ -292,9 +291,9 @@ console.log("The INIT title is : " + title_operation.value)
 watch(isFilter, (value)=>{
     console.log("isFilter: " + value)
 })
-watch(title_operation, (value)=>{
-    console.log("The title is changing into: " + value)
-})
+// watch(title_operation, (value)=>{
+//     console.log("The title is changing into: " + value)
+// })
 watch(medGreen, (value)=>{
     if (value[0] == undefined){
         console.log("medGreen is likely to be empty.")
@@ -433,13 +432,13 @@ watch(endStock, (value)=>{
         'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Zéro Stock"
-        console.log("new title...: " + title_operation.value)
+        // console.log("new title...: " + title_operation.value)
     }})
 watch(lowStock, (value)=>{
     if(value.data == 'empty'){
         console.log("It is empty")
         title_operation.value = "Pas low Stock"
-        console.log("new title...: " + title_operation.value)
+        // console.log("new title...: " + title_operation.value)
         turnOnNotif()
     }
     else{
@@ -449,7 +448,7 @@ watch(lowStock, (value)=>{
         'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Low Stock"
-        console.log("new title...: " + title_operation.value)
+        // console.log("new title...: " + title_operation.value)
     }
 })
 watch(actual_suggest, (value)=>{
@@ -464,7 +463,7 @@ watch(actual_suggest, (value)=>{
         'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Suggestion"
-        console.log("new title...: " + title_operation.value)
+        // console.log("new title...: " + title_operation.value)
     }
 })
 watch(actual_entree, (value)=>{
@@ -480,7 +479,7 @@ watch(actual_entree, (value)=>{
         'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Achats"
-        console.log("new title...: " + title_operation.value)
+        // console.log("new title...: " + title_operation.value)
         // console.log("Titlte is actual_entree...: " + title_operation.value)
     }
 })
@@ -498,7 +497,7 @@ watch(actual_vente, (value)=>{
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Ventes"
         // console.log("Titlte is actual_vente...: " + title_operation.value)
-        console.log("new title...: " + title_operation.value)
+        // console.log("new title...: " + title_operation.value)
     }
 })
 watch(actual_bons, (value)=>{
@@ -515,7 +514,7 @@ watch(actual_bons, (value)=>{
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Bons"
         // console.log("Titlte is actual_vente...: " + title_operation.value)
-        console.log("new title...: " + title_operation.value)
+        // console.log("new title...: " + title_operation.value)
     }
 })
 watch(actual_imiti, (value)=>{
@@ -530,7 +529,7 @@ watch(actual_imiti, (value)=>{
         'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','text','date']
         title_operation.value = "Disponibles"
-        console.log("new title...: " + title_operation.value)
+        // console.log("new title...: " + title_operation.value)
     }
 })
 watch(selected_field, (value)=>{
