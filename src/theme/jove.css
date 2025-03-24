@@ -311,6 +311,7 @@ html, body {
     width: 20%; 
     height: 100%; 
     border:2px solid white; 
+    overflow: auto;
 }
 .circlesMenu{
     display: block;
@@ -333,8 +334,12 @@ html, body {
     padding: 5px 5px; 
     border-bottom: 2px solid white;
 }
+.logoIcon{
+    /* position: absolute;  */
+    font-size: 50pt;margin-left: 3vw;
+}
 .textMenu{
-    position: absolute;
+    /* position: absolute; */
     font-size: 15pt ;
     left: 9vw; 
     margin-top: 5vh;
