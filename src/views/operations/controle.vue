@@ -45,9 +45,9 @@
                     <span class="textMenu">Ventes</span>
                 </div>
                 
-                <div class="logoMenu" @click="kuvoma_vente">
-                    <ion-icon :src="snowOutline"  class="logoIcon"></ion-icon>
-                    <span class="textMenu">Ventes</span>
+                <div class="logoMenu" @click="kuvoma_bons">
+                    <ion-icon :src="libraryOutline"  class="logoIcon"></ion-icon>
+                    <span class="textMenu">Bons</span>
                 </div>
 
                 <div class="logoMenu" @click="kuvoma_entree">
@@ -104,13 +104,13 @@
             <disPo :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Disponibles'"/>
-            <!-- <veNte :med="actual_imitiS" 
+            <veNte :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Ventes'"
-                @lsIndex="refreshVente"/> -->
+                @lsIndex="refreshVente"/>
             <bonS :med="actual_imitiS" 
                 :admin="isAdmin"
-                v-if="title_operation == 'Ventes'"
+                v-if="title_operation == 'Bons'"
                 @lsIndex="refreshVente"/>
             <achAts :med="actual_imitiS" 
                 :admin="isAdmin"
@@ -161,12 +161,12 @@ import type { Ref } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { 
     close, statsChartOutline, snowOutline, thermometer, pricetagOutline,
-    calendarClearOutline,
+    calendarClearOutline, libraryOutline
     } from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
 import cirCle from './circle.vue'
 import disPo from './ctrl/dis-po.vue'
-// import veNte from './ctrl/ve-nte.vue'
+import veNte from './ctrl/ve-nte.vue'
 import bonS from './ctrl/bon-s.vue'
 import achAts from './ctrl/ach-ats.vue'
 import achAts1 from './ctrl/ach-ats-1.vue'
@@ -226,10 +226,16 @@ const [lowStock, getLowStock] = useKuvoma(lowStock_url)
 const dispo_url = 'api/out/dispo/'
 const [actual_imiti, ukuvoma_dispo] = useKuvoma(dispo_url)
 
-const vente_url = 'api/rep/reportBons/'
-// const vente_url = 'api/rep/reportVentes/'
+const vente_url = 'api/rep/reportVentes/'
 const [actual_vente, ukuvoma_vente] = useKuvoma(vente_url)
 const kuvoma_vente =  ukuvoma_vente.bind(
+    null, date_debut, date_fin, 
+    isFilter) // In case we want additional parameters
+
+const bons_url = 'api/rep/reportBons/'
+// const vente_url = 'api/rep/reportVentes/'
+const [actual_bons, ukuvoma_bons] = useKuvoma(bons_url)
+const kuvoma_bons =  ukuvoma_bons.bind(
     null, date_debut, date_fin, 
     isFilter) // In case we want additional parameters
 
@@ -479,7 +485,7 @@ watch(actual_entree, (value)=>{
     }
 })
 watch(actual_vente, (value)=>{
-    console.log("The bons: " + value)
+    console.log("The imitiSold: " + value)
     if (value.response == undefined){
         console.log("Ventes are likely to be empty.")
         turnOnNotif()
@@ -491,6 +497,23 @@ watch(actual_vente, (value)=>{
         'quantity','prix_vente', 'date_operation',]
         actual_type.value = ['text','text','text','date']
         title_operation.value = "Ventes"
+        // console.log("Titlte is actual_vente...: " + title_operation.value)
+        console.log("new title...: " + title_operation.value)
+    }
+})
+watch(actual_bons, (value)=>{
+    console.log("The bons: " + value)
+    if (value.response == undefined){
+        console.log("Ventes are likely to be empty.")
+        turnOnNotif()
+    } 
+    else{
+        actual_obj.value = value
+        actual_imitiS.value = value.response
+        actual_opt.value = ['nom_med', 
+        'quantity','prix_vente', 'date_operation',]
+        actual_type.value = ['text','text','text','date']
+        title_operation.value = "Bons"
         // console.log("Titlte is actual_vente...: " + title_operation.value)
         console.log("new title...: " + title_operation.value)
     }
