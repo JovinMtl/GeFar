@@ -337,6 +337,7 @@ html, body {
 .logoIcon{
     /* position: absolute;  */
     font-size: 50pt;margin-left: 3vw;
+    transform: translate(0, 15%);
 }
 .textMenu{
     /* position: absolute; */
