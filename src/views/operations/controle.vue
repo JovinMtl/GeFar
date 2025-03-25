@@ -6,11 +6,11 @@
             <div class="inTitle">
                 <h3>Vérification & Contrôle</h3>
             </div>
-            <div class="inTitle">
+            <div class="inTitle" v-show="searchEable">
                 <input :type="selected_type" placeholder="Rechercher" 
                     v-model="need_search">
             </div>
-            <div class="inTitle">
+            <div class="inTitle" v-show="searchEable">
                 <select v-model="selected_field" style="background-color: white" placeholder="Type" value="Ovule">
                     <option v-for="opt in actual_opt">{{ opt }}</option>
                 </select>
@@ -179,6 +179,7 @@ const title_operation = ref('Opérations')
 const message: Ref<string> = ref("zéro element.")
 const shouldNotif: Ref<boolean> = ref(false)
 const isFilter: Ref<boolean> = ref(false)
+const searchEable: Ref<boolean> = ref(true)
 
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
 const actual_opt = ref([]) // Tells the base fields we have for research
@@ -189,9 +190,16 @@ const need_search = ref(null) // the state that mentions the need to perfom the 
 const actual_imitiS = ref([]) // Contains the content to be displayed.
 const totaux = ref([0,0]) // To display totals on the footer.
 
+let temp_title = ''
+
 const [date_debut, date_fin] = [ref(''), ref('')]
 
-
+const setOpTitle = (val:string)=>{
+    searchEable.value = true
+    setTimeout(()=>{
+        title_operation.value = val
+    }, 10)
+}
 const turnOnNotif = (msg:string)=>{
     if(msg){
         message.value = msg
@@ -467,6 +475,7 @@ watch(actual_suggest, (value)=>{
     }
 })
 watch(actual_entree, (value)=>{
+    title_operation.value = ''
     console.log("Achats: " + value)
     if (value[0] == undefined){
         console.log("Achats is likely to be empty.")
@@ -478,12 +487,14 @@ watch(actual_entree, (value)=>{
         actual_opt.value = ['nom_med', 
         'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
-        title_operation.value = "Achats"
+        // title_operation.value = 
+        setOpTitle("Achats")
         // console.log("new title...: " + title_operation.value)
         // console.log("Titlte is actual_entree...: " + title_operation.value)
     }
 })
 watch(actual_vente, (value)=>{
+    title_operation.value = ''
     console.log("The imitiSold: " + value)
     if (value.response == undefined){
         console.log("Ventes are likely to be empty.")
@@ -495,12 +506,15 @@ watch(actual_vente, (value)=>{
         actual_opt.value = ['nom_med', 
         'quantity','prix_vente', 'date_operation',]
         actual_type.value = ['text','text','text','date']
-        title_operation.value = "Ventes"
+        // title_operation.value = 
+        setOpTitle("Ventes")
+        searchEable.value = false
         // console.log("Titlte is actual_vente...: " + title_operation.value)
         // console.log("new title...: " + title_operation.value)
     }
 })
 watch(actual_bons, (value)=>{
+    title_operation.value = ''
     console.log("The bons: " + value)
     if (value.response == undefined){
         console.log("Ventes are likely to be empty.")
@@ -512,12 +526,15 @@ watch(actual_bons, (value)=>{
         actual_opt.value = ['nom_med', 
         'quantity','prix_vente', 'date_operation',]
         actual_type.value = ['text','text','text','date']
-        title_operation.value = "Bons"
+        // 
+        setOpTitle("Bons")
+        searchEable.value = false
         // console.log("Titlte is actual_vente...: " + title_operation.value)
         // console.log("new title...: " + title_operation.value)
     }
 })
 watch(actual_imiti, (value)=>{
+    title_operation.value = ""
     if (value.data == undefined){
         console.log("Dispo is likely to be empty.")
         turnOnNotif()
@@ -528,7 +545,7 @@ watch(actual_imiti, (value)=>{
         actual_opt.value = ['nom_med','description_med', 
         'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','text','date']
-        title_operation.value = "Disponibles"
+        setOpTitle("Disponibles")
         // console.log("new title...: " + title_operation.value)
     }
 })
@@ -546,26 +563,11 @@ watch(actual_imitiS, (value)=>{
         title_operation.value = "Opérations"
         // return 0
     } else{
-        
-    let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
-
-    actual_imitiS.value.forEach(element => {
-        if(element.quantite_restant){
-            // console.log("Quantite restant  pa:",  element.prix_vente)
-            total += (element.prix_vente * (element.quantite_restant))
-            pt_a += element.prix_in * (element.quantite_restant)
-            benefice += (element.prix_vente - element.prix_in) * (element.quantite_restant) 
-        } else {
-            // console.log("Quantity pa :", element.prix_vente )
-            total += (element.price_out * (element.quantity))
-            pt_a += element.price_in * (element.quantity)
-            benefice += (element.price_out - element.price_in) * (element.quantity) 
-        }
-        
-        number += 1
-    });
-
-    totaux.value = [number, total, pt_a, benefice] 
+        temp_title = title_operation.value
+        title_operation.value = ''
+        setTimeout(()=>{
+            title_operation.value = temp_title
+        }, 5)
     }
 })
 
@@ -581,7 +583,7 @@ const closeControle = ()=>{
 const refreshVente = ()=>{
     title_operation.value = ""
     setTimeout(()=>{
-        title_operation.value = "Ventes"
+        title_operation.value = "Bons"
     }, 0)
 }
 </script>
