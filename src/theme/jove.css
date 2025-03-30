@@ -394,10 +394,7 @@ html, body {
     justify-content: right;
 }
 .contentElement4{
-    display: inline-flex;
-    background-color: transparent; 
-    width: 12%;height: 100%;
-    /* border: 1px solid blue; */
+    width: 12%;
 }
 .elt5{
     width: 8%;

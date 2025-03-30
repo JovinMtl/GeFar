@@ -4,37 +4,37 @@
         <div class="controlHeader" style="height: 5%; width: 100%;">
             <div  class="controlContent" style="font-size: .8rem;
                 background-color: navy; color: white">
-                <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
+                <div class="elt contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
                     #
                 </div> 
-                <div class="contentElement2">
+                <div class="elt contentElement2">
                     Nom du Med.
                 </div> 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     Qte
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                     <span v-if="isAdmin">P. Achat</span>
                     <!-- <span v-else>T. Med.</span>  -->
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                     P. Vente
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                     Total
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                 <span v-if="isAdmin">Bénéfice</span> 
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                     Date Achat
                 </div>
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                     Classe Thérap.
                 </div>
             </div>
@@ -47,34 +47,34 @@
                 <div class="contentElement11">
                     {{ index + 1 }}
                 </div> 
-                <div class="contentElement2">
+                <div class="elt contentElement2">
                     {{ umuti.nom_med }}
-                </div> <div class="contentElement3">
+                </div> <div class="elt contentElement3">
                     {{ umuti.quantite_initial  }}
                 </div> 
 
-                <div class="contentElement4 famille_med">
+                <div class="elt contentElement4 famille_med">
                     <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
                     
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                     {{ umuti.prix_vente }}
                 </div>
 
-                <div class="contentElement4 total">
+                <div class="elt contentElement4 total">
                         {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 1) }}
                 </div>
 
-                <div class="contentElement4"> 
+                <div class="elt contentElement4"> 
                 <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 1) }}</span> 
                 <span v-else>{{ umuti.location }}</span>
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt contentElement4">
 {{ (umuti.date_entrant).slice(8,10) }}/{{ (umuti.date_entrant).slice(5,7) }}/{{ (umuti.date_entrant).slice(2,4) }}
                 </div>
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                     {{ (umuti.classe_med).slice(0,15) }}
                 </div>
                 
@@ -83,36 +83,36 @@
 
         <div class="controlFooter">
             <div  class="controlContent" style="font-weight: 700;">
-                <div class="contentElement1">
+                <div class="elt contentElement1">
                     #
                 </div> 
-                <div class="contentElement2">
+                <div class="elt contentElement2">
                     TOTAL
                 </div> 
-                <div class="contentElement1">
+                <div class="elt contentElement1">
                     {{ totaux[0] }}
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                     <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
     
                     {{ useReadable(totaux[2]) }}
                     
                 </div>
 
-                <div class="contentElement4 ml-5">
+                <div class="elt contentElement4 ml-5">
                     -------
                 </div>
 
-                <div class="contentElement4 c-b-1">
+                <div class="elt contentElement4 c-b-1">
                     {{ useReadable(totaux[1]) }}
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                     {{ useReadable(totaux[3]) }}
                 </div>
 
-                <div class="contentElement4">
+                <div class="elt contentElement4">
                     ----
                 </div>
             </div>
