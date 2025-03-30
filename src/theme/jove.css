@@ -554,9 +554,17 @@ nav{
     display: flex;
     flex-direction: row;
     overflow: auto;
+    padding: 5px;
 }
 nav > button{
-    padding: 0.5rem;
     font-size: 1.5rem;
+    padding: 0.5rem;
     margin: 0 15px;
+    transition-duration: 200ms;
+    background-color: rgb(73, 70, 70);
+    border-radius: 8px;
+    box-shadow: 0 0 5px black;
+}
+nav > button:active{
+    scale: 0.7;
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="dynContent p-21">
+    <div class="dynContent p-2">
 
         <!-- Different settings will appear here
          as individual components -->
