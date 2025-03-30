@@ -4,53 +4,49 @@
         <div class="controlHeader" style="height: 5%; width: 100%;">
             <div  class="controlContent" style="font-size: .8rem;
                 background-color: navy; color: white; display:flex;">
-                <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: inherit; ">
+                <div class="elt contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: inherit; ">
                     #
                 </div> 
-                <div class="contentElement2">
+                <div class="elt contentElement2">
                     Nom du Med.
                 </div> 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     Qte
                 </div>
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     <span v-if="isAdmin">P. A.</span>
-                    <!-- <span v-else>T. Med.</span>  -->
                 </div>
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     P. V.
                 </div>
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     Total
                 </div>
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                 <span v-if="isAdmin">Bnf</span> 
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     Caisse
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     Dette
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     Assu.
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     Catég.
                 </div>
 
-                <div class="elt5">
+                <div class="elt elt5">
                     Date
                 </div>
-                <!-- <div class="elt6">
-                    Payer
-                </div> -->
-                <div class="elt7"></div>
-                <div class="elt6">
+                <div class="elt elt7"></div>
+                <div class="elt elt6">
                     Id Bon
                 </div>
             </div>
@@ -64,58 +60,52 @@
                 <div class="contentElement11">
                     {{ index + 1 }}
                 </div> 
-                <div class="contentElement2">
+                <div class="elt contentElement2">
                     {{ umuti.nom_med }}
-                </div> <div class="contentElement3">
+                </div> <div class="elt contentElement3">
                     {{ (umuti.qte ) }}
                 </div> 
 
-                <div class="contentElement3 famille_med">
+                <div class="elt contentElement3 famille_med">
                     <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
                     
                 </div>
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     {{ umuti.prix_vente }}
                 </div>
 
-                <div class="contentElement3 total">
+                <div class="elt contentElement3 total">
                         {{ umuti.total }}
                 </div>
 
-                <div class="contentElement3"> 
+                <div class="elt contentElement3"> 
                 <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.qte || 1) }}</span> 
                 
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                      <span >{{umuti.caisse}}</span>
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     <span :class="umuti.assu=='Pharmacie Ubuzima' ? 'c-g':''">
                         {{ umuti.dette }}</span>
                      
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     <span v-show="umuti.assu !='Sans'">
                         {{ (umuti.assu).slice(0,5) }}...
                     </span>
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     <span v-show="umuti.categ!='null'">{{ umuti.categ }}</span>
                      
                 </div>
 
-                <div class="elt5">
+                <div class="elt elt5">
 {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
                 </div>
-                <!-- <div class="elt6">
-                     <span v-if="!umuti.is_paid" class="btn2 br mt w-22 bg-b"
-                        :id="'j'+index"
-                        :class="selectIndex.has(index)? 'bg-g':''"
-                       @click="checkBon"></span>
-                </div> -->
-                <div class="elt7"></div>
-                <div class="elt7">
+                <div class="elt elt7"></div>
+                <div class="elt elt7">
                     {{ (umuti.num_bon).slice(0,7) }}
                 </div>
                 
@@ -124,68 +114,59 @@
 
         <div class="controlFooter">
             <div  class="controlContent" style="font-weight: 700;font-size: .8rem;">
-                <div class="contentElement1">
+                <div class="elt contentElement1">
                     #
                 </div> 
-                <div class="contentElement2">
+                <div class="elt contentElement2">
                     TOTAL
                 </div> 
-                <div class="contentElement1">
+                <div class="elt contentElement1">
                     <!-- Nombre -->
                     {{ totaux[0] }}
                 </div>
 
-                <div class="elt8">
+                <div class="elt elt8">
                 </div>
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     <!-- P.A -->
                     {{ useReadable(totaux[2]) }}
                     
                 </div>
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     ----
                 </div>
 
-                <div class="contentElement3 total" style="margin-right: 5px;">
+                <div class="elt contentElement3 total" style="margin-right: 5px;">
                     <!-- P.V -->
                     {{ useReadable(totaux[1]) }}
                 </div>
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     <!-- Benefice -->
                     {{ useReadable(totaux[3]) }}
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     <!-- Caisse -->
                      {{ useReadable(totaux[4]) }}
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     <!-- Dette -->
                      {{ useReadable(totaux[5]) }}
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                      <!-- assu -->
                      ------
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                      <!-- categ -->
                      ------
                 </div>
 
-                <div class="elt5">
+                <div class="elt elt5">
                     ----------
                 </div>
-                <!-- <div class="elt5">
-                    <span v-show="repStatus==0 && selectIndex.size" class="pay bg-g" @click="fIndex">
-                        Payer
-                    </span>
-                    <span v-if="repStatus">
-                        <span v-if="repStatus==1">Ok</span>
-                        <span v-if="repStatus==2">No</span>
-                    </span>
-                </div> -->
             </div>
         </div>
                             
