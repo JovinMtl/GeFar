@@ -127,7 +127,7 @@
                         :class="selectIndex.has(index)? 'bg-g':''"
                        @click="checkBon"></span>
                 </div>
-                <div class="elt7">
+                <div class="elt elt7">
                     {{ (umuti.num_bon).slice(0,7) }}
                 </div>
                 
@@ -150,13 +150,13 @@
                 <div class="contentElement3">
                     
                 </div>
-                <div class="elt9">
+                <div class="elt elt9">
                 </div>
                 <div class="contentElement3 total" style="margin: 5px;">
                     <!-- P.V -->
                     {{ useReadable(totaux[1]) }}
                 </div>
-                <div class="elt7">
+                <div class="elt elt7">
                 </div>
 
                 <div class="contentElement3">

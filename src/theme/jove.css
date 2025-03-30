@@ -418,14 +418,10 @@ html, body {
     width: 3%;height: 100%;
 }
 .elt8{
-    display: inline-flex;
-    background-color: transparent; 
-    width: 2%;height: 100%;
+    width: 2%;
 }
 .elt9{
-    display: inline-flex;
-    background-color: transparent; 
-    width: 1%;height: 100%;
+    width: 1%;
 }
 .controlBody{
     height: 90%; width: 100%; 
