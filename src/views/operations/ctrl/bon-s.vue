@@ -21,26 +21,26 @@
                 <div class="contentElement3">
                     Total
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     Caisse
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     Dette
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     Regléé
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     Catég.
                 </div>
 
-                <div class="elt5">
+                <div class="elt elt5">
                     Date
                 </div>
-                <div class="elt6">
+                <div class="elt elt6">
                     Payer
                 </div>
-                <div class="elt6">
+                <div class="elt elt6">
                     Id Bon
                 </div>
             </div>
@@ -100,28 +100,28 @@
                 <div class="contentElement3 total">
                         {{ useReadable(umuti.total) }}
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                      <span >{{ useReadable(umuti.cout) }}</span>
                 </div>
-                <div class="elt5" style="color: blue;">
+                <div class="elt elt5" style="color: blue;">
                     <span v-show="(umuti.is_paid)==false" :class="umuti.assu=='Pharmacie Ubuzima' ? 'c-g':''">
                         {{ useReadable(umuti.montant_dette) }}</span>
                      
                 </div>
-                <div class="elt5" style="color: green; font-weight: bold;">
+                <div class="elt elt5" style="color: green; font-weight: bold;">
                     <span v-show="umuti.is_paid">
                         {{ useReadable(umuti.montant_dette) }}
                     </span>
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     <span v-show="umuti.categ!='null'">{{ umuti.categorie }}</span>
                      
                 </div>
 
-                <div class="elt5">
+                <div class="elt elt5">
 {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
                 </div>
-                <div class="elt6">
+                <div class="elt elt6">
                      <span v-if="!umuti.is_paid" class="btn2 br mt w-22 bg-b"
                         :id="'j'+index"
                         :class="selectIndex.has(index)? 'bg-g':''"
@@ -163,24 +163,24 @@
                     <!-- Benefice -->
                     {{ useReadable(totaux[2]) }}
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     <!-- Caisse -->
                      {{ useReadable(totaux[3]) }}
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                     <!-- Dette -->
                      {{ useReadable(totaux[5]) }}
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                      <!-- assu -->
                      ------
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                      <!-- categ -->
                      ------
                 </div>
 
-                <div class="elt5">
+                <div class="elt elt5">
                     <span v-show="repStatus==0 && selectIndex.size" class="pay bg-g" @click="fIndex">
                         Payer
                     </span>
@@ -189,7 +189,7 @@
                         <span v-if="repStatus==2">No</span>
                     </span>
                 </div>
-                <div class="elt5">
+                <div class="elt elt5">
                 </div>
             </div>
         </div>
