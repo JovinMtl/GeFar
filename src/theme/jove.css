@@ -345,6 +345,14 @@ html, body {
     left: 9vw; 
     margin-top: 5vh;
 }
+.textMenu-p{
+    position: absolute;
+    left: 0;
+    top: -1rem;
+}
+.t-m-skin{
+    font-weight: 700;
+}
 
 .controlContent{
     display: block;

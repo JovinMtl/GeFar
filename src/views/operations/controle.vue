@@ -98,6 +98,11 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="logoMenu c-b-2" @click="kuvoma_entree">
+                    <ion-icon :src="settingsSharp" class="logoIcon"></ion-icon>
+                    <span class="textMenu textMenu-p t-m-skin">Paramètres</span>
+                </div>
             </div>
             <!-- The dynamic content will be here. -->
             
@@ -160,7 +165,8 @@ import type { Ref } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { 
     close, statsChartOutline, snowOutline, thermometer, pricetagOutline,
-    calendarClearOutline, libraryOutline
+    calendarClearOutline, libraryOutline,
+    settingsSharp
     } from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
 import cirCle from './circle.vue'
