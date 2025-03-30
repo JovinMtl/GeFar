@@ -4,10 +4,10 @@
         <div class="controlHeader" style="height: 5%; width: 100%;">
             <div  class="controlContent" style="font-size: .8rem;
                 background-color: navy; color: white">
-                <div class="contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: inherit; ">
+                <div class="elt contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: inherit; ">
                     #
                 </div> 
-                <div class="contentElement2">
+                <div class="elt contentElement2">
                     Bon de Commande
                 </div> 
                 <div class="elt contentElement3">
@@ -83,7 +83,7 @@
                     {{ index + 1 }}
                 </div> 
                 
-                <div class="contentElement2" style="cursor: pointer;">
+                <div class="elt contentElement2" style="cursor: pointer;">
                     <button popovertarget="pop" :data-ids="umuti.meds" :data-index="index+1" @click="showData">Ouvrir</button>
                 </div> 
 
@@ -136,13 +136,13 @@
 
         <div class="controlFooter">
             <div  class="controlContent" style="font-weight: 700;font-size: .8rem;">
-                <div class="contentElement1">
+                <div class="elt contentElement1">
                     #
                 </div> 
-                <div class="contentElement2">
+                <div class="elt contentElement2">
                     TOTAL
                 </div> 
-                <div class="contentElement1">
+                <div class="elt contentElement1">
                     <!-- Nombre -->
                     {{ totaux[0] }}
                 </div>
