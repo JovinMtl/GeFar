@@ -99,7 +99,7 @@
                     </div>
                 </div>
 
-                <div class="logoMenu c-b-2" @click="kuvoma_entree">
+                <div class="logoMenu c-b-2" @click="openSettings">
                     <ion-icon :src="settingsSharp" class="logoIcon"></ion-icon>
                     <span class="textMenu textMenu-p t-m-skin">Paramètres</span>
                 </div>
@@ -292,6 +292,9 @@ const [medRed, getMedRed] = useKuvoma(getMedRed_url)
 
 
 // functions
+const openSettings = ()=>{
+    title_operation.value = "Paramètres"
+}
 const nRoutine = (value)=>{
     actual_obj.value = value
     actual_imitiS.value = value
