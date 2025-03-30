@@ -415,8 +415,11 @@ html, body {
     display: inline-flex;
     background-color: transparent; 
     width: 3%;height: 100%;
-    /* font-size: .6rem; */
-    /* border: 1px solid blue; */
+}
+.elt8{
+    display: inline-flex;
+    background-color: transparent; 
+    width: 2%;height: 100%;
 }
 .controlBody{
     height: 90%; width: 100%; 

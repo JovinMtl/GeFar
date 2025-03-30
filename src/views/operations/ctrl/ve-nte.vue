@@ -135,6 +135,9 @@
                     {{ totaux[0] }}
                 </div>
 
+                <div class="elt8">
+                </div>
+
                 <div class="contentElement3">
                     <!-- P.A -->
                     {{ useReadable(totaux[2]) }}
