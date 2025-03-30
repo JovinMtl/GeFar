@@ -10,15 +10,15 @@
                 <div class="contentElement2">
                     Bon de Commande
                 </div> 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                 <span v-if="isAdmin">Benéficiaire</span> 
                 </div>
 
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     Assu.
                 </div>
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     Total
                 </div>
                 <div class="elt elt5">
@@ -87,17 +87,17 @@
                     <button popovertarget="pop" :data-ids="umuti.meds" :data-index="index+1" @click="showData">Ouvrir</button>
                 </div> 
 
-                <div class="contentElement3"> 
+                <div class="elt contentElement3"> 
                     {{ getOneclient(umuti.beneficiaire) }}
                 </div>
 
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     <span  v-show="organization !='Sans'">
                         {{ getOneAssurance(umuti.organization)  }}
                     </span>
                 </div>
-                <div class="contentElement3 total">
+                <div class="elt contentElement3 total">
                         {{ useReadable(umuti.total) }}
                 </div>
                 <div class="elt elt5">
@@ -147,19 +147,19 @@
                     {{ totaux[0] }}
                 </div>
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     
                 </div>
                 <div class="elt elt9">
                 </div>
-                <div class="contentElement3 total" style="margin: 5px;">
+                <div class="elt contentElement3 total" style="margin: 5px;">
                     <!-- P.V -->
                     {{ useReadable(totaux[1]) }}
                 </div>
                 <div class="elt elt7">
                 </div>
 
-                <div class="contentElement3">
+                <div class="elt contentElement3">
                     <!-- Benefice -->
                     {{ useReadable(totaux[2]) }}
                 </div>
