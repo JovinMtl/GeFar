@@ -148,10 +148,9 @@
                 </div>
 
                 <div class="contentElement3">
-                    <!-- {{ useReadable(totaux[2]) }} -->
                     
                 </div>
-                <div class="elt7">
+                <div class="elt9">
                 </div>
                 <div class="contentElement3 total" style="margin: 5px;">
                     <!-- P.V -->

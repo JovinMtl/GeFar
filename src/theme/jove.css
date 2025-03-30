@@ -421,6 +421,11 @@ html, body {
     background-color: transparent; 
     width: 2%;height: 100%;
 }
+.elt9{
+    display: inline-flex;
+    background-color: transparent; 
+    width: 1%;height: 100%;
+}
 .controlBody{
     height: 90%; width: 100%; 
     overflow: auto;
