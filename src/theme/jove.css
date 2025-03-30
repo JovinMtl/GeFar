@@ -326,6 +326,7 @@ html, body {
     width: 100%;height: 18%; 
     padding: 5px 5px; 
     border-bottom: 2px solid white;
+    cursor: pointer;
 }
 .logoMenu:active{
     display: block;
@@ -346,7 +347,7 @@ html, body {
     margin-top: 5vh;
 }
 .textMenu-p{
-    position: absolute;
+    position: relative;
     left: 0;
     top: -1rem;
 }

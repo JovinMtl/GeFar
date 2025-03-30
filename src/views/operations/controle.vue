@@ -151,6 +151,8 @@
             <achAts1 :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Med périmé'"/>
+            <paraMetres 
+                v-if="title_operation == 'Paramètres'"/>
             
         </div>
         <teleport to="body">
@@ -177,6 +179,7 @@ import achAts from './ctrl/ach-ats.vue'
 import achAts1 from './ctrl/ach-ats-1.vue'
 import suggEst from './ctrl/sugg-est.vue'
 import dateGreen from './ctrl/date-green.vue'
+import paraMetres from './ctrl/para-metres.vue'
 
 
 const emit = defineEmits(['turnControl',])
