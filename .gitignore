@@ -2,7 +2,7 @@ node_modules
 tmp
 dist
 .idea/
-src/assets
+# src/assets
 src/components
 src/plugins
 src/views/HomeView.vue
