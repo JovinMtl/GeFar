@@ -3,16 +3,6 @@
     src: url(../assets/fonts/RollingBeat_PersonalUse.woff) format('woff'),
          url(../assets/fonts/RollingBeat_PersonalUse.woff) format('woff2');
 }
-@font-face {
-    font-family: Kugiler;
-    src: url(../assets/fonts/Kugile.woff) format('woff'),
-         url(../assets/fonts/Kugile.woff2) format('woff2');
-}
-@font-face {
-    font-family: Mexcellent;
-    src: url(../assets/fonts/Mexcellent-Regular.woff) format('woff'),
-         url(../assets/fonts/Mexcellent-Regular.woff2) format('woff2');
-}
 
 html, body {
     background-image: radial-gradient(circle closest-side at 55% 25%,green 55%, grey 60%, transparent 75%),
@@ -101,6 +91,7 @@ html, body {
     background: radial-gradient(20% 20%,lime, white);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-family: cursive, RollingBeat;
 }
 .menuBar{
     position: absolute;
