@@ -4,7 +4,8 @@ dist
 .idea/
 # src/assets
 src/components
-src/plugins
+src/plugins/vuetify.js
+src/plugins/webfontloader.js
 src/views/HomeView.vue
 src/theme/pattern.css
 src/store/sync.js
