@@ -190,7 +190,7 @@
                     </div>
                     <div class="menuHau user" style="">
                         <a title="uyu ni Wewe nyene" class="c-b">
-                            {{ getUsername() }}
+                            {{ (String(getUsername())).slice(0, 10) }}
                         </a>
                     </div>
                     <div class="menuHau sync">
@@ -948,7 +948,7 @@ provide('familly_displ', openedFamilly)
     width: 150px;
     display: flex;
     position: absolute;
-    left: 55vw;
+    left: 53vw;
     top: 90.5vh;
     font-size: normal;
     color: black;
