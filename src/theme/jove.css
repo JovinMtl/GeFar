@@ -7,8 +7,9 @@
 html, body {
     background-image: radial-gradient(circle closest-side at 55% 25%,green 55%, grey 60%, transparent 75%),
                             radial-gradient(50% 50% at 25% 75%, white 15%, green 20%, white 30%, transparent 40%) ;
-    /* background-size: 100px 100px; */
-    background-image: url('Background/bck5.jpeg');
+    
+    /* background-image: url('Background/bck5.jpeg'); */
+    background-image: url(../../public/Background/bck5.jpeg);
     background-size: contain;
     background-position: right; /* Center the background image */
     background-repeat: repeat-x; 
