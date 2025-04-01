@@ -14,8 +14,8 @@
                         <!-- <input id="el3" v-model="password" class="inpEl bg-l" 
                             type="password" autocomplete="off"> -->
                             <input id="el2" v-model="mPassword" 
-                                class="loInp" 
-                                @keypress="getPassword" type="text">
+                                class="loInp loInp2" 
+                                @keyup="getPassword" type="text">
                     </div>
                     <div class="confirmationContainer">
                     </div>

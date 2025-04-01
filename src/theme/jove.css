@@ -589,6 +589,10 @@ nav > button:active{
     border-style: hidden;
     color: rgb(5, 252, 5);
 }
+.loInp2{
+    padding-top: 18px;
+    padding-bottom: 10px;
+}
 .loFooter{
     color: white;
     transform: translate(0%, 700%);
