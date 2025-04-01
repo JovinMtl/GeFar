@@ -206,7 +206,8 @@ reste.value = useReadable(total.value - assure_value)
     width: 100%;
     height: 10%;
     padding: 0px 15px;
-    text-align: right;
+    // text-align: right;
+    text-align: center;
 }
 
 @media only print {
@@ -214,13 +215,14 @@ reste.value = useReadable(total.value - assure_value)
     // @page{
     //     size: 8cm 10cm
     // }
-    @page{
-        size: 72mm 297mn;
-    }
+    // @page{
+    //     size: 72mm 297mn;
+    // }
     .modal{
         display: none;
     }
     .factureContainer{
+        position: absolute;
         width: 100%;
         height: 100%;
         background-color: white;
