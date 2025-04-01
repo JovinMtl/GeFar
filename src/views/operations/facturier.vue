@@ -49,12 +49,9 @@
                 Date     : {{ new Date().toISOString().substring(0,10) }}
             </div>
             <div class="factuFooter">
-                <!-- Footer <hr> addres -->
-                <!-- <button >print</button> -->
-                 <div class="conf">Pharmacie UBUZIMA.  NIF: 40000230011</div>
-                 <div class="address">Kamenge, 14è Av. Bujumbura - Burundi</div>
+                 <div class="conf">Pharmacie UBUZIMA.  NIF: 40000230011,  Tel: +257 79 568 767</div>
+                 <div class="address">Kamenge, 13è Av. Bujumbura - Burundi</div>
             </div>
-        <!-- </div> -->
     </div>
     <div class="modal" @click.stop="console.log('You want the modal')">
         <div class="modalHeader">
