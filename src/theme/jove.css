@@ -42,9 +42,12 @@ html, body {
 }
 .famil{
     width: 11vw;
-    height: 99%;
+    height: 94%;
+    transform: translate(0%, 3%);
     overflow: auto;
     border-right: 1px solid grey;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .sectA{
