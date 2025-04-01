@@ -19,6 +19,7 @@
 import {
     defineComponent, reactive, ref, onUpdated,
     inject, watch,
+    toValue,
 } from 'vue'
 import { UmutiSet } from '../layout/types'
 import { useUserStore } from '../../store/user.js'
@@ -811,7 +812,8 @@ export default defineComponent({
 
         watch(familly_display, (value)=>{
             imitiset.value = []
-            let selected_med = new Set((familles.value)[value].members) // make it Set to avoid doublon
+            let selected_med = new Set((familles.value)?.[value]?.members) // make it Set to avoid doublon
+            console.log("Selected: " + (familles.value)?.[value]?.members + ' and value:' + value + " from: " + JSON.stringify(familles.value))
             selected_med.forEach((element)=>{
                 (imitiset.value).push((imitiset_copy.value)[element])
             })
