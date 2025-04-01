@@ -323,14 +323,17 @@ const selectedQte = reactive({
     'val': 0
 })
 
-watch(()=>selectedQte.val, (val, prevVal)=>{
+watch(()=>selectedQte.val, (val)=>{
     let elm = ''
+    console.log("Do smething")
     if (Number(val) > 9){
         elm = document.getElementById(selectedQte.id)
         elm.style.paddingLeft  = "0";
         elm.style.fontSize = "0.9rem"
     } else if(Number(val) == 9){
-        console.log("It is nine, but " + prevVal)
+        elm = document.getElementById(selectedQte.id)
+        elm.style.paddingLeft  = "0.3rem";
+        elm.style.fontSize = "1rem"
     }
 })
 
@@ -582,24 +585,30 @@ const incrementQte = (value) => {
     const code_s = value.target.previousSibling.previousSibling.previousSibling.getAttribute('id')
     const code = Number(code_s.slice(1))
     let jov = (activeLot.value[code]).length
+    let prevVal = activeLot.value[code].to_panier
     if (activeLot.value[code].qte > activeLot.value[code].to_panier) {
         activeLot.value[code].to_panier += 1
     } 
-    selectedQte.val = Number(activeLot.value[code].to_panier)
-    if (Number(activeLot.value[code].to_panier) > 9){
+    
+    if ((Number(activeLot.value[code].to_panier) == 10)
+        && Number(prevVal) == 9){
+            selectedQte.val = Number(activeLot.value[code].to_panier)
         selectedQte.id = code_s
     } 
 }
 const decrementQte = (value) => {
     const code_s = value.target.nextSibling.nextSibling.getAttribute('id')
     const code = Number(code_s.slice(1))
+    let prevVal = activeLot.value[code].to_panier
     if (activeLot.value[code].to_panier > 0) {
         actualQte.value -= 1
         activeLot.value[code].to_panier -= 1
-        console.log("ok, decrementing")
-    } else {
-        console.log("No, decrementing")
     }
+    if ((Number(activeLot.value[code].to_panier) == 9)
+        && Number(prevVal) == 10){
+            selectedQte.val = Number(activeLot.value[code].to_panier)
+        selectedQte.id = code_s
+    } 
 
 }
 
