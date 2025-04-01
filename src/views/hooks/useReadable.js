@@ -1,4 +1,4 @@
-
+import { toValue } from 'vue'
 
 export default function useReadableNumber (value=1000){
     // makes 1000000 into a string of 1.000.000
@@ -19,4 +19,10 @@ export default function useReadableNumber (value=1000){
         result2 = result2.concat(result[i])
     }
     return result2
+}
+
+export function useCapitalLetter(val=""){
+    let input = String(toValue(val));
+    let result = input.charAt(0).toUpperCase().concat(((input)).slice(1))
+    return result
 }
