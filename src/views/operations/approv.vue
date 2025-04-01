@@ -275,14 +275,19 @@ watch(date_exp, (value)=>{
 })
 watch(report_achat, (value)=>{
     if (value.detail == 'ok'){
-        console.log("Les choses se sont bien passee")  
-    } else {
-        console.log("Les choses pas bien: " + value.detail)
+        console.log("Les choses se sont bien passee") 
+        emit("reportAchat", 2) 
+        initInputs()
+    } else if(value.detail == undefined){
+        console.log("Il y aurait besoin de reconnexion.")
+    } else{
+        console.log("Les choses pas bien: ")
+        emit("reportAchat", 2)
         let info = `Opération echouée.
             Il se peut que certaines informations sont incorrectes.`
             showMessage(info)
     }
-    emit("reportAchat", 2)
+    
 
 })
 watch(need_to_upload, (value)=>{
