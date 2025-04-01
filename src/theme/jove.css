@@ -588,7 +588,7 @@ nav > button:active{
     background-color: rgb(28, 35, 49);
     border-style: hidden;
     color: rgb(5, 252, 5);
-    justify-items: center;
+    text-align: center;
 }
 .loInp2{
     padding-top: 15px;
