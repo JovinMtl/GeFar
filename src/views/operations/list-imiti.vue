@@ -762,6 +762,7 @@ export default defineComponent({
         }
 
         const update_imiti_for_search = () => {
+            imiti_for_search = []
             imitiset.value.forEach(element => {
                 let obj = {
                     'code_med': element.code_med,
