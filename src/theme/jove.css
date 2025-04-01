@@ -193,7 +193,9 @@ html, body {
     align-content: center;
     flex-wrap: wrap;
     padding: 0 5px;
-    cursor: context-menu;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
     justify-content: center;
 }
 .dashBoardContainer{
