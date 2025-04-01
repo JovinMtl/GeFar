@@ -155,6 +155,17 @@ var result = inject('imiti_search')
 const url_achat = 'api/in/kurangura/'
 const [report_achat, sendFileDataLoaded] = useKurungika([umuti_obj,], url_achat)
 
+
+// Functions
+const initInputs = ()=>{
+    umutiName.value = '';
+    classeRef.value = null;
+    sClasseRef.value = null;
+    forme_med.value = '';
+    umuti_quantite_initial.value = null;
+    umuti_prix_achat.value = null;
+    umuti_date_exp.value = null;
+}
 const openApproFile = ()=>{
     emit('approFileOpen', 1)
 }
@@ -266,7 +277,7 @@ watch(report_achat, (value)=>{
     if (value.detail == 'ok'){
         console.log("Les choses se sont bien passee")  
     } else {
-        console.log("Les choses pas bien")
+        console.log("Les choses pas bien: " + value.detail)
         let info = `Opération echouée.
             Il se peut que certaines informations sont incorrectes.`
             showMessage(info)
