@@ -60,7 +60,7 @@
                         <div class="fami-1"
                             v-for="(classe, index) in classes"
                             :key="index" :id="'s'+index"
-                            @click="openFamilly">{{ (classe.classe_med).slice(0, 12) }}
+                            @click="openFamilly">{{ useCapitalLetter((classe.classe_med).slice(0, 12)) }}
                             <span v-show="(classe.classe_med).length > 12" class="c-b-2">...</span>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <!-- details for selected umuti should appeal here -->
                         <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft' : ''">
                             <div class="infoUmuti"></div>
-                            <div class="infoUmuti umutiTitle">{{ (selectedUmuti.value.nom_med).slice(0, 14) }}</div>
+                            <div class="infoUmuti umutiTitle">{{ useCapitalLetter((selectedUmuti.value.nom_med).slice(0, 14)) }}</div>
                             <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_med }}</div>
                             <div class="infoUmuti umutiTitle umutiFamille">{{ selectedUmuti.value.classe_med }}</div>
                             <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.forme || 'forme:vide' }}</div>
@@ -190,7 +190,7 @@
                     </div>
                     <div class="menuHau user" style="">
                         <a title="uyu ni Wewe nyene" class="c-b">
-                            {{ (String(getUsername())).slice(0, 10) }}
+                            {{ useCapitalLetter((String(getUsername())).slice(0, 10)) }}
                         </a>
                     </div>
                     <div class="menuHau sync">
@@ -243,6 +243,7 @@ import joveLoader from './auxiliare/jove-loader.vue';
 import contRole from '../operations/controle.vue'
 import factuRier from '../operations/facturier.vue';
 import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
+import { useCapitalLetter } from '../hooks/useReadable.js';
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
 import {
