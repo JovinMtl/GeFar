@@ -128,6 +128,8 @@ const selectedSubClass = ref(null)
 const classeRef = ref(null)
 const sClasseRef = ref(null)
 
+const minimunPA:number = 200
+
 const url_local = '//127.0.0.1:8002'
 const url_reportIndex = 'api/gOps/getClasses/'
 const [cls, getClasses] = useKuvoma(url_reportIndex, url_local)
@@ -210,7 +212,7 @@ const checkBeforeUpload = ()=>{
         return umuti_obj
     } else{
         // Fill Umuti_obj from the vmodels set in template
-        if((String(umutiName.value)) && (Number(umuti_prix_achat.value))
+        if((String(umutiName.value)) && (Number(umuti_prix_achat.value) > minimunPA)
             && (Number(umuti_prix_vente.value)) 
             && (Number(umuti_quantite_initial.value)) 
             && (Date(date_exp.value))
