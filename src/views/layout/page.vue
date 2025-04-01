@@ -587,13 +587,13 @@ const incrementQte = (value) => {
     let jov = (activeLot.value[code]).length
     let prevVal = activeLot.value[code].to_panier
     if (activeLot.value[code].qte > activeLot.value[code].to_panier) {
+        selectedQte.id = code_s
         activeLot.value[code].to_panier += 1
     } 
     
     if ((Number(activeLot.value[code].to_panier) == 10)
         && Number(prevVal) == 9){
             selectedQte.val = Number(activeLot.value[code].to_panier)
-        selectedQte.id = code_s
     } 
 }
 const decrementQte = (value) => {
@@ -601,13 +601,13 @@ const decrementQte = (value) => {
     const code = Number(code_s.slice(1))
     let prevVal = activeLot.value[code].to_panier
     if (activeLot.value[code].to_panier > 0) {
+        selectedQte.id = code_s
         actualQte.value -= 1
         activeLot.value[code].to_panier -= 1
     }
     if ((Number(activeLot.value[code].to_panier) == 9)
         && Number(prevVal) == 10){
-            selectedQte.val = Number(activeLot.value[code].to_panier)
-        selectedQte.id = code_s
+            selectedQte.val = Number(activeLot.value[code].to_panier)   
     } 
 
 }
