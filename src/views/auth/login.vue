@@ -11,8 +11,6 @@
                     </div>
                     <div class="username">
                         <label class="se" for="input">Mot de Passe</label> <br>
-                        <!-- <input id="el3" v-model="tPassword" class="inpEl bg-l" 
-                            type="password" autocomplete="off"> -->
                             <input id="el2" v-model="mPassword" 
                                 class="loInp loInp2" 
                                 @keyup="getPassword" type="text">
@@ -22,7 +20,7 @@
                     <div @click="login_hook" class="enter">
                         <div class="btn">se connecter</div>
                     </div>
-                    <div class="loFooter"> © 2025, Pharmacie UBUZIMA</div>
+                    <div class="loFooter"> © {{ year }}, Pharmacie UBUZIMA</div>
                 </div>
                 
             </div>
@@ -30,7 +28,7 @@
     </ion-page>
 </template>
 <script setup lang="ts">
-import { ref, toValue, watch } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import {
     IonContent, IonPage
@@ -54,6 +52,8 @@ const maskedPassword = []
 const truePassword = []
 const mPassword = ref<string>('')
 const tPassword = ref<string>('')
+
+const year = (String(new Date())).slice(10, 15)
 
 const getPassword = (e)=>{
     // truePassword.
