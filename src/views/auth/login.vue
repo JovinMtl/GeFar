@@ -22,7 +22,9 @@
                     <div @click="login_hook" class="enter">
                         <div class="btn">se connecter</div>
                     </div>
+                    <div class="loFooter"> © 2025, Pharmacie UBUZIMA</div>
                 </div>
+                
             </div>
         </ion-content>
     </ion-page>
