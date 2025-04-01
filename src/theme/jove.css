@@ -579,3 +579,13 @@ nav > button:active{
 .paB:active{
     scale: 0.8;
 }
+
+.authentif{
+    padding: 0;
+}
+.loInp{
+    padding: 15px;
+    background-color: rgb(28, 35, 49);
+    border-style: hidden;
+    color: rgb(5, 252, 5);
+}

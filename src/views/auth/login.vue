@@ -5,12 +5,17 @@
                 ICi authentification
                 <div class="authentif">
                     <div class="username">
-                        <label for="input">Username</label> <br>
-                        <input v-model="username" class="inpEl" type="text">
+                        <label class="se" for="input">Nom d'Utilisateur</label> <br>
+                        <input id="el1" v-model="username" class="loInp" 
+                            type="text">
                     </div>
                     <div class="username">
-                        <label for="input">Password</label> <br>
-                        <input v-model="password" class="inpEl bg-l" type="password">
+                        <label class="se" for="input">Mot de Passe</label> <br>
+                        <!-- <input id="el3" v-model="password" class="inpEl bg-l" 
+                            type="password" autocomplete="off"> -->
+                            <input id="el2" v-model="mPassword" 
+                                class="loInp" 
+                                @keypress="getPassword" type="text">
                     </div>
                     <div class="confirmationContainer">
                     </div>
@@ -23,7 +28,7 @@
     </ion-page>
 </template>
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, toValue, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import {
     IonContent, IonPage
@@ -40,8 +45,36 @@ const { getUsername, getAccessToken, getRefreshToken,
 const router = useRouter()
 const username = ref(null)
 const password = ref(null)
+const oneChar = ref(null)
+const maskedPassword = []
+
+
+const truePassword = []
+const mPassword = ref<string>('')
+const tPassword = ref<string>('')
+
+const getPassword = (e)=>{
+    // truePassword.
+    let k = String(e.key)
+    if (k == 'Backspace'){
+        truePassword.pop()
+        maskedPassword.pop()
+    } else if (k.length == 1){
+        truePassword.push(k)
+        maskedPassword.push('*')
+    }
+    setTimeout(()=>{
+        mPassword.value = maskedPassword.join('')
+        tPassword.value = truePassword.join('')
+    }, 30)
+}
 
 let logs = ''
+// window.onload = ()=>{
+//     document.getElementById('el1').value = ""
+//     document.getElementById('el2').value = ""
+//     document.getElementById('el3').value = ""
+// }
 
 
 const axiosInstance = axios.create({
@@ -72,15 +105,10 @@ const login_hook = () => {
         logs = error.response.data
     })
 }
+
 </script>
 <style scoped lang="scss">
-@media screen and (max-width: 400px) {
-    .LogContainer {
-        background-color: white;
-    }
-}
 
-@media screen and (min-width: 800px) {
     .LogContainer {
         display: flex;
         width: 100%;
@@ -91,7 +119,7 @@ const login_hook = () => {
         align-items: center;
 
         .authentif {
-            width: 30%;
+            // width: 30%;
             height: 90%;
             background-color: black;
             position: absolute;
@@ -106,7 +134,8 @@ const login_hook = () => {
                 color: white;
 
                 .inpEl {
-                    padding: 15px 30px;
+                    // padding: 15px 30px;
+                    padding: 0.5rem 1rem;
                     border-radius: 15px;
                     border-spacing: 5px;
                     border-style: hidden;
@@ -180,5 +209,4 @@ const login_hook = () => {
             }
         }
     }
-}
 </style>
