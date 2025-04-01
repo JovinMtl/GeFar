@@ -323,20 +323,6 @@ const selectedQte = reactive({
     'val': 0
 })
 
-watch(()=>selectedQte.val, (val)=>{
-    let elm = ''
-    console.log("Do smething")
-    if (Number(val) > 9){
-        elm = document.getElementById(selectedQte.id)
-        elm.style.paddingLeft  = "0";
-        elm.style.fontSize = "0.9rem"
-    } else if(Number(val) == 9){
-        elm = document.getElementById(selectedQte.id)
-        elm.style.paddingLeft  = "0.3rem";
-        elm.style.fontSize = "1rem"
-    }
-})
-
 const url_reportIndex: string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
 // const url_local:string = "//127.0.0.1:8002"
@@ -830,6 +816,20 @@ const show_suggest = (e)=>{
     stage_redu.value = 3
     clClean.value = false
 }
+
+watch(()=>selectedQte.val, (val)=>{
+    let elm = ''
+    console.log("Do smething")
+    if (Number(val) > 9){
+        elm = document.getElementById(selectedQte.id)
+        elm.style.paddingLeft  = "0";
+        elm.style.fontSize = "0.9rem"
+    } else if(Number(val) == 9){
+        elm = document.getElementById(selectedQte.id)
+        elm.style.paddingLeft  = "0.3rem";
+        elm.style.fontSize = "1rem"
+    }
+})
 watch(reportCompileImitiSet, (value)=>{
     if (value.detail == 'ok'){
         listImiti_update.value += 1
