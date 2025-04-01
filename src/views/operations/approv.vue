@@ -31,14 +31,18 @@
                 </select>
             </span>
             <br> <br>
-            <label>Forme du medicament</label>
+            <label>Forme du produit</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
             <select v-model="forme_med" style="background-color: white" placeholder="Type" value="Ovule">
                 <option>Cp</option>
                 <option>Gel</option>
+                <option>Gélule</option>
                 <option>Ovule</option>
                 <option>Sirop</option>
                 <option>Inj</option>
+                <option>Suppo</option>
+                <option>Sachet</option>
+                <option>Autre</option>
             </select>
             <br> <br>
             <input v-model="umuti_quantite_initial" type="number" placeholder="Quantité">
