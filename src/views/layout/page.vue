@@ -318,6 +318,21 @@ const rate_assure: Ref<number> = ref(0)
 const suggest:Ref<string> = ref("Votre assureur")
 const classes:Ref<Medi[]> = ref([])
 
+const selectedQte = reactive({
+    'id': '',
+    'val': 0
+})
+
+watch(()=>selectedQte.val, (val, prevVal)=>{
+    let elm = ''
+    if (Number(val) > 9){
+        elm = document.getElementById(selectedQte.id)
+        elm.style.paddingLeft  = "0";
+        elm.style.fontSize = "0.9rem"
+    } else if(Number(val) == 9){
+        console.log("It is nine, but " + prevVal)
+    }
+})
 
 const url_reportIndex: string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
@@ -569,10 +584,11 @@ const incrementQte = (value) => {
     let jov = (activeLot.value[code]).length
     if (activeLot.value[code].qte > activeLot.value[code].to_panier) {
         activeLot.value[code].to_panier += 1
-        console.log("Yes, incrementing")
-    } else {
-        console.log("No, incrementing")
-    }
+    } 
+    selectedQte.val = Number(activeLot.value[code].to_panier)
+    if (Number(activeLot.value[code].to_panier) > 9){
+        selectedQte.id = code_s
+    } 
 }
 const decrementQte = (value) => {
     const code_s = value.target.nextSibling.nextSibling.getAttribute('id')
