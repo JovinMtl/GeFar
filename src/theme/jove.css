@@ -590,12 +590,14 @@ nav > button:active{
     color: rgb(5, 252, 5);
 }
 .loInp2{
-    padding-top: 18px;
+    padding-top: 15px;
     padding-bottom: 10px;
 }
 .loFooter{
     color: white;
-    transform: translate(0%, 700%);
+    position: relative;
+    /* transform: translate(0%, 650%); */
+    top: 20%;
     font-size: 0.8rem;
     font-weight: 800;
 }

@@ -11,7 +11,7 @@
                     </div>
                     <div class="username">
                         <label class="se" for="input">Mot de Passe</label> <br>
-                        <!-- <input id="el3" v-model="password" class="inpEl bg-l" 
+                        <!-- <input id="el3" v-model="tPassword" class="inpEl bg-l" 
                             type="password" autocomplete="off"> -->
                             <input id="el2" v-model="mPassword" 
                                 class="loInp loInp2" 
@@ -63,7 +63,7 @@ const getPassword = (e)=>{
         maskedPassword.pop()
     } else if (k.length == 1){
         truePassword.push(k)
-        maskedPassword.push('*')
+        maskedPassword.push('•')
     }
     setTimeout(()=>{
         mPassword.value = maskedPassword.join('')
@@ -92,7 +92,7 @@ const login_hook = () => {
 
     axios.post(`${baseURL}/${prefix}`, {
         "username": username.value,
-        "password": password.value
+        "password": tPassword.value
     }
     ).then((response) => {
         setUsername(username.value)
