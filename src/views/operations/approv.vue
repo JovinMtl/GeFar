@@ -8,7 +8,7 @@
                 <ion-icon :src="fileTray" @click="openApproFile"></ion-icon>
             </a>
             <br> <br>
-            <input v-model="umutiName" type="text" placeholder="Nom du medicament">
+            <input v-model="umutiName" type="text" placeholder="Nom du produit">
             <br>
             <ul style="text-align: right;" v-if="!selected_search">
                 <button class="btnResearch" v-for="(umuti, index) in imiti_result" 
@@ -41,12 +41,12 @@
                 <option>Inj</option>
             </select>
             <br> <br>
-            <input v-model="umuti_quantite_initial" type="number" placeholder="Quantite Initial">
+            <input v-model="umuti_quantite_initial" type="number" placeholder="Quantité">
             <br> <br>
             <input v-model="umuti_prix_achat" type="number" placeholder="P.A: (Unité sortant)">
             <br> <br>
-            <input v-model="umuti_prix_vente" type="number" placeholder="P.V : (Unité sortant)">
-            <br> <br>
+            <!-- <input v-model="umuti_prix_vente" type="number" placeholder="P.V : (Unité sortant)">
+            <br> <br> -->
             <label>Date d'exp. </label> 
             <input v-model="umuti_date_exp" type="date" placeholder="Nom du medicament">
             
@@ -75,7 +75,8 @@
             <hr> 
             <label>Px. V </label> 
             <input v-model="selected_search.prix_vente" type="number" 
-                placeholder="P.V: (Unité sortant)">
+                placeholder="P.V: (Unité sortant)" 
+                style="color:blue; font-family: Sen;" disabled>
             <hr>
             <label>Date d'exp. </label> 
             <!-- <span style="margin-right: .1rem;">&nbsp;</span> -->
@@ -103,7 +104,7 @@ const imiti_result = ref([])
 const selected_search = ref(null)
 const search_approve = reactive({})
 const umuti_prix_achat = ref(null)
-const umuti_prix_vente = ref(null)
+const umuti_prix_vente = ref(1)
 const umuti_quantite_initial = ref(null)
 const umuti_date_exp = ref(null)
 const date_exp = ref(null)
