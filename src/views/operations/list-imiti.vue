@@ -5,7 +5,7 @@
             <a :title="umuti.nom_med" href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
                 <div :id="index" class="umuti">
                     <div class="umutiTitle">
-                        {{ (umuti.nom_med).slice(0, 7) }}<span v-show="(umuti.nom_med).length > 8">...</span>
+                        {{ useCapitalLetter((umuti.nom_med).slice(0, 7)) }}<span v-show="(umuti.nom_med).length > 8">...</span>
 
                     </div>
 
@@ -23,6 +23,7 @@ import {
 import { UmutiSet } from '../layout/types'
 import { useUserStore } from '../../store/user.js'
 import { baseURL } from '../../store/host'
+import { useCapitalLetter } from '../hooks/useReadable.js'
 export default defineComponent({
     setup(_, { emit }) {
         const data = reactive({})
@@ -824,6 +825,7 @@ export default defineComponent({
             imiti, imitiset,
             umutiOpen,
             updateImitiSet,
+            useCapitalLetter
         }
     },
 })
