@@ -3,6 +3,12 @@
     src: url(../assets/fonts/RollingBeat_PersonalUse.woff) format('woff'),
          url(../assets/fonts/RollingBeat_PersonalUse.woff) format('woff2');
 }
+@font-face {
+    font-family: Sen;
+    src: url(../assets/fonts/Sen-Bold.woff) format('woff'),
+         url(../assets/fonts/Sen-Bold.woff2) format('woff2');
+}
+
 
 html, body {
     background-image: url(../../public/Background/bck5.jpeg);
