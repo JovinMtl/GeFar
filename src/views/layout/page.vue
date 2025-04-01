@@ -83,21 +83,23 @@
                             <div class="umutiLot">
                                 <!--  :class="lot.qte == 0? 'hide':''"   bellow -->
                                 <div v-for="(lot, index) in activeLot" class="lote" :class="lot.qte == 0? 'hide':''"  :key="index">
-                                    <div class="head" style="padding-top: 3px; font-size: .88rem">
+                                    <div class="head" style="padding-top: 3px; font-size: .88rem; ">
                                         {{ lot.qte }} <br>
-                                        {{ (String(lot.date)).slice(4, 8) }} {{ (String(lot.date)).slice(11, 16) }}
+                                       <span class="se c-b"> {{ (String(lot.date)).slice(4, 8) }} {{ (String(lot.date)).slice(11, 16) }} </span>
                                     </div>
                                     <!-- Here should not display Med with qte zero -->
                                     <div class="sub" v-if="today < lot.date">
-                                        <ion-icon :src="removeCircleOutline" @click="decrementQte"
-                                            style="font-size: large;"></ion-icon>
+                                        <!-- <ion-icon :src="removeCircleOutline" @click="decrementQte"
+                                            style="font-size: large;"></ion-icon> -->
+                                            <button class="paB"  @click="decrementQte">--</button>
                                         <span style="margin-right: .1rem;">&nbsp;</span>
                                         <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier"
-                                            :id="'q' + index"
-                                            style="background-color: rgba(14, 14, 211, 0.384); width: 25px; height: 25px; position: relative; top: -4px; left: 1px" />
+                                            :id="'q' + index" class="se"
+                                            style="background-color: rgba(14, 14, 211, 0.384); width: 25px; height: 25px; position: relative; top: -4px; left: 1px;padding: 0.3rem; font-size: 1rem;" />
                                         <span style="margin-right: .1rem;">&nbsp;</span>
-                                        <ion-icon :src="addCircleOutline" @click="incrementQte"
-                                            style="font-size: large;"></ion-icon>
+                                        <!-- <ion-icon :src="addCircleOutline" @click="incrementQte"
+                                            style="font-size: large;"></ion-icon> -->
+                                        <button class="paB" @click="incrementQte">+</button>
                                     </div>
                                     <div v-else class="sub red">
                                         déjà perimé
@@ -561,7 +563,8 @@ const changeQte = (value) => {
 const incrementQte = (value) => {
     // THis function is called when pressing the '+' button on lot
 
-    const code_s = value.target.previousSibling.previousSibling.getAttribute('id')
+    // const code_s = value.target.previousSibling.previousSibling.getAttribute('id')
+    const code_s = value.target.previousSibling.previousSibling.previousSibling.getAttribute('id')
     const code = Number(code_s.slice(1))
     let jov = (activeLot.value[code]).length
     if (activeLot.value[code].qte > activeLot.value[code].to_panier) {

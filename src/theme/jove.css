@@ -562,3 +562,15 @@ nav > button{
 nav > button:active{
     scale: 0.7;
 }
+.se{
+    font-family: Sen;
+}
+.paB{
+    padding: 0.3rem 0.4rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    transform: translate(0, -15%);
+}
+.paB:active{
+    scale: 0.8;
+}
