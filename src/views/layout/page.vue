@@ -982,7 +982,7 @@ provide('familly_displ', openedFamilly)
     display: flex;
     position: absolute;
     left: 53vw;
-    top: 90.5vh;
+    top: 90.8vh;
     font-size: 0.9rem;
     font-weight: 800;
     color: black;
@@ -994,9 +994,9 @@ provide('familly_displ', openedFamilly)
     /* display: flex; */
     position: absolute;
     left: 5vw;
-    top: 90.5vh;
+    top: 90.8vh;
     font-size: normal;
-    color: black;
+    color: rgb(46, 45, 45);
     font-size: 0.8rem;
     font-weight: 800;
 }
