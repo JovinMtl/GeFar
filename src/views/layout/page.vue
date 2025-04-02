@@ -60,6 +60,7 @@
                         <div class="fami-1"
                             v-for="(classe, index) in classes"
                             :key="index" :id="'s'+index"
+                            :title="useCapitalLetter(classe.classe_med)"
                             @click="openFamilly">{{ useCapitalLetter((classe.classe_med).slice(0, 12)) }}
                             <span v-show="(classe.classe_med).length > 12" class="c-b-2">...</span>
                         </div>
