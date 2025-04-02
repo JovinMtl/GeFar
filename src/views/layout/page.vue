@@ -196,6 +196,9 @@
                             {{ useCapitalLetter((String(getUsername())).slice(0, 10)) }}
                         </a>
                     </div>
+                    <div class="menuHau addr" style="">
+                            13è Av, Q. Twinyoni, Kamenge. Ntahangwa - Bujumbura
+                    </div>
                     <div class="menuHau sync">
                         <a title="ku Mwanya (Sync)" class="c-b">
                             <fluent-cloud-sync28-regular @click="askIndex">
@@ -982,6 +985,19 @@ provide('familly_displ', openedFamilly)
     top: 90.5vh;
     font-size: normal;
     color: black;
+}
+.addr {
+    background-color: transparent;
+    height: 20px;
+    /* width: 150px; */
+    /* display: flex; */
+    position: absolute;
+    left: 5vw;
+    top: 90.5vh;
+    font-size: normal;
+    color: black;
+    font-size: 0.8rem;
+    font-weight: 800;
 }
 .sync {
     background-color: transparent;
