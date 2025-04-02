@@ -8,11 +8,6 @@
     src: url(../assets/fonts/Sen-Bold.woff) format('woff'),
          url(../assets/fonts/Sen-Bold.woff2) format('woff2');
 }
-@font-face {
-    font-family: Cousine;
-    src: url(../assets/fonts/Cousine-Bold.woff2) format('woff2'),
-         url(../assets/fonts/Cousine-Bold.woff) format('woff');
-}
 
 
 html, body {

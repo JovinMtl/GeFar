@@ -243,7 +243,6 @@ reste.value = useReadable(total.value - assure_value)
         font-size: .6rem;
         font-family: monospace;
         font-weight: 700;
-        // font-family: Cousine;
 
 
         .factuHead{
