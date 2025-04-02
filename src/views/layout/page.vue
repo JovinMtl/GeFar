@@ -983,7 +983,8 @@ provide('familly_displ', openedFamilly)
     position: absolute;
     left: 53vw;
     top: 90.5vh;
-    font-size: normal;
+    font-size: 0.9rem;
+    font-weight: 800;
     color: black;
 }
 .addr {
