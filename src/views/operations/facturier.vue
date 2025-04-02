@@ -8,14 +8,16 @@
                     <div class="number"></div>
                     <div class="nom_med">Médicament</div>
                     <div class="qte">Qte</div>
+                    <div class="qte"></div>
                     <div class="Pu">P.U</div>
                     <div class="ptotal">P.Total</div>
                 </div>
 
                 <div class="content2" v-for="(umuti, index) in props.commandePatient[0]">
                     <div class="number">{{ index + 1 }}.</div>
-                    <div class="nom_med">{{ umuti.nom_med }}</div>
+                    <div class="nom_med">{{ (String(umuti.nom_med)).slice(0,18) }}</div>
                     <div class="qte">{{ umuti.qte }}</div>
+                    <div class="qte"></div>
                     <div class="Pu">{{ umuti.prix_vente }}</div>
                     <div class="ptotal">{{ umuti.qte * umuti.prix_vente }} Fbu</div>
                 </div>
@@ -24,6 +26,7 @@
                     <div class="number"></div>
                     <div class="nom_med">TOTAL</div>
                     <div class="qte">--</div>
+                    <div class="qte"></div>
                     <div class="Pu">--</div>
                     <div class="ptotal">
                         {{ (String(props.commandePatient[1].value)).replaceAll("\"",'') }} Fbu
@@ -33,6 +36,7 @@
                     <div class="number"></div>
                     <div class="nom_med">ASSUREUR: {{ props.assureur }}  ({{ props.assure_rate }} %)</div>
                     <div class="qte">--</div>
+                    <div class="qte"></div>
                     <div class="Pu">--</div>
                     <div class="ptotal">{{ assured }} Fbu</div>
                 </div>
@@ -40,20 +44,24 @@
                     <div class="number"></div>
                     <div class="nom_med">NET. à Payer</div>
                     <div class="qte">--</div>
+                    <div class="qte"></div>
                     <div class="Pu">--</div>
                     <div class="ptotal">{{ reste }} Fbu</div>
                 </div>
             </div>
             <div class="authorizer">
-                Servi par: {{ username }} <hr>
+                Servi par: {{ username }} <br>
                 Date     : {{ new Date().toISOString().substring(0,10) }}
             </div>
             <div class="factuFooter">
-                 <div class="conf">Pharmacie UBUZIMA.  NIF: 40000230011,  Tel: +257 79 568 767</div>
+                 <div class="conf">
+                    Pharmacie UBUZIMA.  NIF: 40000230011 <br>  
+                   Tel: +257 <b>79 568 767</b>
+                    </div>
                  <div class="address">Kamenge, 13è Av. Bujumbura - Burundi</div>
             </div>
     </div>
-    <div class="modal" @click.stop="console.log('You want the modal')">
+    <div id="modalElm" class="modal" @click.stop="console.log('You want the modal')">
         <div class="modalHeader">
            <h1>Opération réussie. </h1> 
         </div>
@@ -212,14 +220,20 @@ reste.value = useReadable(total.value - assure_value)
 
 @media only print {
     
+   // @page{
+    //   size: 8cm 10cm
+   //  }
     // @page{
-    //     size: 8cm 10cm
+     //    size: 72mm 100mm;
     // }
-    // @page{
-    //     size: 72mm 297mn;
-    // }
+    
+    *{
+        padding: 0;
+        margin: 0;
+    }
     .modal{
         display: none;
+        position: absolute;
     }
     .factureContainer{
         position: absolute;
@@ -227,8 +241,8 @@ reste.value = useReadable(total.value - assure_value)
         height: 100%;
         background-color: white;
         font-size: .6rem;
-        font-family: monospace;
-        padding-top: 15px;
+        // font-family: monospace;
+        font-family: Flexi;
 
 
         .factuHead{
@@ -239,13 +253,13 @@ reste.value = useReadable(total.value - assure_value)
             align-content: center;
             // margin: 25px 0px;
             font-size: 1rem;
-            border-bottom: 2px solid gray;
+            //border-bottom: 2px solid #000;
         }
         .factuBody{
             display: block;
             width: 100%;
             height: 70%;
-            padding: 15px;
+            padding: 5px;
             // background: blue;
 
             .content{

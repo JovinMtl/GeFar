@@ -8,6 +8,11 @@
     src: url(../assets/fonts/Sen-Bold.woff) format('woff'),
          url(../assets/fonts/Sen-Bold.woff2) format('woff2');
 }
+@font-face {
+    font-family: Flexi;
+    src: url(../assets/fonts/Flexi_IBM_VGA_True_437.woff) format('woff'),
+         url(../assets/fonts/Flexi_IBM_VGA_True_437.woff2) format('woff2');
+}
 
 
 html, body {
