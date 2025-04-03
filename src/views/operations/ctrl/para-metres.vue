@@ -11,7 +11,6 @@
             <button @click="selectSetting('ut')">Utilisateurs</button>
          </nav>
          <section>
-            <h3>The title here</h3>
             <div>
                 <!-- <component :is="actualComponent"></component> -->
 
@@ -38,6 +37,5 @@
 
     const selectSetting = (opt:string)=>{
         actualComponent.value = String(opt)
-        console.log("The actualComponent is: " + actualComponent.value)
     }
 </script>
