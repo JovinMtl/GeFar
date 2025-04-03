@@ -13,7 +13,8 @@
          <section>
             <h3>The title here</h3>
             <div>
-                The Settings here
+                <!-- The Settings here -->
+                 should be a component
             </div>
          </section>
                             
