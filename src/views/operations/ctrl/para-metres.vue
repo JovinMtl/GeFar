@@ -14,7 +14,7 @@
             <h3>The title here</h3>
             <div>
                 <!-- The Settings here -->
-                 should be a component
+                 <!-- iscompon -->
             </div>
          </section>
                             
@@ -22,5 +22,11 @@
 </template>
 
 <script setup lang="ts">
-    // import { ref } from 'vue'
+    import { ref } from 'vue'
+    import prInteret from './params/pr-interet.vue';
+    import tauxChange from './params/taux-change.vue';
+    import clssThera from './params/clss-thera.vue';
+    import assuRances from './params/assu-rances.vue';
+
+    const actualComponent = ref(null)
 </script>
