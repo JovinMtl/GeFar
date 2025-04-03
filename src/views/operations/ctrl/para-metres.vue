@@ -4,17 +4,22 @@
         <!-- Different settings will appear here
          as individual components -->
          <nav>
-            <button>Principe Intéret</button>
-            <button>Taux de Change</button>
-            <button>Classes Thérapeutiques</button>
-            <button>Assurances</button>
-            <button>Utilisateurs</button>
+            <button @click="selectSetting('prInteret')">Principe Intéret</button>
+            <button @click="selectSetting('tauxChange')">Taux de Change</button>
+            <button @click="selectSetting('clssThera')">Classes Thérapeutiques</button>
+            <button @click="selectSetting('assuRances')">Assurances</button>
+            <button @click="selectSetting('ut')">Utilisateurs</button>
          </nav>
          <section>
             <h3>The title here</h3>
             <div>
-                <!-- The Settings here -->
-                 <!-- iscompon -->
+                <!-- <component :is="actualComponent"></component> -->
+
+                <prInteret v-if="actualComponent=='prInteret'"/>
+                <tauxChange v-if="actualComponent=='tauxChange'" />
+                <clssThera v-if="actualComponent=='clssThera'" />
+                <assuRances v-if="actualComponent=='assuRances'" />
+                <utiliSateurs v-if="actualComponent=='utiliSateurs'" />
             </div>
          </section>
                             
@@ -27,6 +32,12 @@
     import tauxChange from './params/taux-change.vue';
     import clssThera from './params/clss-thera.vue';
     import assuRances from './params/assu-rances.vue';
+    import utiliSateurs from './params/utili-sateurs.vue';
 
-    const actualComponent = ref(null)
+    const actualComponent = ref<string|any>(null)
+
+    const selectSetting = (opt:string)=>{
+        actualComponent.value = String(opt)
+        console.log("The actualComponent is: " + actualComponent.value)
+    }
 </script>
