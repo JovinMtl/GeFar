@@ -10,6 +10,12 @@
             <button>Assurances</button>
             <button>Utilisateurs</button>
          </nav>
+         <section>
+            <h3>The title here</h3>
+            <div>
+                The Settings here
+            </div>
+         </section>
                             
     </div>
 </template>

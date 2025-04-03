@@ -340,7 +340,7 @@ const [rep_update, kurungika] = useKurungika(bothData.value, url_syncFromLocal)
 
 const url_sell: string = "api/out/sell/"
 const [sell_report, toSell] = useKurungika(panier_api, url_sell)
-const { getAccessToken, getUsername, setUsername,
+const { getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
 

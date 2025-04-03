@@ -602,3 +602,8 @@ nav > button:active{
     font-size: 0.8rem;
     font-weight: 800;
 }
+div > section {
+    border: 1px dashed red;
+    transform: translate(0, 50%);
+    text-align: center;
+}
