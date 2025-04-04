@@ -390,7 +390,7 @@ html, body {
 .contentElement3{
     width: 5%;
     margin: 0 3px;
-    justify-content: right;
+    /* justify-content: right; */
 }
 .contentElement4{
     width: 12%;
