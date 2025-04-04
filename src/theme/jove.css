@@ -603,7 +603,38 @@ nav > button:active{
     font-weight: 800;
 }
 div > section {
-    border: 1px dashed red;
+    border: 3px dashed transparent;
+    border-radius: 12px;
     transform: translate(0, 50%);
     text-align: center;
+    backdrop-filter: blur(12px);
+    background-color: rgb(82, 71, 71);
+    background: linear-gradient(120deg, rgb(0, 183, 255), lime);
+    background: linear-gradient(120deg, red, blue);
+}
+.co-inte{
+    display: flex;
+    justify-content: center;
+}
+.co-inte > div{
+    margin: 0 15px;
+    padding: 1rem;
+}
+.co-inte > div >input{
+    padding: 0.5rem;
+    /* font-family: Sen; */
+}
+.co-inte > div:nth-child(2) > input{
+    background-color: white;
+    /* background-color: lime; */
+    border-color: transparent;
+}
+.co-inte > div:nth-child(2) > input:focus{
+    border-color: transparent;
+    color: blue;
+}
+.co-inte > div:nth-child(3) > input{
+    /* background: linear-gradient(to right, red, blue); */
+    background-color: black;
+    color: white;
 }
