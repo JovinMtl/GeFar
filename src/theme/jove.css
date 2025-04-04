@@ -618,33 +618,48 @@ div > section {
 }
 #paraContainer::before {
     content: '';
-    /* background-color: grey; */
     width: 100%;
     height: 100%;
     position: absolute;
-    transform: translate(-51%, -102%);
     transform: translate(-50%, 0%);
-    /* scale: 0.98; */
     z-index: -2;
     border-radius: 12px;
-    /* backdrop-filter: blur(22px);
-    background: linear-gradient(120deg, red, blue);
-    background: linear-gradient(120deg, rgba(255, 0, 0, 0.459), rgba(0, 0, 255, 0.473)); */
-    --s: 39px; 
-        --c1: #6b5344;
-        --c1: #286ae6;
-        --c1: rgba(0, 0, 0, 0.274);
-        --c2: #f8ecc9;
-        --c2: rgba(255, 255, 255, 0.199);
-        
-        --_l: #0000 46%,var(--c1) 47% 53%,#0000 54%;
-        background:
-          radial-gradient(100% 100% at 100% 100%,var(--_l)) var(--s) var(--s),
-          radial-gradient(100% 100% at 0    0   ,var(--_l)) var(--s) var(--s),
-          radial-gradient(100% 100%,#0000 22%,var(--c1) 23% 29%, #0000 30% 34%,var(--c1) 35% 41%,#0000 42%),
-          var(--c2);
-        background-size: calc(var(--s)*2) calc(var(--s)*2);
 }
+
+#paraContainer::before{
+    --s: 39px; 
+    --c1: #6b53445e;
+    --c1: #286ae6;
+    --c1: #3a3634ea;
+    --c2: #f8ecc917;
+    --c2: rgba(255, 255, 255, 0.123);
+    
+    --_l: #0000 46%,var(--c1) 47% 53%,#0000 54%;
+    background:
+      radial-gradient(100% 100% at 100% 100%,var(--_l)) var(--s) var(--s),
+      radial-gradient(100% 100% at 0    0   ,var(--_l)) var(--s) var(--s),
+      radial-gradient(100% 100%,#0000 22%,var(--c1) 23% 29%, #0000 30% 34%,var(--c1) 35% 41%,#0000 42%),
+      var(--c2);
+    background-size: calc(var(--s)*2) calc(var(--s)*2);
+}
+  #paraContainer::before {
+    --s: 5px; /* control the size*/
+    --c1: #c7956d;
+    --c1: black;
+    --c2: #5e435200;
+    
+    --c:#0000 46.46%,var(--c1) 0 53.53%,#0000 0;
+    --d:calc(10*var(--s)) calc(10*var(--s));
+    --g:/var(--d) conic-gradient(at 40% 40%,#0000 75%,var(--c1) 0);
+    background:
+      conic-gradient(at 40% 40%,#0000 75%,var(--c2) 0) 
+       calc(9*var(--s)) calc(9*var(--s))/
+       calc(5*var(--s)) calc(5*var(--s)),
+      calc(8*var(--s)) calc(8*var(--s)) var(--g),
+      calc(3*var(--s)) calc(3*var(--s)) var(--g),
+      linear-gradient( 45deg,var(--c)) 0 0/var(--d),
+      linear-gradient(-45deg,var(--c)) 0 0/var(--d) var(--c2);
+  }
 .co-inte{
     display: flex;
     justify-content: center;
@@ -655,6 +670,10 @@ div > section {
 }
 .co-inte > div >input{
     padding: 0.5rem;
+    /* font-family: Sen; */
+}
+.co-inte > div >label{
+    color: white;
     /* font-family: Sen; */
 }
 .co-inte > div:nth-child(2) > input{
