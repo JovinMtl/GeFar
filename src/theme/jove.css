@@ -608,9 +608,42 @@ div > section {
     transform: translate(0, 50%);
     text-align: center;
     backdrop-filter: blur(12px);
-    background-color: rgb(82, 71, 71);
-    background: linear-gradient(120deg, rgb(0, 183, 255), lime);
+        
+
+        background: linear-gradient(120deg, rgba(255, 0, 0, 0.459), rgba(0, 0, 255, 0.473));
+        background: linear-gradient(120deg, red, blue);
+        
+        
+        
+}
+#paraContainer::before {
+    content: '';
+    /* background-color: grey; */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translate(-51%, -102%);
+    transform: translate(-50%, 0%);
+    /* scale: 0.98; */
+    z-index: -2;
+    border-radius: 12px;
+    /* backdrop-filter: blur(22px);
     background: linear-gradient(120deg, red, blue);
+    background: linear-gradient(120deg, rgba(255, 0, 0, 0.459), rgba(0, 0, 255, 0.473)); */
+    --s: 39px; 
+        --c1: #6b5344;
+        --c1: #286ae6;
+        --c1: rgba(0, 0, 0, 0.274);
+        --c2: #f8ecc9;
+        --c2: rgba(255, 255, 255, 0.199);
+        
+        --_l: #0000 46%,var(--c1) 47% 53%,#0000 54%;
+        background:
+          radial-gradient(100% 100% at 100% 100%,var(--_l)) var(--s) var(--s),
+          radial-gradient(100% 100% at 0    0   ,var(--_l)) var(--s) var(--s),
+          radial-gradient(100% 100%,#0000 22%,var(--c1) 23% 29%, #0000 30% 34%,var(--c1) 35% 41%,#0000 42%),
+          var(--c2);
+        background-size: calc(var(--s)*2) calc(var(--s)*2);
 }
 .co-inte{
     display: flex;
@@ -638,3 +671,10 @@ div > section {
     background-color: black;
     color: white;
 }
+
+/* #paraContainer::after{
+    content: "";
+    width: max-content;
+    background-color: orange;
+    z-index: 1;
+} */

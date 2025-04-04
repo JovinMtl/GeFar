@@ -10,7 +10,7 @@
             <button @click="selectSetting('assuRances')">Assurances</button>
             <button @click="selectSetting('ut')">Utilisateurs</button>
          </nav>
-         <section>
+         <section  id="paraContainer" >
             <div>
                 <!-- <component :is="actualComponent"></component> -->
 
