@@ -682,15 +682,20 @@ div > section {
     background-color: black;
     color: white;
 }
-.okContainer{
+.sta{
     position: absolute;
     width: 5%;
     height: 30%;
     border-radius: 100px;
-    background-color: rgb(59, 218, 59);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
     color: white;
+}
+.okContainer{
+    background-color: rgb(59, 218, 59);
+}
+.nOContainer{
+    background-color: red;
 }
