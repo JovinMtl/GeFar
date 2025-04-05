@@ -1,5 +1,5 @@
 <template>
-    <div class="okContainer">
+    <div class="sta okContainer">
         Ok
     </div>
 </template>
