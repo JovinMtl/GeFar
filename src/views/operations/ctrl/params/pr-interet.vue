@@ -20,7 +20,7 @@
             </div>
             <div>
                 <oK v-show="report_setPrInterest?.status"/>
-                <!-- <oK /> -->
+                <nO v-show="falseInput"/>
             </div>
             
             
@@ -33,9 +33,11 @@
     import { ref, watch } from 'vue';
     import joveLoader from '../../../layout/auxiliare/jove-loader.vue';
     import oK from './o-k.vue';
+    import nO from './n-o.vue';
     import { useKurungika, useKuvoma } from '../../../hooks/kuvoma';
 
     const newPrInterest = ref<number|any>()
+    const falseInput = ref<boolean>(false)
     const url_getPrInterest = "api/gOps/getPrInterest/"
     const [ actual_prInterest, askPrInterest] = useKuvoma(url_getPrInterest)
 
@@ -43,14 +45,16 @@
     const [report_setPrInterest, setPrInterestComposable] = useKurungika(newPrInterest, url_setPrInterest)
 
     const setPrInterest = ()=>{
+        falseInput.value = false
         if (newPrInterest.value >10 && newPrInterest.value < 100){
             newPrInterest.value = 1 + (newPrInterest.value / 100)
-            console.log("Les choses ne sont pas bonnes.")
         }
         if (newPrInterest.value > 0 && newPrInterest.value <2){
             console.log("Les choses sont bonnes.")
             setPrInterestComposable()
-        } 
+        } else{
+            falseInput.value = true;
+        }
     }
 
 
