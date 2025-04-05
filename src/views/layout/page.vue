@@ -326,6 +326,7 @@ const selectedQte = reactive({
     'id': '',
     'val': 0
 })
+const imperfectIndex:Ref<number> = ref(0)
 
 const url_reportIndex: string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
@@ -898,6 +899,16 @@ watch(sell_report, value => {
         setTimeout(()=>{
             notifStatus.value = false
         }, 2500)
+    }
+    else if (value.imperfect){
+        // should get the starting index of imperfection
+        // to be removed on Client Panier,
+        // and show on facturier modal something like 3/5
+        server_process.value = false;
+        imperfectIndex.value = value.imperfect;
+        (panier_client.value).splice(imperfectIndex.value)
+        numero_facture.value = value.num_facture;
+        show_facture.value = true;
     }
     else if (value.sold){
         // Do something when the status response is OK

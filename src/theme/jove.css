@@ -597,7 +597,6 @@ nav > button:active{
 .loFooter{
     color: white;
     position: relative;
-    /* transform: translate(0%, 650%); */
     top: 20%;
     font-size: 0.8rem;
     font-weight: 800;
@@ -608,13 +607,8 @@ div > section {
     transform: translate(0, 50%);
     text-align: center;
     backdrop-filter: blur(12px);
-        
-
-        background: linear-gradient(120deg, rgba(255, 0, 0, 0.459), rgba(0, 0, 255, 0.473));
-        background: linear-gradient(120deg, red, blue);
-        
-        
-        
+    background: linear-gradient(120deg, rgba(255, 0, 0, 0.459), rgba(0, 0, 255, 0.473));
+    background: linear-gradient(120deg, red, blue);      
 }
 #paraContainer::before {
     content: '';
@@ -670,11 +664,9 @@ div > section {
 }
 .co-inte > div >input{
     padding: 0.5rem;
-    /* font-family: Sen; */
 }
 .co-inte > div >label{
     color: white;
-    /* font-family: Sen; */
 }
 .co-inte > div:nth-child(2) > input{
     background-color: white;
@@ -691,9 +683,3 @@ div > section {
     color: white;
 }
 
-/* #paraContainer::after{
-    content: "";
-    width: max-content;
-    background-color: orange;
-    z-index: 1;
-} */
