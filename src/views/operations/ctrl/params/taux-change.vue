@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h3 style="color: white;">Vous pouvez mettre à jour votre principe d'Intéret.</h3>
+        <h3 style="color: white;">Vous pouvez actualiser le taux de change.</h3>
         <div class="co-inte">
             <div>
-                <input style="text-align: center; font-weight: 800;" :value="JSON.stringify(actual_prInterest?.pr_interest)" disabled><br>
+                <input style="text-align: center; font-weight: 800;" :value="JSON.stringify(actual_prInterest?.txChange)" disabled><br>
                 <label>Actuel</label>
             </div>
             <div>
@@ -38,18 +38,18 @@
 
     const newPrInterest = ref<number|any>()
     const falseInput = ref<boolean>(false)
-    const url_getPrInterest = "api/gOps/getPrInterest/"
+    const url_getPrInterest = "api/gOps/getTxChange/"
     const [ actual_prInterest, askPrInterest] = useKuvoma(url_getPrInterest)
 
-    const url_setPrInterest = "api/gOps/setPrInterest/"
+    const url_setPrInterest = "api/gOps/setTxChange/"
     const [report_setPrInterest, setPrInterestComposable] = useKurungika(newPrInterest, url_setPrInterest)
 
     const setPrInterest = ()=>{
         falseInput.value = false
-        if (newPrInterest.value >10 && newPrInterest.value < 100){
-            newPrInterest.value = 1 + (newPrInterest.value / 100)
-        }
-        if (newPrInterest.value > 0 && newPrInterest.value <2){
+        // if (newPrInterest.value >10 && newPrInterest.value < 100){
+        //     newPrInterest.value = 1 + (newPrInterest.value / 100)
+        // }
+        if (newPrInterest.value > 1000 && newPrInterest.value < 10000){
             console.log("Les choses sont bonnes.")
             setPrInterestComposable()
         } else{
