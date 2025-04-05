@@ -19,8 +19,8 @@
                 
             </div>
             <div>
-                <oK />
-                <oK />
+                <oK v-show="report_setPrInterest?.status"/>
+                <!-- <oK /> -->
             </div>
             
             
