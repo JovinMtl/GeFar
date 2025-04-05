@@ -897,13 +897,7 @@ watch(last_indexes, (value) => {
     should_sync.value += 1
 })
 watch(sell_report, value => {
-    console.warn("Begin: " + server_process.value + " at" + JSON.stringify(sell_report.value))
     server_process.value = true
-    console.warn("Begin2: " + server_process.value)
-    console.log("Sell_report : " + JSON.stringify(value) + ' or ' + value['imperfect'])
-    if (value['imperfect']){
-        console.log("There  is  imperfection. ")
-    }
     if (value.sold == "FailedBecauseAlreadyExist"){
         // notify the user to change the Numero du Bon
         message.value = "Operation echouée, car ce numero du Bon a été enregistré."
