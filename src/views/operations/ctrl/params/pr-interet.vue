@@ -3,7 +3,7 @@
         <h3 style="color: white;">Vous pouvez mettre à jour votre principe d'Intéret.</h3>
         <div class="co-inte">
             <div>
-                <input style="text-align: center; font-weight: 800;" :value="JSON.stringify(actual_prInterest.pr_interest)" disabled><br>
+                <input style="text-align: center; font-weight: 800;" :value="JSON.stringify(actual_prInterest?.pr_interest)" disabled><br>
                 <label>Actuel</label>
             </div>
             <div>
@@ -32,8 +32,20 @@
     const url_getPrInterest = "api/gOps/getPrInterest/"
     const [ actual_prInterest, askPrInterest] = useKuvoma(url_getPrInterest)
 
-    const url_setPrInterest = "api/"
-    const [report_setPrInterest, setPrInterest] = useKurungika(newPrInterest, url_setPrInterest)
+    const url_setPrInterest = "api/gOps/setPrInterest/"
+    const [report_setPrInterest, setPrInterestComposable] = useKurungika(newPrInterest, url_setPrInterest)
+
+    const setPrInterest = ()=>{
+        if (newPrInterest.value >10 && newPrInterest.value < 100){
+            newPrInterest.value = 1 + (newPrInterest.value / 100)
+            console.log("Les choses ne sont pas bonnes.")
+        }
+        if (newPrInterest.value > 0 && newPrInterest.value <2){
+            console.log("Les choses sont bonnes.")
+            setPrInterestComposable()
+        } 
+    }
+
 
     askPrInterest()
 
