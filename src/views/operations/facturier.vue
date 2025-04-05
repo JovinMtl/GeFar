@@ -63,7 +63,9 @@
     </div>
     <div id="modalElm" class="modal" @click.stop="console.log('You want the modal')">
         <div class="modalHeader">
-           <h1>Opération réussie. </h1> 
+           <h1>Opération réussie. 
+                <span v-if="props.imperfections[0]"> {{ props.imperfections[0] }} / {{ props.imperfections[1] }}</span>
+           </h1> 
         </div>
         <div class="modalBody">
             <span style="font-size: 1.375rem; font-weight: 600">Voulez-vous Imprimer/Sauvegarder la facture ?</span> 
@@ -83,7 +85,8 @@ import useReadable from '../hooks/useReadable'
 const message = "facture"
 const props = defineProps([
     'commandePatient', 'num_facture', 
-    'username', 'assure_rate','assureur'
+    'username', 'assure_rate','assureur',
+    'imperfections'
 ])
 const emit = defineEmits(['factureActive'])
 

@@ -217,7 +217,8 @@
                                 :num_facture="numero_facture"
                                 :username="getUsername()"
                                 :assure_rate="rate_assure"
-                                :assureur="panier_api.client.assureur"></factu-rier>
+                                :assureur="panier_api.client.assureur"
+                                :imperfections="[imperfectIndex, formerFactureLength]"></factu-rier>
                         </div>
                     </teleport>
                     <teleport to="body">
@@ -327,6 +328,8 @@ const selectedQte = reactive({
     'val': 0
 })
 const imperfectIndex:Ref<number> = ref(0)
+const formerFactureLength:Ref<number> = ref(0)
+const actualFactureLength:Ref<number> = ref(0)
 
 const url_reportIndex: string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
@@ -422,6 +425,9 @@ const closeFacture = () => {
     panier_api.panier = []
     total_panier_client.value = computed(()=>{ return update_total_client()}) 
     total_panier_client_r.value =  computed(()=>{ return update_total_client(1)}) 
+    actualFactureLength.value = 0;
+    formerFactureLength.value = 0;
+    imperfectIndex.value = 0
     // Here should be initializing sell_report
     // console.log("The sell_report is: " + JSON.stringify(sell_report))
     // sell_report.value = {}
@@ -631,6 +637,7 @@ const removeUmuti = (obj) => {
     panier_api.panier.splice(code, 1)
     total_panier_client.value = computed(()=>{ return update_total_client()}) 
     total_panier_client_r.value = computed(()=>{ return update_total_client(1)}) 
+    actualFactureLength.value = (panier_client.value).length
 }
 const somme_to_panier = () => {
     // This functions evaluates the sum of quantity chosen in different lots on a same umuti.
@@ -774,6 +781,7 @@ const moveToPanier = (): number => {
         panier_api.panier.push(obj_API)
         total_panier_client.value = computed(()=>{ return update_total_client()}) 
         total_panier_client_r.value = computed(()=>{return update_total_client(1)}) 
+        actualFactureLength.value = (panier_client.value).length
         // REinitializing
         if (panier_client.value && panier_api.panier) {
             selectedUmuti.value = undefined
@@ -904,9 +912,11 @@ watch(sell_report, value => {
         // should get the starting index of imperfection
         // to be removed on Client Panier,
         // and show on facturier modal something like 3/5
+        console.log("Sorry that we have IMPERFECTION: " + JSON.stringify(value))
         server_process.value = false;
         imperfectIndex.value = value.imperfect;
-        (panier_client.value).splice(imperfectIndex.value)
+        formerFactureLength.value =  actualFactureLength.value;
+        (panier_client.value).splice(imperfectIndex.value);
         numero_facture.value = value.num_facture;
         show_facture.value = true;
     }
