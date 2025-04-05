@@ -16,7 +16,13 @@
                 <input type="button" 
                     @click="setPrInterest" 
                     value="Approuver"/>
+                
             </div>
+            <div>
+                <oK />
+                <oK />
+            </div>
+            
             
 
         </div>
@@ -26,6 +32,7 @@
 <script setup lang="ts">
     import { ref, watch } from 'vue';
     import joveLoader from '../../../layout/auxiliare/jove-loader.vue';
+    import oK from './o-k.vue';
     import { useKurungika, useKuvoma } from '../../../hooks/kuvoma';
 
     const newPrInterest = ref<number|any>()
