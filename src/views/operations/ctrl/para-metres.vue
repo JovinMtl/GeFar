@@ -6,7 +6,7 @@
          <nav>
             <button @click="selectSetting('prInteret')">Principe Intéret</button>
             <button @click="selectSetting('tauxChange')">Taux de Change</button>
-            <button @click="selectSetting('clssThera')">Classes Thérapeutiques</button>
+            <button @click="selectSetting('clssThera')">Prix de Vente</button>
             <button @click="selectSetting('assuRances')">Assurances</button>
             <button @click="selectSetting('ut')">Utilisateurs</button>
          </nav>
