@@ -218,7 +218,7 @@
                                 :username="getUsername()"
                                 :assure_rate="rate_assure"
                                 :assureur="panier_api.client.assureur"
-                                :imperfections="[imperfectIndex, formerFactureLength]"></factu-rier>
+                                :imperfections="[succededIndex, formerFactureLength]"></factu-rier>
                         </div>
                     </teleport>
                     <teleport to="body">
@@ -239,6 +239,7 @@ import {
     defineAsyncComponent,
     reactive, ref, shallowRef,
     watch, provide, computed,
+    toValue,
 } from 'vue'
 import type { Ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -327,7 +328,7 @@ const selectedQte = reactive({
     'id': '',
     'val': 0
 })
-const imperfectIndex:Ref<number> = ref(0)
+const succededIndex:Ref<number> = ref(0)
 const formerFactureLength:Ref<number> = ref(0)
 const actualFactureLength:Ref<number> = ref(0)
 
@@ -427,7 +428,7 @@ const closeFacture = () => {
     total_panier_client_r.value =  computed(()=>{ return update_total_client(1)}) 
     actualFactureLength.value = 0;
     formerFactureLength.value = 0;
-    imperfectIndex.value = 0
+    succededIndex.value = 0
     // Here should be initializing sell_report
     // console.log("The sell_report is: " + JSON.stringify(sell_report))
     // sell_report.value = {}
@@ -899,6 +900,10 @@ watch(sell_report, value => {
     console.warn("Begin: " + server_process.value + " at" + JSON.stringify(sell_report.value))
     server_process.value = true
     console.warn("Begin2: " + server_process.value)
+    console.log("Sell_report : " + JSON.stringify(value) + ' or ' + value['imperfect'])
+    if (value['imperfect']){
+        console.log("There  is  imperfection. ")
+    }
     if (value.sold == "FailedBecauseAlreadyExist"){
         // notify the user to change the Numero du Bon
         message.value = "Operation echouée, car ce numero du Bon a été enregistré."
@@ -914,11 +919,21 @@ watch(sell_report, value => {
         // and show on facturier modal something like 3/5
         console.log("Sorry that we have IMPERFECTION: " + JSON.stringify(value))
         server_process.value = false;
-        imperfectIndex.value = value.imperfect;
-        formerFactureLength.value =  actualFactureLength.value;
-        (panier_client.value).splice(imperfectIndex.value);
-        numero_facture.value = value.num_facture;
-        show_facture.value = true;
+        if(value.suceeded){
+            succededIndex.value = value.suceeded;
+            formerFactureLength.value =  actualFactureLength.value;
+            (panier_client.value).splice(succededIndex.value);
+            numero_facture.value = value.num_facture;
+            show_facture.value = true;
+        } else{
+            message.value = "Operation echouée, La quantite de ce produit peut etre indisponible."
+            server_process.value = false
+            notifStatus.value = true
+            setTimeout(()=>{
+                notifStatus.value = false
+            }, 2500)
+        }
+
     }
     else if (value.sold){
         // Do something when the status response is OK
