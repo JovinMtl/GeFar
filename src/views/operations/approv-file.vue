@@ -55,23 +55,23 @@
         <div class="imitiDisplay" v-for="(med, index) in med_loaded" 
             :key="index"
             v-if="med_loaded">
-            <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
-                <div class="fname" style="background-color: red; width: 30%;height: 100%;">
+            <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; text-align: center;margin: 10px 10px;">
+                <div class="fname" style="width: 30%;height: 100%;">
                     <input :class="med.errors[1] ? 'bg-r':''" :id="index +';Nom'" style="width: 100%; height: 100%;" :value="med.nom_med" @blur="ListenNewChange"/> 
                 </div>
-                <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
+                <div class="fname" style="width: 10%;height: 100%;">
                     <input :class="med.errors[2] ? 'bg-r':''" :id="index +';famille_medicament'" style="width: 100%; height: 100%;" :value="med.forme" @blur="ListenNewChange"/> 
                 </div>
-                <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
+                <div class="fname" style="width: 10%;height: 100%;">
                     <input :class="med.errors[3] ? 'bg-r':''" :id="index +';Description'" style="width: 100%; height: 100%;" :value="med.classe_med" @blur="ListenNewChange"/> 
                 </div>
-                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
+                <div class="fname" style="width: 10%;height: 100%;">
                     <input :class="med.errors[4] ? 'bg-r':''" :id="index +';Ratio'" style="width: 100%; height: 100%;" :value="med.sous_classe_med" @blur="ListenNewChange"/> 
                 </div>
-                <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
+                <div class="fname" style="width: 10%;height: 100%;">
                     <input :class="med.errors[5] ? 'bg-r':''" :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="med.date_peremption" @blur="ListenNewChange"/> 
                 </div>
-                <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
+                <div class="fname" style="width: 10%;height: 100%;">
                     <input :class="med.errors[6] ? 'bg-r':''" :id="index +';Type_vente'" style="width: 100%; height: 100%;" :value="med.quantite_initial" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="width: 20%;height: 100%;">
@@ -109,6 +109,8 @@ const med_loaded = ref<MedApprov[]>([])
 const notifStatus = ref<boolean>(false)
 const message = ref<string>('')
 const umuti_obj = ref<any>(null)
+
+
 const emit = defineEmits(['approFileClose',
     'fileDataLoaded', 'reportAchat'])
 
@@ -135,7 +137,8 @@ const approveHandler = ()=>{
                 (String(element.forme)) && 
                 (String(element.classe_med)) && 
                 (String(element.sous_classe_med)) && 
-                (Date(element.date_peremption)) &&
+                (((Date(element.date_peremption)) == 'Invalid Date') || 
+                (element.date_peremption == 'undefined/undefined/ll')) &&
                 (Number(element.quantite_initial)) && 
                 (Number(element.prix_achat))
             ){
@@ -159,7 +162,7 @@ const approveHandler = ()=>{
             if (!(String(element.sous_classe_med))){
                 element.errors[4] = 1
             }
-            if (!(Date(element.date_peremption))){
+            if (((Date(element.date_peremption)) == 'Invalid Date') || (element.date_peremption == 'undefined/undefined/ll')){
                 element.errors[5] = 1
             }
             if (!(Number(element.quantite_initial))){
