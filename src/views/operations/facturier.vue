@@ -15,14 +15,14 @@
 
                 <div class="content2" v-for="(umuti, index) in props.commandePatient[0]">
                     <div class="number">{{ index + 1 }}.</div>
-                    <div class="nom_med">{{ (String(umuti.nom_med)).slice(0,18) }}</div>
+                    <div class="nom_med">{{ (String(umuti.nom_med)).slice(0,15) }}</div>
                     <div class="qte">{{ umuti.qte }}</div>
                     <div class="qte"></div>
                     <div class="Pu">{{ umuti.prix_vente }}</div>
-                    <div class="ptotal">{{ umuti.qte * umuti.prix_vente }} Fbu</div>
+                    <div class="ptotal" >{{ umuti.qte * umuti.prix_vente }} Fbu</div>
                 </div>
 
-                <div class="toTal sepA m-25">
+                <div class="content2 toTal sepA m-25">
                     <div class="number"></div>
                     <div class="nom_med">TOTAL</div>
                     <div class="qte">--</div>
@@ -99,6 +99,7 @@ const total: Ref<number> = ref(0)
 // console.log("THe first thing: ", props.commandePatient[0], "second: ", props.commandePatient[1])
 // console.log("Assureur: ", props.assureur)
 // console.log("assure_rate:", props.assure_rate)
+console.log("The pTotal has: " + (String(props.commandePatient[1].value)).replaceAll("\"",'') + "end.")
 
 // Functions
 const makeTotal = ()=>{
@@ -188,7 +189,7 @@ reste.value = useReadable(total.value - assure_value)
         align-content: center;
     }
     .nom_med{
-        width: 50%;
+        width: 45%;
         height: 100%;
         // background: rgb(81, 255, 0);
         align-content: center;
@@ -200,13 +201,13 @@ reste.value = useReadable(total.value - assure_value)
         align-content: center;
     }
     .Pu{
-        width: 15%;
+        width: 18%;
         height: 100%;
         // background: rgb(0, 162, 255);
         align-content: center;
     }
     .ptotal{
-        width: 22%;
+        width: 25%;
         height: 100%;
         // background: rgb(0, 60, 255);
         align-content: center;
@@ -302,10 +303,7 @@ reste.value = useReadable(total.value - assure_value)
             @include footer;
         }
     }
-    
-    
-    
-    
+     
 }
 
 </style>
