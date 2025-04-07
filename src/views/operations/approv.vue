@@ -35,13 +35,21 @@
             <span style="margin-right: .1rem;">&nbsp;</span>
             <select v-model="forme_med" style="background-color: white" placeholder="Type" value="Ovule">
                 <option>Cp</option>
+                <option>Goutte</option>
                 <option>Gel</option>
                 <option>Gélule</option>
+                <option>Lotion</option>
                 <option>Ovule</option>
                 <option>Sirop</option>
-                <option>Inj</option>
+                <option>Amp.inj</option>
+                <option>Amp.buv</option>
                 <option>Suppo</option>
+                <option>Spray</option>
                 <option>Sachet</option>
+                <option>Poudre</option>
+                <option>Pmde</option>
+                <option>Crème</option>
+                <option>Savon</option>
                 <option>Autre</option>
             </select>
             <br> <br>
