@@ -14,8 +14,8 @@
                     Qte
                 </div>
 
-                <div class="elt contentElement3">
-                    <span v-if="isAdmin">P. A.</span>
+                <div v-if="isAdmin" class="elt contentElement3">
+                    <span>P. A.</span>
                 </div>
 
                 <div class="elt contentElement3">
@@ -26,8 +26,8 @@
                     Total
                 </div>
 
-                <div class="elt contentElement3">
-                <span v-if="isAdmin">Bnf</span> 
+                <div v-if="isAdmin" class="elt contentElement3">
+                    <span>Bnf</span> 
                 </div>
                 <div class="elt elt5">
                     Caisse
@@ -66,8 +66,8 @@
                     {{ (umuti.qte ) }}
                 </div> 
 
-                <div class="elt contentElement3 famille_med">
-                    <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
+                <div v-if="isAdmin" class="elt contentElement3 famille_med">
+                    <span >{{ umuti.prix_achat }}</span>
                     
                 </div>
 
@@ -79,8 +79,8 @@
                         {{ umuti.total }}
                 </div>
 
-                <div class="elt contentElement3"> 
-                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.qte || 1) }}</span> 
+                <div v-if="isAdmin" class="elt contentElement3"> 
+                <span>{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.qte || 1) }}</span> 
                 
                 </div>
                 <div class="elt elt5">
@@ -128,7 +128,7 @@
                 <div class="elt elt8">
                 </div>
 
-                <div class="elt contentElement3">
+                <div v-if="isAdmin" class="elt contentElement3">
                     <!-- P.A -->
                     {{ useReadable(totaux[2]) }}
                     
@@ -143,7 +143,7 @@
                     {{ useReadable(totaux[1]) }}
                 </div>
 
-                <div class="elt contentElement3">
+                <div v-if="isAdmin" class="elt contentElement3">
                     <!-- Benefice -->
                     {{ useReadable(totaux[3]) }}
                 </div>
