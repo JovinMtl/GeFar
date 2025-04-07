@@ -136,8 +136,8 @@ const approveHandler = ()=>{
                 (String(element.classe_med)) && 
                 (String(element.sous_classe_med)) && 
                 (Date(element.date_peremption)) &&
-                Number(element.quantite_initial) && 
-                Number(element.prix_achat)
+                (Number(element.quantite_initial)) && 
+                (Number(element.prix_achat))
             ){
                 // You can emit the med_loaded.value
                 console.log("Your data is well formatted")
