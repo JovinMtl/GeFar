@@ -19,10 +19,13 @@
         <input id="file1" type="file" @change="xlsxFileReader" placeholder="choisir fichier" />
         </div>
         <br><br>
-        <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: -10px 10px; font-size: .8rem;position: sticky; top: 1%;">
+        <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; text-align: center;margin: -10px 10px; font-size: .8rem;position: sticky; top: 1%;">
         
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
-                    Name
+                    DESIGNATION
+                </div>
+                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
+                    Forme
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
                     Classe
@@ -30,19 +33,16 @@
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
                     S-Classe
                 </div>
-                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    Forme
+                <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
+                    Date Per. 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    quantite_initial
+                    Qte
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
                     P.A 
                 </div>
-                <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    Date Per. 
-                </div>
-                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
+                <!-- <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
                     Ty. Achat
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
@@ -50,34 +50,34 @@
                 </div>
                 <div class="fname" style="background-color: salmon; width: 5%;height: 100%;">
                     Ratio
-                </div>
+                </div> -->
             </div>
         <div class="imitiDisplay" v-for="(med, index) in med_loaded" 
             :key="index"
             v-if="med_loaded">
             <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; background-color: yellow;text-align: center;margin: 10px 10px;">
                 <div class="fname" style="background-color: red; width: 30%;height: 100%;">
-                    <input :id="index +';Nom'" style="width: 100%; height: 100%;" :value="med.nom_med" @blur="ListenNewChange"/> 
+                    <input :class="med.errors[1] ? 'bg-r':''" :id="index +';Nom'" style="width: 100%; height: 100%;" :value="med.nom_med" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';famille_medicament'" style="width: 100%; height: 100%;" :value="med.classe_med" @blur="ListenNewChange"/> 
+                    <input :class="med.errors[2] ? 'bg-r':''" :id="index +';famille_medicament'" style="width: 100%; height: 100%;" :value="med.forme" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input :id="index +';Description'" style="width: 100%; height: 100%;" :value="med.sous_classe_med" @blur="ListenNewChange"/> 
+                    <input :class="med.errors[3] ? 'bg-r':''" :id="index +';Description'" style="width: 100%; height: 100%;" :value="med.classe_med" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
-                    <input :id="index +';Ratio'" style="width: 100%; height: 100%;" :value="med.forme" @blur="ListenNewChange"/> 
+                    <input :class="med.errors[4] ? 'bg-r':''" :id="index +';Ratio'" style="width: 100%; height: 100%;" :value="med.sous_classe_med" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
-                    <input :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="med.quantite_initial" @blur="ListenNewChange"/> 
+                    <input :class="med.errors[5] ? 'bg-r':''" :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="med.date_peremption" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: blue; width: 10%;height: 100%;">
-                    <input :id="index +';Type_vente'" style="width: 100%; height: 100%;" :value="med.prix_achat" @blur="ListenNewChange"/> 
+                    <input :class="med.errors[6] ? 'bg-r':''" :id="index +';Type_vente'" style="width: 100%; height: 100%;" :value="med.quantite_initial" @blur="ListenNewChange"/> 
                 </div>
-                <div class="fname" style="background-color: orange; width: 10%;height: 100%;">
-                    <input :id="index +';prix_in'" style="width: 100%; height: 100%;" :value="med.date_peremption" @blur="ListenNewChange"/> 
+                <div class="fname" style="width: 20%;height: 100%;">
+                    <input :class="med.errors[7] ? 'bg-r':''" :id="index +';prix_in'" style="width: 100%; height: 100%;" :value="med.prix_achat" @blur="ListenNewChange"/> 
                 </div>
-                <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
+                <!-- <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
                     <input :id="index +';prix_vente'" style="width: 100%; height: 100%;" :value="med.type_achat" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 10%;height: 100%;">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="fname" style="background-color: olivedrab; width: 5%;height: 100%;">
                     <input type="number" :id="index +';quantite_initial_initial'" style="width: 100%; height: 100%;" :value="med.ratio" @blur="ListenNewChange"/> 
-                </div>
+                </div> -->
             </div>
         </div>
         <teleport to="body">
@@ -131,9 +131,13 @@ const approveHandler = ()=>{
         let imiti_length = (med_loaded.value).length
         // let wrong = []
         med_loaded.value.forEach((element)=>{
-            if(String(element.nom_med) && Number(element.quantite_initial) && 
-                Number(element.prix_achat) && String(element.forme) &&
-                (Date(element.date_peremption))
+            if(String(element.nom_med) && 
+                (String(element.forme)) && 
+                (String(element.classe_med)) && 
+                (String(element.sous_classe_med)) && 
+                (Date(element.date_peremption)) &&
+                Number(element.quantite_initial) && 
+                Number(element.prix_achat)
             ){
                 // You can emit the med_loaded.value
                 console.log("Your data is well formatted")
@@ -142,6 +146,28 @@ const approveHandler = ()=>{
             else {
                 console.log("Your data is Wrong formed:",element.date_peremption,
                 ":today:", today, (Date(element.date_peremption)) > today)
+            }
+            if (!(String(element.nom_med))){
+                element.errors[1] = 1
+            }
+            if (!(String(element.forme))){
+                element.errors[2] = 1
+            }
+            if (!(String(element.classe_med))){
+                element.errors[3] = 1
+            }
+            if (!(String(element.sous_classe_med))){
+                element.errors[4] = 1
+            }
+            if (!(Date(element.date_peremption))){
+                element.errors[5] = 1
+            }
+            if (!(Number(element.quantite_initial))){
+                element.errors[6] = 1
+            }
+            if (!(Number(element.prix_achat))){
+                element.errors[7] = 1
+                console.log("Found wrong prix_achats")
             }
         })
             
@@ -188,7 +214,7 @@ const xlsxFileReader = async()=>{
             const workbook = XLSX.read(data, { type: 'array'});
 
             // Get the first sheet
-            const firstSheetName = workbook.SheetNames[0];
+            const firstSheetName = workbook.SheetNames[2];
             const worksheet = workbook.Sheets[firstSheetName];
 
             // Convert the sheet to JSON
@@ -198,27 +224,29 @@ const xlsxFileReader = async()=>{
             // document.getElementById('output').textContent = JSON.stringify(jsonData, null, 2);
 
             // Begin to pack the data into obj to be submitted
-            const niceData: MedApprov[] = jsonData.slice(5)
+            const niceData: MedApprov[] = jsonData.slice(3)
             let today = new Date()
             niceData.forEach((element:MedApprov)=>{
                 // Should gather each line into obj, then append it into med_loaded
-                if(element[0] != 'TOTAL'){
-                    let obj = {} as MedApprov  // it's type of MedApprov
-                    obj.nom_med = element[0];
-                    obj.classe_med = element[1]
-                    obj.sous_classe_med = element[2]
-                    obj.forme = element[3]
-                    obj.quantite_initial = element[4]
-                    obj.prix_achat = Number(element[5])
-                    let date_one = (String(new Date(element[6]).toJSON())).slice(0,10)
+                // console.log("THe forme: " + element[2])
+                let obj = {} as MedApprov  // it's type of MedApprov
+                if(element[0]){
+                    
+                    let date_one = (String(new Date(element[5]).toJSON())).slice(0,10)
                     let date_two = convertDate(date_one)
+                    obj.nom_med = element[1];
+                    obj.forme = element[2]
+                    obj.classe_med = element[3]
+                    obj.sous_classe_med = element[4]
                     obj.date_peremption = date_two
+                    obj.quantite_initial = element[6]
+                    obj.prix_achat = Number(element[7])
                     // obj.type_achat = element[7]
                     // obj.type_vente = element[8]
                     // obj.ratio = element[9]
-
-                    med_loaded.value.push(obj)
+                    obj.errors = [];
                 }
+                med_loaded.value.push(obj)
             })
             med_loaded.value.pop()
         };
