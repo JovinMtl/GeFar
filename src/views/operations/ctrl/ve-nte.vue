@@ -32,11 +32,11 @@
                 <div class="elt elt5">
                     Caisse
                 </div>
-                <div class="elt elt5">
-                    Dette
+                <div title="Assurance Montant" class="elt elt5">
+                    ASM
                 </div>
-                <div class="elt elt5">
-                    Assu.
+                <div title="Assurance Nom" class="elt elt5">
+                    ASN
                 </div>
                 <div class="elt elt5">
                     Catég.
