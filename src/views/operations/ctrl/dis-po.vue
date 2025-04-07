@@ -14,8 +14,8 @@
                     Qte
                 </div>
 
-                <div class="elt contentElement4">
-                    <span v-if="isAdmin">P. Achat</span>
+                <div v-if="isAdmin" class="elt contentElement4">
+                    <span>P. Achat</span>
                     <!-- <span v-else>T. Med.</span>  -->
                 </div>
 
@@ -27,8 +27,8 @@
                     Total
                 </div>
 
-                <div class="elt contentElement4">
-                <span v-if="isAdmin">Bénéfice</span> 
+                <div v-if="isAdmin" class="elt contentElement4">
+                <span>Bénéfice</span> 
                 </div>
 
                 <div class="elt contentElement4">
@@ -53,8 +53,8 @@
                     {{ (umuti.quantite_restant || umuti.quantity ) }}
                 </div> 
 
-                <div class="elt contentElement4 famille_med">
-                    <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
+                <div v-if="isAdmin"  class="elt contentElement4 famille_med">
+                    <span>{{ umuti.prix_achat }}</span>
                     
                 </div>
 
@@ -66,9 +66,9 @@
                         {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 1) }}
                 </div>
 
-                <div class="elt contentElement4"> 
-                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 1) }}</span> 
-                <span v-else>{{ umuti.location }}</span>
+                <div v-if="isAdmin" class="elt contentElement4"> 
+                <span>{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 1) }}</span> 
+                
                 </div>
 
                 <div class="elt contentElement4">
