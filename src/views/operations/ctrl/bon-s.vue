@@ -11,12 +11,13 @@
                     Bon de Commande
                 </div> 
                 <div class="elt contentElement3">
-                <span v-if="isAdmin">Benéficiaire</span> 
+                <!-- <span v-if="isAdmin">Benéficiaire</span>  -->
+                    Client
                 </div>
 
 
-                <div class="elt contentElement3">
-                    Assu.
+                <div title="Assurance Nom" class="elt contentElement3">
+                    ASN
                 </div>
                 <div class="elt contentElement3">
                     Total
@@ -24,8 +25,8 @@
                 <div class="elt elt5">
                     Caisse
                 </div>
-                <div class="elt elt5">
-                    Dette
+                <div title="Assurance Montant" class="elt elt5">
+                    ASM
                 </div>
                 <div class="elt elt5">
                     Regléé
