@@ -134,9 +134,9 @@ const approveHandler = ()=>{
         // let wrong = []
         med_loaded.value.forEach((element)=>{
             if(String(element.nom_med) && 
-                (String(element.forme)) && 
-                (String(element.classe_med)) && 
-                (String(element.sous_classe_med)) && 
+                (element.forme == undefined) && 
+                (element.classe_med == undefined)&& 
+                (element.sous_classe_med == undefined) && 
                 (((Date(element.date_peremption)) == 'Invalid Date') || 
                 (element.date_peremption == 'undefined/undefined/ll')) &&
                 (Number(element.quantite_initial)) && 
@@ -150,16 +150,16 @@ const approveHandler = ()=>{
                 console.log("Your data is Wrong formed:",element.date_peremption,
                 ":today:", today, (Date(element.date_peremption)) > today)
             }
-            if (!(String(element.nom_med))){
+            if (element.nom_med == undefined){
                 element.errors[1] = 1
             }
-            if (!(String(element.forme))){
+            if (element.forme == undefined){
                 element.errors[2] = 1
             }
-            if (!(String(element.classe_med))){
+            if (element.classe_med == undefined){
                 element.errors[3] = 1
             }
-            if (!(String(element.sous_classe_med))){
+            if (element.sous_classe_med == undefined){
                 element.errors[4] = 1
             }
             if (((Date(element.date_peremption)) == 'Invalid Date') || (element.date_peremption == 'undefined/undefined/ll')){
