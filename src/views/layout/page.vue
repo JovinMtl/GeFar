@@ -1051,6 +1051,11 @@ provide('familly_displ', openedFamilly)
     top: 89vh;
     font-size: xx-large;
     color: black;
+    cursor: pointer;
+}
+.magnetic:active{
+    transform: scale(0.8);
+    /* scale: 1.5; */
 }
 
 .infoUmuti {
