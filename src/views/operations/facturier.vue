@@ -201,13 +201,13 @@ reste.value = useReadable(total.value - assure_value)
         align-content: center;
     }
     .Pu{
-        width: 18%;
+        width: 17%;
         height: 100%;
         // background: rgb(0, 162, 255);
         align-content: center;
     }
     .ptotal{
-        width: 25%;
+        width: 27%;
         height: 100%;
         // background: rgb(0, 60, 255);
         align-content: center;
