@@ -43,14 +43,14 @@
         <div class="controlBody">
             <div v-for="(umuti, index) in (actual_imitiS)" 
                 class="d-f"
-                :class="index%2 ? 'ln-1':'ln-2'">
+                :class="[index%2 ? 'ln-1':'ln-2', !umuti.quantite_restant ? 'c-r': '']">
                 <div class="contentElement11">
                     {{ index + 1 }}
                 </div> 
                 <div class="elt contentElement2">
                     {{ umuti.nom_med }}
                 </div> <div class="elt contentElement3">
-                    {{ (umuti.quantite_restant || umuti.quantity ) }}
+                    {{ (umuti.quantite_restant || umuti.quantity || 0 ) }}
                 </div> 
 
                 <div v-if="isAdmin"  class="elt contentElement4 famille_med">
@@ -63,11 +63,11 @@
                 </div>
 
                 <div class="elt contentElement4 total">
-                        {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 1) }}
+                        {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 0) }}
                 </div>
 
                 <div v-if="isAdmin" class="elt contentElement4"> 
-                <span>{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 1) }}</span> 
+                <span>{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 0) }}</span> 
                 
                 </div>
 
@@ -93,7 +93,7 @@
                     {{ totaux[0] }}
                 </div>
 
-                <div class="elt contentElement4">
+                <div v-if="isAdmin" class="elt contentElement4">
                     <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
     
                     <!-- {{ totaux[2] }} -->
@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="elt contentElement4">
-                    -----
+                    ----------
                 </div>
 
                 <div class="elt contentElement4 c-b-1">
@@ -110,13 +110,13 @@
                     {{ useReadable(totaux[1]) }}
                 </div>
 
-                <div class="elt contentElement4">
+                <div v-if="isAdmin" class="elt contentElement4">
                     <!-- {{ totaux[3] }} -->
                     {{ useReadable(totaux[3]) }}
                 </div>
 
                 <div class="elt contentElement4">
-                    ----
+                    <!-- ---------- -->
                 </div>
             </div>
         </div>
