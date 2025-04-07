@@ -48,6 +48,7 @@ export interface MedApprov {
     type_achat: string; // carton
     type_vente: string; // piece ou plaquette
     ratio: number; // 1 if no detail, 10, ...
+    errors: number[];
 }
 
 export type Assu = [string, number]
