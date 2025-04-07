@@ -14,8 +14,8 @@
                     Qte
                 </div>
 
-                <div class="elt contentElement4">
-                    <span v-if="isAdmin">P. Achat</span>
+                <div v-if="isAdmin" class="elt contentElement4">
+                    <span>P. Achat</span>
                     <!-- <span v-else>T. Med.</span>  -->
                 </div>
 
@@ -27,8 +27,8 @@
                     Total
                 </div>
 
-                <div class="elt contentElement4">
-                <span v-if="isAdmin">Bénéfice</span> 
+                <div v-if="isAdmin" class="elt contentElement4">
+                    <span>Bénéfice</span> 
                 </div>
 
                 <div class="elt contentElement4">
@@ -66,9 +66,8 @@
                         {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 1) }}
                 </div>
 
-                <div class="elt contentElement4"> 
-                <span v-if="isAdmin">{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 1) }}</span> 
-                <span v-else>{{ umuti.location }}</span>
+                <div v-if="isAdmin" class="elt contentElement4"> 
+                    <span>{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 1) }}</span> 
                 </div>
 
                 <div class="elt contentElement4">
@@ -93,7 +92,7 @@
                     {{ totaux[0] }}
                 </div>
 
-                <div class="elt contentElement4">
+                <div v-if="isAdmin" class="elt contentElement4">
                     <!-- {{ (totaux[1] / (totaux[0] || 1)).toFixed(1) }} -->
     
                     {{ useReadable(totaux[2]) }}
@@ -101,19 +100,19 @@
                 </div>
 
                 <div class="elt contentElement4 ml-5">
-                    -------
+                    ----------
                 </div>
 
                 <div class="elt contentElement4 c-b-1">
                     {{ useReadable(totaux[1]) }}
                 </div>
 
-                <div class="elt contentElement4">
+                <div v-if="isAdmin" class="elt contentElement4">
                     {{ useReadable(totaux[3]) }}
                 </div>
 
                 <div class="elt contentElement4">
-                    ----
+                    <!-- ---- -->
                 </div>
             </div>
         </div>
