@@ -130,25 +130,21 @@ const approveHandler = ()=>{
         console.log("THe loaded is :", med_loaded.value)
         let counter = 0
         let today = Date(new Date())
-        let imiti_length = (med_loaded.value).length
+        let imiti_length = (med_loaded.value).length 
         // let wrong = []
         med_loaded.value.forEach((element)=>{
-            if(String(element.nom_med) && 
-                (element.forme == undefined) && 
-                (element.classe_med == undefined)&& 
-                (element.sous_classe_med == undefined) && 
-                (((Date(element.date_peremption)) == 'Invalid Date') || 
-                (element.date_peremption == 'undefined/undefined/ll')) &&
+            if((element.nom_med != undefined) && 
+                (element.forme != undefined) && 
+                (element.classe_med != undefined)&& 
+                (element.sous_classe_med != undefined) && 
+                (((Date(element.date_peremption)) != 'Invalid Date') || 
+                (element.date_peremption != 'undefined/undefined/ll')) &&
                 (Number(element.quantite_initial)) && 
                 (Number(element.prix_achat))
             ){
                 // You can emit the med_loaded.value
-                console.log("Your data is well formatted")
+                // console.log("Your data is well formatted")
                 counter += 1
-            }
-            else {
-                console.log("Your data is Wrong formed:",element.date_peremption,
-                ":today:", today, (Date(element.date_peremption)) > today)
             }
             if (element.nom_med == undefined){
                 element.errors[1] = 1
@@ -170,12 +166,11 @@ const approveHandler = ()=>{
             }
             if (!(Number(element.prix_achat))){
                 element.errors[7] = 1
-                console.log("Found wrong prix_achats")
             }
         })
-            
+        console.log("Check right: ", counter, "/", imiti_length)
         if (counter == imiti_length){
-            console.log("Things are Okay")
+            // console.log("Things are Okay")
             emit('reportAchat', 1)
             setTimeout(sendFileDataLoaded, 1000)
         } else {
