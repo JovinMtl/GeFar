@@ -210,6 +210,11 @@
                             <circum-pill @click="compileImitiSet"></circum-pill>
                         </a>
                     </div>
+                    <div class="menuHau compLoader">
+                        <a title="ku Gihe (Update)" class="c-b">
+                            <compileLoader />
+                        </a>
+                    </div>
                     <teleport to="body">
                         <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
                             <factu-rier @facture-active="closeFacture"
@@ -263,6 +268,7 @@ import BiCollection from '../layout/icon/collect.vue'
 import FluentCloudSync28Regular from '../layout/icon/cloud.vue'
 import dashBoard from '@/views/dashBoard.vue';
 import reduCtion from '../operations/reduction/redu-ction.vue';
+import compileLoader from '../operations/compileLoader.vue';
 
 const listImiti = defineAsyncComponent(() => import('../operations/list-imiti.vue'))
 import {
@@ -1056,6 +1062,18 @@ provide('familly_displ', openedFamilly)
 .magnetic:active{
     transform: scale(0.8);
     /* scale: 1.5; */
+}
+.compLoader {
+    background-color: transparent;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    position: absolute;
+    left: 69vw;
+    top: 89vh;
+    font-size: xx-large;
+    color: black;
+    cursor: pointer;
 }
 
 .infoUmuti {
