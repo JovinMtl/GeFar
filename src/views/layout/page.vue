@@ -207,12 +207,17 @@
                     </div>
                     <div class="menuHau magnetic">
                         <a title="ku Gihe (Update)" class="c-b">
-                            <circum-pill @click="compileImitiSet"></circum-pill>
+                            <circum-pill @click="callCompileImitiSet"></circum-pill>
                         </a>
                     </div>
-                    <div class="menuHau compLoader">
+                    <div v-show="inWaiting" class="menuHau compLoader">
                         <a title="ku Gihe (Update)" class="c-b">
-                            <compileLoader />
+                            <EnCours />
+                        </a>
+                    </div>
+                    <div v-show="inReady" class="menuHau compLoader">
+                        <a title="ku Gihe (Update)" class="c-b">
+                            <prEt />
                         </a>
                     </div>
                     <teleport to="body">
@@ -268,7 +273,6 @@ import BiCollection from '../layout/icon/collect.vue'
 import FluentCloudSync28Regular from '../layout/icon/cloud.vue'
 import dashBoard from '@/views/dashBoard.vue';
 import reduCtion from '../operations/reduction/redu-ction.vue';
-import compileLoader from '../operations/compileLoader.vue';
 
 const listImiti = defineAsyncComponent(() => import('../operations/list-imiti.vue'))
 import {
@@ -282,6 +286,8 @@ import {
     Lot, clInfo, Medi, DataToAPI, 
     DataAssurance,Assu
 } from './types';
+import EnCours from '../operations/en-cours.vue';
+import prEt from '../operations/pr-et.vue';
 
 const router = useRouter()
 
@@ -450,6 +456,13 @@ const closeControle = () => {
 }
 const  url_compile_imiti_set = 'api/in/compileImitiSet/'
 const[reportCompileImitiSet, compileImitiSet] = useKuvoma(url_compile_imiti_set)
+
+const inWaiting = ref(false)
+const inReady = ref(false)
+const callCompileImitiSet = ()=>{
+    inWaiting.value = true;
+    compileImitiSet()
+}
 // const compileImitiSet = async () => {
 //     const endpoint = '/api/in/compileImitiSet/'
 
@@ -853,6 +866,11 @@ watch(()=>selectedQte.val, (val)=>{
 watch(reportCompileImitiSet, (value)=>{
     if (value.detail == 'ok'){
         listImiti_update.value += 1
+        inWaiting.value = false;
+        inReady.value = true;
+        setTimeout(()=>{
+            inReady.value = false
+        }, 5000)
     } else{
         // console.warn("CompileSet strange" + JSON.stringify(value))
     }
@@ -1066,11 +1084,11 @@ provide('familly_displ', openedFamilly)
 .compLoader {
     background-color: transparent;
     height: 25px;
-    width: 25px;
+    /* width: 25px; */
     display: flex;
     position: absolute;
     left: 69vw;
-    top: 89vh;
+    top: 90.5vh;
     font-size: xx-large;
     color: black;
     cursor: pointer;
