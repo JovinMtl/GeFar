@@ -1,6 +1,7 @@
 import { ref, toValue } from "vue";
 import { baseURL } from "@/store/host";
 import { useUserStore } from "../../store/user";
+import { useNotif } from "../../store/useNotif"
 
 // const { getAccessToken } = useUserStore()
 const isAdmin = ref(false);
@@ -110,10 +111,14 @@ export function useFilterRange(imiti_for_search, dateDebut, dateFin) {
 export function useKurungika(
     imitiArray,
     prefix,
+    shouldNotify=false,
     otherData1 = null,
-    otherData2 = null,
 ) {
     let shouldRefresh = false
+    const { setOperationTrue,
+        setOperationEncoursTrue,
+        setOperationEncoursFalse,
+     } = useNotif()
     do{
         if (shouldRefresh){
             console.log("Refreshing once again ...")
@@ -129,6 +134,11 @@ export function useKurungika(
                 if (!getAccessToken()){
                     return 0
                 }
+                if (shouldNotify){
+                    setOperationEncoursTrue
+                } else{
+                    setOperationEncoursFalse
+                }
                 // const base = '//muteule.pythonanywhere.com'
 
                 try {
@@ -143,7 +153,8 @@ export function useKurungika(
                         }),
                     });
                     data.value = await response.json();
-                    if(response.ok){
+                    if((response.ok) && shouldNotify){
+                        setOperationTrue()
                         console.log("THe response is OK")
                     } else{
                         console.log("The response is not OK")
