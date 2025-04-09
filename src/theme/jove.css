@@ -585,14 +585,23 @@ nav > button:active{
 }
 .loInp{
     padding: 15px;
-    background-color: rgb(28, 35, 49);
-    border-style: hidden;
+    /* background-color: rgb(28, 35, 49); */
+    background-color: black;
+    /* border-style: hidden; */
+    border: 1px dashed white;
     color: rgb(5, 252, 5);
     text-align: center;
 }
 .loInp2{
     padding-top: 15px;
     padding-bottom: 10px;
+}
+label[class='se']{
+    background-color: black;
+    position: absolute;
+    transform: translate(-50%, 50%);
+    border-radius: 3px;
+    padding: 0 5px;
 }
 .loFooter{
     color: white;
