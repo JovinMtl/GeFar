@@ -1,36 +1,34 @@
 
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import { defineStore } from 'pinia'
 
 
-export const useNotif = defineStore('notif', ()=>{
-    const stateOperations = reactive({
-        'enCours': false,
-        'completed': false
+export const useError500 = defineStore('error500', ()=>{
+    const errorObj = ref({
+        'state': false,
+        'detail': '',
     })
 
 
-    const getStateOperations = ()=>{
-        return stateOperations
+    const getError500 = ()=>{
+        return errorObj;
     }
-    const setOperationTrue = ()=>{
-        stateOperations.completed = true;
+    const setError500True = (msg)=>{
+        console.log("Inside setError500True: " + errorObj.state)
+        errorObj.state = true;
+        errorObj.detail = `Une erreur est survenu. 
+            Contactez nsanzumukizath@gmail.com  et signaler (500): ${msg}`;
+        console.log("Calling 2: setError500True, see state ", errorObj.state)
     }
-    const setOperationFalse = ()=>{
-        stateOperations.completed = false;
-    }
-    const setOperationEncoursTrue = ()=>{
-        stateOperations.enCours = true;
-    }
-    const setOperationEncoursFalse = ()=>{
-        stateOperations.enCours = false;
+    const clearError500 = ()=>{
+        errorObj.state = false;
+        errorObj.detail = ''
     }
 
 
     return {
-        getStateOperations,
-        setOperationTrue, setOperationFalse,
-        setOperationEncoursTrue, setOperationEncoursFalse,
+        getError500,
+        setError500True, clearError500,
     }
 })
 

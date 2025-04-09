@@ -264,6 +264,8 @@ import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
 import { useCapitalLetter } from '../hooks/useReadable.js';
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
+import { useError500 } from '../../store/errors'
+
 import {
     PanierAPI, PanierClient, ActiveLot
 } from '../types'
@@ -344,6 +346,10 @@ const succededIndex:Ref<number> = ref(0)
 const formerFactureLength:Ref<number> = ref(0)
 const actualFactureLength:Ref<number> = ref(0)
 
+// Store
+const { getError500, clearError500 } = useError500()
+
+// Setting of Composables
 const url_reportIndex: string = "api/rep/giveLastIndex/"
 // const url_remote = "//muteule.pythonanywhere.com"
 // const url_local:string = "//127.0.0.1:8002"
@@ -849,7 +855,19 @@ const show_suggest = (e)=>{
     stage_redu.value = 3
     clClean.value = false
 }
-
+// Watchers
+watch(getError500, (val)=>{
+    console.log("The error 500 may be detected")
+    if(val){
+        console.log("The error 500 is detected")
+        server_process.value = false;
+        notifStatus.value = true;
+        message.value = getError500.detail;
+        setTimeout(()=>{
+            notifStatus.value = false
+        }, 3000)
+    }
+})
 watch(()=>selectedQte.val, (val)=>{
     let elm = ''
     console.log("Do smething")
@@ -922,6 +940,7 @@ watch(last_indexes, (value) => {
 })
 watch(sell_report, value => {
     server_process.value = true
+    console.log("A sell report")
     if (value.sold == "FailedBecauseAlreadyExist"){
         // notify the user to change the Numero du Bon
         message.value = "Operation echouée, car ce numero du Bon a été enregistré."

@@ -2,6 +2,7 @@ import { ref, toValue } from "vue";
 import { baseURL } from "@/store/host";
 import { useUserStore } from "../../store/user";
 import { useNotif } from "../../store/useNotif"
+import { useError500 } from '../../store/errors'
 
 // const { getAccessToken } = useUserStore()
 const isAdmin = ref(false);
@@ -119,6 +120,7 @@ export function useKurungika(
         setOperationEncoursTrue,
         setOperationEncoursFalse,
      } = useNotif()
+    const { setError500True, getError500 } = useError500()
     do{
         if (shouldRefresh){
             console.log("Refreshing once again ...")
@@ -164,9 +166,12 @@ export function useKurungika(
                         data.value = secondData
                     }
                 } catch (error) {
+                    console.log("Calling 1: setError500True, with state: ", getError500)
+                    setError500True(error);
                     isError.value =true
                     error_message.value = error
                     console.log("something has not be well because :", error);
+                    console.log("3. Finished Calling setError500True, with state: ", getError500)
                 }
             };
             if(isError.value){
