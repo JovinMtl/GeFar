@@ -264,7 +264,7 @@ import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
 import { useCapitalLetter } from '../hooks/useReadable.js';
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
-import { useError500 } from '../../store/errors'
+import { useError500 } from '../../store/generalErrors'
 
 import {
     PanierAPI, PanierClient, ActiveLot
@@ -347,7 +347,9 @@ const formerFactureLength:Ref<number> = ref(0)
 const actualFactureLength:Ref<number> = ref(0)
 
 // Store
-const { getError500, clearError500 } = useError500()
+const { getError500, getError500Msg,
+    clearError500
+ } = useError500()
 
 // Setting of Composables
 const url_reportIndex: string = "api/rep/giveLastIndex/"
@@ -857,15 +859,17 @@ const show_suggest = (e)=>{
 }
 // Watchers
 watch(getError500, (val)=>{
-    console.log("The error 500 may be detected")
+    console.log("The error 500 may be detected: " + val)
     if(val){
         console.log("The error 500 is detected")
         server_process.value = false;
+        message.value = toValue(getError500Msg);
         notifStatus.value = true;
-        message.value = getError500.detail;
         setTimeout(()=>{
             notifStatus.value = false
+            clearError500()
         }, 3000)
+        
     }
 })
 watch(()=>selectedQte.val, (val)=>{
@@ -940,7 +944,6 @@ watch(last_indexes, (value) => {
 })
 watch(sell_report, value => {
     server_process.value = true
-    console.log("A sell report")
     if (value.sold == "FailedBecauseAlreadyExist"){
         // notify the user to change the Numero du Bon
         message.value = "Operation echouée, car ce numero du Bon a été enregistré."
