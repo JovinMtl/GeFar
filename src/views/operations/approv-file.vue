@@ -103,6 +103,7 @@ import { close, checkmarkDoneOutline, documentOutline } from 'ionicons/icons'
 import { ref, watch } from 'vue'
 import { MedApprov } from '../layout/types'
 import { useKurungika } from '../hooks/kuvoma.js'
+import { useNotif } from '../../store/useNotif.js'
 
 const ui_isActive = ref<boolean>(true)
 const med_loaded = ref<MedApprov[]>([])
@@ -110,12 +111,16 @@ const notifStatus = ref<boolean>(false)
 const message = ref<string>('')
 const umuti_obj = ref<any>(null)
 
+const { getStateOperations, setOperationFalse,
+    setOperationEncoursFalse
+ } = useNotif()
+
 
 const emit = defineEmits(['approFileClose',
     'fileDataLoaded', 'reportAchat'])
 
 const url_achat = 'api/in/kurangura/'
-const [report_achat, sendFileDataLoaded] = useKurungika(med_loaded.value, url_achat)
+const [report_achat, sendFileDataLoaded] = useKurungika(med_loaded.value, url_achat, true)
 
 const convertDate = (dateString:String):String=>{
     // will take '2025-1-22' and make it '1/21/25'
@@ -320,13 +325,27 @@ const closeApprov = ()=>{
 
 //watchers
 watch(report_achat, (value)=>{
-    if (value.detail){
-        console.log("operation reussi")
+    if (getStateOperations.enCours){
+        if (getStateOperations.completed){
+            emit('reportAchat', 2)
+            emit('approFileClose', 0)
+            setOperationFalse()
+            setOperationEncoursFalse()
+        }
+    } else{
+        let info = "";
+        if (value.detail = 'ok'){
+            info = "operation bien reussi"
+            
+        } else {
+            info = "Pas bien reussi"
+        }
+        emit('reportAchat', 2)
+        emit('approFileClose', 0)
         
-    } else {
-        console.warn("Pas bien reussi")
+        notifSwitch(info)
+    
     }
-    emit('reportAchat', 2)
-    emit('approFileClose', 0)
+    
 })
 </script>
