@@ -211,12 +211,12 @@
                         </a>
                     </div>
                     <div v-show="inWaiting" class="menuHau compLoader">
-                        <a title="ku Gihe (Update)" class="c-b">
+                        <a title="Nimurindire gato" class="c-b">
                             <EnCours />
                         </a>
                     </div>
                     <div v-show="inReady" class="menuHau compLoader">
-                        <a title="ku Gihe (Update)" class="c-b">
+                        <a title="Ubu murashobora gukubandanya." class="c-b">
                             <prEt />
                         </a>
                     </div>
