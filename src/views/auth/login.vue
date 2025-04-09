@@ -7,12 +7,12 @@
                     <div class="username">
                         <label class="se" for="input">Nom d'Utilisateur</label> <br>
                         <input id="el1" v-model="username" class="loInp" 
-                            type="text">
+                            type="text" autocomplete="off">
                     </div>
                     <div class="username">
                         <label class="se" for="input">Mot de Passe</label> <br>
                             <input id="el2" v-model="mPassword" 
-                                class="loInp loInp2" 
+                                class="loInp loInp2"  autocomplete="off"
                                 @keyup="getPassword" type="text">
                     </div>
                     <div class="confirmationContainer">

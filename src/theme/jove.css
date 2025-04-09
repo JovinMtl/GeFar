@@ -586,11 +586,14 @@ nav > button:active{
 .loInp{
     padding: 15px;
     /* background-color: rgb(28, 35, 49); */
-    background-color: black;
+    background-color: black !important;
     /* border-style: hidden; */
     border: 1px dashed white;
     color: rgb(5, 252, 5);
     text-align: center;
+}
+.loInp::-ms-fill{
+    background-color: red;
 }
 .loInp2{
     padding-top: 15px;
