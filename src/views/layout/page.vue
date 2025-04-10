@@ -470,6 +470,7 @@ const inReady = ref(false)
 const callCompileImitiSet = ()=>{
     inWaiting.value = true;
     compileImitiSet()
+    listImiti_update.value += 1
 }
 // const compileImitiSet = async () => {
 //     const endpoint = '/api/in/compileImitiSet/'
@@ -857,6 +858,7 @@ const show_suggest = (e)=>{
     stage_redu.value = 3
     clClean.value = false
 }
+const shouldPop = ref(false)
 // Watchers
 watch(getError500, (val)=>{
     console.log("The error 500 may be detected: " + val)
@@ -868,7 +870,7 @@ watch(getError500, (val)=>{
         setTimeout(()=>{
             notifStatus.value = false
             clearError500()
-        }, 3000)
+        }, 8000)
         
     }
 })
@@ -948,7 +950,7 @@ watch(sell_report, value => {
         // notify the user to change the Numero du Bon
         message.value = "Operation echouée, car ce numero du Bon a été enregistré."
         server_process.value = false
-        notifStatus.value = true
+        notifStatus.value = true;
         setTimeout(()=>{
             notifStatus.value = false
         }, 2500)
@@ -963,6 +965,7 @@ watch(sell_report, value => {
             succededIndex.value = value.suceeded;
             formerFactureLength.value =  actualFactureLength.value;
             (panier_client.value).splice(succededIndex.value);
+            callCompileImitiSet()
             numero_facture.value = value.num_facture;
             show_facture.value = true;
         } else{
@@ -980,6 +983,7 @@ watch(sell_report, value => {
         console.log("Maintenant nous pouvons VOIR: facturier")
         listImiti_update.value += 1  // Triggering update
         server_process.value = false
+        callCompileImitiSet()
         console.warn("end: " + server_process.value)
         show_facture.value = true
         numero_facture.value = value.sold
