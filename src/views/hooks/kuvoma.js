@@ -157,8 +157,10 @@ export function useKurungika(
                         }),
                     });
                     data.value = await response.json();
-                    if((response.ok) && shouldNotify){
-                        setOperationTrue()
+                    if((response.ok)){
+                        if (shouldNotify){
+                            setOperationTrue()
+                        }
                         console.log("THe response is OK")
                     } else{
                         console.log("The response is not OK")
@@ -170,7 +172,7 @@ export function useKurungika(
                 } catch (error) {
                     console.log("First set to: ", toValue(getError500));
                     setError500True();
-                    setError500Msg(error);
+                    setError500Msg();
                     isError.value = true;
                     error_message.value = error
                     console.log("something has not be well because :", error);
