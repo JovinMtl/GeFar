@@ -834,8 +834,21 @@ const strDate = (lot: Lot[]): Lot[] => {
 const getUmuti = (umuti) => {
     // THis one handles the umuti when it was emitted from list-imiti component.
     let temp_lot: Lot[] = []
+    console.log("The umuti Gotten: " + JSON.stringify(umuti))
     if (selectedUmuti.value == undefined) {
         selectedUmuti.value = umuti
+        let lote = umuti.lot
+        let lot_elm = {}
+        for (let elmDate in lote){
+            lot_elm['date'] = new Date(elmDate)
+            lot_elm['qte'] = 0
+            let sub_lot_elm = []
+            for (let sub_elm in lote[elmDate]){
+                // fill the qte
+                lot_elm['qte'] += lote[elmDate][sub_elm]
+            }
+            activeLot.value.push(lot_elm)
+        }
         let lots_json = (selectedUmuti.value.lot).replaceAll("'", "\"")
         temp_lot = JSON.parse(lots_json) //setting the activeLot
         activeLot.value = strDate(temp_lot)
