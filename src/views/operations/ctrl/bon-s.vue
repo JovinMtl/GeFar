@@ -75,7 +75,7 @@
                         </tr>  
                     </table>
                     <div class="ta-c mt-3">
-                        <button class="pa-3 clk">Imprimer</button>
+                        <button @click="printFacture" class="pa-3 clk">Imprimer</button>
                     </div>
                 </span>
             </div>
@@ -88,7 +88,11 @@
                 </div> 
                 
                 <div class="elt contentElement2" style="cursor: pointer;">
-                    <button popovertarget="pop" :data-ids="umuti.meds" :data-index="index+1" @click="showData">Ouvrir</button>
+                    <button popovertarget="pop" :data-ids="umuti.meds" 
+                        :data-store="[umuti.num_facture, umuti.total, 
+                                        umuti.cout, umuti.assu_rate, 
+                                        umuti.montant_dette]" 
+                        :data-index="index+1" @click="showData">Ouvrir</button>
                 </div> 
 
                 <div class="elt contentElement3"> 
@@ -97,7 +101,7 @@
 
 
                 <div class="elt contentElement3">
-                    <span  v-show="organization !='Sans'">
+                    <span  v-show="umuti.organization !='Sans'">
                         {{ getOneAssurance(umuti.organization)  }}
                     </span>
                 </div>
@@ -197,18 +201,26 @@
                 </div>
             </div>
         </div>
+        <!-- <facturier @facture-active="closeFacture"
+            :commande-patient="[panier_client, total_panier_client]" 
+            :num_facture="numero_facture"
+            :username="getUsername()"
+            :assure_rate="rate_assure"
+            :assureur="panier_api.client.assureur"
+            :imperfections="[succededIndex, formerFactureLength]"
+        /> -->
                             
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, toValue, watch } from 'vue'
 import {  usePostRequest, useKuvoma, useKurungika } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
 import { useAssuStore } from '../../../store/assu'
 import { useClientStore } from '../../../store/clients'
 import { baseURL } from '../../../store/host.js'
-import { UpdateModeEnum } from 'chart.js'
+import facturier from '../facturier.vue'
 const props = defineProps(['med','admin'])
 const emit = defineEmits(['lsIndex'])
 const actual_imitiS = ref(props.med)
@@ -247,10 +259,15 @@ getAssurances()
 getClients()
 
 //Functions
+const printFacture = ()=>{
+    console.log("The Bons have: " + JSON.stringify(toValue(updatedImiti)))
+}
 const showData = (e)=>{
-    console.log("your Data: " + e.target.getAttribute("data-ids"))
+    // console.log("your Data: " + e.target.getAttribute("data-ids"))
     ids.value = e.target.getAttribute("data-ids")
     numberIndex.value = e.target.getAttribute("data-index")
+    let dataStore = e.target.getAttribute("data-store")
+    console.log("data-store: " + dataStore)
     setTimeout(getInfo, 10)
 }
 const fIndex = ()=>{
