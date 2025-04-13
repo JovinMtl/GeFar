@@ -91,7 +91,8 @@
                     <button popovertarget="pop" :data-ids="umuti.meds" 
                         :data-store="[umuti.num_facture, umuti.total, 
                                         umuti.cout, umuti.assu_rate, 
-                                        umuti.montant_dette]" 
+                                        umuti.montant_dette,
+                                        getOneAssurance(umuti.organization) ]" 
                         :data-index="index+1" @click="showData">Ouvrir</button>
                 </div> 
 
