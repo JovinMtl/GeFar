@@ -202,14 +202,14 @@
                 </div>
             </div>
         </div>
-        <!-- <facturier @facture-active="closeFacture"
-            :commande-patient="[panier_client, total_panier_client]" 
-            :num_facture="numero_facture"
-            :username="getUsername()"
-            :assure_rate="rate_assure"
-            :assureur="panier_api.client.assureur"
-            :imperfections="[succededIndex, formerFactureLength]"
-        /> -->
+        <facturier @facture-active="closeFacture"
+            :commande-patient="[panier_client, dataStore[1]]" 
+            :num_facture="dataStore[0]"
+            :username="whoDidIt"
+            :assure_rate="dataStore[3]"
+            :assureur="dataStore[5]"
+            :imperfections="[0, 0]"
+        />
                             
     </div>
 </template>
@@ -235,6 +235,7 @@ const {setclient, getOneclient, getObjclients} = useClientStore()
 
 const idBons = ref([])
 const dataStore = ref([])
+const whoDidIt = ref('')
 
 let tempSelected = 0
 let numsBon: number[] = []
@@ -367,6 +368,8 @@ watch(response, (value)=>{
     shouldPop.value = true
     if(value.response[0] != undefined){
         updatedImiti.value = value.response
+        whoDidIt.value = (value.response[0].operator)
+        // console.log("whoDidIt ? " + JSON.stringify(value.response[0].operator))
         
         defaultPop.value = 'something'
 
