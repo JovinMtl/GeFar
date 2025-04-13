@@ -233,6 +233,7 @@ const {setclient, getOneclient, getObjclients} = useClientStore()
 
 
 const idBons = ref([])
+const dataStore = ref([])
 
 let tempSelected = 0
 let numsBon: number[] = []
@@ -266,8 +267,8 @@ const showData = (e)=>{
     // console.log("your Data: " + e.target.getAttribute("data-ids"))
     ids.value = e.target.getAttribute("data-ids")
     numberIndex.value = e.target.getAttribute("data-index")
-    let dataStore = e.target.getAttribute("data-store")
-    console.log("data-store: " + dataStore)
+    dataStore.value = e.target.getAttribute("data-store")
+    console.log("data-store: " + toValue(dataStore))
     setTimeout(getInfo, 10)
 }
 const fIndex = ()=>{
