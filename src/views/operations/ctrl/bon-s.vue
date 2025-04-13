@@ -74,6 +74,9 @@
                             <td class="ta-r"> {{( String(elm.operator)).charAt(0).toUpperCase().concat((String(elm.operator)).slice(1)) }}</td>
                         </tr>  
                     </table>
+                    <div style="text-align: center; margin-top: 0.3rem;">
+                        <button style="padding: 0.3rem;">Imprimer</button>
+                    </div>
                 </span>
             </div>
             <div v-for="(umuti, index) in (actual_imitiS)" 
