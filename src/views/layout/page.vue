@@ -2,7 +2,7 @@
     <ion-page>
         <ion-content>
             <div class="mP">
-                <div class="m-cl" :class="rdBtnActive ? '' : ''" @click="isSpecial">
+                <div class="m-cl" :class="displayClasses ? 'bg-b' : 'bg-g'" @click="showClasses">
                 </div>
                 <div v-show="server_process" class="loader" style="z-index: 15;position:absolute">
                     <jove-loader></jove-loader>
@@ -372,6 +372,11 @@ const [sell_report, toSell] = useKurungika(panier_api, url_sell)
 const { getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
+
+// Functions
+const showClasses = ()=>{
+    displayClasses.value = !displayClasses.value
+}
 
 // from reduction
 const getstateBtn = (value:boolean)=>{
