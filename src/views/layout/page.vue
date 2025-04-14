@@ -90,22 +90,23 @@
                                     </div>
                                     <!-- Here should not display Med with qte zero -->
                                     <div class="sub" v-if="today < lot.date">
-                                        <!-- <ion-icon :src="removeCircleOutline" @click="decrementQte"
-                                            style="font-size: large;"></ion-icon> -->
-                                            <button class="paB"  @click="decrementQte">--</button>
+                                        <button class="paB"  @click="decrementQte">--</button>
                                         <span style="margin-right: .1rem;">&nbsp;</span>
                                         <input @click="changeQte($event)" @blur="showChange($event)" :value="lot.to_panier"
                                             :id="'q' + index" class="se"
                                             style="background-color: rgba(14, 14, 211, 0.384); width: 25px; height: 25px; position: relative; top: -4px; left: 1px;padding: 0.3rem; font-size: 1rem;" />
                                         <span style="margin-right: .1rem;">&nbsp;</span>
-                                        <!-- <ion-icon :src="addCircleOutline" @click="incrementQte"
-                                            style="font-size: large;"></ion-icon> -->
                                         <button class="paB" @click="incrementQte">+</button>
                                     </div>
                                     <div v-else class="sub red">
                                         déjà perimé
                                     </div>
                                 </div>
+                            </div>
+                            <div class="deci">
+                                <div><button class="pa-3">+</button></div>
+                                <div class="deci-nu">{{ 0 }}</div>
+                                <div><button class="pa-3">--</button></div>
                             </div>
                             <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
                                 style="text-align: right;">
