@@ -75,7 +75,7 @@
                             <div class="infoUmuti"></div>
                             <div class="infoUmuti umutiTitle">{{ useCapitalLetter((selectedUmuti.value.nom_med).slice(0, 14)) }}</div>
                             <div class="infoUmuti umutiTitle umutiCode">{{ selectedUmuti.value.code_med }}</div>
-                            <div class="infoUmuti umutiTitle umutiFamille">{{ selectedUmuti.value.classe_med }}</div>
+                            <div class="infoUmuti umutiTitle umutiFamille">{{ String(selectedUmuti.value.classe_med).slice(0,25) }}</div>
                             <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.forme || 'forme:vide' }}</div>
                             <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
                             <div class="infoUmuti umutiTitle umutiPrice">{{ useReadableNumber(selectedUmuti.value.prix_vente) }}</div>
@@ -1116,13 +1116,15 @@ provide('familly_displ', openedFamilly)
     align-content: center;
 }
 .umutiTitle {
-    background-color: rgba(0, 50, 255, 0.315);
+    /* background-color: rgba(0, 50, 255, 0.315); */
     height: 5%;
     font-weight: 700;
     padding: 4px 10px;
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
     color: black;
+    display: flex;
+    flex-wrap: wrap;
 }
 .umutiDescription {
     height: 10%;
