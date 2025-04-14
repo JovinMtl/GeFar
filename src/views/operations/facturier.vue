@@ -16,10 +16,10 @@
                 <div class="content2" v-for="(umuti, index) in props.commandePatient[0]">
                     <div class="number">{{ index + 1 }}.</div>
                     <div class="nom_med">{{ (String(umuti.nom_med)).slice(0,15) }}</div>
-                    <div class="qte">{{ umuti.qte }}</div>
+                    <div class="qte">{{ umuti?.qte || umuti?.quantity }}</div>
                     <div class="qte"></div>
                     <div class="Pu">{{ umuti.prix_vente }}</div>
-                    <div class="ptotal" >{{ umuti.qte * umuti.prix_vente }} Fbu</div>
+                    <div class="ptotal" >{{ (umuti?.qte || umuti?.quantity) * umuti.prix_vente }} Fbu</div>
                 </div>
 
                 <div class="content2 toTal sepA m-25">
@@ -29,7 +29,8 @@
                     <div class="qte"></div>
                     <div class="Pu">--</div>
                     <div class="ptotal">
-                        {{ (String(props.commandePatient[1].value)).replaceAll("\"",'') }} Fbu
+                        <!-- {{ (String(props.commandePatient[1].value)).replaceAll("\"",'') }} Fbu -->
+                          {{ useReadable(total )}} Fbu
                     </div>
                 </div>
                 <div class="toTal rm-m">
@@ -86,7 +87,7 @@ const message = "facture"
 const props = defineProps([
     'commandePatient', 'num_facture', 
     'username', 'assure_rate','assureur',
-    'imperfections'
+    'imperfections', 'auto_run'
 ])
 const emit = defineEmits(['factureActive'])
 
@@ -95,18 +96,14 @@ const reste: Ref<String> = ref('')
 const assured: Ref<String> = ref('')
 const total: Ref<number> = ref(0)
 
-// console.log("Facturier INITIALIZED: ", props)
-// console.log("THe first thing: ", props.commandePatient[0], "second: ", props.commandePatient[1])
-// console.log("Assureur: ", props.assureur)
-// console.log("assure_rate:", props.assure_rate)
-console.log("The pTotal has: " + (String(props.commandePatient[1].value)).replaceAll("\"",'') + "end.")
+// console.log("The pTotal has: " + (String(props.commandePatient[1].value)).replaceAll("\"",'') + "end.")
 
 // Functions
 const makeTotal = ()=>{
     // console.log("The INPUT of total:", props.commandePatient[0])
     // console.log("and:", props.commandePatient[0])
     props.commandePatient[0].forEach((elm)=>{
-        total.value += (elm.prix_vente * elm.qte)
+        total.value += (elm.prix_vente * (elm?.qte || elm?.quantity))
     })
     // console.log("the Total found:", total.value)
 }
@@ -123,6 +120,12 @@ makeTotal()
 let assure_value = total.value * (props.assure_rate / 100)
 assured.value = useReadable(assure_value)
 reste.value = useReadable(total.value - assure_value)
+
+if (props.auto_run == true){
+    console.log("Should Print automatically")
+    console.log("Commande_patient: " + JSON.stringify(props.commandePatient))
+    // printerF()
+}
 
 // END
 </script>

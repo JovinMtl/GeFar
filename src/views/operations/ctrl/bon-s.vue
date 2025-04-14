@@ -208,6 +208,7 @@
                     :assure_rate="dataStore[3]"
                     :assureur="dataStore[5]"
                     :imperfections="[0, 0]"
+                    :auto_run="true"
                 />
             </div>
         </teleport>
@@ -276,8 +277,9 @@ const showData = (e)=>{
     // console.log("your Data: " + e.target.getAttribute("data-ids"))
     ids.value = e.target.getAttribute("data-ids")
     numberIndex.value = e.target.getAttribute("data-index")
-    dataStore.value = e.target.getAttribute("data-store")
-    console.log("data-store: " + toValue(dataStore))
+    let dataStoreString = e.target.getAttribute("data-store")
+    dataStore.value = String(toValue(dataStoreString)).split(',')
+    // console.log("data-store: " + toValue(dataStore) + 'NumFacture: ' + String(toValue(dataStore)).split(',')[0])
     setTimeout(getInfo, 10)
 }
 const fIndex = ()=>{
