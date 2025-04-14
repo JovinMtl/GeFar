@@ -783,7 +783,8 @@ div > section {
     height: auto;
     background-color: blue;
     position: absolute;
-    transform: translate(13vw, -12vh);
+    transform: translate(9vw, -12vh);
+    
 }
 .deci-nu{
     display: flex;
