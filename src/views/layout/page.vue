@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="deci">
+                            <div v-if="selectedUmuti.value.is_decimal" class="deci">
                                 <div><button class="pa-3">+</button></div>
                                 <div class="deci-nu">{{ 0 }}</div>
                                 <div><button class="pa-3">--</button></div>
@@ -854,7 +854,7 @@ const getUmuti = (umuti) => {
         activeLot.value = strDate(temp_lot)
         need_to_updade.value = false
     }
-    console.log("THe selected umuti: ", umuti)
+    // console.log("THe selected umuti: ", selectedUmuti.value)
 }
 const show_suggest = (e)=>{
     console.log("You entered assureur: ", e.target.value)

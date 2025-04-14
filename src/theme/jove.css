@@ -776,8 +776,8 @@ div > section {
     flex-direction: column;
     height: auto;
     background-color: blue;
-    position: relative;
-    transform: translate(980%, -110%);
+    position: absolute;
+    transform: translate(13vw, -12vh);
 }
 .deci-nu{
     display: flex;
