@@ -739,7 +739,8 @@ export default defineComponent({
                     'sous_classe_med': element.sous_classe_med,
                     'forme': element.forme,
                     // 'location': element.location,
-                    'lot': element.lot
+                    'lot': element.lot,
+                    'is_decimal': element.is_decimal,
                 }
                 imitiset.value.push(obj)
             });

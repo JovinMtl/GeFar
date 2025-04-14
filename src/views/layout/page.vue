@@ -853,7 +853,7 @@ const getUmuti = (umuti) => {
         activeLot.value = strDate(temp_lot)
         need_to_updade.value = false
     }
-    // console.log("THe selected umuti: ", selectedUmuti.value)
+    console.log("THe selected umuti: ", umuti)
 }
 const show_suggest = (e)=>{
     console.log("You entered assureur: ", e.target.value)
