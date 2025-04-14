@@ -52,7 +52,9 @@
             </div>
             <div class="authorizer">
                 Servi par: {{ username }} <br>
-                Date     : {{ new Date().toISOString().substring(0,10) }}
+                Date     : 
+                    <span v-if="props.date">{{ new Date(props?.date).toISOString().substring(0,10) }}</span> 
+                    <span v-else>{{ new Date().toISOString().substring(0,10) }}</span> 
             </div>
             <div class="factuFooter">
                  <div class="conf">
@@ -87,7 +89,7 @@ const message = "facture"
 const props = defineProps([
     'commandePatient', 'num_facture', 
     'username', 'assure_rate','assureur',
-    'imperfections', 'auto_run'
+    'imperfections', 'date'
 ])
 const emit = defineEmits(['factureActive'])
 
@@ -121,11 +123,11 @@ let assure_value = total.value * (props.assure_rate / 100)
 assured.value = useReadable(assure_value)
 reste.value = useReadable(total.value - assure_value)
 
-if (props.auto_run == true){
-    console.log("Should Print automatically")
-    console.log("Commande_patient: " + JSON.stringify(props.commandePatient))
-    // printerF()
-}
+// if (props.auto_run == true){
+//     console.log("Should Print automatically")
+//     console.log("Commande_patient: " + JSON.stringify(props.commandePatient))
+//     // printerF()
+// }
 
 // END
 </script>

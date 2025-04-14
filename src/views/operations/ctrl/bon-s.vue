@@ -89,7 +89,8 @@
                         :data-store="[umuti.num_facture, umuti.total, 
                                         umuti.cout, umuti.assu_rate, 
                                         umuti.montant_dette,
-                                        getOneAssurance(umuti.organization) ]" 
+                                        getOneAssurance(umuti.organization),
+                                        umuti.date_served ]" 
                         :data-index="index+1" @click="showData">Ouvrir</button>
                 </div> 
 
@@ -208,7 +209,8 @@
                     :assure_rate="dataStore[3]"
                     :assureur="dataStore[5]"
                     :imperfections="[0, 0]"
-                    :auto_run="true"
+                    :date="dataStore[6]"
+
                 />
             </div>
         </teleport>
