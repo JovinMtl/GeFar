@@ -606,10 +606,12 @@ const changeQte = (value) => {
 
 }
 const incrementQte = (value) => {
-    // THis function is called when pressing the '+' button on lot
-
-    // const code_s = value.target.previousSibling.previousSibling.getAttribute('id')
-    const code_s = value.target.previousSibling.previousSibling.previousSibling.getAttribute('id')
+    // THis function is called when pressing the
+    
+    let code_s = value?.target?.previousSibling?.previousSibling?.previousSibling?.getAttribute('id')
+    if (!code_s){
+        code_s = value.target?.previousSibling?.previousSibling?.getAttribute('id')
+    }
     const code = Number(code_s.slice(1))
     let jov = (activeLot.value[code]).length
     let prevVal = activeLot.value[code].to_panier
