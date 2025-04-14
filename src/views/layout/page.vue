@@ -78,7 +78,7 @@
                             <div class="infoUmuti umutiTitle umutiFamille">{{ selectedUmuti.value.classe_med }}</div>
                             <div class="infoUmuti umutiTitle umutiDescription">{{ selectedUmuti.value.forme || 'forme:vide' }}</div>
                             <div class="infoUmuti umutiTitle umutiQteRest">{{ selectedUmuti.value.quantite_restant }}</div>
-                            <div class="infoUmuti umutiTitle umutiPrice">{{ selectedUmuti.value.prix_vente }}</div>
+                            <div class="infoUmuti umutiTitle umutiPrice">{{ useReadableNumber(selectedUmuti.value.prix_vente) }}</div>
                             <!-- Need to display the number of lots -->
                             <div v-if="activeLot.length" style="text-align: right;" class="c-g">{{ activeLot.length }}</div>
                             <div class="umutiLot">
@@ -265,6 +265,7 @@ import { useCapitalLetter } from '../hooks/useReadable.js';
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
 import { useError500 } from '../../store/generalErrors'
+import useReadableNumber from '../hooks/useReadable.js'
 
 import {
     PanierAPI, PanierClient, ActiveLot
