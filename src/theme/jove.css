@@ -726,3 +726,20 @@ div > section {
 .clk:active{
     scale: 0.8;
 }
+
+/* From page.vue */
+
+.facturierContainer {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    color: black;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+.mv-pop{
+    transform: translate(-75%, 0);
+}

@@ -1024,18 +1024,6 @@ provide('familly_displ', openedFamilly)
     margin: 0;
 }
 
-.facturierContainer {
-    display: flex;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background: transparent;
-    color: black;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-}
-
 .umutiLot {
     overflow: auto;
     height: 80px;

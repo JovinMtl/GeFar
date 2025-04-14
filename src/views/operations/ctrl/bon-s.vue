@@ -48,11 +48,8 @@
         </div>
 
         <div class="controlBody">
-            <div v-show="shouldPop" popover id="pop">
+            <div v-show="shouldPop" popover id="pop" class="mv-pop">
                  <span> 
-                    <!-- <ol>
-                        <li v-for="elm in response.response">{{ elm.nom_med }}</li>
-                    </ol> -->
                     <table>
                         <caption class="captBon">Bon de Commande: {{ numberIndex }}</caption>
                         <tr>
@@ -202,14 +199,18 @@
                 </div>
             </div>
         </div>
-        <facturier @facture-active="closeFacture"
-            :commande-patient="[panier_client, dataStore[1]]" 
-            :num_facture="dataStore[0]"
-            :username="whoDidIt"
-            :assure_rate="dataStore[3]"
-            :assureur="dataStore[5]"
-            :imperfections="[0, 0]"
-        />
+        <teleport to="body">
+            <div v-if="openFacturier" class="facturierContainer" @click="closeFacture">
+                <facturier @facture-active="closeFacture"
+                    :commande-patient="[updatedImiti, dataStore[1]]" 
+                    :num_facture="dataStore[0]"
+                    :username="whoDidIt"
+                    :assure_rate="dataStore[3]"
+                    :assureur="dataStore[5]"
+                    :imperfections="[0, 0]"
+                />
+            </div>
+        </teleport>
                             
     </div>
 </template>
@@ -236,6 +237,7 @@ const {setclient, getOneclient, getObjclients} = useClientStore()
 const idBons = ref([])
 const dataStore = ref([])
 const whoDidIt = ref('')
+const openFacturier = ref(false)
 
 let tempSelected = 0
 let numsBon: number[] = []
@@ -262,8 +264,13 @@ getAssurances()
 getClients()
 
 //Functions
+const closeFacture = ()=>{
+    console.log("Should close the facture")
+    openFacturier.value = false
+}
 const printFacture = ()=>{
-    console.log("The Bons have: " + JSON.stringify(toValue(updatedImiti)))
+    console.log("Should open Facture: ")
+    openFacturier.value = true
 }
 const showData = (e)=>{
     // console.log("your Data: " + e.target.getAttribute("data-ids"))
