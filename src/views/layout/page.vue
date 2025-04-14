@@ -2,6 +2,8 @@
     <ion-page>
         <ion-content>
             <div class="mP">
+                <div class="m-cl" :class="rdBtnActive ? '' : ''" @click="isSpecial">
+                </div>
                 <div v-show="server_process" class="loader" style="z-index: 15;position:absolute">
                     <jove-loader></jove-loader>
                 </div>
@@ -50,7 +52,7 @@
                 <!-- details for umuti were displayed here -->
                 <div class="fami"></div>
                 <div class="mainContainer">
-                    <div class="famil">
+                    <div v-if="displayClasses" class="famil">
                         <input type="text" value="Classe therap."
                             class="inpBl w-90"
                             style="color: black;scale: .8;" disabled>
@@ -338,6 +340,7 @@ const selectedProf: Ref<string> = ref('')
 const rate_assure: Ref<number> = ref(0)
 const suggest:Ref<string> = ref("Votre assureur")
 const classes:Ref<Medi[]> = ref([])
+const displayClasses:Ref<boolean> = ref(false)
 
 const selectedQte = reactive({
     'id': '',
