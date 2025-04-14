@@ -771,3 +771,15 @@ div > section {
 .umutiPrice-2{
     border-left: 1px solid lime;
 }
+.deci{
+    display: inline-flex;
+    flex-direction: column;
+    height: auto;
+    background-color: blue;
+    position: relative;
+    transform: translate(980%, -110%);
+}
+.deci-nu{
+    display: flex;
+    justify-content: center;
+}
