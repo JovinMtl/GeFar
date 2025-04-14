@@ -29,6 +29,7 @@ html, body {
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
     padding-left: 1vw;
+    /* background-color: red; */
 }
 .fami{
     width: 8vw;
@@ -50,14 +51,19 @@ html, body {
 }
 
 .sectA{
-    width: 54%;
+    /* width: 54%; */
+    width: 76%;
     height: 98.4%;
     overflow: auto;
     margin-top: 5px;
     padding-top: 1vw;
     transition-duration: 100ms;
+    /* margin: 0 1rem; */
 }
-.sectA-1{
+.sectA-sides{
+    width: 15vw; padding: 1rem 5px;
+}
+.sectA-13{
     width: 64%;
 }
 .sectB{

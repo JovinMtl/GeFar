@@ -50,13 +50,12 @@
                 <!-- details for umuti were displayed here -->
                 <div class="fami"></div>
                 <div class="mainContainer">
-                    <div class="famil">
+                    <div v-if="showClassMed" class="famil">
                         <input type="text" value="Classe therap."
                             class="inpBl w-90"
                             style="color: black;scale: .8;" disabled>
                         <input type="text" class="w-90"
                         placeholder="Trouver classe" disabled>
-                        <!-- All familles will be displayed here. -->
                         <div class="fami-1"
                             v-for="(classe, index) in classes"
                             :key="index" :id="'s'+index"
@@ -69,7 +68,7 @@
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
                             @emptyResult="alertUmutiNew" @families="getFamilies"></list-imiti>
                     </div>
-                    <div :class="selectedUmuti.value ? '':'noDisp'" style="width: 15vw; padding: 1rem 5px;">
+                    <div :class="selectedUmuti.value ? '':'noDisp'" class="sectA-side">
                         <!-- details for selected umuti should appeal here -->
                         <div v-if="selectedUmuti.value" :class="selectedUmuti.value ? 'menuLeft' : ''">
                             <div class="infoUmuti"></div>
@@ -347,6 +346,8 @@ const selectedQte = reactive({
 const succededIndex:Ref<number> = ref(0)
 const formerFactureLength:Ref<number> = ref(0)
 const actualFactureLength:Ref<number> = ref(0)
+
+const showClassMed:Ref<boolean> = ref(false)
 
 // Store
 const { getError500, getError500Msg,
