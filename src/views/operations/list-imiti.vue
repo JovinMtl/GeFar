@@ -4,12 +4,20 @@
             @click.prevent="umutiOpen($event)" :key="index">
             <a :title="umuti.nom_med" href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
                 <div :id="index" class="umuti">
-                    <div class="umutiTitle">
-                        {{ useCapitalLetter((umuti.nom_med).slice(0, 7)) }}<span v-show="(umuti.nom_med).length > 8">...</span>
+                    <div class="umutiTitle sm-title">
+                        <!-- {{ useCapitalLetter((umuti.nom_med).slice(0, 7)) }}<span v-show="(umuti.nom_med).length > 8">...</span> -->
+                        {{ useCapitalLetter((umuti.nom_med).slice(0, 15)) }}<span v-show="(umuti.nom_med).length > 15">...</span>
 
                     </div>
 
-                    <div class="umutiPrice">{{ umuti.prix_vente }}</div>
+                    <div class="umutiPrice">
+                        <div class="umutiPrice-1">
+                        {{ useReadableNumber(umuti.prix_vente) }}</div>
+                        <div class="umutiPrice-2" :class="umuti.quantite_restant > 0 ? '':'c-danger'">{{ umuti.quantite_restant }}</div>
+                        <!-- <span class="c-g1 qt-title"></span> -->
+                    </div>
+
+                    
                 </div>
             </a>
         </div>
@@ -25,6 +33,7 @@ import { UmutiSet } from '../layout/types'
 import { useUserStore } from '../../store/user.js'
 import { baseURL } from '../../store/host'
 import { useCapitalLetter } from '../hooks/useReadable.js'
+import useReadableNumber from '../hooks/useReadable.js'
 export default defineComponent({
     setup(_, { emit }) {
         const data = reactive({})
@@ -828,7 +837,8 @@ export default defineComponent({
             imiti, imitiset,
             umutiOpen,
             updateImitiSet,
-            useCapitalLetter
+            useCapitalLetter,
+            useReadableNumber,
         }
     },
 })

@@ -9,7 +9,6 @@
          url(../assets/fonts/Sen-Bold.woff2) format('woff2');
 }
 
-
 html, body {
     background-image: url(../../public/Background/bck5.jpeg);
     background-size: contain;
@@ -477,6 +476,9 @@ html, body {
 .c-g{
     color: grey;
 }
+.c-g1{
+    color: greenyellow
+}
 .s-cl{
     margin: 20px 0;
 }
@@ -493,7 +495,7 @@ html, body {
     color: red;
 }
 .c-b-1{color: blue;}
-.c-b-2{color: black;}
+.c-danger{color: #F93827;}
 .c-g{
     color: green;
 }
@@ -742,4 +744,30 @@ div > section {
 }
 .mv-pop{
     transform: translate(-70%, 0);
+}
+.sm-title{
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+.qt-title{
+    display: absolute;
+    left: 1rem;
+    color: red;
+    display: inline;
+
+    /* transform: translate(150%,0); */
+}
+.umutiPrice{
+    display: flex;
+    justify-content: center;
+}
+.umutiPrice-1, .umutiPrice-2{
+    display: flex;
+    width: 50%;
+    /* border: 1px solid red; */
+    align-items: center;
+    justify-content: center;
+}
+.umutiPrice-2{
+    border-left: 1px solid lime;
 }
