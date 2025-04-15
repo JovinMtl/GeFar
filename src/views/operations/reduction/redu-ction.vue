@@ -16,6 +16,9 @@
             v-model="clPhone" type="number" />
         <input type="button" :class="clClean ? 'BtnClean':''" 
         value="Valider" @click="simplValid">
+        <span class="c-r ml-5 sm-l">
+           {{message}}
+        </span>
     </div>
     <div v-if="selectedProf == 'au'">
         <div>
@@ -92,6 +95,7 @@ import {
 } from '../../layout/types.js'
 import { baseURL } from '../../../store/host.js'
 import cliAssu from './cli-assu.vue'
+import { fa } from 'vuetify/locale'
 
 const emit = defineEmits([
     'cfrBtn', 'seleProf', 
@@ -178,17 +182,18 @@ getDefRate()
 
 // Function definition
 const checkPhoneNumber = (val)=>{
-    let status = false;
+    let status = true;
     let strVal = String(val);
     let mobCodes = ['79', '76', '72', '71',
         '69', '68', '66', '62', '61',
     ];
-    if (mobCodes.indexOf(strVal.slice(0,2))){
-        status = true
+    if ((!(mobCodes.indexOf(strVal.slice(0,2)) > -1)) && (strVal.length == 8)){
+        status = false
     }
-    if (strVal.length == 8 || strVal.length == 12){
-        return true
+    if (!(strVal.length == 8 || strVal.length == 11)){
+        status =  false
     }
+    console.log("phoneNumber: " + strVal + 'Status: ' + status)
     return status
 }
 const getcliAssuData = (data:CreatedClient)=>{
@@ -245,11 +250,21 @@ const checkRate = ()=>{
 }
 const simplValid = ():void=>{
     // validate Taxi moto, taxi velo and domaine medicale
+    let status = true
     if(!clName.value){
-        clName.value = "inconnu"
-    } else if (!clPhone.value){
-        clPhone.value = 1111
+        // clName.value = "inconnu"
+        message.value = "Nom incorrect"
+        status = false
     }
+    if (!checkPhoneNumber(clPhone.value)){
+        // clPhone.value = 1111
+        message.value = "Numero incorrect"
+        status = false
+    }
+    if (!status){
+        return
+    }
+    message.value = '';
     clientInfo.nom_client = clName.value;
     clientInfo.numero_tel = String(clPhone.value);
     clientInfo.categorie = String(selectedProf.value);
