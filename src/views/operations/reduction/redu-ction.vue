@@ -193,7 +193,6 @@ const checkPhoneNumber = (val)=>{
     if (!(strVal.length == 8 || strVal.length == 11)){
         status =  false
     }
-    console.log("phoneNumber: " + strVal + 'Status: ' + status)
     return status
 }
 const getcliAssuData = (data:CreatedClient)=>{

@@ -105,8 +105,8 @@
                                 </div>
                             </div>
                             <div v-if="selectedUmuti.value.is_decimal" class="deci">
-                                <div><button class="pa-3">+</button></div>
-                                <div class="deci-nu">{{ 0 }}</div>
+                                <div><button class="pa-3" @click="raiseDecimal">+</button></div>
+                                <div class="deci-nu">{{ decimalNumber }}</div>
                                 <div><button class="pa-3">--</button></div>
                             </div>
                             <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
@@ -351,6 +351,7 @@ const formerFactureLength:Ref<number> = ref(0)
 const actualFactureLength:Ref<number> = ref(0)
 
 const showClassMed:Ref<boolean> = ref(false)
+const decimalNumber:Ref<number> = ref(0)
 
 // Store
 const { getError500, getError500Msg,
@@ -376,6 +377,12 @@ const { getUsername, setUsername,
 
 
 // Functions
+const raiseDecimal = ()=>{
+    if (toValue(decimalNumber) >= 0 && 
+        toValue(decimalNumber) < 9){
+            decimalNumber.value += 1;
+        }
+}
 const showClasses = ()=>{
     displayClasses.value = !displayClasses.value
 }
