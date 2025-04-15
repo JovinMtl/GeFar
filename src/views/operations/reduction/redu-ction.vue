@@ -177,6 +177,20 @@ getDefRate()
 
 
 // Function definition
+const checkPhoneNumber = (val)=>{
+    let status = false;
+    let strVal = String(val);
+    let mobCodes = ['79', '76', '72', '71',
+        '69', '68', '66', '62', '61',
+    ];
+    if (mobCodes.indexOf(strVal.slice(0,2))){
+        status = true
+    }
+    if (strVal.length == 8 || strVal.length == 12){
+        return true
+    }
+    return status
+}
 const getcliAssuData = (data:CreatedClient)=>{
     // Here to complile 'value' with clInfo
     clientInfo.assureur = assureur.value
