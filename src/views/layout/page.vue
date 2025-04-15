@@ -352,6 +352,7 @@ const actualFactureLength:Ref<number> = ref(0)
 
 const showClassMed:Ref<boolean> = ref(false)
 const decimalNumber:Ref<number> = ref(0)
+const fullDecimal: Ref<number> = ref(10)
 
 // Store
 const { getError500, getError500Msg,
@@ -719,7 +720,7 @@ const lot_array = (): PanierAPI[] => {
                 'qte': element.to_panier,
             }
             if (decimalNumber.value){
-                obj.qte += (toValue(decimalNumber)/10)
+                obj.qte += (toValue(decimalNumber)/toValue(fullDecimal))
             }
             value += element.to_panier // gathering the requested qte
             lote.push(obj)
@@ -733,7 +734,7 @@ const lot_array = (): PanierAPI[] => {
 
     })
     if (decimalNumber.value){
-        value += (toValue(decimalNumber)/10)
+        value += (toValue(decimalNumber)/toValue(fullDecimal))
     }
     if (value >= 1) { // in case there are requested qte
         console.log("The default lote:", lote)
@@ -741,7 +742,7 @@ const lot_array = (): PanierAPI[] => {
     } else{
         lote[with_qte].qte = 1
         if (decimalNumber.value){
-            lote[with_qte].qte = 1 + (toValue(decimalNumber)/10)
+            lote[with_qte].qte = 1 + (toValue(decimalNumber)/toValue(fullDecimal))
         }
         // return lote
     }
@@ -811,7 +812,7 @@ const somme_lote = (): number => {
         }
     }
     if (decimalNumber){
-        somme_qte += decimalNumber.value / 10
+        somme_qte += decimalNumber.value / toValue(fullDecimal)
     }
     return somme_qte
 }
