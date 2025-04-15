@@ -711,11 +711,15 @@ const lot_array = (): PanierAPI[] => {
     let with_qte = 0
     let i = 0
     let j = 0
+    let obj = {}
     activeLot.value.forEach((element) => {
         if (element.date > today) {
-            let obj = {
+            obj = {
                 'code_operation': element.code_operation,
                 'qte': element.to_panier,
+            }
+            if (decimalNumber.value){
+                obj.qte += (toValue(decimalNumber)/10)
             }
             value += element.to_panier // gathering the requested qte
             lote.push(obj)
@@ -728,21 +732,21 @@ const lot_array = (): PanierAPI[] => {
         i += 1
 
     })
-
-    if (value) { // in case there are requested qte
+    if (decimalNumber.value){
+        value += (toValue(decimalNumber)/10)
+    }
+    if (value >= 1) { // in case there are requested qte
         console.log("The default lote:", lote)
-        return lote
+        // return lote
     } else{
         lote[with_qte].qte = 1
-        // console.log("The withQte is:", with_qte, "now:", lote)
-        return lote
+        if (decimalNumber.value){
+            lote[with_qte].qte = 1 + (toValue(decimalNumber)/10)
+        }
+        // return lote
     }
-    // else if (right_date) {
-    //     lote[0].qte = 1
-    //     return lote
-    // } else {
-    //     lote
-    // }
+
+    return lote
 
 }
 const check_panier = (umuti_name) => {
