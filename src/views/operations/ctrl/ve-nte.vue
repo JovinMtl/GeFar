@@ -61,7 +61,7 @@
                     {{ index + 1 }}
                 </div> 
                 <div class="elt contentElement2">
-                    {{ umuti.nom_med }}
+                    {{ String(umuti.nom_med).slice(0, 25) }}
                 </div> <div class="elt contentElement3">
                     {{ (umuti.qte ) }}
                 </div> 
