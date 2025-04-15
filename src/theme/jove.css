@@ -777,6 +777,17 @@ div > section {
 .umutiPrice-2{
     border-left: 1px solid lime;
 }
+.rdBtn-cl{
+    position: absolute;
+    background-color: red;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+}
+.m-cl{
+    width: 10px;
+    height: 10px;
+}
 .deci{
     display: inline-flex;
     flex-direction: column;
