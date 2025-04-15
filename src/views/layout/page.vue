@@ -380,13 +380,13 @@ const { getUsername, setUsername,
 // Functions
 const decreaseDecimal = ()=>{
     if (toValue(decimalNumber) >= 1 && 
-        toValue(decimalNumber) < 10){
+        toValue(decimalNumber) < toValue(fullDecimal)){
             decimalNumber.value -= 1;
         }
 }
 const increaseDecimal = ()=>{
     if (toValue(decimalNumber) >= 0 && 
-        toValue(decimalNumber) < 9){
+        toValue(decimalNumber) < (toValue(fullDecimal) -1)){
             decimalNumber.value += 1;
         }
 }
