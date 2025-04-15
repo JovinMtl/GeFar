@@ -787,6 +787,7 @@ div > section {
 .m-cl{
     width: 10px;
     height: 10px;
+    position: absolute;
 }
 .deci{
     display: inline-flex;
