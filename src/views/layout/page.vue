@@ -105,9 +105,9 @@
                                 </div>
                             </div>
                             <div v-if="selectedUmuti.value.is_decimal" class="deci">
-                                <div><button class="pa-3" @click="raiseDecimal">+</button></div>
+                                <div><button class="pa-3" @click="increaseDecimal">+</button></div>
                                 <div class="deci-nu">{{ decimalNumber }}</div>
-                                <div><button class="pa-3">--</button></div>
+                                <div><button class="pa-3" @click="decreaseDecimal">--</button></div>
                             </div>
                             <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
                                 style="text-align: right;">
@@ -377,7 +377,13 @@ const { getUsername, setUsername,
 
 
 // Functions
-const raiseDecimal = ()=>{
+const decreaseDecimal = ()=>{
+    if (toValue(decimalNumber) >= 1 && 
+        toValue(decimalNumber) < 10){
+            decimalNumber.value -= 1;
+        }
+}
+const increaseDecimal = ()=>{
     if (toValue(decimalNumber) >= 0 && 
         toValue(decimalNumber) < 9){
             decimalNumber.value += 1;
