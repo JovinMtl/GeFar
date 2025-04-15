@@ -288,7 +288,7 @@ reste.value = useReadable(total.value - assure_value)
             }
             .toTal {
                 @include content;
-                height: 15px;
+                min-height: 15px;
                 .ptotal{
                     text-align: right;
                 }
