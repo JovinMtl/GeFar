@@ -801,13 +801,15 @@ const somme_lote = (): number => {
     })
     if (somme_qte == 0) {
         if (date_exp) {
-            return 1
+            somme_qte = 1
         } else {
-            return 0
+            somme_qte = 0
         }
-    } else {
-        return somme_qte
     }
+    if (decimalNumber){
+        somme_qte += decimalNumber.value / 10
+    }
+    return somme_qte
 }
 const moveToPanier = (): number => {
     // this function manages to move umuti from selected into panier
@@ -844,6 +846,7 @@ const moveToPanier = (): number => {
             actualQte.value = 1
             actualValue.value = 0
         }
+        decimalNumber.value = 0;
     } else {
         console.log("No, the umuti already exist in Panier ", jove)
     }
