@@ -65,7 +65,7 @@
                             style="justify-content: right;">
                             <td>{{ index+1 }}.</td>
                             <td class="pr-5">{{ elm.nom_med }}</td>
-                            <td>{{ elm.quantity }}</td>
+                            <td class="c-b-1">{{ elm.quantity }}</td>
                             <td>{{ elm.prix_vente }}</td>
                             <td class="ta-r">{{ elm.prix_vente * elm.quantity }}</td>
                             <td class="ta-r"> {{( String(elm.operator)).charAt(0).toUpperCase().concat((String(elm.operator)).slice(1)) }}</td>
