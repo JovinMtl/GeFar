@@ -14,21 +14,21 @@
             </tr>
             <tr>
                 <td>Quantité</td>
-                <td class="c-w">{{ 0 }}</td>
+                <td class="c-w">{{ oneCompiledData.quantite_restant }}</td>
             </tr>
             <tr>
                 <td>Prix de vente</td>
-                <td class="c-w">{{ 1300 }}</td>
+                <td class="c-w">{{ oneCompiledData.prix_vente }}</td>
             </tr>
             <tr>
                 <td>Fractionner?</td>
-                <td class="c-w"><input style="scale: 1.8;" type="checkbox"></td>
+                <td class="c-w"><input v-model="isDecimal" style="scale: 1.8;" type="checkbox"></td>
             </tr>
         </table>
         
     </div>
         <div style="display: block;">
-            <button class="btnComp" @click="getOneCompiled">Changer</button>
+            <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 1 ? 'bg-g':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
         </div>
 
         
@@ -36,16 +36,54 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { reactive,ref, toValue, watch } from 'vue'
 import { useKurungika } from '../../../../hooks/kuvoma'
 
 const props = defineProps(['code_med'])
+const allowChange = ref(true)
+const codeMed = ref('')
+const isDecimal = ref(false)
+const changeSuccessfull = ref(0)
 
-const oneCompiled_url = 'api/rep/getAllFine/'
-const oneCompiledData = ref({
-    code_med : props.code_med,
+const oneCompiled_url = 'api/gOps/setUmutiSet/'
+const oneCompiledData = reactive({
+    'code_med' : props.code_med,
+    'request': 'get',
 })
+
+
 const [oneCompiled, getOneCompiled] = useKurungika(oneCompiledData, oneCompiled_url)
+setTimeout(()=>{
+    console.log("CPIL: " + oneCompiledData.code_med)
+    
+    getOneCompiled()
+}, 300)
+
+const changeOneCompiled = ()=>{
+    // 
+    // oneCompiled.code_med = 
+    oneCompiledData.request = 'post'
+    oneCompiledData.code_med = toValue(codeMed);
+    oneCompiledData.is_decimal = toValue(isDecimal)
+    getOneCompiled()
+}
+watch(oneCompiled, (value)=>{
+    if(value?.response == 0){
+        allowChange.value = false;
+    }else if(value?.response == 1){
+        changeSuccessfull.value = 1;
+    }else if(value?.response == 404){
+        changeSuccessfull.value = 404;
+    }
+    console.log("One compiled : " + JSON.stringify(value))
+    oneCompiledData.code_med = value?.code_med;
+    oneCompiledData.quantite_restant = value?.quantite_restant;
+    oneCompiledData.prix_vente = value?.prix_vente;
+    oneCompiledData.is_decimal = value?.is_decimal;
+
+    codeMed.value = value?.code_med ?? '';
+    isDecimal.value = value?.is_decimal ?? false;
+})
 </script>
 
 <style scoped>
