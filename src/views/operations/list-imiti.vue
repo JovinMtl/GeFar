@@ -13,8 +13,14 @@
                     <div class="umutiPrice">
                         <div class="umutiPrice-1">
                         {{ useReadableNumber(umuti.prix_vente) }}</div>
-                        <div class="umutiPrice-2" :class="umuti.quantite_restant > 0 ? '':'c-danger'">{{ umuti.quantite_restant }}</div>
-                        <!-- <span class="c-g1 qt-title"></span> -->
+                        <div class="umutiPrice-2" :class="umuti.quantite_restant > 0 ? '':'c-danger'">
+                            <span v-if="!umuti.is_decimal">
+                                {{ Number(umuti.quantite_restant) }}
+                            </span>
+                            <span v-else>
+                                {{ Number(umuti.quantite_restant).toFixed(1) }}
+                            </span>
+                        </div>
                     </div>
 
                     
