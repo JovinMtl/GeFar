@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-w bg-ht">
+    <div class="bg-w bg-ht se">
     <div class="c-b" style="display: flex; justify-content: center;">
         <!-- Ici on va modifier le produits compile -->
          
@@ -11,6 +11,10 @@
             <tr>
                 <td>ID</td>
                 <td class="c-w">{{ oneCompiledData.code_med }}</td>
+            </tr>
+            <tr>
+                <td>Désignation</td>
+                <td class="c-w"><span class="c-t">____</span>{{ oneCompiledData.nom_med }}</td>
             </tr>
             <tr>
                 <td>Quantité</td>
@@ -42,6 +46,7 @@ import { useKurungika } from '../../../../hooks/kuvoma'
 const props = defineProps(['code_med'])
 const allowChange = ref(true)
 const codeMed = ref('')
+const nomMed = ref('')
 const isDecimal = ref(false)
 const changeSuccessfull = ref(0)
 
@@ -76,6 +81,7 @@ watch(oneCompiled, (value)=>{
         changeSuccessfull.value = 404;
     }
     console.log("One compiled : " + JSON.stringify(value))
+    oneCompiledData.nom_med = value?.nom_med
     oneCompiledData.code_med = value?.code_med;
     oneCompiledData.quantite_restant = value?.quantite_restant;
     oneCompiledData.prix_vente = value?.prix_vente;
