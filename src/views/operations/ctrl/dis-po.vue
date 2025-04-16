@@ -50,7 +50,13 @@
                 <div class="elt contentElement2">
                     {{ String(umuti.nom_med).slice(0, 25) }}
                 </div> <div class="elt contentElement3">
-                    {{ (umuti.quantite_restant || umuti.quantity || 0 ) }}
+                    <span v-if="umuti.is_decimal">
+                        {{ Number((umuti.quantite_restant || umuti.quantity || 0 )).toFixed(1) }}
+                    </span>
+                    <span v-else>
+                        {{ Number((umuti.quantite_restant || umuti.quantity || 0 )) }}
+                    </span>
+                    
                 </div> 
 
                 <div v-if="isAdmin"  class="elt contentElement4 famille_med">
@@ -62,13 +68,22 @@
                     {{ umuti.prix_vente }}
                 </div>
 
-                <div class="elt contentElement4 total">
+                <div class="elt contentElement4 total">    
+                    <span v-if="umuti.is_decimal">
+                        {{ umuti.prix_vente *  (Number((umuti.quantite_restant || umuti.quantity || 0 )).toFixed(1)) }}
+                    </span>
+                    <span v-else>
                         {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 0) }}
+                    </span>
                 </div>
 
                 <div v-if="isAdmin" class="elt contentElement4"> 
-                <span>{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 0) }}</span> 
-                
+                    <span v-if="umuti.is_decimal">
+                        {{ Number(umuti.prix_vente - umuti.prix_achat) * (Number((umuti.quantite_restant || umuti.quantity || 0 )).toFixed(1)) }}
+                    </span>
+                    <span v-else>
+                        {{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 0) }}
+                    </span>
                 </div>
 
                 <div class="elt contentElement4">
