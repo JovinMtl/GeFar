@@ -519,6 +519,9 @@ html, body {
 .ml-5{
     margin-left: 5px;
 }
+.pr-5{
+    padding-right: 5px;
+}
 .ta-r{
     text-align: right; 
 }

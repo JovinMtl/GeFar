@@ -64,7 +64,7 @@
                             :class="index%2==0 ? 'bg-g2':'bg-g1'"
                             style="justify-content: right;">
                             <td>{{ index+1 }}.</td>
-                            <td>{{ elm.nom_med }}</td>
+                            <td class="pr-5">{{ elm.nom_med }}</td>
                             <td>{{ elm.quantity }}</td>
                             <td>{{ elm.prix_vente }}</td>
                             <td class="ta-r">{{ elm.prix_vente * elm.quantity }}</td>
