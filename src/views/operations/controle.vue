@@ -557,8 +557,9 @@ watch(actual_imiti, (value)=>{
         actual_opt.value = ['nom_med','description_med', 
         'quantite_restant','prix_vente', 'date_last_vente',]
         actual_type.value = ['text','text','text','text','date']
-        setOpTitle("Disponibles")
-        // console.log("new title...: " + title_operation.value)
+        // setOpTitle("Disponibles")
+        searchEable.value = true
+        title_operation.value = "Disponibles"
     }
 })
 watch(selected_field, (value)=>{
