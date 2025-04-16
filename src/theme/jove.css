@@ -176,6 +176,9 @@ html, body {
 .c-b{
     color: black;
 }
+.c-w{
+    color: white;
+}
 .tot-1{
     color: #ad9393;
     font-size: .93rem;
@@ -681,6 +684,17 @@ div > section {
     display: flex;
     justify-content: center;
 }
+
+.inpShape {
+    --s: 20px; /* control the shape */
+    
+    line-height: 1.2; /* control the height */
+    padding-inline: .3em calc(var(--s) + .3em);
+    clip-path: polygon(0 0,calc(100% - var(--s)) 0,100% 50%,calc(100% - var(--s)) 100%,0 100%);
+    background: #f8fafa;
+    width: fit-content;
+    height: 1vh;
+  }
 .co-inte > div{
     margin: 0 15px;
     padding: 1rem;
