@@ -12,6 +12,7 @@
         </div>
         <div>
             <compIled/>
+            <achAt />
         </div>
     </div>
 </template>
@@ -22,6 +23,7 @@ import type { Ref } from 'vue'
 import { useKurungika } from '../../../hooks/kuvoma'
 
 import compIled from './htv/comp-iled.vue'
+import achAt from './htv/ach-at.vue'
 
 const actualId:Ref<string> = ref('')
 

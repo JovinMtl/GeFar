@@ -1,5 +1,5 @@
 <template>
     <div>
-        Ici on va voir les produits compile
+        Ici on va modifier le produits compile
     </div>
 </template>
