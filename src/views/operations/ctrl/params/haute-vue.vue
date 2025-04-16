@@ -6,14 +6,14 @@
         <h3>Trouvez n'importe quel produit par son identifiant.</h3>
         <div class="mb-5">
             <input class="inp inpShape" type="text" v-model="actualId"> 
-            <button>Compilé</button>
-            <button>Achats</button>
+            <button @click="setComp('compile')">Compilé</button>
+            <button @click="setComp('achat')">Achats</button>
             <button>Autre</button>
         </div>
         <div>
             <!-- Should mount these in suspense -->
-            <compIled/>
-            <achAt />
+            <compIled v-if="actualComp=='compile'" :code_med="actualId"/>
+            <achAt v-if="actualComp=='achat'" />
         </div>
     </div>
 </template>
@@ -26,6 +26,12 @@ import compIled from './htv/comp-iled.vue'
 import achAt from './htv/ach-at.vue'
 
 const actualId:Ref<string> = ref('')
+const actualComp:Ref<string> = ref('')
+
+// Functions
+const setComp = (val)=>{
+    actualComp.value = val
+}
 
 </script>
 
