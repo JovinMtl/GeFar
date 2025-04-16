@@ -86,7 +86,7 @@
                                 <!--  :class="lot.qte == 0? 'hide':''"   bellow -->
                                 <div v-for="(lot, index) in activeLot" class="lote" :class="lot.qte == 0? 'hide':''"  :key="index">
                                     <div class="head" style="padding-top: 3px; font-size: .88rem; ">
-                                        {{ lot.qte }} 
+                                        {{ Number(lot.qte).toFixed(1) }} 
                                        <div class="se c-b" style="transform: translate(0%, -30%);"> {{ (String(lot.date)).slice(4, 8) }} {{ (String(lot.date)).slice(11, 16) }} </div>
                                     </div>
                                     <!-- Here should not display Med with qte zero -->
