@@ -11,6 +11,7 @@
             <button>Autre</button>
         </div>
         <div>
+            <!-- Should mount these in suspense -->
             <compIled/>
             <achAt />
         </div>
@@ -20,16 +21,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Ref } from 'vue'
-import { useKurungika } from '../../../hooks/kuvoma'
 
 import compIled from './htv/comp-iled.vue'
 import achAt from './htv/ach-at.vue'
 
 const actualId:Ref<string> = ref('')
 
-const oneCompiled_url = 'api/rep/getAllFine/'
-const oneCompiledData = ref(null)
-const [oneCompiled, getOneCompiled] = useKurungika(oneCompiledData, oneCompiled_url)
 </script>
 
 <style scoped>
