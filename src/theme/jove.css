@@ -520,7 +520,10 @@ html, body {
     font-size: .8rem;
 }
 .ml-5{
-    margin-left: 5px;
+    margin-left: 1rem;
+}
+.mb-5{
+    margin-bottom: 0.5rem;
 }
 .pr-5{
     padding-right: 5px;
