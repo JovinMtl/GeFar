@@ -99,7 +99,7 @@
                     </div>
                 </div>
 
-                <div v-if="isAdmin" class="logoMenu c-b-2" @click="openSettings">
+                <div v-if="isAdmin" class="logoMenu c-b" @click="openSettings">
                     <ion-icon :src="settingsSharp" class="logoIcon"></ion-icon>
                     <span class="textMenu textMenu-p t-m-skin">Paramètres</span>
                 </div>
