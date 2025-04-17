@@ -6,7 +6,14 @@
         <h3>Trouvez n'importe quel produit par son identifiant.</h3>
         <div class="mb-5">
             <input class="inp inpShape" type="text" v-model="actualId"> 
-            <button @click="setComp('compile')">Compilé</button>
+            <button @click="setComp('compile')">
+                <!-- Compilé -->
+                1 + 0,2
+            </button>
+            <button @click="setComp('compile')">
+                <!-- Compilé -->
+                Pr Intéret
+            </button>
             <button @click="setComp('achat')">Achats</button>
             <button>Autre</button>
         </div>
