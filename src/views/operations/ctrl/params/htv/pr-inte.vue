@@ -79,6 +79,10 @@ const changeOneCompiled = ()=>{
     let c2_2 = oneCompiledData.pr_interest < 99;
     let c2 = c2_1 && c2_2
 
+    if (c2_1){
+        oneCompiledData.pr_interest = oneCompiledData.pr_interest / 100
+    }
+
     // The combined condition
     let condCombined =  c1 || c2
     let allConditions = oneCompiledData.is_pr_interest && condCombined
