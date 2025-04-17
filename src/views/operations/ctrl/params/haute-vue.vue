@@ -6,22 +6,20 @@
         <h3>Trouvez n'importe quel produit par son identifiant.</h3>
         <div class="mb-5">
             <input class="inp inpShape" type="text" v-model="actualId"> 
-            <button @click="setComp('compile')">
-                <!-- Compilé -->
+            <button :class="actualComp=='compile' ? 'bg-g-1 btnEffect':''" @click="setComp('compile')">
                 1 + 0,2
             </button>
-            <button @click="setComp('prInte')">
-                <!-- Compilé -->
+            <button :class="actualComp=='prInte' ? 'bg-g-1 btnEffect':''" @click="setComp('prInte')">
                 Pr Intéret
             </button>
-            <button @click="setComp('achat')">Achats</button>
-            <button>Autre</button>
+            <!-- <button :class="actualComp=='achat' ? 'bg-g-1 btnEffect':''" @click="setComp('achat')">Achats</button>
+            <button>Autre</button> -->
         </div>
         <div>
             <!-- Should mount these in suspense -->
             <compIled v-if="actualComp=='compile'" :code_med="actualId"/>
             <prInte v-if="actualComp=='prInte'" :code_med="actualId"/>
-            <achAt v-if="actualComp=='achat'" />
+            <!-- <achAt v-if="actualComp=='achat'" /> -->
         </div>
     </div>
 </template>
@@ -54,7 +52,7 @@ const setComp = (val)=>{
 button{
     margin: 0 20px;
     padding: 10px;
-    background-color: grey;
+    /* background-color: grey; */
     border-radius: 8px;
 }
 </style>

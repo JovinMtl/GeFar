@@ -458,9 +458,6 @@ html, body {
 .d-f{
     display: flex;
 }
-.bg-g{
-    background-color: grey;
-}
 .bg-o{
     background-color: orange;
 }
@@ -504,8 +501,16 @@ html, body {
 .bg-r{
     background-color: red;
 }
-.bg-g{
+.bg-g-1{
     background-color: green;
+}.bg-g2{
+    background-color: grey;
+}
+.bg-g1{
+    background-color: rgba(216, 211, 211, 0.163);
+}
+.bg-g{
+    background-color: grey;
 }
 .c-r{
     color: red;
@@ -570,12 +575,6 @@ select{
 }
 .c-t{
     color: transparent;
-}
-.bg-g2{
-    background-color: grey;
-}
-.bg-g1{
-    background-color: rgba(216, 211, 211, 0.163);
 }
 nav{
     display: flex;
