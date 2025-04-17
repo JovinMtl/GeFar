@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-w bg-ht se">
+    <div class="bg-w bg-ht se bdbmr-5">
     <div class="c-b" style="display: flex; justify-content: center;">
         <!-- Ici on va modifier le produits compile -->
          
@@ -16,17 +16,22 @@
                 <td>Désignation</td>
                 <td class="c-w"><span class="c-t">____</span>{{ oneCompiledData.nom_med }}</td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>Quantité</td>
                 <td class="c-w">{{ oneCompiledData.quantite_restant }}</td>
-            </tr>
+            </tr> -->
             <tr>
                 <td>Prix de vente</td>
                 <td class="c-w">{{ oneCompiledData.prix_vente }}</td>
             </tr>
             <tr>
-                <td>Fractionner?</td>
-                <td class="c-w"><input v-model="isDecimal" style="scale: 1.8;" type="checkbox"></td>
+                <td>Intéret individuel?</td>
+                <td class="c-w"><input v-model="oneCompiledData.is_pr_interest" style="scale: 1.8; transform: translate(-20%);" type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Nouveau taux</td>
+                <td class="c-w"><input v-model="oneCompiledData.pr_interest" style="width: 100px;" type="number"></td>
+                <td class="sm-l"><span class="c-t">____</span>ex: 1.2 ~ 1.99 ou bien 11 ~ 99</td>
             </tr>
         </table>
         
@@ -46,14 +51,11 @@ import { useCounter } from '../../../../../store/incrementCounter'
 
 const props = defineProps(['code_med'])
 const allowChange = ref(true)
-const codeMed = ref('')
-const nomMed = ref('')
-const isDecimal = ref(false)
 const changeSuccessfull = ref(0)
 
 const { incrementCounter } = useCounter()
 
-const oneCompiled_url = 'api/gOps/setUmutiSet/'
+const oneCompiled_url = 'api/gOps/setPrInterest/'
 const oneCompiledData = reactive({
     'code_med' : props.code_med,
     'request': 'get',
@@ -71,8 +73,9 @@ const changeOneCompiled = ()=>{
     // 
     // oneCompiled.code_med = 
     oneCompiledData.request = 'post'
-    oneCompiledData.code_med = toValue(codeMed);
-    oneCompiledData.is_decimal = toValue(isDecimal)
+    oneCompiledData.code_med = oneCompiledData.code_med;
+    oneCompiledData.is_pr_interest = oneCompiledData.is_pr_interest
+    oneCompiledData.pr_interest = oneCompiledData.pr_interest
     getOneCompiled()
 }
 watch(oneCompiled, (value)=>{
@@ -89,10 +92,8 @@ watch(oneCompiled, (value)=>{
     oneCompiledData.code_med = value?.code_med;
     oneCompiledData.quantite_restant = value?.quantite_restant;
     oneCompiledData.prix_vente = value?.prix_vente;
-    oneCompiledData.is_decimal = value?.is_decimal;
-
-    codeMed.value = value?.code_med ?? '';
-    isDecimal.value = value?.is_decimal ?? false;
+    oneCompiledData.is_pr_interest = value?.is_pr_interest;
+    oneCompiledData.pr_interest = value?.pr_interest;
 })
 </script>
 

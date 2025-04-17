@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-w bg-ht se">
+    <div class="bg-w bg-ht se  bdbmr-5">
     <div class="c-b" style="display: flex; justify-content: center;">
         <!-- Ici on va modifier le produits compile -->
          
@@ -53,7 +53,7 @@ const changeSuccessfull = ref(0)
 
 const { incrementCounter } = useCounter()
 
-const oneCompiled_url = 'api/gOps/setUmutiSet/'
+const oneCompiled_url = 'api/gOps/setDecimal/'
 const oneCompiledData = reactive({
     'code_med' : props.code_med,
     'request': 'get',

@@ -535,6 +535,10 @@ html, body {
 .ta-r{
     text-align: right; 
 }
+.bdbmr-5{
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
 .bd-w{
     border: 4px dashed white;
     transition-duration: 500ms;

@@ -10,7 +10,7 @@
                 <!-- Compilé -->
                 1 + 0,2
             </button>
-            <button @click="setComp('compile')">
+            <button @click="setComp('prInte')">
                 <!-- Compilé -->
                 Pr Intéret
             </button>
@@ -20,6 +20,7 @@
         <div>
             <!-- Should mount these in suspense -->
             <compIled v-if="actualComp=='compile'" :code_med="actualId"/>
+            <prInte v-if="actualComp=='prInte'" :code_med="actualId"/>
             <achAt v-if="actualComp=='achat'" />
         </div>
     </div>
@@ -30,6 +31,7 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 
 import compIled from './htv/comp-iled.vue'
+import prInte from './htv/pr-inte.vue'
 import achAt from './htv/ach-at.vue'
 
 const actualId:Ref<string> = ref('')
