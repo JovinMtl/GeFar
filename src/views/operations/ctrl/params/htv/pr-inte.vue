@@ -55,7 +55,7 @@ const changeSuccessfull = ref(0)
 
 const { incrementCounter } = useCounter()
 
-const oneCompiled_url = 'api/gOps/setPrInterest/'
+const oneCompiled_url = 'api/gOps/setIndivPrInterest/'
 const oneCompiledData = reactive({
     'code_med' : props.code_med,
     'request': 'get',
@@ -80,7 +80,7 @@ const changeOneCompiled = ()=>{
     let c2 = c2_1 && c2_2
 
     if (c2_1){
-        oneCompiledData.pr_interest = oneCompiledData.pr_interest / 100
+        oneCompiledData.pr_interest = 1 + (oneCompiledData.pr_interest / 100)
     }
 
     // The combined condition
