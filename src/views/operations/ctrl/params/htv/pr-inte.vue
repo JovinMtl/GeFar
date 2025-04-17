@@ -70,7 +70,21 @@ setTimeout(()=>{
 }, 300)
 
 const changeOneCompiled = ()=>{
-    // 
+    // setting conditions
+    let c1_1 = oneCompiledData.pr_interest > 1;
+    let c1_2 = oneCompiledData.pr_interest < 2;
+    let c1 = c1_1 && c1_2;
+
+    let c2_1 = oneCompiledData.pr_interest > 10;
+    let c2_2 = oneCompiledData.pr_interest < 99;
+    let c2 = c2_1 && c2_2
+
+    // The combined condition
+    let condCombined =  c1 || c2
+    let allConditions = oneCompiledData.is_pr_interest && condCombined
+    console.log("Should pass? " + condCombined + ":" + allConditions)
+    return
+
     // oneCompiled.code_med = 
     oneCompiledData.request = 'post'
     oneCompiledData.code_med = oneCompiledData.code_med;
