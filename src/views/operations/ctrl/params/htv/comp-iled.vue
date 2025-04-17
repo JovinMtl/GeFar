@@ -42,6 +42,7 @@
 <script setup lang="ts">
 import { reactive,ref, toValue, watch } from 'vue'
 import { useKurungika } from '../../../../hooks/kuvoma'
+import { useCounter } from '../../../../../store/incrementCounter'
 
 const props = defineProps(['code_med'])
 const allowChange = ref(true)
@@ -49,6 +50,8 @@ const codeMed = ref('')
 const nomMed = ref('')
 const isDecimal = ref(false)
 const changeSuccessfull = ref(0)
+
+const { incrementCounter } = useCounter()
 
 const oneCompiled_url = 'api/gOps/setUmutiSet/'
 const oneCompiledData = reactive({
@@ -77,6 +80,7 @@ watch(oneCompiled, (value)=>{
         allowChange.value = false;
     }else if(value?.response == 1){
         changeSuccessfull.value = 1;
+        incrementCounter()
     }else if(value?.response == 404){
         changeSuccessfull.value = 404;
     }
