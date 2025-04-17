@@ -28,16 +28,16 @@
                 <td>Intéret individuel?</td>
                 <td class="c-w"><input v-model="oneCompiledData.is_pr_interest" style="scale: 1.8; transform: translate(-20%);" type="checkbox"></td>
             </tr>
-            <tr>
+            <tr v-if="oneCompiledData.is_pr_interest">
                 <td>Nouveau taux</td>
                 <td class="c-w"><input v-model="oneCompiledData.pr_interest" style="width: 100px;" type="number"></td>
-                <td class="sm-l"><span class="c-t">____</span>ex: 1.2 ~ 1.99 ou bien 11 ~ 99</td>
+                <td class="sm-l"  :class="[changeSuccessfull == 1 ? 'c-w':'', changeSuccessfull == 404 ? 'c-r':'']"><span class="c-t">____</span>ex: 1.2 ~ 1.99 ou bien 11 ~ 99</td>
             </tr>
         </table>
         
     </div>
         <div style="display: block;">
-            <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 1 ? 'bg-g':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
+            <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 2 ? 'bg-o':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
         </div>
 
         
@@ -83,13 +83,23 @@ const changeOneCompiled = ()=>{
     let condCombined =  c1 || c2
     let allConditions = oneCompiledData.is_pr_interest && condCombined
     console.log("Should pass? " + condCombined + ":" + allConditions)
-    return
 
     // oneCompiled.code_med = 
     oneCompiledData.request = 'post'
     oneCompiledData.code_med = oneCompiledData.code_med;
     oneCompiledData.is_pr_interest = oneCompiledData.is_pr_interest
-    oneCompiledData.pr_interest = oneCompiledData.pr_interest
+    
+    if (!(oneCompiledData.is_pr_interest)){
+        // Should come to normal
+        changeSuccessfull.value = 2
+    } else if (allConditions){
+        oneCompiledData.pr_interest = oneCompiledData.pr_interest
+        changeSuccessfull.value = 2;
+    } else if (!condCombined){
+        changeSuccessfull.value = 404;
+        return
+    }
+    
     getOneCompiled()
 }
 watch(oneCompiled, (value)=>{

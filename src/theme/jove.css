@@ -461,6 +461,9 @@ html, body {
 .bg-g{
     background-color: grey;
 }
+.bg-o{
+    background-color: orange;
+}
 .br{
     border-radius: 5px;
 }
