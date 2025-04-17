@@ -11,7 +11,7 @@ export const useCounter = defineStore('counter', ()=>{
         return counter.value;
     }
     const incrementCounter = ()=>{
-        accessToken.value += 1;
+        counter.value += 1;
     }
 
     return {
