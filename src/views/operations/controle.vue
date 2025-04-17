@@ -296,7 +296,9 @@ const [medRed, getMedRed] = useKuvoma(getMedRed_url)
 
 // functions
 const openSettings = ()=>{
-    title_operation.value = "Paramètres"
+    title_operation.value = "Paramètres";
+    searchEable.value = false;
+
 }
 const nRoutine = (value)=>{
     actual_obj.value = value
