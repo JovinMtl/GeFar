@@ -267,6 +267,7 @@ import { useCapitalLetter } from '../hooks/useReadable.js';
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
 import { useError500 } from '../../store/generalErrors'
+import { useCounter } from '../../store/incrementCounter.js'
 import useReadableNumber from '../hooks/useReadable.js'
 
 import {
@@ -355,6 +356,7 @@ const decimalNumber:Ref<number> = ref(0)
 const fullDecimal: Ref<number> = ref(10)
 
 // Store
+const { getCounter } = useCounter()
 const { getError500, getError500Msg,
     clearError500
  } = useError500()
@@ -894,6 +896,9 @@ const show_suggest = (e)=>{
 }
 const shouldPop = ref(false)
 // Watchers
+watch(getCounter, (val)=>{
+    listImiti_update.value += 1  // Triggering update in list-imiti component
+})
 watch(getError500, (val)=>{
     console.log("The error 500 may be detected: " + val)
     if(val){
