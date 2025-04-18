@@ -263,7 +263,8 @@ export default defineComponent({
                     'type_vente': element.type_vente,
                     'classe_med': element.classe_med,
                     'sous_classe_med': element.sous_classe_med,
-                    'forme': element.forme
+                    'forme': element.forme,
+                    'is_decimal': element.is_decimal,
                 }
 
                 imiti_for_search.push(obj)
