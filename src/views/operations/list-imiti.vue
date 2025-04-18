@@ -49,14 +49,13 @@ export default defineComponent({
         let imiti_for_search = []
         let found_med = []
         let jove = false
-        const imitiLength = ref(0)
 
         const needUpdate = inject('needUpdate_list') // on search command
         const need_search = inject('needSearch')
         const needUpdate_server = inject('needUpdate_server')
         const familly_display = inject('familly_displ')
         var shouldUpdate = needUpdate
-        const { getAccessToken, getRefreshToken } = useUserStore()
+        const { getAccessToken } = useUserStore()
 
         const search_med = (value) => {
             // value.field
@@ -803,8 +802,7 @@ export default defineComponent({
             });
         }
         watch(imitiset, (value)=>{
-            imitiLength.value = (value).length;
-            emit('numbered', imitiLength)
+            emit('numbered', (value).length)
         })
         watch(shouldUpdate, (value) => {
             console.log("onUpdated, needToUpdate:..", value)
