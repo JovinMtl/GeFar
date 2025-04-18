@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="controlBody">
+        <div class="controlBody  t-m-skin">
             <div v-for="(umuti, index) in (actual_imitiS)" 
                 class="d-f"
                 :class="index%2 ? 'ln-1':'ln-2'">

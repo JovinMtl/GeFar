@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="controlBody">
+        <div class="controlBody  t-m-skin">
             <div v-for="(umuti, index) in (actual_imitiS)" 
                 class="d-f"
                 :class="index%2 ? 'ln-1':'ln-2'">
@@ -48,7 +48,7 @@
                     {{ index + 1 }}
                 </div> 
                 <div class="elt contentElement2">
-                    {{ umuti.nom_med }}
+                    {{ String(umuti.nom_med).slice(0, 25) }}
                 </div> <div class="elt contentElement3">
                     {{ umuti.quantite_initial  }}
                 </div> 

@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="controlBody">
+        <div class="controlBody  t-m-skin">
             <div v-show="shouldPop" popover id="pop" class="mv-pop">
                  <span> 
                     <table>
