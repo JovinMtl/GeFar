@@ -59,7 +59,7 @@
             <div class="factuFooter">
                  <div class="conf">
                     Pharmacie UBUZIMA.  NIF: 4001411976 <br>  
-                   Tel: +257 <b>69 332 283</b>
+                   Tel: +257 <b>69 332 288</b>
                     </div>
                  <div class="address">Kamenge, 13è Av. Bujumbura - Burundi</div>
             </div>
