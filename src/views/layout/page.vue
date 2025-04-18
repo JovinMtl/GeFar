@@ -194,13 +194,14 @@
                     <div class="menuHau exit">
                         <circum-power @click="logout"></circum-power>
                     </div>
-                    <div class="menuHau user" style="">
+                    <div class="menuHau addr">
+                            13è Av, Q. Twinyoni, Kamenge. Ntahangwa - Bujumbura
+                    </div>
+                    <div class="menuHau len"> {{ imitiLength }}</div>
+                    <div class="menuHau user">
                         <a title="uyu ni Wewe nyene" class="c-b">
                             {{ useCapitalLetter((String(getUsername())).slice(0, 10)) }}
                         </a>
-                    </div>
-                    <div class="menuHau addr" style="">
-                            13è Av, Q. Twinyoni, Kamenge. Ntahangwa - Bujumbura
                     </div>
                     <div class="menuHau sync">
                         <a title="ku Mwanya (Sync)" class="c-b">
@@ -318,6 +319,7 @@ const need_to_updade: Ref<boolean> = ref(false)
 const controleStatus: Ref<boolean> = ref(false)
 const all_imiti: Ref<Medi[]> = ref([])
 const umuti_new: Ref<boolean> = ref(false)
+const imitiLength: Ref<number> = ref(0)
 
 const server_process: Ref<boolean> = ref(false)
 const notifStatus: Ref<boolean> = ref(false)
@@ -589,6 +591,7 @@ const getAllImiti = (imiti) => {
     // Has to gets all imiti gathered by list-imiti
     // once they are assigned then they are ready to be injected into approv componenet.
     all_imiti.value = imiti
+    imitiLength.value = (imiti).length;
 }
 const getFamilies = (famillies)=>{
     classes.value = famillies
@@ -1102,6 +1105,19 @@ provide('familly_displ', openedFamilly)
     /* display: flex; */
     position: absolute;
     left: 5vw;
+    top: 90.8vh;
+    font-size: normal;
+    color: rgb(46, 45, 45);
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+.len {
+    background-color: transparent;
+    height: 20px;
+    /* width: 150px; */
+    /* display: flex; */
+    position: absolute;
+    left: 45vw;
     top: 90.8vh;
     font-size: normal;
     color: rgb(46, 45, 45);
