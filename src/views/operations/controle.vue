@@ -103,6 +103,11 @@
                     <ion-icon :src="settingsSharp" class="logoIcon"></ion-icon>
                     <span class="textMenu textMenu-p t-m-skin">Paramètres</span>
                 </div>
+
+                <div class="logoMenu c-b" @click="openSettings">
+                    <ion-icon :src="lockClosedOutline" class="logoIcon"></ion-icon>
+                    <span class="textMenu textMenu-p t-m-skin">Mot de passe</span>
+                </div>
             </div>
             <!-- The dynamic content will be here. -->
             
@@ -168,7 +173,7 @@ import { IonIcon } from '@ionic/vue'
 import { 
     close, statsChartOutline, snowOutline, thermometer, pricetagOutline,
     calendarClearOutline, libraryOutline,
-    settingsSharp
+    settingsSharp, lockClosedOutline
     } from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
 import cirCle from './circle.vue'
