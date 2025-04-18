@@ -70,7 +70,7 @@
 
                 <div class="elt contentElement4 total">    
                     <span v-if="umuti.is_decimal">
-                        {{ umuti.prix_vente *  (Number((umuti.quantite_restant || umuti.quantity || 0 )).toFixed(1)) }}
+                        {{ Number(umuti.prix_vente *  (Number((umuti.quantite_restant || umuti.quantity || 0 )).toFixed(1))).toFixed(1) }}
                     </span>
                     <span v-else>
                         {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 0) }}
