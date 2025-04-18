@@ -68,7 +68,8 @@
                     </div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
                         <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
-                            @emptyResult="alertUmutiNew" @families="getFamilies"></list-imiti>
+                            @emptyResult="alertUmutiNew" @families="getFamilies"
+                            @numbered="getImitiLength"></list-imiti>
                     </div>
                     <div :class="selectedUmuti.value ? '':'noDisp'" class="sectA-side">
                         <!-- details for selected umuti should appeal here -->
@@ -383,6 +384,9 @@ const { getUsername, setUsername,
 
 
 // Functions
+const getImitiLength = (val)=>{
+    imitiLength.value = toValue(val)
+}
 const decreaseDecimal = ()=>{
     if (toValue(decimalNumber) >= 1 && 
         toValue(decimalNumber) < toValue(fullDecimal)){
@@ -591,7 +595,8 @@ const getAllImiti = (imiti) => {
     // Has to gets all imiti gathered by list-imiti
     // once they are assigned then they are ready to be injected into approv componenet.
     all_imiti.value = imiti
-    imitiLength.value = (imiti).length;
+    console.log("we get allImiti of length: " + imiti)
+    imitiLength.value = (imiti);
 }
 const getFamilies = (famillies)=>{
     classes.value = famillies

@@ -49,6 +49,7 @@ export default defineComponent({
         let imiti_for_search = []
         let found_med = []
         let jove = false
+        const imitiLength = ref(0)
 
         const needUpdate = inject('needUpdate_list') // on search command
         const need_search = inject('needSearch')
@@ -801,6 +802,10 @@ export default defineComponent({
                 imiti_for_search.push(obj)
             });
         }
+        watch(imitiset, (value)=>{
+            imitiLength.value = (value).length;
+            emit('numbered', imitiLength)
+        })
         watch(shouldUpdate, (value) => {
             console.log("onUpdated, needToUpdate:..", value)
             if (value) {
