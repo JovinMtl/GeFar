@@ -57,25 +57,25 @@
             v-if="med_loaded">
             <div class="umutiDisplay" style="display: flex;width: 95%;height: 20px; text-align: center;margin: 10px 10px;">
                 <div class="fname" style="width: 30%;height: 100%;">
-                    <input :class="med.errors[1] ? 'bg-r':''" :id="index +';Nom'" style="width: 100%; height: 100%;" :value="med.nom_med" @blur="ListenNewChange"/> 
+                    <input :class="med?.errors[1] ? 'bg-r':''" :id="index +';Nom'" style="width: 100%; height: 100%;" :value="med.nom_med" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="width: 10%;height: 100%;">
-                    <input :class="med.errors[2] ? 'bg-r':''" :id="index +';famille_medicament'" style="width: 100%; height: 100%;" :value="med.forme" @blur="ListenNewChange"/> 
+                    <input :class="med?.errors[2] ? 'bg-r':''" :id="index +';famille_medicament'" style="width: 100%; height: 100%;" :value="med.forme" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="width: 10%;height: 100%;">
-                    <input :class="med.errors[3] ? 'bg-r':''" :id="index +';Description'" style="width: 100%; height: 100%;" :value="med.classe_med" @blur="ListenNewChange"/> 
+                    <input :class="med?.errors[3] ? 'bg-r':''" :id="index +';Description'" style="width: 100%; height: 100%;" :value="med.classe_med" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="width: 10%;height: 100%;">
-                    <input :class="med.errors[4] ? 'bg-r':''" :id="index +';Ratio'" style="width: 100%; height: 100%;" :value="med.sous_classe_med" @blur="ListenNewChange"/> 
+                    <input :class="med?.errors[4] ? 'bg-r':''" :id="index +';Ratio'" style="width: 100%; height: 100%;" :value="med.sous_classe_med" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="width: 10%;height: 100%;">
-                    <input :class="med.errors[5] ? 'bg-r':''" :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="med.date_peremption" @blur="ListenNewChange"/> 
+                    <input :class="med?.errors[5] ? 'bg-r':''" :id="index +';Type_in'" style="width: 100%; height: 100%;" :value="med.date_peremption" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="width: 10%;height: 100%;">
-                    <input :class="med.errors[6] ? 'bg-r':''" :id="index +';Type_vente'" style="width: 100%; height: 100%;" :value="med.quantite_initial" @blur="ListenNewChange"/> 
+                    <input :class="med?.errors[6] ? 'bg-r':''" :id="index +';Type_vente'" style="width: 100%; height: 100%;" :value="med.quantite_initial" @blur="ListenNewChange"/> 
                 </div>
                 <div class="fname" style="width: 20%;height: 100%;">
-                    <input :class="med.errors[7] ? 'bg-r':''" :id="index +';prix_in'" style="width: 100%; height: 100%;" :value="med.prix_achat" @blur="ListenNewChange"/> 
+                    <input :class="med?.errors[7] ? 'bg-r':''" :id="index +';prix_in'" style="width: 100%; height: 100%;" :value="med.prix_achat" @blur="ListenNewChange"/> 
                 </div>
                 <!-- <div class="fname" style="background-color: orangered; width: 10%;height: 100%;">
                     <input :id="index +';prix_vente'" style="width: 100%; height: 100%;" :value="med.type_achat" @blur="ListenNewChange"/> 
@@ -217,7 +217,7 @@ const xlsxFileReader = async()=>{
             const workbook = XLSX.read(data, { type: 'array'});
 
             // Get the first sheet
-            const firstSheetName = workbook.SheetNames[2];
+            const firstSheetName = workbook.SheetNames[0];
             const worksheet = workbook.Sheets[firstSheetName];
 
             // Convert the sheet to JSON
