@@ -15,7 +15,7 @@
                                 class="loInp loInp2"  autocomplete="off"
                                 @keyup="getPassword" type="text">
                     </div>
-                    <div class="confirmationContainer">
+                    <div class="confirmationContainer" :class="wrongPassword ? 'bg-r':''">
                     </div>
                     <div @click="login_hook" class="enter">
                         <div class="btn">se connecter</div>
@@ -44,9 +44,10 @@ const { getUsername, getAccessToken, getRefreshToken,
     setUsername, setAccessToken, setRefreshToken } = store
 const router = useRouter()
 const username = ref(null)
-const password = ref(null)
-const oneChar = ref(null)
+// const password = ref(null)
+// const oneChar = ref(null)
 const maskedPassword = []
+const wrongPassword = ref(false)
 
 
 const truePassword = []
@@ -72,12 +73,6 @@ const getPassword = (e)=>{
 }
 
 let logs = ''
-// window.onload = ()=>{
-//     document.getElementById('el1').value = ""
-//     document.getElementById('el2').value = ""
-//     document.getElementById('el3').value = ""
-// }
-
 
 const axiosInstance = axios.create({
     baseURL: '//127.0.0.1:8002', // Base URL for your API
@@ -95,6 +90,7 @@ const login_hook = () => {
         "password": tPassword.value
     }
     ).then((response) => {
+        wrongPassword.value = false;
         setUsername(username.value)
         setAccessToken(response.data.access)
         setRefreshToken(response.data.refresh)
@@ -105,6 +101,7 @@ const login_hook = () => {
         router.push('/home')
     }).catch((error) => {
         logs = error.response.data
+        wrongPassword.value = true;
     })
 }
 
@@ -152,13 +149,7 @@ const login_hook = () => {
             }
 
             .confirmationContainer {
-                display: flex;
-                width: 100%;
-                height: 40px;
-                background: white;
-                color: black;
-                justify-content: center;
-                align-items: center;
+                
 
                 &:hover {
                     font-weight: 800;
