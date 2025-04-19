@@ -12,10 +12,10 @@
                 <th><span class="c-t">____</span>Forme</th>
                 <th><span class="c-t">____</span>Classe Ther.</th>
             </tr>
-            <tr v-for="umuti in oneCompiled">
+            <tr v-for="(umuti, index) in oneCompiled">
                 <td class="c-g-2">{{ String(umuti.date_entrant).slice(0, 10) }}</td>
-                <td class="pointer"><span class="c-t">____</span>{{ (umuti.date_peremption).slice(0, 10) }}</td>
-                <td class="pointer"><span class="c-t">____</span>{{ umuti.prix_achat }}</td>
+                <td class="pointer" @click="editData" :id="index + 'date_peremption'" :data-index="index" data-attr="date_peremption"><span class="c-t">____</span>{{ (umuti.date_peremption).slice(0, 10) }}</td>
+                <td class="pointer" @click="editData" :id="index + 'prix_achat'" :data-index="index" data-attr="prix_achat"><span class="c-t">____</span>{{ umuti.prix_achat }}</td>
                 <td class="c-g-2"><span class="c-t">____</span>{{ umuti.prix_vente }}</td>
                 <td class="c-w"><span class="c-t">____</span>{{ umuti.forme }}</td>
                 <td class="c-w"><span class="c-t">____</span>{{ umuti.classe_med }}</td>
@@ -55,6 +55,14 @@ setTimeout(()=>{
     
     getOneCompiled()
 }, 300)
+
+// Functions
+const editData = (e)=>{
+    let cellIndex = e.target.getAttribute('data-index')
+    let dataAttribute = e.target.getAttribute('data-attr')
+    let idElm = cellIndex + dataAttribute
+    console.log("we want to edit: " + cellIndex + ':' + dataAttribute + ' forms id: ' + idElm)
+}
 
 const changeOneCompiled = ()=>{
     // setting conditions
