@@ -56,12 +56,26 @@ setTimeout(()=>{
     getOneCompiled()
 }, 300)
 
+const inpuTypes = {
+    'date_peremption': 'date',
+    'prix_achat': 'number',
+}
+
 // Functions
 const editData = (e)=>{
-    let cellIndex = e.target.getAttribute('data-index')
-    let dataAttribute = e.target.getAttribute('data-attr')
-    let idElm = cellIndex + dataAttribute
-    console.log("we want to edit: " + cellIndex + ':' + dataAttribute + ' forms id: ' + idElm)
+    const cellIndex = e.target.getAttribute('data-index')
+    const dataAttribute = e.target.getAttribute('data-attr')
+    const idElm = cellIndex + dataAttribute
+
+    let newInputElm = document.createElement('input');
+    newInputElm.setAttribute('type', inpuTypes[dataAttribute]);
+    newInputElm.style.width = '9vw';
+
+    const elm = document.getElementById(idElm)
+    const elm_ = elm.append(newInputElm)
+    // elm.appendChild = newInputElm;
+    // elm.style.display = 'none';
+    console.log("we want to edit: " + cellIndex + ':' + dataAttribute + ' forms id: ' + idElm + " the Elm:" + elm + ' and: ' + newInputElm)
 }
 
 const changeOneCompiled = ()=>{
