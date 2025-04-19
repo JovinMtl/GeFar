@@ -12,14 +12,14 @@
             <button :class="actualComp=='prInte' ? 'bg-g-1 btnEffect':''" @click="setComp('prInte')">
                 Pr Intéret
             </button>
-            <!-- <button :class="actualComp=='achat' ? 'bg-g-1 btnEffect':''" @click="setComp('achat')">Achats</button>
-            <button>Autre</button> -->
+            <button :class="actualComp=='achat' ? 'bg-g-1 btnEffect':''" @click="setComp('achat')">Achats</button>
+            <!-- <button>Autre</button> -->
         </div>
         <div>
             <!-- Should mount these in suspense -->
             <compIled v-if="actualComp=='compile'" :code_med="actualId"/>
             <prInte v-if="actualComp=='prInte'" :code_med="actualId"/>
-            <!-- <achAt v-if="actualComp=='achat'" /> -->
+            <achAt v-if="actualComp=='achat'" :code_med="actualId"/>
         </div>
     </div>
 </template>
