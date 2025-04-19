@@ -104,7 +104,7 @@
                     <span class="textMenu textMenu-p t-m-skin">Paramètres</span>
                 </div>
 
-                <div class="logoMenu c-b" @click="openSettings">
+                <div class="logoMenu c-b" @click="title_operation='PassWord'">
                     <ion-icon :src="lockClosedOutline" class="logoIcon"></ion-icon>
                     <span class="textMenu textMenu-p t-m-skin">Mot de passe</span>
                 </div>
@@ -158,6 +158,8 @@
                 v-if="title_operation == 'Med périmé'"/>
             <paraMetres 
                 v-if="title_operation == 'Paramètres'"/>
+            <passWord 
+                v-if="title_operation == 'PassWord'"/>
             
         </div>
         <teleport to="body">
@@ -185,6 +187,7 @@ import achAts1 from './ctrl/ach-ats-1.vue'
 import suggEst from './ctrl/sugg-est.vue'
 import dateGreen from './ctrl/date-green.vue'
 import paraMetres from './ctrl/para-metres.vue'
+import passWord from './ctrl/pass-word.vue'
 
 
 const emit = defineEmits(['turnControl',])
