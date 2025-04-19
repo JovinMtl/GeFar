@@ -372,9 +372,6 @@ html, body {
     left: 0;
     top: -1rem;
 }
-.t-m-skin{
-    font-weight: 700;
-}
 
 .controlContent{
     display: block;
@@ -511,6 +508,9 @@ html, body {
 .s1-cl{
     margin: 0 10px;
 }
+.bg-a{
+    background-color: aqua;
+}
 .bg-r{
     background-color: red;
 }
@@ -540,6 +540,9 @@ html, body {
     font-size: .8rem;
     color: black;
     margin-right: 4px;
+}
+.t-m-skin{
+    font-weight: 700;
 }
 .sm-l{
     font-size: .8rem;
