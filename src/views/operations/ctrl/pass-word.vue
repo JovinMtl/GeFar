@@ -22,6 +22,8 @@ import { reactive ,ref, toValue, watch } from 'vue'
 import type { Ref } from 'vue'
 import { useKurungika } from '../../hooks/kuvoma';
 
+const emit = defineEmits(['op-done'])
+
 const pwd1: Ref<string> = ref('');
 const pwd2: Ref<string> = ref('');
 const passwords = reactive({
@@ -56,6 +58,9 @@ const checkPwd = ()=>{
 watch(responsePwd, (value)=>{
     if(value.response == 200){
         responseState.value = 200;
+        setTimeout(()=>{
+            emit('op-done')
+        }, 2000)
     }else if (value.response == 403){
         responseState.value = 403;
     }

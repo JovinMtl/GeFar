@@ -158,7 +158,7 @@
                 v-if="title_operation == 'Med périmé'"/>
             <paraMetres 
                 v-if="title_operation == 'Paramètres'"/>
-            <passWord 
+            <passWord @op-done="title_operation = ''"
                 v-if="title_operation == 'PassWord'"/>
             
         </div>
