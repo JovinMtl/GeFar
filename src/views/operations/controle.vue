@@ -104,7 +104,7 @@
                     <span class="textMenu textMenu-p t-m-skin">Paramètres</span>
                 </div>
 
-                <div class="logoMenu c-b" @click="title_operation='PassWord'">
+                <div class="logoMenu c-b" @click="setPassword">
                     <ion-icon :src="lockClosedOutline" class="logoIcon"></ion-icon>
                     <span class="textMenu textMenu-p t-m-skin">Mot de passe</span>
                 </div>
@@ -303,6 +303,11 @@ const [medRed, getMedRed] = useKuvoma(getMedRed_url)
 
 
 // functions
+const setPassword = ()=>{
+    // console.log("title: " + toValue(title_operation) + " ==> " + 'PassWord')
+    title_operation.value = 'PassWord';
+    searchEable.value = false;
+}
 const openSettings = ()=>{
     title_operation.value = "Paramètres";
     searchEable.value = false;
