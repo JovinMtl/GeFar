@@ -39,6 +39,7 @@ import { useCounter } from '../../../../../store/incrementCounter'
 const props = defineProps(['code_med'])
 const allowChange = ref(true)
 const changeSuccessfull = ref(0)
+const inputValue = ref(null)
 
 const { incrementCounter } = useCounter()
 
@@ -68,7 +69,12 @@ const editData = (e)=>{
     const idElm = cellIndex + dataAttribute
 
     let newInputElm = document.createElement('input');
+    // let newInputElmValue = null;
     newInputElm.setAttribute('type', inpuTypes[dataAttribute]);
+    newInputElm.setAttribute('id', `i_${idElm}`)
+    newInputElm.addEventListener('blur', ()=>{
+        inputValue.value = newInputElm.value
+    })
     newInputElm.style.width = '9vw';
 
     const elm = document.getElementById(idElm)
@@ -116,6 +122,11 @@ const changeOneCompiled = ()=>{
     
     getOneCompiled()
 }
+
+//watchers
+watch(inputValue, (value)=>{
+    console.log("The input changes into : " + toValue(inputValue))
+})
 watch(oneCompiled, (value)=>{
     if(value?.response == 0){
         allowChange.value = false;
