@@ -480,6 +480,9 @@ html, body {
 .bg-b{
     background-color: rgb(86, 105, 211);
 }
+.bg-b-1{
+    background-color: black;
+}
 .w-22{
     width: 25%;
 }
