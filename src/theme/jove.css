@@ -496,12 +496,6 @@ html, body {
 .pay:active{
     scale: .8;
 }
-.c-g{
-    color: grey;
-}
-.c-g1{
-    color: greenyellow
-}
 .s-cl{
     margin: 20px 0;
 }
@@ -530,11 +524,20 @@ html, body {
 }
 .c-b-1{color: blue;}
 .c-danger{color: #F93827;}
-.c-g{
+.c-g-1{
     color: green;
+}
+.c-g-2{
+    color: grey;
+}
+.c-g1{
+    color: greenyellow
 }
 .fw-8{
     font-weight: 800;
+}
+.pointer{
+    cursor: pointer;
 }
 .little-lab{
     font-size: .8rem;

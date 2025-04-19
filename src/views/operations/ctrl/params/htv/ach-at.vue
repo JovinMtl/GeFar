@@ -5,7 +5,7 @@
          
         <table style="text-align: right;">
             <tr>
-                <th>Date entrant</th>
+                <th >Date entrant</th>
                 <th><span class="c-t">____</span>Date Per.</th>
                 <th><span class="c-t">____</span>Prix A.</th>
                 <th><span class="c-t">____</span>Prix V.</th>
@@ -13,12 +13,12 @@
                 <th><span class="c-t">____</span>Classe Ther.</th>
             </tr>
             <tr v-for="umuti in oneCompiled">
-                <td>{{ String(umuti.date_entrant).slice(0, 10) }}</td>
-                <td><span class="c-t">____</span>{{ (umuti.date_peremption).slice(0, 10) }}</td>
-                <td><span class="c-t">____</span>{{ umuti.prix_achat }}</td>
-                <td><span class="c-t">____</span>{{ umuti.prix_vente }}</td>
-                <td><span class="c-t">____</span>{{ umuti.forme }}</td>
-                <td><span class="c-t">____</span>{{ umuti.classe_med }}</td>
+                <td class="c-g-2">{{ String(umuti.date_entrant).slice(0, 10) }}</td>
+                <td class="pointer"><span class="c-t">____</span>{{ (umuti.date_peremption).slice(0, 10) }}</td>
+                <td class="pointer"><span class="c-t">____</span>{{ umuti.prix_achat }}</td>
+                <td class="c-g-2"><span class="c-t">____</span>{{ umuti.prix_vente }}</td>
+                <td class="c-w"><span class="c-t">____</span>{{ umuti.forme }}</td>
+                <td class="c-w"><span class="c-t">____</span>{{ umuti.classe_med }}</td>
             </tr>
         </table>
         
