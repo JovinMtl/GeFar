@@ -46,10 +46,7 @@ const dataAttribute = ref(null)
 const { incrementCounter } = useCounter()
 
 const oneCompiled_url = 'api/gOps/setPachatEntree/'
-const oneCompiledData = reactive({
-    'code_med' : props.code_med,
-    'request': 'get',
-})
+const oneCompiledData = ref([])
 
 
 const [oneCompiled, getOneCompiled] = useKurungika(oneCompiledData, oneCompiled_url)
@@ -94,39 +91,7 @@ const editData = (e)=>{
 
 const changeOneCompiled = ()=>{
     // setting conditions
-    let c1_1 = oneCompiledData.pr_interest > 1;
-    let c1_2 = oneCompiledData.pr_interest < 2;
-    let c1 = c1_1 && c1_2;
-
-    let c2_1 = oneCompiledData.pr_interest > 10;
-    let c2_2 = oneCompiledData.pr_interest < 99;
-    let c2 = c2_1 && c2_2
-
-    if (c2_1){
-        oneCompiledData.pr_interest = 1 + (oneCompiledData.pr_interest / 100)
-    }
-
-    // The combined condition
-    let condCombined =  c1 || c2
-    let allConditions = oneCompiledData.is_pr_interest && condCombined
-    console.log("Should pass? " + condCombined + ":" + allConditions)
-
     // oneCompiled.code_med = 
-    oneCompiledData.request = 'post'
-    oneCompiledData.code_med = oneCompiledData.code_med;
-    oneCompiledData.is_pr_interest = oneCompiledData.is_pr_interest
-    oneCompiledData.code_operation = 'jove';
-    
-    if (!(oneCompiledData.is_pr_interest)){
-        // Should come to normal
-        changeSuccessfull.value = 2
-    } else if (allConditions){
-        oneCompiledData.pr_interest = oneCompiledData.pr_interest
-        changeSuccessfull.value = 2;
-    } else if (!condCombined){
-        changeSuccessfull.value = 404;
-        return
-    }
     
     getOneCompiled()
 }
@@ -145,16 +110,7 @@ watch(oneCompiled, (value)=>{
         changeSuccessfull.value = 404;
     }
     console.log("One compiled : " + JSON.stringify(value))
-    // oneCompiledData.nom_med = value?.nom_med
-    // oneCompiledData.code_med = value?.code_med;
-    // oneCompiledData.prix_achat = value?.prix_achat;
-    // oneCompiledData.prix_vente = value?.prix_vente;
-    // oneCompiledData.quantite_restant = value?.quantite_restant;
-    // oneCompiledData.date_entrant = value?.date_entrant;
-    // oneCompiledData.date_peremption = value?.date_peremption;
-    // oneCompiledData.forme = value?.forme;
-    // oneCompiledData.classe_med = value?.classe_med;
-    // oneCompiledData.sous_classe_med = value?.sous_classe_med;
+    oneCompiledData.value = value;
 })
 </script>
 
