@@ -40,6 +40,8 @@ const props = defineProps(['code_med'])
 const allowChange = ref(true)
 const changeSuccessfull = ref(0)
 const inputValue = ref(null)
+const cellIndex = ref(null)
+const dataAttribute = ref(null)
 
 const { incrementCounter } = useCounter()
 
@@ -61,16 +63,21 @@ const inpuTypes = {
     'date_peremption': 'date',
     'prix_achat': 'number',
 }
+const createdNodes = ref([])
 
 // Functions
 const editData = (e)=>{
-    const cellIndex = e.target.getAttribute('data-index')
-    const dataAttribute = e.target.getAttribute('data-attr')
-    const idElm = cellIndex + dataAttribute
+    cellIndex.value = e.target.getAttribute('data-index')
+    dataAttribute.value = e.target.getAttribute('data-attr')
+    const idElm = toValue(cellIndex) + toValue(dataAttribute)
 
-    let newInputElm = document.createElement('input');
+    if (createdNodes.value.indexOf(idElm) >= 0){
+        return 0
+    }
+
+    const newInputElm = document.createElement('input');
     // let newInputElmValue = null;
-    newInputElm.setAttribute('type', inpuTypes[dataAttribute]);
+    newInputElm.setAttribute('type', inpuTypes[toValue(dataAttribute)]);
     newInputElm.setAttribute('id', `i_${idElm}`)
     newInputElm.addEventListener('blur', ()=>{
         inputValue.value = newInputElm.value
@@ -79,6 +86,7 @@ const editData = (e)=>{
 
     const elm = document.getElementById(idElm)
     const elm_ = elm.append(newInputElm)
+    createdNodes.value.push(idElm)
     // elm.appendChild = newInputElm;
     // elm.style.display = 'none';
     console.log("we want to edit: " + cellIndex + ':' + dataAttribute + ' forms id: ' + idElm + " the Elm:" + elm + ' and: ' + newInputElm)
