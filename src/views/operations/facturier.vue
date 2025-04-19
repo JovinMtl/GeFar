@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="authorizer">
-                Servi par: {{ username }} <br>
+                Servi par: {{ useCapitalLetter(username) }} <br>
                 Date     : 
                     <span v-if="props.date">{{ new Date(props?.date).toISOString().substring(0,10) }}</span> 
                     <span v-else>{{ new Date().toISOString().substring(0,10) }}</span> 
@@ -84,6 +84,7 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import useReadable from '../hooks/useReadable'
+import { useCapitalLetter } from '../hooks/useReadable'
 
 const message = "facture"
 const props = defineProps([
