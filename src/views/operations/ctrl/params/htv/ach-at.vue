@@ -10,7 +10,7 @@
                     <th><span class="c-t">____</span>Prix A.</th>
                     <th><span class="c-t">____</span>Prix V.</th>
                     <th><span class="c-t">____</span>Forme</th>
-                    <th><span class="c-t">____</span>Classe Ther.</th>
+                    <th><span class="c-t">____</span>Nom med.</th>
                 </tr>
                 <tr v-for="(umuti, index) in oneCompiled">
                     <td class="c-g-2">{{ String(umuti.date_entrant).slice(0, 10) }}</td>
@@ -18,15 +18,15 @@
                     <td class="pointer" @click="editData" :id="index + 'prix_achat'" :data-index="index" data-attr="prix_achat"><span class="c-t">____</span>{{ umuti.prix_achat }}</td>
                     <td class="c-g-2"><span class="c-t">____</span>{{ umuti.prix_vente }}</td>
                     <td class="c-w"><span class="c-t">____</span>{{ umuti.forme }}</td>
-                    <td class="c-w"><span class="c-t">____</span>{{ umuti.classe_med }}</td>
+                    <td class="c-w"><span class="c-t">____</span>{{ umuti.nom_med }}</td>
                 </tr>
             </table>
             
         </div>
-        <!-- <div style="display: block;">
+        <div style="display: block;">
             <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 2 ? 'bg-o':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
-        </div> -->
-        <mAchat /> 
+        </div>
+        <!-- <mAchat :umutiData="null"/>  -->
     </div>
 </template>
 
@@ -42,6 +42,8 @@ const changeSuccessfull = ref(0)
 const inputValue = ref(null)
 const cellIndex = ref(null)
 const dataAttribute = ref(null)
+const modifiedIndexes = ref([])
+const modifiedObj = reactive({})
 
 const { incrementCounter } = useCounter()
 
@@ -86,16 +88,34 @@ const editData = (e)=>{
     newInputElm.setAttribute('id', `i_${idElm}`)
     newInputElm.addEventListener('blur', ()=>{
         inputValue.value = newInputElm.value
-    })
+        newInputElm.style.display = 'none';
+        let id_index = createdNodes.value.indexOf(idElm);
+        delete createdNodes.value[id_index];
+        if (modifiedObj[toValue(cellIndex)]){
+            console.log("now does exist." + toValue(dataAttribute))
+            // modifiedObj[toValue(cellIndex)].add(toValue(dataAttribute))
+            modifiedObj['0'].add(toValue(dataAttribute))
+            console.log("result: " + JSON.stringify(modifiedObj['0']))
+        } else{
+            console.log("did not exist")
+            modifiedObj[toValue(cellIndex)] = new Set()
+        }
+        })
     newInputElm.removeEventListener('click', this)
     newInputElm.style.width = '9vw';
 
     const elm = document.getElementById(idElm)
     const elm_ = elm.append(newInputElm)
     createdNodes.value.push(idElm)
+
+    
+    modifiedIndexes.value.push(toValue(cellIndex));
     // elm.appendChild = newInputElm;
     // elm.style.display = 'none';
-    console.log("we want to edit: " + cellIndex + ':' + dataAttribute + ' forms id: ' + idElm + " the Elm:" + elm + ' and: ' + newInputElm)
+    console.log("we want to edit: " + 
+        cellIndex + ':' + dataAttribute + 
+        ' forms id: ' + idElm + " the Elm:" + 
+        elm + ' and: ' + newInputElm);
 }
 
 const changeOneCompiled = ()=>{
@@ -152,7 +172,7 @@ watch(inputValue, (value)=>{
     console.log("modified on: " + JSON.stringify(medAchats.value[toValue(cellIndex)][toValue(dataAttribute)]))
     // console.log("The attr: " + JSON.stringify(toValue(dataAttribute)))
     medAchats.value[toValue(cellIndex)][toValue(dataAttribute)] = toValue(inputValue);
-    console.log("The all: " + JSON.stringify(toValue(medAchats)))
+    console.log("The all: " + JSON.stringify(toValue(modifiedObj)))
 
 })
 watch(oneCompiled, (value)=>{
