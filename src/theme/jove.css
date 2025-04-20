@@ -663,10 +663,11 @@ label[class='se']{
 div > section {
     border: 3px dashed transparent;
     border-radius: 12px;
-    transform: translate(0, 50%);
+    /* transform: translate(0, 50%); */
+    margin-top: 2.5rem;
     text-align: center;
     backdrop-filter: blur(12px);
-    background: linear-gradient(120deg, rgba(255, 0, 0, 0.459), rgba(0, 0, 255, 0.473));
+    /* background: linear-gradient(120deg, rgba(255, 0, 0, 0.459), rgba(0, 0, 255, 0.473)); */
     background: linear-gradient(120deg, red, blue);      
 }
 #paraContainer::before {
