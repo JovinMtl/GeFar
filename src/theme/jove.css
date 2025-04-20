@@ -302,6 +302,8 @@ html, body {
   }
   ::-webkit-scrollbar-track {
     background-color: #f1f1f1;
+    background-color: transparent;
+    /* margin-bottom: 5px; */
   }
 .controle{
     background-color: white; 
