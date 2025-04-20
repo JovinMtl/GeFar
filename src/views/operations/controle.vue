@@ -16,11 +16,11 @@
                 </select>
             </div>
             <div v-if="selected_type != 'date'" class="inTitle">
-                début
+                début<span class="c-t">_</span>
                 <input type="date" v-model="date_debut" class="dateInput" >
             </div>
             <div v-if="selected_type != 'date'" class="inTitle">
-                fin
+                fin<span class="c-t">_</span>
                 <input type="date" v-model="date_fin"  class="dateInput">
             </div>
             <div class="inTitle">

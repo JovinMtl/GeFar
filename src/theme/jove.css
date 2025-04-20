@@ -855,3 +855,9 @@ div > section {
 .bg-ht{
     background-color: #a3df5f;
 }
+.full-w{
+    width: 80%;
+}
+.half-w{
+    width: 40%;
+}
