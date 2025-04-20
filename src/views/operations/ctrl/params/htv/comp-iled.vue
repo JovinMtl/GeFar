@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-w bg-ht se  bdbmr-5">
+    <div class="bg-ht se  bdbmr-5">
     <div class="c-b" style="display: flex; justify-content: center;">
         <!-- Ici on va modifier le produits compile -->
          
@@ -101,7 +101,7 @@ th{
     margin: 0 15px;
 }
 .btnComp{
-    margin: 15px;
+    margin: 5px;
     padding: 5px;
 }
 </style>

@@ -130,7 +130,7 @@ th{
     margin: 0 15px;
 }
 .btnComp{
-    margin: 15px;
+    margin: 5px;
     padding: 5px;
 }
 </style>

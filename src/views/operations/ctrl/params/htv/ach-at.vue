@@ -1,6 +1,6 @@
 <template>
     <div class="bg-w bg-ht se bdbmr-5">
-        <div class="c-b" style="display: flex; justify-content: center;">
+        <div class="c-b" style="display: flex; justify-content: center; max-height: 80px; overflow: scroll;">
             <!-- Ici on va modifier le produits compile -->
             
             <table style="text-align: right;">
@@ -23,9 +23,10 @@
             </table>
             
         </div>
-        <div style="display: block;">
+        <!-- <div style="display: block;">
             <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 2 ? 'bg-o':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
-        </div>   
+        </div> -->
+        <mAchat /> 
     </div>
 </template>
 
@@ -33,6 +34,7 @@
 import { reactive,ref, toValue, watch } from 'vue'
 import { useKurungika } from '../../../../hooks/kuvoma'
 import { useCounter } from '../../../../../store/incrementCounter'
+import mAchat from './updateAchat/m-achat.vue'
 
 const props = defineProps(['code_med'])
 const allowChange = ref(true)
