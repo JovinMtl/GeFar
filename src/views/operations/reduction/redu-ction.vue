@@ -184,8 +184,8 @@ getDefRate()
 const checkPhoneNumber = (val)=>{
     let status = true;
     let strVal = String(val);
-    let mobCodes = ['79', '76', '72', '71',
-        '69', '68', '66', '62', '61',
+    let mobCodes = ['79','77', '76', '72', '71',
+        '69', '68', '66', '65','62', '61',
     ];
     if ((!(mobCodes.indexOf(strVal.slice(0,2)) > -1)) && (strVal.length == 8)){
         status = false
