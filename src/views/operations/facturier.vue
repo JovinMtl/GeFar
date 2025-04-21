@@ -222,7 +222,7 @@ reste.value = useReadable(total.value - assure_value)
 }
 @mixin footer {
     width: 100%;
-    height: 10%;
+    height: 12%;
     padding: 0px 15px;
     // text-align: right;
     text-align: center;
@@ -260,17 +260,14 @@ reste.value = useReadable(total.value - assure_value)
             width: 100%;
             height: 10%;
             text-align: center;
-            align-content: center;
-            // margin: 25px 0px;
+            // align-content: center;
             font-size: 1rem;
-            //border-bottom: 2px solid #000;
         }
         .factuBody{
             display: block;
             width: 100%;
             height: 70%;
             padding: 5px;
-            // background: blue;
 
             .content{
                 border: 1px dashed black;
