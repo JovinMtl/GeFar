@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="authorizer">
-                Servi par: {{ useCapitalLetter(username) }} <br>
+                Benéficiaire: {{ useCapitalLetter(username) }} <br>
                 Date     : 
                     <span v-if="props.date">{{ new Date(props?.date).toISOString().substring(0,10) }}</span> 
                     <span v-else>{{ new Date().toISOString().substring(0,10) }}</span> 
@@ -258,18 +258,17 @@ reste.value = useReadable(total.value - assure_value)
         .factuHead{
             display: block;
             width: 100%;
-            height: 10%;
+            // height: 10%;
             text-align: center;
-            align-content: center;
-            // margin: 25px 0px;
+            margin: 2% 0;
             font-size: 1rem;
-            //border-bottom: 2px solid #000;
         }
         .factuBody{
             display: block;
             width: 100%;
-            height: 70%;
+            // height: 70%;
             padding: 5px;
+            margin-bottom: 10%;
             // background: blue;
 
             .content{
@@ -303,7 +302,9 @@ reste.value = useReadable(total.value - assure_value)
             }
         }
         .authorizer{
-            @include footer;
+            // @include footer;
+            margin: 5px 0;
+            text-align: center;
         }
         .factuFooter{
             @include footer;
