@@ -14,11 +14,11 @@
                 </tr>
                 <tr v-for="(umuti, index) in oneCompiled">
                     <td class="c-g-2">{{ String(umuti.date_entrant).slice(0, 10) }}</td>
-                    <td class="pointer" @click="editData" :id="index + 'date_peremption'" :data-index="index" data-attr="date_peremption"><span class="c-t">____</span>{{ (umuti.date_peremption).slice(0, 10) }}</td>
-                    <td class="pointer" @click="editData" :id="index + 'prix_achat'" :data-index="index" data-attr="prix_achat"><span class="c-t">____</span>{{ umuti.prix_achat }}</td>
+                    <td class="pointer"  :data-index="index" @click="openData"><span class="c-t">____</span>{{ (umuti.date_peremption).slice(0, 10) }}</td>
+                    <td class="pointer"><span class="c-t">____</span>{{ umuti.prix_achat }}</td>
                     <td class="c-g-2"><span class="c-t">____</span>{{ umuti.prix_vente }}</td>
                     <td class="c-w"><span class="c-t">____</span>{{ umuti.forme }}</td>
-                    <td class="c-w"><span class="c-t">____</span>{{ umuti.nom_med }}</td>
+                    <td class="c-w"><span class="c-t">____</span>{{ String(umuti.nom_med).slice(0, 20) }}</td>
                 </tr>
             </table>
             
@@ -26,12 +26,13 @@
         <div style="display: block;">
             <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 2 ? 'bg-o':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
         </div>
-        <!-- <mAchat :umutiData="null"/>  -->
+        <mAchat v-if="mAchatIsOpen" :umutiData="oneCompiled[actualId]"/> 
     </div>
 </template>
 
 <script setup lang="ts">
 import { reactive,ref, toValue, watch } from 'vue'
+import type { Ref } from 'vue'
 import { useKurungika } from '../../../../hooks/kuvoma'
 import { useCounter } from '../../../../../store/incrementCounter'
 import mAchat from './updateAchat/m-achat.vue'
@@ -53,6 +54,7 @@ const oneCompiledData = reactive({
     'request': 'get',
 })
 const medAchats = ref([])
+const actualId = ref(0)
 
 
 const [oneCompiled, getOneCompiled] = useKurungika(oneCompiledData, oneCompiled_url)
@@ -67,8 +69,15 @@ const inpuTypes = {
     'prix_achat': 'number',
 }
 const createdNodes = ref([])
+const mAchatIsOpen: Ref<boolean> = ref(false)
 
 // Functions
+const openData = (e)=>{
+    const id = e.target.getAttribute('data-index');
+    actualId.value = Number(id)
+    console.log("The id: " + id)
+    mAchatIsOpen.value = true;
+}
 const editData = (e)=>{
     if (toValue(e.target.getAttribute('data-index'))){
         cellIndex.value = e.target.getAttribute('data-index')
@@ -83,7 +92,7 @@ const editData = (e)=>{
     }
 
     const newInputElm = document.createElement('input');
-    // let newInputElmValue = null;
+    // let editDatanewInputElmValue = null;
     newInputElm.setAttribute('type', inpuTypes[toValue(dataAttribute)]);
     newInputElm.setAttribute('id', `i_${idElm}`)
     newInputElm.addEventListener('blur', ()=>{

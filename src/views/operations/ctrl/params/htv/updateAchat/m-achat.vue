@@ -5,7 +5,7 @@
         width: 100%; height: 60%; display: flex;
         justify-content: right;"> 
         <div class="bg-ht" style="max-width: 30%; height: 150%;overflow: scroll;">
-            here we modify achats
+            here we modify achats: {{ props.umutiData }}
         </div>
     </div>
 </template>
