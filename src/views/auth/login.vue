@@ -23,6 +23,9 @@
                     <div class="loFooter"> © {{ year }}, Pharmacie UBUZIMA</div>
                 </div>
                 
+                <div v-show="server_process" class="loader" style="z-index: 15;position:absolute">
+                    <jove-loader></jove-loader>
+                </div>
             </div>
         </ion-content>
     </ion-page>
@@ -38,6 +41,7 @@ import { useUserStore } from '../../store/user.js'
 // import { baseURL } from '../../store/host'
 import { baseURL } from '@/store/host'
 import axios from 'axios'
+import joveLoader from '../layout/auxiliare/jove-loader.vue'
 
 const store = useUserStore()
 const { getUsername, getAccessToken, getRefreshToken,
@@ -48,6 +52,7 @@ const username = ref(null)
 // const oneChar = ref(null)
 const maskedPassword = []
 const wrongPassword = ref(false)
+const server_process = ref(false)
 
 
 const truePassword = []
@@ -83,7 +88,8 @@ const axiosInstance = axios.create({
 
 const login_hook = () => {
     const base = '//127.0.0.1:8002'
-    const prefix = "api/login/"
+    const prefix = "api/login/";
+    server_process.value = true;
 
     axios.post(`${baseURL}/${prefix}`, {
         "username": username.value,
@@ -97,9 +103,11 @@ const login_hook = () => {
         localStorage.setItem('username', username.value)
         localStorage.setItem('accessToken', response.data.access)
         localStorage.setItem('refreshToken', response.data.refresh)
+        server_process.value = false;
         // hide_authe()
         router.push('/home')
     }).catch((error) => {
+        server_process.value = false;
         logs = error.response.data
         wrongPassword.value = true;
     })
