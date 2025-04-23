@@ -268,7 +268,8 @@ reste.value = useReadable(total.value - assure_value)
             width: 100%;
             // height: 70%;
             padding: 5px;
-            margin-bottom: 10%;
+            //margin-bottom: 10%;
+            margin-bottom: 2%;
 
             .content{
                 border: 1px dashed black;
@@ -302,7 +303,8 @@ reste.value = useReadable(total.value - assure_value)
         }
         .authorizer{
             // @include footer;
-            margin: 5px 0;
+            // margin: 5px 0;
+            margin-bottom: 8%;
             text-align: center;
         }
         .factuFooter{
