@@ -7,15 +7,16 @@
                 <div class="elt contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: inherit; ">
                     #
                 </div> 
-                <div class="elt contentElement2">
-                    Bon de Commande
-                </div> 
                 <div class="elt contentElement3">
+                    Bons
+                </div> 
+                <div class="elt contentElement2">
                 <!-- <span v-if="isAdmin">Benéficiaire</span>  -->
                     Client
                 </div>
-
-
+                <div class="elt contentElement3 ac">
+                    Tél
+                </div>
                 <div title="Assurance Nom" class="elt contentElement3">
                     ASN
                 </div>
@@ -35,7 +36,7 @@
                     Catég.
                 </div>
 
-                <div class="elt elt5">
+                <div class="elt elt5 ac">
                     Date
                 </div>
                 <div class="elt elt6">
@@ -84,7 +85,7 @@
                     {{ index + 1 }}
                 </div> 
                 
-                <div class="elt contentElement2" style="cursor: pointer;">
+                <div class="elt contentElement3" style="cursor: pointer;">
                     <button popovertarget="pop" :data-ids="umuti.meds" 
                         :data-store="[umuti.num_facture, umuti.total, 
                                         umuti.cout, umuti.assu_rate, 
@@ -94,8 +95,11 @@
                         :data-index="index+1" @click="showData">Ouvrir</button>
                 </div> 
 
-                <div class="elt contentElement3"> 
+                <div class="elt contentElement2"> 
                     {{ getOneclient(umuti.beneficiaire) }}
+                </div>
+                <div class="elt contentElement3">
+                    {{ (getOneclientPhone(umuti.beneficiaire)) }}
                 </div>
 
 
@@ -155,7 +159,11 @@
                 </div>
 
                 <div class="elt contentElement3">
-                    
+                    ---
+                </div>
+
+                <div class="elt contentElement3">
+                    ---
                 </div>
                 <div class="elt elt9">
                 </div>
@@ -234,7 +242,7 @@ const totaux = ref([0,0]) // To display totals on the footer.
 const selectIndex =ref(new Set())
 const repStatus  = ref<number>(0)
 const {setAssurance, getOneAssurance} = useAssuStore()
-const {setclient, getOneclient, getObjclients} = useClientStore()
+const {setclient, getOneclient, getOneclientPhone} = useClientStore()
 
 
 const idBons = ref([])
@@ -392,7 +400,7 @@ watch(response, (value)=>{
 watch(clients, (value)=>{
     if(value[0] != undefined){
         value.forEach((elm)=>{
-            setclient(elm.id, elm.beneficiaire)
+            setclient(elm.id, [elm.beneficiaire, elm.phone_number])
         })
     }
 })

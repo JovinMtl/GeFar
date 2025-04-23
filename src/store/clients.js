@@ -10,7 +10,10 @@ export const useClientStore = defineStore('client',()=>{
         return clients
     }
     const getOneclient = (id)=>{
-        return clients[id]
+        return clients[id]?.[0]
+    }
+    const getOneclientPhone = (id)=>{
+        return clients[id]?.[1]
     }
     const setclient = (id, value)=>{
         clients[id] = value
@@ -18,7 +21,7 @@ export const useClientStore = defineStore('client',()=>{
 
     return {
         getObjclients, setclient,
-        getOneclient
+        getOneclient, getOneclientPhone
     }
 })
 
