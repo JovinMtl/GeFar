@@ -24,7 +24,10 @@
                     <td class="c-w"><span class="c-t">____</span>{{ umuti.forme }}</td>
                     <td class="c-w"><span class="c-t">____</span>{{ String(umuti.nom_med).slice(0, 20) }}</td>
                     <td><button class="bg-a-1" title="Modifier cette opération." 
-                        :data-index="index" @click="openData">Modifier</button>
+                        :data-index="index" @click="openData">
+                        <span v-if="!mAchatIsOpen">Modifier</span>
+                        <span v-else>Annuler</span>
+                    </button>
                     </td>
                 </tr>
             </table>
@@ -93,7 +96,7 @@ const openData = (e)=>{
     const id = e.target.getAttribute('data-index');
     actualId.value = Number(id)
     console.log("The id: " + id)
-    mAchatIsOpen.value = true;
+    mAchatIsOpen.value = !mAchatIsOpen.value;
 }
 const editData = (e)=>{
     if (toValue(e.target.getAttribute('data-index'))){
