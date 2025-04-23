@@ -260,7 +260,7 @@ reste.value = useReadable(total.value - assure_value)
             width: 100%;
             // height: 10%;
             text-align: center;
-            margin: 2% 0;
+            margin: 5px 0;
             font-size: 1rem;
         }
         .factuBody{
