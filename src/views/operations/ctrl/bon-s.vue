@@ -91,7 +91,8 @@
                                         umuti.cout, umuti.assu_rate, 
                                         umuti.montant_dette,
                                         getOneAssurance(umuti.organization),
-                                        umuti.date_served ]" 
+                                        umuti.date_served,
+                                        getOneclient(umuti.beneficiaire), ]" 
                         :data-index="index+1" @click="showData">Ouvrir</button>
                 </div> 
 
@@ -216,7 +217,7 @@
                 <facturier @facture-active="closeFacture"
                     :commande-patient="[updatedImiti, dataStore[1]]" 
                     :num_facture="dataStore[0]"
-                    :username="whoDidIt"
+                    :username="dataStore[7]"
                     :assure_rate="dataStore[3]"
                     :assureur="dataStore[5]"
                     :imperfections="[0, 0]"
