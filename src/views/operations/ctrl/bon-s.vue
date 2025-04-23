@@ -17,7 +17,7 @@
                 <div class="elt contentElement3 ac">
                     Tél
                 </div>
-                <div title="Assurance Nom" class="elt contentElement3">
+                <div title="Assurance Nom" class="elt contentElement3 ac">
                     ASN
                 </div>
                 <div class="elt contentElement3">
@@ -99,13 +99,16 @@
                     {{ getOneclient(umuti.beneficiaire) }}
                 </div>
                 <div class="elt contentElement3">
-                    {{ (getOneclientPhone(umuti.beneficiaire)) }}
+                    <span v-if="getOneclientPhone(umuti.beneficiaire)">
+                        {{ (getOneclientPhone(umuti.beneficiaire)) }}
+                    </span>
+                    
                 </div>
 
 
                 <div class="elt contentElement3">
-                    <span  v-show="umuti.organization !='Sans'">
-                        {{ getOneAssurance(umuti.organization)  }}
+                    <span v-show="getOneAssurance(umuti.organization)">
+                        {{ String(getOneAssurance(umuti.organization)).slice(0, 8) }}
                     </span>
                 </div>
                 <div class="elt contentElement3 total">
