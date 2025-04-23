@@ -230,7 +230,7 @@
                             <factu-rier @facture-active="closeFacture"
                                 :commande-patient="[panier_client, total_panier_client]" 
                                 :num_facture="numero_facture"
-                                :username="getUsername()"
+                                :username="clientName"
                                 :assure_rate="rate_assure"
                                 :assureur="panier_api.client.assureur"
                                 :imperfections="[succededIndex, formerFactureLength]"></factu-rier>
@@ -358,6 +358,7 @@ const actualFactureLength:Ref<number> = ref(0)
 const showClassMed:Ref<boolean> = ref(false)
 const decimalNumber:Ref<number> = ref(0)
 const fullDecimal: Ref<number> = ref(10)
+const clientName: Ref<string> = ref('')
 
 // Store
 const { getCounter } = useCounter()
@@ -1015,6 +1016,7 @@ watch(sell_report, value => {
             (panier_client.value).splice(succededIndex.value);
             callCompileImitiSet()
             numero_facture.value = value.num_facture;
+            clientName.value = value.client_name;
             show_facture.value = true;
         } else{
             message.value = "Operation echouée, La quantite de ce produit peut etre indisponible."
@@ -1034,7 +1036,8 @@ watch(sell_report, value => {
         callCompileImitiSet()
         console.warn("end: " + server_process.value)
         show_facture.value = true
-        numero_facture.value = value.sold
+        numero_facture.value = value.sold[0];
+        clientName.value = value.sold[1];
         console.log("Le facturier: ", show_facture.value)
     }
 })
