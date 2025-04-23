@@ -222,7 +222,7 @@ reste.value = useReadable(total.value - assure_value)
 }
 @mixin footer {
     width: 100%;
-    height: 10%;
+    height: 12%;
     padding: 0px 15px;
     // text-align: right;
     text-align: center;
@@ -260,7 +260,11 @@ reste.value = useReadable(total.value - assure_value)
             width: 100%;
             // height: 10%;
             text-align: center;
+<<<<<<< HEAD
             margin: 5px 0;
+=======
+            // align-content: center;
+>>>>>>> 0d070b97791a0b001efc560a2fed3781a9f82847
             font-size: 1rem;
         }
         .factuBody{
@@ -268,8 +272,11 @@ reste.value = useReadable(total.value - assure_value)
             width: 100%;
             // height: 70%;
             padding: 5px;
+<<<<<<< HEAD
             margin-bottom: 10%;
             // background: blue;
+=======
+>>>>>>> 0d070b97791a0b001efc560a2fed3781a9f82847
 
             .content{
                 border: 1px dashed black;
