@@ -15,7 +15,7 @@
              <input class="bg-b-1" type="number" v-model="quantite_initial"><br>
              <input class="bg-b-1" type="button" value="Confirmer"
                 :class="[oneCompiled?.response==200 ? 'bg-g-1':'', oneCompiled?.response==404 ? 'bg-r':'']"
-                @click="updateAchat"/><br>
+                @click="updateAchat"/>
         </div>
     </div>
 </template>
