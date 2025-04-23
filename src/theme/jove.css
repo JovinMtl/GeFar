@@ -509,6 +509,9 @@ html, body {
 .bg-a{
     background-color: aqua;
 }
+.bg-a-1{
+    background-color: rgb(16, 168, 168);
+}
 .bg-r{
     background-color: red;
 }

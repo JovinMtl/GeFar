@@ -14,11 +14,12 @@
                 </tr>
                 <tr v-for="(umuti, index) in oneCompiled">
                     <td class="c-g-2">{{ String(umuti.date_entrant).slice(0, 10) }}</td>
-                    <td class="pointer"  :data-index="index" @click="openData"><span class="c-t">____</span>{{ (umuti.date_peremption).slice(0, 10) }}</td>
+                    <td class="pointer" title="Modifier cette opération." :data-index="index" @click="openData"><span class="c-t">____</span>{{ (umuti.date_peremption).slice(0, 10) }}</td>
                     <td class="pointer"><span class="c-t">____</span>{{ umuti.prix_achat }}</td>
                     <td class="c-g-2"><span class="c-t">____</span>{{ umuti.prix_vente }}</td>
                     <td class="c-w"><span class="c-t">____</span>{{ umuti.forme }}</td>
                     <td class="c-w"><span class="c-t">____</span>{{ String(umuti.nom_med).slice(0, 20) }}</td>
+                    <td><button class="bg-a-1" title="Modifier cette opération." :data-index="index" @click="openData">Modifier</button></td>
                 </tr>
             </table>
             
@@ -220,6 +221,11 @@ th{
 }
 .btnComp{
     margin: 15px;
+    padding: 5px;
+}
+td > button{
+    border-radius: 5px;
+    margin: 0 10px;
     padding: 5px;
 }
 </style>
