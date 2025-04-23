@@ -51,7 +51,9 @@
                 </div>
             </div>
             <div class="authorizer">
-                Benéficiaire: {{ useCapitalLetter(username) }} <br>
+                <span v-if="props.username">
+                    Benéficiaire: {{ useCapitalLetter(username) }} <br>
+                </span>
                 Date     : 
                     <span v-if="props.date">{{ new Date(props?.date).toISOString().substring(0,10) }}</span> 
                     <span v-else>{{ new Date().toISOString().substring(0,10) }}</span> 
