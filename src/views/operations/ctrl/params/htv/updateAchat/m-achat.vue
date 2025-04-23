@@ -8,12 +8,14 @@
             <!-- here we modify achats: {{ props.umutiData }} -->
              <!-- <br> -->
              <label for="">Date Per.</label>
-             <input type="date" v-model="date_peremption" /><br>
+             <input class="bg-b-1" type="date" v-model="date_peremption" /><br>
              <label for="">Prix A.</label>
-             <input type="number" v-model="prix_achat"/><br>
+             <input class="bg-b-1" type="number" v-model="prix_achat"/><br>
              <label for="">Qte</label>
-             <input type="number" v-model="quantite_initial"><br>
-             <input type="button" value="Confirmer" @click="updateAchat"/><br>
+             <input class="bg-b-1" type="number" v-model="quantite_initial"><br>
+             <input class="bg-b-1" type="button" value="Confirmer"
+                :class="[oneCompiled?.response==200 ? 'bg-g-1':'', oneCompiled?.response==404 ? 'bg-r':'']"
+                @click="updateAchat"/><br>
         </div>
     </div>
 </template>
@@ -23,6 +25,7 @@ import { reactive, ref, toValue, watch } from 'vue'
 import { useKurungika } from '../../../../../hooks/kuvoma'
 
 const props = defineProps(['umutiData']);
+const emit = defineEmits(['done-update'])
 
 const date_peremption = ref(props.umutiData.date_peremption)
 const prix_achat = ref(props.umutiData.prix_achat)
@@ -53,6 +56,7 @@ const [oneCompiled, updateAchatEntree] = useKurungika(objAPI, oneCompiled_url)
 watch(oneCompiled, (value)=>{
     if (value.response == 200){
         console.log("It is well done")
+        emit('done-update')
     } else if(value.response == 404){
         console.log("Not found")
     }
@@ -60,9 +64,6 @@ watch(oneCompiled, (value)=>{
 </script>
 
 <style scoped>
-input{
-    background-color: black;
-}
 label{
     color: blue;
 }

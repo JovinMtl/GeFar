@@ -26,7 +26,8 @@
         <div style="display: block;">
             <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 2 ? 'bg-o':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
         </div>
-        <mAchat v-if="mAchatIsOpen" :umutiData="oneCompiled[actualId]"/> 
+        <mAchat v-if="mAchatIsOpen"
+            @done-update="closemAchat" :umutiData="oneCompiled[actualId]"/> 
     </div>
 </template>
 
@@ -72,6 +73,11 @@ const createdNodes = ref([])
 const mAchatIsOpen: Ref<boolean> = ref(false)
 
 // Functions
+const closemAchat = ()=>{
+    setTimeout(()=>{
+        mAchatIsOpen.value=false
+    }, 3000)
+}
 const openData = (e)=>{
     const id = e.target.getAttribute('data-index');
     actualId.value = Number(id)
