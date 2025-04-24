@@ -2,11 +2,10 @@
     <div style="position: absolute;
         /* transform: translate(0%, 50%); */
         margin-top: 15px;
-        width: 100%; height: 60%; display: flex;
+        width: 100%; min-height: 60%; display: flex;
         justify-content: right;"> 
-        <div class="bg-ht" style="max-width: 30%; max-height: 150%;overflow: scroll;">
+        <div class="bg-ht" style="max-width: 30%; max-height: 150%;overflow: scroll;padding-top: 5px;">
             <!-- here we modify achats: {{ props.umutiData }} -->
-             <!-- <br> -->
              <label for="">Date Per.</label>
              <input class="bg-b-1" type="date" v-model="date_peremption" /><br>
              <label for="">Prix A.</label>
