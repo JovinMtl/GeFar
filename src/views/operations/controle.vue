@@ -514,10 +514,8 @@ watch(actual_entree, (value)=>{
         actual_opt.value = ['nom_med', 
         'quantite_restant','prix_vente', 'date_winjiriyeko',]
         actual_type.value = ['text','text','text','date']
-        // title_operation.value = 
-        setOpTitle("Achats")
-        // console.log("new title...: " + title_operation.value)
-        // console.log("Titlte is actual_entree...: " + title_operation.value)
+        title_operation.value = "Achats"
+        searchEable.value = true
     }
 })
 watch(actual_vente, (value)=>{
