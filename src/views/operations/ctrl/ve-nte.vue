@@ -91,9 +91,9 @@
                         {{ umuti.dette }}</span>
                      
                 </div>
-                <div class="elt elt5">
-                    <span v-show="umuti.assu !='Sans'">
-                        {{ (umuti.assu).slice(0,5) }}...
+                <div class="elt elt5 pointer">
+                    <span :title="umuti.assu" v-show="umuti.assu !='Sans'">
+                        {{ (umuti.assu).slice(0,3) }}...(<span class="bg-a-1">{{ umuti.rate }}</span>%)
                     </span>
                 </div>
                 <div class="elt elt5">
