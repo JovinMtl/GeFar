@@ -34,8 +34,8 @@
                 <div class="elt contentElement4">
                     Date Achat
                 </div>
-                <div class="elt contentElement4">
-                    Classe Thérap.
+                <div class="elt elt5">
+                    Classe Thér.
                 </div>
             </div>
         </div>
