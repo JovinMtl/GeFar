@@ -57,7 +57,10 @@
                 :class="index%2 ? 'ln-1':'ln-2'"
                 class="d-f"
                 :key="index">
-                <div :title="deleteTitle" class="contentElement11 pointer bg-r-h">
+                <div :title="isAdmin ? 'Annuler cette opération.':''"  :data-id="umuti.id"
+                    class="contentElement11"
+                    :class="isAdmin ? 'bg-b-1 pointer bg-r-h':''"
+                    @click="cancelOperation">
                     {{ index + 1 }}
                 </div> 
                 <div class="elt contentElement2">
@@ -174,7 +177,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue'
+import { ref, watch, computed, toValue } from 'vue'
 import { useKurungika, usePostRequest } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
 import { Value } from 'sass'
@@ -190,7 +193,7 @@ const idBons = ref([])
 
 let tempSelected = 0
 let numsBon: number[] = []
-const deleteTitle = ref('Annuler cette opération.')
+const canDeleteTitle = ref(true)
 
 const url_sendIndex = 'api/gOps/setBons/'
 const [repIndex, sendIndex] = usePostRequest()
@@ -198,6 +201,16 @@ const [repIndex, sendIndex] = usePostRequest()
 const url_sendBons = 'api/gOps/getBons/'
 const [repBons, sendBons] = usePostRequest()
 
+
+// Functions
+const cancelOperation = (elm)=>{
+    if (!(toValue(isAdmin))){
+        canDeleteTitle.value = false
+        return
+    }
+    const  id = elm.target.getAttribute('data-id')
+    console.log("the id: " + id)
+}
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)
     numsBon = removeBadBons()
