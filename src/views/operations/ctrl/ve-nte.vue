@@ -201,6 +201,9 @@ const [repIndex, sendIndex] = usePostRequest()
 const url_sendBons = 'api/gOps/getBons/'
 const [repBons, sendBons] = usePostRequest()
 
+const umutiSoldId = ref(0)
+const url_cancelSell = 'api/out/cancelSell/'
+const [repCancel, cancelOp] = useKurungika(umutiSoldId, url_cancelSell)
 
 // Functions
 const cancelOperation = (elm)=>{
@@ -210,6 +213,8 @@ const cancelOperation = (elm)=>{
     }
     const  id = elm.target.getAttribute('data-id')
     console.log("the id: " + id)
+    umutiSoldId.value = id
+    cancelOp()
 }
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)
