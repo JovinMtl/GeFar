@@ -57,7 +57,7 @@
                 :class="index%2 ? 'ln-1':'ln-2'"
                 class="d-f"
                 :key="index">
-                <div class="contentElement11">
+                <div :title="deleteTitle" class="contentElement11 pointer bg-r-h">
                     {{ index + 1 }}
                 </div> 
                 <div class="elt contentElement2">
@@ -190,6 +190,7 @@ const idBons = ref([])
 
 let tempSelected = 0
 let numsBon: number[] = []
+const deleteTitle = ref('Annuler cette opération.')
 
 const url_sendIndex = 'api/gOps/setBons/'
 const [repIndex, sendIndex] = usePostRequest()
