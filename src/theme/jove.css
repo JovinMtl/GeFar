@@ -515,6 +515,9 @@ html, body {
 .bg-r{
     background-color: red;
 }
+.bg-s{
+    background-color: salmon;
+}
 .bg-r-h:hover{
     background-color: red;
 }

@@ -172,6 +172,10 @@
                 </div>
             </div>
         </div>
+        <teleport to="body">
+            <confirmCancel v-if="shouldConfirm" 
+                @cancel="failedConfirm"/>
+        </teleport>
                             
     </div>
 </template>
@@ -180,7 +184,7 @@
 import { ref, watch, computed, toValue } from 'vue'
 import { useKurungika, usePostRequest } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
-import { Value } from 'sass'
+import confirmCancel from './params/confirm-cancel.vue'
 const props = defineProps(['med','admin'])
 // const emit = defineEmits(['lsIndex'])
 const actual_imitiS = ref(props.med)
@@ -196,6 +200,8 @@ const deletedIndexes = ref([])
 const umutiSoldId = ref(0)
 const indexToRemove = ref(0)
 const statusRemove = ref(0)
+const shouldConfirm = ref(false)
+const shouldStopCancelling = ref(false)
 
 const url_sendIndex = 'api/gOps/setBons/'
 const [repIndex, sendIndex] = usePostRequest()
@@ -207,6 +213,10 @@ const url_cancelSell = 'api/out/cancelSell/'
 const [repCancel, cancelOp] = useKurungika(umutiSoldId, url_cancelSell)
 
 // Functions
+const failedConfirm = ()=>{
+    shouldStopCancelling.value = true
+    shouldConfirm.value = false
+}
 const cancelOperation = (elm)=>{
     if (!(toValue(isAdmin))){
         canDeleteTitle.value = false
@@ -214,6 +224,7 @@ const cancelOperation = (elm)=>{
     }
     umutiSoldId.value = elm.target.getAttribute('data-id')
     const index = Number(elm.target.getAttribute('data-index'))
+    shouldConfirm.value = true
     
     // cancelOp()
     deletedIndexes.value.push(Number(index))
