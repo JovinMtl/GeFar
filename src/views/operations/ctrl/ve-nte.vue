@@ -222,6 +222,10 @@ const getInfos = (elm)=>{
     }
     umutiSoldId.value = elm.target.getAttribute('data-id')
     indexToRemove.value = Number(elm.target.getAttribute('data-index'))
+
+    if(deletedIndexes.value.indexOf(indexToRemove.value) >= 0){
+        return
+    }
     actualSell.value = actual_imitiS.value[indexToRemove.value]
     shouldConfirm.value = true
 }
