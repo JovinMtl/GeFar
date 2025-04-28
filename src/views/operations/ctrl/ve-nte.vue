@@ -59,7 +59,7 @@
                 :key="index">
                 <div :title="isAdmin ? 'Annuler cette opération.':''"  :data-id="umuti.id" :data-index="index"
                     class="contentElement11"
-                    :class="[isAdmin ? 'bg-b-1 pointer bg-r-h':'', deletedIndexes?.indexOf(index) >= 0 ? 'bg-r':'']"
+                    :class="[isAdmin ? 'bg-b-1 pointer bg-r-h':'', deletedIndexes?.indexOf(index) >= 0 ? 'bg-r':'',failedDelIndex?.indexOf(index) >= 0 ? 'bg-y':'']"
                     @click="getInfos">
                     {{ index + 1 }}
                 </div> 
@@ -198,6 +198,7 @@ let tempSelected = 0
 let numsBon: number[] = []
 const canDeleteTitle = ref(true)
 const deletedIndexes = ref([])
+const failedDelIndex = ref([])
 const umutiSoldId = ref(0)
 const indexToRemove = ref(0)
 const actualSell = ref()
@@ -230,26 +231,18 @@ const getInfos = (elm)=>{
     shouldConfirm.value = true
 }
 
-const cancelOperation = (elm)=>{
-    // if (!(toValue(isAdmin))){
-    //     canDeleteTitle.value = false
-    //     return
-    // }
-    // umutiSoldId.value = elm.target.getAttribute('data-id')
-    // const index = Number(elm.target.getAttribute('data-index'))
+// const cancelOperation = ()=>{
+//     cancelOp()
     
-    // cancelOp()
-    deletedIndexes.value.push(indexToRemove.value)
-    indexToRemove.value = null
-    
-}
+// }
 const handleReportConfirm = (val:number)=>{
     if (val == 1){
         shouldStopCancelling.value = true
         shouldConfirm.value = false
     } else if (val == 2){
         shouldConfirm.value = false
-        cancelOperation()
+        // cancelOperation()
+        cancelOp()
     }
 
 }
@@ -337,13 +330,15 @@ const buildBons = ()=>{
 
 updateTotaux()
 // buildBons()
+
 // Watchers
 watch(repCancel, (value)=>{
     if (value.response == 200){
-        setTimeout(()=>{
-            console.log("Should remove: " + actual_imitiS.value[toValue(indexToRemove)] + 'from: ' + toValue(actual_imitiS))
-            // delete actual_imitiS.value[toValue(indexToRemove)]
-        }, 3000)
+        deletedIndexes.value.push(indexToRemove.value)
+        indexToRemove.value = null
+    } else if (value.response == 403){
+        failedDelIndex.value.push(indexToRemove.value)
+        indexToRemove.value = null
     }
 })
 watch(repBons, (value)=>{
