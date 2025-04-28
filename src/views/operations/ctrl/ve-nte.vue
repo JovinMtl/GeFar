@@ -59,8 +59,8 @@
                 :key="index">
                 <div :title="isAdmin ? 'Annuler cette opération.':''"  :data-id="umuti.id" :data-index="index"
                     class="contentElement11"
-                    :class="[isAdmin ? 'bg-b-1 pointer bg-r-h':'', deletedIndexes?.indexOf(index) >= 0 ? 'bg-a':'']"
-                    @click="cancelOperation">
+                    :class="[isAdmin ? 'bg-b-1 pointer bg-r-h':'', deletedIndexes?.indexOf(index) >= 0 ? 'bg-r':'']"
+                    @click="getInfos">
                     {{ index + 1 }}
                 </div> 
                 <div class="elt contentElement2">
@@ -174,7 +174,8 @@
         </div>
         <teleport to="body">
             <confirmCancel v-if="shouldConfirm" 
-                @cancel="failedConfirm"/>
+                :actualOp="actualSell"
+                @reportConfirm="handleReportConfirm"/>
         </teleport>
                             
     </div>
@@ -199,6 +200,7 @@ const canDeleteTitle = ref(true)
 const deletedIndexes = ref([])
 const umutiSoldId = ref(0)
 const indexToRemove = ref(0)
+const actualSell = ref()
 const statusRemove = ref(0)
 const shouldConfirm = ref(false)
 const shouldStopCancelling = ref(false)
@@ -213,29 +215,39 @@ const url_cancelSell = 'api/out/cancelSell/'
 const [repCancel, cancelOp] = useKurungika(umutiSoldId, url_cancelSell)
 
 // Functions
-const failedConfirm = ()=>{
-    shouldStopCancelling.value = true
-    shouldConfirm.value = false
-}
-const cancelOperation = (elm)=>{
+const getInfos = (elm)=>{
     if (!(toValue(isAdmin))){
         canDeleteTitle.value = false
         return
     }
     umutiSoldId.value = elm.target.getAttribute('data-id')
-    const index = Number(elm.target.getAttribute('data-index'))
+    indexToRemove.value = Number(elm.target.getAttribute('data-index'))
+    actualSell.value = actual_imitiS.value[indexToRemove.value]
     shouldConfirm.value = true
+}
+
+const cancelOperation = (elm)=>{
+    // if (!(toValue(isAdmin))){
+    //     canDeleteTitle.value = false
+    //     return
+    // }
+    // umutiSoldId.value = elm.target.getAttribute('data-id')
+    // const index = Number(elm.target.getAttribute('data-index'))
     
     // cancelOp()
-    deletedIndexes.value.push(Number(index))
-    console.log("the deletedIndexes: " + toValue(deletedIndexes))
-    const newArray = deletedIndexes.value
-    if (deletedIndexes.value.indexOf(index) >= 1){
-        console.log("Found: " ,  index)
-    } else{
-        console.log("not found")
-    }
+    deletedIndexes.value.push(indexToRemove.value)
+    indexToRemove.value = null
     
+}
+const handleReportConfirm = (val:number)=>{
+    if (val == 1){
+        shouldStopCancelling.value = true
+        shouldConfirm.value = false
+    } else if (val == 2){
+        shouldConfirm.value = false
+        cancelOperation()
+    }
+
 }
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)

@@ -532,8 +532,17 @@ html, body {
 .bg-g{
     background-color: grey;
 }
+.bg-y{
+    background-color: yellow;
+}
+.c-a{
+    color: aqua;
+}
 .c-r{
     color: red;
+}
+.c-s{
+    color: salmon;
 }
 .c-b-1{color: blue;}
 .c-danger{color: #F93827;}
