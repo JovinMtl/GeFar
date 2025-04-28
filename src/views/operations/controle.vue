@@ -583,7 +583,7 @@ watch(need_search, (value)=>{
     actual_imitiS.value = useSearchUmuti(actual_obj.value, value, selected_field.value )
 })
 watch(actual_imitiS, (value)=>{
-    console.log("Actual_imitiS is " + JSON.stringify(actual_imitiS.value))
+    // console.log("Actual_imitiS is " + JSON.stringify(actual_imitiS.value))
     if(actual_imitiS.value == undefined){
         console.log("Can't go further.")
         title_operation.value = "Opérations"

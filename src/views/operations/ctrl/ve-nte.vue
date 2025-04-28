@@ -57,9 +57,9 @@
                 :class="index%2 ? 'ln-1':'ln-2'"
                 class="d-f"
                 :key="index">
-                <div :title="isAdmin ? 'Annuler cette opération.':''"  :data-id="umuti.id"
+                <div :title="isAdmin ? 'Annuler cette opération.':''"  :data-id="umuti.id" :data-index="index"
                     class="contentElement11"
-                    :class="isAdmin ? 'bg-b-1 pointer bg-r-h':''"
+                    :class="[isAdmin ? 'bg-b-1 pointer bg-r-h':'', deletedIndexes?.indexOf(index) >= 0 ? 'bg-a':'']"
                     @click="cancelOperation">
                     {{ index + 1 }}
                 </div> 
@@ -188,12 +188,14 @@ const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
 const selectIndex =ref(new Set())
 const repStatus  = ref<number>(0)
-
 const idBons = ref([])
-
 let tempSelected = 0
 let numsBon: number[] = []
 const canDeleteTitle = ref(true)
+const deletedIndexes = ref([])
+const umutiSoldId = ref(0)
+const indexToRemove = ref(0)
+const statusRemove = ref(0)
 
 const url_sendIndex = 'api/gOps/setBons/'
 const [repIndex, sendIndex] = usePostRequest()
@@ -201,7 +203,6 @@ const [repIndex, sendIndex] = usePostRequest()
 const url_sendBons = 'api/gOps/getBons/'
 const [repBons, sendBons] = usePostRequest()
 
-const umutiSoldId = ref(0)
 const url_cancelSell = 'api/out/cancelSell/'
 const [repCancel, cancelOp] = useKurungika(umutiSoldId, url_cancelSell)
 
@@ -211,10 +212,19 @@ const cancelOperation = (elm)=>{
         canDeleteTitle.value = false
         return
     }
-    const  id = elm.target.getAttribute('data-id')
-    console.log("the id: " + id)
-    umutiSoldId.value = id
-    cancelOp()
+    umutiSoldId.value = elm.target.getAttribute('data-id')
+    const index = Number(elm.target.getAttribute('data-index'))
+    
+    // cancelOp()
+    deletedIndexes.value.push(Number(index))
+    console.log("the deletedIndexes: " + toValue(deletedIndexes))
+    const newArray = deletedIndexes.value
+    if (deletedIndexes.value.indexOf(index) >= 1){
+        console.log("Found: " ,  index)
+    } else{
+        console.log("not found")
+    }
+    
 }
 const fIndex = ()=>{
     console.log("Really wish to send: ", selectIndex.value)
@@ -300,7 +310,15 @@ const buildBons = ()=>{
 
 updateTotaux()
 // buildBons()
-
+// Watchers
+watch(repCancel, (value)=>{
+    if (value.response == 200){
+        setTimeout(()=>{
+            console.log("Should remove: " + actual_imitiS.value[toValue(indexToRemove)] + 'from: ' + toValue(actual_imitiS))
+            // delete actual_imitiS.value[toValue(indexToRemove)]
+        }, 3000)
+    }
+})
 watch(repBons, (value)=>{
     console.log("SendBon: ", value)
     // removeBadBons()
