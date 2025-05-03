@@ -31,7 +31,8 @@
             <div class="inTitle" style="font-weight: 600; color: green">
                 {{ title_operation }}
             </div>
-            <div  class="inTitle prIcon" :title="'Imprimer: ' + title_operation">
+            <div  class="inTitle prIcon" :title="'Imprimer: ' + title_operation"
+                @click="onPrint=true">
                 <ion-icon :src="printOutline"></ion-icon>
             </div>
             
@@ -163,7 +164,13 @@
                 v-if="title_operation == 'Paramètres'"/>
             <passWord @op-done="title_operation = ''"
                 v-if="title_operation == 'PassWord'"/>
+            <!-- <printControle v-if="onPrint" /> -->
             
+        </div>
+        <div v-if="onPrint">
+            <teleport to="body">
+                <printControle />
+            </teleport>
         </div>
         <teleport to="body">
             <div v-show="shouldNotif" class="notif notifCtl">{{ message }}</div>
@@ -191,6 +198,7 @@ import suggEst from './ctrl/sugg-est.vue'
 import dateGreen from './ctrl/date-green.vue'
 import paraMetres from './ctrl/para-metres.vue'
 import passWord from './ctrl/pass-word.vue'
+import printControle from './ctrl/print-controle.vue'
 
 
 const emit = defineEmits(['turnControl',])
@@ -200,6 +208,7 @@ const message: Ref<string> = ref("zéro element.")
 const shouldNotif: Ref<boolean> = ref(false)
 const isFilter: Ref<boolean> = ref(false)
 const searchEable: Ref<boolean> = ref(true)
+const onPrint: Ref<boolean> = ref(false)
 
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
 const actual_opt = ref([]) // Tells the base fields we have for research
