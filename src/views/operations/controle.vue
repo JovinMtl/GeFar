@@ -32,7 +32,7 @@
                 {{ title_operation }}
             </div>
             <div  class="inTitle prIcon" :title="'Imprimer: ' + title_operation"
-                @click="onPrint=true">
+                @click="openPrint">
                 <ion-icon :src="printOutline"></ion-icon>
             </div>
             
@@ -169,7 +169,24 @@
         </div>
         <div v-if="onPrint">
             <teleport to="body">
-                <printControle />
+                <print-controle :pageTitle="title_operation">
+                    <div>
+                        <disPo :med="actual_imitiS" 
+                            :admin="isAdmin"
+                            v-if="title_operation == 'Disponibles'"/>
+                        <veNte :med="actual_imitiS" 
+                            :admin="isAdmin"
+                            v-if="title_operation == 'Ventes'"/>
+                        <bonS :med="actual_imitiS" 
+                            :admin="isAdmin"
+                            v-if="title_operation == 'Bons'"
+                            @lsIndex="refreshVente"/>
+                        <achAts :med="actual_imitiS" 
+                            :admin="isAdmin"
+                            v-if="title_operation == 'Achats'"/>
+            
+                    </div>
+                </print-controle>
             </teleport>
         </div>
         <teleport to="body">
@@ -179,7 +196,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toValue } from 'vue'
+import { ref, watch, toValue, computed } from 'vue'
 import type { Ref } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { 
@@ -209,6 +226,7 @@ const shouldNotif: Ref<boolean> = ref(false)
 const isFilter: Ref<boolean> = ref(false)
 const searchEable: Ref<boolean> = ref(true)
 const onPrint: Ref<boolean> = ref(false)
+const actualPrinting: Ref<string> = ref('')
 
 const actual_obj = ref(null) // holds the Imiti downloaded to be used for Search and Filter
 const actual_opt = ref([]) // Tells the base fields we have for research
@@ -314,7 +332,12 @@ const getMedRed_url = 'api/rep/getMedRed/'
 const [medRed, getMedRed] = useKuvoma(getMedRed_url)
 
 
+
 // functions
+const openPrint = ()=>{
+    onPrint.value = true;
+    actualPrinting.value = 'pass-word';
+}
 const setPassword = ()=>{
     // console.log("title: " + toValue(title_operation) + " ==> " + 'PassWord')
     title_operation.value = 'PassWord';
@@ -334,6 +357,11 @@ const nRoutine = (value)=>{
 }
 // 
 console.log("The INIT title is : " + title_operation.value)
+const initialComp = "pass-word"
+// computed
+const actualComp = computed(()=>{
+    return "pass-word"
+})
 // watchers
 watch(isFilter, (value)=>{
     console.log("isFilter: " + value)
