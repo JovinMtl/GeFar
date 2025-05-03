@@ -31,6 +31,9 @@
             <div class="inTitle" style="font-weight: 600; color: green">
                 {{ title_operation }}
             </div>
+            <div  class="inTitle prIcon" :title="'Imprimer: ' + title_operation">
+                <ion-icon :src="printOutline"></ion-icon>
+            </div>
             
         </div>
         <div style="background-color: yellowgreen; height: 92%; width: 100%;display: flex;">
@@ -175,7 +178,7 @@ import { IonIcon } from '@ionic/vue'
 import { 
     close, statsChartOutline, snowOutline, thermometer, pricetagOutline,
     calendarClearOutline, libraryOutline,
-    settingsSharp, lockClosedOutline
+    settingsSharp, lockClosedOutline, printOutline
     } from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
 import cirCle from './circle.vue'
