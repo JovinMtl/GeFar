@@ -22,9 +22,12 @@ title.value = props['pageTitle']
 <style scoped>
 .prMainContainer{
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     background-color: rgba(255, 255, 255, 1);
     color: black;
     position: absolute;
-}
+    overflow: visible;
+    page-break-after: auto;
+  }
+  
 </style>

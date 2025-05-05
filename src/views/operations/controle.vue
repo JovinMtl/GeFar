@@ -242,7 +242,7 @@ let temp_title = ''
 const [date_debut, date_fin] = [ref(''), ref('')]
 
 const setOpTitle = (val:string)=>{
-    searchEable.value = true
+    searchEable.value = true;
     setTimeout(()=>{
         title_operation.value = val
     }, 10)
