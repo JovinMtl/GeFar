@@ -923,4 +923,7 @@ div > section {
     .sectB, .mainContainer{
         display: none;
     }
+    .dynContent{
+        width: 100%;
+    }
   }
