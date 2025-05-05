@@ -134,110 +134,86 @@ reste.value = useReadable(total.value - assure_value)
 
 // END
 </script>
-<style lang="scss" scoped>
+<style scoped>
 @media not print {
     .factureContainer{
         display: none;
     }
     .modal{
-        // display: flex;
         width: 30%;
         height: 35%;
         background: white;
-        border-radius: 25px;
-
-        .modalHeader{
-            // display: block;
-            width: 100%;
-            height: 35%;
-            // border: 2px solid green;
-            // background: white;
-            text-align: center;
-            align-content: center;
-            background: linear-gradient(to right, #0bf532, red);
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .modalBody{
-            // display: block;
-            width: 100%;
-            height: 35%;
-            background: white;
-            text-align: center;
-        }
-        .modalFooter{
-            // display: flex;
-            width: 100%;
-            height: 30%;
-            // background-color: red;
-            background-color: #0bf532;
-            // justify-items: center;
-            // align-items: center;
-            justify-content: center;
-            align-content: center;
-            text-align: center;
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px;
-        }
+        border-radius: 25px;   
+    }
+    .modalHeader{
+        width: 100%;
+        height: 35%;
+        text-align: center;
+        align-content: center;
+        background: linear-gradient(to right, #0bf532, red);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .modalBody{
+        width: 100%;
+        height: 35%;
+        background: white;
+        text-align: center;
+    }
+    .modalFooter{
+        width: 100%;
+        height: 30%;
+        background-color: #0bf532;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
     }
 }
 
 
-@mixin content {
+.content {
     display: flex;
     background: white;
     width: 100%;
     height: 20px;
-
-    .number{
-        // display: flex;
+}
+.number{
         width: 5%;
         height: 100%;
-        // background: rgb(255, 0, 212);
         align-content: center;
     }
     .nom_med{
         width: 45%;
         height: 100%;
-        // background: rgb(81, 255, 0);
         align-content: center;
     }
     .qte{
         width: 8%;
         height: 100%;
-        // background: rgb(0, 255, 200);
         align-content: center;
     }
     .Pu{
         width: 17%;
         height: 100%;
-        // background: rgb(0, 162, 255);
         align-content: center;
     }
     .ptotal{
         width: 27%;
         height: 100%;
-        // background: rgb(0, 60, 255);
         align-content: center;
         font-weight: 600;
     }
-}
-@mixin footer {
+.footer {
     width: 100%;
     height: 12%;
     padding: 0px 15px;
-    // text-align: right;
     text-align: center;
 }
 
 @media only print {
-    
-   // @page{
-    //   size: 8cm 10cm
-   //  }
-    // @page{
-     //    size: 72mm 100mm;
-    // }
     
     *{
         padding: 0;
@@ -255,65 +231,67 @@ reste.value = useReadable(total.value - assure_value)
         font-size: .6rem;
         font-family: monospace;
         font-weight: 700;
-
-
-        .factuHead{
-            display: block;
-            width: 100%;
-            // height: 10%;
-            text-align: center;
-            margin: 5px 0;
-            font-size: 1rem;
-        }
-        .factuBody{
-            display: block;
-            width: 100%;
-            // height: 70%;
-            padding: 5px;
-            //margin-bottom: 10%;
-            margin-bottom: 2%;
-
-            .content{
-                border: 1px dashed black;
-                @include content();
-                .ptotal{
-                    text-align: right;
-                }
-            }
-            .content2 {
-                margin-top: 5px;
-                @include content;
-                height: 15px;
-                .ptotal{
-                    text-align: right;
-                }
-            }
-            .toTal {
-                @include content;
-                min-height: 15px;
-                .ptotal{
-                    text-align: right;
-                }
-                
-            }
-            .m-25{
-                margin-top: 25px;
-            }
-            .sepA{
-                border-top: 2px solid black;
-            }
-        }
-        .authorizer{
-            // @include footer;
-            // margin: 5px 0;
-            margin-bottom: 8%;
-            text-align: center;
-        }
-        .factuFooter{
-            @include footer;
-        }
     }
-     
+    .factuHead{
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+        font-size: 1rem;
+    }
+    .factuBody{
+        display: block;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 2%;
+    }
+
+    .content{
+        border: 1px dashed black;
+        display: flex;
+        background: white;
+        width: 100%;
+        height: 20px;
+    }
+    .content2 {
+        margin-top: 5px;         
+        display: flex;
+        background: white;
+        width: 100%;
+        height: 20px;
+        height: 15px;
+    }
+        .ptotal{
+            text-align: right;
+        }
+    .toTal {
+        
+        display: flex;
+        background: white;
+        width: 100%;
+        height: 20px;
+
+        min-height: 15px;       
+    }
+    .ptotal{
+        text-align: right;
+    }
+    .m-25{
+        margin-top: 25px;
+    }
+    .sepA{
+        border-top: 2px solid black;
+    }
+    .authorizer{
+        margin-bottom: 8%;
+        text-align: center;
+    }
+    .factuFooter{
+        width: 100%;
+        height: 12%;
+        padding: 0px 15px;
+        text-align: center;
+    }
 }
 
 </style>
