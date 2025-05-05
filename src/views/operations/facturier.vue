@@ -134,7 +134,7 @@ reste.value = useReadable(total.value - assure_value)
 
 // END
 </script>
-<style scoped>
+<style >
 @media not print {
     .factureContainer{
         display: none;
@@ -213,7 +213,7 @@ reste.value = useReadable(total.value - assure_value)
     text-align: center;
 }
 
-@media only print {
+/* @media only print {
     
     *{
         padding: 0;
@@ -292,6 +292,6 @@ reste.value = useReadable(total.value - assure_value)
         padding: 0px 15px;
         text-align: center;
     }
-}
+} */
 
 </style>

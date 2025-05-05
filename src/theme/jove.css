@@ -894,13 +894,13 @@ div > section {
     width: 40%;
 }
 
-
-
+/* @media print{} */
 @media print {
     body {
       position: initial!important;
       max-height: initial!important;
       overflow: auto!important;
+      margin: 0;
     }
   
     ion-router-outlet {
@@ -911,13 +911,11 @@ div > section {
     .prMainContainer{
       width: 100%;
       width: 100vw;
-      /* height: 100%; */
       background-color: rgba(255, 255, 255, 1);
       color: black;
       position: absolute;
       overflow: visible;
-      page-break-after: auto;
-    }
+    } 
     .controlIcons, .controTitle, 
     .searchBar, .menuHau,.exit, .user,
     .sectB, .mainContainer{
@@ -926,4 +924,89 @@ div > section {
     .dynContent{
         width: 100%;
     }
-  }
+    .controlBody{
+        height: auto;
+        margin-top: -1cm;
+    }
+
+
+
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .modal{
+        display: none;
+        position: absolute;
+    }
+    .factureContainer{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        font-size: .6rem;
+        font-family: monospace;
+        font-weight: 700;
+        z-index: 200;
+    }
+    .factuHead{
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+        font-size: 1rem;
+    }
+    .factuBody{
+        display: block;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 2%;
+    }
+
+    .content{
+        border: 1px dashed black;
+        display: flex;
+        background: white;
+        width: 100%;
+        height: 20px;
+    }
+    .content2 {
+        margin-top: 5px;         
+        display: flex;
+        background: white;
+        width: 100%;
+        height: 20px;
+        height: 15px;
+    }
+        .ptotal{
+            text-align: right;
+        }
+    .toTal {
+        
+        display: flex;
+        background: white;
+        width: 100%;
+        height: 20px;
+
+        min-height: 15px;       
+    }
+    .ptotal{
+        text-align: right;
+    }
+    .m-25{
+        margin-top: 25px;
+    }
+    .sepA{
+        border-top: 2px solid black;
+    }
+    .authorizer{
+        margin-bottom: 8%;
+        text-align: center;
+    }
+    .factuFooter{
+        width: 100%;
+        height: 12%;
+        padding: 0px 15px;
+        text-align: center;
+    }
+}

@@ -169,7 +169,7 @@
         </div>
         <div v-if="onPrint">
             <teleport to="body">
-                <print-controle :pageTitle="title_operation">
+                <print-controle @exit="closePrint" :pageTitle="title_operation">
                     <div>
                         <disPo :med="actual_imitiS" 
                             :admin="isAdmin"
@@ -334,6 +334,10 @@ const [medRed, getMedRed] = useKuvoma(getMedRed_url)
 
 
 // functions
+const closePrint = ()=>{
+    onPrint.value = false;
+    title_operation.value = 'Opérations';
+}
 const openPrint = ()=>{
     onPrint.value = true;
     actualPrinting.value = 'pass-word';
