@@ -1,7 +1,7 @@
 <template>
-    <div class="dynContent" style="">
+    <div class="dynContent">
         
-        <div class="controlHeader" style="height: 5%; width: 100%;">
+        <div class="controlHeader">
             <div  class="controlContent" style="font-size: .8rem;
                 background-color: navy; color: white">
                 <div class="elt contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">

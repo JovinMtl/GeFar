@@ -446,6 +446,9 @@ html, body {
 .elt9{
     width: 1%;
 }
+.controlHeader{
+    height: 5%; width: 100%;
+}
 .controlBody{
     height: 90%; width: 100%; 
     overflow: auto;
@@ -921,12 +924,15 @@ div > section {
     .sectB, .mainContainer{
         display: none;
     }
-    .dynContent{
+    .dynContent, .controlHeader, 
+    .controlBody, .print-title{
         width: 100%;
     }
+    
     .controlBody{
         height: auto;
-        margin-top: -1cm;
+        /* margin-top: -1cm; */
+        background-color: yellow;
     }
 
 

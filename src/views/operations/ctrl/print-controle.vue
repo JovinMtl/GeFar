@@ -6,7 +6,11 @@
             <button @click="emits('exit')">Quitter</button>
             <button @click="printf">Imprimer</button>
         </div>
-        <div>
+        <div class="print-title"> 
+            <h1>Pharmacie Ubuzima</h1>
+            <h3>Etat des lieux: {{ props['pageTitle'] }}</h3>
+        </div>
+        <div style="background-color: greenyellow;">
             <slot></slot>
         </div>
          
@@ -43,6 +47,9 @@ const  printf = ()=>{
     overflow: visible;
     page-break-after: auto;
   }
+.dynContent{
+    width: auto;
+}
 .btns{
     width: max-content;
     /* background-color: yellow; */
@@ -61,6 +68,10 @@ button:nth-child(1){
 button:nth-child(2){
     background-color: rgb(85, 224, 143);
     color: black;
+}
+
+.print-title{
+    text-align: center;
 }
 
 </style>
