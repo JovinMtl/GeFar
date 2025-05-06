@@ -21,8 +21,17 @@ import { body } from 'ionicons/icons'
 const props = defineProps(['pageTitle',])
 const emits = defineEmits(['exit'])
 
+const actualTime = new Date()
+const d = actualTime.getDate()
+const m = actualTime.getMonth()
+const y = String(actualTime).slice(11, 15)
+const h = actualTime.getHours()
+const m_ = actualTime.getMinutes()
+const timing:string = `__du_${d}/${m}/${y}_${h}h${m_}min`
 const title = useTitle()
-title.value = props['pageTitle']
+title.value = props['pageTitle'] + timing;
+
+console.log("The actual Time is: " + actualTime)
 
 const activateControl = ()=>{
     let x = window.matchMedia("print")
