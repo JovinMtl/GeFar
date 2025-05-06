@@ -37,7 +37,7 @@
             </div>
             
         </div>
-        <div style="background-color: yellowgreen; height: 92%; width: 100%;display: flex;">
+        <div class="ctrlContent" style="">
             <div class="controlIcons">
                 <div class="logoMenu" @click="ukuvoma_dispo">
                     <ion-icon :src="statsChartOutline" class="logoIcon"></ion-icon>

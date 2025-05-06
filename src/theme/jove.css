@@ -446,6 +446,11 @@ html, body {
 .elt9{
     width: 1%;
 }
+.ctrlContent{
+    display: flex;
+    background-color: yellowgreen; 
+    height: 92%; width: 100%;
+}
 .controlHeader{
     height: 5%; width: 100%;
 }
@@ -918,21 +923,33 @@ div > section {
       color: black;
       position: absolute;
       overflow: visible;
+      display: none;
+      /* visibility: hidden; */
     } 
     .controlIcons, .controTitle, 
     .searchBar, .menuHau,.exit, .user,
-    .sectB, .mainContainer{
+    .sectB, .mainContainer, .m-cl{
         display: none;
     }
-    .dynContent, .controlHeader, 
+    /* .dynContent, .controlHeader, 
     .controlBody, .print-title{
         width: 100%;
+    } */
+    .dynContent, .controlHeader, 
+    .controlBody, .print-title{
+        display: none;
     }
-    
-    .controlBody{
+    .print-title{ 
+        display: block;
+        width: 100%;
+    }
+    /* .controlBody{
         height: auto;
-        /* margin-top: -1cm; */
+        margin-top: -1cm;
         background-color: yellow;
+    } */
+    .controlBody{
+        display: none;
     }
 
 
@@ -940,6 +957,7 @@ div > section {
     *{
         padding: 0;
         margin: 0;
+        background-color: red;
     }
     .modal{
         display: none;
