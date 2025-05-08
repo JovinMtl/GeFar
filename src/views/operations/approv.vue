@@ -102,7 +102,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { watch, ref, inject, reactive } from 'vue'
+import { watch, ref, inject, reactive, toValue } from 'vue'
 import { fileTray } from 'ionicons/icons'
 import { IonIcon } from '@ionic/vue'
 import { useKuvoma, useKurungika } from '../hooks/kuvoma.js'
@@ -168,6 +168,14 @@ const [report_achat, sendFileDataLoaded] = useKurungika([umuti_obj,], url_achat)
 
 // Functions
 const initInputs = ()=>{
+    if(toValue(selected_search)){
+        selected_search.value.nom_med = '';
+        selected_search.value.quantite_initial = null;
+        selected_search.value.prix_achat = null;
+        selected_search.value.prix_achat = null;
+        date_exp.value = null;
+        return
+    }
     umutiName.value = '';
     classeRef.value = null;
     sClasseRef.value = null;
