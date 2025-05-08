@@ -230,7 +230,7 @@ const checkBeforeUpload = ()=>{
         // Fill Umuti_obj from the vmodels set in template
         if((String(umutiName.value)) && (Number(umuti_prix_achat.value) > minimunPA)
             && (Number(umuti_prix_vente.value)) 
-            && (Number(umuti_quantite_initial.value)) 
+            && (Number(umuti_quantite_initial.value) > 0) 
             && (Date(date_exp.value))
         ){
             umuti_obj.nom_med = String(umutiName.value)
