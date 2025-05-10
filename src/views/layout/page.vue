@@ -1315,9 +1315,11 @@ provide('familly_displ', openedFamilly)
     width: 100%;
     color: black;
     font-size: 0.85rem;
+    font-weight: 600;
     position: relative;
     margin-bottom: 5px;
     background-color: rgba(255, 255, 255, 0.568);
+    /* background-color: rebeccapurple; */
     align-content: center;
 }
 .nomination {
