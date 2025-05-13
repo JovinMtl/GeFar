@@ -950,9 +950,11 @@ div > section {
         width: 100%;
         height: auto;
         background-color: red;
+        position: relative;
         /* padding: 0;
         position: absolute;
         left: -5vw; */
+        top: 15.5vh;
     }
     .dynContent, .controlHeader, 
     .controlBody, .print-title{
@@ -966,6 +968,7 @@ div > section {
     .controle{
         /* display: none; */
         width: 100%;
+        /* height: 90%; */
         left: 0;
     }
     .print-title{ 
