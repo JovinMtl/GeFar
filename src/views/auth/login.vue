@@ -127,7 +127,8 @@ const login_hook = () => {
         height: 100%;
         // background-color: white;
         position: absolute;
-        transform: translate(-49.5%, -22.8%);
+        transform: translate(-49.5%);
+        top: 0%;
         scale: 1.008;
         z-index: -1;
         border-radius: 15px;
