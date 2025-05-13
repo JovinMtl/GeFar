@@ -115,15 +115,38 @@ const login_hook = () => {
 
 </script>
 <style scoped lang="scss">
+    @property --angle{
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+    }
+    .authentif::before{
+        // display: none !important;
+        content: '';
+        width: 100%;
+        height: 100%;
+        // background-color: white;
+        position: absolute;
+        transform: translate(-49.5%, -22.8%);
+        scale: 1.008;
+        z-index: -1;
+        border-radius: 15px;
+        animation: logFlash 2000ms linear infinite;
+        background: conic-gradient(from var(--angle) ,
+            white, rgb(0, 0, 0) 10%, transparent 20%, 
+            transparent 40%, green, lime 50%, 
+            transparent 60%);
+    }
 
     .LogContainer {
         display: flex;
         width: 100%;
         height: 100%;
-        background-color: rgba(59, 192, 59, 0.69);
+        // background-color: rgba(59, 192, 59, 0.69);
         position: relative;
         justify-content: center;
         align-items: center;
+        z-index: 0;
 
         .authentif {
             // width: 30%;
@@ -131,7 +154,7 @@ const login_hook = () => {
             background-color: black;
             position: absolute;
             border-radius: 15px;
-            box-shadow: 0 0 45px black;
+            // box-shadow: 0 0 45px black;
             text-align: center;
             align-content: center;
             // z-index: -5;
@@ -208,6 +231,14 @@ const login_hook = () => {
 
                 }
             }
+        }
+    }
+    @keyframes logFlash {
+        from{
+            --angle: 0deg;
+        } 
+        to{
+            --angle: 360deg;
         }
     }
 </style>
