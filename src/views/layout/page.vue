@@ -11,8 +11,7 @@
                     v-if="dBOpen">
                     <dash-board @closD="closeD"></dash-board>
                 </div>
-                <div v-if="controleStatus" class="controleWrapper"
-                    style="position: absolute;height: 100vh; width: 100vw; z-index: 17;">
+                <div v-if="controleStatus" class="controleWrapper">
                     <cont-role @turn-control="closeControle"></cont-role>
                 </div>
 

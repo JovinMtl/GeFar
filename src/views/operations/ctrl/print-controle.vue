@@ -10,9 +10,9 @@
             <h1>Pharmacie Ubuzima</h1>
             <h3>Etat des lieux: {{ props['pageTitle'] }}</h3>
         </div>
-        <!-- <div style="background-color: greenyellow;">
+        <div style="background-color: greenyellow;">
             <slot></slot>
-        </div> -->
+        </div>
          
     </div>
 </template>
