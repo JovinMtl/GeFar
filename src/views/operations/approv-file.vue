@@ -102,7 +102,7 @@ import { IonIcon } from '@ionic/vue'
 import { close, checkmarkDoneOutline, documentOutline } from 'ionicons/icons'
 import { ref, watch } from 'vue'
 import { MedApprov } from '../layout/types'
-import { useKurungika } from '../hooks/kuvoma.js'
+import { useKurungika, useKuvoma } from '../hooks/kuvoma.js'
 import { useNotif } from '../../store/useNotif.js'
 
 const ui_isActive = ref<boolean>(true)
@@ -121,6 +121,9 @@ const emit = defineEmits(['approFileClose',
 
 const url_achat = 'api/in/kurangura/'
 const [report_achat, sendFileDataLoaded] = useKurungika(med_loaded.value, url_achat, true)
+
+const url_doublon_manage_today = 'api/gOps/doublon_management_today/'
+const [report_doublon, fixDoublonToday] = useKuvoma(url_doublon_manage_today)
 
 const convertDate = (dateString:String):String=>{
     // will take '2025-1-22' and make it '1/21/25'
@@ -336,7 +339,7 @@ watch(report_achat, (value)=>{
         let info = "";
         if (value.detail = 'ok'){
             info = "operation bien reussi"
-            
+            fixDoublonToday()
         } else {
             info = "Pas bien reussi"
         }
