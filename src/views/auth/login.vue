@@ -132,7 +132,7 @@ const login_hook = () => {
         scale: 1.008;
         z-index: -1;
         border-radius: 15px;
-        animation: logFlash 2000ms linear infinite;
+        animation: logFlash 4500ms ease-out infinite;
         background: conic-gradient(from var(--angle) ,
             white, rgb(0, 0, 0) 10%, transparent 20%, 
             transparent 40%, green, lime 50%, 
