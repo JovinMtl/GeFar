@@ -915,6 +915,7 @@ div > section {
     html{
         background-color: green;
         background-color: red;
+        background-color: transparent;
     }
     body {
       position: initial!important;
@@ -931,8 +932,6 @@ div > section {
     .prMainContainer{
       width: 100%;
       /* width: 100vw; */
-      background-color: rgba(255, 255, 255, 1);
-      background-color: blue;
       background-color: aqua;
       /* overflow: visible; */
       color: black;
@@ -951,7 +950,7 @@ div > section {
     .controleWrapper{
         width: 100%;
         height: auto;
-        background-color: red;
+        /* background-color: red; */
         position: relative;
         /* padding: 0;
         position: absolute;
@@ -964,14 +963,23 @@ div > section {
         /* display: none; */
         width: 100%;
     }
+    .dynContent{
+        background-color: yellow;
+        position: relative;
+        /* top: 12vh; */
+    }
     .ctrlContent{
         /* display: none; */
         width: 100%;
+        background-color: purple;
+        position: relative;
+        top: 1vh;
+        /* top: 12vh; */
     }
     .controlContent{
         color: black;
         position: relative;
-        top: -6vh;
+        /* top: -6vh; */
         left: 0;
         font-size: 1rem;
         background-color: transparent;
@@ -984,22 +992,28 @@ div > section {
         left: 0;
     }
     .print-title{ 
-        display: block;
+        /* display: block; */
         width: 100%;
         height: max-content;
         position: relative;
+        /* position: inherit; */
         z-index: 200;
+        /* top: -3vh; */
+        top: -1vh;
+        background-color: grey;
     }
     .controlBody{
         height: auto;
-        margin-top: -1cm;
-        background-color: yellow;
-        background-color: blue;
+        /* margin-top: 1cm; */
+        position: relative;
+        /* top: 12vh; */
+        /* line-height: 5px; */
         background-color: white;
     }
     .mP{
         background-color: yellow;
         width: 100%;
+        position: inherit;
         /* display: none; */
     }
     /* .controlBody{
