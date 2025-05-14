@@ -8,7 +8,7 @@
         </div>
         <div class="print-title"> 
             <h1>Pharmacie Ubuzima</h1>
-            <h3>Etat des lieux: {{ props['pageTitle'] }}</h3>
+            <h3>Etat des lieux: {{ props['pageTitle'] }}, du {{ titleTime }}</h3>
         </div>
         <div style="background-color: greenyellow;">
             <slot></slot>
@@ -29,6 +29,7 @@ const y = String(actualTime).slice(11, 15)
 const h = actualTime.getHours()
 const m_ = actualTime.getMinutes()
 const timing:string = `__du_${d}/${m}/${y}_${h}h${m_}min`
+const titleTime:string = `${d}/${m}/${y}  ${h}:${m_}`
 
 const title = useTitle()
 title.value = props['pageTitle'] + timing;
