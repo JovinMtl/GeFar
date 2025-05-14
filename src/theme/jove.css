@@ -394,6 +394,8 @@ html, body {
     background-color: transparent;
     margin-bottom: 5px;
     border: 1px solid white;
+    font-size: .8rem;
+    background-color: navy; color: white
 }
 .dynContent{
     width: 80%; height: 100%; 
@@ -928,12 +930,12 @@ div > section {
     }
     .prMainContainer{
       width: 100%;
-      width: 100vw;
+      /* width: 100vw; */
       background-color: rgba(255, 255, 255, 1);
       background-color: blue;
+      background-color: aqua;
+      /* overflow: visible; */
       color: black;
-      position: absolute;
-      overflow: visible;
       /* display: none; */
       /* visibility: hidden; */
     } 
@@ -954,9 +956,10 @@ div > section {
         /* padding: 0;
         position: absolute;
         left: -5vw; */
-        top: 15.5vh;
+        /* top: 15.5vh; */
     }
     .dynContent, .controlHeader, 
+    .controlContent,
     .controlBody, .print-title{
         /* display: none; */
         width: 100%;
@@ -964,6 +967,15 @@ div > section {
     .ctrlContent{
         /* display: none; */
         width: 100%;
+    }
+    .controlContent{
+        color: black;
+        position: relative;
+        top: -6vh;
+        left: 0;
+        font-size: 1rem;
+        background-color: transparent;
+        border: 1px solid black;
     }
     .controle{
         /* display: none; */
@@ -975,12 +987,20 @@ div > section {
         display: block;
         width: 100%;
         height: max-content;
+        position: relative;
+        z-index: 200;
     }
     .controlBody{
         height: auto;
         margin-top: -1cm;
         background-color: yellow;
         background-color: blue;
+        background-color: white;
+    }
+    .mP{
+        background-color: yellow;
+        width: 100%;
+        /* display: none; */
     }
     /* .controlBody{
         display: none;

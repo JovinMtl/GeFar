@@ -2,8 +2,7 @@
     <div class="dynContent">
         
         <div class="controlHeader">
-            <div  class="controlContent" style="font-size: .8rem;
-                background-color: navy; color: white">
+            <div  class="controlContent">
                 <div class="elt contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
                     #
                 </div> 
