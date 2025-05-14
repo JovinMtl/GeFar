@@ -12,3 +12,4 @@ src/store/sync.js
 vue.config.js
 #src/store/host.js
 .replit
+node_modules.tar
