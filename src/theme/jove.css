@@ -973,7 +973,7 @@ div > section {
         width: 100%;
         background-color: purple;
         position: relative;
-        top: 1vh;
+        top: 4.4vh;
         /* top: 12vh; */
     }
     .controlContent{
@@ -1000,7 +1000,7 @@ div > section {
         z-index: 200;
         /* top: -3vh; */
         top: -1vh;
-        background-color: grey;
+        background-color: rgba(185, 185, 185, 0.911);
     }
     .controlBody{
         height: auto;
