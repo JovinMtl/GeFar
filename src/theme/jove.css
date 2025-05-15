@@ -998,6 +998,7 @@ div > section {
         width: 100%;
         /* height: 90%; */
         left: 0;
+        top: 0.3vh;
     }
     .print-title{ 
         /* display: block; */
