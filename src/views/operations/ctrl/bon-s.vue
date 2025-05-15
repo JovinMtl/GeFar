@@ -165,25 +165,23 @@
                 <div class="elt contentElement3">
                     ---
                 </div>
-                <div class="elt contentElement3">
+                <div class="elt elt5">
                     ---
                 </div>
-
-                <div class="elt contentElement3">
-                    ---
-                </div>
-                <div class="elt elt9">
+                <div class="elt contentElement11">
                 </div>
                 <div class="elt contentElement3 total" style="margin: 5px;">
                     <!-- P.V -->
                     {{ useReadable(totaux[1]) }}
                 </div>
-                <div class="elt elt7">
+                <div class="elt contentElement11">
                 </div>
 
                 <div class="elt contentElement3">
                     <!-- Benefice -->
                     {{ useReadable(totaux[2]) }}
+                </div>
+                <div class="elt elt7">
                 </div>
                 <div class="elt elt5">
                     <!-- Caisse -->
