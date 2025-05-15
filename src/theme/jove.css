@@ -972,6 +972,7 @@ div > section {
     }
     .dynContent{
         background-color: yellow;
+        background-color: white;
         position: relative;
         /* top: 12vh; */
     }
@@ -1019,6 +1020,7 @@ div > section {
     }
     .mP{
         background-color: yellow;
+        background-color: transparent;
         width: 100%;
         position: inherit;
         /* display: none; */
