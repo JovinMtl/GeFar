@@ -575,8 +575,8 @@ watch(actual_vente, (value)=>{
         actual_opt.value = ['nom_med', 
         'quantity','prix_vente', 'date_operation',]
         actual_type.value = ['text','text','text','date']
-        // title_operation.value = 
-        setOpTitle("Ventes")
+        title_operation.value = "Ventes"
+        // setOpTitle("Ventes")
         searchEable.value = false
         // console.log("Titlte is actual_vente...: " + title_operation.value)
         // console.log("new title...: " + title_operation.value)
