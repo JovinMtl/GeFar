@@ -184,6 +184,40 @@
                         <achAts :med="actual_imitiS" 
                             :admin="isAdmin"
                             v-if="title_operation == 'Achats'"/>
+
+                            <suggEst :med="actual_imitiS" 
+                                v-if="title_operation == 'Suggestion'"/>
+                            <dateGreen :med="actual_imitiS" 
+                                :admin="isAdmin"
+                                v-if="title_operation == 'Low Stock'"/>
+                            
+                                <!-- Etat de stock will use disPo component -->
+                            <disPo :med="actual_imitiS" 
+                                :admin="isAdmin"
+                                v-if="title_operation == 'Stock normale'"/>
+                            <disPo :med="actual_imitiS" 
+                                :admin="isAdmin"
+                                v-if="title_operation == 'Niveau Critique'"/>
+                            <disPo :med="actual_imitiS" 
+                                :admin="isAdmin"
+                                v-if="title_operation == 'En Alerte'"/>
+                            <disPo :med="actual_imitiS" 
+                                :admin="isAdmin"
+                                v-if="title_operation == 'Stock epuisé'"/>
+                                <!-- Peremption -->
+                            <achAts1 :med="actual_imitiS" 
+                                :admin="isAdmin"
+                                v-if="title_operation == 'Bonne état'"/>
+                            <achAts1 :med="actual_imitiS" 
+                                :admin="isAdmin"
+                                v-if="title_operation == 'Date critique'"/>
+                            <achAts1 :med="actual_imitiS" 
+                                :admin="isAdmin"
+                                v-if="title_operation == 'En alerte'"/>
+                            <achAts1 :med="actual_imitiS" 
+                                :admin="isAdmin"
+                                v-if="title_operation == 'Med périmé'"/>
+            
             
                     </div>
                 </print-controle>
