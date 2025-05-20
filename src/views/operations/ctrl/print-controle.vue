@@ -22,12 +22,12 @@ import { useTitle } from '@vueuse/core'
 const props = defineProps(['pageTitle',])
 const emits = defineEmits(['exit'])
 
-const actualTime = new Date()
-const d = actualTime.getDate()
-const m = actualTime.getMonth()
-const y = String(actualTime).slice(11, 15)
-const h = actualTime.getHours()
-const m_ = actualTime.getMinutes()
+const actualTime = new Date();
+const d = actualTime.getDate();
+const m = actualTime.getMonth() + 1;
+const y = String(actualTime).slice(11, 15);
+const h = actualTime.getHours();
+const m_ = actualTime.getMinutes();
 const timing:string = `__du_${d}/${m}/${y}_${h}h${m_}min`
 const titleTime:string = `${d}/${m}/${y}  ${h}:${m_}`
 
