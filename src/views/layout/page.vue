@@ -38,7 +38,8 @@
                         <div class="bodyApprov">
                             <div class="bodyApprov2">
                                 <app-rov @inputApprov="searchManager" @approFileOpen="openApproFile"
-                                    @reportAchat="reportAchatHandler"></app-rov>
+                                    @reportAchat="reportAchatHandler"
+                                    @needRefresh="reOpenApprov"></app-rov>
                             </div>
                         </div>
                         <div class="footerApprov"
@@ -253,7 +254,7 @@ import {
     defineAsyncComponent,
     reactive, ref, shallowRef,
     watch, provide, computed,
-    toValue,
+    toValue, nextTick
 } from 'vue'
 import type { Ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -384,6 +385,13 @@ const { getUsername, setUsername,
 
 
 // Functions
+const reOpenApprov = ()=>{
+    // should close it and reopen it in next tick.
+    approvStatus.value = false;
+    nextTick(()=>{
+        approvStatus.value = true;
+    })
+}
 const getImitiLength = (val)=>{
     imitiLength.value = toValue(val)
 }

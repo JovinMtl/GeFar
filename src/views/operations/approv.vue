@@ -109,7 +109,7 @@ import { useKuvoma, useKurungika } from '../hooks/kuvoma.js'
 import { MedApprov } from '../layout/types'
 
 const emit = defineEmits(['inputApprov', 'approFileOpen',
-    'fileDataLoaded', 'reportAchat'
+    'fileDataLoaded', 'reportAchat', 'needRefresh'
 ])
 var umutiName = ref('')
 const imiti_result = ref([]) 
@@ -174,6 +174,7 @@ const initInputs = ()=>{
         selected_search.value.prix_achat = null;
         selected_search.value.prix_achat = null;
         date_exp.value = null;
+        emit('needRefresh')
         return
     }
     umutiName.value = '';
