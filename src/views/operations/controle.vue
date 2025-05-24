@@ -604,14 +604,14 @@ watch(actual_vente, (value)=>{
         turnOnNotif()
     } 
     else{
-        actual_obj.value = value
+        actual_obj.value = value.response
         actual_imitiS.value = value.response
         actual_opt.value = ['nom_med', 
-        'quantity','prix_vente', 'date_operation',]
-        actual_type.value = ['text','text','text','date']
-        title_operation.value = "Ventes"
+        'quantity','prix_vente', 'date_operation', 'caissier']
+        actual_type.value = ['text','text','text','date', 'text']
         // setOpTitle("Ventes")
-        searchEable.value = false
+        searchEable.value = true;
+        title_operation.value = "Ventes"
         // console.log("Titlte is actual_vente...: " + title_operation.value)
         // console.log("new title...: " + title_operation.value)
     }
