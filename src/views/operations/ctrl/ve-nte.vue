@@ -265,9 +265,10 @@ const updateTotaux = ()=>{
             benefice += (element.prix_vente - element.prix_achat) * (element.qte) 
             caisse += element.caisse
             dette += element.dette
+            number += element.qte
         }
 
-        number += 1
+        // number += 1
     });
 
     totaux.value = [number, total, pt_a, benefice, caisse, dette]
