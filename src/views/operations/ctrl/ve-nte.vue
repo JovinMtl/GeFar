@@ -63,7 +63,8 @@
                     @click="getInfos">
                     {{ index + 1 }}
                 </div> 
-                <div class="elt contentElement2">
+                <div class="elt contentElement2"
+                    :class="annotatedIndexes.has(index)==1? 'c-b-1':''" :data-index="index" @click="changeBg">
                     {{ String(umuti.nom_med).slice(0, 25) }}
                 </div> <div class="elt contentElement3">
                     {{ (umuti.qte ) }}
@@ -215,7 +216,18 @@ const [repBons, sendBons] = usePostRequest()
 const url_cancelSell = 'api/out/cancelSell/'
 const [repCancel, cancelOp] = useKurungika(umutiSoldId, url_cancelSell)
 
+const annotatedIndexes = ref(null);
+annotatedIndexes.value = new Set;
 // Functions
+const changeBg = (e)=>{
+    const selectedIndex = Number(e.target.getAttribute('data-index'));
+    console.log("The selected: ", selectedIndex)
+    if (!(annotatedIndexes.value.has(selectedIndex))){
+        annotatedIndexes.value.add(selectedIndex);
+    } else{
+        annotatedIndexes.value.delete(selectedIndex)
+    }
+}
 const getInfos = (elm)=>{
     if (!(toValue(isAdmin))){
         canDeleteTitle.value = false
