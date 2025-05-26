@@ -64,9 +64,9 @@
                     {{ index + 1 }}
                 </div> 
                 <div class="elt contentElement2"
-                    :class="annotatedIndexes.has(index) ? 'c-b-1':''" 
+                    :class="annotatedIndexes.has(index) ? 'c-b-1 fw-8':''" 
                     :data-index="index" @click="changeBg"
-                    :title="annotatedIndexes.has(index) == 0 ? 'Marquer':'Enlever marqueur'">
+                    :title="annotatedIndexes.has(index) == 0 ? 'Ajouter le marquuer':'Enlever le marqueur'">
                     {{ String(umuti.nom_med).slice(0, 25) }}
                 </div> <div class="elt contentElement3">
                     {{ (umuti.qte ) }}
