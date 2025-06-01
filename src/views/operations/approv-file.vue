@@ -125,6 +125,9 @@ const [report_achat, sendFileDataLoaded] = useKurungika(med_loaded.value, url_ac
 const url_doublon_manage_today = 'api/gOps/doublon_management_today/'
 const [report_doublon, fixDoublonToday] = useKuvoma(url_doublon_manage_today)
 
+const url_doublon_manage_today_bckp = 'api/gOps/fix_doublon_bckup_today/'
+const [report_doublon_bckp, fixDoublonTodayBckp] = useKuvoma(url_doublon_manage_today)
+
 const convertDate = (dateString:String):String=>{
     // will take '2025-1-22' and make it '1/21/25'
     let spl = dateString.split('-')
@@ -340,6 +343,7 @@ watch(report_achat, (value)=>{
         if (value.detail = 'ok'){
             info = "operation bien reussi"
             fixDoublonToday()
+            fixDoublonTodayBckp()
         } else {
             info = "Pas bien reussi"
         }
