@@ -14,7 +14,7 @@
                 <tr v-for="(umuti, index) in oneCompiled">
                     <td class="c-g-2">{{ String(umuti.date_entrant).slice(0, 10) }}</td>
                     <td class="pointer" title="Modifier cette opération." 
-                        :data-index="index" @click="openData">
+                        :data-index="index" @click="openDataR">
                         <span class="c-t">____</span>
                         {{ (umuti.date_peremption).slice(0, 10) }}
                     </td>
@@ -22,8 +22,8 @@
                     <td class="c-g-2"><span class="c-t">____</span>{{ umuti.prix_vente }}</td>
                     <td class="c-w"><span class="c-t">____</span>{{ umuti.forme }}</td>
                     <td class="c-w"><span class="c-t">____</span>{{ String(umuti.nom_med).slice(0, 20) }}</td>
-                    <td><button class="bg-a-1" title="Modifier cette opération." 
-                        :data-index="index" @click="openData">
+                    <td :data-index="index"><button class="bg-a-1" title="Modifier cette opération." 
+                        @click="openDataB">
                         <span v-if="!mAchatIsOpen">Modifier</span>
                         <span v-else>Annuler</span>
                     </button>
@@ -69,10 +69,16 @@ const mAchatIsOpen: Ref<boolean> = ref(false)
 const closemAchat = ()=>{
     setTimeout(()=>{
         mAchatIsOpen.value=false
-    }, 3000)
+    }, 1000)
 }
-const openData = (e)=>{
+const openDataR = (e)=>{
     const id = e.target.getAttribute('data-index');
+    actualId.value = Number(id)
+    console.log("The id: " + id)
+    mAchatIsOpen.value = !mAchatIsOpen.value;
+}
+const openDataB = (e)=>{
+    const id = e.target.parentNode.parentNode.getAttribute('data-index');
     actualId.value = Number(id)
     console.log("The id: " + id)
     mAchatIsOpen.value = !mAchatIsOpen.value;
