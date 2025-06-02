@@ -50,6 +50,8 @@ import { useKurungika } from '../../../../hooks/kuvoma'
 import { useCounter } from '../../../../../store/incrementCounter'
 
 const props = defineProps(['code_med'])
+const emits = defineEmits(['quit'])
+
 const allowChange = ref(true)
 const changeSuccessfull = ref(0)
 
@@ -112,6 +114,9 @@ watch(oneCompiled, (value)=>{
     }else if(value?.response == 1){
         changeSuccessfull.value = 1;
         incrementCounter()
+        setTimeout(()=>{
+                emits("quit")
+            }, 1000)
     }else if(value?.response == 404){
         changeSuccessfull.value = 404;
     }
