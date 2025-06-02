@@ -6,7 +6,8 @@
         <h3>Trouvez n'importe quel produit par son identifiant.</h3>
         <div class="mb-5">
             <input class="inp inpShape" type="text" v-model="actualId"> 
-            <button :class="actualComp=='compile' ? 'bg-g-1 btnEffect':''" @click="setComp('compile')">
+            <button :class="actualComp=='compile' ? 'bg-g-1 btnEffect':''" 
+                @click="setComp('compile')">
                 1 + 0,2
             </button>
             <button :class="actualComp=='prInte' ? 'bg-g-1 btnEffect':''" @click="setComp('prInte')">
@@ -17,7 +18,8 @@
         </div>
         <div>
             <!-- Should mount these in suspense -->
-            <compIled v-if="actualComp=='compile'" :code_med="actualId"/>
+            <compIled v-if="actualComp=='compile'" :code_med="actualId"
+                @quit="closeComp"/>
             <prInte v-if="actualComp=='prInte'" :code_med="actualId"/>
             <achAt v-if="actualComp=='achat'" :code_med="actualId"/>
         </div>
@@ -35,7 +37,10 @@ import achAt from './htv/ach-at.vue'
 const actualId:Ref<string> = ref('')
 const actualComp:Ref<string> = ref('')
 
-// Functions
+    // Functions
+const closeComp = ()=>{
+    actualComp.value = ""
+    }
 const setComp = (val)=>{
     actualComp.value = val
 }
