@@ -15,7 +15,7 @@
             <div>
                 <!-- <component :is="actualComponent"></component> -->
 
-                <prInteret v-if="actualComponent=='prInteret'"/>
+                <prInteret v-if="actualComponent=='prInteret'" @quit="closeComp"/>
                 <hauteVue v-if="actualComponent=='hauteVue'"/>
                 <!-- <tauxChange v-if="actualComponent=='tauxChange'" /> -->
                 <clssThera v-if="actualComponent=='clssThera'" />
@@ -38,6 +38,10 @@
 
     const actualComponent = ref<string|any>(null)
 
+    // Functions
+    const closeComp = ()=>{
+        actualComponent.value = ""
+    }
     const selectSetting = (opt:string)=>{
         actualComponent.value = String(opt)
     }

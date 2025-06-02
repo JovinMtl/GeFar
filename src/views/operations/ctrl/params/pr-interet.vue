@@ -30,10 +30,12 @@
 </template>
 
 <script setup lang="ts">
-    import { ref } from 'vue';
+    import { ref, watch } from 'vue';
     import oK from './o-k.vue';
     import nO from './n-o.vue';
     import { useKurungika, useKuvoma } from '../../../hooks/kuvoma';
+
+    const emits = defineEmits(['quit'])
 
     const newPrInterest = ref<number|any>()
     const falseInput = ref<boolean>(false)
@@ -58,4 +60,12 @@
 
     askPrInterest()
 
+    watch(report_setPrInterest, (value)=>{
+        console.log("The prInteret says: " + value?.status)
+        if(value?.status){
+            setTimeout(()=>{
+                emits("quit")
+            }, 1000)
+        }
+    })
 </script>
