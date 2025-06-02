@@ -30,8 +30,7 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, watch } from 'vue';
-    import joveLoader from '../../../layout/auxiliare/jove-loader.vue';
+    import { ref } from 'vue';
     import oK from './o-k.vue';
     import nO from './n-o.vue';
     import { useKurungika, useKuvoma } from '../../../hooks/kuvoma';
@@ -57,8 +56,6 @@
         }
     }
 
-
     askPrInterest()
 
-    watch(actual_prInterest, (val)=>{})
 </script>

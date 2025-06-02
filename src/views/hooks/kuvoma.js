@@ -146,6 +146,7 @@ export function useKurungika(
                 // const base = '//muteule.pythonanywhere.com'
 
                 try {
+                    const dataToSend = toValue(imitiArray)
                     const response = await fetch(`${baseURL}/${prefix}`, {
                         method: "POST",
                         headers: {
@@ -153,7 +154,7 @@ export function useKurungika(
                             Authorization: "Bearer " + getAccessToken(),
                         },
                         body: JSON.stringify({
-                            imiti: imitiArray,
+                            imiti: dataToSend,
                         }),
                     });
                     data.value = await response.json();
