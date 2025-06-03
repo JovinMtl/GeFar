@@ -109,6 +109,11 @@
                 </div>
 
                 <div class="logoMenu c-b" @click="setPassword">
+                    <ion-icon :src="notifications" class="logoIcon"></ion-icon>
+                    <span class="textMenu textMenu-p t-m-skin">Opérations</span>
+                </div>
+
+                <div class="logoMenu c-b" @click="setPassword">
                     <ion-icon :src="lockClosedOutline" class="logoIcon"></ion-icon>
                     <span class="textMenu textMenu-p t-m-skin">Mot de passe</span>
                 </div>
@@ -236,7 +241,8 @@ import { IonIcon } from '@ionic/vue'
 import { 
     close, statsChartOutline, snowOutline, thermometer, pricetagOutline,
     calendarClearOutline, libraryOutline,
-    settingsSharp, lockClosedOutline, printOutline
+    settingsSharp, lockClosedOutline, printOutline, 
+    notifications,
     } from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
 import cirCle from './circle.vue'
