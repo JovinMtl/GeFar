@@ -111,7 +111,7 @@
                     <span class="textMenu textMenu-p t-m-skin">Paramètres</span>
                 </div>
 
-                <div class="logoMenu c-b" @click="openOperations">
+                <div class="logoMenu c-b" @click="recorded_operations">
                     <ion-icon :src="notifications" class="logoIcon"></ion-icon>
                     <span class="textMenu textMenu-p t-m-skin">Notifications</span>
                 </div>
@@ -175,6 +175,9 @@
                 v-if="title_operation == 'Paramètres'"/>
             <passWord @op-done="title_operation = ''"
                 v-if="title_operation == 'PassWord'"/>
+
+            <notifCations :med="actual_imitiS" 
+                v-if="title_operation == 'Notifications'"/>
             <!-- <printControle v-if="onPrint" /> -->
             
         </div>
@@ -353,6 +356,11 @@ const kuvoma_entree =  ukuvoma_entree.bind(
     null, date_debut, date_fin, 
     isFilter) // In case we want additional parameters
 
+const operations_url = 'api/rep/report_operations/'
+const [operations, report_operations] = useKuvoma(operations_url)
+const recorded_operations =  report_operations.bind(
+    null, date_debut, date_fin, 
+    isFilter) // In case we want additional parameters
 
 
 const suggest_url = 'api/rep/workOn35/'
@@ -397,11 +405,11 @@ const openPrint = ()=>{
     onPrint.value = true;
     actualPrinting.value = 'pass-word';
 }
-const  openOperations = ()=>{
-    // console.log("title: " + toValue(title_operation) + " ==> " + 'PassWord')
-    title_operation.value = 'Notifications';
-    searchEable.value = true;
-}
+// const  openOperations = ()=>{
+//     // console.log("title: " + toValue(title_operation) + " ==> " + 'PassWord')
+//     title_operation.value = 'Notifications';
+//     searchEable.value = true;
+// }
 const setPassword = ()=>{
     // console.log("title: " + toValue(title_operation) + " ==> " + 'PassWord')
     title_operation.value = 'PassWord';
@@ -422,12 +430,17 @@ const nRoutine = (value)=>{
 
 
 // watchers
+watch(operations, (value)=>{
+    actual_obj.value = value?.response;
+    actual_imitiS.value = value?.response;
+    searchEable.value = true;
+    actual_opt.value = ['operation', 'who_did_it'];
+    actual_type.value = ['text','text'];
+    title_operation.value = 'Notifications';
+})
 watch(isFilter, (value)=>{
     console.log("isFilter: " + value)
 })
-// watch(title_operation, (value)=>{
-//     console.log("The title is changing into: " + value)
-// })
 watch(medFuture, (value)=>{
     console.log("medFuture: " + JSON.stringify(value))
     if (value[0] == undefined){

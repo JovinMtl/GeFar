@@ -428,6 +428,9 @@ html, body {
     justify-content: center;
     border-radius: 4px;
 }
+.contentElement2-1{
+    width: 65%;
+}
 .contentElement2{
     width: 18%;
 }
