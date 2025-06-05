@@ -223,7 +223,6 @@ annotatedIndexes.value = new Set;
 // Functions
 const changeBg = (e)=>{
     const selectedIndex = Number(e.target.getAttribute('data-index'));
-    console.log("The selected: ", selectedIndex)
     if (!(annotatedIndexes.value.has(selectedIndex))){
         annotatedIndexes.value.add(selectedIndex);
     } else{

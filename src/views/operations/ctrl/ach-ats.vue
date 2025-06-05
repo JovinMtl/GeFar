@@ -47,7 +47,10 @@
                 <div class="contentElement11">
                     {{ index + 1 }}
                 </div> 
-                <div class="elt contentElement2">
+                <div class="elt contentElement2"
+                    :class="annotatedIndexes.has(index) ? 'c-b-1 fw-8':''" 
+                    :data-index="index" @click="changeBg"
+                    :title="annotatedIndexes.has(index) == 0 ? 'Ajouter le marqueur':'Enlever le marqueur'">
                     {{ String(umuti.nom_med).slice(0, 25) }}
                 </div> <div class="elt contentElement3">
                     {{ umuti.quantite_initial  }}
@@ -127,6 +130,18 @@ const props = defineProps(['med','admin'])
 const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
+
+const annotatedIndexes = ref(null);
+annotatedIndexes.value = new Set;
+// Functions
+const changeBg = (e)=>{
+    const selectedIndex = Number(e.target.getAttribute('data-index'));
+    if (!(annotatedIndexes.value.has(selectedIndex))){
+        annotatedIndexes.value.add(selectedIndex);
+    } else{
+        annotatedIndexes.value.delete(selectedIndex)
+    }
+}
 
 console.log("THe props: ",actual_imitiS.value[3])
 
