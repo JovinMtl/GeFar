@@ -14,6 +14,9 @@
                 Pr Intéret
             </button>
             <button :class="actualComp=='achat' ? 'bg-g-1 btnEffect':''" @click="setComp('achat')">Achats</button>
+            <button :class="actualComp=='prInte' ? 'bg-g-1 btnEffect':''" @click="setComp('nom')">
+                Nom
+            </button>
             <!-- <button>Autre</button> -->
         </div>
         <div>
@@ -23,6 +26,8 @@
             <prInte v-if="actualComp=='prInte'" :code_med="actualId"
                 @quit="closeComp"/>
             <achAt v-if="actualComp=='achat'" :code_med="actualId"/>
+            <updateNom v-if="actualComp=='nom'" :code_med="actualId"
+                @quit="closeComp"/>
         </div>
     </div>
 </template>
@@ -34,6 +39,7 @@ import type { Ref } from 'vue'
 import compIled from './htv/comp-iled.vue'
 import prInte from './htv/pr-inte.vue'
 import achAt from './htv/ach-at.vue'
+import updateNom from './htv/update-nom.vue'
 
 const actualId:Ref<string> = ref('')
 const actualComp:Ref<string> = ref('')
