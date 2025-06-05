@@ -878,8 +878,10 @@ const moveToPanier = (): number => {
 }
 const strDate = (lot: Lot[]): Lot[] => {
     let lot_length: number = lot.length
-    for (let i = 0; i < lot_length; i++) {
-        let converted_date = new Date(lot[i].date)
+    let tmpDate = 0
+    for (let i = 0 ; i < lot_length; i++) {
+        tmpDate = (lot[i].date) + '-28'
+        let converted_date = new Date(tmpDate)
         lot[i].date = converted_date
     }
     return lot
