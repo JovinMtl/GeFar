@@ -68,14 +68,17 @@
                     <div style="display:flex; justify-content: center; 
                     margin: 5px auto">Péremption</div>
                     <div class="mainContainerCircle">
-                        <a title="En bonne état" @click="getMedGreen">
+                        <a title="En Future (24+ mois)" @click="getMedFuture">
+                            <div class="item cyan " :class="title_operation == '+2 ans'? 'bd-w':''"></div>
+                        </a>
+                        <a title="En bonne état (12-24mois)" @click="getMedGreen">
                             <div class="item green" :class="title_operation == 'Bonne état'? 'bd-w':''"></div>
                         </a>
-                        <a title="Date en état critique" @click="getMedMedium">
-                            <div class="item cyan" :class="title_operation == 'Date critique'? 'bd-w':''"></div>
+                        <a title="Date en état alerte (6-12mois)" @click="getMedMedium">
+                            <div class="item yellow" :class="title_operation == 'Date critique'? 'bd-w':''"></div>
                         </a>
-                        <a title="Date en état alerte" @click="getMedYellow">
-                            <div class="item yellow" :class="title_operation == 'En alerte'? 'bd-b':''"></div>
+                        <a title="Date en état critique (1-5mois)" @click="getMedYellow">
+                            <div class="item mid-red" :class="title_operation == 'En alerte'? 'bd-b':''"></div>
                         </a>
                         <a title="Périmé" @click="getMedRed">
                             <div class="item red" :class="title_operation == 'Med périmé'? 'bd-w':''"></div>
@@ -89,10 +92,10 @@
                     margin: 5px auto">Etat de Stock</div>
                     <div class="mainContainerCircle">
                         <a title="Stock normale" @click="getStockGreen">
-                            <div class="item green" :class="title_operation == 'Stock normale'? 'bd-w':''"></div>
+                            <div class="item cyan" :class="title_operation == 'Stock normale'? 'bd-w':''"></div>
                         </a>
                         <a title="En état critique" @click="getStockYellow">
-                            <div class="item cyan" :class="title_operation == 'Niveau Critique'? 'bd-w':''"></div>
+                            <div class="item green" :class="title_operation == 'Niveau Critique'? 'bd-w':''"></div>
                         </a>
                         <a title="Stock en alerte" @click="getStockRed">
                             <div class="item yellow" :class="title_operation == 'En Alerte'? 'bd-b':''"></div>
@@ -108,9 +111,9 @@
                     <span class="textMenu textMenu-p t-m-skin">Paramètres</span>
                 </div>
 
-                <div class="logoMenu c-b" @click="setPassword">
+                <div class="logoMenu c-b" @click="openOperations">
                     <ion-icon :src="notifications" class="logoIcon"></ion-icon>
-                    <span class="textMenu textMenu-p t-m-skin">Opérations</span>
+                    <span class="textMenu textMenu-p t-m-skin">Notifications</span>
                 </div>
 
                 <div class="logoMenu c-b" @click="setPassword">
@@ -153,6 +156,9 @@
                 :admin="isAdmin"
                 v-if="title_operation == 'Stock epuisé'"/>
                 <!-- Peremption -->
+            <achAts1 :med="actual_imitiS" 
+                :admin="isAdmin"
+                v-if="title_operation == '+2 ans'"/>
             <achAts1 :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Bonne état'"/>
@@ -212,6 +218,9 @@
                                 <!-- Peremption -->
                             <achAts1 :med="actual_imitiS" 
                                 :admin="isAdmin"
+                                v-if="title_operation == '+2 ans'"/>
+                            <achAts1 :med="actual_imitiS" 
+                                :admin="isAdmin"
                                 v-if="title_operation == 'Bonne état'"/>
                             <achAts1 :med="actual_imitiS" 
                                 :admin="isAdmin"
@@ -222,6 +231,9 @@
                             <achAts1 :med="actual_imitiS" 
                                 :admin="isAdmin"
                                 v-if="title_operation == 'Med périmé'"/>
+
+                            <notifCations :med="actual_imitiS" 
+                                v-if="title_operation == 'Notifications'"/>
             
             
                     </div>
@@ -235,7 +247,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toValue, computed } from 'vue'
+import { ref, watch, toValue, computed, nextTick } from 'vue'
 import type { Ref } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { 
@@ -256,6 +268,7 @@ import dateGreen from './ctrl/date-green.vue'
 import paraMetres from './ctrl/para-metres.vue'
 import passWord from './ctrl/pass-word.vue'
 import printControle from './ctrl/print-controle.vue'
+import notifCations from './ctrl/notif-cations.vue'
 
 
 const emit = defineEmits(['turnControl',])
@@ -355,11 +368,13 @@ const [stockYellow, getStockYellow] = useKuvoma(getStockYellow_url)
 const getStockGreen_url = 'api/rep/getStockGreen/'
 const [stockGreen, getStockGreen] = useKuvoma(getStockGreen_url)
 
-const getStockZero_url = 'api/rep/getStockZero/ '
+const getStockZero_url = 'api/rep/getStockZero/'
 const [stockZero, getStockZero] = useKuvoma(getStockZero_url)
 
+const getMedFuture_url = 'api/rep/getMedFuture/'
+const [medFuture, getMedFuture] = useKuvoma(getMedFuture_url)
 
-const getMedGreen_url = 'api/rep/getMedGreen/ '
+const getMedGreen_url = 'api/rep/getMedGreen/'
 const [medGreen, getMedGreen] = useKuvoma(getMedGreen_url)
 
 const getMedMedium_url = 'api/rep/getMedMedium/'
@@ -382,6 +397,11 @@ const openPrint = ()=>{
     onPrint.value = true;
     actualPrinting.value = 'pass-word';
 }
+const  openOperations = ()=>{
+    // console.log("title: " + toValue(title_operation) + " ==> " + 'PassWord')
+    title_operation.value = 'Notifications';
+    searchEable.value = true;
+}
 const setPassword = ()=>{
     // console.log("title: " + toValue(title_operation) + " ==> " + 'PassWord')
     title_operation.value = 'PassWord';
@@ -399,13 +419,8 @@ const nRoutine = (value)=>{
     'quantite_restant','prix_vente', 'date_winjiriyeko',]
     actual_type.value = ['text','text','text','date']
 }
-// 
-console.log("The INIT title is : " + title_operation.value)
-const initialComp = "pass-word"
-// computed
-const actualComp = computed(()=>{
-    return "pass-word"
-})
+
+
 // watchers
 watch(isFilter, (value)=>{
     console.log("isFilter: " + value)
@@ -413,6 +428,21 @@ watch(isFilter, (value)=>{
 // watch(title_operation, (value)=>{
 //     console.log("The title is changing into: " + value)
 // })
+watch(medFuture, (value)=>{
+    console.log("medFuture: " + JSON.stringify(value))
+    if (value[0] == undefined){
+        console.log("medGreen is likely to be empty.")
+        turnOnNotif()
+    } 
+    else{
+        // title_operation.value = ""
+        nRoutine(value)
+        title_operation.value = "+2 ans"
+        // nextTick(()=>{
+        //     title_operation.value = "jove"
+        // })
+    }
+})
 watch(medGreen, (value)=>{
     if (value[0] == undefined){
         console.log("medGreen is likely to be empty.")

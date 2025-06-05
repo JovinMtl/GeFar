@@ -247,7 +247,7 @@ html, body {
 /* For Controle */
 .mainContainerCircle{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     /* background: #333; */
     grid-column-gap: 20px;
     grid-row-gap: 20px;
@@ -283,6 +283,9 @@ html, body {
     border: 2px solid rgb(12, 124, 216);
     background-color: lime;
     border: 2px solid green;
+}
+.mid-red{
+    background-color: rgb(235, 87, 87);
 }
 .red{
     background-color: rgb(253, 37, 37);
