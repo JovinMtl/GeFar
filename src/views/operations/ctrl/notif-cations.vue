@@ -11,7 +11,7 @@
                     Nom du Med.
                 </div> 
                 <div class="elt contentElement4">
-                    Date
+                    Heure
                 </div>
                 <div class="elt contentElement4">
                     Auteur
@@ -36,7 +36,7 @@
                     {{ String(umuti.date_time).slice(11, 16) }} 
                     <span>_</span>
                     <span class="c-g-1">
-                        {{ String(umuti.date_time).slice(0, 10) }}
+                        {{ String(umuti.date_time).slice(8, 10) }}/{{ String(umuti.date_time).slice(5, 7) }}/{{ String(umuti.date_time).slice(0, 4) }}
                     </span> 
                 </div> 
 
