@@ -160,6 +160,10 @@ const professions = [
         'name': 'Domaine Médicale'
     },
     {
+        'value': 'ag',
+        'name': 'Personne agée'
+    },
+    {
         'value': 'au',
         'name': 'Assuré'
     },
