@@ -24,10 +24,12 @@
         
     </div>
         <div>
-            <input type="text" placeholder="nouveau nom">
+            <input id="nomMed" type="text" 
+                placeholder="nouveau nom"
+                v-model="nomMed">
         </div>
         <div style="display: block;">
-            <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 2 ? 'bg-o':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
+            <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 1 ? 'bg-g-1':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
         </div>
 
         
@@ -35,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive,ref, toValue, watch } from 'vue'
+import { nextTick, reactive,ref, toValue, watch } from 'vue'
 import { useKurungika } from '../../../../hooks/kuvoma'
 import { useCounter } from '../../../../../store/incrementCounter'
 
@@ -44,6 +46,7 @@ const emits = defineEmits(['quit'])
 
 const allowChange = ref(true)
 const changeSuccessfull = ref(0)
+const nomMed = ref(null)
 
 const { incrementCounter } = useCounter()
 
@@ -52,9 +55,13 @@ const oneCompiledData = reactive({
     'code_med' : props.code_med,
     'request': 'get',
 })
-
-
+const dataToSend = reactive({})
 const [oneCompiled, getOneCompiled] = useKurungika(oneCompiledData, oneCompiled_url)
+
+const updateNomMed_url = 'api/gOps/update_nom_med/'
+const [repNomMed, updateNomMed] = useKurungika(dataToSend, updateNomMed_url)
+
+
 setTimeout(()=>{
     console.log("CPIL: " + oneCompiledData.code_med)
     
@@ -63,41 +70,22 @@ setTimeout(()=>{
 
 const changeOneCompiled = ()=>{
     // setting conditions
-    let c1_1 = oneCompiledData.pr_interest > 1;
-    let c1_2 = oneCompiledData.pr_interest < 2;
-    let c1 = c1_1 && c1_2;
-
-    let c2_1 = oneCompiledData.pr_interest > 10;
-    let c2_2 = oneCompiledData.pr_interest < 99;
-    let c2 = c2_1 && c2_2
-
-    if (c2_1){
-        oneCompiledData.pr_interest = 1 + (oneCompiledData.pr_interest / 100)
-    }
-
-    // The combined condition
-    let condCombined =  c1 || c2
-    let allConditions = oneCompiledData.is_pr_interest && condCombined
-    console.log("Should pass? " + condCombined + ":" + allConditions)
-
-    // oneCompiled.code_med = 
-    oneCompiledData.request = 'post'
-    oneCompiledData.code_med = oneCompiledData.code_med;
-    oneCompiledData.is_pr_interest = oneCompiledData.is_pr_interest
-    
-    if (!(oneCompiledData.is_pr_interest)){
-        // Should come to normal
-        changeSuccessfull.value = 2
-    } else if (allConditions){
-        oneCompiledData.pr_interest = oneCompiledData.pr_interest
-        changeSuccessfull.value = 2;
-    } else if (!condCombined){
-        changeSuccessfull.value = 404;
-        return
-    }
-    
-    getOneCompiled()
+    dataToSend.code_med = props.code_med
+    dataToSend.nom_med = nomMed.value
+    updateNomMed()
 }
+// Watchers
+watch(repNomMed, (value)=>{
+    if (value?.response == 1){
+        changeSuccessfull.value = 1;
+        incrementCounter()
+        setTimeout(()=>{
+                emits("quit")
+            }, 1000)
+    }else if(value?.response == 404){
+        changeSuccessfull.value = 404;
+    }
+})
 watch(oneCompiled, (value)=>{
     if(value?.response == 0){
         allowChange.value = false;
@@ -118,6 +106,10 @@ watch(oneCompiled, (value)=>{
     oneCompiledData.is_pr_interest = value?.is_pr_interest;
     oneCompiledData.pr_interest = value?.pr_interest;
 })
+nextTick(()=>{
+    document.getElementById('nomMed').focus()
+})
+
 </script>
 
 <style scoped>
@@ -130,5 +122,6 @@ th{
 }
 input::placeholder{
     color: gray;
+    font-size: 0.8rem;
 }
 </style>
