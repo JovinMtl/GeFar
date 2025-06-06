@@ -57,7 +57,7 @@
                 </div> 
 
                 <div class="elt contentElement4 famille_med">
-                    <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
+                    <span v-if="isAdmin" >{{ useReadable(umuti.prix_achat) }}</span>
                     
                 </div>
 
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="elt contentElement4 total">
-                        {{ umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 1) }}
+                        {{ useReadable(umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 1) )}}
                 </div>
 
                 <div v-if="isAdmin" class="elt contentElement4"> 

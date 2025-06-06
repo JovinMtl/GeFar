@@ -441,6 +441,7 @@ html, body {
 }
 .contentElement4{
     width: 12%;
+    justify-content: right;
 }
 .elt5{
     width: 8%;
