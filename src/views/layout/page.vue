@@ -879,8 +879,23 @@ const moveToPanier = (): number => {
 const strDate = (lot: Lot[]): Lot[] => {
     let lot_length: number = lot.length
     let tmpDate = 0
+    let days = {
+        '01':31,
+        '02':28,
+        '03':31,
+        '04':30,
+        '05':31,
+        '06':30,
+        '07':31,
+        '08':31,
+        '09':30,
+        '10':31,
+        '11':30,
+        '12':31
+    } 
     for (let i = 0 ; i < lot_length; i++) {
-        tmpDate = (lot[i].date) + '-28'
+        let month = String(lot[i].date).split('-')[1]
+        tmpDate = (lot[i].date) +  `-${days[month]}`
         let converted_date = new Date(tmpDate)
         lot[i].date = converted_date
     }
