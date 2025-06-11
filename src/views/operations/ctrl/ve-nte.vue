@@ -90,7 +90,7 @@
                 
                 </div>
                 <div class="elt elt5">
-                     <span >{{umuti.caisse}}</span>
+                     <span >{{ useReadable(umuti.caisse)}}</span>
                 </div>
                 <div class="elt elt5">
                     <span :class="umuti.assu=='Pharmacie Ubuzima' ? 'c-g':''">
