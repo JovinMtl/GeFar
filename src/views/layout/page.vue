@@ -204,12 +204,14 @@
                             {{ useCapitalLetter((String(getUsername())).slice(0, 10)) }}
                         </a>
                     </div>
-                    <!-- <div class="menuHau sync">
-                        <a title="ku Mwanya (Sync)" class="c-b">
-                            <fluent-cloud-sync28-regular @click="askIndex">
+                    <div class="menuHau sync">
+                        <a title="ku Mwanya (Sync)" class="c-b c-w" :class="collectionLength ? 'c-g-1':''">
+                            <!-- <fluent-cloud-sync28-regular @click="askIndex">
+                            </fluent-cloud-sync28-regular> -->
+                            <fluent-cloud-sync28-regular @click="requestCollection">
                             </fluent-cloud-sync28-regular>
                         </a>
-                    </div> -->
+                    </div>
                     <div class="menuHau magnetic">
                         <a title="ku Gihe (Update)" class="c-b">
                             <circum-pill @click="callCompileImitiSet"></circum-pill>
@@ -224,6 +226,8 @@
                         <a title="Ubu murashobora gukubandanya." class="c-b">
                             <prEt />
                         </a>
+                    </div>
+                    <div  class="menuHau compLoader">
                     </div>
                     <teleport to="body">
                         <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
@@ -359,6 +363,7 @@ const showClassMed:Ref<boolean> = ref(false)
 const decimalNumber:Ref<number> = ref(0)
 const fullDecimal: Ref<number> = ref(10)
 const clientName: Ref<string> = ref('')
+const collectionLength = ref(0)
 
 // Store
 const { getCounter } = useCounter()
@@ -383,6 +388,8 @@ const [sell_report, toSell] = useKurungika(panier_api, url_sell)
 const { getUsername, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
+const url_request_collection = "api/gOps/request_collection/"
+const [collection, requestCollection] = useKuvoma(url_request_collection)
 
 // Functions
 const reOpenApprov = ()=>{
@@ -491,9 +498,6 @@ const closeFacture = () => {
     actualFactureLength.value = 0;
     formerFactureLength.value = 0;
     succededIndex.value = 0
-    // Here should be initializing sell_report
-    // console.log("The sell_report is: " + JSON.stringify(sell_report))
-    // sell_report.value = {}
 }
 const SearchBarManager = (value) => {
     query_search.value = value
@@ -514,23 +518,6 @@ const callCompileImitiSet = ()=>{
     compileImitiSet()
     listImiti_update.value += 1
 }
-// const compileImitiSet = async () => {
-//     const endpoint = '/api/in/compileImitiSet/'
-
-//     try {
-//         const response = await fetch(`${baseURL}${endpoint}`, {
-//             headers: {
-//                 Authorization: 'Bearer ' + getAccessToken()
-//             }
-//         })
-//         if (response.ok) {
-//             listImiti_update.value += 1
-//         }
-//     } catch (value) {
-//         console.log("The error has occured:", value)
-//     }
-
-// }
 
 const reportAchatHandler = (reportAchat:number)=>{
     if(reportAchat == 1){
@@ -544,51 +531,7 @@ const url_achat = 'api/in/kurangura/'
 const inputData = ref(null)
 const [report_achat, sendFileDataLoaded] = useKurungika(inputData.value, url_achat)
 
-// const getFileDataLoaded = async (dataArray) => {
-//     // submitting the data to the server
-//     // provide send-status and inject it in approv-file
-//     inputData.value = dataArray
-//     console.warn("About to send inputData : " + JSON.stringify(dataArray))
-//     return 0
-//     server_process.value = true
-//     const endpoint = '/api/in/kurangura/'
 
-//     try {
-//         const response = await fetch(`${baseURL}${endpoint}`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-type': 'application/json',
-//                 Authorization: 'Bearer ' + getAccessToken()
-//             },
-//             body: JSON.stringify({
-//                 'jov': dataArray
-//             })
-//         })
-//         const server_data = await response.json()
-//         if (response.ok) {
-//             setTimeout(() => {
-//                 compileImitiSet()
-//                 server_process.value = false
-//             }, 1500)
-//             approvStatus.value = false
-//             approFileStatus.value = false
-//         } else {
-//             message.value = "The response hasn't reached here yet"
-//             server_process.value = false
-//             notifStatus.value = true
-//             setTimeout(()=>{
-//                 notifStatus.value = false
-//             }, 1500)
-//         }
-//     } catch (value) {
-//         message.value = "The error has occured:"
-//         server_process.value = false
-//         notifStatus.value = true
-//         setTimeout(()=>{
-//             notifStatus.value = false
-//         }, 1500)
-//     }
-// }
 const openApproFile = () => {
     approFileStatus.value = true
 }
@@ -929,7 +872,14 @@ const show_suggest = (e)=>{
     clClean.value = false
 }
 const shouldPop = ref(false)
+
 // Watchers
+
+watch(collection, (reponse)=>{
+    if (reponse){
+        collectionLength.value = reponse?.counter ?? 0
+    }
+})
 watch(getCounter, (val)=>{
     listImiti_update.value += 1  // Triggering update in list-imiti component
 })
@@ -1179,7 +1129,7 @@ provide('familly_displ', openedFamilly)
     color: black;
     cursor: pointer;
 }
-.magnetic:active{
+.magnetic:active, .sync:active{
     transform: scale(0.8);
     /* scale: 1.5; */
 }
