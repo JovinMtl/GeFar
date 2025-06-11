@@ -165,6 +165,9 @@ var result = inject('imiti_search')
 const url_achat = 'api/in/kurangura/'
 const [report_achat, sendFileDataLoaded] = useKurungika([umuti_obj,], url_achat)
 
+const url_today_per_to_31 = 'api/gOps/today_per_to_31/'
+const [report_today_per_to_31, todayPerTo31] = useKuvoma(url_today_per_to_31)
+
 
 // Functions
 const initInputs = ()=>{
@@ -297,6 +300,7 @@ watch(report_achat, (value)=>{
         console.log("Les choses se sont bien passee") 
         emit("reportAchat", 2) 
         initInputs()
+        todayPerTo31()
     } else if(value.detail == undefined){
         console.log("Il y aurait besoin de reconnexion.")
     } else{
