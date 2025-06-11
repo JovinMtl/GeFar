@@ -128,6 +128,9 @@ const [report_doublon, fixDoublonToday] = useKuvoma(url_doublon_manage_today)
 const url_doublon_manage_today_bckp = 'api/gOps/fix_doublon_bckup_today/'
 const [report_doublon_bckp, fixDoublonTodayBckp] = useKuvoma(url_doublon_manage_today)
 
+const url_date_per_to_31 = 'api/gOps/date_per_to_31/'
+const [report_date_per_to_31, datePerTo31] = useKuvoma(url_date_per_to_31)
+
 const convertDate = (dateString:String):String=>{
     // will take '2025-1-22' and make it '1/21/25'
     let spl = dateString.split('-')
@@ -344,6 +347,7 @@ watch(report_achat, (value)=>{
             info = "operation bien reussi"
             fixDoublonToday()
             fixDoublonTodayBckp()
+            datePerTo31()
         } else {
             info = "Pas bien reussi"
         }
