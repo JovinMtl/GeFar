@@ -1,5 +1,5 @@
 import { ref, toValue } from "vue";
-import { baseURL } from "@/store/host";
+import { baseURL, remoteURL } from "@/store/host";
 import { useUserStore } from "../../store/user";
 import { useNotif } from "../../store/useNotif"
 import { useError500 } from '../../store/generalErrors'
@@ -148,6 +148,89 @@ export function useKurungika(
                 try {
                     const dataToSend = toValue(imitiArray)
                     const response = await fetch(`${baseURL}/${prefix}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-type": "application/json",
+                            Authorization: "Bearer " + getAccessToken(),
+                        },
+                        body: JSON.stringify({
+                            imiti: dataToSend,
+                        }),
+                    });
+                    data.value = await response.json();
+                    if((response.ok)){
+                        if (shouldNotify){
+                            setOperationTrue()
+                        }
+                        console.log("THe response is OK")
+                    } else{
+                        console.log("The response is not OK")
+                        refreshToken()
+                        let secondData = kurungikaImiti()
+                        console.log("The returned secondData: " + secondData[0])
+                        data.value = secondData
+                    }
+                } catch (error) {
+                    console.log("First set to: ", toValue(getError500));
+                    setError500True();
+                    setError500Msg();
+                    isError.value = true;
+                    error_message.value = error
+                    console.log("something has not be well because :", error);
+                    console.log("Is set to: ", toValue(toValue(getError500)));
+                }
+            };
+            if(isError.value){
+                return [error_message, kurungikaImiti]
+            } else{
+                return [data, kurungikaImiti];
+            }
+
+        } else {
+            return "not really";
+        }
+    }while(shouldRefresh)
+}
+
+export function useKurungikaRemote(
+    imitiArray,
+    prefix,
+    shouldNotify=false,
+    otherData1 = null,
+) {
+    let shouldRefresh = false
+    const { setOperationTrue,
+        setOperationEncoursTrue,
+        setOperationEncoursFalse,
+     } = useNotif()
+    const { getError500,
+        setError500True, setError500Msg 
+    } = useError500()
+    do{
+        if (shouldRefresh){
+            console.log("Refreshing once again ...")
+        }
+        const data = ref(null);
+        const isError = ref(false)
+        const error_message = ref(null)
+        const { getAccessToken } = useUserStore();
+        // console.log("Attempting to send:", imitiArray)
+        // return prefix
+        if (!(otherData1 && otherData2)) {
+            const kurungikaImiti = async () => {
+                if (!getAccessToken()){
+                    return 0
+                }
+                if (shouldNotify){
+                    setOperationEncoursTrue
+                } else{
+                    setOperationEncoursFalse
+                }
+                // const base = '//muteule.pythonanywhere.com'
+
+                try {
+                    const dataToSend = toValue(imitiArray)
+                    const response = await fetch(`${remoteURL}/${prefix}`, {
                         method: "POST",
                         headers: {
                             "Content-type": "application/json",

@@ -269,7 +269,7 @@ import approFile from '../operations/approv-file.vue';
 import joveLoader from './auxiliare/jove-loader.vue';
 import contRole from '../operations/controle.vue'
 import factuRier from '../operations/facturier.vue';
-import { useKurungika, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
+import { useKurungika, useKurungikaRemote, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
 import { useCapitalLetter } from '../hooks/useReadable.js';
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
@@ -390,6 +390,10 @@ const { getUsername, setUsername,
 
 const url_request_collection = "api/gOps/request_collection/"
 const [collection, requestCollection] = useKuvoma(url_request_collection)
+
+const actualPortion = ref()
+const url_update_collection = "api/in/updateCollection/"
+const [report_update_collection, updateCollection] = useKurungikaRemote(actualPortion,url_update_collection)
 
 // Functions
 const reOpenApprov = ()=>{
@@ -873,11 +877,32 @@ const show_suggest = (e)=>{
 }
 const shouldPop = ref(false)
 
+const choirMaster = (val)=>{
+    let tours = val / 50
+    let start = 0
+    let end = 50
+    let portion = 0
+    const data = (collection.value.response)
+    for (let i = 0; i<= tours; i++){
+        actualPortion.value = (data).splice(start, end)
+        start += 50
+        end += 50
+        if (i==2){
+            console.log(JSON.stringify(portion))
+            updateCollection()
+        }
+        // console.log(typeof(portion))
+    }
+    // console.log(JSON.stringify(portion))
+}
+
 // Watchers
 
 watch(collection, (reponse)=>{
     if (reponse){
         collectionLength.value = reponse?.counter ?? 0
+        choirMaster(collectionLength.value)
+        
     }
 })
 watch(getCounter, (val)=>{
