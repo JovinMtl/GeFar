@@ -27,6 +27,7 @@
             <input id="nomMed" type="text" 
                 placeholder="nouveau nom"
                 v-model="nomMed">
+            <label v-if="medExist" for="" class="ml-5 sm-l c-r">Ce nom existe déjà.</label>
         </div>
         <div style="display: block;">
             <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 1 ? 'bg-g-1':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
@@ -47,6 +48,7 @@ const emits = defineEmits(['quit'])
 const allowChange = ref(true)
 const changeSuccessfull = ref(0)
 const nomMed = ref(null)
+const medExist = ref(false)
 
 const { incrementCounter } = useCounter()
 
@@ -68,6 +70,14 @@ setTimeout(()=>{
     getOneCompiled()
 }, 300)
 
+
+// Functions
+const nomMedExist = ()=>{
+    medExist.value = true
+    setTimeout(()=>{
+        medExist.value = false
+    }, 1300)
+}
 const changeOneCompiled = ()=>{
     // setting conditions
     dataToSend.code_med = props.code_med
@@ -84,6 +94,8 @@ watch(repNomMed, (value)=>{
             }, 1000)
     }else if(value?.response == 404){
         changeSuccessfull.value = 404;
+    }else if(value?.response == 0){
+        nomMedExist()
     }
 })
 watch(oneCompiled, (value)=>{
