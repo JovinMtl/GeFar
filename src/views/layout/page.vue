@@ -204,14 +204,14 @@
                             {{ useCapitalLetter((String(getUsername())).slice(0, 10)) }}
                         </a>
                     </div>
-                    <div class="menuHau sync">
-                        <a title="ku Mwanya (Sync)" class="c-b c-w" :class="collectionLength ? 'c-g-1':''">
+                    <!-- <div class="menuHau sync">
+                        <a title="ku Mwanya (Sync)" class="c-b c-w" :class="collectionLength ? 'c-g-1':''"> -->
                             <!-- <fluent-cloud-sync28-regular @click="askIndex">
                             </fluent-cloud-sync28-regular> -->
-                            <fluent-cloud-sync28-regular @click="requestCollection">
+                            <!-- <fluent-cloud-sync28-regular @click="requestCollection">
                             </fluent-cloud-sync28-regular>
                         </a>
-                    </div>
+                    </div> -->
                     <div class="menuHau magnetic">
                         <a title="ku Gihe (Update)" class="c-b">
                             <circum-pill @click="callCompileImitiSet"></circum-pill>
