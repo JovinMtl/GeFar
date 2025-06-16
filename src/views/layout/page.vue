@@ -204,14 +204,14 @@
                             {{ useCapitalLetter((String(getUsername())).slice(0, 10)) }}
                         </a>
                     </div>
-                    <!-- <div class="menuHau sync">
-                        <a title="ku Mwanya (Sync)" class="c-b c-w" :class="collectionLength ? 'c-g-1':''"> -->
+                    <div class="menuHau sync">
+                        <a title="ku Mwanya (Sync)" class="c-b c-w" :class="collectionLength ? 'c-g-1':''">
                             <!-- <fluent-cloud-sync28-regular @click="askIndex">
                             </fluent-cloud-sync28-regular> -->
-                            <!-- <fluent-cloud-sync28-regular @click="requestCollection">
+                            <fluent-cloud-sync28-regular @click="requestCollection">
                             </fluent-cloud-sync28-regular>
                         </a>
-                    </div> -->
+                    </div>
                     <div class="menuHau magnetic">
                         <a title="ku Gihe (Update)" class="c-b">
                             <circum-pill @click="callCompileImitiSet"></circum-pill>
@@ -385,11 +385,11 @@ const [rep_update, kurungika] = useKurungika(bothData.value, url_syncFromLocal)
 
 const url_sell: string = "api/out/sell/"
 const [sell_report, toSell] = useKurungika(panier_api, url_sell)
-const { getUsername, setUsername,
+const { getUsername,getAccessToken, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
 const url_request_collection = "api/gOps/request_collection/"
-const [collection, requestCollection] = useKuvoma(url_request_collection)
+const [collection, requestCollection] = useKurungika(getAccessToken, url_request_collection)
 
 const actualPortion = ref()
 const url_update_collection = "api/in/updateCollection/"
