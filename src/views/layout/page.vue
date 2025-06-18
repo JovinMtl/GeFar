@@ -4,6 +4,7 @@
             <div class="mP">
                 <div class="m-cl" :class="displayClasses ? 'bg-b' : 'bg-g'" @click="showClasses">
                 </div>
+
                 <div v-show="server_process" class="loader" style="z-index: 15;position:absolute">
                     <jove-loader></jove-loader>
                 </div>
@@ -229,6 +230,7 @@
                     </div>
                     <div  class="menuHau compLoader">
                     </div>
+
                     <teleport to="body">
                         <div v-if="show_facture" class="facturierContainer" @click="closeFacture">
                             <factu-rier @facture-active="closeFacture"
@@ -246,6 +248,11 @@
                         </div>
                     </teleport>
 
+                </div>
+
+                <div title="Connecter" 
+                    class="m-l-b" :class="tokenState.connected ? 'bg-o':'bg-l'"
+                    @click="connectAPI">
                 </div>
             </div>
 
@@ -269,7 +276,11 @@ import approFile from '../operations/approv-file.vue';
 import joveLoader from './auxiliare/jove-loader.vue';
 import contRole from '../operations/controle.vue'
 import factuRier from '../operations/facturier.vue';
-import { useKurungika, useKurungikaRemote, useKuvoma, useNoteUmuti } from '../hooks/kuvoma.js'
+import { 
+    useKurungika, useKurungikaRemote, 
+    useKuvoma, useNoteUmuti,
+    login_hook_remote
+ } from '../hooks/kuvoma.js'
 import { useCapitalLetter } from '../hooks/useReadable.js';
 import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
@@ -364,6 +375,7 @@ const decimalNumber:Ref<number> = ref(0)
 const fullDecimal: Ref<number> = ref(10)
 const clientName: Ref<string> = ref('')
 const collectionLength = ref(0)
+const login_initiator = ref(0)
 
 // Store
 const { getCounter } = useCounter()
@@ -388,6 +400,11 @@ const [sell_report, toSell] = useKurungika(panier_api, url_sell)
 const { getUsername,getAccessToken, setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
+
+const url_achat = 'api/in/kurangura/'
+const inputData = ref(null)
+const [report_achat, sendFileDataLoaded] = useKurungika(inputData.value, url_achat)
+
 const url_request_collection = "api/gOps/request_collection/"
 const [collection, requestCollection] = useKurungika(getAccessToken, url_request_collection)
 
@@ -395,7 +412,39 @@ const actualPortion = ref()
 const url_update_collection = "api/in/updateCollection/"
 const [report_update_collection, updateCollection] = useKurungikaRemote(actualPortion,url_update_collection)
 
+// const actualPortion = ref()
+// const url_update_collection = "api/in/updateCollection/"
+// const [report_update_collection, updateCollection] = remoteLogin(actualPortion,url_update_collection)
+
+const url_request_info = "api/gOps2/request_infos/"
+const [infos, requestInfo] = useKuvoma(url_request_info)
+
+const username = ref()
+const password = ref()
+const [token, loginRemote] = login_hook_remote()
+const emptyToken = ref(true)
 // Functions
+const tokenState = reactive({
+    'connected': false,
+    'lastValid': null
+})
+const connectAPI = ()=>{
+    // check if there is the token
+    // request the username and password from local
+    
+    if (toValue(emptyToken)){
+        requestInfo()
+    } else{
+        console.log("not asking infos because: ")
+    }
+    
+
+    // submit the logins to the remote server
+    // nextTick(()=>{
+    //     loginRemote()
+    // })
+    
+}
 const reOpenApprov = ()=>{
     // should close it and reopen it in next tick.
     approvStatus.value = false;
@@ -530,12 +579,6 @@ const reportAchatHandler = (reportAchat:number)=>{
         server_process.value = false
     }
 }
-
-const url_achat = 'api/in/kurangura/'
-const inputData = ref(null)
-const [report_achat, sendFileDataLoaded] = useKurungika(inputData.value, url_achat)
-
-
 const openApproFile = () => {
     approFileStatus.value = true
 }
@@ -877,27 +920,23 @@ const show_suggest = (e)=>{
 }
 const shouldPop = ref(false)
 
-const choirMaster = (val)=>{
-    let tours = val / 50
-    let start = 0
-    let end = 50
-    let portion = 0
-    const data = (collection.value.response)
-    for (let i = 0; i<= tours; i++){
-        actualPortion.value = (data).splice(start, end)
-        start += 50
-        end += 50
-        if (i==2){
-            console.log(JSON.stringify(portion))
-            updateCollection()
-        }
-        // console.log(typeof(portion))
-    }
-    // console.log(JSON.stringify(portion))
-}
+
 
 // Watchers
-
+watch(login_initiator, ()=>{
+    loginRemote(toValue(username), toValue(password))
+})
+watch(token, (value)=>{
+    console.log("The token gotten: " + value)
+    tokenState.connected = true;
+    tokenState.lastValid = new Date();
+})
+watch(infos, (value)=>{
+    username.value = value?.response?.remote_username
+    password.value = value?.response?.remote_password
+    console.log("u: " + username.value + " p: " + password.value)
+    login_initiator.value += 1
+})
 watch(collection, (reponse)=>{
     if (reponse){
         collectionLength.value = reponse?.counter ?? 0

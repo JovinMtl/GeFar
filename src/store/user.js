@@ -9,6 +9,10 @@ export const useUserStore = defineStore('user', ()=>{
     const refreshToken = ref('')
 
 
+    const accessTokenRemote = ref('')
+    const refreshTokenRemote = ref('')
+
+
     const getUsername = ()=>{
         return username.value
     }
@@ -28,9 +32,25 @@ export const useUserStore = defineStore('user', ()=>{
         refreshToken.value = value
     }
 
+    const getAccessTokenRemote = ()=>{
+        return accessTokenRemote.value
+    }
+    const getRefreshTokenRemote = ()=>{
+        return refreshTokenRemote.value
+    }
+    const setAccessTokenRemote = (value)=>{
+        accessTokenRemote.value = value
+    }
+    const setRefreshTokenRemote = (value)=>{
+        refreshTokenRemote.value = value
+    }
+
     return {
         getUsername, getAccessToken, getRefreshToken,
-        setUsername, setAccessToken, setRefreshToken
+        setUsername, setAccessToken, setRefreshToken,
+
+        getAccessTokenRemote, getRefreshTokenRemote,
+        setAccessTokenRemote, setRefreshTokenRemote,
     }
 })
 

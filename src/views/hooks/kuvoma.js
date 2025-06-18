@@ -213,12 +213,12 @@ export function useKurungikaRemote(
         const data = ref(null);
         const isError = ref(false)
         const error_message = ref(null)
-        const { getAccessToken } = useUserStore();
+        const { getAccessTokenRemote } = useUserStore();
         // console.log("Attempting to send:", imitiArray)
         // return prefix
         if (!(otherData1 && otherData2)) {
             const kurungikaImiti = async () => {
-                if (!getAccessToken()){
+                if (!getAccessTokenRemote()){
                     return 0
                 }
                 if (shouldNotify){
@@ -234,7 +234,7 @@ export function useKurungikaRemote(
                         method: "POST",
                         headers: {
                             "Content-type": "application/json",
-                            Authorization: "Bearer " + getAccessToken(),
+                            Authorization: "Bearer " + getAccessTokenRemote(),
                         },
                         body: JSON.stringify({
                             imiti: dataToSend,
@@ -351,25 +351,6 @@ export async function useNoteUmuti(value) {
     return data;
 }
 
-export async function useLogin(username, password) {
-    const data = ref(null);
-    const prefix = "api/login/";
-
-    axios
-        .post(`${baseURL}/${prefix}`, {
-            username: username,
-            password: password,
-        })
-        .then((response) => {
-            //  store.state.user = response.data
-            // console.log("the data: ", response.data);
-        })
-        .catch((error) => {
-            let logs = error.response.data;
-        });
-
-    // return 'ok's
-}
 
 export function useAskPriviledge() {
     // const isAdmin = ref(false)
@@ -399,4 +380,32 @@ export function useAskPriviledge() {
     return [isAdmin, askPriviledge];
 }
 
-export function useAddAssu(){}
+export function login_hook_remote (){
+    const prefix = "api/login/";
+    const token = ref('')
+    
+    const connect = async (username, password)=>{
+        console.log("Calling login_hook_remote with: " + toValue(username) + ":" + toValue(password))
+        try{
+            const response = await fetch(`${remoteURL}/${prefix}`,{
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json",
+                    // Authorization: "Bearer " + getRefreshToken(),
+                },
+                body: JSON.stringify({
+                    "username": toValue(username),
+                    "password": toValue(password)
+                })
+            })
+            if (response.ok){
+                token.value = response.data.access
+                setAccessTokenRemote(response.data.access)
+                setRefreshTokenRemote(response.data.refresh)
+            }
+        } catch(value){
+            useError500()
+        }
+    }
+    return [token, connect]
+}

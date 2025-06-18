@@ -506,20 +506,23 @@ html, body {
 .d-f{
     display: flex;
 }
-.bg-o{
-    background-color: orange;
-}
 .br{
     border-radius: 5px;
 }
 .mt{
     margin-top: 2px;
 }
+.bg-o{
+    background-color: orange;
+}
 .bg-b{
     background-color: rgb(86, 105, 211);
 }
 .bg-b-1{
     background-color: black;
+}
+.bg-l{
+    background-color: yellow;
 }
 .w-22{
     width: 25%;
@@ -898,6 +901,12 @@ div > section {
     width: 10px;
     height: 10px;
     position: absolute;
+}
+.m-l-b{
+    height: 10px;
+    width: 10px; 
+    /* background-color: red; */
+    position:absolute;top: 98vh;
 }
 .deci{
     display: inline-flex;
