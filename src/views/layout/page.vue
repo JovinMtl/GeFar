@@ -178,7 +178,7 @@
                     </div>
 
                     <div class="signeRecherche"></div>
-                    <div class="searchBar">
+                    <div class="searchBar" @click="detectSearchNeed">
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
                     <a title="Ajouter pour suggestion ultérieure">
@@ -425,11 +425,23 @@ const username = ref()
 const password = ref()
 const [token, loginRemote] = login_hook_remote()
 const emptyToken = ref(true)
-// Functions
 const tokenState = reactive({
     'connected': false,
     'lastValid': null
 })
+
+// Functions
+const detectSearchNeed = ()=>{
+    console.log("It is obvious that you want to Search.")
+    console.log("The lastValid: " + tokenState.lastValid)
+
+    const differentTime = new Date().getTime() -  new Date(tokenState.lastValid).getTime()
+    const minutes = new Date(differentTime)?.getMinutes()
+    console.log("The minutes: " + minutes)
+    if (minutes > 0){
+        tokenState.connected = false
+    }
+}
 const connectAPI = ()=>{
     // check if there is the token
     // request the username and password from local
@@ -912,7 +924,7 @@ const getUmuti = (umuti) => {
         activeLot.value = strDate(temp_lot)
         need_to_updade.value = false
     }
-    console.log("THe selected umuti: ", selectedUmuti.value)
+    // console.log("THe selected umuti: ", selectedUmuti.value)
 }
 const show_suggest = (e)=>{
     console.log("You entered assureur: ", e.target.value)
@@ -929,14 +941,14 @@ watch(login_initiator, ()=>{
     loginRemote(toValue(username), toValue(password))
 })
 watch(token, (value)=>{
-    console.log("The token gotten: " + value)
+    // console.log("The token gotten: " + value)
     tokenState.connected = true;
     tokenState.lastValid = new Date();
 })
 watch(infos, (value)=>{
     username.value = value?.response?.remote_username
     password.value = value?.response?.remote_password
-    console.log("u: " + username.value + " p: " + password.value)
+    // console.log("u: " + username.value + " p: " + password.value)
     login_initiator.value += 1
 })
 watch(getCounter, (val)=>{
