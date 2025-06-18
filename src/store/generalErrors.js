@@ -17,8 +17,13 @@ export const useError500 = defineStore('error500', ()=>{
     const setError500True = ()=>{
         error.value = true;
     }
-    const setError500Msg = ()=>{
-        errorMessage.value = `Une erreur est survenu. Contactez nsanzumukizath@gmail.com  et signaler ce code 500.`;
+    const setError500Msg = (value)=>{
+        if (!value){
+            errorMessage.value = `Une erreur est survenu. Contactez nsanzumukizath@gmail.com  et signaler ce code 500.`;
+        }else{
+            errorMessage.value = value
+        }
+        
     }
     const clearError500 = ()=>{
         error.value = false;

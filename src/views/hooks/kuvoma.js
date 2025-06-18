@@ -387,6 +387,9 @@ export function login_hook_remote (){
         setAccessTokenRemote,
         setRefreshTokenRemote
      } = useUserStore()
+    const { getError500,
+        setError500True, setError500Msg 
+    } = useError500()
     const prefix = "api/login/";
     
     
@@ -406,7 +409,8 @@ export function login_hook_remote (){
                 token.value = await response.json()
             }
         } catch(value){
-            useError500()
+            setError500True();
+            setError500Msg("Problème de Connexion.");
         }
         if (token.value){
             setAccessTokenRemote(JSON.stringify(token.value.access))
