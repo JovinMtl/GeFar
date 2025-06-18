@@ -251,7 +251,7 @@
                 </div>
 
                 <div title="Connecter" 
-                    class="m-l-b" :class="tokenState.connected ? 'bg-o':'bg-l'"
+                    class="m-l-b" :class="tokenState.connected ? 'bg-o':'bg-b-1'"
                     @click="connectAPI">
                 </div>
             </div>
