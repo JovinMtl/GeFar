@@ -397,7 +397,9 @@ const [rep_update, kurungika] = useKurungika(bothData.value, url_syncFromLocal)
 
 const url_sell: string = "api/out/sell/"
 const [sell_report, toSell] = useKurungika(panier_api, url_sell)
-const { getUsername,getAccessToken, setUsername,
+const { getUsername,getAccessToken, 
+    getAccessTokenRemote,
+    setUsername,
     setAccessToken, setRefreshToken } = useUserStore()
 
 
@@ -406,7 +408,7 @@ const inputData = ref(null)
 const [report_achat, sendFileDataLoaded] = useKurungika(inputData.value, url_achat)
 
 const url_request_collection = "api/gOps/request_collection/"
-const [collection, requestCollection] = useKurungika(getAccessToken, url_request_collection)
+const [collection, requestCollection] = useKurungika(getAccessTokenRemote, url_request_collection)
 
 const actualPortion = ref()
 const url_update_collection = "api/in/updateCollection/"
@@ -936,13 +938,6 @@ watch(infos, (value)=>{
     password.value = value?.response?.remote_password
     console.log("u: " + username.value + " p: " + password.value)
     login_initiator.value += 1
-})
-watch(collection, (reponse)=>{
-    if (reponse){
-        collectionLength.value = reponse?.counter ?? 0
-        choirMaster(collectionLength.value)
-        
-    }
 })
 watch(getCounter, (val)=>{
     listImiti_update.value += 1  // Triggering update in list-imiti component

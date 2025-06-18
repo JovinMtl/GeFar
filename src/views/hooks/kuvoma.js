@@ -147,6 +147,7 @@ export function useKurungika(
 
                 try {
                     const dataToSend = toValue(imitiArray)
+                    console.log("useKurungika sends: " + dataToSend)
                     const response = await fetch(`${baseURL}/${prefix}`, {
                         method: "POST",
                         headers: {
@@ -380,18 +381,21 @@ export function useAskPriviledge() {
     return [isAdmin, askPriviledge];
 }
 
+const token = ref('')
 export function login_hook_remote (){
+    const { 
+        setAccessTokenRemote,
+        setRefreshTokenRemote
+     } = useUserStore()
     const prefix = "api/login/";
-    const token = ref('')
+    
     
     const connect = async (username, password)=>{
-        console.log("Calling login_hook_remote with: " + toValue(username) + ":" + toValue(password))
         try{
             const response = await fetch(`${remoteURL}/${prefix}`,{
                 method: 'POST',
                 headers: {
                     "Content-type": "application/json",
-                    // Authorization: "Bearer " + getRefreshToken(),
                 },
                 body: JSON.stringify({
                     "username": toValue(username),
@@ -399,12 +403,14 @@ export function login_hook_remote (){
                 })
             })
             if (response.ok){
-                token.value = response.data.access
-                setAccessTokenRemote(response.data.access)
-                setRefreshTokenRemote(response.data.refresh)
+                token.value = await response.json()
             }
         } catch(value){
             useError500()
+        }
+        if (token.value){
+            setAccessTokenRemote(JSON.stringify(token.value.access))
+            setRefreshTokenRemote(token.value.refresh)
         }
     }
     return [token, connect]
