@@ -205,7 +205,7 @@
                             {{ useCapitalLetter((String(getUsername())).slice(0, 10)) }}
                         </a>
                     </div>
-                    <div class="menuHau sync">
+                    <div v-show="tokenState.connected" class="menuHau sync">
                         <a title="ku Mwanya (Sync)" class="c-b c-w" :class="collectionLength ? 'c-g-1':''">
                             <!-- <fluent-cloud-sync28-regular @click="askIndex">
                             </fluent-cloud-sync28-regular> -->
