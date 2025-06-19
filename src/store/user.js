@@ -33,7 +33,7 @@ export const useUserStore = defineStore('user', ()=>{
     }
 
     const getAccessTokenRemote = ()=>{
-        return accessTokenRemote.value
+        return String(accessTokenRemote.value).slice(1,-1)
     }
     const getRefreshTokenRemote = ()=>{
         return refreshTokenRemote.value

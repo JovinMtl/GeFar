@@ -181,8 +181,8 @@
                     <div class="searchBar" @click="detectSearchNeed">
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
-                    <a title="Ajouter pour suggestion ultérieure">
-                        <div class="addElement" v-if="umuti_new" @click="noteUmuti">
+                    <a :title="'Chercher ' + JSON.stringify(query_search?.value?.query) +  ' sur le réseau.'">
+                        <div class="addElement" v-if="umuti_new" @click="searchRemote">
                             <ion-icon :src="add"></ion-icon>
                         </div>
                     </a>
@@ -376,7 +376,13 @@ const fullDecimal: Ref<number> = ref(10)
 const clientName: Ref<string> = ref('')
 const collectionLength = ref(0)
 const login_initiator = ref(0)
-
+const username = ref()
+const password = ref()
+const emptyToken = ref(true)
+const tokenState = reactive({
+    'connected': false,
+    'lastValid': null
+})
 // Store
 const { getCounter } = useCounter()
 const { getError500, getError500Msg,
@@ -414,21 +420,13 @@ const actualPortion = ref()
 const url_update_collection = "api/in/updateCollection/"
 const [report_update_collection, updateCollection] = useKurungikaRemote(actualPortion,url_update_collection)
 
-// const actualPortion = ref()
-// const url_update_collection = "api/in/updateCollection/"
-// const [report_update_collection, updateCollection] = remoteLogin(actualPortion,url_update_collection)
-
 const url_request_info = "api/gOps2/request_infos/"
 const [infos, requestInfo] = useKuvoma(url_request_info)
 
-const username = ref()
-const password = ref()
 const [token, loginRemote] = login_hook_remote()
-const emptyToken = ref(true)
-const tokenState = reactive({
-    'connected': false,
-    'lastValid': null
-})
+
+const url_search_remote = "api/gOps/search_meds/"
+const [resp_search_remote, searchRemote] = useKurungikaRemote(query_search, url_search_remote)
 
 // Functions
 const detectSearchNeed = ()=>{
@@ -451,13 +449,6 @@ const connectAPI = ()=>{
     } else{
         console.log("not asking infos because: ")
     }
-    
-
-    // submit the logins to the remote server
-    // nextTick(()=>{
-    //     loginRemote()
-    // })
-    
 }
 const reOpenApprov = ()=>{
     // should close it and reopen it in next tick.
@@ -937,6 +928,9 @@ const shouldPop = ref(false)
 
 
 // Watchers
+watch(resp_search_remote, (value)=>{
+    console.log("The response from searchRemote: " + JSON.stringify(value))
+})
 watch(login_initiator, ()=>{
     loginRemote(toValue(username), toValue(password))
 })
