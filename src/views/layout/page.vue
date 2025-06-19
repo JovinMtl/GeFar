@@ -182,7 +182,7 @@
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
                     <a :title="'Chercher ' + JSON.stringify(query_search?.value?.query) +  ' sur le réseau.'">
-                        <div v-show="tokenState.connected" class="addElement clk" v-if="umuti_new" @click="searchRemote">
+                        <div v-show="tokenState.connected" class="addElement clk" v-if="umuti_new || canSearchRemote" @click="searchRemote">
                             <ion-icon :src="searchOutline"></ion-icon>
                         </div>
                     </a>
@@ -383,6 +383,7 @@ const tokenState = reactive({
     'connected': false,
     'lastValid': null
 })
+const canSearchRemote = ref(false)
 // Store
 const { getCounter } = useCounter()
 const { getError500, getError500Msg,
@@ -520,22 +521,7 @@ const logout = () => {
     localStorage.setItem('refreshToken', '')
     router.push('/')
 }
-const noteUmuti = async () => {
-    server_process.value = true
-    let response = await useNoteUmuti(query_search.value.query)
-    if (response.ok) {
-        console.log("Reussi")
-        umuti_new.value = false
-        server_process.value = false
-    } else {
-        console.log("Echoue")
 
-    }
-    umuti_new.value = false // in case of success
-    server_process.value = false
-    clear_search.value = 2 // in case of success
-
-}
 const alertUmutiNew = async (value) => {
     // send that value to the url endpoint, it is the latter to decide
     // wether to keep it or not
@@ -559,6 +545,13 @@ const closeFacture = () => {
 }
 const SearchBarManager = (value) => {
     query_search.value = value
+    const query = JSON.stringify(value.query)
+    console.log("The length of the query: " + String(query).length + ": " + query)
+    if (String(query).length >= 5){ // wanted 3 + two double quotes = 5 chars
+        canSearchRemote.value = true
+    } else{
+        canSearchRemote.value = false
+    }
 }
 const requestUpload = () => {
     umuti_single.value = !umuti_single.value
