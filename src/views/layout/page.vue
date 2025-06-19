@@ -182,8 +182,8 @@
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
                     <a :title="'Chercher ' + JSON.stringify(query_search?.value?.query) +  ' sur le réseau.'">
-                        <div class="addElement" v-if="umuti_new" @click="searchRemote">
-                            <ion-icon :src="add"></ion-icon>
+                        <div v-show="tokenState.connected" class="addElement clk" v-if="umuti_new" @click="searchRemote">
+                            <ion-icon :src="searchOutline"></ion-icon>
                         </div>
                     </a>
                     <div class="namePharma nm-p2 nm-s2">
@@ -304,7 +304,7 @@ import {
 } from '@ionic/vue';
 import {
     close, addCircleOutline, removeCircleOutline, magnetOutline,
-    add, exitOutline, syncOutline
+    add, exitOutline, syncOutline, searchOutline
 } from 'ionicons/icons'
 import { 
     Lot, clInfo, Medi, DataToAPI, 
