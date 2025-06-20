@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
-                        <list-imiti v-if="! useRemoteResults" @actualUmuti="getUmuti" @allImiti="getAllImiti"
+                        <list-imiti v-if="(! useRemoteResults) || (!tokenState.connected && useRemoteResults)" @actualUmuti="getUmuti" @allImiti="getAllImiti"
                             @emptyResult="alertUmutiNew" @families="getFamilies"
                             @numbered="getImitiLength"></list-imiti>
                         
