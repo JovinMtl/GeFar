@@ -13,7 +13,7 @@
                         <div class="umutiPrice-1">
                         {{ useReadableNumber(umuti.price) }}
                     </div>
-                        <div class="umutiPrice-2" :class="umuti.quantite_restant > 0 ? '':'c-danger'">
+                        <div class="umutiPrice-2" :class="umuti.qte > 0 ? '':'c-danger'">
                             <span >
                                 {{ Number(umuti.qte) }}
                             </span>
@@ -41,12 +41,12 @@
 .umuti {
     width: 10vw;
     height: 14vh;
-    background-color: black;
+    background-color: rgb(0, 102, 128);
+    color: black;
     border-radius: 15px;
     padding: 0px 5px;
     margin: 10px 5px;
     /* Space between imiti */
-    box-shadow: 0 0 20px black;
     transition-delay: 0.1s;
     transition-property: all;
 }
