@@ -68,9 +68,13 @@
                         </div>
                     </div>
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
-                        <list-imiti @actualUmuti="getUmuti" @allImiti="getAllImiti"
+                        <list-imiti v-if="! useRemoteResults" @actualUmuti="getUmuti" @allImiti="getAllImiti"
                             @emptyResult="alertUmutiNew" @families="getFamilies"
                             @numbered="getImitiLength"></list-imiti>
+                        
+                        <list-imiti-remote v-else :imitiRemote="resp_search_remote"
+                            @numbered="getImitiLength">
+                        </list-imiti-remote>
                     </div>
                     <div :class="selectedUmuti.value ? '':'noDisp'" class="sectA-side">
                         <!-- details for selected umuti should appeal here -->
@@ -181,9 +185,9 @@
                     <div class="searchBar" @click="detectSearchNeed">
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
-                    <a :title="useRemoteResults ? 'click-droit pour annuler': 'Chercher ' + JSON.stringify(query_search?.value?.query) +  ' sur le réseau.'">
+                    <a :title="useRemoteResults ? 'click-droit pour annuler.': 'Chercher ' + JSON.stringify(query_search?.value?.query) +  ' sur le réseau.'">
                         <div v-show="tokenState.connected" class="addElement clk" v-if="umuti_new || canSearchRemote" 
-                            @click="searchRemote" @contextmenu="tokenState.connected=false">
+                            @click="searchRemote" @contextmenu="useRemoteResults=false">
                             <ion-icon :src="searchOutline"></ion-icon>
                         </div>
                     </a>
@@ -300,6 +304,7 @@ import dashBoard from '@/views/dashBoard.vue';
 import reduCtion from '../operations/reduction/redu-ction.vue';
 
 const listImiti = defineAsyncComponent(() => import('../operations/list-imiti.vue'))
+const listImitiRemote = defineAsyncComponent(() => import('../operations/list-imitiRemote.vue'))
 import {
     IonContent, IonPage, IonIcon,
 } from '@ionic/vue';
@@ -1076,6 +1081,8 @@ watch(sell_report, value => {
         console.log("Le facturier: ", show_facture.value)
     }
 })
+// provide
+provide('imitiFromServer', resp_search_remote?.value?.response ?? resp_search_remote) // in list-imiti component
 provide('needUpdate_list', need_to_updade) // in list-imiti component
 provide('needSearch', query_search) // in list-imiti component
 provide('needUpdate_server', listImiti_update) // in list-imiti component
