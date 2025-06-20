@@ -181,8 +181,9 @@
                     <div class="searchBar" @click="detectSearchNeed">
                         <sea-rch @valueSearch="SearchBarManager"></sea-rch>
                     </div>
-                    <a :title="'Chercher ' + JSON.stringify(query_search?.value?.query) +  ' sur le réseau.'">
-                        <div v-show="tokenState.connected" class="addElement clk" v-if="umuti_new || canSearchRemote" @click="searchRemote">
+                    <a :title="useRemoteResults ? 'click-droit pour annuler': 'Chercher ' + JSON.stringify(query_search?.value?.query) +  ' sur le réseau.'">
+                        <div v-show="tokenState.connected" class="addElement clk" v-if="umuti_new || canSearchRemote" 
+                            @click="searchRemote" @contextmenu="tokenState.connected=false">
                             <ion-icon :src="searchOutline"></ion-icon>
                         </div>
                     </a>
@@ -384,6 +385,7 @@ const tokenState = reactive({
     'lastValid': null
 })
 const canSearchRemote = ref(false)
+const useRemoteResults = ref(false)
 // Store
 const { getCounter } = useCounter()
 const { getError500, getError500Msg,
@@ -923,6 +925,7 @@ const shouldPop = ref(false)
 // Watchers
 watch(resp_search_remote, (value)=>{
     console.log("The response from searchRemote: " + JSON.stringify(value))
+    useRemoteResults.value = true
 })
 watch(login_initiator, ()=>{
     loginRemote(toValue(username), toValue(password))
