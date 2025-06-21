@@ -2,17 +2,17 @@
     <div>
         <div v-for="(umuti, index) in imitiset" v-show="umuti.nom_med" style="display: inline-block ;"
             :key="index">
-            <a :title="umuti.nom_med" href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
-                <div :id="index" class="umuti">
+            <a href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
+                <div :title="umuti.nom_med" :id="index" class="umuti">
                     <div class="umutiTitle sm-title">
                         {{ useCapitalLetter((umuti.nom_med).slice(0, 15)) }}<span v-show="(umuti.nom_med).length > 15">...</span>
 
                     </div>
 
-                    <div class="umutiPrice">
+                    <div :title="displayPharma(umuti.owner)?.name_pharma" class="umutiPrice">
                         <div class="umutiPrice-1">
                         {{ useReadableNumber(umuti.price) }}
-                    </div>
+                        </div>
                         <div class="umutiPrice-2" :class="umuti.qte > 0 ? '':'c-danger'">
                             <span >
                                 {{ Number(umuti.qte) }}
@@ -30,12 +30,27 @@
     import { ref } from 'vue'
     import { useCapitalLetter } from '../hooks/useReadable.js'
     import useReadableNumber from '../hooks/useReadable.js'
-    
+    import { useKuvomaRemote } from '../hooks/kuvomaRemote.js'
+
+
     const props = defineProps(['imitiRemote'])
 
+
+
+    const url_getPharma = "api/gOps/get_pharmas/"
+    const [resp_pharma, getPharma] = useKuvomaRemote(url_getPharma)
+
+    // Initializations
+    getPharma()
     const imitiset = ref(props.imitiRemote?.response)
 
-    console.log("The imiti from Remote: " + JSON.stringify(props.imitiRemote?.response))
+    // Functions
+    const displayPharma = (id)=>{
+        if (resp_pharma.value?.response){
+            console.log("Displaying for ID:"+id + "==>" + JSON.stringify(resp_pharma.value?.response[id]))
+            return resp_pharma.value?.response[id]
+        }
+    }
 </script>
 <style scoped>
 .umuti {
