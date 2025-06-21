@@ -9,7 +9,12 @@
 
                     </div>
 
-                    <div :title="displayPharma(umuti.owner)?.name_pharma" class="umutiPrice">
+                    <div :title="displayPharma(umuti.owner)?.name_pharma + ' : ' + 
+                                displayPharma(umuti.owner)?.loc_street + '/' + 
+                                displayPharma(umuti.owner)?.loc_quarter + '/' + 
+                                displayPharma(umuti.owner)?.loc_commune + '/' + 
+                                displayPharma(umuti.owner)?.loc_Province + '. Tel: ' + 
+                                displayPharma(umuti.owner)?.tel" class="umutiPrice">
                         <div class="umutiPrice-1">
                         {{ useReadableNumber(umuti.price) }}
                         </div>
