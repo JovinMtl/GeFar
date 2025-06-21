@@ -2,7 +2,7 @@
     <div>
         <div v-for="(umuti, index) in imitiset" v-show="umuti.nom_med" style="display: inline-block ;"
             :key="index">
-            <a href="http://" target="_blank" rel="noopener noreferrer" class="umutiContent">
+            <a target="_blank" rel="noopener noreferrer" class="umutiContent">
                 <div :title="umuti.nom_med" :id="index" class="umuti">
                     <div class="umutiTitle sm-title">
                         {{ useCapitalLetter((umuti.nom_med).slice(0, 15)) }}<span v-show="(umuti.nom_med).length > 15">...</span>
