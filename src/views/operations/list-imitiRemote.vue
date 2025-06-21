@@ -18,7 +18,8 @@
                         <div class="umutiPrice-1">
                         {{ useReadableNumber(umuti.price) }}
                         </div>
-                        <div class="umutiPrice-2" :class="umuti.qte > 0 ? '':'c-danger'">
+                        <div :title="String(displayPharma(umuti.owner)?.last_connected).slice(0,16)"
+                            class="umutiPrice-2" :class="umuti.qte > 0 ? '':'c-danger'">
                             <span >
                                 {{ Number(umuti.qte) }}
                             </span>
