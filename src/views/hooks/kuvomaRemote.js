@@ -11,26 +11,26 @@ const isAdmin = ref(false);
 
 
 async function refreshTokenRemote(){
-    const { getRefreshToken, setAccessToken } = useUserStore();
+    const { getRefreshTokenRemote, setAccessTokenRemote } = useUserStore();
     // console.log("Using RefreshToken: " + getRefreshToken())
     const prefix = 'api/refresh/'
 
     try{
         let newToken = ''
-        const response = await fetch(`${baseURL}/${prefix}`,{
+        const response = await fetch(`${remoteURL}/${prefix}`,{
             method: "POST",
             headers: {
                 "Content-type": "application/json",
                 // Authorization: "Bearer " + getRefreshToken(),
             },
             body: JSON.stringify({
-                'refresh': getRefreshToken()
+                'refresh': getRefreshTokenRemote()
             })
         });
         newToken = await response.json()
         if (response.ok){
             // console.log("The new access Token: " + newToken.access)
-            setAccessToken(newToken.access)
+            setAccessTokenRemote(newToken.access)
             console.log("Refresh done successfully.")
         } else{
             console.warn("No new access token: " + newToken)
@@ -44,10 +44,10 @@ async function refreshTokenRemote(){
 
 export function useKuvomaRemote(prefix, remote = "") {
     const data = ref(null);
-    const { getAccessToken } = useUserStore();
+    const { getAccessTokenRemote } = useUserStore();
 
     const kuvomaImiti = async (val='', val2='', isFilter=false) => {
-        if (!getAccessToken()){
+        if (!getAccessTokenRemote()){
             return 0
         }
         // const base = '//127.0.0.1:8002'
@@ -64,7 +64,7 @@ export function useKuvomaRemote(prefix, remote = "") {
             }
             response = await fetch(`${url}`, {
                 headers: {
-                    Authorization: "Bearer " + getAccessToken(),
+                    Authorization: "Bearer " + getAccessTokenRemote(),
                 },
             });
 
@@ -72,7 +72,7 @@ export function useKuvomaRemote(prefix, remote = "") {
                 data.value = await response.json();
             }  else{
                 // console.log("The response is not OK")
-                refreshToken()
+                refreshTokenRemote()
                 let secondData = kuvomaImiti()
                 // console.log("The returned secondData: " + secondData[0])
                 data.value = secondData
