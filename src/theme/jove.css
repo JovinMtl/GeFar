@@ -515,6 +515,9 @@ html, body {
 .bg-o{
     background-color: orange;
 }
+.bg-b2{
+    background: rgb(0, 102, 128);
+}
 .bg-b{
     background-color: rgb(86, 105, 211);
 }
