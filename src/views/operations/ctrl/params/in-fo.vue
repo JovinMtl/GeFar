@@ -86,19 +86,36 @@
        
     </div>
     <div> 
-        <button class="clk">Confirmer</button>
+        <button v-show="isLoggedIn" class="clk" @click="callToUpdateRemote">Confirmer</button>
     </div>
 </template>
 <script setup lang="ts">
 import { reactive, ref, watch } from 'vue';
-import { useKuvoma } from '../../../hooks/kuvoma';
-import { useKurungikaRemote } from '../../../hooks/kuvoma';
+import { useKuvoma, useKurungikaRemote } from '../../../hooks/kuvoma';
+// import { useKurungikaRemote } from '../../../hooks/kuvoma';
+import { useUserStore } from '../../../../store/user';
 
 const data = reactive({})
+const { getAccessTokenRemote } = useUserStore()
+const isLoggedIn = ref(false)
 
 const url_request_info = "api/gOps2/request_infos/"
 const [infos, requestInfo] = useKuvoma(url_request_info)
+
+
+const url_updata_info_remote = "api/in/update_infos/"
+const [resp_update_remote, updateInfoRemote] = useKurungikaRemote(data, url_updata_info_remote)
+
 requestInfo()
+if (String(getAccessTokenRemote()).length > 15){
+        isLoggedIn.value = true;
+    }
+
+//Functions
+const callToUpdateRemote = ()=>{
+    updateInfoRemote()
+    console.log("Called updateInfoRemote")
+}
 
 //watchers
 watch(infos, (value)=>{
