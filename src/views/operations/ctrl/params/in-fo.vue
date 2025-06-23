@@ -1,13 +1,15 @@
 <template>
     <div class="info-class">
         <table>
+            <caption> <h4>Votre visibilité sur le réseau</h4>
+                </caption>
             <thead>
                 <tr>
                     <td>
                         <label for="">
                             Nom
                         </label>
-                        <input type="text" placeholder="Nom de Pharmacie"/>
+                        <input type="text" placeholder="Nom de la Pharmacie"/>
                     </td>
                 </tr>
             </thead>
@@ -59,7 +61,7 @@
                         <label for="">
                             Mot de passe
                         </label>
-                        <input type="text" placeholder="_"/>
+                        <input type="password" placeholder="_"/>
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +69,7 @@
                         <label for="">
                             Mot de passe
                         </label>
-                        <input type="text" placeholder="_"/>
+                        <input type="password" placeholder="_"/>
                     </td>
                 </tr>
             </tfoot>
@@ -105,5 +107,12 @@ label{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     padding-left: 5px;
+    font-size: 0.9rem;
+}
+.clk{
+    transition: 800ms;
+}
+h4{
+    text-align: right;
 }
 </style>
