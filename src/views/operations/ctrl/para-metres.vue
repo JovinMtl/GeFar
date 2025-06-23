@@ -6,6 +6,7 @@
          <nav>
             <button @click="selectSetting('prInteret')">Principe Intéret</button>
             <button @click="selectSetting('hauteVue')">Haute Vue</button>
+            <button @click="selectSetting('inFo')">infos</button>
             <!-- <button @click="selectSetting('tauxChange')">Taux de Change</button> -->
             <!-- <button @click="selectSetting('clssThera')">Prix de Vente</button> -->
             <button @click="selectSetting('assuRances')">Assurances</button>
@@ -21,6 +22,7 @@
                 <clssThera v-if="actualComponent=='clssThera'" />
                 <assuRances v-if="actualComponent=='assuRances'" />
                 <utiliSateurs v-if="actualComponent=='utiliSateurs'" />
+                <inFo v-if="actualComponent=='inFo'" />
             </div>
          </section>
                             
@@ -35,6 +37,7 @@
     import clssThera from './params/clss-thera.vue';
     import assuRances from './params/assu-rances.vue';
     import utiliSateurs from './params/utili-sateurs.vue';
+    import inFo from './params/in-fo.vue';
 
     const actualComponent = ref<string|any>(null)
 
