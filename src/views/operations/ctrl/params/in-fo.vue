@@ -86,11 +86,18 @@
        
     </div>
     <div> 
-        <button v-show="isLoggedIn" class="clk" @click="callToUpdateRemote">Confirmer</button>
+        <button
+            class="clk"
+            :class="isLoggedIn ? '':'bg-r'"
+            @click="callToUpdateRemote">
+            <span v-if="isLoggedIn">Confirmer</span>
+            <span v-else>Veuillez assurer la connexion</span>
+            
+        </button>
     </div>
 </template>
 <script setup lang="ts">
-import { reactive, ref, watch } from 'vue';
+import { reactive, ref, toValue, watch } from 'vue';
 import { useKuvoma, useKurungikaRemote } from '../../../hooks/kuvoma';
 // import { useKurungikaRemote } from '../../../hooks/kuvoma';
 import { useUserStore } from '../../../../store/user';
@@ -113,8 +120,10 @@ if (String(getAccessTokenRemote()).length > 15){
 
 //Functions
 const callToUpdateRemote = ()=>{
-    updateInfoRemote()
-    console.log("Called updateInfoRemote")
+    if (toValue(isLoggedIn)){
+        updateInfoRemote()
+        console.log("Called updateInfoRemote")
+    }
 }
 
 //watchers
