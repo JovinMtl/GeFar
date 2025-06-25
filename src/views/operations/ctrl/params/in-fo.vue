@@ -98,7 +98,7 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref, toValue, watch } from 'vue';
-import { useKuvoma, useKurungikaRemote } from '../../../hooks/kuvoma';
+import { useKuvoma, useKurungikaRemote, useKurungika } from '../../../hooks/kuvoma';
 // import { useKurungikaRemote } from '../../../hooks/kuvoma';
 import { useUserStore } from '../../../../store/user';
 
@@ -110,8 +110,11 @@ const url_request_info = "api/gOps2/request_infos/"
 const [infos, requestInfo] = useKuvoma(url_request_info)
 
 
-const url_updata_info_remote = "api/in/update_infos/"
-const [resp_update_remote, updateInfoRemote] = useKurungikaRemote(data, url_updata_info_remote)
+const url_update_info_remote = "api/in/update_infos/"
+const [resp_update_remote, updateInfoRemote] = useKurungikaRemote(data, url_update_info_remote)
+
+const url_update_info_local = "api/gOps2/update_infos/"
+const [resp_update_local, updateInfoLocal] = useKurungika(data, url_update_info_local)
 
 requestInfo()
 if (String(getAccessTokenRemote()).length > 15){
@@ -127,6 +130,14 @@ const callToUpdateRemote = ()=>{
 }
 
 //watchers
+watch(resp_update_remote, (value)=>{
+    if(value?.code_pharma){
+        data.code_pharma = value?.code_pharma
+        updateInfoLocal()
+    }else if (value?.updated==200){
+        updateInfoLocal()
+    }
+})
 watch(infos, (value)=>{
     data.name_pharma = value.response.name_pharma
     data.tel = value.response.tel
@@ -136,6 +147,7 @@ watch(infos, (value)=>{
     data.loc_Province = value.response.loc_Province
     data.remote_password = value.response.remote_password
     data.remote_password2 = value.response.remote_password
+    data.code_pharma = value.response.code_pharma
     console.log("infos got: " + JSON.stringify(data.name_pharma))
 })
 </script>
