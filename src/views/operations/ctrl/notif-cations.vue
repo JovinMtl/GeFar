@@ -43,7 +43,7 @@
                 <div class="elt contentElement4 famille_med">
                     <!-- {{ umuti.code_med }} -->
                       <!-- 3 -->
-                       {{ users.response[umuti.who_did_it] }} : 
+                       {{ users?.response[umuti.who_did_it] }} : 
                        {{ umuti.who_did_it }}
                 </div>
                 
