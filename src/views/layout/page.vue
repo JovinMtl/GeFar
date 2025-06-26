@@ -270,7 +270,8 @@ import {
     defineAsyncComponent,
     reactive, ref, shallowRef,
     watch, provide, computed,
-    toValue, nextTick
+    toValue, nextTick,
+    onMounted
 } from 'vue'
 import type { Ref } from 'vue'
 import { useRouter } from 'vue-router'

@@ -17,6 +17,10 @@
             <button :class="actualComp=='prInte' ? 'bg-g-1 btnEffect':''" @click="setComp('nom')">
                 Nom
             </button>
+            <button :class="actualComp=='derPrix' ? 'bg-g-1 btnEffect':''" @click="setComp('derPrix')">
+                Dernier prix
+            </button>
+            
             <!-- <button>Autre</button> -->
         </div>
         <div>
@@ -27,6 +31,8 @@
                 @quit="closeComp"/>
             <achAt v-if="actualComp=='achat'" :code_med="actualId"/>
             <updateNom v-if="actualComp=='nom'" :code_med="actualId"
+                @quit="closeComp"/>
+            <derPrix v-if="actualComp=='derPrix'" :code_med="actualId"
                 @quit="closeComp"/>
         </div>
     </div>
@@ -40,6 +46,7 @@ import compIled from './htv/comp-iled.vue'
 import prInte from './htv/pr-inte.vue'
 import achAt from './htv/ach-at.vue'
 import updateNom from './htv/update-nom.vue'
+import derPrix from './htv/der-prix.vue'
 
 const actualId:Ref<string> = ref('')
 const actualComp:Ref<string> = ref('')

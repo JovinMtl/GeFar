@@ -9,8 +9,8 @@
             <button @click="selectSetting('inFo')">infos</button>
             <!-- <button @click="selectSetting('tauxChange')">Taux de Change</button> -->
             <!-- <button @click="selectSetting('clssThera')">Prix de Vente</button> -->
-            <button @click="selectSetting('assuRances')">Assurances</button>
-            <button @click="selectSetting('ut')">Utilisateurs</button>
+            <!-- <button @click="selectSetting('assuRances')">Assurances</button>
+            <button @click="selectSetting('ut')">Utilisateurs</button> -->
          </nav>
          <section  id="paraContainer" >
             <div>
