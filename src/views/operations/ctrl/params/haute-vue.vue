@@ -10,11 +10,11 @@
                 @click="setComp('compile')">
                 1 + 0,2
             </button>
-            <button :class="actualComp=='prInte' ? 'bg-g-1 btnEffect':''" @click="setComp('prInte')">
+            <button v-if="isAdmin" :class="actualComp=='prInte' ? 'bg-g-1 btnEffect':''" @click="setComp('prInte')">
                 Pr Intéret
             </button>
-            <button :class="actualComp=='achat' ? 'bg-g-1 btnEffect':''" @click="setComp('achat')">Achats</button>
-            <button :class="actualComp=='prInte' ? 'bg-g-1 btnEffect':''" @click="setComp('nom')">
+            <button v-if="isAdmin" :class="actualComp=='achat' ? 'bg-g-1 btnEffect':''" @click="setComp('achat')">Achats</button>
+            <button v-if="isAdmin" :class="actualComp=='prInte' ? 'bg-g-1 btnEffect':''" @click="setComp('nom')">
                 Nom
             </button>
             <button :class="actualComp=='derPrix' ? 'bg-g-1 btnEffect':''" @click="setComp('derPrix')">
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 import type { Ref } from 'vue'
 
 import compIled from './htv/comp-iled.vue'
@@ -50,6 +50,8 @@ import derPrix from './htv/der-prix.vue'
 
 const actualId:Ref<string> = ref('')
 const actualComp:Ref<string> = ref('')
+
+const isAdmin = inject('admin')
 
     // Functions
 const closeComp = ()=>{

@@ -251,7 +251,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toValue, computed, nextTick } from 'vue'
+import { ref, watch, toValue, computed, nextTick, inject, provide } from 'vue'
 import type { Ref } from 'vue'
 import { IonIcon } from '@ionic/vue'
 import { 
@@ -740,6 +740,8 @@ const refreshVente = ()=>{
         title_operation.value = "Bons"
     }, 0)
 }
+
+provide('admin', isAdmin?.value)
 </script>
 
 <style scoped>

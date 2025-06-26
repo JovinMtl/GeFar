@@ -17,7 +17,9 @@
                 <!-- <component :is="actualComponent"></component> -->
 
                 <prInteret v-if="actualComponent=='prInteret'" @quit="closeComp"/>
-                <hauteVue v-if="actualComponent=='hauteVue'"/>
+                <hauteVue 
+
+                    v-if="actualComponent=='hauteVue'"/>
                 <!-- <tauxChange v-if="actualComponent=='tauxChange'" /> -->
                 <clssThera v-if="actualComponent=='clssThera'" />
                 <assuRances v-if="actualComponent=='assuRances'" />
@@ -30,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref, inject } from 'vue'
     import prInteret from './params/pr-interet.vue';
     import hauteVue from './params/haute-vue.vue';
     // import tauxChange from './params/taux-change.vue';
@@ -42,7 +44,7 @@
     const props = defineProps(['admin'])
 
     const actualComponent = ref<string|any>(null)
-    const isAdmin = props['admin']
+    const isAdmin = inject('admin')
 
     console.log("In parametres we have isAdmin: " + JSON.stringify(isAdmin))
     // Functions
