@@ -4,9 +4,9 @@
         <!-- Different settings will appear here
          as individual components -->
          <nav>
-            <button @click="selectSetting('prInteret')">Principe Intéret</button>
+            <button v-if="isAdmin" @click="selectSetting('prInteret')">Principe Intéret</button>
             <button @click="selectSetting('hauteVue')">Haute Vue</button>
-            <button @click="selectSetting('inFo')">infos</button>
+            <button v-if="isAdmin" @click="selectSetting('inFo')">infos</button>
             <!-- <button @click="selectSetting('tauxChange')">Taux de Change</button> -->
             <!-- <button @click="selectSetting('clssThera')">Prix de Vente</button> -->
             <!-- <button @click="selectSetting('assuRances')">Assurances</button>
@@ -39,8 +39,12 @@
     import utiliSateurs from './params/utili-sateurs.vue';
     import inFo from './params/in-fo.vue';
 
-    const actualComponent = ref<string|any>(null)
+    const props = defineProps(['admin'])
 
+    const actualComponent = ref<string|any>(null)
+    const isAdmin = props['admin']
+
+    console.log("In parametres we have isAdmin: " + JSON.stringify(isAdmin))
     // Functions
     const closeComp = ()=>{
         actualComponent.value = ""
