@@ -443,6 +443,9 @@ html, body {
     width: 12%;
     justify-content: right;
 }
+.j-c{
+    justify-content: center;
+}
 .elt5{
     width: 8%;
     justify-content: right;

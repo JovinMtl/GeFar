@@ -10,7 +10,7 @@
                 <div class="elt contentElement2-1">
                     Nom du Med.
                 </div> 
-                <div class="elt contentElement4">
+                <div class="elt contentElement4 j-c">
                     Heure
                 </div>
                 <div class="elt contentElement4">
