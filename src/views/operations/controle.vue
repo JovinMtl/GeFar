@@ -117,8 +117,13 @@
                 </div>
 
                 <div class="logoMenu c-b" @click="setPassword">
-                    <ion-icon :src="lockClosedOutline" class="logoIcon"></ion-icon>
+                    <ion-icon :src="lockClosed" class="logoIcon"></ion-icon>
                     <span class="textMenu textMenu-p t-m-skin">Mot de passe</span>
+                </div>
+
+                <div class="logoMenu c-b" @click="recorded_operations">
+                    <ion-icon :src="trashBin" class="logoIcon"></ion-icon>
+                    <span class="textMenu textMenu-p t-m-skin">Pertes</span>
                 </div>
             </div>
             <!-- The dynamic content will be here. -->
@@ -257,8 +262,8 @@ import { IonIcon } from '@ionic/vue'
 import { 
     close, statsChartOutline, snowOutline, thermometer, pricetagOutline,
     calendarClearOutline, libraryOutline,
-    settingsSharp, lockClosedOutline, printOutline, 
-    notifications,
+    settingsSharp, lockClosed, printOutline, 
+    notifications, trashBin
     } from 'ionicons/icons'
 import { useKuvoma, useSearchUmuti, useFilterRange, useAskPriviledge } from '../hooks/kuvoma'
 import cirCle from './circle.vue'
