@@ -51,7 +51,7 @@
                 <div class="elt contentElement2">
                     {{ String(umuti.nom_med).slice(0, 25) }}
                 </div> <div class="elt contentElement3">
-                    {{ umuti.quantite_initial  }}
+                    {{ umuti.quantite_restant  }}
                 </div> 
 
                 <div class="elt contentElement4 famille_med">
