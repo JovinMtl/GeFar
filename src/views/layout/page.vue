@@ -819,12 +819,14 @@ const somme_lote = (): number => {
             date_exp += 1
         }
     })
-    if (somme_qte == 0) {
+    if ((somme_qte == 0) && ( toValue(decimalNumber) == 0)) {
         if (date_exp) {
             somme_qte = 1
         } else {
             somme_qte = 0
         }
+    } else if ((somme_qte == 0) && (toValue(decimalNumber) > 0)){
+        somme_qte = 0
     }
     if (decimalNumber){
         somme_qte += decimalNumber.value / toValue(fullDecimal)
