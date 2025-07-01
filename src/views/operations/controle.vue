@@ -121,7 +121,7 @@
                     <span class="textMenu textMenu-p t-m-skin">Mot de passe</span>
                 </div>
 
-                <div class="logoMenu c-b" @click="recorded_operations">
+                <div class="logoMenu c-b" @click="getPertes">
                     <ion-icon :src="trashBin" class="logoIcon"></ion-icon>
                     <span class="textMenu textMenu-p t-m-skin">Pertes</span>
                 </div>
@@ -184,6 +184,9 @@
 
             <notifCations :med="actual_imitiS" 
                 v-if="title_operation == 'Notifications'"/>
+
+            <notifCations :med="actual_imitiS" 
+                v-if="title_operation == 'Pertes'"/>
             <!-- <printControle v-if="onPrint" /> -->
             
         </div>
@@ -368,6 +371,11 @@ const recorded_operations =  report_operations.bind(
     null, date_debut, date_fin, 
     isFilter) // In case we want additional parameters
 
+const url_pertes = 'api/rep/get_pertes/'
+const [pertes, get_pertes] = useKuvoma(url_pertes)
+const getPertes =  report_operations.bind(
+    null, date_debut, date_fin, 
+    isFilter) // In case we want additional parameters
 
 const suggest_url = 'api/rep/workOn35/'
 const [actual_suggest, ukuvoma_suggest] = useKuvoma(suggest_url)
@@ -436,6 +444,14 @@ const nRoutine = (value)=>{
 
 
 // watchers
+watch(pertes, (value)=>{
+    actual_obj.value = value?.response;
+    actual_imitiS.value = value?.response;
+    searchEable.value = true;
+    actual_opt.value = ['operation', 'who_did_it'];
+    actual_type.value = ['text','text'];
+    title_operation.value = 'Pertes';
+})
 watch(operations, (value)=>{
     actual_obj.value = value?.response;
     actual_imitiS.value = value?.response;
