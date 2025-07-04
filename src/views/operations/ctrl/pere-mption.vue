@@ -51,7 +51,8 @@
                 <div class="elt contentElement2">
                     {{ String(umuti.nom_med).slice(0, 25) }}
                 </div> 
-                <div class="elt contentElement3 deci-nu mk-btn pointer clk" title="Enlever dans le stock">
+                <div :data-scr="umuti.code_med + ';' + umuti.code_operation + ';' + umuti.quantite_restant" class="elt contentElement3 deci-nu mk-btn pointer clk" 
+                    title="Enlever dans le stock" @click="clearRedMed">
                     {{ umuti.quantite_restant  }}
                 </div> 
 
@@ -133,8 +134,13 @@ const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
 
-console.log("THe props: ",actual_imitiS.value[3])
+// console.log("THe props: ",actual_imitiS.value[3])
 
+//Functions
+const clearRedMed = (e)=>{
+    const data = e.target.getAttribute('data-scr')
+    console.log("The src: " + data)
+}
 const updateTotaux = ()=>{
     console.log("Attempt to build totaux",)
     let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
