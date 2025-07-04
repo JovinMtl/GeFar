@@ -111,7 +111,7 @@
 {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
                 </div>
                 <div class="elt elt7"></div>
-                <div class="elt elt7">
+                <div class="elt elt7" :title="'Fait par: ' + umuti.caissier">
                     {{ (umuti.num_bon).slice(0,7) }}
                 </div>
                 
