@@ -940,6 +940,12 @@ div > section {
 .mk-btn{
     border: 1px dashed black;
 }
+.cnf-cancl{
+    border-color: greenyellow;
+    background-color: yellowgreen;
+    width: 5rem;
+    padding: 10px 15px;
+}
 
 /* @media print{} */
 @media print {
