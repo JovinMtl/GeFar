@@ -7,9 +7,21 @@
                 <div class="elt contentElement1" style="display: inline-flex;background-color: transparent; width: 4%;height: 100%; color: green; ">
                     #
                 </div> 
-                <div class="elt contentElement2-1">
+                <div class="elt contentElement2">
                     Nom du Med.
                 </div> 
+
+                <div class="elt contentElement4">
+                    Qte
+                </div>
+
+                <div class="elt contentElement4">
+                    P. Vente
+                </div>
+
+                <div class="elt contentElement4">
+                    Motif
+                </div>
                 <div class="elt contentElement4 j-c">
                     Heure
                 </div>
@@ -27,12 +39,24 @@
                     {{ index + 1 }}
                       <!-- 8 -->
                 </div> 
-                <div class="elt contentElement2-1"
+                <div class="elt contentElement2"
                     :title="umuti?.nom_med">
-                    <!-- {{ String(umuti?.operation)?.slice(0, 25) }} -->
-                    {{ String(umuti?.nom_med)?.slice(0, 105) }}
+                    {{ String(umuti?.nom_med)?.slice(0, 45) }}
                       <!-- jove -->
-                </div> <div class="elt contentElement4">
+                </div>  
+
+                <div class="elt contentElement4">
+                    {{ umuti.qte }}
+                </div>
+
+                <div class="elt contentElement4">
+                    {{ umuti.prix_vente }}
+                </div>
+
+                <div class="elt contentElement4">
+                    {{ umuti.motif }}
+                </div>
+                <div class="elt contentElement4">
                     {{ String(umuti?.date_operation)?.slice(11, 16) }} 
                     <span>_</span>
                     <span class="c-g-1">
@@ -41,9 +65,6 @@
                 </div> 
 
                 <div class="elt contentElement4 famille_med">
-                    <!-- {{ umuti?.code_med }} -->
-                      <!-- 3 -->
-                       <!-- {{ users?.response[umuti?.who_did_it] }} :  -->
                        {{ umuti?.who_did_it }}
                 </div>
                 
