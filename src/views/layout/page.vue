@@ -755,9 +755,12 @@ const lot_array = (): PanierAPI[] => {
         console.log("The default lote:", lote)
         // return lote
     } else{
-        lote[with_qte].qte = 1
+        console.log("The lote: " + JSON.stringify(lote) + 'and with_qte:' + toValue(with_qte))
+        // lote[with_qte].qte = 1
+        lote[0].qte = 1
         if (decimalNumber.value){
-            lote[with_qte].qte = 1 + (toValue(decimalNumber)/toValue(fullDecimal))
+            // lote[with_qte].qte = 1 + (toValue(decimalNumber)/toValue(fullDecimal))
+            lote[0].qte = 1 + (toValue(decimalNumber)/toValue(fullDecimal))
         }
         // return lote
     }
