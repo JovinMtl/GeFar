@@ -127,12 +127,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { reactive,ref, watch } from 'vue'
 import useReadable from '../../hooks/useReadable'
+
 const props = defineProps(['med','admin'])
 const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
 const totaux = ref([0,0]) // To display totals on the footer.
+const medToClear = reactive({
+    'code_med': '',
+    'code_operation': '',
+    'qte': 0
+})
 
 // console.log("THe props: ",actual_imitiS.value[3])
 
@@ -140,6 +146,14 @@ const totaux = ref([0,0]) // To display totals on the footer.
 const clearRedMed = (e)=>{
     const data = e.target.getAttribute('data-scr')
     console.log("The src: " + data)
+    const dataArray = String(data).split(';')
+    const code_med = dataArray[0]
+    const code_operation = dataArray[1]
+    const qte = dataArray[2]
+    medToClear.code_med = code_med;
+    medToClear.code_operation = code_operation;
+    medToClear.qte = qte
+    console.log("src: " + code_med + code_operation + qte)
 }
 const updateTotaux = ()=>{
     console.log("Attempt to build totaux",)
