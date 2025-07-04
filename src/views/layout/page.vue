@@ -740,10 +740,11 @@ const lot_array = (): PanierAPI[] => {
             value += element.to_panier // gathering the requested qte
             lote.push(obj)
             right_date += 1
-        }
-        if(element.qte && (j == 0)){
-            with_qte = i
-            j += 1
+
+            if(element.qte && (j == 0)){
+                with_qte = i
+                j += 1
+            }
         }
         i += 1
 
@@ -753,16 +754,13 @@ const lot_array = (): PanierAPI[] => {
     }
     if (value >= 1) { // in case there are requested qte
         console.log("The default lote:", lote)
-        // return lote
     } else{
-        console.log("The lote: " + JSON.stringify(lote) + 'and with_qte:' + toValue(with_qte))
-        // lote[with_qte].qte = 1
-        lote[0].qte = 1
+        console.log("The lote: " + JSON.stringify(lote) + 'and with_qte:' + toValue(with_qte) + ' activeLot: ' + JSON.stringify(activeLot.value))
+        lote[with_qte].qte = 1
+        
         if (decimalNumber.value){
-            // lote[with_qte].qte = 1 + (toValue(decimalNumber)/toValue(fullDecimal))
-            lote[0].qte = 1 + (toValue(decimalNumber)/toValue(fullDecimal))
+            lote[with_qte].qte = 1 + (toValue(decimalNumber)/toValue(fullDecimal))
         }
-        // return lote
     }
 
     return lote
