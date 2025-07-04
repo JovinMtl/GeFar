@@ -28,25 +28,66 @@
                       <!-- 8 -->
                 </div> 
                 <div class="elt contentElement2-1"
-                    :title="umuti.operation">
-                    <!-- {{ String(umuti.operation).slice(0, 25) }} -->
-                    {{ String(umuti.operation).slice(0, 105) }}
+                    :title="umuti?.nom_med">
+                    <!-- {{ String(umuti?.operation)?.slice(0, 25) }} -->
+                    {{ String(umuti?.nom_med)?.slice(0, 105) }}
                       <!-- jove -->
                 </div> <div class="elt contentElement4">
-                    {{ String(umuti.date_time).slice(11, 16) }} 
+                    {{ String(umuti?.date_operation)?.slice(11, 16) }} 
                     <span>_</span>
                     <span class="c-g-1">
-                        {{ String(umuti.date_time).slice(8, 10) }}/{{ String(umuti.date_time).slice(5, 7) }}/{{ String(umuti.date_time).slice(0, 4) }}
+                        {{ String(umuti?.date_operation	)?.slice(8, 10) }}/{{ String(umuti?.date_operation)?.slice(5, 7) }}/{{ String(umuti?.date_operation)?.slice(0, 4) }}
                     </span> 
                 </div> 
 
                 <div class="elt contentElement4 famille_med">
-                    <!-- {{ umuti.code_med }} -->
+                    <!-- {{ umuti?.code_med }} -->
                       <!-- 3 -->
-                       {{ users?.response[umuti.who_did_it] }} : 
-                       {{ umuti.who_did_it }}
+                       <!-- {{ users?.response[umuti?.who_did_it] }} :  -->
+                       {{ umuti?.who_did_it }}
                 </div>
                 
+            </div>
+        </div>
+
+        <div class="controlFooter" style="color: black;">
+            <div  class="controlContent" style="font-weight: 700;">
+                <div class="elt contentElement1">
+                    #
+                </div> 
+                <div class="elt contentElement2">
+                    TOTAL
+                </div> 
+                <div class="elt contentElement1">
+                    <!-- {{ totaux[0] }} -->--
+                </div>
+
+                <div v-if="isAdmin" class="elt contentElement4">
+                    <!-- {{ (totaux[1] / (totaux[0] || 1))?.toFixed(1) }} -->
+
+                    <!-- {{ totaux[2] }} -->
+                    --
+                    <!-- {{ useReadable(totaux[2]) }} -->
+                    
+                </div>
+
+                <div class="elt contentElement4">
+                    ----------
+                </div>
+
+                <div class="elt contentElement4 c-b-1">
+                    <!-- {{ totaux[1] }} -->---
+                    <!-- {{ useReadable(totaux[1]) }} -->
+                </div>
+
+                <div v-if="isAdmin" class="elt contentElement4">
+                    <!-- {{ totaux[3] }} -->---
+                    <!-- {{ useReadable(totaux[3]) }} -->
+                </div>
+
+                <div class="elt contentElement4">
+                    <!-- ---------- -->
+                </div>
             </div>
         </div>
                             

@@ -185,7 +185,7 @@
             <notifCations :med="actual_imitiS" 
                 v-if="title_operation == 'Notifications'"/>
 
-            <notifCations :med="actual_imitiS" 
+            <perTes :med="actual_imitiS" 
                 v-if="title_operation == 'Pertes'"/>
             <!-- <printControle v-if="onPrint" /> -->
             
@@ -281,6 +281,7 @@ import paraMetres from './ctrl/para-metres.vue'
 import passWord from './ctrl/pass-word.vue'
 import printControle from './ctrl/print-controle.vue'
 import notifCations from './ctrl/notif-cations.vue'
+import perTes from './ctrl/per-tes.vue'
 
 
 const emit = defineEmits(['turnControl',])
@@ -373,7 +374,7 @@ const recorded_operations =  report_operations.bind(
 
 const url_pertes = 'api/rep/get_pertes/'
 const [pertes, get_pertes] = useKuvoma(url_pertes)
-const getPertes =  report_operations.bind(
+const getPertes =  get_pertes.bind(
     null, date_debut, date_fin, 
     isFilter) // In case we want additional parameters
 
