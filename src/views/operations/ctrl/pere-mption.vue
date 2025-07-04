@@ -10,7 +10,7 @@
                 <div class="elt contentElement2">
                     Nom du Med.
                 </div> 
-                <div class="elt contentElement3">
+                <div class="elt contentElement3 deci-nu">
                     Qte
                 </div>
                 <div v-if="isAdmin" class="elt contentElement4">
@@ -50,7 +50,8 @@
                 </div> 
                 <div class="elt contentElement2">
                     {{ String(umuti.nom_med).slice(0, 25) }}
-                </div> <div class="elt contentElement3">
+                </div> 
+                <div class="elt contentElement3 deci-nu mk-btn pointer clk" title="Enlever dans le stock">
                     {{ umuti.quantite_restant  }}
                 </div> 
 

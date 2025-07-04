@@ -173,7 +173,7 @@
             <achAts1 :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'En alerte'"/>
-            <achAts1 :med="actual_imitiS" 
+            <pereMption :med="actual_imitiS" 
                 :admin="isAdmin"
                 v-if="title_operation == 'Med périmé'"/>
             <paraMetres 
@@ -275,6 +275,7 @@ import veNte from './ctrl/ve-nte.vue'
 import bonS from './ctrl/bon-s.vue'
 import achAts from './ctrl/ach-ats.vue'
 import achAts1 from './ctrl/ach-ats-1.vue'
+import pereMption from './ctrl/pere-mption.vue'
 import suggEst from './ctrl/sugg-est.vue'
 import dateGreen from './ctrl/date-green.vue'
 import paraMetres from './ctrl/para-metres.vue'

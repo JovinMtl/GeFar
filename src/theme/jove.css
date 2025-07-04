@@ -937,6 +937,9 @@ div > section {
 .half-w{
     width: 40%;
 }
+.mk-btn{
+    border: 1px dashed black;
+}
 
 /* @media print{} */
 @media print {
