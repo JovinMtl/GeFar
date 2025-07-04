@@ -128,7 +128,8 @@
 
 <script setup lang="ts">
 import { reactive,ref, watch } from 'vue'
-import useReadable from '../../hooks/useReadable'
+import useReadable from '../../hooks/useReadable';
+import { useKurungika } from '../../hooks/kuvoma';
 
 const props = defineProps(['med','admin'])
 const actual_imitiS = ref(props.med)
@@ -139,6 +140,9 @@ const medToClear = reactive({
     'code_operation': '',
     'qte': 0
 })
+
+const url_add_perte = 'api/out/add_perte/'
+const [rep_add_perte, addPerte] = useKurungika(medToClear, url_add_perte)
 
 // console.log("THe props: ",actual_imitiS.value[3])
 
@@ -154,6 +158,8 @@ const clearRedMed = (e)=>{
     medToClear.code_operation = code_operation;
     medToClear.qte = qte
     console.log("src: " + code_med + code_operation + qte)
+
+    addPerte()
 }
 const updateTotaux = ()=>{
     console.log("Attempt to build totaux",)
