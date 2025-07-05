@@ -48,10 +48,12 @@ import achAt from './htv/ach-at.vue'
 import updateNom from './htv/update-nom.vue'
 import derPrix from './htv/der-prix.vue'
 
+const props = defineProps(['admin'])
+
 const actualId:Ref<string> = ref('')
 const actualComp:Ref<string> = ref('')
 
-const isAdmin = inject('admin')
+const isAdmin = props.admin
 
     // Functions
 const closeComp = ()=>{
