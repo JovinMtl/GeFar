@@ -51,8 +51,10 @@
                 <div class="elt contentElement2">
                     {{ String(umuti.nom_med).slice(0, 25) }}
                 </div> 
-                <div :data-scr="umuti.code_med + ';' + umuti.code_operation + ';' + umuti.quantite_restant" class="elt contentElement3 deci-nu mk-btn pointer clk" 
-                    title="Enlever dans le stock" @click="clearRedMed">
+                <div :data-scr="umuti.code_med + ';' + umuti.code_operation + ';' + umuti.quantite_restant + ';' + index" 
+                    class="elt contentElement3 deci-nu mk-btn pointer clk" 
+                    :class="!cleared ? 'bg-r':''"
+                    title="Dans le futur, vous pourrez Enlever ce médicament dans le stock." @click="clearRedMed">
                     {{ umuti.quantite_restant  }}
                 </div> 
 
@@ -127,7 +129,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive,ref, watch } from 'vue'
+import { reactive,ref, toValue, watch } from 'vue'
 import useReadable from '../../hooks/useReadable';
 import { useKurungika } from '../../hooks/kuvoma';
 
@@ -140,6 +142,8 @@ const medToClear = reactive({
     'code_operation': '',
     'qte': 0
 })
+const cleared = ref(false)
+let actualIndex = 0
 
 const url_add_perte = 'api/out/add_perte/'
 const [rep_add_perte, addPerte] = useKurungika(medToClear, url_add_perte)
@@ -157,8 +161,20 @@ const clearRedMed = (e)=>{
     medToClear.code_med = code_med;
     medToClear.code_operation = code_operation;
     medToClear.qte = qte
-    console.log("src: " + code_med + code_operation + qte)
+    actualIndex = Number(dataArray[3])
 
+    // removing the clicked index
+    let oldData = toValue(actual_imitiS)
+    let newArr = oldData
+    if (actualIndex == 0){
+        newArr = oldData.slice(1)
+    } else if ((actualIndex > 0)){
+        let arr1 = oldData.slice(0, actualIndex)
+        let arr2 = oldData.slice(actualIndex+1)
+        newArr = arr1.concat(arr2)
+    }
+    actual_imitiS.value = newArr
+    
     addPerte()
 }
 const updateTotaux = ()=>{
@@ -189,5 +205,10 @@ const updateTotaux = ()=>{
 
 updateTotaux()
 
+// Watchers
+watch(rep_add_perte, (value)=>{
+    if (value?.response == 1){
 
+    }
+})
 </script>
