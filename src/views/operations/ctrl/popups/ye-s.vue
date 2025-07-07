@@ -5,7 +5,8 @@
                     align-items: center;" >
         <div class=" bg-w b-r-8 p-h-5">
             Vous êtes sûr de vouloir enlever 
-            <span style="font-weight: 600;color: red">{{ String(props.nom_med).slice(0, 10) }}</span>
+            <span v-if="String(props.nom_med).length <= 8" style="font-weight: 600;color: red">{{ String(props.nom_med).slice(0, 10) }}</span>
+            <span v-else style="font-weight: 600;color: red">{{ String(props.nom_med).slice(0, 10) }}...</span>
              ?   
             Oui (
                 <span class="c-r">o</span>
@@ -41,7 +42,7 @@ const answer = ref(null)
 const checkAnswer = ()=>{
     if (toValue(answer) == 'o'){
         emit('answer', 'o')
-    } else if (toValue(answer) == 'n'){
+    } else{
         emit('answer', 'n')
     }
 }
