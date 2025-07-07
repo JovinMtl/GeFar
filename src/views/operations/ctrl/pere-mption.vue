@@ -1,6 +1,19 @@
 <template>
     <div class="dynContent" style="">
-        
+        <div style="position:absolute; 
+                    width: 100%;height: 100%;
+                    background-color: transparent;">
+        <div style="display: flex; 
+                    background-color: transparent;
+                    justify-content: center; 
+                    align-items: center;
+                    position: relative;
+                    transform: translateX(-15%);
+                    width: 100%; height: 100%;
+                    flex-direction: column;">
+            <yesVue />
+         </div>
+        </div>
         <div class="controlHeader" style="height: 5%; width: 100%;">
             <div  class="controlContent" style="font-size: .8rem;
                 background-color: navy; color: white">
@@ -125,6 +138,9 @@
                 </div>
             </div>
         </div>
+        <!-- dyn popup -->
+         
+         
                             
     </div>
 </template>
@@ -133,6 +149,7 @@
 import { reactive,ref, toValue, watch } from 'vue'
 import useReadable from '../../hooks/useReadable';
 import { useKurungika } from '../../hooks/kuvoma';
+import yesVue from './popups/ye-s.vue'
 
 const props = defineProps(['med','admin'])
 const actual_imitiS = ref(props.med)
@@ -219,15 +236,14 @@ watch(rep_add_perte, (value)=>{
 <style >
 /* .jove-enter-from{
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 .jove-enter-active{
     transition: all 1s ease-in;
 }
 .jove-enter-to{
-    opacity: 0;
-    transform: translateX(-30px);
-    filter: blur(12px);
+    opacity: 1;
+    border: 2px solid red;
 } */
 
 .jove-leave-from{
@@ -235,12 +251,11 @@ watch(rep_add_perte, (value)=>{
     transform: translateY(0);
 }
 .jove-leave-active{
-    transition: all 0.3s ease-in;
+    transition: all 0.6s ease-in;
 }
 .jove-leave-to{
     opacity: 0;
     transform: translateY(-30px);
     filter: blur(12px);
-    background-color: red;
 }
 </style>

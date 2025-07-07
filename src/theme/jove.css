@@ -530,6 +530,9 @@ html, body {
 .bg-l{
     background-color: yellow;
 }
+.bg-w{
+    background-color: white;
+}
 .w-22{
     width: 25%;
 }
