@@ -53,7 +53,6 @@
                 </div> 
                 <div :data-scr="umuti.code_med + ';' + umuti.code_operation + ';' + umuti.quantite_restant + ';' + index" 
                     class="elt contentElement3 deci-nu mk-btn pointer clk" 
-                    :class="!cleared ? 'bg-r':''"
                     title="Dans le futur, vous pourrez Enlever ce médicament dans le stock." @click="clearRedMed">
                     {{ umuti.quantite_restant  }}
                 </div> 
@@ -151,17 +150,7 @@ const [rep_add_perte, addPerte] = useKurungika(medToClear, url_add_perte)
 // console.log("THe props: ",actual_imitiS.value[3])
 
 //Functions
-const clearRedMed = (e)=>{
-    const data = e.target.getAttribute('data-scr')
-    console.log("The src: " + data)
-    const dataArray = String(data).split(';')
-    const code_med = dataArray[0]
-    const code_operation = dataArray[1]
-    const qte = dataArray[2]
-    medToClear.code_med = code_med;
-    medToClear.code_operation = code_operation;
-    medToClear.qte = qte
-    actualIndex = Number(dataArray[3])
+const removeElm = ()=>{
 
     // removing the clicked index
     let oldData = toValue(actual_imitiS)
@@ -174,6 +163,18 @@ const clearRedMed = (e)=>{
         newArr = arr1.concat(arr2)
     }
     actual_imitiS.value = newArr
+}
+const clearRedMed = (e)=>{
+    const data = e.target.getAttribute('data-scr')
+    console.log("The src: " + data)
+    const dataArray = String(data).split(';')
+    const code_med = dataArray[0]
+    const code_operation = dataArray[1]
+    const qte = dataArray[2]
+    medToClear.code_med = code_med;
+    medToClear.code_operation = code_operation;
+    medToClear.qte = qte
+    actualIndex = Number(dataArray[3])
     
     addPerte()
 }
@@ -208,7 +209,7 @@ updateTotaux()
 // Watchers
 watch(rep_add_perte, (value)=>{
     if (value?.response == 1){
-
+        removeElm()
     }
 })
 </script>
