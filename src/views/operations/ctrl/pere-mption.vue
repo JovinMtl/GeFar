@@ -40,11 +40,13 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="controlBody  t-m-skin">
+            <transition-group name="jove">
             <div v-for="(umuti, index) in (actual_imitiS)" 
                 class="d-f"
-                :class="index%2 ? 'ln-1':'ln-2'">
+                :class="index%2 ? 'ln-1':'ln-2'"
+                :key="umuti.code_med + '-' + umuti.code_operation">
                 <div class="contentElement11">
                     {{ index + 1 }}
                 </div> 
@@ -56,7 +58,6 @@
                     title="Dans le futur, vous pourrez Enlever ce médicament dans le stock." @click="clearRedMed">
                     {{ umuti.quantite_restant  }}
                 </div> 
-
                 <div class="elt contentElement4 famille_med">
                     <span v-if="isAdmin" >{{ umuti.prix_achat }}</span>
                     
@@ -82,6 +83,7 @@
                 </div>
                 
             </div>
+            </transition-group>
         </div>
 
         <div class="controlFooter">
@@ -213,3 +215,32 @@ watch(rep_add_perte, (value)=>{
     }
 })
 </script>
+
+<style >
+/* .jove-enter-from{
+    opacity: 1;
+    transform: translateX(0);
+}
+.jove-enter-active{
+    transition: all 1s ease-in;
+}
+.jove-enter-to{
+    opacity: 0;
+    transform: translateX(-30px);
+    filter: blur(12px);
+} */
+
+.jove-leave-from{
+    opacity: 1;
+    transform: translateY(0);
+}
+.jove-leave-active{
+    transition: all 0.3s ease-in;
+}
+.jove-leave-to{
+    opacity: 0;
+    transform: translateY(-30px);
+    filter: blur(12px);
+    background-color: red;
+}
+</style>
