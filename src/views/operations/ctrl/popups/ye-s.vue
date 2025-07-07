@@ -9,13 +9,34 @@
             
         </div>
         <div>
-            <input type="text" class="cnf-cancl" placeholder="?" />
+            <input type="text" 
+                class="cnf-cancl" placeholder="?"
+                v-model="answer" />
         </div>
         <div>
-            <button class="b-r-8 clk bg-b-1">Soumettre</button>
+            <button class="b-r-8 clk bg-b-1" 
+                @click="checkAnswer">
+                Soumettre
+            </button>
         </div>
     </div>
 </template>
+<script setup lang="ts">
+import { ref, toValue } from 'vue'
+
+const emit = defineEmits(['answer'])
+
+const answer = ref(null)
+
+// Functions
+const checkAnswer = ()=>{
+    if (toValue(answer) == 'o'){
+        emit('answer', 'o')
+    } else if (toValue(answer) == 'n'){
+        emit('answer', 'n')
+    }
+}
+</script>
 <style>
 button{
     padding: 5px 10px;

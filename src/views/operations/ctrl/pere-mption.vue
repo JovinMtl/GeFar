@@ -1,18 +1,18 @@
 <template>
     <div class="dynContent" style="">
-        <div style="position:absolute; 
+        <div v-if="showPopup" style="position:absolute; 
                     width: 100%;height: 100%;
                     background-color: transparent;">
-        <div style="display: flex; 
-                    background-color: transparent;
-                    justify-content: center; 
-                    align-items: center;
-                    position: relative;
-                    transform: translateX(-15%);
-                    width: 100%; height: 100%;
-                    flex-direction: column;">
-            <yesVue />
-         </div>
+            <div style="display: flex; 
+                        background-color: transparent;
+                        justify-content: center; 
+                        align-items: center;
+                        position: relative;
+                        transform: translateX(-15%);
+                        width: 100%; height: 100%;
+                        flex-direction: column;">
+                <yesVue @answer="getAnswer"/>
+            </div>
         </div>
         <div class="controlHeader" style="height: 5%; width: 100%;">
             <div  class="controlContent" style="font-size: .8rem;
@@ -161,6 +161,7 @@ const medToClear = reactive({
     'qte': 0
 })
 const cleared = ref(false)
+const showPopup = ref(false)
 let actualIndex = 0
 
 const url_add_perte = 'api/out/add_perte/'
@@ -169,6 +170,13 @@ const [rep_add_perte, addPerte] = useKurungika(medToClear, url_add_perte)
 // console.log("THe props: ",actual_imitiS.value[3])
 
 //Functions
+const getAnswer = (value)=>{
+    console.log("yes said: " + value)
+    showPopup.value = false
+    if (value == 'o'){
+        addPerte()
+    }
+}
 const removeElm = ()=>{
 
     // removing the clicked index
@@ -194,8 +202,10 @@ const clearRedMed = (e)=>{
     medToClear.code_operation = code_operation;
     medToClear.qte = qte
     actualIndex = Number(dataArray[3])
+
+    showPopup.value = true;
     
-    addPerte()
+    // addPerte()
 }
 const updateTotaux = ()=>{
     console.log("Attempt to build totaux",)
