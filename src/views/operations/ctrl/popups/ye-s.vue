@@ -4,8 +4,16 @@
                     justify-content: center; 
                     align-items: center;" >
         <div class=" bg-w b-r-8 p-h-5">
-            Vous etes sûr de vouloir l'Enlever ?   
-            Oui ( o )  /   Non ( n ) ?
+            Vous êtes sûr de vouloir enlever 
+            <span style="font-weight: 600;color: red">{{ String(props.nom_med).slice(0, 10) }}</span>
+             ?   
+            Oui (
+                <span class="c-r">o</span>
+                 
+                )  /   
+            Non (
+                <span class="c-r">n</span>  
+                ) ?
             
         </div>
         <div>
@@ -25,6 +33,7 @@
 import { ref, toValue } from 'vue'
 
 const emit = defineEmits(['answer'])
+const props = defineProps(['nom_med'])
 
 const answer = ref(null)
 
@@ -37,7 +46,7 @@ const checkAnswer = ()=>{
     }
 }
 </script>
-<style>
+<style scoped>
 button{
     padding: 5px 10px;
 }

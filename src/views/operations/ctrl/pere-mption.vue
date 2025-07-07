@@ -11,7 +11,7 @@
                         transform: translateX(-15%);
                         width: 100%; height: 100%;
                         flex-direction: column;">
-                <yesVue @answer="getAnswer"/>
+                <yesVue @answer="getAnswer" :nom_med='nomMed'/>
             </div>
         </div>
         <div class="controlHeader" style="height: 5%; width: 100%;">
@@ -66,7 +66,7 @@
                 <div class="elt contentElement2">
                     {{ String(umuti.nom_med).slice(0, 25) }}
                 </div> 
-                <div :data-scr="umuti.code_med + ';' + umuti.code_operation + ';' + umuti.quantite_restant + ';' + index" 
+                <div :data-scr="umuti.code_med + ';' + umuti.code_operation + ';' + umuti.quantite_restant + ';' + index + ';' + umuti.nom_med" 
                     class="elt contentElement3 deci-nu mk-btn pointer clk" 
                     title="Dans le futur, vous pourrez Enlever ce médicament dans le stock." @click="clearRedMed">
                     {{ umuti.quantite_restant  }}
@@ -160,9 +160,11 @@ const medToClear = reactive({
     'code_operation': '',
     'qte': 0
 })
+const nomMed = ref('')
 const cleared = ref(false)
 const showPopup = ref(false)
 let actualIndex = 0
+
 
 const url_add_perte = 'api/out/add_perte/'
 const [rep_add_perte, addPerte] = useKurungika(medToClear, url_add_perte)
@@ -202,6 +204,7 @@ const clearRedMed = (e)=>{
     medToClear.code_operation = code_operation;
     medToClear.qte = qte
     actualIndex = Number(dataArray[3])
+    nomMed.value = dataArray[4]
 
     showPopup.value = true;
     
