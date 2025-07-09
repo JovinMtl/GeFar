@@ -68,7 +68,7 @@
                 </div> 
                 <div :data-scr="umuti.code_med + ';' + umuti.code_operation + ';' + umuti.quantite_restant + ';' + index + ';' + umuti.nom_med" 
                     class="elt contentElement3 deci-nu mk-btn pointer clk" 
-                    title="Dans le futur, vous pourrez Enlever ce médicament dans le stock." @click="clearRedMed">
+                    title="Enlever ce médicament dans le stock." @click="clearRedMed">
                     {{ umuti.quantite_restant  }}
                 </div> 
                 <div class="elt contentElement4 famille_med">
