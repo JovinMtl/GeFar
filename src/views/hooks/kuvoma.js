@@ -115,88 +115,81 @@ export function useKurungika(
     shouldNotify=false,
     otherData1 = null,
 ) {
-    let shouldRefresh = false
     let refreshCount = 0
     const { setOperationTrue,
         setOperationEncoursTrue,
         setOperationEncoursFalse,
      } = useNotif()
-    const { getError500,
+    const { 
         setError500True, setError500Msg 
     } = useError500()
-    while(refreshCount <= 1){
-        if (refreshCount == 1){
-            console.log("Refreshing the last time ...")
-        }
-        const data = ref(null);
-        const isError = ref(false);
-        const error_message = ref(null);
-        const { getAccessToken } = useUserStore();
 
-        if (!(otherData1 && otherData2)) {
-            const kurungikaImiti = async () => {
-                if (!getAccessToken()){
-                    return 0
-                }
-                if (shouldNotify){
-                    setOperationEncoursTrue
-                } else{
-                    setOperationEncoursFalse
-                }
-                // const base = '//muteule.pythonanywhere.com'
+    if (refreshCount == 1){
+        console.log("Refreshing the last time ...")
+    }
+    const data = ref(null);
+    const isError = ref(false);
+    const error_message = ref(null);
+    const { getAccessToken } = useUserStore();
 
-                try {
-                    const dataToSend = toValue(imitiArray)
-                    console.log("useKurungika sends: " + dataToSend)
-                    const response = await fetch(`${baseURL}/${prefix}`, {
-                        method: "POST",
-                        headers: {
-                            "Content-type": "application/json",
-                            Authorization: "Bearer " + getAccessToken(),
-                        },
-                        body: JSON.stringify({
-                            imiti: dataToSend,
-                        }),
-                    });
-                    data.value = await response.json();
-                    if((response.ok)){
-                        if (shouldNotify){
-                            setOperationTrue()
-                        }
-                        console.log("THe response is OK")
-                    } else{
-                        if (refreshCount < 1){ // the number of refresh = 1
-                            console.log("The response is not OK")
-                            refreshToken()
-                            let secondData = kurungikaImiti()
-                            console.log("Incrementing refreshCount: " + refreshCount)
-                            refreshCount += 1
-                            console.log("The returned secondData: " + secondData[0])
-                            data.value = secondData
-                        } else{
-                            return 0
-                        }
-                        
-                    }
-                } catch (error) {
-                    console.log("First set to: ", toValue(getError500));
-                    setError500True();
-                    setError500Msg();
-                    isError.value = true;
-                    error_message.value = error
-                    console.log("something has not be well because :", error);
-                    console.log("Is set to: ", toValue(toValue(getError500)));
-                }
-            };
-            if(isError.value){
-                return [error_message, kurungikaImiti]
-            } else{
-                return [data, kurungikaImiti];
+    if (!(otherData1 && otherData2)) {
+        const kurungikaImiti = async () => {
+            if (!getAccessToken()){
+                return 0
             }
+            if (shouldNotify){
+                setOperationEncoursTrue
+            } else{
+                setOperationEncoursFalse
+            }
+            // const base = '//muteule.pythonanywhere.com'
 
-        } else {
-            return "not really";
+            try {
+                const dataToSend = toValue(imitiArray)
+                const response = await fetch(`${baseURL}/${prefix}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                        Authorization: "Bearer " + getAccessToken(),
+                    },
+                    body: JSON.stringify({
+                        imiti: dataToSend,
+                    }),
+                });
+                data.value = await response.json();
+                if((response.ok)){
+                    if (shouldNotify){
+                        setOperationTrue()
+                    }
+                    console.log("THe response is OK")
+                } else{
+                    if (refreshCount < 1){ // the number of refresh = 1
+                        console.log("The response is not OK")
+                        refreshToken()
+                        let secondData = kurungikaImiti()
+                        refreshCount += 1
+                        data.value = secondData
+                    } else{
+                        return 0
+                    }
+                    
+                }
+            } catch (error) {
+                setError500True();
+                setError500Msg();
+                isError.value = true;
+                error_message.value = error
+                console.log("something has not be well because :", error);
+            }
+        };
+        if(isError.value){
+            return [error_message, kurungikaImiti]
+        } else{
+            return [data, kurungikaImiti];
         }
+
+    } else {
+        return "not really";
     }
 }
 
