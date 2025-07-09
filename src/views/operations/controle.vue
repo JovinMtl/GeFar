@@ -450,7 +450,7 @@ watch(pertes, (value)=>{
     actual_obj.value = value?.response;
     actual_imitiS.value = value?.response;
     searchEable.value = true;
-    actual_opt.value = ['operation', 'who_did_it'];
+    actual_opt.value = ['nom_med','motif', 'who_did_it'];
     actual_type.value = ['text','text'];
     title_operation.value = 'Pertes';
 })
