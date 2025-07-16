@@ -93,10 +93,19 @@
                 <div v-if="isAdmin" class="elt contentElement4">
                     <!-- {{ totaux[3] }} -->---
                     <!-- {{ useReadable(totaux[3]) }} -->
+                      
                 </div>
 
                 <div class="elt contentElement4">
                     <!-- ---------- -->
+                    <button class="clk">Nouveau</button>
+                    <!-- <input class="inp" type="text" /> -->
+                </div>
+
+                <div class="elt contentElement4">
+                    <!-- ---------- -->
+                    <!-- <button>Nouveau</button> -->
+                    
                 </div>
             </div>
         </div>
@@ -123,11 +132,8 @@
         let [qte,  total ] = [0, 0]
 
         actual_imitiS.value.forEach(element => {
-            // console.log("Quantite restant  pa:",  element.prix_vente)
             let tot = Number(element.prix_vente * (element.qte))
-            // let achat = Number(element.prix_achat * (element.quantite_restant))
             if (tot){
-                // pt_a += achat
                 total += tot
                 qte += (element.qte) 
             }
@@ -145,3 +151,10 @@
         console.log("We get users: " + value)
     })
 </script>
+
+<style scoped>
+button{
+    padding: 1px 8px;
+    border-radius: 8px;
+}
+</style>
