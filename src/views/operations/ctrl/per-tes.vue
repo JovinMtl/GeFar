@@ -79,26 +79,15 @@
                 <div class="elt contentElement2">
                     TOTAL
                 </div> 
-                <div class="elt contentElement1">
-                    <!-- {{ totaux[0] }} -->--
-                </div>
-
-                <div v-if="isAdmin" class="elt contentElement4">
-                    <!-- {{ (totaux[1] / (totaux[0] || 1))?.toFixed(1) }} -->
-
-                    <!-- {{ totaux[2] }} -->
-                    --
-                    <!-- {{ useReadable(totaux[2]) }} -->
-                    
-                </div>
 
                 <div class="elt contentElement4">
-                    ----------
+                    <!-- ---------- -->
+                    {{ totaux[0] }}
                 </div>
 
                 <div class="elt contentElement4 c-b-1">
-                    <!-- {{ totaux[1] }} -->---
-                    <!-- {{ useReadable(totaux[1]) }} -->
+                    <!-- {{ totaux[1] }} -->
+                    {{ useReadable(totaux[1]) }}
                 </div>
 
                 <div v-if="isAdmin" class="elt contentElement4">
@@ -118,15 +107,40 @@
 <script setup lang="ts">
     import { ref, watch } from 'vue'
     import { useKuvoma } from '../../hooks/kuvoma'
+    import useReadable  from '../../hooks/useReadable'
 
     const props = defineProps(['med'])
     const actual_imitiS = ref(props.med)
+    const totaux = ref([0,0]) // To display totals on the footer.
 
     const users_url = 'api/gOps/listUser/'
     const [users, listUser] = useKuvoma(users_url)
 
-    listUser()
+    
+    // Function definition
+    const updateTotaux = ()=>{
+        console.log("Attempt to build totaux",)
+        let [qte,  total ] = [0, 0]
 
+        actual_imitiS.value.forEach(element => {
+            // console.log("Quantite restant  pa:",  element.prix_vente)
+            let tot = Number(element.prix_vente * (element.qte))
+            // let achat = Number(element.prix_achat * (element.quantite_restant))
+            if (tot){
+                // pt_a += achat
+                total += tot
+                qte += (element.qte) 
+            }
+            console.log("total: ", total)
+        });
+        totaux.value = [qte, total]
+    }
+
+    //Initialization
+    listUser()
+    updateTotaux()
+
+    //Watchers
     watch(users, (value)=>{
         console.log("We get users: " + value)
     })
