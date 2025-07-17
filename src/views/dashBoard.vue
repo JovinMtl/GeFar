@@ -158,7 +158,12 @@ const chartOptions = ref({
             bodyColor: 'white',
             callbacks:{
                 label: function(jove){
-                    return `Habonetse: ${jove.raw}`
+                    if (jove.raw){
+                        const val = new Intl.NumberFormat('de-DE').format(jove.raw)
+                        return `Habonetse: ${val} Fbu`
+                    } else{
+                        return `Ntayabonetse!!!`
+                    }
                 }
             }
         },
