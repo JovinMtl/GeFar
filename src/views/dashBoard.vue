@@ -19,7 +19,9 @@
                 <div id="cha2" @click="openChart"
                     class="dB-ctn" :class="ch2 ? 'dB-ctn-o':''">
                     Etat de stocks: +2 ans; >1 an<; < 1 an; < 6 mois
-                    <DoughnutChart :chartData="testData1" />
+                    <DoughnutChart :chartData="testData1" 
+                        ref='stockElm'
+                        @click="stockClicked"/>
                 </div>
                 <div id="cha3" @click="openChart"
                     class="dB-ctn" :class="ch3 ? 'dB-ctn-o':''">
@@ -207,8 +209,35 @@ const chartOptions = ref({
     }
 });
 
+const stockElm = ref()
 
-// Begining of functions
+// Functions
+const stockClicked = (evt: MouseEvent) => {
+    const chart = stockElm.value?.chartInstance;
+
+    if (!chart) {
+        console.error('Chart instance is not ready!');
+        return;
+    }
+
+    const elements = chart.getElementsAtEventForMode(
+        evt,
+        'nearest',
+        { intersect: true },
+        true
+    );
+
+    if (!elements.length) {
+        console.log("No element was clicked.");
+        return;
+    }
+
+    const clickedIndex = elements[0].index;
+    const label = testData1.labels[clickedIndex];
+    const value = testData1.datasets[0].data[clickedIndex];
+
+    // alert(`Segment: ${label} → ${value}`);
+}
 const fermerD = ()=>{
     emit('clos-d')
 }
