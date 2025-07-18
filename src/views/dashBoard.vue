@@ -165,9 +165,11 @@ const chartOptions = ref({
             callbacks:{
                 label: function(jove){
                     if (jove.raw){
+                        chartOptions.value['plugins']['tooltip']['bodyColor'] = 'white';
                         const val = new Intl.NumberFormat('de-DE').format(jove.raw)
                         return `Habonetse: ${val} Fbu`
                     } else{
+                        chartOptions.value['plugins']['tooltip']['bodyColor'] = 'red';
                         return `Ntayabonetse!!!`
                     }
                 }
