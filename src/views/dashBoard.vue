@@ -88,7 +88,7 @@ const [chart4Data, askForChart4] = useChart()
 askData('api/rep/getVentes/')
 
 setTimeout(()=>{
-    askForChartAchats('api/rep/getVentes/')
+    askForChartAchats('api/rep/getAchats/')
 }, 500)
 setTimeout(()=>{
     askForChart2('api/rep/getDiffStock/')
