@@ -23,6 +23,11 @@
                         ref='stockElm'
                         @click="stockClicked"/>
                 </div>
+                <div id="cha1" @click="openChart"
+                    class="dB-ctn" :class="ch1 ? 'dB-ctn-o':''">
+                    Tendance des Achats
+                    <LineChart :chartData="chartData" :options="chartOptions" />
+                </div>
                 <div id="cha3" @click="openChart"
                     class="dB-ctn" :class="ch3 ? 'dB-ctn-o':''">
                     Comparaison entre les clients: tv, mt, md, au
