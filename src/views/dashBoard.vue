@@ -169,7 +169,7 @@ const chartOptions = ref({
                         const val = new Intl.NumberFormat('de-DE').format(jove.raw)
                         return `Habonetse: ${val} Fbu`
                     } else{
-                        chartOptions.value['plugins']['tooltip']['bodyColor'] = 'red';
+                        chartOptions.value['plugins']['tooltip']['bodyColor'] = 'yellow';
                         return `Ntayabonetse!!!`
                     }
                 }
@@ -250,10 +250,13 @@ const chartOptions1 = ref({
             callbacks:{
                 label: function(jove){
                     if (jove.raw){
+
+                        chartOptions1.value['plugins']['tooltip']['bodyColor'] = 'white';
                         const val = new Intl.NumberFormat('de-DE').format(jove.raw)
-                        return `Habonetse: ${val} Fbu`
+                        return `Mwaranguje: ${val} Fbu`
                     } else{
-                        return `Ntayabonetse!!!`
+                        chartOptions1.value['plugins']['tooltip']['bodyColor'] = 'yellow';
+                        return `Ntimwaranguye!!!`
                     }
                 }
             }
