@@ -16,17 +16,17 @@
                     Tendance des ventes
                     <LineChart :chartData="chartData" :options="chartOptions" />
                 </div>
+                <div id="cha1-1" @click="openChart"
+                    class="dB-ctn" :class="ch11 ? 'dB-ctn-o':''">
+                    Tendance des Achats
+                    <LineChart :chartData="chartData" :options="chartOptions1" />
+                </div>
                 <div id="cha2" @click="openChart"
                     class="dB-ctn" :class="ch2 ? 'dB-ctn-o':''">
                     Etat de stocks: +2 ans; >1 an<; < 1 an; < 6 mois
                     <DoughnutChart :chartData="testData1" 
                         ref='stockElm'
                         @click="stockClicked"/>
-                </div>
-                <div id="cha1" @click="openChart"
-                    class="dB-ctn" :class="ch1 ? 'dB-ctn-o':''">
-                    Tendance des Achats
-                    <LineChart :chartData="chartData" :options="chartOptions" />
                 </div>
                 <div id="cha3" @click="openChart"
                     class="dB-ctn" :class="ch3 ? 'dB-ctn-o':''">
@@ -71,6 +71,7 @@ Chart.register(...registerables);
 
 const emit = defineEmits(['clos-d'])
 const ch1 = ref<boolean>(false)
+const ch11 = ref<boolean>(false)
 const ch2 = ref<boolean>(false)
 const ch3 = ref<boolean>(false)
 const ch4 = ref<boolean>(false)
@@ -219,6 +220,90 @@ const chartOptions = ref({
     }
 });
 
+const chartOptions1 = ref({
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'bottom',
+            labels:{
+                font:{
+                    // size: 25,
+                },
+                // color: 'red'
+            }
+            
+        },
+        title: {
+            display: true,
+            text: 'Graphique: tendance des achats',
+            color: 'brown'
+        },
+        tooltip:{
+            enabled: true,
+            mode: 'index',
+            intersect: false,
+            backgroundColor: 'grey',
+            titleColor: 'black',
+            bodyColor: 'white',
+            callbacks:{
+                label: function(jove){
+                    if (jove.raw){
+                        const val = new Intl.NumberFormat('de-DE').format(jove.raw)
+                        return `Habonetse: ${val} Fbu`
+                    } else{
+                        return `Ntayabonetse!!!`
+                    }
+                }
+            }
+        },
+        
+    },
+    scales:{
+            x:{
+                grid:{
+                    color: 'rgba(70, 64, 64, 0.384)',
+                    lineWidth: 1,
+                    drawBorder: true,
+                },
+                title:{
+                    display: true,
+                    text: 'Période'
+                }
+            },
+            y:{
+                grid:{
+                    color: 'rgba(70, 64, 64, 0.384)',
+                    lineWidth: 1,
+                    drawBorder: true,
+                },
+                title:{
+                    display: true,
+                    text: 'Ayo mwaragunje'
+                }
+            }
+    },
+    elements:{
+        line:{
+            tension: 0.5,  // Smoothness of the line (0 for straight lines)
+            borderWidth: 1
+        },
+        point:{
+            radius: 5,
+            backgroundColor: 'red',
+            borderColor: 'black',
+            borderWidth: 2
+        }
+    },
+    animation: {
+        duration: 1000, // Animation duration in milliseconds
+        easing: 'easeOutBounce', // Easing function for animation
+        onComplete: function() {
+            // console.log('Animation completed!');
+        }
+    }
+});
+
+
 const stockElm = ref()
 
 // Functions
@@ -256,6 +341,7 @@ const openChart = (e:Event)=>{
     let id = e.target.parentElement.parentElement.id
     const makeFalse = ()=>{
         ch1.value = false
+        ch11.value = false;
         ch2.value = false
         ch3.value = false
         ch4.value = false
@@ -270,14 +356,14 @@ const openChart = (e:Event)=>{
         title.value = "Detail pour des Ventes"
         ch1.value = true;
         }
-    }else if(id == 'cha2'){
-        if(ch2.value){
+    }else if(id == 'cha1-1'){
+        if(ch11.value){
             makeFalse()
             e.target.style.height = '400px'
         }else{
             makeFalse()
             title.value = "Etats de Stocks"
-            ch2.value = true
+            ch11.value = true
         }
     } else if(id == 'cha3'){
         makeFalse()
