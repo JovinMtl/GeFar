@@ -19,7 +19,7 @@
                 <div id="cha1-1" @click="openChart"
                     class="dB-ctn" :class="ch11 ? 'dB-ctn-o':''">
                     Tendance des Achats
-                    <LineChart :chartData="chartData" :options="chartOptions1" />
+                    <LineChart :chartData="chartDataAchats" :options="chartOptions1" />
                 </div>
                 <div id="cha2" @click="openChart"
                     class="dB-ctn" :class="ch2 ? 'dB-ctn-o':''">
@@ -81,11 +81,15 @@ const date1 = ref<Date>(null)
 const date2 = ref<Date>(null)
 
 const [lineData, askData] = useChart()
+const [chartDataAchat, askForChartAchats] = useChart()
 const [chart2Data, askForChart2] = useChart()
 const [chart3Data, askForChart3] = useChart()
 const [chart4Data, askForChart4] = useChart()
 askData('api/rep/getVentes/')
 
+setTimeout(()=>{
+    askForChartAchats('api/rep/getVentes/')
+}, 500)
 setTimeout(()=>{
     askForChart2('api/rep/getDiffStock/')
 }, 2000)
@@ -96,7 +100,20 @@ setTimeout(()=>{
     askForChart4('api/rep/getOnNoBon/')
 }, 3000)
 
-// Static data
+// Chart data
+const chartDataAchats = reactive({
+    labels: ['Nzero', 'Ruhuhuma', 'Ntwarante', 'Ndamukiza', 
+    'Rusama', 'Ruheshi', 'Mukakaro'],
+    datasets: [
+    {
+        label: 'Ventes',
+        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+        borderColor: 'blue',
+        data: [65, 59, 80, 121, 56, 55, 80],
+        fill: true,
+    }
+    ]
+})
 const testData3 = reactive({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Autre'],
       datasets: [
@@ -250,7 +267,6 @@ const chartOptions1 = ref({
             callbacks:{
                 label: function(jove){
                     if (jove.raw){
-
                         chartOptions1.value['plugins']['tooltip']['bodyColor'] = 'white';
                         const val = new Intl.NumberFormat('de-DE').format(jove.raw)
                         return `Mwaranguje: ${val} Fbu`
@@ -402,6 +418,11 @@ watch(chart2Data, (value)=>{
     // Updating the ChartData whenever we do a request to the server
     testData1.labels = value.Y
     testData1.datasets[0].data = value.X
+})
+watch(chartDataAchat, (value)=>{
+    // Updating the ChartData whenever we do a request to the server
+    chartDataAchats.labels = value.X
+    chartDataAchats.datasets[0].data = value.Y
 })
 watch(lineData, (value)=>{
     // Updating the ChartData whenever we do a request to the server
