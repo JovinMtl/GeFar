@@ -645,6 +645,9 @@ html, body {
     border: 4px dashed black;
     transition-duration: 500ms;
 }
+.bdr-4{
+    border-radius: 4px;
+}
 .bd-b:hover, .bd-w:hover{
     transform: rotate(180deg);
 }

@@ -23,6 +23,10 @@
             <tr>
                 <td>Prix de vente</td>
                 <td class="c-w">{{ oneCompiledData.prix_vente }}</td>
+                <!-- <td class="sm-l">
+                    <span class="c-t">____</span>
+                    {{ oneCompiledData.prix_achat  }} * {{ oneCompiledData.pr_interest }}
+                </td> -->
             </tr>
             <tr>
                 <td>Intéret individuel?</td>
@@ -33,7 +37,12 @@
                 <td class="c-w"><input v-model="oneCompiledData.pr_interest" style="width: 100px;" type="number"></td>
                 <td class="sm-l"  :class="[changeSuccessfull == 1 ? 'c-w':'', changeSuccessfull == 404 ? 'c-r':'']">
                     <span class="c-t">____</span>
-                    ex: 1.1 ~ 10. Ne dépassez pas 10 (donc 1000%), ça serais trop.
+                    ex: 1.1 ~ 10. <br>
+                    Ne dépassez pas 10 <br> (donc 1000%),<br> 
+                    <span class="bg-o bdr-4">
+                        ça serais trop.
+                    </span>
+                    
                 </td>
             </tr>
         </table>
@@ -120,6 +129,7 @@ watch(oneCompiled, (value)=>{
     oneCompiledData.nom_med = value?.nom_med
     oneCompiledData.code_med = value?.code_med;
     oneCompiledData.quantite_restant = value?.quantite_restant;
+    oneCompiledData.prix_achat = value?.prix_achat;
     oneCompiledData.prix_vente = value?.prix_vente;
     oneCompiledData.is_pr_interest = value?.is_pr_interest;
     oneCompiledData.pr_interest = value?.pr_interest;
