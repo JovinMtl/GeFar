@@ -952,6 +952,25 @@ div > section {
     width: 5rem;
     padding: 10px 15px;
 }
+.vibrate{
+    position: relative;
+    /* transform: rotate3d(0deg); */
+    opacity: 0.5;
+    animation-name: vib; 
+    animation-iteration-count: infinite;
+    animation-duration: 500ms;
+    animation-timing-function:  ease-in-out;
+}
+@keyframes vib {
+    from{
+        /* transform: rotate3d(50deg); */
+        opacity: 0;
+    }
+    to{
+        /* transform: rotate3d(-250deg); */
+        opacity: 1;
+    }
+}
 
 /* @media print{} */
 @media print {

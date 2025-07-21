@@ -211,7 +211,7 @@
                         </a>
                     </div>
                     <div v-show="tokenState.connected" class="menuHau sync">
-                        <a title="ku Mwanya (Sync)" class="c-b c-w" :class="[collectionLength ? 'c-g-1':'', loadingRemote ? 'c-b-1':'']">
+                        <a title="ku Mwanya (Sync)" class="c-b c-w " :class="[collectionLength ? 'c-g-1':'', loadingRemote ? 'c-b-1 vibrate':'']">
                             <!-- <fluent-cloud-sync28-regular @click="askIndex">
                             </fluent-cloud-sync28-regular> -->
                             <fluent-cloud-sync28-regular @click="requestCollectionF">
@@ -440,8 +440,8 @@ const [resp_search_remote, searchRemote] = useKurungikaRemote(query_search, url_
 
 // Functions
 const requestCollectionF = ()=>{
-    loadingRemote.value = true;
     requestCollection();
+    loadingRemote.value = true;
 }
 const detectSearchNeed = ()=>{
     console.log("It is obvious that you want to Search.")
