@@ -211,10 +211,10 @@
                         </a>
                     </div>
                     <div v-show="tokenState.connected" class="menuHau sync">
-                        <a title="ku Mwanya (Sync)" class="c-b c-w" :class="collectionLength ? 'c-g-1':''">
+                        <a title="ku Mwanya (Sync)" class="c-b c-w" :class="[collectionLength ? 'c-g-1':'', loadingRemote ? 'c-b-1':'']">
                             <!-- <fluent-cloud-sync28-regular @click="askIndex">
                             </fluent-cloud-sync28-regular> -->
-                            <fluent-cloud-sync28-regular @click="requestCollection">
+                            <fluent-cloud-sync28-regular @click="requestCollectionF">
                             </fluent-cloud-sync28-regular>
                         </a>
                     </div>
@@ -392,6 +392,7 @@ const tokenState = reactive({
 })
 const canSearchRemote = ref(false)
 const useRemoteResults = ref(false)
+const loadingRemote = ref(false)
 // Store
 const { getCounter } = useCounter()
 const { getError500, getError500Msg,
@@ -423,7 +424,7 @@ const inputData = ref(null)
 const [report_achat, sendFileDataLoaded] = useKurungika(inputData.value, url_achat)
 
 const url_request_collection = "api/gOps/request_collection/"
-const [collection, requestCollection] = useKurungika(getAccessTokenRemote, url_request_collection)
+const [rep_updated_collection, requestCollection] = useKurungika(getAccessTokenRemote, url_request_collection)
 
 const actualPortion = ref()
 const url_update_collection = "api/in/updateCollection/"
@@ -438,6 +439,10 @@ const url_search_remote = "api/gOps/search_meds/"
 const [resp_search_remote, searchRemote] = useKurungikaRemote(query_search, url_search_remote)
 
 // Functions
+const requestCollectionF = ()=>{
+    loadingRemote.value = true;
+    requestCollection();
+}
 const detectSearchNeed = ()=>{
     console.log("It is obvious that you want to Search.")
     console.log("The lastValid: " + tokenState.lastValid)
@@ -932,6 +937,13 @@ const shouldPop = ref(false)
 
 
 // Watchers
+watch(rep_updated_collection, (value)=>{
+    console.log("Finished updateCollection.")
+    if (value?.response){
+        loadingRemote.value = false;
+        collectionLength.value = value?.response;
+    }
+})
 watch(resp_search_remote, (value)=>{
     console.log("The response from searchRemote: " + JSON.stringify(value))
     useRemoteResults.value = true
