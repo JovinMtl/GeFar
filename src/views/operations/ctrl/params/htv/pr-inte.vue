@@ -31,7 +31,10 @@
             <tr v-if="oneCompiledData.is_pr_interest">
                 <td>Nouveau taux</td>
                 <td class="c-w"><input v-model="oneCompiledData.pr_interest" style="width: 100px;" type="number"></td>
-                <td class="sm-l"  :class="[changeSuccessfull == 1 ? 'c-w':'', changeSuccessfull == 404 ? 'c-r':'']"><span class="c-t">____</span>ex: 1.2 ~ 1.99 ou bien 11 ~ 99</td>
+                <td class="sm-l"  :class="[changeSuccessfull == 1 ? 'c-w':'', changeSuccessfull == 404 ? 'c-r':'']">
+                    <span class="c-t">____</span>
+                    ex: 1.1 ~ 10. Ne dépassez pas 10 (donc 1000%), ça serais trop.
+                </td>
             </tr>
         </table>
         
@@ -74,19 +77,12 @@ setTimeout(()=>{
 const changeOneCompiled = ()=>{
     // setting conditions
     let c1_1 = oneCompiledData.pr_interest > 1;
-    let c1_2 = oneCompiledData.pr_interest < 2;
+    let c1_2 = oneCompiledData.pr_interest <= 10;
     let c1 = c1_1 && c1_2;
 
-    let c2_1 = oneCompiledData.pr_interest > 10;
-    let c2_2 = oneCompiledData.pr_interest < 99;
-    let c2 = c2_1 && c2_2
-
-    if (c2_1){
-        oneCompiledData.pr_interest = 1 + (oneCompiledData.pr_interest / 100)
-    }
 
     // The combined condition
-    let condCombined =  c1 || c2
+    let condCombined =  c1 
     let allConditions = oneCompiledData.is_pr_interest && condCombined
     console.log("Should pass? " + condCombined + ":" + allConditions)
 
