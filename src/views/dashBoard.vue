@@ -66,6 +66,8 @@ import {
 } from 'vue-chart-3';
 import { Chart, registerables } from "chart.js";
 import { useChart } from './hooks/useChart';
+import { useKuvoma } from './hooks/kuvoma';
+import { useInfos } from '../store/useInfos';
 
 Chart.register(...registerables);
 
@@ -79,12 +81,17 @@ const dWarning = ref<boolean>(false)
 const title = ref<string>('')
 const date1 = ref<Date>(null)
 const date2 = ref<Date>(null)
+const { setAddress } = useInfos()
 
 const [lineData, askData] = useChart()
 const [chartDataAchat, askForChartAchats] = useChart()
 const [chart2Data, askForChart2] = useChart()
 const [chart3Data, askForChart3] = useChart()
 const [chart4Data, askForChart4] = useChart()
+
+const url_request_info = "api/gOps2/request_infos/"
+const [infos, requestInfo] = useKuvoma(url_request_info)
+
 askData('api/rep/getVentes/')
 
 setTimeout(()=>{
@@ -99,6 +106,8 @@ setTimeout(()=>{
 setTimeout(()=>{
     askForChart4('api/rep/getOnNoBon/')
 }, 3000)
+
+requestInfo()
 
 // Chart data
 const chartDataAchats = reactive({
@@ -406,6 +415,16 @@ const checkDate = ()=>{
     }
 }
 
+watch(infos, (value)=>{
+    console.log("The infos: " + JSON.stringify(value))
+    const infosObj = value?.response
+    setAddress(
+        infosObj?.loc_street, 
+        infosObj?.loc_quarter, 
+        infosObj?.loc_commune, 
+        infosObj?.loc_Province
+    )
+})
 watch(chart4Data, (value)=>{
     testData4.labels = value.Y
     testData4.datasets[0].data = value.X

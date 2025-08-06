@@ -202,7 +202,8 @@
                         <circum-power @click="logout"></circum-power>
                     </div>
                     <div class="menuHau addr">
-                            13è Av, Q. Twinyoni, Kamenge. Ntahangwa - Bujumbura
+                            <!-- 13è Av, Q. Twinyoni, Kamenge. Ntahangwa - Bujumbura -->
+                            {{ getAddress() }}
                     </div>
                     <div class="menuHau len"> {{ imitiLength }}</div>
                     <div class="menuHau user">
@@ -319,8 +320,13 @@ import {
 } from './types';
 import EnCours from '../operations/en-cours.vue';
 import prEt from '../operations/pr-et.vue';
+import { useInfos } from '../../store/useInfos.js';
 
 const router = useRouter()
+const { 
+    getAddress, 
+    setAddress
+} = useInfos()
 
 const today: Date = new Date
 
