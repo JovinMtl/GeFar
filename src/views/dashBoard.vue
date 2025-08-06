@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="namePharma nm-p1 nm-s1">Pharmacie Ubuzima</div>
+        <div class="namePharma nm-p1 nm-s1">
+            <!-- Pharmacie Ubuzima -->
+            {{ getPharmaName() }}
+        </div>
         <div class="bg-w c-b dB-1">
             Dashboard</div>
         <div class="c-b d-f">
@@ -81,7 +84,10 @@ const dWarning = ref<boolean>(false)
 const title = ref<string>('')
 const date1 = ref<Date>(null)
 const date2 = ref<Date>(null)
-const { setAddress } = useInfos()
+const { 
+    getPharmaName,
+    setAddress, setPharmaName 
+} = useInfos()
 
 const [lineData, askData] = useChart()
 const [chartDataAchat, askForChartAchats] = useChart()
@@ -418,6 +424,8 @@ const checkDate = ()=>{
 watch(infos, (value)=>{
     console.log("The infos: " + JSON.stringify(value))
     const infosObj = value?.response
+
+    setPharmaName(infosObj?.name_pharma)
     setAddress(
         infosObj?.loc_street, 
         infosObj?.loc_quarter, 
