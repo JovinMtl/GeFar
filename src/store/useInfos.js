@@ -13,7 +13,7 @@ export const useInfos = defineStore('infos', ()=>{
     const setAddress = (street='13Av, Twiny', 
             quarter="Kamenge", commune='Ntahangwa', 
             province='Bujumbura')=>{
-        address.value = `${String(street).slice(0, 10)}, ${String(quarter).slice(0, 5)}, ${String(commune).slice(0, 5)}, ${String(province).slice(0, 5)}`;
+        address.value = `${String(street).slice(0, 15)}, ${String(quarter).slice(0, 10)}, ${String(commune).slice(0, 10)}, ${String(province).slice(0, 10)}`;
     }
 
 
