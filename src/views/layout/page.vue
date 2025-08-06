@@ -193,7 +193,8 @@
                     </a>
                     <div class="namePharma nm-p2 nm-s2">
                         <!-- This space is for the name of Pharmacy -->
-                         Pharmacie Ubuzima
+                         <!-- Pharmacie Ubuzima -->
+                         {{ getPharmaName() }}
                     </div>
                     <div class="menuBar">
                         <me-nu @actualMenu="actualOption"></me-nu>
@@ -324,7 +325,7 @@ import { useInfos } from '../../store/useInfos.js';
 
 const router = useRouter()
 const { 
-    getAddress, 
+    getAddress, getPharmaName,
     setAddress
 } = useInfos()
 
