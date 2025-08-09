@@ -533,6 +533,38 @@ html, body {
 .bg-w{
     background-color: white;
 }
+.bg-a{
+    background-color: aqua;
+}
+.bg-a-1{
+    background-color: rgb(16, 168, 168);
+}
+.bg-r{
+    background-color: red;
+}
+.bg-r2{
+    background-color: rgb(163, 17, 17);
+}
+.bg-s{
+    background-color: salmon;
+}
+.bg-r-h:hover{
+    background-color: red;
+}
+.bg-g-1{
+    background-color: green;
+}.bg-g2{
+    background-color: grey;
+}
+.bg-g1{
+    background-color: rgba(216, 211, 211, 0.163);
+}
+.bg-g{
+    background-color: grey;
+}
+.bg-y{
+    background-color: yellow;
+}
 .w-22{
     width: 25%;
 }
@@ -555,35 +587,7 @@ html, body {
 .s1-cl{
     margin: 0 10px;
 }
-.bg-a{
-    background-color: aqua;
-}
-.bg-a-1{
-    background-color: rgb(16, 168, 168);
-}
-.bg-r{
-    background-color: red;
-}
-.bg-s{
-    background-color: salmon;
-}
-.bg-r-h:hover{
-    background-color: red;
-}
-.bg-g-1{
-    background-color: green;
-}.bg-g2{
-    background-color: grey;
-}
-.bg-g1{
-    background-color: rgba(216, 211, 211, 0.163);
-}
-.bg-g{
-    background-color: grey;
-}
-.bg-y{
-    background-color: yellow;
-}
+
 .c-a{
     color: aqua;
 }
@@ -960,6 +964,10 @@ div > section {
     animation-iteration-count: infinite;
     animation-duration: 500ms;
     animation-timing-function:  ease-in-out;
+}
+.sm-bt{
+    padding: 2px 8px;
+    border-radius: 4px;
 }
 @keyframes vib {
     from{

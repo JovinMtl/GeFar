@@ -101,9 +101,13 @@
                     <span :title="umuti.assu" v-show="umuti.assu !='Sans'">
                         {{ (umuti.assu).slice(0,3) }}...(<span class="bg-a-1">{{ umuti.rate }}</span>%)
                     </span>
+                    <span v-if="turnDateChange">
+                        <button class="sm-bt bg-r2 ">No</button>
+                    </span>
                 </div>
                 <div class="elt elt5">
                     <span v-show="umuti.categ!='null'">{{ umuti.categ }}</span>
+                    
                      
                 </div>
 
@@ -117,7 +121,12 @@
                 </div>
                 <div class="elt elt7"></div>
                 <div class="elt elt7" :title="'Fait par: ' + umuti.caissier">
-                    {{ (umuti.num_bon).slice(0,7) }}
+                    <span v-if="!turnDateChange">
+                        {{ (umuti.num_bon).slice(0,7) }}
+                    </span>
+                    <span v-else>
+                        <button class="sm-bt">Ok</button>
+                    </span>
                 </div>
                 
             </div>
