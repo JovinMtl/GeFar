@@ -107,8 +107,13 @@
                      
                 </div>
 
-                <div class="elt elt5">
-{{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
+                <div class="elt elt5" @click="changeDate">
+                    <span v-if="!turnDateChange">
+                        {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
+                    </span>
+                    <span v-else>
+                        <input type="date">
+                    </span>
                 </div>
                 <div class="elt elt7"></div>
                 <div class="elt elt7" :title="'Fait par: ' + umuti.caissier">
@@ -220,7 +225,13 @@ const [repCancel, cancelOp] = useKurungika(umutiSoldId, url_cancelSell)
 
 const annotatedIndexes = ref(null);
 annotatedIndexes.value = new Set;
+
+const turnDateChange = ref(false)
+
 // Functions
+const changeDate = ()=>{
+    turnDateChange.value = !turnDateChange.value
+}
 const changeBg = (e)=>{
     const selectedIndex = Number(e.target.getAttribute('data-index'));
     if (!(annotatedIndexes.value.has(selectedIndex))){
