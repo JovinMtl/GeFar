@@ -111,7 +111,7 @@
                      
                 </div>
 
-                <div class="elt elt5" @click="changeDate">
+                <div class="elt elt5" :data-b="umuti.nom_med +';'+umuti.num_bon" @click="changeDate">
                     <span v-if="!turnDateChange">
                         {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
                     </span>
@@ -236,10 +236,15 @@ const annotatedIndexes = ref(null);
 annotatedIndexes.value = new Set;
 
 const turnDateChange = ref(false)
+const turnDateChangeIndex = ref(null)
 
 // Functions
-const changeDate = ()=>{
+const changeDate = (e)=>{
+    // const data = e.target.getAttribute('data-b')
+    const data = e.target.parentNode.getAttribute('data-b')
     turnDateChange.value = !turnDateChange.value
+    console.log("The actual vente: " + JSON.stringify(toValue(actual_imitiS)))
+    console.log("The saved data-b: " + data)
 }
 const changeBg = (e)=>{
     const selectedIndex = Number(e.target.getAttribute('data-index'));
