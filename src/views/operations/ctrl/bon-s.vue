@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="elt elt5" :data-b="index +';'+umuti.num_bon" @click="changeDate">
-                    <span v-if="!turnDateChange || (index!=selectedIndex)">
+                    <span :id="'bon'+index" v-if="!turnDateChange || (index!=selectedIndex)">
                         {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
                     </span>
                     <span v-else-if="turnDateChange && (index==selectedIndex)">
@@ -297,9 +297,10 @@ getAssurances()
 getClients()
 
 
-const selectedIndex: Ref<number> = ref(-1)
-const turnDateChange: Ref<boolean> = ref(false)
-const turnDateChangeIndex = ref(null)
+const selectedIndex: Ref<number> = ref(-1);
+const actualId: Ref<string> = ref('');
+const turnDateChange: Ref<boolean> = ref(false);
+const turnDateChangeIndex = ref(null);
 const newDate = ref()
 const dateInp = ref()
 const idBon = ref('')
@@ -334,11 +335,10 @@ const changeDate = (e)=>{
     if (id){
         idBon.value = id;
         selectedIndex.value = Number(index)
+        actualId.value = `bon${index}`
     }
     
     turnDateChange.value = true;
-    console.log("The actual vente: " + JSON.stringify(toValue(actual_imitiS)))
-    console.log("The saved data-b: " + idBon.value)
 }
 const closeFacture = ()=>{
     console.log("Should close the facture")
@@ -448,6 +448,12 @@ const numberIndex = ref(0)
 
 updateTotaux()
 // buildBons()
+watch(repMoveVente, (value)=>{
+    console.log("The actual Id: " + toValue(actualId))
+    const elmInp = document.getElementById(toValue(actualId))
+    elmInp.innerHTML = toValue(newDate)
+    console.log("THe elm: " + elmInp)
+})
 watch(response, (value)=>{
     shouldPop.value = true
     if(value.response[0] != undefined){
