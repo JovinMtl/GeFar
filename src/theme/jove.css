@@ -969,6 +969,13 @@ div > section {
     padding: 2px 8px;
     border-radius: 4px;
 }
+.flashi{
+    animation: fl 300ms infinite ;
+}
+@keyframes fl {
+    from{scale: 1;}
+    to{scale: 0.8;}
+}
 @keyframes vib {
     from{
         /* transform: rotate3d(50deg); */

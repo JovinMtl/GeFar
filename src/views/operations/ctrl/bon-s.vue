@@ -157,7 +157,7 @@
                     </span>
                     <span  v-else-if="turnDateChange && (index==selectedIndex)">
                         <button 
-                            class="sm-bt"
+                            class="sm-bt flashi"
                             @click="takeNewDate">Ok</button>
                     </span>
                 </div>
