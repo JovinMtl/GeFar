@@ -124,10 +124,10 @@
                      
                 </div>
                 <div class="elt elt5" style="color: green; font-weight: bold;">
-                    <span v-show="umuti.is_paid">
+                    <span v-show="umuti.is_paid && !turnDateChange">
                         {{ useReadable(umuti.montant_dette) }}
                     </span>
-                    <span v-if="turnDateChange">
+                    <span v-if="turnDateChange && (index==selectedIndex)">
                         <button class="sm-bt bg-r2 ">No</button>
                     </span>
                 </div>
@@ -137,11 +137,11 @@
                     </span> 
                 </div>
 
-                <div class="elt elt5" :data-b="umuti.nom_med +';'+umuti.num_bon" @click="changeDate">
-                    <span v-if="!turnDateChange">
+                <div class="elt elt5" :data-b="index +';'+umuti.num_bon" @click="changeDate">
+                    <span v-if="!turnDateChange || (index!=selectedIndex)">
                         {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
                     </span>
-                    <span v-else>
+                    <span v-else-if="turnDateChange && (index==selectedIndex)">
                         <input :ref="dateInp" v-model="newDate" type="date">
                     </span>
                 </div>
@@ -155,7 +155,7 @@
                     <span v-if="!turnDateChange">
                         {{ (umuti.num_bon).slice(0,7) }}
                     </span>
-                    <span v-else>
+                    <span  v-else-if="turnDateChange && (index==selectedIndex)">
                         <button 
                             class="sm-bt"
                             @click="takeNewDate">Ok</button>
@@ -249,6 +249,7 @@
 
 <script setup lang="ts">
 import { reactive, ref, toValue, watch } from 'vue'
+import type { Ref } from 'vue'
 import {  usePostRequest, useKuvoma, useKurungika } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
 import { useAssuStore } from '../../../store/assu'
@@ -296,7 +297,8 @@ getAssurances()
 getClients()
 
 
-const turnDateChange = ref(false)
+const selectedIndex: Ref<number> = ref(-1)
+const turnDateChange: Ref<boolean> = ref(false)
 const turnDateChangeIndex = ref(null)
 const newDate = ref()
 const dateInp = ref()
@@ -328,8 +330,10 @@ const changeDate = (e)=>{
     // const data = e.target.getAttribute('data-b')
     const data = e.target.parentNode.getAttribute('data-b')
     const id = String(data).split(';')[1]
+    const index = String(data).split(';')[0]
     if (id){
-        idBon.value = id
+        idBon.value = id;
+        selectedIndex.value = Number(index)
     }
     
     turnDateChange.value = true;
