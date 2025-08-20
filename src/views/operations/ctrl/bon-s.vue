@@ -127,14 +127,23 @@
                     <span v-show="umuti.is_paid">
                         {{ useReadable(umuti.montant_dette) }}
                     </span>
+                    <span v-if="turnDateChange">
+                        <button class="sm-bt bg-r2 ">No</button>
+                    </span>
                 </div>
                 <div class="elt elt5">
-                    <span v-show="umuti.categ!='null'">{{ umuti.categorie }}</span>
-                     
+                    <span v-show="umuti.categ!='null'">
+                        {{ umuti.categorie }}
+                    </span> 
                 </div>
 
-                <div class="elt elt5">
-{{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
+                <div class="elt elt5" :data-b="umuti.nom_med +';'+umuti.num_bon" @click="changeDate">
+                    <span v-if="!turnDateChange">
+                        {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
+                    </span>
+                    <span v-else>
+                        <input :ref="dateInp" v-model="newDate" type="date">
+                    </span>
                 </div>
                 <div class="elt elt6">
                      <span v-if="!umuti.is_paid" class="btn2 br mt w-22 bg-b"
@@ -143,7 +152,14 @@
                        @click="checkBon"></span>
                 </div>
                 <div class="elt elt7">
-                    {{ (umuti.num_bon).slice(0,7) }}
+                    <span v-if="!turnDateChange">
+                        {{ (umuti.num_bon).slice(0,7) }}
+                    </span>
+                    <span v-else>
+                        <button 
+                            class="sm-bt"
+                            @click="takeNewDate">Ok</button>
+                    </span>
                 </div>
                 
             </div>
@@ -232,7 +248,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toValue, watch } from 'vue'
+import { reactive, ref, toValue, watch } from 'vue'
 import {  usePostRequest, useKuvoma, useKurungika } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
 import { useAssuStore } from '../../../store/assu'
@@ -279,7 +295,47 @@ const [response, getInfo] = useKurungika(ids, url_getInfo)
 getAssurances()
 getClients()
 
+
+const turnDateChange = ref(false)
+const turnDateChangeIndex = ref(null)
+const newDate = ref()
+const dateInp = ref()
+const idBon = ref('')
+const dateData = reactive({
+    'newDate': toValue(newDate),
+    'idBon': toValue(idBon)
+})
+
+const url_moveVente = 'api/gOps2/move_vente/'
+const [repMoveVente, moveVente] = useKurungika(dateData, url_moveVente)
+
+
 //Functions
+const takeNewDate = ()=>{
+    const today = new Date()
+    const newFDate = new Date(toValue(newDate))
+    turnDateChange.value = false;
+
+    if ((newFDate <= today) && (toValue(idBon))){
+        dateData.idBon = idBon;
+        dateData.newDate = toValue(newDate)
+        moveVente()
+    } else{
+        console.log("THe new day is invalid." + toValue(newDate))
+    }
+}
+const changeDate = (e)=>{
+    // const data = e.target.getAttribute('data-b')
+    const data = e.target.parentNode.getAttribute('data-b')
+    const id = String(data).split(';')[1]
+    if (id){
+        idBon.value = id
+    }
+    
+    turnDateChange.value = true;
+    console.log("The actual vente: " + JSON.stringify(toValue(actual_imitiS)))
+    console.log("The saved data-b: " + idBon.value)
+}
 const closeFacture = ()=>{
     console.log("Should close the facture")
     openFacturier.value = false

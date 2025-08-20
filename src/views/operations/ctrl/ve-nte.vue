@@ -111,13 +111,8 @@
                      
                 </div>
 
-                <div class="elt elt5" :data-b="umuti.nom_med +';'+umuti.num_bon" @click="changeDate">
-                    <span v-if="!turnDateChange">
-                        {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
-                    </span>
-                    <span v-else>
-                        <input :ref="dateInp" v-model="newDate" type="date">
-                    </span>
+                <div class="elt elt5">
+                    {{ (umuti.date_served).slice(8,10) }}/{{ (umuti.date_served).slice(5,7) }}/{{ (umuti.date_served).slice(2,4) }}
                 </div>
                 <div class="elt elt7"></div>
                 <div class="elt elt7" :title="'Fait par: ' + umuti.caissier">
@@ -238,44 +233,9 @@ const [repCancel, cancelOp] = useKurungika(umutiSoldId, url_cancelSell)
 const annotatedIndexes = ref(null);
 annotatedIndexes.value = new Set;
 
-const turnDateChange = ref(false)
-const turnDateChangeIndex = ref(null)
-const newDate = ref()
-const dateInp = ref()
-const idBon = ref('')
-const dateData = reactive({
-    'date': toValue(newDate),
-    'idBon': toValue(idBon)
-})
-
-const url_moveVente = 'api/gOps2/move_vente/'
-const [repMoveVente, moveVente] = useKurungika(dateData, url_moveVente)
 
 // Functions
-const takeNewDate = ()=>{
-    const today = new Date()
-    const newFDate = new Date(toValue(newDate))
-    turnDateChange.value = false;
 
-    if (newFDate <= today){
-        dateData.idBon = idBon
-        moveVente()
-    } else{
-        console.log("THe new day is invalid." + toValue(newDate))
-    }
-}
-const changeDate = (e)=>{
-    // const data = e.target.getAttribute('data-b')
-    const data = e.target.parentNode.getAttribute('data-b')
-    const id = String(data).split(';')[1]
-    if (id){
-        idBon.value = id
-    }
-    
-    turnDateChange.value = true;
-    console.log("The actual vente: " + JSON.stringify(toValue(actual_imitiS)))
-    console.log("The saved data-b: " + idBon.value)
-}
 const changeBg = (e)=>{
     const selectedIndex = Number(e.target.getAttribute('data-index'));
     if (!(annotatedIndexes.value.has(selectedIndex))){
