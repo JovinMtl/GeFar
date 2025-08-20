@@ -973,8 +973,8 @@ div > section {
     animation: fl 300ms infinite ;
 }
 @keyframes fl {
-    from{scale: 1;}
-    to{scale: 0.8;}
+    from{scale: 1;background-color: #286ae6;}
+    to{scale: 0.8;background-color: #09582a;}
 }
 @keyframes vib {
     from{
