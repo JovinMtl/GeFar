@@ -157,7 +157,7 @@
                     </span>
                     <span  v-else-if="turnDateChange && (index==selectedIndex)">
                         <button 
-                            class="sm-bt flashi"
+                            class="sm-bt" :class="dataSending==1 ? 'flashi':''"
                             @click="takeNewDate">Ok</button>
                     </span>
                 </div>
@@ -248,7 +248,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, toValue, watch } from 'vue'
+import { reactive, ref, toValue, watch, nextTick } from 'vue'
 import type { Ref } from 'vue'
 import {  usePostRequest, useKuvoma, useKurungika } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
@@ -300,6 +300,7 @@ getClients()
 const selectedIndex: Ref<number> = ref(-1);
 const actualId: Ref<string> = ref('');
 const turnDateChange: Ref<boolean> = ref(false);
+const dataSending: Ref<boolean> = ref(false);
 const turnDateChangeIndex = ref(null);
 const newDate = ref()
 const dateInp = ref()
@@ -320,11 +321,12 @@ const turnNoDate = ()=>{
 const takeNewDate = ()=>{
     const today = new Date()
     const newFDate = new Date(toValue(newDate))
-    turnDateChange.value = false;
+    // turnDateChange.value = false;
 
     if ((newFDate <= today) && (toValue(idBon))){
         dateData.idBon = idBon;
         dateData.newDate = toValue(newDate)
+        dataSending.value = true;
         moveVente()
     } else{
         console.log("THe new day is invalid." + toValue(newDate))
@@ -440,8 +442,6 @@ const buildBons = ()=>{
         arr.push(elm.bon_de_commande)
     })
     idBons.value = arr
-    // removeBadBons()
-    // sendBons(selectIndex.value, url_sendBons)
 }
 
 const shouldPop = ref<boolean>(true)
@@ -450,19 +450,20 @@ const updatedImiti = ref(null)
 const numberIndex = ref(0)
 
 updateTotaux()
-// buildBons()
+
 watch(repMoveVente, (value)=>{
-    console.log("The actual Id: " + toValue(actualId))
-    const elmInp = document.getElementById(toValue(actualId))
-    elmInp.innerHTML = toValue(newDate)
-    console.log("THe elm: " + elmInp)
+    turnDateChange.value = false;
+    nextTick(()=>{
+        const elmInp = document.getElementById(toValue(actualId))
+        elmInp.innerHTML = toValue(newDate)
+    })
+    dataSending.value = false;
 })
 watch(response, (value)=>{
     shouldPop.value = true
     if(value.response[0] != undefined){
         updatedImiti.value = value.response
         whoDidIt.value = (value.response[0].operator)
-        // console.log("whoDidIt ? " + JSON.stringify(value.response[0].operator))
         
         defaultPop.value = 'something'
 
