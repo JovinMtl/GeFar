@@ -128,7 +128,7 @@
                         {{ useReadable(umuti.montant_dette) }}
                     </span>
                     <span v-if="turnDateChange && (index==selectedIndex)">
-                        <button class="sm-bt bg-r2 ">No</button>
+                        <button @click="turnNoDate" class="sm-bt bg-r2">No</button>
                     </span>
                 </div>
                 <div class="elt elt5">
@@ -314,6 +314,9 @@ const [repMoveVente, moveVente] = useKurungika(dateData, url_moveVente)
 
 
 //Functions
+const turnNoDate = ()=>{
+    turnDateChange.value = false;
+}
 const takeNewDate = ()=>{
     const today = new Date()
     const newFDate = new Date(toValue(newDate))
