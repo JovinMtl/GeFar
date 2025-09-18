@@ -20,6 +20,9 @@
             <button :class="actualComp=='derPrix' ? 'bg-g-1 btnEffect':''" @click="setComp('derPrix')">
                 Dernier prix
             </button>
+            <button :class="actualComp=='histo' ? 'bg-g-1 btnEffect':''" @click="setComp('histo')">
+                Histo
+            </button>
             
             <!-- <button>Autre</button> -->
         </div>
