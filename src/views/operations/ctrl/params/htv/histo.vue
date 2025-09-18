@@ -5,8 +5,12 @@
          
         <table style="text-align: right;">
             <tr>
-                <th>Element</th>
-                <th><span class="c-t">____</span>Valeur</th>
+                <th>Nom</th>
+                <th><span class="c-t">____</span>Qte</th>
+                <th><span class="c-t">____</span>Px.V</th>
+                <th><span class="c-t">____</span>code</th>
+                <th><span class="c-t">____</span>Date</th>
+                <th><span class="c-t">____</span>Qui?</th>
             </tr>
             <tr v-for="med in meds">
                 <td>{{ med.nom_med }}</td>
