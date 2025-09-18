@@ -13,15 +13,16 @@
             <button v-if="isAdmin" :class="actualComp=='prInte' ? 'bg-g-1 btnEffect':''" @click="setComp('prInte')">
                 Pr Intéret
             </button>
-            <button v-if="isAdmin" :class="actualComp=='achat' ? 'bg-g-1 btnEffect':''" @click="setComp('achat')">Achats</button>
+            <button v-if="isAdmin" :class="actualComp=='achat' ? 'bg-g-1 btnEffect':''" @click="setComp('achat')">
+                Achats</button>
+            <button :class="actualComp=='histo' ? 'bg-g-1 btnEffect':''" @click="setComp('histo')">
+                Ventes
+            </button>
             <button v-if="isAdmin" :class="actualComp=='nom' ? 'bg-g-1 btnEffect':''" @click="setComp('nom')">
                 Nom
             </button>
             <button :class="actualComp=='derPrix' ? 'bg-g-1 btnEffect':''" @click="setComp('derPrix')">
                 Dernier prix
-            </button>
-            <button :class="actualComp=='histo' ? 'bg-g-1 btnEffect':''" @click="setComp('histo')">
-                Histo
             </button>
             
             <!-- <button>Autre</button> -->
