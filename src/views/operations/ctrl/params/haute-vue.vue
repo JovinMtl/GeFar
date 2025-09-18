@@ -37,6 +37,8 @@
                 @quit="closeComp"/>
             <derPrix v-if="actualComp=='derPrix'" :code_med="actualId"
                 @quit="closeComp"/>
+            <histo v-if="actualComp=='histo'" :code_med="actualId"
+                @quit="closeComp"/>
         </div>
     </div>
 </template>
@@ -50,6 +52,7 @@ import prInte from './htv/pr-inte.vue'
 import achAt from './htv/ach-at.vue'
 import updateNom from './htv/update-nom.vue'
 import derPrix from './htv/der-prix.vue'
+import histo from './htv/histo.vue'
 
 const props = defineProps(['admin'])
 

@@ -8,25 +8,13 @@
                 <th>Element</th>
                 <th><span class="c-t">____</span>Valeur</th>
             </tr>
-            <tr>
-                <td>ID</td>
-                <td class="c-w">{{ oneCompiledData.code_med }}</td>
-            </tr>
-            <tr>
-                <td>Désignation</td>
-                <td class="c-w"><span class="c-t">____</span>{{ oneCompiledData.nom_med }}</td>
-            </tr>
-            <tr>
-                <td>Quantité</td>
-                <td class="c-w">{{ oneCompiledData.quantite_restant }}</td>
-            </tr>
-            <tr>
-                <td>Prix de vente</td>
-                <td class="c-w">{{ oneCompiledData.prix_vente }}</td>
-            </tr>
-            <tr>
-                <td>Considerer le dernier prix?</td>
-                <td class="c-w"><input v-model="isDerPrix" style="scale: 1.8;" type="checkbox"></td>
+            <tr v-for="med in meds">
+                <td>{{ med.nom_med }}</td>
+                <td><span class="c-t">____</span>{{ med.quantity }}</td>
+                <td><span class="c-t">____</span>{{ med.prix_vente }}</td>
+                <td><span class="c-t">____</span>{{ med.code_operation_entrant }}</td>
+                <td><span class="c-t">____</span>{{ med.date_operation }}</td>
+                <td><span class="c-t">____</span>{{ med.operator }}</td>
             </tr>
         </table>
         
@@ -49,55 +37,27 @@ const emits = defineEmits(['quit'])
 
 const allowChange = ref(true)
 const codeMed = ref('')
-const nomMed = ref('')
-const isDerPrix = ref(false)
-const changeSuccessfull = ref(0)
+const meds = ref([])
 
 const { incrementCounter } = useCounter()
 
-const oneCompiled_url = 'api/gOps2/set_last_prix_vente/'
-const oneCompiledData = reactive({
+// const oneCompiled_url = 'api/gOps2/set_last_prix_vente/'
+const histoVentesUrl = 'api/gOps2/histo_vente/'
+const initData = reactive({
     'code_med' : props.code_med,
     'request': 'get',
 })
 
 
-const [oneCompiled, getOneCompiled] = useKurungika(oneCompiledData, oneCompiled_url)
+const [histoVentes, getHistoVentes] = useKurungika(initData, histoVentesUrl)
 setTimeout(()=>{
-    console.log("CPIL: " + oneCompiledData.code_med)
+    console.log("CPIL: " + initData.code_med)
     
-    getOneCompiled()
+    getHistoVentes()
 }, 300)
 
-const changeOneCompiled = ()=>{
-    // 
-    // oneCompiled.code_med = 
-    oneCompiledData.request = 'post'
-    oneCompiledData.code_med = toValue(codeMed);
-    oneCompiledData.last_prix_vente = toValue(isDerPrix)
-    getOneCompiled()
-}
-watch(oneCompiled, (value)=>{
-    if(value?.response == 0){
-        allowChange.value = false;
-    }else if(value?.response == 1){
-        changeSuccessfull.value = 1;
-        incrementCounter()
-        setTimeout(()=>{
-                emits("quit")
-            }, 1000)
-    }else if(value?.response == 404){
-        changeSuccessfull.value = 404;
-    }
-    console.log("One compiled : " + JSON.stringify(value))
-    oneCompiledData.nom_med = value?.nom_med
-    oneCompiledData.code_med = value?.code_med;
-    oneCompiledData.quantite_restant = value?.quantite_restant;
-    oneCompiledData.prix_vente = value?.prix_vente;
-    oneCompiledData.last_prix_vente = value?.last_prix_vente;
-
-    codeMed.value = value?.code_med ?? '';
-    isDerPrix.value = value?.last_prix_vente ?? false;
+watch(histoVentes, (value)=>{
+    meds.value = value
 })
 </script>
 
