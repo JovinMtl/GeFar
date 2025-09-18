@@ -68,6 +68,9 @@ watch(histoVentes, (value)=>{
 <style scoped>
 th{
     margin: 0 15px;
+    /* color: green; */
+    border: 1px solid grey;
+    text-align: center;
 }
 .btnComp{
     margin: 5px;
