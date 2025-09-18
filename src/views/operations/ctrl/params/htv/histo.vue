@@ -17,7 +17,7 @@
                 <td><span class="c-t">____</span>{{ med.quantity }}</td>
                 <td><span class="c-t">____</span>{{ med.prix_vente }}</td>
                 <td><span class="c-t">____</span>{{ med.code_operation_entrant }}</td>
-                <td><span class="c-t">____</span>{{ med.date_operation }}</td>
+                <td><span class="c-t">____</span>{{ useReadableDateTime(med.date_operation) }}</td>
                 <td><span class="c-t">____</span>{{ med.operator }}</td>
             </tr>
         </table>
@@ -35,6 +35,7 @@
 import { reactive,ref, toValue, watch } from 'vue'
 import { useKurungika } from '../../../../hooks/kuvoma'
 import { useCounter } from '../../../../../store/incrementCounter'
+import useReadableDateTime from '../../../../hooks/useReadableDate'
 
 const props = defineProps(['code_med'])
 const emits = defineEmits(['quit'])
