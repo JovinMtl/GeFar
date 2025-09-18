@@ -35,7 +35,10 @@
 import { reactive,ref, toValue, watch } from 'vue'
 import { useKurungika } from '../../../../hooks/kuvoma'
 import { useCounter } from '../../../../../store/incrementCounter'
-import useReadableDateTime from '../../../../hooks/useReadableDate'
+import { 
+    useReadableDateTime, 
+    useReadableDateTimeSeparate
+} from '../../../../hooks/useReadableDate'
 
 const props = defineProps(['code_med'])
 const emits = defineEmits(['quit'])
