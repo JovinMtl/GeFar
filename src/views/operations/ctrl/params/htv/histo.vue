@@ -17,7 +17,8 @@
                 <td><span class="c-t">____</span>{{ med.quantity }}</td>
                 <td><span class="c-t">____</span>{{ med.prix_vente }}</td>
                 <td><span class="c-t">____</span>{{ med.code_operation_entrant }}</td>
-                <td><span class="c-t">____</span>{{ useReadableDateTime(med.date_operation) }}</td>
+                <td><span class="c-t">____</span>{{ useReadableDateTimeSeparate(med.date_operation)[0] }} 
+                    <span class="c-w">{{ useReadableDateTimeSeparate(med.date_operation)[1] }}</span></td>
                 <td><span class="c-t">____</span>{{ med.operator }}</td>
             </tr>
         </table>
