@@ -38,10 +38,15 @@ import {
 import { UmutiSet } from '../layout/types'
 import { useUserStore } from '../../store/user.js'
 import { baseURL } from '../../store/host'
+import { usegeneralCalls } from '../../store/generalCalls.js'
 import { useCapitalLetter } from '../hooks/useReadable.js'
 import useReadableNumber from '../hooks/useReadable.js'
 export default defineComponent({
     setup(_, { emit }) {
+
+        const { 
+            getDispo, setDispo
+        } = usegeneralCalls()
         const data = reactive({})
         const imitiset: UmutiSet[] = ref([])
         const imitiset_copy: UmutiSet[] = ref([])
@@ -270,6 +275,10 @@ export default defineComponent({
                 imiti_for_search.push(obj)
             });
         }
+
+        watch(getDispo, (value)=>{
+            console.log("The dispo should be called because a sell has been cancelled.")
+        })
         watch(imitiset, (value)=>{
             emit('numbered', (value).length)
         })

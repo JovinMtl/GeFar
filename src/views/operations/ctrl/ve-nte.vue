@@ -201,6 +201,9 @@ import { ref, watch, computed, toValue, reactive } from 'vue'
 import { useKurungika, usePostRequest } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
 import confirmCancel from './params/confirm-cancel.vue'
+
+import { usegeneralCalls } from '../../../store/generalCalls'
+
 const props = defineProps(['med','admin'])
 // const emit = defineEmits(['lsIndex'])
 const actual_imitiS = ref(props.med)
@@ -220,6 +223,10 @@ const actualSell = ref()
 const statusRemove = ref(0)
 const shouldConfirm = ref(false)
 const shouldStopCancelling = ref(false)
+const { 
+    setDispo
+} = usegeneralCalls()
+
 
 const url_sendIndex = 'api/gOps/setBons/'
 const [repIndex, sendIndex] = usePostRequest()
@@ -365,6 +372,7 @@ watch(repCancel, (value)=>{
     if (value.response == 200){
         deletedIndexes.value.push(indexToRemove.value)
         indexToRemove.value = null
+        setDispo()
     } else if (value.response == 403){
         failedDelIndex.value.push(indexToRemove.value)
         indexToRemove.value = null
