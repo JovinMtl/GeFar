@@ -322,12 +322,16 @@ import {
 import EnCours from '../operations/en-cours.vue';
 import prEt from '../operations/pr-et.vue';
 import { useInfos } from '../../store/useInfos.js';
+import { usegeneralCalls } from '../../store/generalCalls.js';
 
 const router = useRouter()
 const { 
     getAddress, getPharmaName,
     setAddress
 } = useInfos()
+const { 
+    getDispo, setDispo
+} = usegeneralCalls()
 
 const today: Date = new Date
 
@@ -944,6 +948,14 @@ const shouldPop = ref(false)
 
 
 // Watchers
+watch(getDispo, (value)=>{
+    console.log("The dispo should be called because a sell has been cancelled.")
+    
+    if (value==true){
+        callCompileImitiSet()
+    }
+    setDispo(false)
+})
 watch(rep_updated_collection, (value)=>{
     console.log("Finished updateCollection.")
     if (value?.response){
