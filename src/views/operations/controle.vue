@@ -118,7 +118,7 @@
 
                 <div class="logoMenu c-b" @click="setPassword">
                     <ion-icon :src="lockClosed" class="logoIcon"></ion-icon>
-                    <span class="textMenu textMenu-p t-m-skin">Mot de passe</span>
+                    <span class="textMenu textMenu-p t-m-skin">Securité</span>
                 </div>
 
                 <div class="logoMenu c-b" @click="getPertes">
