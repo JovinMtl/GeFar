@@ -1,8 +1,7 @@
 <template>
     <div class="bg-ht se  bdbmr-5">
-    <div class="c-b" style="display: flex; justify-content: center;">
-        <!-- Ici on va modifier le produits compile -->
-         
+    <div class="c-b" style="display: flex; justify-content: center;min-width: 20px; max-height: 150px;overflow: auto;">
+        <!-- Ici on va modifier le produits compile -->  
         <table style="text-align: right;">
             <tr>
                 <th>Nom</th>
