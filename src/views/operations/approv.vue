@@ -239,6 +239,7 @@ const checkBeforeUpload = ()=>{
         umuti_obj.classe_med = selected_search.value.classe_med
         umuti_obj.sous_classe_med = selected_search.value.sous_classe_med
         umuti_obj.forme = selected_search.value.forme
+        umuti_obj.type_med = selected_search.value.type_med
 
         return umuti_obj
     } else{
@@ -257,6 +258,7 @@ const checkBeforeUpload = ()=>{
             umuti_obj.prix_vente = Number(umuti_prix_vente.value)
             umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
             umuti_obj.forme = forme_med.value
+            umuti_obj.type_med = type_med.value
             // umuti_obj.ratio = ratio.value || 1
             // umuti_obj.location = location.value || 'vide'
             // umuti_obj.type_vente = type_vente.value || 'vide'

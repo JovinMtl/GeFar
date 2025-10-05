@@ -38,17 +38,20 @@ export interface PanierAPI {
 
 
 export interface MedApprov {
+    code_med: string;
     nom_med : string;
     classe_med: string;
     sous_classe_med : string;
     forme :string;
     quantite_initial: number;
     prix_achat: number;
+    prix_vente: number;
     date_peremption: string;
     type_achat: string; // carton
     type_vente: string; // piece ou plaquette
     ratio: number; // 1 if no detail, 10, ...
     errors: number[];
+    type_med: string;
 }
 
 export type Assu = [string, number]
