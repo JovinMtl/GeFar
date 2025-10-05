@@ -33,7 +33,7 @@
             <br> <br>
             <label>Forme du produit</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
-            <select v-model="forme_med" style="background-color: white" placeholder="Type" value="Ovule">
+            <select v-model="forme_med" placeholder="Type" class="bg-w" value="Ovule">
                 <option>Cp</option>
                 <option>Goutte</option>
                 <option>Gel</option>
@@ -56,13 +56,13 @@
 
             <label v-if="classeRef">Unité sortant</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
-            <select v-if="classeRef" v-model="type_med" style="background-color: white" placeholder="Type" value="Plaquette">
+            <select v-if="classeRef" v-model="type_med" class="bg-w" placeholder="Type" value="Plaquette">
                 <option>Boite</option>
                 <option>Plaquette</option>
                 <option>Ces</option>
                 <option>Flacon</option>
                 <option>Pièce</option>
-            </select> <br><br>
+            </select> <br> <br>
             <input v-model="umuti_quantite_initial" type="number" placeholder="Quantité">
             <br> <br>
             <input v-model="umuti_prix_achat" type="number" placeholder="P.A: (Unité sortant)">
