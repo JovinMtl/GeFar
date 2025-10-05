@@ -54,9 +54,9 @@
             </select>
             <br> <br>
 
-            <label>Unité sortant</label>
+            <label v-if="classeRef">Unité sortant</label>
             <span style="margin-right: .1rem;">&nbsp;</span>
-            <select v-model="type_med" style="background-color: white" placeholder="Type" value="Plaquette">
+            <select v-if="classeRef" v-model="type_med" style="background-color: white" placeholder="Type" value="Plaquette">
                 <option>Boite</option>
                 <option>Plaquette</option>
                 <option>Ces</option>
