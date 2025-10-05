@@ -53,6 +53,16 @@
                 <option>Autre</option>
             </select>
             <br> <br>
+
+            <label>Unité sortant</label>
+            <span style="margin-right: .1rem;">&nbsp;</span>
+            <select v-model="type_med" style="background-color: white" placeholder="Type" value="Plaquette">
+                <option>Boite</option>
+                <option>Plaquette</option>
+                <option>Ces</option>
+                <option>Flacon</option>
+                <option>Pièce</option>
+            </select> <br><br>
             <input v-model="umuti_quantite_initial" type="number" placeholder="Quantité">
             <br> <br>
             <input v-model="umuti_prix_achat" type="number" placeholder="P.A: (Unité sortant)">
@@ -122,6 +132,7 @@ const umuti_date_exp = ref(null)
 const date_exp = ref(null)
 const date_init = ref(new Date)
 const forme_med = ref('Cp')
+const type_med = ref('Plaquette')
 const ratio = ref(null)
 const type_achat = ref(null)
 const type_vente = ref(null)
