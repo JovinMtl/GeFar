@@ -740,6 +740,7 @@ const lot_array = (): PanierAPI[] => {
     let value: number = 0  // counting number of requested items
     let right_date: number = 0 //counting items with right date of expirity
     // console.log("ActiveLot is:", activeLot.value)
+    
     let with_qte = 0
     let i = 0
     let j = 0
