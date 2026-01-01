@@ -390,7 +390,7 @@ const actualFactureLength:Ref<number> = ref(0)
 
 const showClassMed:Ref<boolean> = ref(false)
 const decimalNumber:Ref<number> = ref(0)
-const fullDecimal: Ref<number> = ref(10)
+const fullDecimal: number = 10
 const clientName: Ref<string> = ref('')
 const collectionLength = ref(0)
 const login_initiator = ref(0)
@@ -740,7 +740,7 @@ const lot_array = (): PanierAPI[] => {
     let value: number = 0  // counting number of requested items
     let right_date: number = 0 //counting items with right date of expirity
     // console.log("ActiveLot is:", activeLot.value)
-    
+
     let with_qte = 0
     let i = 0
     let j = 0
