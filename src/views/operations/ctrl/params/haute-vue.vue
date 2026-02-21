@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from 'vue'
+import { ref, inject, watch } from 'vue'
 import type { Ref } from 'vue'
 
 import compIled from './htv/comp-iled.vue'
@@ -69,6 +69,11 @@ const closeComp = ()=>{
 const setComp = (val)=>{
     actualComp.value = val
 }
+
+// Watchers
+watch(actualId, ()=>{
+    closeComp();
+})
 
 </script>
 
