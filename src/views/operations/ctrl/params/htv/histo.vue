@@ -1,24 +1,27 @@
 <template>
     <div class="bg-ht se  bdbmr-5">
+    <h3 class="c-b">Historique des ventes de {{ String(meds[0]?.nom_med).slice(0, 20) }}</h3>
     <div class="c-b" style="display: flex; justify-content: center;min-width: 20px; max-height: 150px;overflow: auto;">
-        <!-- Ici on va modifier le produits compile -->  
+        
         <table style="text-align: right;">
             <tr>
                 <th>Nom</th>
-                <th><span class="c-t">____</span>Qte</th>
-                <th><span class="c-t">____</span>Px.V</th>
-                <th><span class="c-t">____</span>code</th>
-                <th><span class="c-t">____</span>Date</th>
-                <th><span class="c-t">____</span>Qui?</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;Qte</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;Px.V</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;code</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;Date</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;Qui?</th>
             </tr>
             <tr v-for="med in meds">
                 <td>{{ med.nom_med }}</td>
-                <td><span class="c-t">____</span>{{ med.quantity }}</td>
-                <td><span class="c-t">____</span>{{ med.prix_vente }}</td>
-                <td><span class="c-t">____</span>{{ med.code_operation_entrant }}</td>
-                <td><span class="c-t">____</span>{{ useReadableDateTimeSeparate(med.date_operation)[0] }} 
-                    <span class="c-w">{{ useReadableDateTimeSeparate(med.date_operation)[1] }}</span></td>
-                <td><span class="c-t">____</span>{{ med.operator }}</td>
+                <td>&nbsp;{{ med.quantity }}</td>
+                <td>&nbsp;{{ med.prix_vente }}&nbsp;</td>
+                <td class="c-g-2">&nbsp;{{ med.code_operation_entrant }}&nbsp;</td>
+                <td>&nbsp;{{ useReadableDateTimeSeparate(med.date_operation)[0] }} 
+                    <span class="c-w">{{ useReadableDateTimeSeparate(med.date_operation)[1] }}</span>
+                    &nbsp;
+                </td>
+                <td>&nbsp;{{ med.operator }}</td>
             </tr>
         </table>
         
