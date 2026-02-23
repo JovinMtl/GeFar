@@ -16,20 +16,29 @@
     </div>
 </template>
 <script setup lang="ts">
-    import { reactive, ref, watch } from 'vue'
+    import { reactive, ref, watch } from 'vue';
+    import type { Ref } from 'vue';
     import { useKurungika } from '../../../../../../hooks/kuvoma';
-import { set } from '@vueuse/core';
 
     const props = defineProps(['umutiData']);
     const emits = defineEmits(['closeModAchat']);
 
-    const urlPxAchat = 'api/achat/px_achat/';
-    const data = reactive({})
-    const btnStatus = ref(0)
-    data.code_med = props.umutiData?.code_med;
-    data.code_operation = props.umutiData?.code_operation;
-    data.new_px_achat = null;
+    interface dataAchat {
+        code_med : string;
+        code_operation : string;
+        new_px_achat : number | null;
+    }
 
+    const urlPxAchat = 'api/achat/px_achat/';
+    const data: dataAchat = reactive({
+        code_med: props.umutiData?.code_med || '',
+        code_operation: props.umutiData?.code_operation || '',
+        new_px_achat: null
+    });
+
+    // State to manage button status
+    // 0: default, 1: success, 2: error
+    const btnStatus: Ref<number> = ref(0)
     const [ responsePxAchat, updatePxAchat ] = useKurungika(data, urlPxAchat)
 
 
@@ -52,11 +61,9 @@ import { set } from '@vueuse/core';
     // Watchers
     watch(responsePxAchat, (res) => {
         // Handle the response from the API
-
         if (res.status === 200) {
             // Reset the input field
-            btnStatus.value = 1; // Indicate success
-            // data.new_px_achat = null;
+            data.new_px_achat = null;
             // Emit an event to notify the parent component
             emits('closeModAchat');
             
