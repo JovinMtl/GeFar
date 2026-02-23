@@ -35,7 +35,9 @@
             
         </div>
         <mAchat v-if="mAchatIsOpen"
-            @done-update="closemAchat" :umutiData="oneCompiled[actualId]"/> 
+            @done-update="closemAchat"
+            @close-mod-achat="closemAchat" 
+            :umutiData="oneCompiled[actualId]"/> 
     </div>
 </template>
 
