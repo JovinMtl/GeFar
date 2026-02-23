@@ -5,25 +5,25 @@
             <table style="text-align: right;">
                 <tr>
                     <th >Date entrant</th>
-                    <th><span class="c-t">____</span>Date Per.</th>
-                    <th><span class="c-t">____</span>Prix A.</th>
-                    <th><span class="c-t">____</span>Prix V.</th>
-                    <th><span class="c-t">____</span>Qte 1.</th>
-                    <th><span class="c-t">____</span>Qte 2.</th>
-                    <th><span class="c-t">____</span>Nom med.</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date Per.</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prix A.</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prix V.</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qte 1.</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qte 2.&nbsp;</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nom med.</th>
                 </tr>
                 <tr v-for="(umuti, index) in oneCompiled">
                     <td class="c-g-2" :title="'Avec code: ' + umuti.code_operation">{{ String(umuti.date_entrant).slice(0, 10) }}</td>
                     <td class="pointer" title="Modifier cette opération." 
                         :data-index="index" @click="openDataR">
-                        <span class="c-t">____</span>
+                        &nbsp;
                         {{ (umuti.date_peremption).slice(0, 10) }}
                     </td>
-                    <td class="pointer"><span class="c-t">____</span>{{ umuti.prix_achat }}</td>
-                    <td class="c-g-2"><span class="c-t">____</span>{{ umuti.prix_vente }}</td>
-                    <td class="c-w"><span class="c-t">____</span>{{ umuti?.quantite_initial }}</td>
-                    <td class="c-w"><span class="c-t">____</span>{{ umuti?.quantite_restant }}</td>
-                    <td class="c-w"><span class="c-t">____</span>{{ String(umuti.nom_med).slice(0, 20) }}</td>
+                    <td class="pointer">&nbsp;{{ umuti.prix_achat }}</td>
+                    <td class="c-g-2">&nbsp;{{ umuti.prix_vente }}</td>
+                    <td class="c-w">&nbsp;{{ umuti?.quantite_initial }}</td>
+                    <td class="c-w">&nbsp;{{ umuti?.quantite_restant }}&nbsp;</td>
+                    <td class="c-g-2">&nbsp;{{ String(umuti.nom_med).slice(0, 20) }}</td>
                     <td :data-index="index"><button class="bg-a-1" title="Modifier cette opération." 
                         @click="openDataB">
                         <span v-if="!mAchatIsOpen">Modifier</span>
