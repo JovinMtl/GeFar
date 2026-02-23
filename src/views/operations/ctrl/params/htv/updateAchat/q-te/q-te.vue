@@ -14,6 +14,7 @@
                 Ok
             </button>
         </div>
+        <div v-if="message" class="c-r">{{ message }}</div>
     </div>
 </template>
 <script setup lang="ts">
@@ -36,6 +37,8 @@
         code_operation: props.umutiData?.code_operation || '',
         new_qte: null
     });
+    
+    const message: Ref<string> = ref('')
 
     // State to manage button status
     // 0: default, 1: success, 2: error
@@ -46,7 +49,7 @@
     // Functions
     function updateQteFn(){
         // Some validations
-        let valid = Number(data.new_qte) > 0;
+        let valid = Number(data.new_qte) >= 0;
         if (valid){
             updateQte()
         }else{
@@ -68,8 +71,13 @@
             // Emit an event to notify the parent component
             emits('closeModAchat');
             
-        }else {
+        }else{
             btnStatus.value = 2; // Indicate error
+            message.value = res.message || 'Une erreur est survenu';
+            setTimeout(()=>{
+                message.value = ''; // Reset status after a while
+            }, 2000)
+            return;
         }
     });
 
