@@ -1,12 +1,11 @@
 <template>
     <div>
         
-        <label> Ancien Qté : 
-            <span class="c-b">{{ (props.umutiData?.quantite_initial) }}</span> 
+        <label> Ancien date : 
+            <span class="c-b">{{ (props.umutiData?.date_peremption) }}</span> 
         </label>
         <hr>
-        <input v-model="data.new_qte" type="number" placeholder="Nouvelle Qté"/>
-        <label class="c-g-1">&nbsp;{{ Number((props.umutiData?.quantite_initial)) - Number((props.umutiData?.quantite_restant)) }}+ </label>
+        <input v-model="data.new_date" type="date" placeholder="Nouvelle date"/>
         <div>
             <button class="btn bg-b-1" 
                 :class="[   btnStatus==1 ? 'bg-g-1' : '', btnStatus==2 ? 'bg-r' : '']"
@@ -14,7 +13,8 @@
                 Ok
             </button>
         </div>
-        <div v-if="message" class="c-r">{{ message }}</div>
+        <div v-if="message"
+            :class="btnStatus==1 ? 'c-g-1' : btnStatus==2 ? 'c-r' : ''">{{ message }}</div>
     </div>
 </template>
 <script setup lang="ts">
@@ -25,17 +25,19 @@
     const props = defineProps(['umutiData']);
     const emits = defineEmits(['closeModAchat']);
 
+    let changedDate = false;
+
     interface dataAchat {
         code_med : string;
         code_operation : string;
-        new_qte : number | null;
+        new_date : Date | null;
     }
 
-    const urlPxAchat = 'api/achat/n_qte/';
+    const urlPxAchat = 'api/achat/date_peremption/';
     const data: dataAchat = reactive({
         code_med: props.umutiData?.code_med || '',
         code_operation: props.umutiData?.code_operation || '',
-        new_qte: null
+        new_date: new Date((props.umutiData?.date_peremption))
     });
     
     const message: Ref<string> = ref('')
@@ -49,7 +51,7 @@
     // Functions
     function updateQteFn(){
         // Some validations
-        let valid = Number(data.new_qte) >= 0;
+        let valid = changedDate;
         if (valid){
             updateQte()
         }else{
@@ -63,11 +65,14 @@
     }
 
     // Watchers
+    watch(data, ()=>{
+        changedDate = true;
+    })
     watch(responsePxAchat, (res) => {
         // Handle the response from the API
         if (res.status === 200) {
-            // Reset the input field
-            data.new_qte = null;
+            btnStatus.value = 1; // Indicate success
+            message.value = 'Date mise à jour avec succès';
             // Emit an event to notify the parent component
             emits('closeModAchat');
             
