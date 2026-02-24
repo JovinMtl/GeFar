@@ -206,24 +206,18 @@
     kuvomaImiti()
 
     
-    const separateQte = ()=>{
+    function separateQte() {
+        // TODO: separate imiti with zero quantity and those with non zero quantity to make the display more clear
 
-        // const nonZero = arr.find((elm)=>elm.quantite_restant>0);
-        // const withZero = arr.find((elm)=>elm.quantite_restant==0)
-        // nonZero = []
-        // withZero = []
-        (imitiset).value.forEach((elm)=>{
+        (imitiset.value).forEach((elm)=>{
             if(elm.quantite_restant>0){
                 nonZero.push(elm)
             }else if(elm.quantite_restant==0){
                 withZero.push(elm)
             } else{
+                console.log("Error: negative quantity found for ", elm)
             }
         })
-        // console.log("imitiset: "+ imitiset.value)
-        // console.log("nonZero: " + nonZero)
-        // console.log("withZero: " + withZero)
-
     }
     
 
