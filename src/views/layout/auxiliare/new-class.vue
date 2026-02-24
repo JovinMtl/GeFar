@@ -19,7 +19,8 @@
         <div v-if="(! existingClass?.status)" class="sep">
             <h5 v-show="showResult">Classe avec ce nom existant déjà.</h5>
             <div class="results-ctn">
-                <p class="result-item" 
+                <p class="result-item" @click="getSubClass"
+                    :data-key="classe?.n_group"
                     v-for="(classe, index) in results" 
                     :key="classe.id">
                     {{ classe.name }}
@@ -55,6 +56,9 @@ const clearSearch = ()=>{
     // existingClass.value = null;
     showResult.value = false;
     results.value = []
+}
+const getSubClass = (event: any)=>{
+    alert(event.target.getAttribute('data-key'));
 }
 
 
