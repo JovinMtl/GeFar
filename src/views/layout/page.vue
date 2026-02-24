@@ -4,6 +4,9 @@
             <div class="mP">
                 <div class="m-cl" :class="displayClasses ? 'bg-b' : 'bg-g'" @click="showClasses">
                 </div>
+                <div class="m-qte" :class="shouldRemoveZero? 'bg-b-1':'bg-b2'"
+                    @click="shouldRemoveZero = !shouldRemoveZero">
+                </div>
 
                 <div v-show="server_process" class="loader" style="z-index: 15;position:absolute">
                     <jove-loader></jove-loader>
@@ -70,7 +73,8 @@
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
                         <list-imiti v-if="(! useRemoteResults) || (!tokenState.connected && useRemoteResults)" @actualUmuti="getUmuti" @allImiti="getAllImiti"
                             @emptyResult="alertUmutiNew" @families="getFamilies"
-                            @numbered="getImitiLength"></list-imiti>
+                            @numbered="getImitiLength"
+                            :remove-zero=shouldRemoveZero></list-imiti>
                         
                         <list-imiti-remote v-else :imitiRemote="resp_search_remote"
                             @numbered="getImitiLength">
@@ -333,7 +337,9 @@ const {
     getDispo, setDispo
 } = usegeneralCalls()
 
-const today: Date = new Date
+const today: Date = new Date;
+
+const shouldRemoveZero=ref(false)
 
 const selectedUmuti: Medi = reactive({}) as Medi
 const panier_client: Ref<PanierClient[]> = ref([])
