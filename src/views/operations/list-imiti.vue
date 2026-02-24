@@ -59,6 +59,11 @@
     var shouldUpdate = needUpdate
     const { getAccessToken } = useUserStore()
 
+    let backupSep = []
+    let counterSep = 0
+    let nonZero = [];
+    let withZero = [];
+
     const search_med = (value) => {
         // value.field
         let fieldname = 'nom_med'
@@ -188,7 +193,9 @@
                 data.value = await response.json()
                 data.value = data.value.data
                 updateImitiSet()
-                update_imiti_for_search()
+                update_imiti_for_search();
+                nonZero = []
+                withZero = []
                 separateQte()
                 imitiset.value = nonZero.concat(withZero);
             }
@@ -198,14 +205,13 @@
     }
     kuvomaImiti()
 
-    let backupSep = []
-    let counterSep = 0
-    const nonZero = [];
-    const withZero = [];
+    
     const separateQte = ()=>{
 
         // const nonZero = arr.find((elm)=>elm.quantite_restant>0);
         // const withZero = arr.find((elm)=>elm.quantite_restant==0)
+        // nonZero = []
+        // withZero = []
         (imitiset).value.forEach((elm)=>{
             if(elm.quantite_restant>0){
                 nonZero.push(elm)
@@ -214,9 +220,9 @@
             } else{
             }
         })
-        console.log("imitiset: "+imitiset.value)
-        console.log("nonZero: " + nonZero)
-        console.log("withZero: " + withZero)
+        // console.log("imitiset: "+ imitiset.value)
+        // console.log("nonZero: " + nonZero)
+        // console.log("withZero: " + withZero)
 
     }
     
