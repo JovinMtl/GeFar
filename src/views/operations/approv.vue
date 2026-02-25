@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- <h6>Ici on gère des approvisionnements</h6> -->
-        <new-class v-if="shouldAddNessClass"></new-class>
+        <new-class @close="refreshClass" v-if="shouldAddNessClass"></new-class>
         <div v-if="!selected_search">
             <a title="Importer les medicaments dans un fichier " 
                 target="_blank" rel="noopener noreferrer"
@@ -149,7 +149,7 @@
 </template>
 <script setup lang="ts">
 import { watch, ref, inject, reactive, toValue } from 'vue'
-import { fileTray, addCircleSharp, closeCircle } from 'ionicons/icons'
+import { fileTray, addCircleSharp, closeCircle, refresh } from 'ionicons/icons'
 import { IonIcon } from '@ionic/vue'
 import { useKuvoma, useKurungika } from '../hooks/kuvoma.js'
 import { MedApprov } from '../layout/types'
@@ -229,6 +229,10 @@ const [report_today_per_to_31, todayPerTo31] = useKuvoma(url_today_per_to_31)
 
 
 // Functions
+function refreshClass(){
+    shouldAddNessClass.value = false
+    getClasses()
+}
 function nGroupToName(n_group: string): string {
     let name = '';
     (allClasses.value).forEach((elm)=>{
