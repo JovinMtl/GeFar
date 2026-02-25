@@ -43,7 +43,8 @@
                             <div class="bodyApprov2">
                                 <app-rov @inputApprov="searchManager" @approFileOpen="openApproFile"
                                     @reportAchat="reportAchatHandler"
-                                    @needRefresh="reOpenApprov"></app-rov>
+                                    @needRefresh="reOpenApprov"
+                                    @close="closeApprov"></app-rov>
                             </div>
                         </div>
                         <div class="footerApprov"
@@ -118,7 +119,9 @@
                             <div v-show="selectedUmuti.value.is_decimal" class="deci">
                                 <div><button class="pa-3" @click="increaseDecimal">+</button></div>
                                 <div class="deci-nu">{{ decimalNumber }}</div>
-                                <div><button class="pa-3" @click="decreaseDecimal">--</button></div>
+                                <div>
+                                    <button class="pa-3" @click="decreaseDecimal">—</button>
+                                </div>
                             </div>
                             <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
                                 style="text-align: right;">
@@ -210,7 +213,7 @@
                             <!-- 13è Av, Q. Twinyoni, Kamenge. Ntahangwa - Bujumbura -->
                             {{ getAddress() }}
                     </div>
-                    <div class="menuHau len"> {{ imitiLength }}</div>
+                    <div class="menuHau len"> {{ numberComputed }}</div>
                     <div class="menuHau user">
                         <a title="uyu ni Wewe nyene" class="c-b">
                             {{ useCapitalLetter((String(getUsername())).slice(0, 10)) }}
@@ -488,6 +491,7 @@ const reOpenApprov = ()=>{
         approvStatus.value = true;
     })
 }
+const numberComputed = computed(()=>imitiLength.value)
 const getImitiLength = (val)=>{
     imitiLength.value = toValue(val)
 }
@@ -621,8 +625,8 @@ const getAllImiti = (imiti) => {
     // Has to gets all imiti gathered by list-imiti
     // once they are assigned then they are ready to be injected into approv componenet.
     all_imiti.value = imiti
-    console.log("we get allImiti of length: " + imiti)
-    imitiLength.value = (imiti);
+    // console.log("we get allImiti of length: " + imiti)
+    // imitiLength.value = (imiti);  //Silence the array of objects displayed in number place.
 }
 const getFamilies = (famillies)=>{
     classes.value = famillies
@@ -637,7 +641,6 @@ const closeApprov = () => {
     approvStatus.value = false
 }
 const actualOption = (value) => {
-    console.log("THe actual menu is : ", value)
     if(value == 1){
         dBOpen.value = true
     }

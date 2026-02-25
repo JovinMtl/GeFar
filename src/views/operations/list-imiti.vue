@@ -313,7 +313,9 @@
         }
     }, {immediate: true})
     watch(imitiset, (value)=>{
+        // alert("The number: " + value.length)
         emit('numbered', (value).length)
+        // emit('numbered', 8)
     })
     watch(shouldUpdate, (value) => {
         console.log("onUpdated, needToUpdate:..", value)
@@ -331,7 +333,8 @@
         } else if (queryset && value.value.query.length > 0 && value.value.response == 0) {
             imitiset.value = queryset
         } else if (value.value.query.length == 0) {
-            imitiset.value = imitiset_copy.value
+            // cancel the change of actual searched in the parent.
+            // imitiset.value = imitiset_copy.value
         }
         if (queryset.length == 0 && value.value.query.length > 4 && value.value.response == 0) {
             emit('emptyResult', 1)
