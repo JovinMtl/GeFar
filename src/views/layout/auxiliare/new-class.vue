@@ -23,16 +23,15 @@
             <h5 v-show="showResultClass">Classe avec ce nom existant déjà.</h5>
             <div v-if="showResultClass" class="results-ctn">
                 <p class="result-item" @click="getSubClass"
-                    :data-n_group="classe?.n_group"
-                    :data-name="classe?.name"
                     v-for="(classe, index) in resultsClass" 
-                    :key="index">
-                    {{ classe.name }}
+                    :key="index"
+                    :data-n_group="classe?.n_group"
+                    :data-name="classe?.name">
+                    {{ classe?.name }}
                 </p>    
             </div>
             <div v-else-if="ignoreResults != 3" class="results-ctn">
                 <p class="result-item italic" 
-                    :data-n_group="classe?.n_group"
                     v-for="(subClasse, index) in existingSubClass" 
                     :key="index">
                     {{ subClasse.name }}
@@ -80,6 +79,8 @@ import type { Ref } from 'vue'
 import { useKurungika } from '../../hooks/kuvoma'
 import { set } from '@vueuse/core'
 
+const emit = defineEmits(['close'])
+
 const newClassName: Ref<string | null> = ref(null)
 const newSubClassName: Ref<string | null> = ref(null)
 const showResultClass: Ref<boolean> = ref(false)
@@ -119,7 +120,7 @@ function writeMsg(msg:string){
     message.value = msg;
     setTimeout(()=>{
         message.value = '';
-    }, 6000)
+    }, 2000)
 }
 function checkClassFn(){
     if(String(toValue(newClassName)).length > 2){
@@ -154,9 +155,12 @@ watch(responseAddClassSubClass, (value)=>{
         newClassName.value = null;
         newSubClassName.value = null;
         n_group.value = '';
+        setTimeout(()=>{
+            emit('close')
+        }, 1500)
     }else if(value?.status == 403){
         status.value = 403;
-        writeMsg("Erreur lors de l'ajout de la classe ou sous-classe.")
+        writeMsg(value?.message)
     }
 })
 watch(existingSubClass, (value)=>{
