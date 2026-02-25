@@ -1,9 +1,8 @@
 <template>
     <div style="position: absolute;background-color: white;
         width: 100%; height: 100%;z-index: 1;">
-        <p>
-            <h2>Classe Thérapeutique</h2>
-        </p>
+        
+        <h2>Classe Thérapeutique</h2>
         <div class="sep">
             <label for="classeTher">
                 Nom de la classe
@@ -27,7 +26,7 @@
                     :data-n_group="classe?.n_group"
                     :data-name="classe?.name"
                     v-for="(classe, index) in resultsClass" 
-                    :key="classe.id">
+                    :key="index">
                     {{ classe.name }}
                 </p>    
             </div>
@@ -35,8 +34,15 @@
                 <p class="result-item italic" 
                     :data-n_group="classe?.n_group"
                     v-for="(subClasse, index) in existingSubClass" 
-                    :key="subClasse.id">
+                    :key="index">
                     {{ subClasse.name }}
+                    <span>
+                        &nbsp;
+                        <button class="btn bg-r2" 
+                            @click="clearSearch">
+                            -
+                        </button>
+                    </span>
                 </p>
                 <button 
                     v-show="ignoreResults==4"
@@ -44,32 +50,41 @@
                     @click="ignoreResults=5">Nouveau sous-classe</button> 
             </div>
         </div>
-        <!-- <div v-else>
-            <h5 v-show="(ignoreResults != 2)">Cette classe n'existe pas encore.</h5>
-        </div> -->
-        <div class="sep">
-            <label for="classe">
-            Sous classe
-            </label> <br>
-            <input type="text" :disabled="inputEnabled">
-            
+        <div @click="checkInputDisabled">
+            <div class="sep">
+                <label for="classe">
+                Sous classe
+                </label> <br>
+                <input type="text" 
+                    :disabled="inputDisabled"
+                    v-model="data.newSubClassName">
+                
+            </div>
+            <div>
+                <button 
+                    class="btn"
+                    :class="[inputDisabled? 'bg-g2':'bg-b-1', status==200? 'bg-g-1':'', status==403?'bg-r2':'']"
+                    @click="addInfos">Ajouter</button>
+            </div>
         </div>
-        <div>
-            <button 
-                class="btn"
-                :class="inputEnabled? 'bg-g2':'bg-b-1'"
-                >Ajouter</button>
+        <div v-show="message" 
+            class="sep sm-l c-danger"
+            :class="status==200 ? 'c-g-1 fw-8':''">
+            <p>{{ message }}</p>
         </div>
     </div>
 </template>
 <script setup lang="ts">
-import {computed, ref, toValue, watch } from 'vue'
+import {computed, reactive, ref, toValue, watch } from 'vue'
 import type { Ref } from 'vue'
 import { useKurungika } from '../../hooks/kuvoma'
+import { set } from '@vueuse/core'
 
 const newClassName: Ref<string | null> = ref(null)
+const newSubClassName: Ref<string | null> = ref(null)
 const showResultClass: Ref<boolean> = ref(false)
 const resultsClass = ref([])
+const message = ref('')
 
 const url_checkClass = 'api/gOps/check_class/'
 const [existingClass, checkClass] = useKurungika(newClassName, url_checkClass)
@@ -78,14 +93,40 @@ const n_group = ref('')
 const url_checkSubClass = 'api/gOps/check_subclass/'
 const [existingSubClass, checkSubClass] = useKurungika(n_group, url_checkSubClass)
 
+
+const data = reactive({
+    newClassName: newClassName, // null when newClassName is really new
+    newSubClassName: null,
+    n_group: n_group // null when newClassName is really new
+})
+
+const url_addClassSubClass = 'api/gOps/add_class_subclass/'
+const [responseAddClassSubClass, addClassSubClass] = useKurungika(data, url_addClassSubClass)
+const status = ref(0)
+
 // Functions
+function addInfos(){
+    //Validations
+    // and send data
+    addClassSubClass()
+}
+function checkInputDisabled(){
+    if((inputDisabled.value)){
+        writeMsg("Veuillez confirmer la classe thérapeutique")
+    }
+}
+function writeMsg(msg:string){
+    message.value = msg;
+    setTimeout(()=>{
+        message.value = '';
+    }, 6000)
+}
 function checkClassFn(){
     if(String(toValue(newClassName)).length > 2){
-        alert("longueur: "+String(toValue(newClassName)).length)
         checkClass()
     }else{
+        writeMsg("Longueur de la classe doit être supérieure à 2 caractères.")
         document.getElementById('classeTher').placeholder = "Trois lettres, SVP"
-        alert("-longueur: "+String(toValue(newClassName)).length)
         ignoreResults.value = 6
     }
 }
@@ -106,6 +147,18 @@ const showResultSubClass: Ref<boolean> = ref(false)
 
 const ignoreResults = ref(0)
 // Watchers
+watch(responseAddClassSubClass, (value)=>{
+    if(value?.status == 200){
+        status.value = 200;
+        writeMsg("Classe et sous-classe ajoutées avec succès.")
+        newClassName.value = null;
+        newSubClassName.value = null;
+        n_group.value = '';
+    }else if(value?.status == 403){
+        status.value = 403;
+        writeMsg("Erreur lors de l'ajout de la classe ou sous-classe.")
+    }
+})
 watch(existingSubClass, (value)=>{
     // resultsSubClass.value = value;
     showResultClass.value = false
@@ -125,7 +178,7 @@ watch(existingClass, (value)=>{
 
 })
 
-const inputEnabled = computed(()=>{
+const inputDisabled = computed(()=>{
     if((ignoreResults.value==2) || (ignoreResults.value==5)){
         return false
     }else{
@@ -142,9 +195,13 @@ input{
     padding: 0.5rem;
     background-color: rgba(25, 255, 25, 0.5);
     width: 100%;
+    text-align: center;
+}
+input:disabled{
+    background-color: wheat;
 }
 .results-ctn{
-    max-height: 200px; overflow-y: auto;
+    max-height: 230px; overflow-y: auto;
 }
 .result-item{
     border-bottom: 1px dashed black;
