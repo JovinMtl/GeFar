@@ -12,94 +12,96 @@
             <input v-model="umutiName" type="text" placeholder="Nom du produit">
             <br>
             <ul style="text-align: right;" v-if="!selected_search">
-                <button class="btnResearch" v-for="(umuti, index) in imiti_result" 
+                <button class="btnResearch" v-for="(umuti, index) in imiti_result?.slice(0,5)??[{'nom_med': 'null','code_med': 'null', 'description_med': 'null'}]" 
                     :id="'a' + index" @click="selectSearch">
                     {{ umuti.nom_med }} {{ umuti.code_med }} {{ umuti.description_med }}
                 </button>
             </ul>
-            <span class="s-cl">
-                <label for="">Classe therap.</label>
-            <span @click="addNessClass"
-                style="margin: 8px; color:green;
-                    font-size: 1.5rem; cursor: pointer; 
-                    align-items: center;
-                    position:relative;
-                    top: clamp(0.3rem, calc(0.3rem + 2px), 0.5rem)">
-                <ion-icon class="scale-btn" :src="addCircleSharp"></ion-icon>
-            </span> <br>
-                <select v-model="classeRef">
-                    <option v-for="(classe,index) in allClasses" :value="classe?.n_group"
-                        :id="'c'+index">
-                        {{ (classe?.name)?.slice(0,30) }}
-                    </option>
-                </select>
-            </span>
-            <br>
-            <hr>
-            <span v-if="classeRef" class="s-cl">
-                <label for="">S-Classe therap.</label><br>
-                <select v-model="sClasseRef">
-                    <option v-for="sClasse in subClass">{{ (sClasse?.name)?.slice(0,30) }}</option>
-                </select><br>
-            </span>
-            <br> <br>
-            <span v-if="showForme">
-                <label>Forme du produit</label>
-                <span style="margin-right: .1rem;">&nbsp;</span>
-                <select v-model="forme_med" placeholder="Type" class="bg-w" value="Ovule">
-                    <option>Cp</option>
-                    <option>Goutte</option>
-                    <option>Gel</option>
-                    <option>Gélule</option>
-                    <option>Lotion</option>
-                    <option>Ovule</option>
-                    <option>Sirop</option>
-                    <option>Amp.inj</option>
-                    <option>Amp.buv</option>
-                    <option>Suppo</option>
-                    <option>Spray</option>
-                    <option>Sachet</option>
-                    <option>Poudre</option>
-                    <option>Pmde</option>
-                    <option>Crème</option>
-                    <option>Savon</option>
-                    <option>Autre</option>
-                </select>
-            </span>
-            <span v-else>
-                <label style="background-color: rgba(25, 255, 25, 0.521);
-                padding: 0 0.3rem; border-radius: 8px;">Unité sortant</label>
-                <span style="margin-right: .1rem;">&nbsp;</span>
-                <select v-model="selectedMedUnit"  placeholder="Type" class="bg-w" value="Ovule">
-                    <option v-for="unit in medUnits">{{ unit.unit }}</option>
-                </select>
-                <span v-show="selectedMedUnit"
-                    @click="clearMedUnit"
-                    style="cursor:pointer;
-                        position:relative; 
-                        top: 0.2rem;left: 0.2rem;">
-                    <ion-icon :src="closeCircle" @click="clearMedUnit"></ion-icon>
+            <span id="cancelClick" v-show="isResultConfirmed==0 || isResultConfirmed==2">
+                <span class="s-cl">
+                    <label for="">Classe therap.</label>
+                <span @click="addNessClass"
+                    style="margin: 8px; color:green;
+                        font-size: 1.5rem; cursor: pointer; 
+                        align-items: center;
+                        position:relative;
+                        top: clamp(0.3rem, calc(0.3rem + 2px), 0.5rem)">
+                    <ion-icon class="scale-btn" :src="addCircleSharp"></ion-icon>
+                </span> <br>
+                    <select v-model="classeRef">
+                        <option v-for="(classe,index) in allClasses" :value="classe?.n_group"
+                            :id="'c'+index">
+                            {{ (classe?.name)?.slice(0,30) }}
+                        </option>
+                    </select>
                 </span>
+                <br>
+                <hr>
+                <span v-if="classeRef" class="s-cl">
+                    <label for="">S-Classe therap.</label><br>
+                    <select v-model="sClasseRef">
+                        <option v-for="sClasse in subClass">{{ (sClasse?.name)?.slice(0,30) }}</option>
+                    </select><br>
+                </span>
+                <br> <br>
+                <span v-if="showForme">
+                    <label>Forme du produit</label>
+                    <span style="margin-right: .1rem;">&nbsp;</span>
+                    <select v-model="forme_med" placeholder="Type" class="bg-w" value="Ovule">
+                        <option>Cp</option>
+                        <option>Goutte</option>
+                        <option>Gel</option>
+                        <option>Gélule</option>
+                        <option>Lotion</option>
+                        <option>Ovule</option>
+                        <option>Sirop</option>
+                        <option>Amp.inj</option>
+                        <option>Amp.buv</option>
+                        <option>Suppo</option>
+                        <option>Spray</option>
+                        <option>Sachet</option>
+                        <option>Poudre</option>
+                        <option>Pmde</option>
+                        <option>Crème</option>
+                        <option>Savon</option>
+                        <option>Autre</option>
+                    </select>
+                </span>
+                <span v-else>
+                    <label style="background-color: rgba(25, 255, 25, 0.521);
+                    padding: 0 0.3rem; border-radius: 8px;">Unité sortant</label>
+                    <span style="margin-right: .1rem;">&nbsp;</span>
+                    <select v-model="selectedMedUnit"  placeholder="Type" class="bg-w" value="Ovule">
+                        <option v-for="unit in medUnits">{{ unit.unit }}</option>
+                    </select>
+                    <span v-show="selectedMedUnit"
+                        @click="clearMedUnit"
+                        style="cursor:pointer;
+                            position:relative; 
+                            top: 0.2rem;left: 0.2rem;">
+                        <ion-icon :src="closeCircle" @click="clearMedUnit"></ion-icon>
+                    </span>
+                </span>
+                
+                <br> <br>
+                <input v-model="umuti_quantite_initial" type="number" placeholder="Quantité">
+                <br> <br>
+                <input v-model="umuti_prix_achat" type="number" placeholder="P.A: (Unité sortant)">
+                <br> <br>
+                <!-- <input v-model="umuti_prix_vente" type="number" placeholder="P.V : (Unité sortant)">
+                <br> <br> -->
+                <label>Date d'exp. </label> 
+                <input v-model="umuti_date_exp" type="date" placeholder="Nom du medicament">
+                
+                <!-- <input v-model="ratio" v-if="umuti_date_exp" type="text" placeholder="ratio: 1 : 1">
+                <br><br>
+                <input v-model="type_achat" v-if="umuti_date_exp" type="text" placeholder="Unité entrant: Carton">
+                <br> <br>
+                <input v-model="type_vente" v-if="umuti_date_exp" type="text" placeholder="Unité Sortant: Plaquette">
+                <br><br>
+                <input v-model="location" v-if="umuti_date_exp" type="text" style="margin-bottom: 5px;" placeholder="Localisation"> -->
+                <br><br>
             </span>
-            
-            <br> <br>
-            <input v-model="umuti_quantite_initial" type="number" placeholder="Quantité">
-            <br> <br>
-            <input v-model="umuti_prix_achat" type="number" placeholder="P.A: (Unité sortant)">
-            <br> <br>
-            <!-- <input v-model="umuti_prix_vente" type="number" placeholder="P.V : (Unité sortant)">
-            <br> <br> -->
-            <label>Date d'exp. </label> 
-            <input v-model="umuti_date_exp" type="date" placeholder="Nom du medicament">
-            
-            <!-- <input v-model="ratio" v-if="umuti_date_exp" type="text" placeholder="ratio: 1 : 1">
-            <br><br>
-            <input v-model="type_achat" v-if="umuti_date_exp" type="text" placeholder="Unité entrant: Carton">
-            <br> <br>
-            <input v-model="type_vente" v-if="umuti_date_exp" type="text" placeholder="Unité Sortant: Plaquette">
-            <br><br>
-            <input v-model="location" v-if="umuti_date_exp" type="text" style="margin-bottom: 5px;" placeholder="Localisation"> -->
-            <br><br>
         </div>
         <div v-if="selected_search">
             <br> <br>
@@ -185,6 +187,8 @@ const classeRef = ref(null)
 const sClasseRef = ref(null)
 const shouldAddNessClass = ref(false)
 const showForme = ref(true)
+
+const isResultConfirmed = ref(0)
 
 
 const minimunPA:number = 200
@@ -410,7 +414,12 @@ watch(umutiName, (value)=>{
     emit('inputApprov', obj)
 })
 watch(result, (value)=>{
-    imiti_result.value = value
+    imiti_result.value = value;
+    if (value?.length == 0){
+        isResultConfirmed.value = 2
+    } else{
+        isResultConfirmed.value = 1
+    }
 })
 </script>
 
