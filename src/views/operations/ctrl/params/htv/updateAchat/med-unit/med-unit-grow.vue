@@ -2,18 +2,24 @@
 <template>
     <div>
         <p class="c-b-1">
-            Cette fonctionnalité sera bientôt disponible. —grow
+            <!-- Cette fonctionnalité sera bientôt disponible. —grow -->
+            1 {{ props.oldUnit }} = <span class="c-b"> {{ newUnitValue ? newUnitValue:'??'}} </span> {{ props.newUnit + `${newUnitValue>1 ? 's':''}` }} 
         </p>
-        <input @focus="removePlaceHolder" @blur="addPlaceHolder" type="number" class="inp-med-unit" placeholder="??"/>
+        <input v-model="newUnitValue"
+            @focus="removePlaceHolder" @blur="addPlaceHolder" type="number" class="inp-med-unit" placeholder="??"/>
         <div>
-            <button class="btn bg-b-1">Ok</button>
+            <button class="btn bg-b-1 mv-10">Ok</button>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 
-const props = defineProps(['oldUnit'])
+
+//states
+const props = defineProps(['oldUnit', 'newUnit'])
+const newUnitValue = ref(null)
 
 function addPlaceHolder(e){
     e.target.placeholder = "??"
