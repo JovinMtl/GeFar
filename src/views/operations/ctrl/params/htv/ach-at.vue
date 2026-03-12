@@ -21,7 +21,10 @@
                         {{ (umuti.date_peremption).slice(0, 10) }}
                     </td>
                     <td class="pointer sm-l c-w" title="considerer cette unité">&nbsp;
-                        <button @click="confirmUnitFn" :data-b="umuti.code_med+';'+umuti.med_unit" class="btn bg-b-1">{{ getMedUnitName(medUnits, umuti.med_unit) }}</button>
+                        <button @click="confirmUnitFn" :data-b="umuti.code_med+';'+umuti.med_unit" 
+                            class="btn" :class="unitDefault?.unit_default == umuti.med_unit ? 'bg-g-1':'bg-b-1'">
+                            {{ getMedUnitName(medUnits, umuti.med_unit) }}
+                        </button>
                         
                     </td>
                     <td class="pointer">&nbsp;{{ umuti.prix_achat }}</td>
@@ -51,7 +54,7 @@
         </dialog>
         <mAchat v-if="mAchatIsOpen"
             @done-update="closemAchat"
-            @close-mod-achat="closemAchat" 
+            @close="closeAchat" 
             :umutiData="oneCompiled[actualId]"/> 
     </div>
 </template>
@@ -66,7 +69,7 @@ import mAchat from './updateAchat/m-achat.vue'
 import { getMedUnitName } from '../../../../hooks/useGetMedUnit' 
 
 const props = defineProps(['code_med'])
-const emit = defineEmits(['quit'])
+const emit = defineEmits(['refresh'])
 const allowChange = ref(true)
 const changeSuccessfull = ref(0)
 const mAchatIsOpen: Ref<boolean> = ref(false)
@@ -90,6 +93,9 @@ const url_getMedUnit = 'api/gOps/getMedUnit/'
 const [medUnits, getMedUnit] = useKuvoma(url_getMedUnit, url_local)
 getMedUnit()
 
+const url_unit_default_get = 'api/gOps/unit_default_get/'
+const [unitDefault, getUnitDefault] = useKurungika(oneCompiledData, url_unit_default_get)
+getUnitDefault()
 
 const [oneCompiled, getOneCompiled] = useKurungika(oneCompiledData, oneCompiled_url)
 setTimeout(()=>{
@@ -106,6 +112,9 @@ function confirmUnitFn(elm){
     data.code_med = dataB.split(';')[0]
     data.med_unit_id = dataB.split(';')[1]
     document.getElementById('confirm').click()
+}
+const closeAchat =()=>{
+    emit("refresh")
 }
 const closemAchat = ()=>{
     setTimeout(()=>{

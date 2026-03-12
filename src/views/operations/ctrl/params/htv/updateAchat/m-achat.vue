@@ -25,7 +25,7 @@
              <input class="bg-b-1" type="button" value="Confirmer"
                 :class="[oneCompiled?.response==200 ? 'bg-g-1':'', oneCompiled?.response==404 ? 'bg-r':'']"
                 @click="updateAchat"/> -->
-            <med-unit :umuti-data="props.umutiData" v-if="type_modification=='Unite'"></med-unit>
+            <med-unit @close-mod-achat="closemAchat" :umuti-data="props.umutiData" v-if="type_modification=='Unite'"></med-unit>
             <px-achat @close-mod-achat="closemAchat" :umuti-data="props.umutiData" v-if="type_modification=='Px.Achat'"></px-achat>
             <q-te  @close-mod-achat="closemAchat" :umuti-data="props.umutiData" v-if="type_modification=='Qté'"></q-te>
             <d-per  @close-mod-achat="closemAchat" :umuti-data="props.umutiData" v-if="type_modification=='Date Per'"></d-per>
@@ -42,7 +42,7 @@ import qTe from './q-te/q-te.vue';
 import dPer from './d-per/d-per.vue';
 
 const props = defineProps(['umutiData']);
-const emit = defineEmits(['done-update', 'closeModAchat'])
+const emit = defineEmits(['done-update', 'close'])
 
 const date_peremption = ref(props.umutiData.date_peremption)
 const prix_achat = ref(props.umutiData.prix_achat)
@@ -73,7 +73,7 @@ const [oneCompiled, updateAchatEntree] = useKurungika(objAPI, oneCompiled_url)
 
 // Functions
 function closemAchat(){
-    emit('closeModAchat');
+    emit('close');
 }
 
 watch(oneCompiled, (value)=>{

@@ -33,7 +33,8 @@
                 @quit="closeComp"/>
             <prInte v-if="actualComp=='prInte'" :code_med="actualId"
                 @quit="closeComp"/>
-            <achAt v-if="actualComp=='achat'" :code_med="actualId"/>
+            <achAt v-if="actualComp=='achat'" :code_med="actualId"
+                @refresh="refreshComp" :key="achatKey"/>
             <updateNom v-if="actualComp=='nom'" :code_med="actualId"
                 @quit="closeComp"/>
             <derPrix v-if="actualComp=='derPrix'" :code_med="actualId"
@@ -59,10 +60,14 @@ const props = defineProps(['admin'])
 
 const actualId:Ref<string> = ref('')
 const actualComp:Ref<string> = ref('')
+const achatKey:Ref<number> = ref(0)
 
 const isAdmin = props.admin
 
-    // Functions
+// Functions
+function refreshComp(){
+    achatKey.value += 1
+}
 const closeComp = ()=>{
     actualComp.value = ""
     }
