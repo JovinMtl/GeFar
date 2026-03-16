@@ -3,17 +3,17 @@
         <div class="c-b" style="display: flex; justify-content: center; max-height: 120px; overflow: scroll;">
 
             <table style="text-align: right;">
-                <tr>
+                <tr class="b-b">
                     <th >Date entrant</th>
                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date Per.</th>
-                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unité</th>
+                    <th class="ta-c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unité</th>
                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prix A.</th>
                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prix V.</th>
                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qte 1.</th>
                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qte 2.&nbsp;</th>
                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nom med.</th>
                 </tr>
-                <tr v-for="(umuti, index) in oneCompiled">
+                <tr v-for="(umuti, index) in oneCompiled" :key="index">
                     <td class="c-g-2" :title="'Avec code: ' + umuti.code_operation">{{ String(umuti.date_entrant).slice(0, 10) }}</td>
                     <td class="pointer" title="Modifier cette opération." 
                         :data-index="index" @click="openDataR">
@@ -21,11 +21,11 @@
                         {{ (umuti.date_peremption).slice(0, 10) }}
                     </td>
                     <td class="pointer sm-l c-w" title="considerer cette unité">&nbsp;
-                        <button @click="confirmUnitFn" :data-b="umuti.code_med+';'+umuti.med_unit" 
+                        <button @click="confirmUnitFn" :data-b="umuti.code_med+';'+umuti.med_unit+';'+(unitDefault?.unit_default == umuti.med_unit)+';'+index" 
                             class="btn" :class="unitDefault?.unit_default == umuti.med_unit ? 'bg-g-1':'bg-b-1'">
                             {{ getMedUnitName(medUnits, umuti.med_unit) }}
                         </button>
-                        
+                        <span class="bg-r" v-show="(unitDefault?.unit_default == umuti.med_unit)&& showMessage &&selectedIndex==index">Même chôse</span>
                     </td>
                     <td class="pointer">&nbsp;{{ umuti.prix_achat }}</td>
                     <td class="c-g-2">&nbsp;{{ umuti.prix_vente }}</td>
@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive,ref, toValue, watch } from 'vue'
+import {computed, reactive,ref, toValue, watch } from 'vue'
 import type { Ref } from 'vue'
 import { useKurungika , useKuvoma} from '../../../../hooks/kuvoma'
 import { useCounter } from '../../../../../store/incrementCounter'
@@ -105,13 +105,29 @@ setTimeout(()=>{
 const url_confirmUnit = 'api/gOps/unit_confirm/'
 const [confirmUnitResponse, confirmUnit] = useKurungika(data, url_confirmUnit)
 
-
+const showMessage:Ref<boolean> = ref(false)
+const selectedIndex:Ref<number> = ref(-1)
 // Functions
 function confirmUnitFn(elm){
     const dataB = elm.target.getAttribute('data-b')
     data.code_med = dataB.split(';')[0]
     data.med_unit_id = dataB.split(';')[1]
-    document.getElementById('confirm').click()
+    const isDifferent = (dataB.split(';')[2])
+    selectedIndex.value = Number((dataB.split(';')[3]))
+
+    // const output = document.getElementById('output')
+    // output.innerText = (isDifferent)
+
+    if(isDifferent=='false'){
+        document.getElementById('confirm').click()
+        // output.innerText = isDifferent + " confirmed"
+    } else if(isDifferent=='true'){
+        // output.innerText = isDifferent + " skipped"
+        showMessage.value = true
+        setTimeout(()=>{
+            showMessage.value = false
+        }, 1200)
+    }
 }
 const closeAchat =()=>{
     emit("refresh")
@@ -137,7 +153,7 @@ const openDataB = (e)=>{
 watch(confirmUnitResponse, (value)=>{
     if(value?.status==200){
         setTimeout(()=>{
-            emit('quit')
+            emit('refresh')
         }, 1000)   
     }
 })
