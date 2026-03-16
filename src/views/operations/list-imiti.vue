@@ -14,7 +14,7 @@
                         <div class="umutiPrice-1">
                         {{ useReadableNumber(umuti.prix_vente) }}</div>
                         <div class="umutiPrice-2" :class="umuti.quantite_restant > 0 ? '':'c-danger'" 
-                            :title="umuti?.type_med != 'null' ? umuti?.type_med: null">
+                            :title="umuti?.type_med != 'null' ? getMedUnitName(medUnits, umuti?.med_unit) : null">
                             <span v-if="!umuti.is_decimal">
                                 {{ Number(umuti.quantite_restant) }}
                             </span>
@@ -41,6 +41,8 @@
     import { usegeneralCalls } from '../../store/generalCalls.js'
     import { useCapitalLetter } from '../hooks/useReadable.js'
     import useReadableNumber from '../hooks/useReadable.js'
+    import { getMedUnitName } from '../hooks/useGetMedUnit.js'
+    import { useKuvoma } from '../hooks/kuvoma.js'
 
     const props = defineProps(['removeZero'])
     const emit = defineEmits(['actualUmuti','allImiti','families', 'numbered', 'emptyResult'])
@@ -64,6 +66,14 @@
     let nonZero = [];
     let withZero = [];
 
+
+    const url_local = '//127.0.0.1:8002'
+    const url_getMedUnit = 'api/gOps/getMedUnit/'
+    const [medUnits, getMedUnit] = useKuvoma(url_getMedUnit, url_local)
+    getMedUnit()
+
+
+    // Functions
     const search_med = (value) => {
         // value.field
         let fieldname = 'nom_med'
@@ -246,6 +256,7 @@
                 // 'location': element.location,
                 'lot': element.lot,
                 'is_decimal': element.is_decimal,
+                'med_unit': element.med_unit
             }
             imitiset.value.push(obj)
         });
