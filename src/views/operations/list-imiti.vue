@@ -14,7 +14,7 @@
                         <div class="umutiPrice-1">
                         {{ useReadableNumber(umuti.prix_vente) }}</div>
                         <div class="umutiPrice-2" :class="umuti.quantite_restant > 0 ? '':'c-danger'" 
-                            :title="umuti?.type_med != 'null' ? getMedUnitName(medUnits, umuti?.med_unit) : null">
+                            :title="umuti?.med_unit != 'null' ? `${Number(umuti.quantite_restant)} ${getMedUnitName(medUnits, umuti?.med_unit)}${Number(umuti.quantite_restant) > 1 ? 's':''}` : null">
                             <span v-if="!umuti.is_decimal">
                                 {{ Number(umuti.quantite_restant) }}
                             </span>
