@@ -1,6 +1,5 @@
 <template>
     <div style="display: flex; 
-                    background-color: transparent;
                     justify-content: center; 
                     align-items: center;" >
         <div class=" bg-w b-r-8 p-h-5">
@@ -18,7 +17,9 @@
             
         </div>
         <div>
-            <input type="text" 
+            <input 
+                type="text"
+                id="inpY"
                 class="cnf-cancl" placeholder="?"
                 v-model="answer" />
         </div>
@@ -31,7 +32,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref, toValue } from 'vue'
+import { ref, toValue, onMounted } from 'vue'
 
 const emit = defineEmits(['answer'])
 const props = defineProps(['nom_med'])
@@ -39,6 +40,12 @@ const props = defineProps(['nom_med'])
 const answer = ref(null)
 
 // Functions
+function activateInput(){
+    const inptY = document.getElementById("inpY")
+    if (inptY){
+        inptY.focus()
+    }
+}
 const checkAnswer = ()=>{
     if (toValue(answer) == 'o'){
         emit('answer', 'o')
@@ -46,6 +53,10 @@ const checkAnswer = ()=>{
         emit('answer', 'n')
     }
 }
+
+onMounted(()=>{
+    activateInput()
+})
 </script>
 <style scoped>
 button{
