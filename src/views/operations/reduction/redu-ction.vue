@@ -90,6 +90,7 @@ import type { Ref } from 'vue'
 import { 
     useKurungika, useKuvoma
 } from '../../hooks/kuvoma.js'
+import { phName } from '../../hooks/pharma-info'
 import { 
     clInfo, Medi, DataAssurance, CreatedClient
 } from '../../layout/types.js'
@@ -271,7 +272,7 @@ const simplValid = ():void=>{
     clientInfo.nom_client = clName.value;
     clientInfo.numero_tel = String(clPhone.value);
     clientInfo.categorie = String(selectedProf.value);
-    clientInfo.assureur = 'Pharmacie Ubuzima';
+    clientInfo.assureur = phName;
     clClean.value = true
     
     emit("cfrBtn", 1)
