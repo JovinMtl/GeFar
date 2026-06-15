@@ -20,5 +20,5 @@ const selectedPharma = "shn";
 const emptyStr = " ";
 
 // States to export
-export const phName = ph_name?.selectedPharma ?? emptyStr;
-export const phAddress = ph_address?.selectedPharma ?? emptyStr;
+export const phName = ph_name[selectedPharma] ?? emptyStr;
+export const phAddress = ph_address[selectedPharma] ?? emptyStr;
