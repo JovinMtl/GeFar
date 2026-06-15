@@ -93,7 +93,7 @@
                      <span >{{ useReadable(umuti.caisse)}}</span>
                 </div>
                 <div class="elt elt5">
-                    <span :class="umuti.assu=='Pharmacie Ubuzima' ? 'c-g':''">
+                    <span :class="umuti.assu==phName ? 'c-g':''">
                         {{ umuti.dette }}</span>
                      
                 </div>
@@ -199,6 +199,7 @@
 import { move } from 'ionicons/icons'
 import { ref, watch, computed, toValue, reactive } from 'vue'
 import { useKurungika, usePostRequest } from '../../hooks/kuvoma'
+import { phName} from '../../hooks/pharma-info'
 import useReadable from '../../hooks/useReadable'
 import confirmCancel from './params/confirm-cancel.vue'
 
