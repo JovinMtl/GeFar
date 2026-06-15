@@ -20,7 +20,7 @@
                     <div @click="login_hook" class="enter">
                         <div class="btn">se connecter</div>
                     </div>
-                    <div class="loFooter"> © {{ year }}, Pharmacie UBUZIMA</div>
+                    <div class="loFooter"> © {{ year }}, {{ phName }}</div>
                 </div>
                 
                 <div v-show="server_process" class="loader" style="z-index: 15;position:absolute">
@@ -40,6 +40,7 @@ import {
 import { useUserStore } from '../../store/user.js'
 // import { baseURL } from '../../store/host'
 import { baseURL } from '@/store/host'
+import { phName } from '../hooks/pharma-info'
 import axios from 'axios'
 import joveLoader from '../layout/auxiliare/jove-loader.vue'
 
