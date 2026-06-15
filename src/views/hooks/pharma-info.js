@@ -17,8 +17,21 @@ const ph_address = {
   shn: "7è Av, Q. Gikizi, Kamenge, Ntahangwa - Bujumbura",
 };
 
+const ph_address_zone = {
+  ubz: "13è Av, Q. Twinyoni, Kamenge",
+  shn: "7è Av, Q. Gikizi, Kamenge",
+};
+const ph_address_comm = {
+  ubz: "Ntahangwa - Bujumbura",
+  shn: "Ntahangwa - Bujumbura",
+};
+
 const ph_nif = {
   ubz: "4001411976",
+  shn: "0000000000",
+};
+const ph_tel = {
+  ubz: "69 332 288",
   shn: "0000000000",
 };
 
@@ -30,3 +43,6 @@ const emptyStr = " ";
 export const phName = ph_name[selectedPharma] ?? emptyStr;
 export const phAddress = ph_address[selectedPharma] ?? emptyStr;
 export const phNif = ph_nif[selectedPharma] ?? emptyStr;
+export const phTel = ph_tel[selectedPharma] ?? emptyStr;
+export const phAddressZone = ph_address_zone[selectedPharma] ?? emptyStr;
+export const phAddressComm = ph_address_comm[selectedPharma] ?? emptyStr;
