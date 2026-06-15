@@ -1,7 +1,7 @@
 <template>
     <div class="factureContainer">
             <div class="factuHead">
-                <span style="font-weight: 600;">PHARMACIE UBUZIMA </span><br>
+                <span style="font-weight: 600;">{{ String(phName).toUpperCase() }} </span><br>
                 Facture n. {{ num_facture }}/{{ year }}</div>
             <div class="factuBody">
                 <div class="content">
@@ -60,10 +60,10 @@
             </div>
             <div class="factuFooter">
                  <div class="conf">
-                    Pharmacie UBUZIMA.  NIF: 4001411976 <br>  
-                   Tel: +257 <b>69 332 288</b>
+                    {{ String(phName).toUpperCase() }}.  NIF: {{ phNif }} <br>  
+                   Tel: +257 <b>{{ phTel }}</b>
                     </div>
-                 <div class="address">Kamenge / Q.Twinyoni, 13è Av. n.25<br> Bujumbura - Burundi.</div>
+                 <div class="address">{{ phAddressZone }}<br> {{ phAddressComm }}.</div>
             </div>
     </div>
     <div id="modalElm" class="modal" @click.stop="console.log('You want the modal')">
@@ -87,6 +87,10 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import useReadable from '../hooks/useReadable'
 import { useCapitalLetter } from '../hooks/useReadable'
+import { 
+    phName, phNif, phTel, phAddress,
+    phAddressZone, phAddressComm
+} from '../hooks/pharma-info'
 
 const message = "facture"
 const props = defineProps([
