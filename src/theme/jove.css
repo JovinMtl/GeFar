@@ -14,6 +14,7 @@ html, body {
     background-size: contain;
     background-position: right; /* Center the background image */
     background-repeat: repeat-x; 
+    scroll-behavior: smooth;
   }
 
 .confirmationContainer{
@@ -426,6 +427,7 @@ html, body {
     width: 4%;height: 100%; 
     color: white;
     justify-content: center;
+    align-items: center;
     border-radius: 4px;
 }
 .contentElement2-1{
@@ -514,6 +516,12 @@ html, body {
 }
 .mt{
     margin-top: 2px;
+}
+.mv-10{
+    margin: 10px 0
+}
+.m-10{
+    margin: 10px;
 }
 .bg-o{
     background-color: orange;
@@ -633,6 +641,9 @@ html, body {
 }
 .pr-5{
     padding-right: 5px;
+}
+.p-0{
+    padding: 0;
 }
 .ta-r{
     text-align: right; 
@@ -863,6 +874,9 @@ div > section {
 .clk:active{
     scale: 0.8;
 }
+.b-b{
+    border-bottom: 1px solid white;
+}
 
 /* From page.vue */
 
@@ -918,6 +932,12 @@ div > section {
     height: 10px;
     position: absolute;
 }
+.m-qte{
+    width: 10px;
+    height: 10px;
+    position: absolute; 
+    transform: translateY(300%);
+}
 .m-l-b{
     height: 15px;
     width: 15px; 
@@ -955,6 +975,7 @@ div > section {
     background-color: yellowgreen;
     width: 5rem;
     padding: 10px 15px;
+    caret-color: white;
 }
 .vibrate{
     position: relative;

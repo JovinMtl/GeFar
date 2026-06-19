@@ -119,7 +119,7 @@
                      <span >{{ useReadable(umuti.cout) }}</span>
                 </div>
                 <div class="elt elt5" style="color: blue;">
-                    <span v-show="(umuti.is_paid)==false" :class="umuti.assu=='Pharmacie Ubuzima' ? 'c-g':''">
+                    <span v-show="(umuti.is_paid)==false" :class="umuti.assu==phName ? 'c-g':''">
                         {{ useReadable(umuti.montant_dette) }}</span>
                      
                 </div>
@@ -252,6 +252,7 @@ import { reactive, ref, toValue, watch, nextTick } from 'vue'
 import type { Ref } from 'vue'
 import {  usePostRequest, useKuvoma, useKurungika } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
+import { phName } from '../../hooks/pharma-info'
 import { useAssuStore } from '../../../store/assu'
 import { useClientStore } from '../../../store/clients'
 import { baseURL } from '../../../store/host.js'

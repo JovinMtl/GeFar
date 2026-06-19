@@ -118,7 +118,7 @@
 
                 <div class="logoMenu c-b" @click="setPassword">
                     <ion-icon :src="lockClosed" class="logoIcon"></ion-icon>
-                    <span class="textMenu textMenu-p t-m-skin">Mot de passe</span>
+                    <span class="textMenu textMenu-p t-m-skin">Securité</span>
                 </div>
 
                 <div class="logoMenu c-b" @click="getPertes">
@@ -186,6 +186,7 @@
                 v-if="title_operation == 'Notifications'"/>
 
             <perTes :med="actual_imitiS" 
+                :admin="isAdmin"
                 v-if="title_operation == 'Pertes'"/>
             <!-- <printControle v-if="onPrint" /> -->
             

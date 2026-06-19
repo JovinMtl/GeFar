@@ -1,6 +1,7 @@
 <template>
     <div>
         <!-- <h6>Ici on gère des approvisionnements</h6> -->
+        <new-class @close="refreshClass" v-if="shouldAddNessClass"></new-class>
         <div v-if="!selected_search">
             <a title="Importer les medicaments dans un fichier " 
                 target="_blank" rel="noopener noreferrer"
@@ -11,65 +12,96 @@
             <input v-model="umutiName" type="text" placeholder="Nom du produit">
             <br>
             <ul style="text-align: right;" v-if="!selected_search">
-                <button class="btnResearch" v-for="(umuti, index) in imiti_result" 
+                <button class="btnResearch" v-for="(umuti, index) in imiti_result?.slice(0,5)??[{'nom_med': 'null','code_med': 'null', 'description_med': 'null'}]" 
                     :id="'a' + index" @click="selectSearch">
                     {{ umuti.nom_med }} {{ umuti.code_med }} {{ umuti.description_med }}
                 </button>
             </ul>
-            <span class="s-cl">
-                <label for="">Classe therap.</label> <br>
-                <select v-model="classeRef">
-                    <option v-for="(classe,index) in allClasses"
-                        :id="'c'+index">{{ (classe).slice(0,30) }}</option>
-                </select>
+            <span id="cancelClick" v-show="isResultConfirmed==0 || isResultConfirmed==2">
+                <span class="s-cl">
+                    <label for="">Classe therap.</label>
+                <span @click="addNessClass"
+                    style="margin: 8px; color:green;
+                        font-size: 1.5rem; cursor: pointer; 
+                        align-items: center;
+                        position:relative;
+                        top: clamp(0.3rem, calc(0.3rem + 2px), 0.5rem)">
+                    <ion-icon class="scale-btn" :src="addCircleSharp"></ion-icon>
+                </span> <br>
+                    <select v-model="classeRef">
+                        <option v-for="(classe,index) in allClasses" :value="classe?.n_group"
+                            :id="'c'+index">
+                            {{ (classe?.name)?.slice(0,30) }}
+                        </option>
+                    </select>
+                </span>
+                <br>
+                <hr>
+                <span v-if="classeRef" class="s-cl">
+                    <label for="">S-Classe therap.</label><br>
+                    <select v-model="sClasseRef">
+                        <option v-for="sClasse in subClass">{{ (sClasse?.name)?.slice(0,30) }}</option>
+                    </select><br>
+                </span>
+                <br> <br>
+                <span v-if="showForme">
+                    <label>Forme du produit</label>
+                    <span style="margin-right: .1rem;">&nbsp;</span>
+                    <select v-model="forme_med" placeholder="Type" class="bg-w" value="Ovule">
+                        <option>Cp</option>
+                        <option>Goutte</option>
+                        <option>Gel</option>
+                        <option>Gélule</option>
+                        <option>Lotion</option>
+                        <option>Ovule</option>
+                        <option>Sirop</option>
+                        <option>Amp.inj</option>
+                        <option>Amp.buv</option>
+                        <option>Suppo</option>
+                        <option>Spray</option>
+                        <option>Sachet</option>
+                        <option>Poudre</option>
+                        <option>Pmde</option>
+                        <option>Crème</option>
+                        <option>Savon</option>
+                        <option>Autre</option>
+                    </select>
+                </span>
+                <span v-else>
+                    <label style="background-color: rgba(25, 255, 25, 0.521);
+                    padding: 0 0.3rem; border-radius: 8px;">Unité sortant</label>
+                    <span style="margin-right: .1rem;">&nbsp;</span>
+                    <select v-model="selectedMedUnit"  placeholder="Type" class="bg-w" value="Ovule">
+                        <option v-for="unit in medUnits">{{ unit.unit }}</option>
+                    </select>
+                    <span v-show="selectedMedUnit"
+                        @click="clearMedUnit"
+                        style="cursor:pointer;
+                            position:relative; 
+                            top: 0.2rem;left: 0.2rem;">
+                        <ion-icon :src="closeCircle" @click="clearMedUnit"></ion-icon>
+                    </span>
+                </span>
+                
+                <br> <br>
+                <input v-model="umuti_quantite_initial" type="number" placeholder="Quantité">
+                <br> <br>
+                <input v-model="umuti_prix_achat" type="number" placeholder="P.A: (Unité sortant)">
+                <br> <br>
+                <!-- <input v-model="umuti_prix_vente" type="number" placeholder="P.V : (Unité sortant)">
+                <br> <br> -->
+                <label>Date d'exp. </label> 
+                <input v-model="umuti_date_exp" type="date" placeholder="Nom du medicament">
+                
+                <!-- <input v-model="ratio" v-if="umuti_date_exp" type="text" placeholder="ratio: 1 : 1">
+                <br><br>
+                <input v-model="type_achat" v-if="umuti_date_exp" type="text" placeholder="Unité entrant: Carton">
+                <br> <br>
+                <input v-model="type_vente" v-if="umuti_date_exp" type="text" placeholder="Unité Sortant: Plaquette">
+                <br><br>
+                <input v-model="location" v-if="umuti_date_exp" type="text" style="margin-bottom: 5px;" placeholder="Localisation"> -->
+                <br><br>
             </span>
-            <hr>
-            <span v-if="classeRef" class="s-cl">
-                <label for="">S-Classe therap.</label><br>
-                <select v-model="sClasseRef">
-                    <option v-for="subClasse in selectedSubClass">{{ (subClasse).slice(0,30) }}</option>
-                </select>
-            </span>
-            <br> <br>
-            <label>Forme du produit</label>
-            <span style="margin-right: .1rem;">&nbsp;</span>
-            <select v-model="forme_med" style="background-color: white" placeholder="Type" value="Ovule">
-                <option>Cp</option>
-                <option>Goutte</option>
-                <option>Gel</option>
-                <option>Gélule</option>
-                <option>Lotion</option>
-                <option>Ovule</option>
-                <option>Sirop</option>
-                <option>Amp.inj</option>
-                <option>Amp.buv</option>
-                <option>Suppo</option>
-                <option>Spray</option>
-                <option>Sachet</option>
-                <option>Poudre</option>
-                <option>Pmde</option>
-                <option>Crème</option>
-                <option>Savon</option>
-                <option>Autre</option>
-            </select>
-            <br> <br>
-            <input v-model="umuti_quantite_initial" type="number" placeholder="Quantité">
-            <br> <br>
-            <input v-model="umuti_prix_achat" type="number" placeholder="P.A: (Unité sortant)">
-            <br> <br>
-            <!-- <input v-model="umuti_prix_vente" type="number" placeholder="P.V : (Unité sortant)">
-            <br> <br> -->
-            <label>Date d'exp. </label> 
-            <input v-model="umuti_date_exp" type="date" placeholder="Nom du medicament">
-            
-            <!-- <input v-model="ratio" v-if="umuti_date_exp" type="text" placeholder="ratio: 1 : 1">
-            <br><br>
-            <input v-model="type_achat" v-if="umuti_date_exp" type="text" placeholder="Unité entrant: Carton">
-            <br> <br>
-            <input v-model="type_vente" v-if="umuti_date_exp" type="text" placeholder="Unité Sortant: Plaquette">
-            <br><br>
-            <input v-model="location" v-if="umuti_date_exp" type="text" style="margin-bottom: 5px;" placeholder="Localisation"> -->
-            <br><br>
         </div>
         <div v-if="selected_search">
             <br> <br>
@@ -90,6 +122,22 @@
                 placeholder="P.V: (Unité sortant)" 
                 style="color:blue; font-family: Sen;" disabled>
             <hr>
+            <span style="position: relative;">
+                <label style="background-color: rgba(25, 255, 25, 0.521);
+                padding: 0 0.3rem; border-radius: 8px;">Unité sortant</label>
+                <span style="margin-right: .1rem;">&nbsp;</span>
+                <select v-model="selectedMedUnit"  placeholder="Type" class="bg-w" value="Ovule">
+                    <option v-for="unit in medUnits">{{ unit.unit }}</option>
+                </select>
+                <span v-show="selectedMedUnit"
+                    @click="clearMedUnit"
+                    style="cursor:pointer;
+                        position:relative; 
+                        top: 0.2rem;left: 0.2rem;">
+                    <ion-icon :src="closeCircle" @click="clearMedUnit"></ion-icon>
+                </span>
+            </span>
+            <br><br>
             <label>Date d'exp. </label> 
             <!-- <span style="margin-right: .1rem;">&nbsp;</span> -->
             <input @blur="saveDate" v-model="date_exp" type="date" placeholder="Nom du medicament">
@@ -103,10 +151,11 @@
 </template>
 <script setup lang="ts">
 import { watch, ref, inject, reactive, toValue } from 'vue'
-import { fileTray } from 'ionicons/icons'
+import { fileTray, addCircleSharp, closeCircle, refresh } from 'ionicons/icons'
 import { IonIcon } from '@ionic/vue'
 import { useKuvoma, useKurungika } from '../hooks/kuvoma.js'
 import { MedApprov } from '../layout/types'
+import newClass from '../layout/auxiliare/new-class.vue'
 
 const emit = defineEmits(['inputApprov', 'approFileOpen',
     'fileDataLoaded', 'reportAchat', 'needRefresh'
@@ -121,7 +170,8 @@ const umuti_quantite_initial = ref(null)
 const umuti_date_exp = ref(null)
 const date_exp = ref(null)
 const date_init = ref(new Date)
-const forme_med = ref('Cp')
+const forme_med = ref('')
+const type_med = ref('Plaquette')
 const ratio = ref(null)
 const type_achat = ref(null)
 const type_vente = ref(null)
@@ -135,13 +185,26 @@ const allSubClasses = ref(null)
 const selectedSubClass = ref(null)
 const classeRef = ref(null)
 const sClasseRef = ref(null)
+const shouldAddNessClass = ref(false)
+const showForme = ref(true)
+
+const isResultConfirmed = ref(0)
+
 
 const minimunPA:number = 200
 
 const url_local = '//127.0.0.1:8002'
-const url_reportIndex = 'api/gOps/getClasses/'
+const url_reportIndex = 'api/gOps/getClasses_/'
 const [cls, getClasses] = useKuvoma(url_reportIndex, url_local)
+
+const url_checkSubClass = 'api/gOps/check_subclass/'
+const [subClass, checkSubClass] = useKurungika(classeRef, url_checkSubClass)
+
+
+const url_getMedUnit = 'api/gOps/getMedUnit/'
+const [medUnits, getMedUnit] = useKuvoma(url_getMedUnit, url_local)
 getClasses()
+getMedUnit()
 const  umuti_obj: MedApprov = reactive ({
         'code_med': '',
         'date_entrant': new Date().toISOString(),
@@ -170,6 +233,28 @@ const [report_today_per_to_31, todayPerTo31] = useKuvoma(url_today_per_to_31)
 
 
 // Functions
+function refreshClass(){
+    shouldAddNessClass.value = false
+    getClasses()
+}
+function nGroupToName(n_group: string): string {
+    let name = '';
+    (allClasses.value).forEach((elm)=>{
+        if (elm.n_group == n_group){
+            name = elm.name
+        }
+    })
+    return name
+}   
+const clearMedUnit = ()=>{
+    showForme.value = true;
+    selectedMedUnit.value = '';
+    forme_med.value = '';
+}
+const addNessClass = ()=>{
+    shouldAddNessClass.value = true
+    // emit('needRefresh')
+}
 const initInputs = ()=>{
     if(toValue(selected_search)){
         selected_search.value.nom_med = '';
@@ -228,8 +313,19 @@ const checkBeforeUpload = ()=>{
         umuti_obj.classe_med = selected_search.value.classe_med
         umuti_obj.sous_classe_med = selected_search.value.sous_classe_med
         umuti_obj.forme = selected_search.value.forme
+        umuti_obj.type_med = selected_search.value.type_med
+        umuti_obj.med_unit = selectedMedUnit.value
 
-        return umuti_obj
+        if(Number(umuti_obj.quantite_initial) && 
+            (Number(umuti_obj.prix_achat) && 
+            (Date(umuti_obj.date_peremption)))){
+            return umuti_obj
+        }else{
+            let info = "Veuillez saisir les données correctes."
+            showMessage(info)
+            return undefined
+        }
+        
     } else{
         // Fill Umuti_obj from the vmodels set in template
         if((String(umutiName.value)) && (Number(umuti_prix_achat.value) > minimunPA)
@@ -240,12 +336,14 @@ const checkBeforeUpload = ()=>{
             umuti_obj.nom_med = String(umutiName.value)
             umuti_obj.date_peremption = umuti_date_exp.value
             // umuti_obj.date_entrant = Date(new Date().toISOString().substring(0,10))
-            umuti_obj.classe_med = classeRef.value
+            umuti_obj.classe_med = nGroupToName(classeRef.value)
             umuti_obj.sous_classe_med = sClasseRef.value
             umuti_obj.prix_achat = Number(umuti_prix_achat.value)
             umuti_obj.prix_vente = Number(umuti_prix_vente.value)
             umuti_obj.quantite_initial = Number(umuti_quantite_initial.value)
             umuti_obj.forme = forme_med.value
+            umuti_obj.type_med = type_med.value
+            umuti_obj.med_unit = selectedMedUnit.value
             // umuti_obj.ratio = ratio.value || 1
             // umuti_obj.location = location.value || 'vide'
             // umuti_obj.type_vente = type_vente.value || 'vide'
@@ -272,25 +370,19 @@ const selectSearch = (event)=>{
     selected_search.value = imiti_result.value[code_s]
     approve_handler()
 }
-
-
+const selectedMedUnit = ref('')
+//Watchers
+watch(forme_med, (value)=>{
+    showForme.value = false;
+})
 watch(selected_search, (value)=>{
     console.log("The selected Search:", selected_search.value)
 })
-watch(classeRef, (value)=>{
-    // getting the equivalence of the shorten(30char) name
-    (allClasses.value).forEach((elm)=>{
-        if (elm.slice(0,30) == value){
-            long_name = elm
-        }
-    })
-    let index = (allClasses.value).indexOf(long_name)
-    selectedSubClass.value = (allSubClasses.value)[index]
+watch(classeRef, ()=>{
+    checkSubClass()
 })
 watch(cls, (value)=>{
-    allClasses.value = value.x
-    allSubClasses.value = value.y
-    console.log("The Classes are:", allClasses.value)
+    allClasses.value = value
 })
 watch(date_exp, (value)=>{
     umuti_obj.date_peremption = value
@@ -304,7 +396,6 @@ watch(report_achat, (value)=>{
     } else if(value.detail == undefined){
         console.log("Il y aurait besoin de reconnexion.")
     } else{
-        console.log("Les choses pas bien: ")
         emit("reportAchat", 2)
         let info = `Opération echouée.
             Il se peut que certaines informations sont incorrectes.`
@@ -318,8 +409,6 @@ watch(need_to_upload, (value)=>{
     if(reponse){
         emit("reportAchat", 1)
         setTimeout(sendFileDataLoaded, 500)
-        // sendFileDataLoaded()
-        // emit('fileDataLoaded', [umuti_obj,])
     }
     
 })
@@ -331,11 +420,20 @@ watch(umutiName, (value)=>{
     emit('inputApprov', obj)
 })
 watch(result, (value)=>{
-    imiti_result.value = value
+    imiti_result.value = value;
+    if (value?.length == 0){
+        isResultConfirmed.value = 2
+    } else{
+        isResultConfirmed.value = 1
+    }
 })
 </script>
 
 <style scoped>
+.scale-btn:active{
+    scale: 2;
+    transition-duration: 2000ms;
+}
 input, textarea{
     background-color: rgba(25, 255, 25, 0.521);
     color: black;
@@ -356,5 +454,21 @@ input, textarea{
     color: black;
     margin-bottom: 5px;
     padding: 5px 5px;
+}
+
+.jove-leave-from{
+    opacity: 1;
+    transform: translateY(0);
+    /* top: 0; */
+}
+.jove-leave-active{
+    transition: all 0.6s ease-in;
+    position: relative
+}
+.jove-leave-to{
+    opacity: 0;
+    transform: translateY(-30px);
+    /* top: -30px; */
+    filter: blur(12px);
 }
 </style>

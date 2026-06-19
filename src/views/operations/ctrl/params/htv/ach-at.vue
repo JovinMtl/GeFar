@@ -1,27 +1,37 @@
 <template>
     <div class="bg-w bg-ht se bdbmr-5">
-        <div class="c-b" style="display: flex; justify-content: center; max-height: 80px; overflow: scroll;">
+        <div class="c-b" style="display: flex; justify-content: center; max-height: 120px; overflow: scroll;">
 
             <table style="text-align: right;">
-                <tr>
+                <tr class="b-b">
                     <th >Date entrant</th>
-                    <th><span class="c-t">____</span>Date Per.</th>
-                    <th><span class="c-t">____</span>Prix A.</th>
-                    <th><span class="c-t">____</span>Prix V.</th>
-                    <th><span class="c-t">____</span>Forme</th>
-                    <th><span class="c-t">____</span>Nom med.</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date Per.</th>
+                    <th class="ta-c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unité</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prix A.</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prix V.</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qte 1.</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qte 2.&nbsp;</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nom med.</th>
                 </tr>
-                <tr v-for="(umuti, index) in oneCompiled">
-                    <td class="c-g-2">{{ String(umuti.date_entrant).slice(0, 10) }}</td>
+                <tr v-for="(umuti, index) in oneCompiled" :key="index">
+                    <td class="c-g-2" :title="'Avec code: ' + umuti.code_operation">{{ String(umuti.date_entrant).slice(0, 10) }}</td>
                     <td class="pointer" title="Modifier cette opération." 
                         :data-index="index" @click="openDataR">
-                        <span class="c-t">____</span>
+                        &nbsp;
                         {{ (umuti.date_peremption).slice(0, 10) }}
                     </td>
-                    <td class="pointer"><span class="c-t">____</span>{{ umuti.prix_achat }}</td>
-                    <td class="c-g-2"><span class="c-t">____</span>{{ umuti.prix_vente }}</td>
-                    <td class="c-w"><span class="c-t">____</span>{{ umuti.forme }}</td>
-                    <td class="c-w"><span class="c-t">____</span>{{ String(umuti.nom_med).slice(0, 20) }}</td>
+                    <td class="pointer sm-l c-w" title="considerer cette unité">&nbsp;
+                        <button @click="confirmUnitFn" :data-b="umuti.code_med+';'+umuti.med_unit+';'+(unitDefault?.unit_default == umuti.med_unit)+';'+index" 
+                            class="btn" :class="unitDefault?.unit_default == umuti.med_unit ? 'bg-g-1':'bg-b-1'">
+                            {{ getMedUnitName(medUnits, umuti.med_unit) }}
+                        </button>
+                        <span class="bg-r" v-show="(unitDefault?.unit_default == umuti.med_unit)&& showMessage &&selectedIndex==index">Même chôse</span>
+                    </td>
+                    <td class="pointer">&nbsp;{{ umuti.prix_achat }}</td>
+                    <td class="c-g-2">&nbsp;{{ umuti.prix_vente }}</td>
+                    <td class="c-w">&nbsp;{{ umuti?.quantite_initial }}</td>
+                    <td class="c-w">&nbsp;{{ umuti?.quantite_restant }}&nbsp;</td>
+                    <td class="c-g-2">&nbsp;{{ String(umuti.nom_med).slice(0, 20) }}</td>
                     <td :data-index="index"><button class="bg-a-1" title="Modifier cette opération." 
                         @click="openDataB">
                         <span v-if="!mAchatIsOpen">Modifier</span>
@@ -32,21 +42,43 @@
             </table>
             
         </div>
+        <button id="confirm" 
+            command="show-modal" 
+            commandfor="my-dialog"
+            style="display: none;">Open dialog</button>
+
+        <dialog id="my-dialog">
+        <p>Voulez-vous vraiment utiliser <span class="c-b-1">{{ getMedUnitName(medUnits, data.med_unit_id) }} </span> comme unité principale?</p>
+        <button @click="confirm=true" class="btn bg-b m-10" commandfor="my-dialog" command="close">Oui</button>
+        <button @click="confirm=false" class="btn m-10" commandfor="my-dialog" command="close">Non</button>
+        </dialog>
         <mAchat v-if="mAchatIsOpen"
-            @done-update="closemAchat" :umutiData="oneCompiled[actualId]"/> 
+            @done-update="closemAchat"
+            @close="closeAchat" 
+            :umutiData="oneCompiled[actualId]"/> 
     </div>
 </template>
 
 <script setup lang="ts">
-import { reactive,ref, toValue, watch } from 'vue'
+import {computed, reactive,ref, toValue, watch } from 'vue'
 import type { Ref } from 'vue'
-import { useKurungika } from '../../../../hooks/kuvoma'
+import { useKurungika , useKuvoma} from '../../../../hooks/kuvoma'
 import { useCounter } from '../../../../../store/incrementCounter'
 import mAchat from './updateAchat/m-achat.vue'
 
+import { getMedUnitName } from '../../../../hooks/useGetMedUnit' 
+
 const props = defineProps(['code_med'])
+const emit = defineEmits(['refresh'])
 const allowChange = ref(true)
 const changeSuccessfull = ref(0)
+const mAchatIsOpen: Ref<boolean> = ref(false)
+const confirm: Ref<boolean> = ref(false)
+const actualId = ref(0)
+const data = reactive({
+    code_med : '',
+    med_unit_id : ''
+})
 
 // const { incrementCounter } = useCounter()
 
@@ -55,17 +87,51 @@ const oneCompiledData = reactive({
     'code_med' : props.code_med,
     'request': 'get',
 })
-const actualId = ref(0)
 
+const url_local = '//127.0.0.1:8002'
+const url_getMedUnit = 'api/gOps/getMedUnit/'
+const [medUnits, getMedUnit] = useKuvoma(url_getMedUnit, url_local)
+getMedUnit()
+
+const url_unit_default_get = 'api/gOps/unit_default_get/'
+const [unitDefault, getUnitDefault] = useKurungika(oneCompiledData, url_unit_default_get)
+getUnitDefault()
 
 const [oneCompiled, getOneCompiled] = useKurungika(oneCompiledData, oneCompiled_url)
 setTimeout(()=>{
     getOneCompiled()
 }, 300)
 
-const mAchatIsOpen: Ref<boolean> = ref(false)
+const url_confirmUnit = 'api/gOps/unit_confirm/'
+const [confirmUnitResponse, confirmUnit] = useKurungika(data, url_confirmUnit)
 
+const showMessage:Ref<boolean> = ref(false)
+const selectedIndex:Ref<number> = ref(-1)
 // Functions
+function confirmUnitFn(elm){
+    const dataB = elm.target.getAttribute('data-b')
+    data.code_med = dataB.split(';')[0]
+    data.med_unit_id = dataB.split(';')[1]
+    const isDifferent = (dataB.split(';')[2])
+    selectedIndex.value = Number((dataB.split(';')[3]))
+
+    // const output = document.getElementById('output')
+    // output.innerText = (isDifferent)
+
+    if(isDifferent=='false'){
+        document.getElementById('confirm').click()
+        // output.innerText = isDifferent + " confirmed"
+    } else if(isDifferent=='true'){
+        // output.innerText = isDifferent + " skipped"
+        showMessage.value = true
+        setTimeout(()=>{
+            showMessage.value = false
+        }, 1200)
+    }
+}
+const closeAchat =()=>{
+    emit("refresh")
+}
 const closemAchat = ()=>{
     setTimeout(()=>{
         mAchatIsOpen.value=false
@@ -84,6 +150,19 @@ const openDataB = (e)=>{
     mAchatIsOpen.value = !mAchatIsOpen.value;
 }
 //watchers
+watch(confirmUnitResponse, (value)=>{
+    if(value?.status==200){
+        setTimeout(()=>{
+            emit('refresh')
+        }, 1000)   
+    }
+})
+watch(confirm, (value)=>{
+    if(value){
+        confirmUnit()
+        confirm.value = false
+    }
+})
 watch(oneCompiled, (value)=>{
     if(value?.response == 0){
         allowChange.value = false;
@@ -102,11 +181,11 @@ th{
 }
 .btnComp{
     margin: 15px;
-    padding: 5px;
+    /* padding: 5px; */
 }
 td > button{
     border-radius: 5px;
     margin: 0 10px;
-    padding: 5px;
+    padding: 2px 5px;
 }
 </style>

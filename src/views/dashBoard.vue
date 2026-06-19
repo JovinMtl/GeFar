@@ -1,8 +1,7 @@
 <template>
     <div>
         <div class="namePharma nm-p1 nm-s1">
-            <!-- Pharmacie Ubuzima -->
-            {{ getPharmaName() }}
+            {{ phName}}
         </div>
         <div class="bg-w c-b dB-1">
             Dashboard</div>
@@ -70,8 +69,8 @@ import {
 import { Chart, registerables } from "chart.js";
 import { useChart } from './hooks/useChart';
 import { useKuvoma } from './hooks/kuvoma';
+import { phName} from './hooks/pharma-info'
 import { useInfos } from '../store/useInfos';
-
 Chart.register(...registerables);
 
 const emit = defineEmits(['clos-d'])

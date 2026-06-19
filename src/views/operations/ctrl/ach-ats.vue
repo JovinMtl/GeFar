@@ -44,7 +44,7 @@
             <div v-for="(umuti, index) in (actual_imitiS)" 
                 class="d-f"
                 :class="index%2 ? 'ln-1':'ln-2'">
-                <div class="contentElement11">
+                <div class="contentElement11" :title="'Par : ' + umuti?.operator">
                     {{ index + 1 }}
                 </div> 
                 <div class="elt contentElement2"
@@ -69,15 +69,29 @@
                         {{ useReadable(umuti.prix_vente * (umuti.quantite_restant || umuti.quantity || 1) )}}
                 </div>
 
-                <div v-if="isAdmin" class="elt contentElement4"> 
-                    <span>{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 1) }}</span> 
+                <div v-if="isAdmin" class="elt contentElement4">
+                    <span v-if="turnDateChange && (index==selectedIndex)">
+                        <button @click="turnNoDate" class="sm-bt bg-r2">No</button>
+                    </span>
+                    <!-- <span>{{ (umuti.prix_vente - umuti.prix_achat) * (umuti.quantite_restant || umuti.quantity || 1) }}</span>  -->
                 </div>
 
-                <div class="elt contentElement4">
-{{ (umuti.date_entrant).slice(8,10) }}/{{ (umuti.date_entrant).slice(5,7) }}/{{ (umuti.date_entrant).slice(2,4) }}
+                <div class="elt contentElement4" :data-b="index +';'+umuti.code_med + ';' + umuti.code_operation"  @click="changeDate">
+                      <span :id="'achat'+index" v-if="!turnDateChange || (index!=selectedIndex)">
+                        {{ (umuti.date_entrant).slice(8,10) }}/{{ (umuti.date_entrant).slice(5,7) }}/{{ (umuti.date_entrant).slice(2,4) }}
+                    </span>
+                    <span v-else-if="turnDateChange && (index==selectedIndex)">
+                        <input :ref="dateInp" v-model="newDate" type="date">
+                    </span>
                 </div>
-                <div class="elt contentElement4">
+                <div  v-if="turnDateChange && (index==selectedIndex)">
+                    <button v-show="isInvalidDate"
+                            class="sm-bt" :class="dataSending==1 ? 'flashi':''"
+                            @click="takeNewDate">Ok</button>
+                </div>
+                <div v-else class="elt contentElement4">
                     {{ (umuti.classe_med).slice(0,15) }}
+                    
                 </div>
                 
             </div>
@@ -124,8 +138,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { reactive, ref, watch, toValue, nextTick } from 'vue'
+import type { Ref } from 'vue'
+import { useKurungika } from '../../hooks/kuvoma'
 import useReadable from '../../hooks/useReadable'
+
+interface dateDataType{
+    'newDate': Date;
+    'codeMed': string;
+    'codeOperation': string;
+}
+
 const props = defineProps(['med','admin'])
 const actual_imitiS = ref(props.med)
 const isAdmin = props.admin
@@ -133,7 +156,57 @@ const totaux = ref([0,0]) // To display totals on the footer.
 
 const annotatedIndexes = ref(null);
 annotatedIndexes.value = new Set;
+const newDate:Ref<Date> = ref(new Date())
+const codeMed: Ref<string> = ref('')
+const codeOperation: Ref<string> = ref('')
+const dateData:dateDataType = reactive({
+    'newDate': toValue(newDate),
+    'codeMed': '',
+    'codeOperation': '',
+})
+const selectedIndex: Ref<number> = ref(-1);
+const actualId: Ref<string> = ref('');
+const turnDateChange: Ref<boolean> = ref(false);
+const dataSending: Ref<boolean> = ref(false);
+const isInvalidDate:Ref<boolean> = ref(true)
+
+
+const url_moveAchat = 'api/gOps2/move_achat/'
+const [repMoveAchat, moveAchat] = useKurungika(dateData, url_moveAchat)
+
 // Functions
+const takeNewDate = ()=>{
+    dateData.codeMed = toValue(codeMed)
+    dateData.codeOperation = toValue(codeOperation)
+    dateData.newDate = toValue(newDate)
+    
+    if (toValue(isInvalidDate) && 
+        (dateData.newDate && 
+        dateData.codeMed && 
+        dateData.codeOperation)){
+        dataSending.value = true;
+        moveAchat()
+    } else{
+        console.log("THe new day is invalid : " + JSON.stringify(dateData))
+    }
+}
+const changeDate = (e)=>{
+    
+    const data = e.target.parentNode.getAttribute('data-b')
+    
+    const code_operation = String(data).split(';')[2]
+    const code_med = String(data).split(';')[1]
+    const index = String(data).split(';')[0]
+
+    if (code_med){
+        codeOperation.value = code_operation
+        codeMed.value = code_med
+        selectedIndex.value = Number(index)
+        actualId.value = `achat${index}`
+    }
+    
+    turnDateChange.value = true;
+}
 const changeBg = (e)=>{
     const selectedIndex = Number(e.target.getAttribute('data-index'));
     if (!(annotatedIndexes.value.has(selectedIndex))){
@@ -143,14 +216,11 @@ const changeBg = (e)=>{
     }
 }
 
-console.log("THe props: ",actual_imitiS.value[3])
-
 const updateTotaux = ()=>{
-    console.log("Attempt to build totaux",)
+
     let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
 
     actual_imitiS.value.forEach(element => {
-        // console.log("Quantite restant  pa:",  element.prix_vente)
         let tot = Number(element.prix_vente * (element.quantite_restant))
         let achat = Number(element.prix_achat * (element.quantite_restant))
         if (tot && achat){
@@ -158,12 +228,6 @@ const updateTotaux = ()=>{
             total += tot
             benefice += (element.prix_vente - element.prix_achat) * (element.quantite_restant) 
         }
-
-        
-        
-        
-        
-        // console.log("total: ", total)
         number += 1
     });
 
@@ -171,7 +235,31 @@ const updateTotaux = ()=>{
 
 }
 
+// Initialization
 updateTotaux()
 
+
+// Watcher
+watch(codeOperation, (v1, v2)=>{
+    console.log(v1 + " : " + v2)
+})
+watch(newDate, (value)=>{
+    const today = new Date()
+    const newDateObj = new Date(value)
+    
+    if(newDateObj.getTime() <= today.getTime()){
+        isInvalidDate.value = true
+    }else{
+        isInvalidDate.value = false
+    }
+})
+watch(repMoveAchat, (value)=>{
+    turnDateChange.value = false;
+    nextTick(()=>{
+        const elmInp = document.getElementById(toValue(actualId))
+        elmInp.innerHTML = toValue(newDate)
+    })
+    dataSending.value = false;
+})
 
 </script>

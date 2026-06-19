@@ -90,7 +90,7 @@
                     {{ useReadable(totaux[1]) }}
                 </div>
 
-                <div v-if="isAdmin" class="elt contentElement4">
+                <div v-if="props.admin" class="elt contentElement4">
                     <!-- {{ totaux[3] }} -->---
                     <!-- {{ useReadable(totaux[3]) }} -->
                       
@@ -118,7 +118,7 @@
     import { useKuvoma } from '../../hooks/kuvoma'
     import useReadable  from '../../hooks/useReadable'
 
-    const props = defineProps(['med'])
+    const props = defineProps(['med', 'admin'])
     const actual_imitiS = ref(props.med)
     const totaux = ref([0,0]) // To display totals on the footer.
 

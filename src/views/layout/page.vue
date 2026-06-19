@@ -4,6 +4,9 @@
             <div class="mP">
                 <div class="m-cl" :class="displayClasses ? 'bg-b' : 'bg-g'" @click="showClasses">
                 </div>
+                <div class="m-qte" :class="shouldRemoveZero? 'bg-b-1':'bg-b2'"
+                    @click="shouldRemoveZero = !shouldRemoveZero">
+                </div>
 
                 <div v-show="server_process" class="loader" style="z-index: 15;position:absolute">
                     <jove-loader></jove-loader>
@@ -40,7 +43,8 @@
                             <div class="bodyApprov2">
                                 <app-rov @inputApprov="searchManager" @approFileOpen="openApproFile"
                                     @reportAchat="reportAchatHandler"
-                                    @needRefresh="reOpenApprov"></app-rov>
+                                    @needRefresh="reOpenApprov"
+                                    @close="closeApprov"></app-rov>
                             </div>
                         </div>
                         <div class="footerApprov"
@@ -70,7 +74,8 @@
                     <div class="sectA" :class="selectedUmuti.value ? '':'sectA-1'" style="text-align: center;">
                         <list-imiti v-if="(! useRemoteResults) || (!tokenState.connected && useRemoteResults)" @actualUmuti="getUmuti" @allImiti="getAllImiti"
                             @emptyResult="alertUmutiNew" @families="getFamilies"
-                            @numbered="getImitiLength"></list-imiti>
+                            @numbered="getImitiLength"
+                            :remove-zero=shouldRemoveZero></list-imiti>
                         
                         <list-imiti-remote v-else :imitiRemote="resp_search_remote"
                             @numbered="getImitiLength">
@@ -114,7 +119,9 @@
                             <div v-show="selectedUmuti.value.is_decimal" class="deci">
                                 <div><button class="pa-3" @click="increaseDecimal">+</button></div>
                                 <div class="deci-nu">{{ decimalNumber }}</div>
-                                <div><button class="pa-3" @click="decreaseDecimal">--</button></div>
+                                <div>
+                                    <button class="pa-3" @click="decreaseDecimal">—</button>
+                                </div>
                             </div>
                             <div class="infoUmuti vendre" v-show="selectedUmuti.value.quantite_restant > 0"
                                 style="text-align: right;">
@@ -193,8 +200,7 @@
                     </a>
                     <div class="namePharma nm-p2 nm-s2">
                         <!-- This space is for the name of Pharmacy -->
-                         <!-- Pharmacie Ubuzima -->
-                         {{ getPharmaName() }}
+                         {{ phName }}
                     </div>
                     <div class="menuBar">
                         <me-nu @actualMenu="actualOption"></me-nu>
@@ -204,7 +210,7 @@
                     </div>
                     <div class="menuHau addr">
                             <!-- 13è Av, Q. Twinyoni, Kamenge. Ntahangwa - Bujumbura -->
-                            {{ getAddress() }}
+                            {{ phAddress }}
                     </div>
                     <div class="menuHau len"> {{ imitiLength }}</div>
                     <div class="menuHau user">
@@ -294,6 +300,7 @@ import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
 import { useError500 } from '../../store/generalErrors'
 import { useCounter } from '../../store/incrementCounter.js'
+import { phName, phAddress } from '../../views/hooks/pharma-info'
 import useReadableNumber from '../hooks/useReadable.js'
 
 import {
@@ -301,7 +308,7 @@ import {
 } from '../types'
 import CircumPower from '../layout/icon/CircumPower.vue'
 import CircumPill from '../layout/icon/pill.vue'
-import BiCollection from '../layout/icon/collect.vue'
+// import BiCollection from '../layout/icon/collect.vue'
 import FluentCloudSync28Regular from '../layout/icon/cloud.vue'
 import dashBoard from '@/views/dashBoard.vue';
 import reduCtion from '../operations/reduction/redu-ction.vue';
@@ -322,14 +329,20 @@ import {
 import EnCours from '../operations/en-cours.vue';
 import prEt from '../operations/pr-et.vue';
 import { useInfos } from '../../store/useInfos.js';
+import { usegeneralCalls } from '../../store/generalCalls.js';
 
 const router = useRouter()
 const { 
     getAddress, getPharmaName,
     setAddress
 } = useInfos()
+const { 
+    getDispo, setDispo
+} = usegeneralCalls()
 
-const today: Date = new Date
+const today: Date = new Date;
+
+const shouldRemoveZero=ref(false)
 
 const selectedUmuti: Medi = reactive({}) as Medi
 const panier_client: Ref<PanierClient[]> = ref([])
@@ -386,7 +399,7 @@ const actualFactureLength:Ref<number> = ref(0)
 
 const showClassMed:Ref<boolean> = ref(false)
 const decimalNumber:Ref<number> = ref(0)
-const fullDecimal: Ref<number> = ref(10)
+const fullDecimal: number = 10
 const clientName: Ref<string> = ref('')
 const collectionLength = ref(0)
 const login_initiator = ref(0)
@@ -611,8 +624,8 @@ const getAllImiti = (imiti) => {
     // Has to gets all imiti gathered by list-imiti
     // once they are assigned then they are ready to be injected into approv componenet.
     all_imiti.value = imiti
-    console.log("we get allImiti of length: " + imiti)
-    imitiLength.value = (imiti);
+    // console.log("we get allImiti of length: " + imiti)
+    // imitiLength.value = (imiti);  //Silence the array of objects displayed in number place.
 }
 const getFamilies = (famillies)=>{
     classes.value = famillies
@@ -627,7 +640,6 @@ const closeApprov = () => {
     approvStatus.value = false
 }
 const actualOption = (value) => {
-    console.log("THe actual menu is : ", value)
     if(value == 1){
         dBOpen.value = true
     }
@@ -736,6 +748,7 @@ const lot_array = (): PanierAPI[] => {
     let value: number = 0  // counting number of requested items
     let right_date: number = 0 //counting items with right date of expirity
     // console.log("ActiveLot is:", activeLot.value)
+
     let with_qte = 0
     let i = 0
     let j = 0
@@ -944,6 +957,14 @@ const shouldPop = ref(false)
 
 
 // Watchers
+watch(getDispo, (value)=>{
+    console.log("The dispo should be called because a sell has been cancelled.")
+    
+    if (value==true){
+        callCompileImitiSet()
+    }
+    setDispo(false)
+})
 watch(rep_updated_collection, (value)=>{
     console.log("Finished updateCollection.")
     if (value?.response){

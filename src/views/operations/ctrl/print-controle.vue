@@ -7,7 +7,7 @@
             <button @click="printf">Imprimer</button>
         </div>
         <div class="print-title"> 
-            <h1>Pharmacie Ubuzima</h1>
+            <h1>{{ String(phName).toUpperCase() }}</h1>
             <h3>Etat des lieux: {{ props['pageTitle'] }}, du {{ titleTime }}</h3>
         </div>
         <div style="background-color: greenyellow;">
@@ -18,6 +18,7 @@
 </template>
 <script setup lang="ts">
 import { useTitle } from '@vueuse/core'
+import { phName } from '../../hooks/pharma-info'
 
 const props = defineProps(['pageTitle',])
 const emits = defineEmits(['exit'])
