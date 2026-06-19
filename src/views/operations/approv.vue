@@ -316,7 +316,16 @@ const checkBeforeUpload = ()=>{
         umuti_obj.type_med = selected_search.value.type_med
         umuti_obj.med_unit = selectedMedUnit.value
 
-        return umuti_obj
+        if(Number(umuti_obj.quantite_initial) && 
+            (Number(umuti_obj.prix_achat) && 
+            (Date(umuti_obj.date_peremption)))){
+            return umuti_obj
+        }else{
+            let info = "Veuillez saisir les données correctes."
+            showMessage(info)
+            return undefined
+        }
+        
     } else{
         // Fill Umuti_obj from the vmodels set in template
         if((String(umutiName.value)) && (Number(umuti_prix_achat.value) > minimunPA)
@@ -387,7 +396,6 @@ watch(report_achat, (value)=>{
     } else if(value.detail == undefined){
         console.log("Il y aurait besoin de reconnexion.")
     } else{
-        console.log("Les choses pas bien: ")
         emit("reportAchat", 2)
         let info = `Opération echouée.
             Il se peut que certaines informations sont incorrectes.`
@@ -401,8 +409,6 @@ watch(need_to_upload, (value)=>{
     if(reponse){
         emit("reportAchat", 1)
         setTimeout(sendFileDataLoaded, 500)
-        // sendFileDataLoaded()
-        // emit('fileDataLoaded', [umuti_obj,])
     }
     
 })

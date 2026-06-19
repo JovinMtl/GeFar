@@ -34,13 +34,15 @@
         <div style="display: block;">
             <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 2 ? 'bg-o':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="setFixedPriceFn">Changer</button>
         </div>
+        <div class="c-r" v-if="errorMessage">{{ errorMessage }}</div>
 
         
     </div>
 </template>
 
 <script setup lang="ts">
-import { reactive,ref, toValue, watch } from 'vue'
+import { reactive,ref, watch } from 'vue'
+import type { Ref } from 'vue'
 import { useKurungika } from '../../../../hooks/kuvoma'
 import { useCounter } from '../../../../../store/incrementCounter'
 
@@ -49,6 +51,7 @@ const emits = defineEmits(['quit'])
 
 const allowChange = ref(true)
 const changeSuccessfull = ref(0)
+const errorMessage: Ref<string> = ref('')
 
 const { incrementCounter } = useCounter()
 
@@ -77,41 +80,17 @@ function setFixedPriceFn(){
     
     setFixedPrice()
 }
-const changeOneCompiled = ()=>{
-    // setting conditions
-    let c1_1 = oneCompiledData.new_prix_vente > 1;
-    let c1_2 = oneCompiledData.new_prix_vente <= 10;
-    let c1 = c1_1 && c1_2;
 
-
-    // The combined condition
-    let condCombined =  c1 
-    let allConditions = oneCompiledData.is_prix_vente_fixed && condCombined
-    console.log("Should pass? " + condCombined + ":" + allConditions)
-
-    // oneCompiled.code_med = 
-    oneCompiledData.request = 'post'
-    oneCompiledData.code_med = oneCompiledData.code_med;
-    oneCompiledData.is_prix_vente_fixed = oneCompiledData.is_prix_vente_fixed
-    
-    if (!(oneCompiledData.is_prix_vente_fixed)){
-        // Should come to normal
-        changeSuccessfull.value = 2
-    } else if (allConditions){
-        oneCompiledData.new_prix_vente = oneCompiledData.new_prix_vente
-        changeSuccessfull.value = 2;
-    } else if (!condCombined){
-        changeSuccessfull.value = 404;
-        return
-    }
-    
-    getOneCompiled()
-}
 
 //Watchers
 watch(setFixedPriceUrlResponse, (value)=>{
     if(value?.status == 200){
         emits('quit')
+    }else if(value?.status == 401){
+        errorMessage.value = value?.message
+        setTimeout(()=>{
+            errorMessage.value = ''
+        }, 1200)
     }
 })
 watch(oneCompiled, (value)=>{

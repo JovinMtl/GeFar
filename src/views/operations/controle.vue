@@ -186,6 +186,7 @@
                 v-if="title_operation == 'Notifications'"/>
 
             <perTes :med="actual_imitiS" 
+                :admin="isAdmin"
                 v-if="title_operation == 'Pertes'"/>
             <!-- <printControle v-if="onPrint" /> -->
             

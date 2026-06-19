@@ -3,13 +3,15 @@
     <div>
         <p class="c-b-1">
             <!-- Cette fonctionnalité sera bientôt disponible. —grow -->
-            1 {{ props.oldUnit }} = <span class="c-b"> {{ newUnitValue ? newUnitValue:'??'}} </span> {{ props.newUnit + `${newUnitValue>1 ? 's':''}` }} 
+            1 {{ props.newUnit }} = <span class="c-b"> {{ newUnitValue ? newUnitValue:'??'}} </span> {{ props.oldUnit + `${newUnitValue>1 ? 's':''}` }} 
         </p>
         <input v-model="newUnitValue"
             @focus="removePlaceHolder" @blur="addPlaceHolder" type="number" class="inp-med-unit" placeholder="??"/>
         <div>
-            <button @click="unitGrowFn" class="btn bg-b-1 mv-10" :class="[unitGrowResponse?.status==200 ? 'bg-b':'', unitGrowResponse?.status==403 ? 'bg-r':'']">Ok</button>
-            <p v-show="unitGrowResponse?.status==403">{{ unitGrowResponse?.message }}</p>
+            <button @click="unitShrinkFn" class="btn bg-b-1 mv-10" :class="[unitShrinkResponse?.status==200 ? 'bg-b':'', unitShrinkResponse?.status==403 ? 'bg-r':'']">Ok</button>
+            <span v-show="unitShrinkResponse?.status==403" 
+                :class="unitShrinkResponse?.status==403? 'c-r':''">
+                <br> {{ unitShrinkResponse?.message }}</span>
         </div>
     </div>
 </template>
@@ -32,15 +34,15 @@ const data = reactive({
 })
 
 
-const url_unitGrow = 'api/achat/unite_augm/'
-const [unitGrowResponse, unitGrow] = useKurungika(data, url_unitGrow)
+const url_unitShrink = 'api/achat/unite_reduire/'
+const [unitShrinkResponse, unitShrink] = useKurungika(data, url_unitShrink)
 
 
 //Function
-function unitGrowFn(){
+function unitShrinkFn(){
     data.qte = toValue(newUnitValue)
     // some validations
-    unitGrow()
+    unitShrink()
 }
 function addPlaceHolder(e){
     e.target.placeholder = "??"
@@ -55,7 +57,7 @@ function closeFn(){
 }
 
 //Watcher
-watch(unitGrowResponse, (value)=>{
+watch(unitShrinkResponse, (value)=>{
     if(value?.status==200){
         closeFn()
     }

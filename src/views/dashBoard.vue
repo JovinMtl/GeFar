@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="namePharma nm-p1 nm-s1">
-            <!-- Pharmacie Ubuzima -->
             {{ phName}}
         </div>
         <div class="bg-w c-b dB-1">

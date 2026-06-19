@@ -191,7 +191,7 @@ const takeNewDate = ()=>{
     }
 }
 const changeDate = (e)=>{
-    // const data = e.target.getAttribute('data-b')
+    
     const data = e.target.parentNode.getAttribute('data-b')
     
     const code_operation = String(data).split(';')[2]
@@ -216,10 +216,8 @@ const changeBg = (e)=>{
     }
 }
 
-console.log("THe props: ",actual_imitiS.value[3])
-
 const updateTotaux = ()=>{
-    console.log("Attempt to build totaux",)
+
     let [ number, total, pt_a, benefice ] = [0, 0, 0, 0]
 
     actual_imitiS.value.forEach(element => {
@@ -238,7 +236,6 @@ const updateTotaux = ()=>{
 }
 
 // Initialization
-console.log("THe props: ",actual_imitiS.value[3])
 updateTotaux()
 
 
@@ -250,7 +247,7 @@ watch(newDate, (value)=>{
     const today = new Date()
     const newDateObj = new Date(value)
     
-    if(newDateObj.getDate() <= today.getDate()){
+    if(newDateObj.getTime() <= today.getTime()){
         isInvalidDate.value = true
     }else{
         isInvalidDate.value = false
@@ -264,6 +261,5 @@ watch(repMoveAchat, (value)=>{
     })
     dataSending.value = false;
 })
-
 
 </script>

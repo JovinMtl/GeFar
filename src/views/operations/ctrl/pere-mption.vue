@@ -247,17 +247,6 @@ watch(rep_add_perte, (value)=>{
 </script>
 
 <style >
-/* .jove-enter-from{
-    opacity: 1;
-    transform: translateY(0);
-}
-.jove-enter-active{
-    transition: all 1s ease-in;
-}
-.jove-enter-to{
-    opacity: 1;
-    border: 2px solid red;
-} */
 
 .jove-leave-from{
     opacity: 1;

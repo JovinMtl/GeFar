@@ -29,8 +29,6 @@
         <div style="display: block;">
             <button v-if="allowChange" class="btnComp" :class="[changeSuccessfull == 1 ? 'bg-g':'', changeSuccessfull == 404 ? 'bg-r':'']" @click="changeOneCompiled">Changer</button>
         </div>
-
-        
     </div>
 </template>
 
@@ -49,6 +47,7 @@ const emits = defineEmits(['quit'])
 const allowChange = ref(true)
 const codeMed = ref('')
 const meds = ref([])
+const changeSuccessfull = ref(0)
 
 const { incrementCounter } = useCounter()
 

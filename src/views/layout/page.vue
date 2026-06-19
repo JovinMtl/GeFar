@@ -200,8 +200,7 @@
                     </a>
                     <div class="namePharma nm-p2 nm-s2">
                         <!-- This space is for the name of Pharmacy -->
-                         <!-- Pharmacie Ubuzima -->
-                         {{ getPharmaName() }}
+                         {{ phName }}
                     </div>
                     <div class="menuBar">
                         <me-nu @actualMenu="actualOption"></me-nu>
@@ -211,9 +210,9 @@
                     </div>
                     <div class="menuHau addr">
                             <!-- 13è Av, Q. Twinyoni, Kamenge. Ntahangwa - Bujumbura -->
-                            {{ getAddress() }}
+                            {{ phAddress }}
                     </div>
-                    <div class="menuHau len"> {{ numberComputed }}</div>
+                    <div class="menuHau len"> {{ imitiLength }}</div>
                     <div class="menuHau user">
                         <a title="uyu ni Wewe nyene" class="c-b">
                             {{ useCapitalLetter((String(getUsername())).slice(0, 10)) }}
@@ -301,6 +300,7 @@ import { baseURL } from '../../store/host'
 import { useUserStore } from '../../store/user'
 import { useError500 } from '../../store/generalErrors'
 import { useCounter } from '../../store/incrementCounter.js'
+import { phName, phAddress } from '../../views/hooks/pharma-info'
 import useReadableNumber from '../hooks/useReadable.js'
 
 import {
@@ -308,7 +308,7 @@ import {
 } from '../types'
 import CircumPower from '../layout/icon/CircumPower.vue'
 import CircumPill from '../layout/icon/pill.vue'
-import BiCollection from '../layout/icon/collect.vue'
+// import BiCollection from '../layout/icon/collect.vue'
 import FluentCloudSync28Regular from '../layout/icon/cloud.vue'
 import dashBoard from '@/views/dashBoard.vue';
 import reduCtion from '../operations/reduction/redu-ction.vue';
@@ -491,7 +491,6 @@ const reOpenApprov = ()=>{
         approvStatus.value = true;
     })
 }
-const numberComputed = computed(()=>imitiLength.value)
 const getImitiLength = (val)=>{
     imitiLength.value = toValue(val)
 }

@@ -3,141 +3,138 @@
 // type dateUmuti = new Date
 
 export interface UmutiSet {
-    id : number;
-    code_med : string;
-    nom_med : string;
-    description_med : string;
-    date_last_vente : Object;
-    prix_in : number;
-    prix_vente : number;
-    difference : number;
-    qte_entrant_big : number;
-    quantite_restant : number;
-    ratio_type : number;
-    type_in : string;
-    type_vente : string;
-    famille_med : string;
-    location : string;
-    lot : object[];
+  id: number;
+  code_med: string;
+  nom_med: string;
+  description_med: string;
+  date_last_vente: Object;
+  prix_in: number;
+  prix_vente: number;
+  difference: number;
+  qte_entrant_big: number;
+  quantite_restant: number;
+  ratio_type: number;
+  type_in: string;
+  type_vente: string;
+  famille_med: string;
+  location: string;
+  lot: object[];
 }
 
 export interface PanierClient {
-    code_med : string;
-    nom_med : string;
-    qte : number;
-    prix_vente : number;
+  code_med: string;
+  nom_med: string;
+  qte: number;
+  prix_vente: number;
 }
 
 export interface PanierAPI {
-    code_med : string;
-    // code_operation : string;
-    qte : number;
+  code_med: string;
+  // code_operation : string;
+  qte: number;
 }
 
- export type Lot = { date: Date, code_operation:String, qte:Number }
-
+export type Lot = { date: Date; code_operation: String; qte: Number };
 
 export interface MedApprov {
-    code_med: string;
-    nom_med : string;
-    classe_med: string;
-    sous_classe_med : string;
-    forme :string;
-    quantite_initial: number;
-    prix_achat: number;
-    prix_vente: number;
-    date_peremption: string;
-    type_achat: string; // carton
-    type_vente: string; // piece ou plaquette
-    ratio: number; // 1 if no detail, 10, ...
-    errors: number[];
-    type_med: string;
+  code_med: string;
+  nom_med: string;
+  classe_med: string;
+  sous_classe_med: string;
+  forme: string;
+  quantite_initial: number;
+  prix_achat: number;
+  prix_vente: number;
+  date_peremption: string;
+  type_achat: string; // carton
+  type_vente: string; // piece ou plaquette
+  ratio: number; // 1 if no detail, 10, ...
+  errors: number[];
+  type_med: string;
 }
 
-export type Assu = [string, number]
-export interface DataAssurance{
-    'assu': Assu[];
+export type Assu = [string, number];
+export interface DataAssurance {
+  assu: Assu[];
 }
-
-
 
 export interface PanierClient {
-    'nom_med': string;
-    'qte': number;
-    'prix_vente': number
+  nom_med: string;
+  qte: number;
+  prix_vente: number;
 }
 
-interface Lot {
-    'code_operation': any [];
-    'qte': number;
-}
+// interface Lot {
+//     'code_operation': any [];
+//     'qte': number;
+// }
 
 export interface PanierAPI {
-    'nom_med': string;
-    'code_med': string;
-    'qte': number;
-    'lot': Lot [];
+  nom_med: string;
+  code_med: string;
+  qte: number;
+  lot: Lot[];
 }
 
 export interface ActiveLot {
-    'date': string;
-    'qte': number;
-    'to_panier': number;
-    'code_operation': any [];
+  date: string;
+  qte: number;
+  to_panier: number;
+  code_operation: any[];
 }
 
 export interface Medi {
-    'code_med': string;
-    'date_last_vente': Date;
-    'classe_med': string;
-    'difference': number;
-    'id': number;
-    'location': string;
-    'lot': Lot[];
-    'nom_med': string;
-    'prix_in': number;
-    'prix_vente': number;
-    'qte_entrant_big': number;
-    'quantite_restant': number;
-    'ratio_type': number;
-    'type_in': string;
-    'type_vente': string;
-    'sous_classe_med': string;
+  code_med: string;
+  date_last_vente: Date;
+  classe_med: string;
+  difference: number;
+  id: number;
+  location: string;
+  lot: Lot[];
+  nom_med: string;
+  prix_in: number;
+  prix_vente: number;
+  qte_entrant_big: number;
+  quantite_restant: number;
+  ratio_type: number;
+  type_in: string;
+  type_vente: string;
+  sous_classe_med: string;
 }
 
-export interface clInfo{
-    'nom_client': string;
-    'numero_tel': string;
-    'categorie': string;
-    'assureur': string;
-    'numero_carte': string;
-    'numero_bon': string;
-    'date_bon': string;
-    'rate_assure': number;
-    'nom_adherant': string;
-    'employeur': string;
-    'relation': string;
+export interface clInfo {
+  nom_client: string;
+  numero_tel: string;
+  categorie: string;
+  assureur: string;
+  numero_carte: string;
+  numero_bon: string;
+  date_bon: string;
+  rate_assure: number;
+  nom_adherant: string;
+  employeur: string;
+  relation: string;
 }
 
-export interface DataToAPI{
-    'panier': PanierAPI [];
-    'client': clInfo;
+export interface DataToAPI {
+  panier: PanierAPI[];
+  client: clInfo;
 }
-type Relationship =  'Lui-même' | 'Conjoint' | 'Enfant' 
-export interface CreatedClient{
-    'nomAd': string;
-    'employeur': string;
-    'nomBen': string;
-    'rateAssu': number;
-    'relation': Relationship;
-    'numBon': number;
-    'numCard': number;
-    'datePrescr': Date;
+type Relationship = "Lui-même" | "Conjoint" | "Enfant";
+export interface CreatedClient {
+  nomAd: string;
+  employeur: string;
+  nomBen: string;
+  rateAssu: number;
+  relation: Relationship;
+  numBon: number;
+  numCard: number;
+  datePrescr: Date;
 }
-export interface KnownClient{
-    'nom_adherant': string;
-    'employeur': string;
-    'beneficiaire': string;
-    'numero_carte': number;
-    'relation': Relationship;
+export interface KnownClient {
+  nom_adherant: string;
+  employeur: string;
+  beneficiaire: string;
+  numero_carte: number;
+  relation: Relationship;
 }

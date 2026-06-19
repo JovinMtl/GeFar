@@ -1,5 +1,5 @@
 <template>
-    <div style="position: absolute;
+    <div class="sm-l" style="position: absolute;
         /* transform: translate(0%, 50%); */
         margin-top: 15px;
         width: 100%; min-height: 60%; display: flex;
